@@ -1,0 +1,323 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="15.1">
+  <zoom_level>10</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>260</x>
+      <y>350</y>
+      <w>240</w>
+      <h>250</h>
+    </coordinates>
+    <panel_attributes>halign=left
+valign=top
+style=wordwrap
+
+
+Fysiske: kontor, grund, lejlighed, maskiner
+
+Meneskelige: arbejdskraft, ledelsesteam, bestyrelse, rådgivere, interne specialister
+
+Immaterielle: brand,</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>500</x>
+      <y>80</y>
+      <w>240</w>
+      <h>520</h>
+    </coordinates>
+    <panel_attributes>halign=left
+valign=top
+style=wordwrap
+
+
+Tilbyder boliger til alle på tværs af samfundslag til en rimelig husleje.
+
+Non-Profit organisation.</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>740</x>
+      <y>350</y>
+      <w>240</w>
+      <h>250</h>
+    </coordinates>
+    <panel_attributes>halign=left
+valign=top
+style=wordwrap
+
+
+Egne: Civica, MitCivica
+
+Partner / distribution: Boligøen.dk, Studiebolig-Odense.dk
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>740</x>
+      <y>80</y>
+      <w>240</w>
+      <h>270</h>
+    </coordinates>
+    <panel_attributes>halign=left
+valign=top
+style=wordwrap
+
+
+Kundefastholdelse: 
+
+Betjening: bolig vedligeholdelse,  upersonlig selvbetjening/bestilling, personlig betjening ved ejendomsmester.
+
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>980</x>
+      <y>80</y>
+      <w>240</w>
+      <h>520</h>
+    </coordinates>
+    <panel_attributes>halign=left
+valign=top
+style=wordwrap
+
+
+Massemarked: kunde ar samme behov, lejebolig.</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>20</x>
+      <y>600</y>
+      <w>600</w>
+      <h>240</h>
+    </coordinates>
+    <panel_attributes>halign=left
+valign=top
+style=wordwrap
+
+
+Ejendomsvedligeholdelse, istandsættelse,
+
+Råderet?
+
+Lønninger, ejendomsomkostninger, lokaleomkostninger</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>620</x>
+      <y>600</y>
+      <w>600</w>
+      <h>240</h>
+    </coordinates>
+    <panel_attributes>halign=left
+valign=top
+style=wordwrap
+
+
+Gentagne indtægter: leje indtægter.</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Text</id>
+    <coordinates>
+      <x>260</x>
+      <y>80</y>
+      <w>240</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>style=wordwrap
+halign=center
+fontsize=20
+Nøgleaktiviteter
+-.</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Text</id>
+    <coordinates>
+      <x>260</x>
+      <y>350</y>
+      <w>240</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>style=wordwrap
+halign=center
+fontsize=20
+Nøgleressourcer
+-.</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Text</id>
+    <coordinates>
+      <x>20</x>
+      <y>80</y>
+      <w>240</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>style=wordwrap
+halign=center
+fontsize=20
+Nøglepartnere
+-.</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Text</id>
+    <coordinates>
+      <x>500</x>
+      <y>80</y>
+      <w>240</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>style=wordwrap
+halign=center
+fontsize=20
+Værditilbud
+-.</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Text</id>
+    <coordinates>
+      <x>740</x>
+      <y>80</y>
+      <w>240</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>style=wordwrap
+halign=center
+fontsize=20
+Kunderelationer
+-.</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Text</id>
+    <coordinates>
+      <x>980</x>
+      <y>80</y>
+      <w>240</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>style=wordwrap
+halign=center
+fontsize=20
+Kundesegmenter
+-.</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Text</id>
+    <coordinates>
+      <x>620</x>
+      <y>600</y>
+      <w>600</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>style=wordwrap
+halign=center
+fontsize=20
+Indtægtsstrømme
+-.</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Text</id>
+    <coordinates>
+      <x>20</x>
+      <y>600</y>
+      <w>600</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>style=wordwrap
+halign=center
+fontsize=20
+Omkostningsstruktur
+-.</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Text</id>
+    <coordinates>
+      <x>740</x>
+      <y>350</y>
+      <w>240</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>style=wordwrap
+halign=center
+fontsize=20
+Kanaler
+-.</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>420</x>
+      <y>20</y>
+      <w>400</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>fontsize=24
+Forretningsmodellærred(FML)
+halign=center
+valign=center</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>20</x>
+      <y>80</y>
+      <w>240</w>
+      <h>520</h>
+    </coordinates>
+    <panel_attributes>halign=left
+valign=top
+style=wordwrap
+
+
+BoligØen.dk
+
+Studiebolig-Odense.dk
+
+Kommunen
+
+Reklameberau?</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>260</x>
+      <y>80</y>
+      <w>240</w>
+      <h>270</h>
+    </coordinates>
+    <panel_attributes>halign=left
+valign=top
+style=wordwrap
+
+
+Problemløsning
+
+Finder Bolig</panel_attributes>
+    <additional_attributes/>
+  </element>
+</diagram>
