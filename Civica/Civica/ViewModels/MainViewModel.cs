@@ -20,10 +20,15 @@ namespace Civica.ViewModels
         {
             projectRepo = new ProjectRepository();
             projects = new ObservableCollection<ProjectViewModel>();
-            
+
+            foreach (Project p in projectRepo.GetAll())
+            {
+                projects.Add(new ProjectViewModel(p));
+            }
+
         }
 
-        public void CreateNewProject (string name, string owner, string manager, string description)
+        public void CreateNewProject(string name, string owner, string manager, string description)
         {
             Project p = new Project(name, owner, manager, description);
 

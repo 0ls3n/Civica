@@ -13,12 +13,15 @@ namespace Civica.Models
 
         public ProjectRepository()
         {
-            
+            projects = DatabaseHelper.InitializeProjects();
         }
 
-        public void Add(Project project) 
+        public void Add(Project p) 
         {
-            projects.Add(project);
+
+            p.Id = DatabaseHelper.Add(p);
+
+            projects.Add(p);
         }
 
         public List<Project> GetAll()
