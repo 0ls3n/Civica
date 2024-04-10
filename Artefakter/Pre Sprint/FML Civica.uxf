@@ -5,7 +5,7 @@
     <id>UMLClass</id>
     <coordinates>
       <x>260</x>
-      <y>350</y>
+      <y>330</y>
       <w>240</w>
       <h>250</h>
     </coordinates>
@@ -18,14 +18,14 @@ Fysiske: kontor, grund, lejlighed, maskiner
 
 Meneskelige: arbejdskraft, ledelsesteam, bestyrelse, rådgivere, interne specialister
 
-Immaterielle: brand,</panel_attributes>
+Immaterielle: brand.</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
       <x>500</x>
-      <y>80</y>
+      <y>60</y>
       <w>240</w>
       <h>520</h>
     </coordinates>
@@ -34,7 +34,7 @@ valign=top
 style=wordwrap
 
 
-Tilbyder boliger til alle på tværs af samfundslag til en rimelig husleje.
+Udlejning af boliger til alle på tværs af samfundslag til en rimelig husleje.
 
 Non-Profit organisation.</panel_attributes>
     <additional_attributes/>
@@ -43,7 +43,7 @@ Non-Profit organisation.</panel_attributes>
     <id>UMLClass</id>
     <coordinates>
       <x>740</x>
-      <y>350</y>
+      <y>330</y>
       <w>240</w>
       <h>250</h>
     </coordinates>
@@ -55,14 +55,19 @@ style=wordwrap
 Egne: Civica, MitCivica
 
 Partner / distribution: Boligøen.dk, Studiebolig-Odense.dk
-</panel_attributes>
+
+Facebook
+
+Instragram
+
+Youtube</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
       <x>740</x>
-      <y>80</y>
+      <y>60</y>
       <w>240</w>
       <h>270</h>
     </coordinates>
@@ -83,7 +88,7 @@ Betjening: bolig vedligeholdelse,  upersonlig selvbetjening/bestilling, personli
     <id>UMLClass</id>
     <coordinates>
       <x>980</x>
-      <y>80</y>
+      <y>60</y>
       <w>240</w>
       <h>520</h>
     </coordinates>
@@ -92,14 +97,14 @@ valign=top
 style=wordwrap
 
 
-Massemarked: kunde ar samme behov, lejebolig.</panel_attributes>
+Massemarked: kunde har samme behov, lejebolig.</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
       <x>20</x>
-      <y>600</y>
+      <y>580</y>
       <w>600</w>
       <h>240</h>
     </coordinates>
@@ -108,7 +113,7 @@ valign=top
 style=wordwrap
 
 
-Ejendomsvedligeholdelse, istandsættelse,
+Ejendomsvedligeholdelse, opførelse af ejendomme.
 
 Råderet?
 
@@ -119,7 +124,7 @@ Lønninger, ejendomsomkostninger, lokaleomkostninger</panel_attributes>
     <id>UMLClass</id>
     <coordinates>
       <x>620</x>
-      <y>600</y>
+      <y>580</y>
       <w>600</w>
       <h>240</h>
     </coordinates>
@@ -135,7 +140,7 @@ Gentagne indtægter: leje indtægter.</panel_attributes>
     <id>Text</id>
     <coordinates>
       <x>260</x>
-      <y>80</y>
+      <y>60</y>
       <w>240</w>
       <h>40</h>
     </coordinates>
@@ -150,7 +155,7 @@ Nøgleaktiviteter
     <id>Text</id>
     <coordinates>
       <x>260</x>
-      <y>350</y>
+      <y>330</y>
       <w>240</w>
       <h>40</h>
     </coordinates>
@@ -165,7 +170,7 @@ Nøgleressourcer
     <id>Text</id>
     <coordinates>
       <x>20</x>
-      <y>80</y>
+      <y>60</y>
       <w>240</w>
       <h>40</h>
     </coordinates>
@@ -180,7 +185,7 @@ Nøglepartnere
     <id>Text</id>
     <coordinates>
       <x>500</x>
-      <y>80</y>
+      <y>60</y>
       <w>240</w>
       <h>40</h>
     </coordinates>
@@ -195,7 +200,7 @@ Værditilbud
     <id>Text</id>
     <coordinates>
       <x>740</x>
-      <y>80</y>
+      <y>60</y>
       <w>240</w>
       <h>40</h>
     </coordinates>
@@ -210,7 +215,7 @@ Kunderelationer
     <id>Text</id>
     <coordinates>
       <x>980</x>
-      <y>80</y>
+      <y>60</y>
       <w>240</w>
       <h>40</h>
     </coordinates>
@@ -225,7 +230,7 @@ Kundesegmenter
     <id>Text</id>
     <coordinates>
       <x>620</x>
-      <y>600</y>
+      <y>580</y>
       <w>600</w>
       <h>40</h>
     </coordinates>
@@ -240,7 +245,7 @@ Indtægtsstrømme
     <id>Text</id>
     <coordinates>
       <x>20</x>
-      <y>600</y>
+      <y>580</y>
       <w>600</w>
       <h>40</h>
     </coordinates>
@@ -255,7 +260,7 @@ Omkostningsstruktur
     <id>Text</id>
     <coordinates>
       <x>740</x>
-      <y>350</y>
+      <y>330</y>
       <w>240</w>
       <h>40</h>
     </coordinates>
@@ -270,7 +275,7 @@ Kanaler
     <id>UMLClass</id>
     <coordinates>
       <x>420</x>
-      <y>20</y>
+      <y>0</y>
       <w>400</w>
       <h>60</h>
     </coordinates>
@@ -284,7 +289,7 @@ valign=center</panel_attributes>
     <id>UMLClass</id>
     <coordinates>
       <x>20</x>
-      <y>80</y>
+      <y>60</y>
       <w>240</w>
       <h>520</h>
     </coordinates>
@@ -297,16 +302,16 @@ BoligØen.dk
 
 Studiebolig-Odense.dk
 
-Kommunen
+Liva(Entreprenør)
 
-Reklameberau?</panel_attributes>
+Recovery(skadeservice)</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
       <x>260</x>
-      <y>80</y>
+      <y>60</y>
       <w>240</w>
       <h>270</h>
     </coordinates>
@@ -315,9 +320,9 @@ valign=top
 style=wordwrap
 
 
-Problemløsning
+Udlejning af boligere, hvor borgerne selv har inflydelse på hvordan fællesmidlerne benyttes.
 
-Finder Bolig</panel_attributes>
+</panel_attributes>
     <additional_attributes/>
   </element>
 </diagram>
