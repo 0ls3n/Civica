@@ -19,13 +19,8 @@ namespace Civica.ViewModels
         public MainViewModel()
         {
             projectRepo = new ProjectRepository();
-            projects = new ObservableCollection<ProjectViewModel>();
 
-            foreach (Project p in projectRepo.GetAll())
-            {
-                projects.Add(new ProjectViewModel(p));
-            }
-
+            projects = new ObservableCollection<ProjectViewModel>(projectRepo.GetAll().Select(x => new ProjectViewModel(x)));
         }
 
         public void CreateNewProject(string name, string owner, string manager, string description)
