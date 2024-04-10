@@ -8,6 +8,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Civica.ViewModels;
 
 namespace Civica
 {
@@ -16,9 +17,13 @@ namespace Civica
     /// </summary>
     public partial class MainWindow : Window
     {
+        private MainViewModel mvm; 
         public MainWindow()
         {
             InitializeComponent();
+            mvm = new MainViewModel();
+            this.DataContext = mvm;
+            
         }
     }
 }
