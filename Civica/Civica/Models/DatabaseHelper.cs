@@ -11,7 +11,7 @@ using Microsoft.VisualBasic.ApplicationServices;
 
 namespace Civica.Models
 {
-    static class DatabaseHelper
+    public static class DatabaseHelper
     {
         private static IConfigurationRoot config = new ConfigurationBuilder().AddJsonFile("appsettings.json").Build();
 
