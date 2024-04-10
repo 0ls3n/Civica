@@ -370,14 +370,14 @@ m2=*
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1140</x>
+      <x>1110</x>
       <y>2150</y>
-      <w>370</w>
+      <w>400</w>
       <h>40</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;-
-CreateProject(name, owner, manger, description)</panel_attributes>
-    <additional_attributes>350.0;20.0;10.0;20.0</additional_attributes>
+CreateNewProject(name, owner, manger, description)</panel_attributes>
+    <additional_attributes>380.0;20.0;10.0;20.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
