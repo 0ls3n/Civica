@@ -4,8 +4,8 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>260</x>
-      <y>330</y>
+      <x>460</x>
+      <y>350</y>
       <w>240</w>
       <h>250</h>
     </coordinates>
@@ -14,18 +14,16 @@ valign=top
 style=wordwrap
 
 
-Fysiske: kontor, grund, lejlighed, maskiner
+Hos Civica er der tale om primære menneskelige ressourcer der sørger for at der ikke er problemer hos lejerne. Civica består både af forskellige former for arbejdskraft, ledelse og bestyrelse, som alle er en del af Civica. En anden stor ressource hos Civica er de fysiske ressourcer, som er lejeboligerne. 
 
-Meneskelige: arbejdskraft, ledelsesteam, bestyrelse, rådgivere, interne specialister
-
-Immaterielle: brand.</panel_attributes>
++Project Management Software</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>500</x>
-      <y>60</y>
+      <x>700</x>
+      <y>80</y>
       <w>240</w>
       <h>520</h>
     </coordinates>
@@ -34,16 +32,14 @@ valign=top
 style=wordwrap
 
 
-Udlejning af boliger til alle på tværs af samfundslag til en rimelig husleje.
-
-Non-Profit organisation.</panel_attributes>
+Udlejning af boliger til alle på tværs af samfundslag. Derudover er de en Non-Profit organisation og derfor skal de holde en rimelig husleje.</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>740</x>
-      <y>330</y>
+      <x>940</x>
+      <y>350</y>
       <w>240</w>
       <h>250</h>
     </coordinates>
@@ -52,22 +48,17 @@ valign=top
 style=wordwrap
 
 
-Egne: Civica, MitCivica
+Civicas kunder finder Civcas lejemål på Boligøen.dk eller Studiebolig-Odense.dk. På hjemmesiden kan kunden oprette en profil og komme på venteliste.
 
-Partner / distribution: Boligøen.dk, Studiebolig-Odense.dk
-
-Facebook
-
-Instragram
-
-Youtube</panel_attributes>
+Civica har en Instagram, YouTube og Facebook Profil hvor kunder kan lære om Civica og få lyst til at leje gennem Civica. Civica bruger også trykte medier som reklamer for det kundesegment, der ikke bruger sociale medier. 
+</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>740</x>
-      <y>60</y>
+      <x>940</x>
+      <y>80</y>
       <w>240</w>
       <h>270</h>
     </coordinates>
@@ -76,19 +67,17 @@ valign=top
 style=wordwrap
 
 
-Kundefastholdelse: 
+Primært langvarige relationer ved længerevarende lejemål, med få undtagelser.
 
-Betjening: bolig vedligeholdelse,  upersonlig selvbetjening/bestilling, personlig betjening ved ejendomsmester.
-
-
+Selvbetjening gennem Boligøen.dk og Studiebolig-Odense.dk for at komme på venteliste og for at anmode service af et problem med lejemålet. Hvorefter Civica håndtere problemet personligt.
 </panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>980</x>
-      <y>60</y>
+      <x>1180</x>
+      <y>80</y>
       <w>240</w>
       <h>520</h>
     </coordinates>
@@ -97,14 +86,14 @@ valign=top
 style=wordwrap
 
 
-Massemarked: kunde har samme behov, lejebolig.</panel_attributes>
+Kundesegmentet for Civica er meget bredt. En af Civicas værdier er at de udlejer lejeboliger til alle på tværs af samfundslag. Da kundesegmentet er så bredt, er udbuddet af forskellige boliger hos Civica også meget bredt. Det gør at både unge studerende har mulighed for at finde en passende bolig hos Civica. Men en familie på 4 personer kan også sagtens finde et rækkehus med have til gennem Civica. En enlig pensionist der ønsker at bo i storbyen kan også finde en passende lejebolig gennem Civica. </panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>20</x>
-      <y>580</y>
+      <x>220</x>
+      <y>600</y>
       <w>600</w>
       <h>240</h>
     </coordinates>
@@ -115,16 +104,16 @@ style=wordwrap
 
 Ejendomsvedligeholdelse, opførelse af ejendomme.
 
-Råderet?
+Lønninger, ejendomsomkostninger, lokaleomkostninger
 
-Lønninger, ejendomsomkostninger, lokaleomkostninger</panel_attributes>
+Civicas omkostninger består af byggeprojekter og renoveringer af udlejningsboligerne. Derudover er der alle medarbejdere hos Civica, der skal have løn. Den sidste store post af Civicas omkostninger er det administrative såsom leje af kontorer/lokaler og ejendomsomkostninger.  </panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>620</x>
-      <y>580</y>
+      <x>820</x>
+      <y>600</y>
       <w>600</w>
       <h>240</h>
     </coordinates>
@@ -133,14 +122,14 @@ valign=top
 style=wordwrap
 
 
-Gentagne indtægter: leje indtægter.</panel_attributes>
+Kunderne betaler deres bolig gennem en lejekontrakt, hvor kunderne hver måned betaler for lejen af boligen samt vand, el og varme. </panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Text</id>
     <coordinates>
-      <x>260</x>
-      <y>60</y>
+      <x>460</x>
+      <y>80</y>
       <w>240</w>
       <h>40</h>
     </coordinates>
@@ -154,8 +143,8 @@ Nøgleaktiviteter
   <element>
     <id>Text</id>
     <coordinates>
-      <x>260</x>
-      <y>330</y>
+      <x>460</x>
+      <y>350</y>
       <w>240</w>
       <h>40</h>
     </coordinates>
@@ -169,8 +158,8 @@ Nøgleressourcer
   <element>
     <id>Text</id>
     <coordinates>
-      <x>20</x>
-      <y>60</y>
+      <x>220</x>
+      <y>80</y>
       <w>240</w>
       <h>40</h>
     </coordinates>
@@ -184,8 +173,8 @@ Nøglepartnere
   <element>
     <id>Text</id>
     <coordinates>
-      <x>500</x>
-      <y>60</y>
+      <x>700</x>
+      <y>80</y>
       <w>240</w>
       <h>40</h>
     </coordinates>
@@ -199,8 +188,8 @@ Værditilbud
   <element>
     <id>Text</id>
     <coordinates>
-      <x>740</x>
-      <y>60</y>
+      <x>940</x>
+      <y>80</y>
       <w>240</w>
       <h>40</h>
     </coordinates>
@@ -214,8 +203,8 @@ Kunderelationer
   <element>
     <id>Text</id>
     <coordinates>
-      <x>980</x>
-      <y>60</y>
+      <x>1180</x>
+      <y>80</y>
       <w>240</w>
       <h>40</h>
     </coordinates>
@@ -229,8 +218,8 @@ Kundesegmenter
   <element>
     <id>Text</id>
     <coordinates>
-      <x>620</x>
-      <y>580</y>
+      <x>820</x>
+      <y>600</y>
       <w>600</w>
       <h>40</h>
     </coordinates>
@@ -244,8 +233,8 @@ Indtægtsstrømme
   <element>
     <id>Text</id>
     <coordinates>
-      <x>20</x>
-      <y>580</y>
+      <x>220</x>
+      <y>600</y>
       <w>600</w>
       <h>40</h>
     </coordinates>
@@ -259,8 +248,8 @@ Omkostningsstruktur
   <element>
     <id>Text</id>
     <coordinates>
-      <x>740</x>
-      <y>330</y>
+      <x>940</x>
+      <y>350</y>
       <w>240</w>
       <h>40</h>
     </coordinates>
@@ -274,8 +263,8 @@ Kanaler
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>420</x>
-      <y>0</y>
+      <x>620</x>
+      <y>20</y>
       <w>400</w>
       <h>60</h>
     </coordinates>
@@ -288,8 +277,8 @@ valign=center</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>20</x>
-      <y>60</y>
+      <x>220</x>
+      <y>80</y>
       <w>240</w>
       <h>520</h>
     </coordinates>
@@ -298,20 +287,19 @@ valign=top
 style=wordwrap
 
 
-BoligØen.dk
+Civica er medejer af Boligøen.dk sammen med 3 andre virksomheder. Sammen med Studiebolig-Odense.dk, kan man skrive sig op til udlejning af Civicas udlejningsboliger. Samarbejdet handler om markedsføring af lejeboligerne. 
 
-Studiebolig-Odense.dk
+Civica samarbejder med LIVA som inkluderer renoveringer af boliger og nybyggeri. LIVA har både arkitekter, ingeniører og entreprenører. 
 
-Liva(Entreprenør)
-
-Recovery(skadeservice)</panel_attributes>
+Derudover samarbejder Civica med Recover, som er specialister inden for brand, indbrud, hærværk, vandskade eller andre former for skader. 
+</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>260</x>
-      <y>60</y>
+      <x>460</x>
+      <y>80</y>
       <w>240</w>
       <h>270</h>
     </coordinates>
@@ -322,7 +310,7 @@ style=wordwrap
 
 Udlejning af boligere, hvor borgerne selv har inflydelse på hvordan fællesmidlerne benyttes.
 
-</panel_attributes>
+De har lange ventelister og prioritere derfor service af nuværende kunder for at fremme fastholdelse.</panel_attributes>
     <additional_attributes/>
   </element>
 </diagram>
