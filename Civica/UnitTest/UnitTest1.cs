@@ -5,18 +5,18 @@ namespace UnitTest
     [TestClass]
     public class UnitTest1
     {
+        
+
         [TestMethod]
-        public void TestAddProject()
+        public void TestAddProjectToDatabase()
         {
-            //ARRANGE
-            List<Project> projects = DatabaseHelper.InitializeProjects();
-            Project p = new Project("Test", "Jens", "Rasmus", "Dette er en test");
+            ProjectRepository projectRepo = new ProjectRepository();
 
-            //ACT
+            Project p = new Project("test", "123", "321", "Blah Blah Blah"); // ARRANGE
 
+            projectRepo.Add(p); // ACT
 
-            //ASSERT
-
+            Assert.IsNotNull(projectRepo.Get(p.Id)); // ASSERT
         }
     }
 }
