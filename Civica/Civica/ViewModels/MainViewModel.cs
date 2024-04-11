@@ -33,7 +33,5 @@ namespace Civica.ViewModels
 
             projects.Add(pvm);
         }
-
-
     }
 }

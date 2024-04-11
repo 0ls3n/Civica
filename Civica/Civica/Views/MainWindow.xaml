@@ -21,22 +21,26 @@
 
             <TextBlock Text="Projektnavn"
                        Margin="0 10 0 0"/>
-            <TextBox Margin="0 5 0 0"/>
+            <TextBox Margin="0 5 0 0"
+                     Name="txt_ProjectName"/>
 
             <TextBlock Text="Ejer"
                        Margin="0 10 0 0"/>
-            <TextBox Margin="0 5 0 0"/>
+            <TextBox Margin="0 5 0 0"
+                     Name="txt_Owner"/>
 
             <TextBlock Text="Leder"
                        Margin="0 10 0 0"/>
-            <TextBox Margin="0 5 0 0"/>
+            <TextBox Margin="0 5 0 0"
+                     Name="txt_Leader"/>
 
             <TextBlock Text="Projekt beskrivelse"
                        Margin="0 10 0 0"/>
             <TextBox Margin="0 5 0 0"
                      Height="100"
                      AcceptsReturn="True"
-                     TextWrapping="Wrap"/>
+                     TextWrapping="Wrap"
+                     Name="txt_Description"/>
 
 
             <Button Height="20"
