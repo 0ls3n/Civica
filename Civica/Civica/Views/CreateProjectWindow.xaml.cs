@@ -15,13 +15,13 @@ namespace Civica
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class CreateProjectWindow : Window
     {
-        private MainViewModel mvm; 
-        public MainWindow()
+        private CreateProjectViewModel mvm; 
+        public CreateProjectWindow()
         {
             InitializeComponent();
-            mvm = new MainViewModel();
+            mvm = new CreateProjectViewModel();
             this.DataContext = mvm;        
         }
     }

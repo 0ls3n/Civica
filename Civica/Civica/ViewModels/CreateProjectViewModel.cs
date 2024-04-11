@@ -13,16 +13,15 @@ using Microsoft.Identity.Client;
 
 namespace Civica.ViewModels
 {
-    public class MainViewModel : INotifyPropertyChanged
+    public class CreateProjectViewModel : INotifyPropertyChanged
     {
-
         private ObservableCollection<ProjectViewModel> projects;
 
         private ProjectRepository projectRepo;
 
-        public event PropertyChangedEventHandler? PropertyChanged;
+        public event PropertyChangedEventHandler PropertyChanged;
 
-        protected virtual void OnPropertyChanged(string propertyName = null)
+        private void OnPropertyChanged(string propertyName = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
@@ -70,7 +69,7 @@ namespace Civica.ViewModels
 
         public ICommand CreateProjectCmd { get; set; }
 
-        public MainViewModel()
+        public CreateProjectViewModel()
         {
             projectRepo = new ProjectRepository();
 

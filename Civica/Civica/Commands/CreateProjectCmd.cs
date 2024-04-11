@@ -34,7 +34,7 @@ namespace Civica.Commands
         {
             bool succes = false;
 
-            if (parameter is MainViewModel mvm)
+            if (parameter is CreateProjectViewModel mvm)
             {
                 if (!string.IsNullOrEmpty(mvm.ProjectName))
                 {
@@ -46,7 +46,7 @@ namespace Civica.Commands
 
         public void Execute(object? parameter)
         {
-            if (parameter is MainViewModel mvm)
+            if (parameter is CreateProjectViewModel mvm)
             {
                 if (projectRepo.GetAll().Find(x => x.Name.ToLower() == mvm.ProjectName.ToLower()) is null)
                 {
