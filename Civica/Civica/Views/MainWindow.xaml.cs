@@ -22,8 +22,7 @@ namespace Civica
         {
             InitializeComponent();
             mvm = new MainViewModel();
-            this.DataContext = mvm;
-            
+            this.DataContext = mvm;        
         }
     }
 }

@@ -5,7 +5,7 @@ VisualStudioVersion = 17.8.34525.116
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Civica", "Civica\Civica.csproj", "{C1EFADC0-13E3-45DF-A536-6C64CEED46FD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTest", "UnitTest\UnitTest.csproj", "{298F1C3B-ABE1-4FB6-AC24-8AB78470B80B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UnitTest", "UnitTest\UnitTest.csproj", "{298F1C3B-ABE1-4FB6-AC24-8AB78470B80B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
