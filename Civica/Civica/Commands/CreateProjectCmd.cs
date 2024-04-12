@@ -23,11 +23,11 @@ namespace Civica.Commands
             }
         }
 
-        private ProjectRepository projectRepo;
+        private MainViewModel mvm;
 
-        public CreateProjectCmd(ProjectRepository projectRepo)
+        public CreateProjectCmd(MainViewModel mvm)
         {
-            this.projectRepo = projectRepo;
+            this.mvm = mvm;
         }
 
         public bool CanExecute(object? parameter)
@@ -46,16 +46,16 @@ namespace Civica.Commands
 
         public void Execute(object? parameter)
         {
-            if (parameter is CreateProjectViewModel mvm)
+            if (parameter is CreateProjectViewModel cpvm)
             {
-                if (projectRepo.GetAll().Find(x => x.Name.ToLower() == mvm.ProjectName.ToLower()) is null)
+                if (mvm.Projects.FirstOrDefault(x => x.Name.ToLower() == cpvm.ProjectName.ToLower()) is null)
                 {
-                    mvm.CreateNewProject(mvm.ProjectName, mvm.Owner, mvm.Manager, mvm.Description);
-                    MessageBox.Show($"Projekt '{mvm.ProjectName}' oprettet!\nTryk for at afslutte.");
+                    mvm.CreateNewProject(cpvm.ProjectName, cpvm.Owner, cpvm.Manager, cpvm.Description);
+                    MessageBox.Show($"Projekt '{cpvm.ProjectName}' oprettet!\nTryk for at afslutte.");
                 }
                 else
                 {
-                    MessageBox.Show($"Projekt '{mvm.ProjectName}' findes allerede!\nTryk for at afslutte.");
+                    MessageBox.Show($"Projekt '{cpvm.ProjectName}' findes allerede!\nTryk for at afslutte.");
                 }
             }
         }

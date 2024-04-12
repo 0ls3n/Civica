@@ -47,7 +47,7 @@
                     Margin="0 15 0 0"
                     Content="Opret" 
                     Command="{Binding CreateProjectCmd}"
-                    CommandParameter="{Binding}"/>
+                    CommandParameter="{Binding}" Click="Button_Click"/>
             
         </StackPanel>
         

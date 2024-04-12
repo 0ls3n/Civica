@@ -17,12 +17,21 @@ namespace Civica
     /// </summary>
     public partial class CreateProjectWindow : Window
     {
-        private CreateProjectViewModel mvm; 
-        public CreateProjectWindow()
+        private MainViewModel mvm;
+
+        private CreateProjectViewModel cpvm; 
+        public CreateProjectWindow(MainViewModel mvm)
         {
             InitializeComponent();
-            mvm = new CreateProjectViewModel();
-            this.DataContext = mvm;        
+            this.mvm = mvm;
+
+            cpvm = new CreateProjectViewModel(mvm);
+            this.DataContext = cpvm;
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            DialogResult = true;
         }
     }
 }

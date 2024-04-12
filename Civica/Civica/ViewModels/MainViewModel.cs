@@ -31,5 +31,15 @@ namespace Civica.ViewModels
 
         }
 
+        public void CreateNewProject(string name, string owner = "", string manager = "", string description = "")
+        {
+            Project p = new Project(name, owner, manager, description);
+
+            projectRepo.Add(p);
+
+            ProjectViewModel pvm = new ProjectViewModel(p);
+
+            Projects.Add(pvm);
+        }
     }
 }

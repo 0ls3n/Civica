@@ -17,7 +17,7 @@ namespace Civica.ViewModels
     {
         //private ObservableCollection<ProjectViewModel> projects;
 
-        private ProjectRepository projectRepo;
+        private MainViewModel mvm;
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -69,23 +69,10 @@ namespace Civica.ViewModels
 
         public ICommand CreateProjectCmd { get; set; }
 
-        public CreateProjectViewModel(ProjectRepository projectRepo)
+        public CreateProjectViewModel(MainViewModel mvm)
         {
-            this.projectRepo = projectRepo;
-
-            //projects = new ObservableCollection<ProjectViewModel>(projectRepo.GetAll().Select(x => new ProjectViewModel(x)));
-
-            CreateProjectCmd = new CreateProjectCmd(projectRepo);
-        }
-
-        public void CreateNewProject(string name, string owner = "", string manager = "", string description = "")
-        {
-            Project p = new Project(name, owner, manager, description);
-
-            projectRepo.Add(p);
-
-            //ProjectViewModel pvm = new ProjectViewModel(p);
-
+            this.mvm = mvm;
+            CreateProjectCmd = new CreateProjectCmd(mvm);
         }
     }
 }

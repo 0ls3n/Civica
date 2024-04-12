@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Civica.Models;
 using Civica.ViewModels;
 
 namespace Civica.Views
@@ -21,13 +22,24 @@ namespace Civica.Views
     public partial class StartWindow : Window
 
     {
-        private MainViewModel mainViewModel;
+        private MainViewModel mvm;
         public StartWindow()
         {
             InitializeComponent();
-            mainViewModel = new MainViewModel(); 
-            this.DataContext = mainViewModel;
+            mvm = new MainViewModel(); 
+            this.DataContext = mvm;
 
+        }
+
+        private void Button_Create(object sender, RoutedEventArgs e)
+        {
+            CreateProjectWindow cpw = new CreateProjectWindow(mvm);
+            cpw.ShowDialog();
+
+            if (cpw.DialogResult == true)
+            {
+                cpw.Close();
+            }
         }
     }
 }
