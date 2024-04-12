@@ -15,7 +15,7 @@ namespace Civica.ViewModels
 {
     public class CreateProjectViewModel : INotifyPropertyChanged
     {
-        private ObservableCollection<ProjectViewModel> projects;
+        //private ObservableCollection<ProjectViewModel> projects;
 
         private ProjectRepository projectRepo;
 
@@ -73,7 +73,7 @@ namespace Civica.ViewModels
         {
             projectRepo = new ProjectRepository();
 
-            projects = new ObservableCollection<ProjectViewModel>(projectRepo.GetAll().Select(x => new ProjectViewModel(x)));
+            //projects = new ObservableCollection<ProjectViewModel>(projectRepo.GetAll().Select(x => new ProjectViewModel(x)));
 
             CreateProjectCmd = new CreateProjectCmd(projectRepo);
         }
@@ -84,9 +84,8 @@ namespace Civica.ViewModels
 
             projectRepo.Add(p);
 
-            ProjectViewModel pvm = new ProjectViewModel(p);
+            //ProjectViewModel pvm = new ProjectViewModel(p);
 
-            projects.Add(pvm);
         }
     }
 }
