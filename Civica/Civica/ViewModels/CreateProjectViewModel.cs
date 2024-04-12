@@ -69,9 +69,9 @@ namespace Civica.ViewModels
 
         public ICommand CreateProjectCmd { get; set; }
 
-        public CreateProjectViewModel()
+        public CreateProjectViewModel(ProjectRepository projectRepo)
         {
-            projectRepo = new ProjectRepository();
+            this.projectRepo = projectRepo;
 
             projects = new ObservableCollection<ProjectViewModel>(projectRepo.GetAll().Select(x => new ProjectViewModel(x)));
 

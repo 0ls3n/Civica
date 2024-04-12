@@ -24,6 +24,11 @@ namespace Civica.Models
             projects.Add(p);
         }
 
+        public void Remove(Project p)
+        {
+
+        }
+
         public List<Project> GetAll()
         {
             return projects;

@@ -68,5 +68,18 @@ namespace Civica.Models
             return id;
         }
 
+        public static void Remove(Project p)
+        {
+            using (SqlConnection con = new SqlConnection(connectionString))
+
+            {
+                con.Open();
+                SqlCommand cmd = new SqlCommand("DELETE FROM PROJECTS WHERE ProjectId=@ID", con);
+
+                cmd.Parameters.Add("@ID", SqlDbType.NVarChar).Value = p.Id;
+
+                cmd.ExecuteNonQuery();
+            }
+        }
     }
 }
