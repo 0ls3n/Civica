@@ -28,5 +28,13 @@ namespace Civica.ViewModels
             Manager = p.Manager;
             Description = p.Description;
         }
+        //public Project GetProject(ProjectRepository repo)
+        //{
+        //    return repo.Get(project.Id);
+        //}
+        public Project GetProject()
+        {
+            return project;
+        }
     }
 }

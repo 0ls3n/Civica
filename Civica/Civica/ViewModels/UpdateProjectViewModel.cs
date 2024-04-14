@@ -11,17 +11,48 @@ namespace Civica.ViewModels
 {
     public class UpdateProjectViewModel : INotifyPropertyChanged
     {
-        private MainViewModel mvm;
-        private ProjectViewModel selectedProject;
-
-        public ProjectViewModel SelectedProject
-        {
-            get { return selectedProject; }
-            set { selectedProject = value; OnPropertyChanged(nameof(SelectedProject)); }
-        }
         public ICommand UpdateProjectCmd { get; set; }
         public event PropertyChangedEventHandler PropertyChanged;
-
+        private string _projectName;
+        public string ProjectName
+        {
+            get => _projectName;
+            set
+            {
+                _projectName = value;
+                OnPropertyChanged(nameof(ProjectName));
+            }
+        }
+        private string _owner;
+        public string Owner
+        {
+            get => _owner;
+            set
+            {
+                _owner = value;
+                OnPropertyChanged(nameof(Owner));
+            }
+        }
+        private string _manager;
+        public string Manager
+        {
+            get => _manager;
+            set
+            {
+                _manager = value;
+                OnPropertyChanged(nameof(Manager));
+            }
+        }
+        private string _description;
+        public string Description
+        {
+            get => _description;
+            set
+            {
+                _description = value;
+                OnPropertyChanged(nameof(Description));
+            }
+        }
         private void OnPropertyChanged(string propertyName = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
@@ -29,12 +60,11 @@ namespace Civica.ViewModels
 
         public UpdateProjectViewModel(MainViewModel mvm)
         {
-            this.mvm = mvm;
             UpdateProjectCmd = new UpdateProjectCmd(mvm);
-        }
-        public void UpdateProject(string name, string owner, string leader, string description)
-        {
-
+            ProjectName = mvm.SelectedProject.Name;
+            Owner = mvm.SelectedProject.Owner;
+            Manager = mvm.SelectedProject.Manager;
+            Description = mvm.SelectedProject.Description;
         }
     }
 }

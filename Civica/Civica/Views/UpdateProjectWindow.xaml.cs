@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Civica.ViewModels;
 
 namespace Civica.Views
 {
@@ -19,9 +20,18 @@ namespace Civica.Views
     /// </summary>
     public partial class UpdateProjectWindow : Window
     {
-        public UpdateProjectWindow()
+
+        private UpdateProjectViewModel upvm;
+        public UpdateProjectWindow(MainViewModel mvm)
         {
             InitializeComponent();
+            upvm = new UpdateProjectViewModel(mvm);
+            this.DataContext = upvm;
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            DialogResult = true;
         }
     }
 }

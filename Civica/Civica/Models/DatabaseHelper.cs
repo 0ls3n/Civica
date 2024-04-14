@@ -60,7 +60,7 @@ namespace Civica.Models
                 cmd.Parameters.Add("@PN", SqlDbType.NVarChar).Value = p.Name;
                 cmd.Parameters.Add("@ON", SqlDbType.NVarChar).Value = p.Owner;
                 cmd.Parameters.Add("@MN", SqlDbType.NVarChar).Value = p.Manager;
-                cmd.Parameters.Add("@DESC", SqlDbType.NVarChar).Value = p.Description;
+                cmd.Parameters.Add("@DESC", SqlDbType.Text).Value = p.Description;
 
                 id = Convert.ToInt32(cmd.ExecuteScalar());
 
@@ -80,6 +80,27 @@ namespace Civica.Models
 
                 cmd.ExecuteNonQuery();
             }
+        }
+
+        public static void Update(Project p)
+        {
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+                con.Open();
+                SqlCommand cmd = new SqlCommand("UPDATE PROJECTS SET ProjectName = @PN, OwnerName = @ON, ManagerName = @MN, Description = @DESC " +
+                                                "WHERE ProjectId = @ID", con); // Opsætter parameterne der skal opdateres.
+
+                // Indsætter opdaterede værdier i parameterne 
+                cmd.Parameters.Add("@ID", SqlDbType.Int).Value = p.Id;
+                cmd.Parameters.Add("@PN", SqlDbType.NVarChar).Value = p.Name;
+                cmd.Parameters.Add("@ON", SqlDbType.NVarChar).Value = p.Owner;
+                cmd.Parameters.Add("@MN", SqlDbType.NVarChar).Value = p.Manager;
+                cmd.Parameters.Add("@DESC", SqlDbType.Text).Value = p.Description;
+
+                // Exe
+                cmd.ExecuteNonQuery();
+            }
+
         }
     }
 }

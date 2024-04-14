@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
 
 namespace Civica.Commands
@@ -34,30 +35,23 @@ namespace Civica.Commands
         {
             bool succes = false;
 
-            //if (parameter is MainViewModel mvm)
-            //{
-            //    if (!projectRepo.Get(mvm.Selected.Id) is not null) 
-            //    {
-            //        succes = true;
-            //    }
-            //}
+            if (parameter is UpdateProjectViewModel upvm)
+            {
+                if (!string.IsNullOrEmpty(upvm.ProjectName))
+                {
+                    succes = true;
+                }
+            }
             return succes;
         }
 
         public void Execute(object? parameter)
         {
-            //if (parameter is MainViewModel mvm)
-            //{
-            //    if (projectRepo.GetAll().Find(x => x.Name.ToLower() == mvm.SelectedProject.Name.ToLower()) is not null)
-            //    {
-            //        mvm.RemoveProject(mvm.SelectedProject);
-            //        MessageBox.Show($"Projekt '{mvm.SelectedProject.Name}' slettet!\nTryk for at afslutte.");
-            //    }
-            //    else
-            //    {
-            //        MessageBox.Show($"Projekt '{mvm.SelectedProject.Name}' findes ikke!\nTryk for at afslutte.");
-            //    }
-            //}
+            if (parameter is UpdateProjectViewModel upvm)
+            {
+                mvm.UpdateProject(mvm.SelectedProject, upvm.ProjectName, upvm.Owner, upvm.Manager, upvm.Description);
+                MessageBox.Show($"Projekt information for '{upvm.ProjectName}' opdateret!\nTryk for at afslutte.");
+            }
         }
     }
 }

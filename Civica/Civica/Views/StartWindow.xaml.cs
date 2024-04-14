@@ -41,5 +41,16 @@ namespace Civica.Views
                 cpw.Close();
             }
         }
+
+        private void Button_Update(object sender, RoutedEventArgs e)
+        {
+            UpdateProjectWindow upw = new UpdateProjectWindow(mvm);
+            upw.ShowDialog();
+
+            if (upw.DialogResult == true)
+            {
+                upw.Close();
+            }
+        }
     }
 }
