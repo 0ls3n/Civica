@@ -15,8 +15,11 @@
             SelectedItem="{Binding SelectedProject, UpdateSourceTrigger=PropertyChanged}">
             <ListBox.ItemTemplate>
                 <DataTemplate>
-                    <TextBlock Text="{Binding Name}">
-                    </TextBlock>
+                    <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{Binding Name}" Grid.Row="0" Margin="0,0,0,20"/>
+                        <TextBlock Text=" "/>
+                        <TextBlock Text="{Binding Manager}" Grid.Row="1" Margin="0,0,0,20"/>
+                        </StackPanel>
                 </DataTemplate>
             </ListBox.ItemTemplate>
             
