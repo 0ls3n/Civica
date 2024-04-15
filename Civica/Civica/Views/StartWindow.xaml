@@ -22,7 +22,7 @@
             
         </ListBox>
         <Button Content="Create" HorizontalAlignment="Left" Margin="355,162,0,0" VerticalAlignment="Top" Click="Button_Create"/>
-        <Button Content="Update" HorizontalAlignment="Left" Margin="374,236,0,0" VerticalAlignment="Top" Command="{Binding OpenUpdateWindowCmd, UpdateSourceTrigger=PropertyChanged}" Click="Button_Update"/>
+        <Button Content="Update" HorizontalAlignment="Left" Margin="374,236,0,0" VerticalAlignment="Top" IsEnabled="{Binding CanUpdateProject}" Click="Button_Update"/>
 
 
 

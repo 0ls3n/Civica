@@ -19,7 +19,7 @@ namespace Civica
     {
         private MainViewModel mvm;
 
-        private CreateProjectViewModel cpvm; 
+        private CreateProjectViewModel cpvm;
         public CreateProjectWindow(MainViewModel mvm)
         {
             InitializeComponent();
