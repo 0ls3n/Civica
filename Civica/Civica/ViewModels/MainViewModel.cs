@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
@@ -48,10 +49,6 @@ namespace Civica.ViewModels
             }
         }
 
-        public bool ChangeCanExecute(object obj)
-        {
-            return SelectedProject != null;
-        }
         public void CreateNewProject(string name, string owner = "", string manager = "", string description = "")
         {
             Project p = new Project(name, owner, manager, description);
@@ -65,13 +62,16 @@ namespace Civica.ViewModels
 
         public void UpdateProject(ProjectViewModel project, string name, string owner = "", string manager = "", string description = "")
         {
-            //int index = Projects.IndexOf(Projects.FirstOrDefault(p => p.Name == project.Name));
+            int index = Projects.IndexOf(project);
+
+            Projects[index] = null;
 
             project.Name = name;
             project.Owner = owner;
             project.Manager = manager;
             project.Description = description;
-            //Projects[index] = project;
+
+            Projects[index] = project;
 
             projectRepo.Update(project.GetProject(), name, owner, manager, description);
         }
