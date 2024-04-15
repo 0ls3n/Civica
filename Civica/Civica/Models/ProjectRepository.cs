@@ -30,19 +30,11 @@ namespace Civica.Models
         }
         public void Update(Project project, string name, string owner, string manager, string description) 
         {
-            // Finder objektets index i den loakle liste, som matcher med det objekt der skal opdateres.
-            //int index = projects.IndexOf(projects.Find(p => p.Id == project.Id));
-
-            // Opdatere objektet
             project.Name = name;
             project.Owner = owner;
             project.Manager = manager;
             project.Description = description;
 
-            // Overskriver gamle udgave of objekt med den opdaterede instans.
-            //projects[index] = project;
-
-            // Smider opdateringen videre til Databasen.
             DatabaseHelper.Update(project);
         }
         public List<Project> GetAll()

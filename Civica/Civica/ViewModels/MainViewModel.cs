@@ -40,7 +40,6 @@ namespace Civica.ViewModels
                 Projects.Add(new ProjectViewModel(p));
              }
              OpenUpdateWindowCmd = new OpenUpdateWindowCmd(ChangeCanExecute);
-
         }
         
         public bool ChangeCanExecute(object obj)
@@ -66,7 +65,6 @@ namespace Civica.ViewModels
             project.Owner = owner;
             project.Manager = manager;
             project.Description = description;
-
             //Projects[index] = project;
 
             projectRepo.Update(project.GetProject(), name, owner, manager, description);
