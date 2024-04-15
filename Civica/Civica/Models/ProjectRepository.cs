@@ -26,7 +26,8 @@ namespace Civica.Models
 
         public void Remove(Project p)
         {
-
+            DatabaseHelper.Remove(p);
+            projects.Remove(p);
         }
         public void Update(Project project, string name, string owner, string manager, string description) 
         {

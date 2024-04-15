@@ -26,7 +26,7 @@ namespace Civica.Views
         public StartWindow()
         {
             InitializeComponent();
-            mvm = new MainViewModel(); 
+            mvm = new MainViewModel();
             this.DataContext = mvm;
 
         }
@@ -50,6 +50,14 @@ namespace Civica.Views
             if (upw.DialogResult == true)
             {
                 upw.Close();
+            }
+        }
+
+        private void Button_Delete(object sender, RoutedEventArgs e)
+        {
+            if (mvm.SelectedProject != null)
+            {
+                mvm.RemoveProject();
             }
         }
     }

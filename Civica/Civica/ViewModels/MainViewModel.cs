@@ -75,5 +75,13 @@ namespace Civica.ViewModels
 
             projectRepo.Update(project.GetProject(), name, owner, manager, description);
         }
+
+        public void RemoveProject() 
+        {
+            Project p = SelectedProject.GetProject();
+            projectRepo.Remove(p);
+            Projects.Remove(SelectedProject);
+            
+        }
     }
 }
