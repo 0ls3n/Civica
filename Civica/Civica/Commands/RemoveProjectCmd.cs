@@ -32,32 +32,18 @@ namespace Civica.Commands
 
         public bool CanExecute(object? parameter)
         {
-            bool succes = false;
+            bool succes = true;
 
-            //if (parameter is MainViewModel mvm)
-            //{
-            //    if (!projectRepo.Get(mvm.Selected.Id) is not null) 
-            //    {
-            //        succes = true;
-            //    }
-            //}
+        
             return succes;
         }
 
         public void Execute(object? parameter)
         {
-            //if (parameter is MainViewModel mvm)
-            //{
-            //    if (projectRepo.GetAll().Find(x => x.Name.ToLower() == mvm.SelectedProject.Name.ToLower()) is not null)
-            //    {
-            //        mvm.RemoveProject(mvm.SelectedProject);
-            //        MessageBox.Show($"Projekt '{mvm.SelectedProject.Name}' slettet!\nTryk for at afslutte.");
-            //    }
-            //    else
-            //    {
-            //        MessageBox.Show($"Projekt '{mvm.SelectedProject.Name}' findes ikke!\nTryk for at afslutte.");
-            //    }
-            //}
+            if (parameter is MainViewModel mvm)
+            {
+                mvm.RemoveProject();
+            }
         }
     }
 }
