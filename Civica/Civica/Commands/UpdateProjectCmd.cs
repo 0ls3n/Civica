@@ -49,8 +49,15 @@ namespace Civica.Commands
         {
             if (parameter is UpdateProjectViewModel upvm)
             {
-                mvm.UpdateProject(mvm.SelectedProject, upvm.ProjectName, upvm.Owner, upvm.Manager, upvm.Description);
-                MessageBox.Show($"Projekt information for '{upvm.ProjectName}' opdateret!\nTryk for at afslutte.");
+                if (mvm.Projects.FirstOrDefault(x => x.Name.ToLower() == upvm.ProjectName.ToLower()) is null || mvm.Projects.FirstOrDefault(x => x.Name.ToLower() == upvm.OldName.ToLower()) is not null)
+                {
+                    mvm.UpdateProject(mvm.SelectedProject, upvm.ProjectName, upvm.Owner, upvm.Manager, upvm.Description);
+                    MessageBox.Show($"Projekt information for '{upvm.ProjectName}' opdateret!\nTryk for at afslutte.");
+                }
+                else
+                {
+                    MessageBox.Show($"Projekt '{upvm.ProjectName}' findes allerede!\nTryk for at afslutte.");
+                }
             }
         }
     }

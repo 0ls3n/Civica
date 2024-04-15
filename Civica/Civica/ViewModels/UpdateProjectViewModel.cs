@@ -13,6 +13,8 @@ namespace Civica.ViewModels
     {
         public ICommand UpdateProjectCmd { get; set; }
         public event PropertyChangedEventHandler PropertyChanged;
+        public string OldName;
+
         private string _projectName;
         public string ProjectName
         {
@@ -61,6 +63,7 @@ namespace Civica.ViewModels
         public UpdateProjectViewModel(MainViewModel mvm)
         {
             UpdateProjectCmd = new UpdateProjectCmd(mvm);
+            OldName = mvm.SelectedProject.Name;
             ProjectName = mvm.SelectedProject.Name;
             Owner = mvm.SelectedProject.Owner;
             Manager = mvm.SelectedProject.Manager;

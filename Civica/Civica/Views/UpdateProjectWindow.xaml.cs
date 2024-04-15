@@ -29,9 +29,14 @@ namespace Civica.Views
             this.DataContext = upvm;
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void Button_Update(object sender, RoutedEventArgs e)
         {
             DialogResult = true;
+        }
+
+        private void Button_Back(object sender, RoutedEventArgs e)
+        {
+            DialogResult = false;
         }
     }
 }

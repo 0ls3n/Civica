@@ -44,12 +44,18 @@
 
 			<Button Height="20"
                     Width="75"
-                    Margin="0 15 0 0"
+                    Margin="0 15 100 0"
                     Content="Opdater"
                     Command="{Binding UpdateProjectCmd}"
-                    CommandParameter="{Binding}" Click="Button_Click"/>
+                    CommandParameter="{Binding}" Click="Button_Update"/>
+            
+            <Button Height="20"
+                    Width="75"
+                    Margin="100 -20 0 0" 
+                    Content="Tilbage" Click="Button_Back"/>
 
-		</StackPanel>
+
+        </StackPanel>
 
 
 	</Grid>
