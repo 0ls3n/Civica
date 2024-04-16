@@ -308,4 +308,54 @@ fontsize=80
 Package Diagram</panel_attributes>
     <additional_attributes/>
   </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>1016</x>
+      <y>472</y>
+      <w>80</w>
+      <h>56</h>
+    </coordinates>
+    <panel_attributes>
+--
+Process
+halign=left</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>528</x>
+      <y>536</y>
+      <w>136</w>
+      <h>56</h>
+    </coordinates>
+    <panel_attributes>
+--
+ProcessViewModel
+halign=left</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>584</x>
+      <y>520</y>
+      <w>24</w>
+      <h>48</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;..</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;40.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1056</x>
+      <y>456</y>
+      <w>24</w>
+      <h>48</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;..</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;40.0</additional_attributes>
+  </element>
 </diagram>
