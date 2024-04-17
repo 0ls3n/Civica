@@ -72,13 +72,14 @@ namespace Civica.Models
             using (SqlConnection con = new SqlConnection(connectionString))
             {
                 con.Open();
-                SqlCommand cmd = new SqlCommand("INSERT INTO PROJECTS (ProjectName, OwnerName, ManagerName, Description)" +
-                                                                     "VALUES (@PN, @ON, @MN, @DESC) SELECT @@IDENTITY ", con);
+                SqlCommand cmd = new SqlCommand("INSERT INTO PROGRESSES (Phase, Status, Date, Description, ProjectId)" +
+                                                                     "VALUES (@PH, @ST, @DA, @DESC, @PID) SELECT @@IDENTITY ", con);
 
-                cmd.Parameters.Add("@PN", SqlDbType.NVarChar).Value = p.Name;
-                cmd.Parameters.Add("@ON", SqlDbType.NVarChar).Value = p.Owner;
-                cmd.Parameters.Add("@MN", SqlDbType.NVarChar).Value = p.Manager;
-                cmd.Parameters.Add("@DESC", SqlDbType.Text).Value = p.Description;
+                cmd.Parameters.Add("@PH", SqlDbType.NVarChar).Value = prog.Phase;
+                cmd.Parameters.Add("@ST", SqlDbType.NVarChar).Value = prog.Status;
+                cmd.Parameters.Add("@DA", SqlDbType.NVarChar).Value = prog.Date;
+                cmd.Parameters.Add("@DESC", SqlDbType.Text).Value = prog.Description;
+                cmd.Parameters.Add("@PID", SqlDbType.Int).Value = p.Id;
 
                 id = Convert.ToInt32(cmd.ExecuteScalar());
             }

@@ -67,7 +67,7 @@ Sequence Diagram</panel_attributes>
       <h>32</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;-
-EvaluateProject(project, fase, status, description)</panel_attributes>
+EvaluateProject(fase, status, description)</panel_attributes>
     <additional_attributes>340.0;20.0;10.0;20.0</additional_attributes>
   </element>
   <element>

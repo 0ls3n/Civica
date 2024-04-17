@@ -54,7 +54,7 @@ Description : TEXT
       <h>208</h>
     </coordinates>
     <panel_attributes>&lt;&lt;table&gt;&gt;
-PROCESSES
+PROGRESSES
 -
 &lt;&lt;PK&gt;&gt; &lt;&lt;Surrogate&gt;&gt; ProcessId : Int
 Fase : NVarChar(69)
@@ -63,7 +63,7 @@ Date : DateTime2
 Description : TEXT
 ProjectId : int
 -
-&lt;&lt;PK&gt;&gt; PK_PROCESSES()
+&lt;&lt;PK&gt;&gt; PK_PROGRESSES()
 &lt;&lt;FK&gt;&gt; FK_PROJECT(ProjectId)</panel_attributes>
     <additional_attributes/>
   </element>

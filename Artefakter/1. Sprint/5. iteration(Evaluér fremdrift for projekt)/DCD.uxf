@@ -131,7 +131,7 @@ m2=*
 + Description : string
 --
 + ProjectViewModel(p : Project)
-+ GetProject() : Project</panel_attributes>
++ GetId() : int</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -279,9 +279,7 @@ ICommand</panel_attributes>
     <panel_attributes>RemoveProjectCmd
 -
 + &lt;&lt;event&gt;&gt; CanExecuteChanged : EventHandler
-- projectRepo : ProjectRepository
 -
-+ RemoveProjectCmd(projectRepo : ProjectRepository)
 + CanExecute(parameter : object) : bool
 + Execute(parameter : object) 
 </panel_attributes>
@@ -352,11 +350,11 @@ Window</panel_attributes>
       <x>1036</x>
       <y>21</y>
       <w>21</w>
-      <h>609</h>
+      <h>1141</h>
     </coordinates>
     <panel_attributes>lt=.
 </panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;850.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;1610.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
@@ -725,5 +723,82 @@ m1=
 m2=
 </panel_attributes>
     <additional_attributes>190.0;70.0;50.0;70.0;50.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>350</x>
+      <y>56</y>
+      <w>168</w>
+      <h>105</h>
+    </coordinates>
+    <panel_attributes>ProgressViewModel
+--
+- progress : Progress
++ Fase : Fase
++ Status : Status
++ Description : string
+--
++ ProjectViewModel(prog : Progress)
++ GetId() : int</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>476</x>
+      <y>154</y>
+      <w>21</w>
+      <h>35</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=
+m2=
+</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;30.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>959</x>
+      <y>231</y>
+      <w>133</w>
+      <h>511</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=
+m2=
+</panel_attributes>
+    <additional_attributes>170.0;710.0;90.0;710.0;90.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1078</x>
+      <y>819</y>
+      <w>252</w>
+      <h>133</h>
+    </coordinates>
+    <panel_attributes>ProgressProjectCmd
+-
++ &lt;&lt;event&gt;&gt; CanExecuteChanged : EventHandler
+- mvm : MainViewModel
+-
++ ProgressProjectCmd(mvm : MainViewModel)
++ CanExecute(parameter : object) : bool
++ Execute(parameter : object) 
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1239</x>
+      <y>259</y>
+      <w>133</w>
+      <h>630</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;50.0;170.0;50.0;170.0;880.0;130.0;880.0</additional_attributes>
   </element>
 </diagram>

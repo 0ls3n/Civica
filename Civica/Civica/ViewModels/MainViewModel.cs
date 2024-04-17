@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using Civica.Commands;
 using Civica.Models;
+using Civica.Models.Enums;
 
 namespace Civica.ViewModels
 {
@@ -73,15 +74,23 @@ namespace Civica.ViewModels
 
             Projects[index] = project;
 
-            projectRepo.Update(project.GetProject(), name, owner, manager, description);
+            projectRepo.Update(projectRepo.Get(project.GetId()), name, owner, manager, description);
         }
 
         public void RemoveProject() 
         {
-            Project p = SelectedProject.GetProject();
+            Project p = projectRepo.Get(SelectedProject.GetId());
             projectRepo.Remove(p);
             Projects.Remove(SelectedProject);
-            
+        }
+
+        public void ProgressProject(Phase fase, Status status, string description)
+        {
+            Progress prog = new Progress(fase, status, description);
+            projectRepo.Add(projectRepo.Get(SelectedProject.GetId()), prog);
+
+            ProjectViewModel p = Projects.FirstOrDefault(x => x.GetId() == SelectedProject.GetId());
+            p.Progresses.Add(prog);
         }
     }
 }

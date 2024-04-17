@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Civica.Models.Enums
 {
-    public enum Fase
+    public enum Phase
     {
         IDENTIFIED,
         PLANNING,

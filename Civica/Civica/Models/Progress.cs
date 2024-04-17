@@ -10,14 +10,14 @@ namespace Civica.Models
     public class Progress
     {
         public int Id { get; set; }
-        public Fase Fase { get; set; }
+        public Phase Phase { get; set; }
         public Status Status { get; set; }
         public DateTime Date { get; set; }
         public string Description { get; set; }
 
-        public Progress(Fase fase, Status status, string description)
+        public Progress(Phase fase, Status status, string description)
         {
-            Fase = fase;
+            Phase = fase;
             Status = status;
             Date = DateTime.Now;
             Description = description;

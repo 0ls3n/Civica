@@ -18,7 +18,6 @@ namespace Civica.Models
 
         public void Add(Project p) 
         {
-
             p.Id = DatabaseHelper.Add(p);
 
             projects.Add(p);
@@ -26,7 +25,7 @@ namespace Civica.Models
 
         public void Add(Project p, Progress prog)
         {
-            prog.Id = DatabaseHelper.Add(prog);
+            prog.Id = DatabaseHelper.Add(p, prog);
 
             p.Progresses.Add(prog);
         }
