@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using Civica.Models.Enums;
 
 namespace Civica.ViewModels
 {
@@ -56,5 +57,8 @@ namespace Civica.ViewModels
         {
             ProgressProjectCmd = new ProgressProjectCmd(mvm);
         }
+        public IEnumerable<Phase> Phases => Enum.GetValues(typeof(Phase)).Cast<Phase>();
+        public IEnumerable<Status> Statuses => Enum.GetValues(typeof(Status)).Cast<Status>();
+
     }
 }

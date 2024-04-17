@@ -19,7 +19,7 @@ namespace Civica.Models
         {
             Phase = fase;
             Status = status;
-            Date = DateTime.Now;
+            Date = DateTime.Parse(DateTime.Now.ToString("dd-MM-yyyy HH:mm:ss"));
             Description = description;
         }
     }
