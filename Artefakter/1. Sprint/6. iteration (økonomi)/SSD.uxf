@@ -4,8 +4,8 @@
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>1060</x>
-      <y>380</y>
+      <x>470</x>
+      <y>60</y>
       <w>100</w>
       <h>30</h>
     </coordinates>
@@ -15,8 +15,8 @@
   <element>
     <id>UMLActor</id>
     <coordinates>
-      <x>630</x>
-      <y>330</y>
+      <x>40</x>
+      <y>10</y>
       <w>100</w>
       <h>110</h>
     </coordinates>
@@ -26,55 +26,31 @@
   <element>
     <id>Text</id>
     <coordinates>
-      <x>800</x>
-      <y>360</y>
-      <w>200</w>
+      <x>210</x>
+      <y>40</y>
+      <w>210</w>
       <h>30</h>
     </coordinates>
-    <panel_attributes>Angiv økonomi for et projekt
+    <panel_attributes>Angiv udgifterne for et projekt
 style=wordwrap</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>670</x>
-      <y>670</y>
-      <w>460</w>
-      <h>40</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;&lt;&lt;-
-OpdaterProjekt(opstartsbeløb, forventetÅrligOmkostning, revision)</panel_attributes>
-    <additional_attributes>440.0;20.0;10.0;20.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>670</x>
-      <y>720</y>
-      <w>460</w>
-      <h>40</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;&lt;.
-Projekt opdateret</panel_attributes>
-    <additional_attributes>10.0;20.0;440.0;20.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>670</x>
-      <y>420</y>
+      <x>80</x>
+      <y>100</y>
       <w>30</w>
-      <h>380</h>
+      <h>330</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;360.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;310.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>670</x>
-      <y>540</y>
+      <x>80</x>
+      <y>220</y>
       <w>460</w>
       <h>40</h>
     </coordinates>
@@ -85,20 +61,8 @@ TilføjRevision(beløb, årstal)</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>670</x>
-      <y>430</y>
-      <w>460</w>
-      <h>40</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;&lt;&lt;-
-åbenProjekt</panel_attributes>
-    <additional_attributes>440.0;20.0;10.0;20.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>670</x>
-      <y>600</y>
+      <x>80</x>
+      <y>280</y>
       <w>460</w>
       <h>40</h>
     </coordinates>
@@ -109,31 +73,19 @@ Revision tilføjet</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>670</x>
-      <y>480</y>
-      <w>460</w>
-      <h>40</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;&lt;.
-Projekt information</panel_attributes>
-    <additional_attributes>10.0;20.0;440.0;20.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>1100</x>
-      <y>400</y>
+      <x>510</x>
+      <y>80</y>
       <w>30</w>
-      <h>390</h>
+      <h>370</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;370.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;350.0</additional_attributes>
   </element>
   <element>
     <id>UMLFrame</id>
     <coordinates>
-      <x>590</x>
-      <y>530</y>
+      <x>0</x>
+      <y>200</y>
       <w>600</w>
       <h>130</h>
     </coordinates>
@@ -143,13 +95,106 @@ Projekt information</panel_attributes>
   <element>
     <id>Text</id>
     <coordinates>
-      <x>590</x>
-      <y>550</y>
+      <x>0</x>
+      <y>230</y>
       <w>80</w>
       <h>70</h>
     </coordinates>
     <panel_attributes>For hver revision
 style=wordwrap</panel_attributes>
     <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1370</x>
+      <y>130</y>
+      <w>30</w>
+      <h>310</h>
+    </coordinates>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;290.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>1330</x>
+      <y>110</y>
+      <w>100</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>:System</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLActor</id>
+    <coordinates>
+      <x>940</x>
+      <y>50</y>
+      <w>90</w>
+      <h>110</h>
+    </coordinates>
+    <panel_attributes>:Projektleder</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>970</x>
+      <y>150</y>
+      <w>30</w>
+      <h>290</h>
+    </coordinates>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;270.0</additional_attributes>
+  </element>
+  <element>
+    <id>Text</id>
+    <coordinates>
+      <x>1150</x>
+      <y>90</y>
+      <w>150</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>Opstart et nyt projekt
+style=wordwrap</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>970</x>
+      <y>180</y>
+      <w>430</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;-
+OpretNytProjekt(navn, ejer, leder, beskrivelse, 
+opstartsbeløb, forventetÅrligOmkostning)</panel_attributes>
+    <additional_attributes>410.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>970</x>
+      <y>250</y>
+      <w>430</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.
+Projekt oprettet</panel_attributes>
+    <additional_attributes>10.0;20.0;410.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>80</x>
+      <y>130</y>
+      <w>460</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;-
+vælgProjekt</panel_attributes>
+    <additional_attributes>440.0;20.0;10.0;20.0</additional_attributes>
   </element>
 </diagram>
