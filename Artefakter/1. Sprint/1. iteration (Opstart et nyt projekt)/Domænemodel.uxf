@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="15.1">
+  <zoom_level>10</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>320</x>
+      <y>170</y>
+      <w>210</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes>Projekt
+--
+navn
+ejer
+leder
+beskrivelse</panel_attributes>
+    <additional_attributes/>
+  </element>
+</diagram>

@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="15.1">
+  <zoom_level>10</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>280</x>
+      <y>170</y>
+      <w>240</w>
+      <h>160</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;table&gt;&gt;
+PROJECTS
+-
+&lt;&lt;PK&gt;&gt; &lt;&lt;surrogate&gt;&gt; ProjectId : Int
+ProjectName : NVarChar(69)
+OwnerName : NVarChar(69)
+ManagerName : NVarChar(69)
+Description : TEXT
+-
+&lt;&lt;PK&gt;&gt; PK_ProjectId()</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>610</x>
+      <y>170</y>
+      <w>290</w>
+      <h>190</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;table&gt;&gt;
+ECONOMIES
+-
+&lt;&lt;PK&gt;&gt; &lt;&lt;surrogate&gt;&gt; EconomyId : Int
+StartAmount : BigInt
+ExpectedYearlyCost : BigInt
+&lt;&lt;FK&gt;&gt; ProjectId : Int
+-
+&lt;&lt;PK&gt;&gt; PK_EconomyId()
+&lt;&lt;FK&gt;&gt; FK_Economies_Projects(ProjectId)</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>980</x>
+      <y>170</y>
+      <w>290</w>
+      <h>190</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;table&gt;&gt;
+AUDITS
+-
+&lt;&lt;PK&gt;&gt; &lt;&lt;surrogate&gt;&gt; AuditId : Int
+Total : BigInt
+Year : Date
+&lt;&lt;FK&gt;&gt; EconomyId
+-
+&lt;&lt;PK&gt;&gt; PK_AuditId()
+&lt;&lt;FK&gt;&gt; FK_Audits_Economies(EconomyId)</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>890</x>
+      <y>250</y>
+      <w>110</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=1
+m2=*</panel_attributes>
+    <additional_attributes>10.0;10.0;90.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>510</x>
+      <y>250</y>
+      <w>120</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=1
+m2=1</panel_attributes>
+    <additional_attributes>10.0;10.0;100.0;10.0</additional_attributes>
+  </element>
+</diagram>

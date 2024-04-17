@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="15.1">
+  <zoom_level>6</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>870</x>
+      <y>300</y>
+      <w>318</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>Project
+--
++ Name : string
++ Id : int
++ Owner : string
++ Manager : string 
++ Description : string
+--
++ Project(name : string, owner : string, manager : string, description : string)
++ Project(name : string)</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>618</x>
+      <y>300</y>
+      <w>162</w>
+      <h>78</h>
+    </coordinates>
+    <panel_attributes>ProjectRepository
+--
+- projects : Project[0..*]
+--
++ ProjectRepository()
++ Add(p : Project)
++ GetAll() : Project[0..*]
++ Get(id : int) : Project
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>594</x>
+      <y>474</y>
+      <w>228</w>
+      <h>78</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;static&gt;&gt;
+DatabaseHelper
+--
+- &lt;&lt;static&gt;&gt; connectionString : string
+- &lt;&lt;static&gt;&gt; config : IConfigurationRoot
+--
++ &lt;&lt;static&gt;&gt; InitializeProjects() : Project[0..*]
++ &lt;&lt;static&gt;&gt; Add(p : Project) : int
+
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>690</x>
+      <y>372</y>
+      <w>18</w>
+      <h>114</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=
+m2=
+</panel_attributes>
+    <additional_attributes>10.0;170.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>774</x>
+      <y>318</y>
+      <w>108</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=
+m2=*
+</panel_attributes>
+    <additional_attributes>10.0;20.0;160.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>198</x>
+      <y>258</y>
+      <w>336</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>CreateProjectViewModel
+--
+- projectRepo : ProjectRepository
+- CreateProjectCmd : ICommand
++ ProjectName : string
++ Owner : string
++ Manager : string
++ Description : string
+--
++ CreateProjectViewModel(projectRepo : ProjectRepository)
+- OnPropertyChanged(propertyName : string)
++ CreateNewProject(name : string, owner : string, manager : string, description : string)</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>528</x>
+      <y>318</y>
+      <w>102</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=
+m2=
+</panel_attributes>
+    <additional_attributes>150.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>186</x>
+      <y>402</y>
+      <w>342</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>ProjectViewModel
+--
+- project : Project
++ Name : string
++ Owner : string
++ Manager : string
++ Description : string
+--
++ ProjectViewModel(p : Project)</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>354</x>
+      <y>372</y>
+      <w>18</w>
+      <h>42</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=
+m2=
+</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;50.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>294</x>
+      <y>192</y>
+      <w>138</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;interface&gt;&gt;
+INotifyPropertyChanged</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>354</x>
+      <y>216</y>
+      <w>18</w>
+      <h>54</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;70.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>186</x>
+      <y>546</y>
+      <w>342</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>MainViewModel
+--
++ Projects : ProjectViewModel[0..*]
+- projectsRepo : ProjectRepository 
+--
++ MainViewModel()
+- OnPropertyChanged (propertyName : string) 
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>522</x>
+      <y>324</y>
+      <w>108</w>
+      <h>288</h>
+    </coordinates>
+    <panel_attributes>lt=-</panel_attributes>
+    <additional_attributes>160.0;10.0;90.0;10.0;90.0;460.0;10.0;460.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>150</x>
+      <y>204</y>
+      <w>156</w>
+      <h>402</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>240.0;10.0;10.0;10.0;10.0;650.0;60.0;650.0</additional_attributes>
+  </element>
+</diagram>
