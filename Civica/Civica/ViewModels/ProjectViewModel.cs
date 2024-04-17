@@ -7,7 +7,7 @@ using Civica.Models;
 
 namespace Civica.ViewModels
 {
-   public class ProjectViewModel
+    public class ProjectViewModel
     {
 
         private Project project;
@@ -19,7 +19,6 @@ namespace Civica.ViewModels
         public string Manager { get; set; }
 
         public string Description { get; set; }
-        public List<Progress> Progresses { get; set; } = new List<Progress>();
 
         public ProjectViewModel(Project p)
         {
@@ -28,12 +27,8 @@ namespace Civica.ViewModels
             Owner = p.Owner;
             Manager = p.Manager;
             Description = p.Description;
-            Progresses = p.Progresses;
         }
-        //public Project GetProject(ProjectRepository repo)
-        //{
-        //    return repo.Get(project.Id);
-        //}
+
         public int GetId()
         {
             return project.Id;

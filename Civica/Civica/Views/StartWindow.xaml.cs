@@ -28,7 +28,6 @@ namespace Civica.Views
             InitializeComponent();
             mvm = new MainViewModel();
             this.DataContext = mvm;
-
         }
 
         private void Button_Create(object sender, RoutedEventArgs e)
