@@ -6,7 +6,16 @@ using System.Threading.Tasks;
 
 namespace Civica.Models
 {
-    internal class Audit
+    public class Audit
     {
+        public decimal Amount { get; set; }
+        public DateOnly Year { get; set; }
+        public int Id { get; set; }
+
+        public Audit(decimal amount, DateOnly year)
+        {
+            this.Amount = amount;
+            this.Year = year;
+        }
     }
 }
