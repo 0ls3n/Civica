@@ -16,7 +16,9 @@ namespace Civica.ViewModels
     public class MainViewModel : INotifyPropertyChanged
     {
         public ObservableCollection<ProjectViewModel> Projects { get; set; } = new ObservableCollection<ProjectViewModel>();
+        public ObservableCollection<ProgressViewModel> Progresses { get; set; } = new ObservableCollection<ProgressViewModel>();
         private ProjectRepository projectRepo = new ProjectRepository();
+        private ProgressRepository progressRepo = new ProgressRepository();
         private ProjectViewModel selectedProject = null;
 
         public ProjectViewModel SelectedProject
@@ -47,6 +49,10 @@ namespace Civica.ViewModels
             foreach (Project p in projectRepo.GetAll())
             {
                 Projects.Add(new ProjectViewModel(p));
+            }
+            foreach (Progress prog in progressRepo.GetAll())
+            {
+                Progresses.Add(new ProgressViewModel(prog));
             }
         }
 
@@ -87,10 +93,10 @@ namespace Civica.ViewModels
         public void ProgressProject(Phase fase, Status status, string description)
         {
             Progress prog = new Progress(fase, status, description);
-            projectRepo.Add(projectRepo.Get(SelectedProject.GetId()), prog);
+            prog.ProjectId = SelectedProject.GetId();
 
-            ProjectViewModel p = Projects.FirstOrDefault(x => x.GetId() == SelectedProject.GetId());
-            p.Progresses.Add(prog);
+            progressRepo.Add(prog);
+            Progresses.Add(new ProgressViewModel(prog));
         }
     }
 }
