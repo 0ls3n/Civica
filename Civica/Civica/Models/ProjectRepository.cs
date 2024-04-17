@@ -24,6 +24,13 @@ namespace Civica.Models
             projects.Add(p);
         }
 
+        public void Add(Project p, Progress prog)
+        {
+            prog.Id = DatabaseHelper.Add(prog);
+
+            p.Progresses.Add(prog);
+        }
+
         public void Remove(Project p)
         {
             DatabaseHelper.Remove(p);

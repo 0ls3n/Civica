@@ -51,7 +51,6 @@ namespace Civica.Models
         {
             int id = -1;
             using (SqlConnection con = new SqlConnection(connectionString))
-
             {
                 con.Open();
                 SqlCommand cmd = new SqlCommand("INSERT INTO PROJECTS (ProjectName, OwnerName, ManagerName, Description)" +
@@ -63,7 +62,25 @@ namespace Civica.Models
                 cmd.Parameters.Add("@DESC", SqlDbType.Text).Value = p.Description;
 
                 id = Convert.ToInt32(cmd.ExecuteScalar());
+            }
+            return id;
+        }
 
+        public static int Add(Project p, Progress prog)
+        {
+            int id = -1;
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+                con.Open();
+                SqlCommand cmd = new SqlCommand("INSERT INTO PROJECTS (ProjectName, OwnerName, ManagerName, Description)" +
+                                                                     "VALUES (@PN, @ON, @MN, @DESC) SELECT @@IDENTITY ", con);
+
+                cmd.Parameters.Add("@PN", SqlDbType.NVarChar).Value = p.Name;
+                cmd.Parameters.Add("@ON", SqlDbType.NVarChar).Value = p.Owner;
+                cmd.Parameters.Add("@MN", SqlDbType.NVarChar).Value = p.Manager;
+                cmd.Parameters.Add("@DESC", SqlDbType.Text).Value = p.Description;
+
+                id = Convert.ToInt32(cmd.ExecuteScalar());
             }
             return id;
         }
