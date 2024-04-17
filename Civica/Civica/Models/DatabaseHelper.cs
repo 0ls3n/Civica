@@ -110,7 +110,7 @@ namespace Civica.Models
                 cmd.Parameters.Add("@ST", SqlDbType.NVarChar).Value = prog.Status;
                 cmd.Parameters.Add("@DA", SqlDbType.NVarChar).Value = prog.Date;
                 cmd.Parameters.Add("@DESC", SqlDbType.Text).Value = prog.Description;
-                cmd.Parameters.Add("@PID", SqlDbType.Text).Value = prog.ProjectId;
+                cmd.Parameters.Add("@PID", SqlDbType.Int).Value = prog.ProjectId;
 
                 id = Convert.ToInt32(cmd.ExecuteScalar());
             }
