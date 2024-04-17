@@ -2,7 +2,6 @@
 using Civica.ViewModels;
 using System;
 using System.Collections.Generic;
-using System.DirectoryServices.ActiveDirectory;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,30 +10,46 @@ using System.Windows.Input;
 
 namespace Civica.Commands
 {
-    public class RemoveProjectCmd : ICommand
+    public class ProgressProjectCmd : ICommand
     {
         public event EventHandler? CanExecuteChanged
         {
-            add {
+            add
+            {
                 CommandManager.RequerySuggested += value;
             }
-            remove {
+            remove
+            {
                 CommandManager.RequerySuggested -= value;
             }
         }
 
+        private MainViewModel mvm;
+
+        public ProgressProjectCmd(MainViewModel mvm)
+        {
+            this.mvm = mvm;
+        }
+
         public bool CanExecute(object? parameter)
         {
-            bool succes = true;
+            bool succes = false;
 
+            if (parameter is ProgressProjectViewModel pvm)
+            {
+                if (!string.IsNullOrEmpty(pvm.Description))
+                {
+                    succes = true;
+                }
+            }
             return succes;
         }
 
         public void Execute(object? parameter)
         {
-            if (parameter is MainViewModel mvm)
+            if (parameter is ProgressProjectViewModel ppvm)
             {
-                mvm.RemoveProject();
+                mvm.ProgressProject(ppvm.Phase, ppvm.Status, ppvm.Description);
             }
         }
     }

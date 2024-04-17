@@ -60,5 +60,16 @@ namespace Civica.Views
                 mvm.RemoveProject();
             }
         }
+
+        private void Button_Progress(object sender, RoutedEventArgs e)
+        {
+            ProgressProjectWindow ppw = new ProgressProjectWindow(mvm);
+            ppw.ShowDialog();
+
+            if (ppw.DialogResult == true)
+            {
+                ppw.Close();
+            }
+        }
     }
 }

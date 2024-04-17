@@ -17,6 +17,8 @@ namespace Civica.Models
         public string Manager { get; set; }
         public string Description { get; set; }
 
+        public List<Progress> Progresses { get; set; } = new List<Progress>();
+
         public Project(string name, string owner, string manager, string description) : this (name) 
         {
             Owner = owner;
