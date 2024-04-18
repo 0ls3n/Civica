@@ -55,7 +55,7 @@ namespace Civica.Models
             using (SqlConnection con = new SqlConnection(connectionString))
             {
                 con.Open();
-                SqlCommand progressCmd = new SqlCommand("SELECT ProgressId, Phase, Status, Description, ProjectId FROM PROGRESSES", con);
+                SqlCommand progressCmd = new SqlCommand("SELECT ProgressId, Phase, Status, Date, Description, ProjectId FROM PROGRESSES", con);
                 using (SqlDataReader reader = progressCmd.ExecuteReader())
                 {
                     while (reader.Read())
@@ -65,9 +65,11 @@ namespace Civica.Models
                         Status status = Enum.Parse<Status>(Convert.ToString(reader["Status"]));
                         string desc = Convert.ToString(reader["Description"]);
                         int projectId = Convert.ToInt32(reader["ProjectId"]);
+                        DateTime date = Convert.ToDateTime(reader["Date"]);
 
                         Progress prog = new Progress(phase, status, desc);
 
+                        prog.Date = date;
                         prog.Id = id;
                         prog.ProjectId = projectId;
 
@@ -150,6 +152,60 @@ namespace Civica.Models
                 cmd.ExecuteNonQuery();
             }
 
+        }
+        public static List<Economy> InitializeEconomy()
+        {
+            List<Economy> economies = new List<Economy>();
+
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+                con.Open();
+                SqlCommand economyCmd = new SqlCommand("SELECT EconomyId, StartAmount, ExpectedYearlyCost, ProjectId FROM ECONOMIES", con);
+                using (SqlDataReader reader = economyCmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        int id = Convert.ToInt32(reader["EconomyId"]);
+                        decimal startAmount = Convert.ToDecimal(reader["StartAmount"]);
+                        decimal expectedYearlyCost = Convert.ToDecimal(reader["ExpectedYearlyCost"]);
+                        int projectId = Convert.ToInt32(reader["ProjectId"]);
+
+                        Economy econ = new Economy(projectId, startAmount, expectedYearlyCost);
+
+                        econ.Id = id;
+
+                        economies.Add(econ);
+                    }
+                }
+            }
+            return economies;
+        }
+        public static List<Audit> InitializeAudit()
+        {
+            List<Audit> audits = new List<Audit>();
+
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+                con.Open();
+                SqlCommand auditCmd = new SqlCommand("SELECT AuditId, Amount, Year, EconomyId FROM AUDITS", con);
+                using (SqlDataReader reader = auditCmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        int id = Convert.ToInt32(reader["AuditId"]);
+                        decimal Amount = Convert.ToDecimal(reader["Amount"]);
+                        DateTime Year = Convert.ToDateTime(reader["Year"]);
+                        int economyId = Convert.ToInt32(reader["EconomyId"]);
+
+                        Audit aud = new Audit(Amount, Year);
+
+                        aud.Id = id;
+                        aud.EconomyId = economyId;
+                        audits.Add(aud);
+                    }
+                }
+            }
+            return audits;
         }
     }
 }

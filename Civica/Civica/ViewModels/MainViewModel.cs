@@ -17,10 +17,29 @@ namespace Civica.ViewModels
     {
         public ObservableCollection<ProjectViewModel> Projects { get; set; } = new ObservableCollection<ProjectViewModel>();
         public ObservableCollection<ProgressViewModel> Progresses { get; set; } = new ObservableCollection<ProgressViewModel>();
+        public ObservableCollection<EconomyViewModel> Economies { get; set; } = new ObservableCollection<EconomyViewModel>();
+        public ObservableCollection<AuditViewModel> Audits { get; set; } = new ObservableCollection<AuditViewModel>();
+
+        private EconomyViewModel selectedEconomy;
+
+        public EconomyViewModel SelectedEconomy
+        {
+            get { return selectedEconomy; }
+            set 
+            {
+                selectedEconomy = value; 
+                OnPropertyChanged (nameof(SelectedEconomy));
+            }
+
+        }
+
+
         private ProjectRepository projectRepo = new ProjectRepository();
         private ProgressRepository progressRepo = new ProgressRepository();
+        private EconomyRepository economyRepo = new EconomyRepository();
+        private AuditRepository auditRepo = new AuditRepository();
+      
         private ProjectViewModel selectedProject = null;
-
         public ProjectViewModel SelectedProject
         {
             get
@@ -32,6 +51,12 @@ namespace Civica.ViewModels
                 selectedProject = value;
                 OnPropertyChanged(nameof(SelectedProject));
                 OnPropertyChanged(nameof(CanUpdateProject));
+                if (value != null && value != selectedProject)
+                {
+                    SelectedEconomy = new EconomyViewModel(economyRepo.GetByProjectId(selectedProject.GetId()));
+                    Audits = new ObservableCollection<AuditViewModel>(auditRepo.GetByEconomyId(selectedProject.GetId()).Select(x => new AuditViewModel(x)));
+                    
+                }
             }
         }
 
