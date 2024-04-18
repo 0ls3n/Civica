@@ -26,5 +26,10 @@ namespace Civica.Models
         {
             return Progresses;
         }
+
+        public List<Progress> Get(int id)
+        {
+            return new List<Progress> { Progresses.Find(x => x.Id == id) };
+        }
     }
 }

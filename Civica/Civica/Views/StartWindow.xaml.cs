@@ -70,5 +70,10 @@ namespace Civica.Views
                 ppw.Close();
             }
         }
+
+        private void Button_ShowProgress(object sender, RoutedEventArgs e)
+        {
+            mvm.ShowProgress();
+        }
     }
 }
