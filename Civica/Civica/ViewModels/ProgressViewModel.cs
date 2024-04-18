@@ -15,12 +15,15 @@ namespace Civica.ViewModels
         public Status Status { get; set; }
         public string Description { get; set; }
 
+        public int ProjectId { get; set; }
+
         public ProgressViewModel(Progress progress)
         {
             this.progress = progress;
             Fase = progress.Phase;
             Status = progress.Status;
             Description = progress.Description;
+            ProjectId = progress.ProjectId;
         }
 
         public int GetId()
