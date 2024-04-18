@@ -7,13 +7,16 @@
         mc:Ignorable="d"
         Title="StartWindow" Height="450" Width="800">
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="77*"/>
+        </Grid.ColumnDefinitions>
         <ListBox
-            Width="200"
-            Height="400"
+            Width="195"
             HorizontalAlignment="Left"
-            Margin="25, 0, 0, 0"
+            Margin="25,17,0,70"
             ItemsSource="{Binding Projects}"
-            SelectedItem="{Binding SelectedProject, UpdateSourceTrigger=PropertyChanged}">
+            SelectedItem="{Binding SelectedProject, UpdateSourceTrigger=PropertyChanged}" Grid.ColumnSpan="2">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Horizontal">
@@ -25,17 +28,22 @@
             </ListBox.ItemTemplate>
 
         </ListBox>
-        <Button Content="Create" HorizontalAlignment="Left" Margin="355,162,0,0" VerticalAlignment="Top" Click="Button_Create"/>
-        <Button Content="Update" HorizontalAlignment="Left" Margin="374,236,0,0" VerticalAlignment="Top" IsEnabled="{Binding CanUpdateProject}" Click="Button_Update"/>
-        <Button Content="Delete" HorizontalAlignment="Left" Margin="420,197,0,0" VerticalAlignment="Top" IsEnabled="{Binding CanUpdateProject}" Click="Button_Delete"/>
-        <Button Content="New Progress" HorizontalAlignment="Left" Margin="420,112,0,0" VerticalAlignment="Top" IsEnabled="{Binding CanUpdateProject}" Click="Button_Progress"/>
+        <Button Content="Opret nyt projekt" HorizontalAlignment="Left" Margin="25,384,0,0" VerticalAlignment="Top" Click="Button_Create" Grid.ColumnSpan="2"/>
+        <Button Content="Opdater projektdetaljer" HorizontalAlignment="Left" Margin="110,384,0,0" VerticalAlignment="Top" IsEnabled="{Binding CanUpdateProject}" Click="Button_Update" Grid.Column="1"/>
+        <Button Content="Slet projekt" HorizontalAlignment="Left" Margin="249,384,0,0" VerticalAlignment="Top" IsEnabled="{Binding CanUpdateProject}" Click="Button_Delete" Grid.Column="1" Height="21"/>
+        <Button Content="Tilføj fremdriftsbekrivelse" HorizontalAlignment="Left" Margin="390,318,0,0" VerticalAlignment="Top" IsEnabled="{Binding CanUpdateProject}" Click="Button_Progress" Width="150" Grid.Column="1"/>
+        <Button Content="Tilføj årlige omkostninger" HorizontalAlignment="Left" Margin="389,352,0,0" VerticalAlignment="Top" Width="147" Grid.Column="1"/>
+        <Button Content="Opdater Økonomi" HorizontalAlignment="Left" Margin="389,384,0,0" VerticalAlignment="Top" Width="111" Grid.Column="1"/>
+        <Label Content="Projektnavn" HorizontalAlignment="Left" Margin="0,-9,0,0" VerticalAlignment="Top" Grid.Column="1"/>
+        <Label Content="Projekleder" HorizontalAlignment="Left" Margin="92,-9,0,0" VerticalAlignment="Top" Grid.Column="1"/>
+
         <ListBox
             Width="200"
             Height="400"
-            HorizontalAlignment="Right"
-            Margin="0, 0, 25, 0"
+            HorizontalAlignment="Left"
+            Margin="545,17,0,17"
             ItemsSource="{Binding SelectedProgresses}"
-            SelectedItem="{Binding SelectedProgress, UpdateSourceTrigger=PropertyChanged}">
+            SelectedItem="{Binding SelectedProgress, UpdateSourceTrigger=PropertyChanged}" Grid.Column="1">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Horizontal">
@@ -46,5 +54,6 @@
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
+
     </Grid>
 </Window>
