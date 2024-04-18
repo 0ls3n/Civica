@@ -25,6 +25,5 @@ namespace Civica.Models
         public List<Progress> GetAll() => _progresses;
 
         public List<Progress> Get(int id) => _progresses.FindAll(x => x.ProjectId == id);
-        }
     }
 }
