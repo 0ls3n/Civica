@@ -17,8 +17,11 @@ namespace Civica.ViewModels
     {
         public ObservableCollection<ProjectViewModel> Projects { get; set; } = new ObservableCollection<ProjectViewModel>();
         public ObservableCollection<ProgressViewModel> Progresses { get; set; } = new ObservableCollection<ProgressViewModel>();
+        public ObservableCollection<ProgressViewModel> SelectedProgresses { get; set; } = new ObservableCollection<ProgressViewModel>();
+
         private ProjectRepository projectRepo = new ProjectRepository();
         private ProgressRepository progressRepo = new ProgressRepository();
+        
         private ProjectViewModel selectedProject = null;
 
         public ProjectViewModel SelectedProject
@@ -32,6 +35,21 @@ namespace Civica.ViewModels
                 selectedProject = value;
                 OnPropertyChanged(nameof(SelectedProject));
                 OnPropertyChanged(nameof(CanUpdateProject));
+            }
+        }
+
+        private ProgressViewModel selectedProgress = null;
+
+        public ProgressViewModel SelectedProgress
+        {
+            get
+            {
+                return selectedProgress;
+            }
+            set
+            {
+                selectedProgress = value;
+                OnPropertyChanged(nameof(selectedProgress));
             }
         }
 
@@ -97,6 +115,22 @@ namespace Civica.ViewModels
 
             progressRepo.Add(prog);
             Progresses.Add(new ProgressViewModel(prog));
+        }
+
+        public void ShowProgress()
+        {
+            if (SelectedProject != null)
+            {
+                SelectedProgresses.Clear();
+
+                foreach (ProgressViewModel prog in Progresses)
+                {
+                    if (prog.ProjectId == SelectedProject.GetId())
+                    {
+                        SelectedProgresses.Add(prog);
+                    }
+                }
+            }
         }
     }
 }

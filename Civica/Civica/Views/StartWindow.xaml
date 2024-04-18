@@ -16,18 +16,36 @@
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Horizontal">
-                            <TextBlock Text="{Binding Name}" Grid.Row="0" Margin="0,0,0,20"/>
+                        <TextBlock Text="{Binding Name}" Grid.Row="0" Margin="0,0,0,20"/>
                         <TextBlock Text=" "/>
                         <TextBlock Text="{Binding Manager}" Grid.Row="1" Margin="0,0,0,20"/>
-                        </StackPanel>
+                    </StackPanel>
                 </DataTemplate>
             </ListBox.ItemTemplate>
-            
+
         </ListBox>
         <Button Content="Create" HorizontalAlignment="Left" Margin="355,162,0,0" VerticalAlignment="Top" Click="Button_Create"/>
         <Button Content="Update" HorizontalAlignment="Left" Margin="374,236,0,0" VerticalAlignment="Top" IsEnabled="{Binding CanUpdateProject}" Click="Button_Update"/>
-        <Button Content="Delete" HorizontalAlignment="Left" Margin="518,246,0,0" VerticalAlignment="Top" IsEnabled="{Binding CanUpdateProject}" Click="Button_Delete"/>
-        <Button Content="New Progress" HorizontalAlignment="Left" Margin="484,157,0,0" VerticalAlignment="Top" IsEnabled="{Binding CanUpdateProject}" Click="Button_Progress"/>
+        <Button Content="Delete" HorizontalAlignment="Left" Margin="420,197,0,0" VerticalAlignment="Top" IsEnabled="{Binding CanUpdateProject}" Click="Button_Delete"/>
+        <Button Content="New Progress" HorizontalAlignment="Left" Margin="420,112,0,0" VerticalAlignment="Top" IsEnabled="{Binding CanUpdateProject}" Click="Button_Progress"/>
+        <Button Content="Show Progress" HorizontalAlignment="Left" Margin="420,297,0,0" VerticalAlignment="Top" IsEnabled="{Binding CanUpdateProject}" Click="Button_ShowProgress"/>
+        <ListBox
+            Width="200"
+            Height="400"
+            HorizontalAlignment="Left" Margin="566,17,0,17" 
+            ItemsSource="{Binding SelectedProgresses}"
+            SelectedItem="{Binding SelectedProgress, UpdateSourceTrigger=PropertyChanged}">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="{Binding Phase}" Grid.Row="0" Margin="0,0,0,20"/>
+                        <TextBlock Text=" "/>
+                        <TextBlock Text="{Binding Status}" Grid.Row="1" Margin="0,0,0,20"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+
+        </ListBox>
 
 
 
