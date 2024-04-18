@@ -35,6 +35,7 @@ namespace Civica.ViewModels
                 selectedProject = value;
                 OnPropertyChanged(nameof(SelectedProject));
                 OnPropertyChanged(nameof(CanUpdateProject));
+                ShowProgress();
             }
         }
 
