@@ -16,14 +16,11 @@ namespace Civica.ViewModels
     public class MainViewModel : INotifyPropertyChanged
     {
         public ObservableCollection<ProjectViewModel> Projects { get; set; } = new ObservableCollection<ProjectViewModel>();
-        public ObservableCollection<ProgressViewModel> Progresses { get; set; } = new ObservableCollection<ProgressViewModel>();
         public ObservableCollection<ProgressViewModel> SelectedProgresses { get; set; } = new ObservableCollection<ProgressViewModel>();
 
         private ProjectRepository projectRepo = new ProjectRepository();
         private ProgressRepository progressRepo = new ProgressRepository();
-        
         private ProjectViewModel selectedProject = null;
-
         public ProjectViewModel SelectedProject
         {
             get
@@ -35,11 +32,10 @@ namespace Civica.ViewModels
                 selectedProject = value;
                 OnPropertyChanged(nameof(SelectedProject));
                 OnPropertyChanged(nameof(CanUpdateProject));
+                ShowProgress();
             }
         }
-
         private ProgressViewModel selectedProgress = null;
-
         public ProgressViewModel SelectedProgress
         {
             get
@@ -49,7 +45,7 @@ namespace Civica.ViewModels
             set
             {
                 selectedProgress = value;
-                OnPropertyChanged(nameof(selectedProgress));
+                OnPropertyChanged(nameof(SelectedProgress));
             }
         }
 
@@ -67,10 +63,6 @@ namespace Civica.ViewModels
             foreach (Project p in projectRepo.GetAll())
             {
                 Projects.Add(new ProjectViewModel(p));
-            }
-            foreach (Progress prog in progressRepo.GetAll())
-            {
-                Progresses.Add(new ProgressViewModel(prog));
             }
         }
 
@@ -101,7 +93,7 @@ namespace Civica.ViewModels
             projectRepo.Update(projectRepo.Get(project.GetId()), name, owner, manager, description);
         }
 
-        public void RemoveProject() 
+        public void RemoveProject()
         {
             Project p = projectRepo.Get(SelectedProject.GetId());
             projectRepo.Remove(p);
@@ -110,11 +102,12 @@ namespace Civica.ViewModels
 
         public void ProgressProject(Phase fase, Status status, string description)
         {
-            Progress prog = new Progress(fase, status, DateTime.Now, description);
+            Progress prog = new Progress(SelectedProject.GetId(), fase, status, DateTime.Now, description);
             prog.ProjectId = SelectedProject.GetId();
 
             progressRepo.Add(prog);
-            Progresses.Add(new ProgressViewModel(prog));
+
+            ShowProgress();
         }
 
         public void ShowProgress()
@@ -123,12 +116,9 @@ namespace Civica.ViewModels
             {
                 SelectedProgresses.Clear();
 
-                foreach (ProgressViewModel prog in Progresses)
+                foreach (Progress prog in progressRepo.Get(SelectedProject.GetId()))
                 {
-                    if (prog.ProjectId == SelectedProject.GetId())
-                    {
-                        SelectedProgresses.Add(prog);
-                    }
+                    SelectedProgresses.Add(new ProgressViewModel(prog));
                 }
             }
         }

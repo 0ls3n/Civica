@@ -9,10 +9,12 @@ namespace Civica.Models
     public class Audit
     {
         public decimal Amount { get; set; }
-        public DateOnly Year { get; set; }
+        public DateTime Year { get; set; }
         public int Id { get; set; }
 
-        public Audit(decimal amount, DateOnly year)
+        public int EconomyId { get; set; }
+
+        public Audit(decimal amount, DateTime year)
         {
             this.Amount = amount;
             this.Year = year;

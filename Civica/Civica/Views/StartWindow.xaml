@@ -29,7 +29,6 @@
         <Button Content="Update" HorizontalAlignment="Left" Margin="374,236,0,0" VerticalAlignment="Top" IsEnabled="{Binding CanUpdateProject}" Click="Button_Update"/>
         <Button Content="Delete" HorizontalAlignment="Left" Margin="420,197,0,0" VerticalAlignment="Top" IsEnabled="{Binding CanUpdateProject}" Click="Button_Delete"/>
         <Button Content="New Progress" HorizontalAlignment="Left" Margin="420,112,0,0" VerticalAlignment="Top" IsEnabled="{Binding CanUpdateProject}" Click="Button_Progress"/>
-        <Button Content="Show Progress" HorizontalAlignment="Left" Margin="420,297,0,0" VerticalAlignment="Top" IsEnabled="{Binding CanUpdateProject}" Click="Button_ShowProgress"/>
         <ListBox
             Width="200"
             Height="400"
