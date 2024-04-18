@@ -11,8 +11,9 @@ namespace Civica.ViewModels
     public class ProgressViewModel
     {
         private Progress progress;
-        public Phase Fase { get; set; }
+        public Phase Phase { get; set; }
         public Status Status { get; set; }
+        public DateTime Date { get; set; }
         public string Description { get; set; }
 
         public int ProjectId { get; set; }
@@ -20,8 +21,9 @@ namespace Civica.ViewModels
         public ProgressViewModel(Progress progress)
         {
             this.progress = progress;
-            Fase = progress.Phase;
+            Phase = progress.Phase;
             Status = progress.Status;
+            Date = progress.Date;
             Description = progress.Description;
             ProjectId = progress.ProjectId;
         }

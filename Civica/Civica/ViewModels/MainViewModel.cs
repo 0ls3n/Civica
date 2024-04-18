@@ -110,7 +110,7 @@ namespace Civica.ViewModels
 
         public void ProgressProject(Phase fase, Status status, string description)
         {
-            Progress prog = new Progress(fase, status, description);
+            Progress prog = new Progress(fase, status, DateTime.Now, description);
             prog.ProjectId = SelectedProject.GetId();
 
             progressRepo.Add(prog);

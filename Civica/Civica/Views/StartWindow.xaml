@@ -10,15 +10,16 @@
         <ListBox
             Width="200"
             Height="400"
-            HorizontalAlignment="Left" Margin="35,17,0,17" 
+            HorizontalAlignment="Left"
+            Margin="25, 0, 0, 0"
             ItemsSource="{Binding Projects}"
             SelectedItem="{Binding SelectedProject, UpdateSourceTrigger=PropertyChanged}">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Horizontal">
-                        <TextBlock Text="{Binding Name}" Grid.Row="0" Margin="0,0,0,20"/>
-                        <TextBlock Text=" "/>
-                        <TextBlock Text="{Binding Manager}" Grid.Row="1" Margin="0,0,0,20"/>
+                        <TextBlock Text="{Binding Name}"/>
+                        <TextBlock Text="     ||      "/>
+                        <TextBlock Text="{Binding Manager}"/>
                     </StackPanel>
                 </DataTemplate>
             </ListBox.ItemTemplate>
@@ -32,22 +33,19 @@
         <ListBox
             Width="200"
             Height="400"
-            HorizontalAlignment="Left" Margin="566,17,0,17" 
+            HorizontalAlignment="Right"
+            Margin="0, 0, 25, 0"
             ItemsSource="{Binding SelectedProgresses}"
             SelectedItem="{Binding SelectedProgress, UpdateSourceTrigger=PropertyChanged}">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Horizontal">
-                        <TextBlock Text="{Binding Phase}" Grid.Row="0" Margin="0,0,0,20"/>
-                        <TextBlock Text=" "/>
-                        <TextBlock Text="{Binding Status}" Grid.Row="1" Margin="0,0,0,20"/>
+                        <TextBlock Text="{Binding Phase}"/>
+                        <TextBlock Text="     ||      "/>
+                        <TextBlock Text="{Binding Status}"/>
                     </StackPanel>
                 </DataTemplate>
             </ListBox.ItemTemplate>
-
         </ListBox>
-
-
-
     </Grid>
 </Window>

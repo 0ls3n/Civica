@@ -16,11 +16,11 @@ namespace Civica.Models
         public string Description { get; set; }
         public int ProjectId { get; set; }
 
-        public Progress(Phase fase, Status status, string description)
+        public Progress(Phase fase, Status status, DateTime date, string description)
         {
             Phase = fase;
             Status = status;
-            Date = DateTime.Parse(DateTime.Now.ToString("dd-MM-yyyy HH:mm:ss"));
+            Date = date;
             Description = description;
         }
     }

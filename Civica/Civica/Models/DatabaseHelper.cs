@@ -66,7 +66,7 @@ namespace Civica.Models
                         string desc = Convert.ToString(reader["Description"]);
                         int projectId = Convert.ToInt32(reader["ProjectId"]);
 
-                        Progress prog = new Progress(phase, status, desc);
+                        Progress prog = new Progress(phase, status, DateTime.Now, desc);
 
                         prog.Id = id;
                         prog.ProjectId = projectId;
