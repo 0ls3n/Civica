@@ -21,9 +21,7 @@ namespace Civica.ViewModels
 
         private ProjectRepository projectRepo = new ProjectRepository();
         private ProgressRepository progressRepo = new ProgressRepository();
-        
         private ProjectViewModel selectedProject = null;
-
         public ProjectViewModel SelectedProject
         {
             get
@@ -38,9 +36,7 @@ namespace Civica.ViewModels
                 ShowProgress();
             }
         }
-
         private ProgressViewModel selectedProgress = null;
-
         public ProgressViewModel SelectedProgress
         {
             get
@@ -50,7 +46,7 @@ namespace Civica.ViewModels
             set
             {
                 selectedProgress = value;
-                OnPropertyChanged(nameof(selectedProgress));
+                OnPropertyChanged(nameof(SelectedProgress));
             }
         }
 

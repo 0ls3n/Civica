@@ -8,24 +8,24 @@ namespace Civica.Models
 {
     public class Economy
     {
-        private List<Audit> _auditlist = new List<Audit>();
+ 
         public decimal StartAmount { get; set; }
         public decimal ExpectedYearlyCost { get; set; }
 
+        public int ProjectId { get; set; }
+
         public int Id { get; set; }
-        public Economy(decimal startAmount = default, decimal expectedYearlyCost = default)
+
+
+
+        public Economy(int projectId, decimal startAmount = default, decimal expectedYearlyCost = default)
         {
             this.StartAmount = startAmount;
             this.ExpectedYearlyCost = expectedYearlyCost;
+            ProjectId = projectId;
+            
         }
 
-        public void Add(Audit audit) 
-        {
-            _auditlist.Add(audit);
-        }
-        public void Update(Audit audit) 
-        {
-            // overvej hvor mange gange den kan anvendes og om der skal være en log på det tidligere indtastet.
-        }
+      
     }
 }
