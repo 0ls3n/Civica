@@ -46,10 +46,5 @@ namespace Civica.Models
         { 
             return projects.Find(x => x.Id == id);
         }
-
-
-
-
     }
-
 }

@@ -8,7 +8,7 @@ namespace Civica.Models
 {
     public class AuditRepository
     {
-        private List<Audit> _auditList = new List<Audit>();
+        private List<Audit> _auditList;
 
         public AuditRepository()
         {
@@ -25,15 +25,8 @@ namespace Civica.Models
         {
             _auditList.Remove(audit);
         }
-        public Audit Get(int id)
-        {
-            return _auditList.Find(x => x.Id == id);
-        }
+        public Audit Get(int id) => _auditList.Find(x => x.Id == id);
 
-        public List<Audit> GetByEconomyId(int economyId)
-        {
-            return _auditList.Where(x=> x.EconomyId == economyId).ToList();
-        }
-
+        public List<Audit> GetByEconomyId(int economyId) => _auditList.FindAll(x=> x.EconomyId == economyId);
     }
 }

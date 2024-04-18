@@ -16,7 +16,6 @@ namespace Civica.ViewModels
     public class MainViewModel : INotifyPropertyChanged
     {
         public ObservableCollection<ProjectViewModel> Projects { get; set; } = new ObservableCollection<ProjectViewModel>();
-        public ObservableCollection<ProgressViewModel> Progresses { get; set; } = new ObservableCollection<ProgressViewModel>();
         public ObservableCollection<ProgressViewModel> SelectedProgresses { get; set; } = new ObservableCollection<ProgressViewModel>();
 
         private ProjectRepository projectRepo = new ProjectRepository();
@@ -65,10 +64,6 @@ namespace Civica.ViewModels
             {
                 Projects.Add(new ProjectViewModel(p));
             }
-            foreach (Progress prog in progressRepo.GetAll())
-            {
-                Progresses.Add(new ProgressViewModel(prog));
-            }
         }
 
         public void CreateNewProject(string name, string owner = "", string manager = "", string description = "")
@@ -98,7 +93,7 @@ namespace Civica.ViewModels
             projectRepo.Update(projectRepo.Get(project.GetId()), name, owner, manager, description);
         }
 
-        public void RemoveProject() 
+        public void RemoveProject()
         {
             Project p = projectRepo.Get(SelectedProject.GetId());
             projectRepo.Remove(p);
@@ -111,7 +106,8 @@ namespace Civica.ViewModels
             prog.ProjectId = SelectedProject.GetId();
 
             progressRepo.Add(prog);
-            Progresses.Add(new ProgressViewModel(prog));
+
+            ShowProgress();
         }
 
         public void ShowProgress()
@@ -120,12 +116,9 @@ namespace Civica.ViewModels
             {
                 SelectedProgresses.Clear();
 
-                foreach (ProgressViewModel prog in Progresses)
+                foreach (Progress prog in progressRepo.Get(SelectedProject.GetId()))
                 {
-                    if (prog.GetProjectId() == SelectedProject.GetId())
-                    {
-                        SelectedProgresses.Add(prog);
-                    }
+                    SelectedProgresses.Add(new ProgressViewModel(prog));
                 }
             }
         }

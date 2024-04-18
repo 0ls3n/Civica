@@ -8,7 +8,7 @@ namespace Civica.Models
 {
     public class EconomyRepository
     {
-        private List<Economy> _economyList = new List<Economy>();
+        private List<Economy> _economyList;
         public EconomyRepository() 
         {
             _economyList = DatabaseHelper.InitializeEconomy();

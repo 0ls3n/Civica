@@ -8,7 +8,7 @@ namespace Civica.Models
 {
     public class ProgressRepository
     {
-        private List<Progress> _progresses { get; set; }
+        private List<Progress> _progresses;
 
         public ProgressRepository()
         {
@@ -22,14 +22,9 @@ namespace Civica.Models
             _progresses.Add(prog);
         }
 
-        public List<Progress> GetAll()
-        {
-            return _progresses;
-        }
+        public List<Progress> GetAll() => _progresses;
 
-        public List<Progress> Get(int id)
-        {
-            return new List<Progress> { _progresses.Find(x => x.Id == id) };
+        public List<Progress> Get(int id) => _progresses.FindAll(x => x.ProjectId == id);
         }
     }
 }
