@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <diagram program="umlet" version="15.1">
-  <zoom_level>8</zoom_level>
+  <zoom_level>7</zoom_level>
   <element>
     <id>Text</id>
     <coordinates>
-      <x>312</x>
-      <y>88</y>
-      <w>688</w>
-      <h>96</h>
+      <x>252</x>
+      <y>147</y>
+      <w>602</w>
+      <h>84</h>
     </coordinates>
     <panel_attributes>style=wordwrap
 fontsize=80
@@ -17,10 +17,10 @@ Sequence Diagram</panel_attributes>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>248</x>
-      <y>336</y>
-      <w>104</w>
-      <h>24</h>
+      <x>196</x>
+      <y>364</y>
+      <w>91</w>
+      <h>21</h>
     </coordinates>
     <panel_attributes>: MainViewModel</panel_attributes>
     <additional_attributes/>
@@ -28,10 +28,10 @@ Sequence Diagram</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>296</x>
-      <y>352</y>
-      <w>24</w>
-      <h>48</h>
+      <x>238</x>
+      <y>378</y>
+      <w>21</w>
+      <h>42</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;40.0</additional_attributes>
@@ -39,10 +39,10 @@ Sequence Diagram</panel_attributes>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>296</x>
-      <y>384</y>
-      <w>16</w>
-      <h>216</h>
+      <x>238</x>
+      <y>406</y>
+      <w>14</w>
+      <h>168</h>
     </coordinates>
     <panel_attributes/>
     <additional_attributes/>
@@ -50,215 +50,56 @@ Sequence Diagram</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>296</x>
-      <y>592</y>
-      <w>24</w>
-      <h>64</h>
+      <x>238</x>
+      <y>567</y>
+      <w>21</w>
+      <h>63</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;60.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;70.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>24</x>
-      <y>376</y>
-      <w>288</w>
-      <h>32</h>
+      <x>0</x>
+      <y>399</y>
+      <w>252</w>
+      <h>28</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;-
-EvaluateProject(fase, status, description)</panel_attributes>
+ProgressProject(fase, status, description)</panel_attributes>
     <additional_attributes>340.0;20.0;10.0;20.0</additional_attributes>
   </element>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>560</x>
-      <y>432</y>
-      <w>88</w>
-      <h>24</h>
+      <x>455</x>
+      <y>413</y>
+      <w>98</w>
+      <h>21</h>
     </coordinates>
-    <panel_attributes>p : Project</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>UMLGeneric</id>
-    <coordinates>
-      <x>544</x>
-      <y>392</y>
-      <w>112</w>
-      <h>24</h>
-    </coordinates>
-    <panel_attributes>process : Process</panel_attributes>
+    <panel_attributes>prog : Progress</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>600</x>
-      <y>448</y>
-      <w>24</w>
-      <h>40</h>
-    </coordinates>
-    <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;30.0</additional_attributes>
-  </element>
-  <element>
-    <id>UMLGeneric</id>
-    <coordinates>
-      <x>600</x>
-      <y>472</y>
-      <w>16</w>
-      <h>96</h>
-    </coordinates>
-    <panel_attributes/>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>600</x>
-      <y>560</y>
-      <w>24</w>
-      <h>48</h>
-    </coordinates>
-    <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;40.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>304</x>
-      <y>392</y>
-      <w>256</w>
-      <h>32</h>
+      <x>245</x>
+      <y>413</y>
+      <w>224</w>
+      <h>28</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;-
 &lt;&lt;create&gt;&gt;(project, fase, status, description)</panel_attributes>
     <additional_attributes>300.0;20.0;10.0;20.0</additional_attributes>
   </element>
   <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>304</x>
-      <y>472</y>
-      <w>312</w>
-      <h>32</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;&lt;&lt;-
-p.Add(process)</panel_attributes>
-    <additional_attributes>370.0;20.0;10.0;20.0</additional_attributes>
-  </element>
-  <element>
-    <id>UMLGeneric</id>
-    <coordinates>
-      <x>840</x>
-      <y>440</y>
-      <w>112</w>
-      <h>24</h>
-    </coordinates>
-    <panel_attributes>_DatabaseHelper_</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>888</x>
-      <y>456</y>
-      <w>24</w>
-      <h>40</h>
-    </coordinates>
-    <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;30.0</additional_attributes>
-  </element>
-  <element>
-    <id>UMLGeneric</id>
-    <coordinates>
-      <x>888</x>
-      <y>480</y>
-      <w>16</w>
-      <h>32</h>
-    </coordinates>
-    <panel_attributes/>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>608</x>
-      <y>480</y>
-      <w>296</w>
-      <h>40</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;&lt;&lt;-
-process.Id = DatabaseHelper.Add(process) : int
-</panel_attributes>
-    <additional_attributes>350.0;20.0;10.0;20.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>888</x>
-      <y>504</y>
-      <w>24</w>
-      <h>48</h>
-    </coordinates>
-    <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;40.0</additional_attributes>
-  </element>
-  <element>
-    <id>UMLGeneric</id>
-    <coordinates>
-      <x>424</x>
-      <y>504</y>
-      <w>168</w>
-      <h>24</h>
-    </coordinates>
-    <panel_attributes>processVM : ProcessViewModel</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>304</x>
-      <y>504</y>
-      <w>136</w>
-      <h>32</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;&lt;&lt;-
-&lt;&lt;create&gt;&gt;(process)</panel_attributes>
-    <additional_attributes>150.0;20.0;10.0;20.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>304</x>
-      <y>544</y>
-      <w>184</w>
-      <h>56</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;&lt;&lt;-
-Processes.Add(pvm)</panel_attributes>
-    <additional_attributes>10.0;50.0;80.0;50.0;80.0;10.0;10.0;10.0</additional_attributes>
-  </element>
-  <element>
-    <id>UMLNote</id>
-    <coordinates>
-      <x>976</x>
-      <y>424</y>
-      <w>112</w>
-      <h>56</h>
-    </coordinates>
-    <panel_attributes>Static class</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
     <id>Text</id>
     <coordinates>
-      <x>496</x>
-      <y>256</y>
-      <w>240</w>
-      <h>48</h>
+      <x>413</x>
+      <y>294</y>
+      <w>210</w>
+      <h>42</h>
     </coordinates>
     <panel_attributes>style=wordwrap
 fontsize=30
@@ -268,43 +109,88 @@ EvaluateProject</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>944</x>
-      <y>448</y>
-      <w>48</w>
-      <h>24</h>
+      <x>245</x>
+      <y>441</y>
+      <w>413</w>
+      <h>28</h>
     </coordinates>
-    <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>40.0;10.0;10.0;10.0</additional_attributes>
+    <panel_attributes>lt=&lt;&lt;&lt;-
+prog.ProjectId = SelectedProject.GetId() : int</panel_attributes>
+    <additional_attributes>570.0;20.0;10.0;20.0</additional_attributes>
   </element>
   <element>
-    <id>UMLGeneric</id>
+    <id>UMLClass</id>
     <coordinates>
-      <x>680</x>
-      <y>432</y>
-      <w>128</w>
-      <h>24</h>
+      <x>588</x>
+      <y>413</y>
+      <w>133</w>
+      <h>21</h>
     </coordinates>
-    <panel_attributes>pvm : ProjectViewModel</panel_attributes>
+    <panel_attributes>SelectedProject : Project</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>736</x>
-      <y>448</y>
-      <w>24</w>
-      <h>88</h>
+      <x>644</x>
+      <y>427</y>
+      <w>21</w>
+      <h>42</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;90.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;40.0</additional_attributes>
   </element>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>736</x>
-      <y>520</y>
-      <w>16</w>
-      <h>96</h>
+      <x>644</x>
+      <y>455</y>
+      <w>14</w>
+      <h>21</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>707</x>
+      <y>448</y>
+      <w>168</w>
+      <h>21</h>
+    </coordinates>
+    <panel_attributes>progressRepo : ProgressRepository</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>784</x>
+      <y>462</y>
+      <w>21</w>
+      <h>42</h>
+    </coordinates>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;40.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>644</x>
+      <y>469</y>
+      <w>21</w>
+      <h>133</h>
+    </coordinates>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;170.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>784</x>
+      <y>490</y>
+      <w>14</w>
+      <h>42</h>
     </coordinates>
     <panel_attributes/>
     <additional_attributes/>
@@ -312,13 +198,80 @@ EvaluateProject</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>608</x>
-      <y>520</y>
-      <w>144</w>
-      <h>32</h>
+      <x>245</x>
+      <y>483</y>
+      <w>553</w>
+      <h>28</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;-
-pvm.Add(processVM)</panel_attributes>
-    <additional_attributes>160.0;20.0;10.0;20.0</additional_attributes>
+progressRepo.Add(prog)</panel_attributes>
+    <additional_attributes>770.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>945</x>
+      <y>469</y>
+      <w>168</w>
+      <h>21</h>
+    </coordinates>
+    <panel_attributes>_DatabaseHelper_</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>784</x>
+      <y>525</y>
+      <w>21</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;80.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>791</x>
+      <y>497</y>
+      <w>245</w>
+      <h>28</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;-
+prog.Id = DatabaseHelper.Add(prog) : int</panel_attributes>
+    <additional_attributes>330.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1022</x>
+      <y>483</y>
+      <w>21</w>
+      <h>42</h>
+    </coordinates>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;40.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>1022</x>
+      <y>511</y>
+      <w>14</w>
+      <h>21</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1022</x>
+      <y>525</y>
+      <w>21</w>
+      <h>42</h>
+    </coordinates>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;40.0</additional_attributes>
   </element>
 </diagram>
