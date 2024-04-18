@@ -16,8 +16,6 @@ namespace Civica.ViewModels
         public DateTime Date { get; set; }
         public string Description { get; set; }
 
-        public int ProjectId { get; set; }
-
         public ProgressViewModel(Progress progress)
         {
             this.progress = progress;
@@ -25,12 +23,16 @@ namespace Civica.ViewModels
             Status = progress.Status;
             Date = progress.Date;
             Description = progress.Description;
-            ProjectId = progress.ProjectId;
         }
 
         public int GetId()
         {
             return progress.Id;
+        }
+
+        public int GetProjectId()
+        {
+            return progress.ProjectId;
         }
     }
 }

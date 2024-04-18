@@ -16,8 +16,9 @@ namespace Civica.Models
         public string Description { get; set; }
         public int ProjectId { get; set; }
 
-        public Progress(Phase fase, Status status, DateTime date, string description)
+        public Progress(int projectId, Phase fase, Status status, DateTime date, string description)
         {
+            ProjectId = projectId;
             Phase = fase;
             Status = status;
             Date = date;

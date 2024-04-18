@@ -111,7 +111,7 @@ namespace Civica.ViewModels
 
         public void ProgressProject(Phase fase, Status status, string description)
         {
-            Progress prog = new Progress(fase, status, DateTime.Now, description);
+            Progress prog = new Progress(SelectedProject.GetId(), fase, status, DateTime.Now, description);
             prog.ProjectId = SelectedProject.GetId();
 
             progressRepo.Add(prog);
@@ -126,7 +126,7 @@ namespace Civica.ViewModels
 
                 foreach (ProgressViewModel prog in Progresses)
                 {
-                    if (prog.ProjectId == SelectedProject.GetId())
+                    if (prog.GetProjectId() == SelectedProject.GetId())
                     {
                         SelectedProgresses.Add(prog);
                     }
