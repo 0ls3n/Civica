@@ -49,7 +49,7 @@
       <x>1484</x>
       <y>322</y>
       <w>266</w>
-      <h>119</h>
+      <h>133</h>
     </coordinates>
     <panel_attributes>&lt;&lt;static&gt;&gt;
 DatabaseHelper
@@ -58,8 +58,9 @@ DatabaseHelper
 - &lt;&lt;static&gt;&gt; config : IConfigurationRoot
 --
 + &lt;&lt;static&gt;&gt; InitializeProjects() : Project[0..*]
++ &lt;&lt;static&gt;&gt; InitializeProgresses() : Progress[0..*]
 + &lt;&lt;static&gt;&gt; Add(p : Project) : int
-+ &lt;&lt;static&gt;&gt; Add(p : Project, prog : Progress) : int
++ &lt;&lt;static&gt;&gt; Add(prog : Progress) : int
 + &lt;&lt;static&gt;&gt; Remove(p : Project)
 + &lt;&lt;static&gt;&gt; Update(p : Project)</panel_attributes>
     <additional_attributes/>
@@ -233,7 +234,7 @@ ICommand</panel_attributes>
       <x>413</x>
       <y>175</y>
       <w>553</w>
-      <h>133</h>
+      <h>140</h>
     </coordinates>
     <panel_attributes>MainViewModel
 --
@@ -246,7 +247,8 @@ ICommand</panel_attributes>
 + MainViewModel()
 - OnPropertyChanged (propertyName : string) 
 + CreateNewProject(name : string, owner = "" : string, manager = "" : string, description = "" : string)
-+ UpdateProject(project : ProjectViewModel, name : string, owner = "" : string, manager = "" : string, description = "" : string)</panel_attributes>
++ UpdateProject(project : ProjectViewModel, name : string, owner = "" : string, manager = "" : string, description = "" : string)
++ ShowProgress()</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -700,15 +702,15 @@ ON_TRACK
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>2037</x>
-      <y>245</y>
-      <w>28</w>
-      <h>84</h>
+      <x>1701</x>
+      <y>413</y>
+      <w>364</w>
+      <h>154</h>
     </coordinates>
     <panel_attributes>lt=-
 m1=*
-m2=1</panel_attributes>
-    <additional_attributes>10.0;100.0;10.0;10.0</additional_attributes>
+m2=</panel_attributes>
+    <additional_attributes>500.0;10.0;500.0;200.0;10.0;200.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
@@ -800,5 +802,48 @@ m2=
     </coordinates>
     <panel_attributes>lt=&lt;&lt;.</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;50.0;170.0;50.0;170.0;880.0;130.0;880.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1512</x>
+      <y>483</y>
+      <w>196</w>
+      <h>105</h>
+    </coordinates>
+    <panel_attributes>ProgressRepository
+--
+- _progresses : Progress[0..*]
+--
++ ProgressRepository()
++ Add(prog : Progress)
++ GetAll() : Progress[0..*]
++ Get(id : int) : Progress</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1610</x>
+      <y>448</y>
+      <w>21</w>
+      <h>49</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=
+m2=
+</panel_attributes>
+    <additional_attributes>10.0;50.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>959</x>
+      <y>210</y>
+      <w>567</w>
+      <h>343</h>
+    </coordinates>
+    <panel_attributes>lt=-</panel_attributes>
+    <additional_attributes>10.0;10.0;630.0;10.0;630.0;470.0;790.0;470.0</additional_attributes>
   </element>
 </diagram>
