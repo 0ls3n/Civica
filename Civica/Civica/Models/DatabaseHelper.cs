@@ -124,11 +124,17 @@ namespace Civica.Models
 
             {
                 con.Open();
-                SqlCommand cmd = new SqlCommand("DELETE FROM PROJECTS WHERE ProjectId=@ID", con);
+                SqlCommand RemoveProgress = new SqlCommand("DELETE FROM PROGRESSES WHERE ProjectId=@ID", con);
+                SqlCommand RemoveEconomy = new SqlCommand("DELETE FROM ECONOMIES WHERE ProjectId=@ID", con);
+                SqlCommand RemoveProject = new SqlCommand("DELETE FROM PROJECTS WHERE ProjectId=@ID", con);
 
-                cmd.Parameters.Add("@ID", SqlDbType.NVarChar).Value = p.Id;
+                RemoveProgress.Parameters.Add("@ID", SqlDbType.Int).Value = p.Id;
+                RemoveEconomy.Parameters.Add("@ID", SqlDbType.Int).Value = p.Id;
+                RemoveProject.Parameters.Add("@ID", SqlDbType.Int).Value = p.Id;
 
-                cmd.ExecuteNonQuery();
+                RemoveProgress.ExecuteNonQuery();
+                RemoveEconomy.ExecuteNonQuery();
+                RemoveProject.ExecuteNonQuery();
             }
         }
 
@@ -205,6 +211,107 @@ namespace Civica.Models
                 }
             }
             return audits;
+        }
+        public static int Add(Economy econ)
+        {
+            int id = -1;
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+                con.Open();
+                SqlCommand cmd = new SqlCommand("INSERT INTO ECONOMIES (StartAmount, ExpectedYearlyCost, ProjectId)" +
+                                                                     "VALUES (@SA, @EYC, @PID) SELECT @@IDENTITY ", con);
+
+                cmd.Parameters.Add("@SA", SqlDbType.Decimal).Value = econ.StartAmount;
+                cmd.Parameters.Add("@EYC", SqlDbType.Decimal).Value = econ.ExpectedYearlyCost;
+                cmd.Parameters.Add("@PID", SqlDbType.Int).Value = econ.ProjectId;
+
+                id = Convert.ToInt32(cmd.ExecuteScalar());
+            }
+            return id;
+        }
+        public static int Add(Audit aud)
+        {
+            int id = -1;
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+                con.Open();
+                SqlCommand cmd = new SqlCommand("INSERT INTO AUDITS (Amount, Year, EconomyId)" +
+                                                                     "VALUES (@Am, @Ye, @EID) SELECT @@IDENTITY ", con);
+
+                cmd.Parameters.Add("@Am", SqlDbType.Decimal).Value = aud.Amount;
+                cmd.Parameters.Add("@Ye", SqlDbType.DateTime2).Value = aud.Year;
+                cmd.Parameters.Add("@Eid", SqlDbType.Int).Value = aud.EconomyId;
+
+                id = Convert.ToInt32(cmd.ExecuteScalar());
+            }
+            return id;
+        }
+        public static void Update(Economy e)
+        {
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+                con.Open();
+                SqlCommand cmd = new SqlCommand("UPDATE ECONOMIES SET StartAmount = @SA, ExpectedYearlyCost = @EYC" +
+                                                "WHERE EconomyId = @ID", con); // Opsætter parameterne der skal opdateres.
+
+                // Indsætter opdaterede værdier i parameterne 
+                cmd.Parameters.Add("@ID", SqlDbType.Int).Value = e.Id;
+                cmd.Parameters.Add("@SA", SqlDbType.Decimal).Value = e.StartAmount;
+                cmd.Parameters.Add("@EYC", SqlDbType.Decimal).Value = e.ExpectedYearlyCost;
+
+
+                // Exe
+                cmd.ExecuteNonQuery();
+            }
+
+        }
+        public static void Update(Audit a)
+        {
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+                con.Open();
+                SqlCommand cmd = new SqlCommand("UPDATE AUDITS SET Amount = @Am, Year = @Ye" +
+                                                "WHERE AuditId = @ID", con); // Opsætter parameterne der skal opdateres.
+
+                // Indsætter opdaterede værdier i parameterne 
+                cmd.Parameters.Add("@ID", SqlDbType.Int).Value = a.Id;
+                cmd.Parameters.Add("@Am", SqlDbType.Decimal).Value = a.Amount;
+                cmd.Parameters.Add("@Ye", SqlDbType.DateTime2).Value = a.Year;
+
+
+                // Exe
+                cmd.ExecuteNonQuery();
+            }
+
+        }
+        public static void Remove(Economy e)
+        {
+
+            using (SqlConnection con = new SqlConnection(connectionString))
+
+            {
+                con.Open();
+                SqlCommand RemoveAudits = new SqlCommand("DELETE FROM AUDITS WHERE EconomyId=@ID", con);
+                SqlCommand RemoveEconomy = new SqlCommand("DELETE FROM ECONOMIES WHERE EconomyId=@ID", con);
+                RemoveAudits.Parameters.Add("@ID", SqlDbType.Int).Value = e.Id;
+                RemoveEconomy.Parameters.Add("@ID", SqlDbType.Int).Value = e.Id;
+                RemoveAudits.ExecuteNonQuery();
+                RemoveEconomy.ExecuteNonQuery();
+
+            }
+        }
+        public static void Remove(Audit a)
+        {
+            using (SqlConnection con = new SqlConnection(connectionString))
+
+            {
+                con.Open();
+                SqlCommand cmd = new SqlCommand("DELETE FROM AUDITS WHERE AuditId=@ID", con);
+
+                cmd.Parameters.Add("@ID", SqlDbType.Int).Value = a.Id;
+
+                cmd.ExecuteNonQuery();
+            }
         }
     }
 }
