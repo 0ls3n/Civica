@@ -22,7 +22,17 @@ namespace Civica.ViewModels
         }
 
         public ObservableCollection<ProjectViewModel> Projects { get; set; } = new ObservableCollection<ProjectViewModel>();
-        public ProjectViewModel SelectedProject { get; set; }
+
+        private ProjectViewModel _selectedProject = null;
+        public ProjectViewModel SelectedProject 
+        {
+            get => _selectedProject;
+            set
+            {
+                _selectedProject = value;
+                OnPropertyChanged(nameof(SelectedProject));
+            }
+        }
 
         private ProjectRepository projectRepo = new ProjectRepository();
 
