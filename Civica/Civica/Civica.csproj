@@ -9,10 +9,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Resources\Images\Civica_Logo.ico" />
     <None Remove="Resources\Images\Civica_Logo.png" />
   </ItemGroup>
 
   <ItemGroup>
+    <Content Include="Resources\Images\Civica_Logo.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Resources\Images\Civica_Logo.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

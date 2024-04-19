@@ -115,7 +115,36 @@ namespace Civica.ViewModels
 
         #region New code
 
+        private string _viewTitle;
+        public string ViewTitle
+        {
+            get => _viewTitle;
+            set
+            {
+                _viewTitle = value;
+                OnPropertyChanged(nameof(ViewTitle));
+            }
+        }
 
+        private object _currentView;
+        public object CurrentView
+        {
+            get => _currentView;
+            set
+            {
+                _currentView = value;
+                OnPropertyChanged(nameof(CurrentView));
+            }
+        }
+
+        public InProgressViewModel IPVM;
+
+        public MainViewModel()
+        {
+            IPVM = new InProgressViewModel();
+            CurrentView = IPVM;
+            ViewTitle = IPVM.Title;
+        }
 
 
 
