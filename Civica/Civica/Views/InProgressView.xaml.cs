@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Civica.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,12 @@ namespace Civica.Views
         public InProgressView()
         {
             InitializeComponent();
+            
+        }
+
+        private void ListBox_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            
         }
     }
 }

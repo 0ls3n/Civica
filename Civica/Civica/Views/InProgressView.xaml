@@ -6,7 +6,7 @@
              xmlns:viewModel="clr-namespace:Civica.ViewModels"
              xmlns:local="clr-namespace:Civica.Views"
              mc:Ignorable="d" 
-             d:DesignHeight="650" d:DesignWidth="1000">
+             d:DesignHeight="650" d:DesignWidth="1200">
 
     <UserControl.DataContext>
         <viewModel:InProgressViewModel/>
@@ -31,12 +31,57 @@
                    VerticalAlignment="Bottom"
                    Margin="0 0 0 10"
                    Foreground="#8A8A8A"/>
-        
+
         <Border Grid.Row="1"
                 Background="White"
                 CornerRadius="10">
 
-            
+            <ScrollViewer Margin="0 10 0 10">
+                <StackPanel Orientation="Vertical">
+                    <TextBlock Text="{Binding SelectedProject.Name}"
+                               TextAlignment="Center"
+                               FontSize="30"/>
+
+                    <Grid Margin="5 10 0 0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="80"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        
+                        <TextBlock 
+                               FontSize="14"
+                               Text="Projekt Ejer:"/>
+                        
+                        <TextBlock Grid.Column="1"
+                                   FontSize="14"
+                                   FontWeight="Medium"
+                                   Text="{Binding SelectedProject.Owner}"/>
+                    </Grid>
+
+                    <Grid Margin="5 10 0 0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="90"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock FontSize="14"
+                                   Text="Projekt Leder:"/>
+
+                        <TextBlock Grid.Column="1"
+                                   FontSize="14"
+                                   FontWeight="Medium"
+                                   Text="{Binding SelectedProject.Manager}"/>
+                    </Grid>
+
+                    <TextBlock Text="Beskrivelse: "
+                               Margin="5 20 0 0"
+                               FontSize="14"/>
+
+                    <TextBlock Text="{Binding SelectedProject.Description}"
+                               Margin="5 10 20 0"/>
+                    
+                </StackPanel>
+            </ScrollViewer>
 
         </Border>
 
@@ -48,7 +93,7 @@
                    VerticalAlignment="Bottom"
                    Margin="30 0 0 10"
                    Foreground="#8A8A8A"/>
-    
+
         <Border Grid.Column="1"
                 Grid.Row="1"
                 Background="White"
@@ -57,6 +102,7 @@
 
             <ListBox Background="Transparent"
                      Margin="10"
+                     MouseDoubleClick="ListBox_MouseDoubleClick"
                      BorderThickness="0"
                      ItemsSource="{Binding Projects}"
                      SelectedItem="{Binding SelectedProject}">
@@ -64,7 +110,7 @@
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <Grid>
-                            
+
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="*"/>
                                 <RowDefinition Height="*"/>
@@ -81,7 +127,9 @@
                                     Width="335"
                                     Height="50"
                                     BorderThickness="0 0 0 1"
-                                    BorderBrush="#E8E8E8"/>
+                                    BorderBrush="#E8E8E8">
+
+                            </Border>
 
                             <TextBlock Grid.Column="1"
                                        Margin="10 5 0 0"
@@ -106,10 +154,12 @@
                         </Grid>
                     </DataTemplate>
                 </ListBox.ItemTemplate>
-                
+
             </ListBox>
-            
+
         </Border>
         
+
+
     </Grid>
 </UserControl>

@@ -43,6 +43,8 @@ namespace Civica.ViewModels
                 Projects.Add(new ProjectViewModel(p));
             }
 
+            SelectedProject = Projects.FirstOrDefault(x => x.Name == "Tommy");
+
             Title = "Igangværende";
         }
     }

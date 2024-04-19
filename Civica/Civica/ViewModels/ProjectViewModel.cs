@@ -14,11 +14,42 @@ namespace Civica.ViewModels
 
         public string Name { get; set; }
 
-        public string Owner { get; set; }
+        private string _owner;
+        public string Owner
+        {
+            get
+            {
+                if (_owner == string.Empty)
+                    return "Ingen";
+                return _owner;
+            }
+            set { _owner = value; }
+        }
 
-        public string Manager { get; set; }
+        private string _manager;
+        public string Manager
+        {
+            get
+            {
+                if (_manager == string.Empty)
+                    return "Ingen";
+                return _manager;
+            }
+            set { _manager = value; }
+        }
 
-        public string Description { get; set; }
+        private string _description;
+        public string Description
+        {
+            get
+            {
+                if (_description == string.Empty)
+                    return "Ingen Beskrivelse";
+
+                return _description;
+            }
+            set { _description = value; }
+        }
 
         public ProjectViewModel(Project p)
         {
