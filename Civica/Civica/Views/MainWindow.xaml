@@ -57,7 +57,9 @@
                          Height="50"
                          IsChecked="True"
                          Cursor="Hand"
-                         Style="{StaticResource MenuButtonTheme}"/>
+                         Style="{StaticResource MenuButtonTheme}"
+                         Command="{Binding IPVMCmd}"
+                         CommandParameter="{Binding}"/>
             <RadioButton Content="Identificeret"
                          FontSize="14"
                          Height="50"
@@ -78,7 +80,9 @@
                          Height="50"
                          Cursor="Hand"
                          Style="{StaticResource MenuButtonTheme}"
-                         Margin="0 0 0 0"/>
+                         Margin="0 0 0 0"
+                         Command="{Binding CPVMCmd}"
+                         CommandParameter="{Binding}"/>
             <RadioButton Content="Opdater oplysninger"
                          FontSize="14"
                          Cursor="Hand"

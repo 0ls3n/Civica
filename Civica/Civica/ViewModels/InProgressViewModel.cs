@@ -56,6 +56,7 @@ namespace Civica.ViewModels
                 Projects.Add(new ProjectViewModel(p));
             }
 
+            #region ColorCodingForProjects
             foreach (ProjectViewModel p in Projects)
             {
                 List<Progress> sortedList = progressRepo.Get(p.GetId()).OrderByDescending(x => x.Date).ToList();
@@ -76,6 +77,7 @@ namespace Civica.ViewModels
                         break;
                 }
             }
+            #endregion
 
             Title = "Igangværende";
         }

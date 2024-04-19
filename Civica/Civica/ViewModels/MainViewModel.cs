@@ -138,16 +138,18 @@ namespace Civica.ViewModels
         }
 
         public InProgressViewModel IPVM;
+        public CreateProjectViewModel CPVM;
+
+        public ICommand IPVMCmd { get; set; } = new InProgressViewCmd();
+        public ICommand CPVMCmd { get; set; } = new CreateProjectViewCmd();
 
         public MainViewModel()
         {
             IPVM = new InProgressViewModel();
+            CPVM = new CreateProjectViewModel();
             CurrentView = IPVM;
             ViewTitle = IPVM.Title;
         }
-
-
-
         #endregion
     }
 }

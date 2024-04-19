@@ -15,7 +15,11 @@
             <DataTemplate DataType="{x:Type viewModel:InProgressViewModel}">
                 <view:InProgressView/>
             </DataTemplate>
-            
+
+            <DataTemplate DataType="{x:Type viewModel:CreateProjectViewModel}">
+                <view:CreateProjectView/>
+            </DataTemplate>
+
         </ResourceDictionary>
         
     </Application.Resources>
