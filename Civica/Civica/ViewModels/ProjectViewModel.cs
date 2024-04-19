@@ -51,6 +51,13 @@ namespace Civica.ViewModels
             set { _description = value; }
         }
 
+        private string _statusColor;
+        public string StatusColor
+        {
+            get => _statusColor;
+            set => _statusColor = value;
+        }
+
         public ProjectViewModel(Project p)
         {
             project = p;

@@ -44,44 +44,72 @@
 
                     <Grid Margin="5 10 0 0">
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="80"/>
+                            <ColumnDefinition Width="115"/>
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
                         
                         <TextBlock 
-                               FontSize="14"
+                               FontSize="20"
                                Text="Projekt Ejer:"/>
                         
                         <TextBlock Grid.Column="1"
-                                   FontSize="14"
+                                   FontSize="20"
                                    FontWeight="Medium"
                                    Text="{Binding SelectedProject.Owner}"/>
                     </Grid>
 
                     <Grid Margin="5 10 0 0">
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="90"/>
+                            <ColumnDefinition Width="130"/>
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
 
-                        <TextBlock FontSize="14"
+                        <TextBlock FontSize="20"
                                    Text="Projekt Leder:"/>
 
                         <TextBlock Grid.Column="1"
-                                   FontSize="14"
+                                   FontSize="20"
                                    FontWeight="Medium"
                                    Text="{Binding SelectedProject.Manager}"/>
                     </Grid>
 
                     <TextBlock Text="Beskrivelse: "
                                Margin="5 20 0 0"
-                               FontSize="14"/>
+                               FontSize="20"/>
 
                     <TextBlock Text="{Binding SelectedProject.Description}"
+                               FontSize="15"
                                Margin="5 10 20 0"/>
                     
                 </StackPanel>
             </ScrollViewer>
+
+        </Border>
+
+        <Border Grid.Row="1"
+                Background="White"
+                CornerRadius="10"
+                Visibility="{Binding InformationVisivility}">
+
+            <StackPanel Orientation="Vertical"
+                        Width="400"
+                        VerticalAlignment="Center">
+
+                <TextBlock Text="Klik på et projekt for at læse"
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Bottom"
+                           FontSize="30"
+                           Margin="0 0 0 20"
+                           Opacity="0.3"/>
+
+                <Image Grid.Row="1"
+                       Source="/Resources/Images/read_placeholder.png"
+                       Opacity="0.3"
+                       Width="200"
+                       Height="200"
+                       VerticalAlignment="Top"/>
+
+            </StackPanel>
 
         </Border>
 
@@ -149,7 +177,7 @@
                                     Width="8"
                                     Height="8"
                                     CornerRadius="10"
-                                    Background="Green"/>
+                                    Background="{Binding StatusColor}"/>
 
                         </Grid>
                     </DataTemplate>
