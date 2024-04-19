@@ -7,7 +7,7 @@
         xmlns:viewModel="clr-namespace:Civica.ViewModels"
         mc:Ignorable="d"
         MinHeight="800"
-        MinWidth="1000"
+        MinWidth="1200"
         Icon="/Resources/Images/Civica_Logo.ico"
         Title="Civica Projektstyring" Height="800" Width="1200">
 
@@ -33,17 +33,7 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
-            <Border Grid.Column="1"
-                    HorizontalAlignment="Right"
-                    Margin="0 0 20 0"
-                    Width="40"
-                    Height="40"
-                    Background="#FAFAFA"
-                    BorderBrush="Black"
-                    BorderThickness="1"
-                    CornerRadius="20">
-                
-            </Border>
+            
 
             <TextBlock Text="{Binding ViewTitle, UpdateSourceTrigger=PropertyChanged}"
                        HorizontalAlignment="Left"
@@ -61,7 +51,7 @@
         <Image Source="/Resources/Images/Civica_Logo.png"/>
 
         <StackPanel Grid.Row="1"
-                    Margin="0 5 0 0">
+                    Margin="0 15 0 0">
             <RadioButton Content="Igangværende"
                          FontSize="14"
                          Height="50"
@@ -79,12 +69,16 @@
                          Cursor="Hand"
                          Style="{StaticResource MenuButtonTheme}"/>
 
+            <Border Margin="30 50 30 50"
+                    BorderBrush="#E8E8E8"
+                    BorderThickness="0 1 0 0" Opacity="0.5"/>
+
             <RadioButton Content="Opret"
                          FontSize="14"
                          Height="50"
                          Cursor="Hand"
                          Style="{StaticResource MenuButtonTheme}"
-                         Margin="0 150 0 0"/>
+                         Margin="0 0 0 0"/>
             <RadioButton Content="Opdater oplysninger"
                          FontSize="14"
                          Cursor="Hand"
