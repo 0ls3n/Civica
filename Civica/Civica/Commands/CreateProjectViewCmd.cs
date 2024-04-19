@@ -32,7 +32,7 @@ namespace Civica.Commands
             if (parameter is MainViewModel mvm)
             {
                 mvm.CurrentView = mvm.CPVM;
-                mvm.ViewTitle = mvm.CPVM.Title;
+                mvm.ViewTitle = mvm.CPVM.WindowTitle;
             }
         }
     }

@@ -10,14 +10,14 @@ namespace Civica.ViewModels
 {
     public class InProgressViewModel : ObservableObject
     {
-        private string _title;
-        public string Title
+        private string _Windowtitle;
+        public string WindowTitle
         {
-            get => _title;
+            get => _Windowtitle;
             set
             {
-                _title = value;
-                OnPropertyChanged(nameof(Title));
+                _Windowtitle = value;
+                OnPropertyChanged(nameof(WindowTitle));
             }
         }
 
@@ -35,7 +35,7 @@ namespace Civica.ViewModels
         public ObservableCollection<ProjectViewModel> Projects { get; set; } = new ObservableCollection<ProjectViewModel>();
 
         private ProjectViewModel _selectedProject = null;
-        public ProjectViewModel SelectedProject 
+        public ProjectViewModel SelectedProject
         {
             get => _selectedProject;
             set
@@ -51,6 +51,7 @@ namespace Civica.ViewModels
 
         public InProgressViewModel()
         {
+
             foreach (Project p in projectRepo.GetAll())
             {
                 Projects.Add(new ProjectViewModel(p));
@@ -61,25 +62,43 @@ namespace Civica.ViewModels
             {
                 List<Progress> sortedList = progressRepo.Get(p.GetId()).OrderByDescending(x => x.Date).ToList();
 
-                switch(sortedList.FirstOrDefault().Status)
+                Progress prog = sortedList.FirstOrDefault();
+
+                if (prog != null)
                 {
-                    case Models.Enums.Status.ON_TRACK:
-                        p.StatusColor = "#008000";
-                        break;
-                    case Models.Enums.Status.DELAYED:
-                        p.StatusColor = "#FDC300";
-                        break;
-                    case Models.Enums.Status.CRITICAL:
-                        p.StatusColor = "#E20F1A";
-                        break;
-                    default:
-                        p.StatusColor = "#E8E8E8";
-                        break;
+                    switch (prog.Status)
+                    {
+                        case Models.Enums.Status.ON_TRACK:
+                            p.StatusColor = "#008000";
+                            break;
+                        case Models.Enums.Status.DELAYED:
+                            p.StatusColor = "#FDC300";
+                            break;
+                        case Models.Enums.Status.CRITICAL:
+                            p.StatusColor = "#E20F1A";
+                            break;
+                        default:
+                            p.StatusColor = "#E8E8E8";
+                            break;
+                    }
+                } else
+                {
+                    p.StatusColor = "#E8E8E8";
                 }
+
             }
             #endregion
 
-            Title = "Igangværende";
+            WindowTitle = "Igangværende";
+        }
+
+        public void UpdateList()
+        {
+            Projects.Clear();
+            foreach (Project p in projectRepo.GetAll())
+            {
+                Projects.Add(new ProjectViewModel(p));
+            }
         }
     }
 }

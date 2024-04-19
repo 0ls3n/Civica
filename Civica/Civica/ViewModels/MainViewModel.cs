@@ -148,7 +148,7 @@ namespace Civica.ViewModels
             IPVM = new InProgressViewModel();
             CPVM = new CreateProjectViewModel();
             CurrentView = IPVM;
-            ViewTitle = IPVM.Title;
+            ViewTitle = IPVM.WindowTitle;
         }
         #endregion
     }

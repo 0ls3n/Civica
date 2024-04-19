@@ -75,7 +75,7 @@
                     BorderBrush="#E8E8E8"
                     BorderThickness="0 1 0 0" Opacity="0.5"/>
 
-            <RadioButton Content="Opret"
+            <RadioButton Content="Opret Projekt"
                          FontSize="14"
                          Height="50"
                          Cursor="Hand"
@@ -88,7 +88,7 @@
                          Cursor="Hand"
                          Style="{StaticResource MenuButtonTheme}"
                          Height="50"/>
-            <RadioButton Content="Slet"
+            <RadioButton Content="Slet Projekt"
                          FontSize="14"
                          Cursor="Hand"
                          Style="{StaticResource MenuButtonTheme}"
