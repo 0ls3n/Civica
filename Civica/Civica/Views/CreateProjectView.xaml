@@ -11,9 +11,6 @@
         <viewModel:CreateProjectViewModel/>
     </UserControl.DataContext>
     <Grid>
-        <TextBlock HorizontalAlignment="Center"
-                   VerticalAlignment="Center"
-                   Text="{Binding Title}"
-                   FontSize="50"/>
+        
     </Grid>
 </UserControl>
