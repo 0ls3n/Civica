@@ -25,39 +25,40 @@ namespace Civica.Commands
 
         private MainViewModel mvm;
 
-        public CreateProjectCmd(MainViewModel mvm)
-        {
-            this.mvm = mvm;
-        }
+        //public CreateProjectCmd(MainViewModel mvm)
+        //{
+        //    this.mvm = mvm;
+        //}
 
         public bool CanExecute(object? parameter)
         {
-            bool succes = false;
+            //bool succes = false;
 
-            if (parameter is CreateProjectViewModel mvm)
-            {
-                if (!string.IsNullOrEmpty(mvm.ProjectName))
-                {
-                    succes = true;
-                }
-            }
-            return succes;
+            //if (parameter is CreateProjectViewModel mvm)
+            //{
+            //    if (!string.IsNullOrEmpty(mvm.ProjectName))
+            //    {
+            //        succes = true;
+            //    }
+            //}
+            //return succes;
+            return true;
         }
 
         public void Execute(object? parameter)
         {
-            if (parameter is CreateProjectViewModel cpvm)
-            {
-                if (mvm.Projects.FirstOrDefault(x => x.Name.ToLower() == cpvm.ProjectName.ToLower()) is null)
-                {
-                    mvm.CreateNewProject(cpvm.ProjectName, cpvm.Owner, cpvm.Manager, cpvm.Description);
-                    MessageBox.Show($"Projekt '{cpvm.ProjectName}' oprettet!\nTryk for at afslutte.");
-                }
-                else
-                {
-                    MessageBox.Show($"Projekt '{cpvm.ProjectName}' findes allerede!\nTryk for at afslutte.");
-                }
-            }
+            //if (parameter is CreateProjectViewModel cpvm)
+            //{
+            //    if (mvm.Projects.FirstOrDefault(x => x.Name.ToLower() == cpvm.ProjectName.ToLower()) is null)
+            //    {
+            //        mvm.CreateNewProject(cpvm.ProjectName, cpvm.Owner, cpvm.Manager, cpvm.Description);
+            //        MessageBox.Show($"Projekt '{cpvm.ProjectName}' oprettet!\nTryk for at afslutte.");
+            //    }
+            //    else
+            //    {
+            //        MessageBox.Show($"Projekt '{cpvm.ProjectName}' findes allerede!\nTryk for at afslutte.");
+            //    }
+            //}
         }
     }
 }

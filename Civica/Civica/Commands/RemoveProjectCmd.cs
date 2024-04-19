@@ -11,31 +11,31 @@ using System.Windows.Input;
 
 namespace Civica.Commands
 {
-    public class RemoveProjectCmd : ICommand
-    {
-        public event EventHandler? CanExecuteChanged
-        {
-            add {
-                CommandManager.RequerySuggested += value;
-            }
-            remove {
-                CommandManager.RequerySuggested -= value;
-            }
-        }
+    //public class RemoveProjectCmd : ICommand
+    //{
+    //    public event EventHandler? CanExecuteChanged
+    //    {
+    //        add {
+    //            CommandManager.RequerySuggested += value;
+    //        }
+    //        remove {
+    //            CommandManager.RequerySuggested -= value;
+    //        }
+    //    }
 
-        public bool CanExecute(object? parameter)
-        {
-            bool succes = true;
+    //    public bool CanExecute(object? parameter)
+    //    {
+    //        bool succes = true;
 
-            return succes;
-        }
+    //        return succes;
+    //    }
 
-        public void Execute(object? parameter)
-        {
-            if (parameter is MainViewModel mvm)
-            {
-                mvm.RemoveProject();
-            }
-        }
-    }
+    //    public void Execute(object? parameter)
+    //    {
+    //        if (parameter is MainViewModel mvm)
+    //        {
+    //            mvm.RemoveProject();
+    //        }
+    //    }
+    //}
 }
