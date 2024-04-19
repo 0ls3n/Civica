@@ -42,7 +42,7 @@ namespace Civica.Commands
 
             if (parameter is CreateProjectViewModel CPVM)
             {
-                CPVM.CreateProject(CPVM.ProjectName, CPVM.ProjectOwner, CPVM.ProjectManager, CPVM.ProjectDescription);
+                CPVM.CreateProject();
                 MessageBox.Show("Projekt er oprettet");
             }
         }

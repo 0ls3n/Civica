@@ -22,7 +22,7 @@ namespace Civica.ViewModels
             }
         }
 
-        private string _projectName;
+        private string _projectName = "";
         public string ProjectName
         {
             get => _projectName;
@@ -33,7 +33,7 @@ namespace Civica.ViewModels
             }
         }
 
-        private string _projectOwner;
+        private string _projectOwner = "";
         public string ProjectOwner
         {
             get => _projectOwner;
@@ -44,7 +44,7 @@ namespace Civica.ViewModels
             }
         }
 
-        private string _projectManager;
+        private string _projectManager = "";
 
         public string ProjectManager
         {
@@ -56,7 +56,7 @@ namespace Civica.ViewModels
             }
         }
 
-        private string _projectDescription;
+        private string _projectDescription = "";
 
         public string ProjectDescription
         {
@@ -77,9 +77,9 @@ namespace Civica.ViewModels
             WindowTitle = "Opret";
         }
 
-        public void CreateProject(string name, string owner = "", string manager = "", string description = "")
+        public void CreateProject()
         {
-            Project p = new Project(name, owner, manager, description);
+            Project p = new Project(ProjectName, ProjectOwner, ProjectManager, ProjectDescription);
             projectRepo.Add(p);
         }
 
