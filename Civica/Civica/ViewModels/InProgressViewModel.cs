@@ -1,10 +1,12 @@
-﻿using Civica.Models;
+﻿using Civica.Commands;
+using Civica.Models;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 
 namespace Civica.ViewModels
 {
@@ -34,7 +36,7 @@ namespace Civica.ViewModels
 
         public ObservableCollection<ProjectViewModel> Projects { get; set; } = new ObservableCollection<ProjectViewModel>();
 
-        private ProjectViewModel _selectedProject = null;
+        private ProjectViewModel _selectedProject;
         public ProjectViewModel SelectedProject
         {
             get => _selectedProject;
@@ -46,18 +48,27 @@ namespace Civica.ViewModels
             }
         }
 
+        public ICommand RemoveProjectCmd { get; set; } = new RemoveProjectCmd();
+
         private ProjectRepository projectRepo = new ProjectRepository();
         private ProgressRepository progressRepo = new ProgressRepository();
 
         public InProgressViewModel()
         {
 
+            UpdateList();
+
+            WindowTitle = "Igangværende";
+        }
+
+        public void UpdateList()
+        {
+            Projects.Clear();
             foreach (Project p in projectRepo.GetAll())
             {
                 Projects.Add(new ProjectViewModel(p));
             }
 
-            #region ColorCodingForProjects
             foreach (ProjectViewModel p in Projects)
             {
                 List<Progress> sortedList = progressRepo.Get(p.GetId()).OrderByDescending(x => x.Date).ToList();
@@ -81,24 +92,18 @@ namespace Civica.ViewModels
                             p.StatusColor = "#E8E8E8";
                             break;
                     }
-                } else
+                }
+                else
                 {
                     p.StatusColor = "#E8E8E8";
                 }
-
             }
-            #endregion
-
-            WindowTitle = "Igangværende";
         }
 
-        public void UpdateList()
+        public void RemoveProject()
         {
-            Projects.Clear();
-            foreach (Project p in projectRepo.GetAll())
-            {
-                Projects.Add(new ProjectViewModel(p));
-            }
+            projectRepo.Remove(projectRepo.Get(SelectedProject.GetId()));
+            UpdateList();
         }
     }
 }

@@ -88,11 +88,6 @@
                          Cursor="Hand"
                          Style="{StaticResource MenuButtonTheme}"
                          Height="50"/>
-            <RadioButton Content="Slet Projekt"
-                         FontSize="14"
-                         Cursor="Hand"
-                         Style="{StaticResource MenuButtonTheme}"
-                         Height="50"/>
         </StackPanel>
 
         <Border Grid.Column="1"

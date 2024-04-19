@@ -47,11 +47,11 @@
                             <ColumnDefinition Width="115"/>
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
-                        
+
                         <TextBlock 
                                FontSize="20"
                                Text="Projekt Ejer:"/>
-                        
+
                         <TextBlock Grid.Column="1"
                                    FontSize="20"
                                    FontWeight="Medium"
@@ -80,7 +80,7 @@
                     <TextBlock Text="{Binding SelectedProject.Description}"
                                FontSize="15"
                                Margin="5 10 20 0"/>
-                    
+
                 </StackPanel>
             </ScrollViewer>
 
@@ -128,49 +128,57 @@
                 CornerRadius="10"
                 Margin="30 0 0 0">
 
-            <ListBox Background="Transparent"
+            <Grid>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="75"/>
+                </Grid.RowDefinitions>
+
+                <ListBox Background="Transparent"
                      Margin="10"
+                         Grid.RowSpan="2"
                      MouseDoubleClick="ListBox_MouseDoubleClick"
                      BorderThickness="0"
+                     ScrollViewer.HorizontalScrollBarVisibility="Hidden"
                      ItemsSource="{Binding Projects}"
                      SelectedItem="{Binding SelectedProject}">
 
-                <ListBox.ItemTemplate>
-                    <DataTemplate>
-                        <Grid>
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
 
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="*"/>
-                                <RowDefinition Height="*"/>
-                            </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="50"/>
+                                    <ColumnDefinition Width="285"/>
+                                </Grid.ColumnDefinitions>
 
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="50"/>
-                                <ColumnDefinition Width="285"/>
-                            </Grid.ColumnDefinitions>
-
-                            <Border Grid.RowSpan="2"
+                                <Border Grid.RowSpan="2"
                                     Grid.Column="1"
                                     Margin="10 0 0 0"
-                                    Width="335"
+                                    Width="325"
                                     Height="50"
                                     BorderThickness="0 0 0 1"
                                     BorderBrush="#E8E8E8">
 
-                            </Border>
+                                </Border>
 
-                            <TextBlock Grid.Column="1"
+                                <TextBlock Grid.Column="1"
                                        Margin="10 5 0 0"
                                        FontWeight="Medium"
                                        Text="{Binding Name}"/>
 
-                            <TextBlock Grid.Column="1"
+                                <TextBlock Grid.Column="1"
                                        Margin="10 0 0 0"
                                        Grid.Row="1"
                                        Foreground="#8A8A8A"
                                        Text="{Binding Manager}"/>
 
-                            <Border Grid.Column="0"
+                                <Border Grid.Column="0"
                                     HorizontalAlignment="Left"
                                     Margin="20 0 0 0"
                                     Grid.RowSpan="2"
@@ -179,14 +187,66 @@
                                     CornerRadius="10"
                                     Background="{Binding StatusColor}"/>
 
-                        </Grid>
-                    </DataTemplate>
-                </ListBox.ItemTemplate>
+                            </Grid>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
 
-            </ListBox>
+                </ListBox>
+
+                <Border Grid.Row="1">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="100"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Button Grid.Column="1"
+                                Margin="0 0 30 0"
+                                BorderThickness="0"
+                                Width="60"
+                                Cursor="Hand"
+                                Height="60"
+                                Command="{Binding RemoveProjectCmd}"
+                                CommandParameter="{Binding}">
+
+                            <Button.Style>
+                                <Style TargetType="Button">
+                                    <Setter Property="Background" Value="#FDC300"/>
+
+                                    <Style.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter Property="Background" Value="#FFFFD134"/>
+                                        </Trigger>
+                                    </Style.Triggers>
+
+                                </Style>
+                            </Button.Style>
+
+
+                            <Button.Template>
+                                <ControlTemplate TargetType="Button">
+                                    <Border Width="50" 
+                                            Height="50"
+                                            Background="{TemplateBinding Background}"
+                                            CornerRadius="25">
+                                        <Image Source="/Resources/Images/remove_logo.png" 
+                                               Width="20"/>
+                                    </Border>
+                                </ControlTemplate>
+                            </Button.Template>
+
+                        </Button>
+
+
+
+
+                    </Grid>
+                </Border>
+
+            </Grid>
 
         </Border>
-        
+
 
 
     </Grid>
