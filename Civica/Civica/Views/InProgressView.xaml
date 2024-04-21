@@ -79,7 +79,8 @@
 
                     <TextBlock Text="{Binding SelectedProject.Description}"
                                FontSize="15"
-                               Margin="5 10 20 0"/>
+                               Margin="5 10 20 0"
+                               TextWrapping="Wrap"/>
 
                 </StackPanel>
             </ScrollViewer>
