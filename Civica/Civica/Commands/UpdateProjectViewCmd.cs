@@ -8,7 +8,7 @@ using System.Windows.Input;
 
 namespace Civica.Commands
 {
-    public class CreateProjectViewCmd : ICommand
+    public class UpdateProjectViewCmd : ICommand
     {
         public event EventHandler? CanExecuteChanged
         {
@@ -24,16 +24,23 @@ namespace Civica.Commands
 
         public bool CanExecute(object? parameter)
         {
-            return true;
+            if (parameter is InProgressViewModel ipvm)
+            {
+                if (ipvm.SelectedProject != null)
+                {
+                    return true;
+                }
+            }
+            return false;
         }
 
         public void Execute(object? parameter)
         {
             if (parameter is InProgressViewModel ipvm)
             {
-                ipvm.CreateVisibility = "Visible";
+                ipvm.EditVisibility = "Visible";
                 ipvm.InformationVisibility = "Hidden";
-                ipvm.EditVisibility = "Hidden";
+                ipvm.CreateVisibility = "Hidden";
                 ipvm.ProgressVisibility = "Hidden";
             }
         }

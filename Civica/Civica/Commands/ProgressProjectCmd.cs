@@ -1,4 +1,5 @@
 ﻿using Civica.Models;
+using Civica.Models.Enums;
 using Civica.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -10,47 +11,48 @@ using System.Windows.Input;
 
 namespace Civica.Commands
 {
-    //public class ProgressProjectCmd : ICommand
-    //{
-    //    public event EventHandler? CanExecuteChanged
-    //    {
-    //        add
-    //        {
-    //            CommandManager.RequerySuggested += value;
-    //        }
-    //        remove
-    //        {
-    //            CommandManager.RequerySuggested -= value;
-    //        }
-    //    }
+    public class ProgressProjectCmd : ICommand
+    {
+        public event EventHandler? CanExecuteChanged
+        {
+            add
+            {
+                CommandManager.RequerySuggested += value;
+            }
+            remove
+            {
+                CommandManager.RequerySuggested -= value;
+            }
+        }
 
-    //    private MainViewModel mvm;
+        public bool CanExecute(object? parameter)
+        {
+            bool succes = false;
 
-    //    public ProgressProjectCmd(MainViewModel mvm)
-    //    {
-    //        this.mvm = mvm;
-    //    }
+            if (parameter is InProgressViewModel ipvm)
+            {
+                if (ipvm.SelectedProject is not null)
+                {
+                    if (!string.IsNullOrEmpty(ipvm.ProgressDescription))
+                    {
+                        succes = true;
+                    }
+                }
+            }
+            return succes;
+        }
 
-    //    public bool CanExecute(object? parameter)
-    //    {
-    //        bool succes = false;
+        public void Execute(object? parameter)
+        {
+            if (parameter is InProgressViewModel ipvm)
+            {
+                ipvm.Progress(ipvm.Phase, ipvm.Status, ipvm.ProgressDescription);
 
-    //        if (parameter is ProgressProjectViewModel pvm)
-    //        {
-    //            if (!string.IsNullOrEmpty(pvm.Description))
-    //            {
-    //                succes = true;
-    //            }
-    //        }
-    //        return succes;
-    //    }
+                ipvm.UpdateList();
 
-    //    public void Execute(object? parameter)
-    //    {
-    //        if (parameter is ProgressProjectViewModel ppvm)
-    //        {
-    //            mvm.ProgressProject(ppvm.Phase, ppvm.Status, ppvm.Description);
-    //        }
-    //    }
-    //}
+                ipvm.ProgressVisibility = "Hidden";
+                ipvm.InformationVisibility = "Visible";
+            }
+        }
+    }
 }

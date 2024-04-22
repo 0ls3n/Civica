@@ -1,4 +1,5 @@
-﻿using Civica.ViewModels;
+﻿using Civica.Models.Enums;
+using Civica.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +9,7 @@ using System.Windows.Input;
 
 namespace Civica.Commands
 {
-    public class CreateProjectViewCmd : ICommand
+    public class ProgressProjectViewCmd : ICommand
     {
         public event EventHandler? CanExecuteChanged
         {
@@ -24,17 +25,28 @@ namespace Civica.Commands
 
         public bool CanExecute(object? parameter)
         {
-            return true;
+            if (parameter is InProgressViewModel ipvm)
+            {
+                if (ipvm.SelectedProject != null)
+                {
+                    return true;
+                }
+            }
+            return false;
         }
 
         public void Execute(object? parameter)
         {
             if (parameter is InProgressViewModel ipvm)
             {
-                ipvm.CreateVisibility = "Visible";
-                ipvm.InformationVisibility = "Hidden";
+                ipvm.ProgressDescription = "";
+                ipvm.Phase = Phase.IDENTIFIED;
+                ipvm.Status = Status.NONE;
+
+                ipvm.ProgressVisibility = "Visible";
                 ipvm.EditVisibility = "Hidden";
-                ipvm.ProgressVisibility = "Hidden";
+                ipvm.InformationVisibility = "Hidden";
+                ipvm.CreateVisibility = "Hidden";
             }
         }
     }
