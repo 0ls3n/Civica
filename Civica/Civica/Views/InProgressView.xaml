@@ -50,7 +50,7 @@
 
                         <TextBlock 
                                FontSize="20"
-                               Text="Projekt Ejer:"/>
+                               Text="Projektejer:"/>
 
                         <TextBlock Grid.Column="1"
                                    FontSize="20"
@@ -65,7 +65,7 @@
                         </Grid.ColumnDefinitions>
 
                         <TextBlock FontSize="20"
-                                   Text="Projekt Leder:"/>
+                                   Text="Projektleder:"/>
 
                         <TextBlock Grid.Column="1"
                                    FontSize="20"
@@ -73,7 +73,7 @@
                                    Text="{Binding SelectedProject.Manager}"/>
                     </Grid>
 
-                    <TextBlock Text="Beskrivelse: "
+                    <TextBlock Text="Projektbeskrivelse: "
                                Margin="5 20 0 0"
                                FontSize="20"/>
 

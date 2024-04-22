@@ -132,6 +132,8 @@ namespace Civica.ViewModels
         public ICommand UpdateProjectCmd { get; set; } = new UpdateProjectCmd();
 
         #endregion
+
+        #region Progress
         public IEnumerable<Phase> Phases => Enum.GetValues(typeof(Phase)).Cast<Phase>();
         public IEnumerable<Status> Statuses => Enum.GetValues(typeof(Status)).Cast<Status>();
         public ObservableCollection<ProgressViewModel> SelectedProgresses { get; set; } = new ObservableCollection<ProgressViewModel>();
@@ -202,7 +204,6 @@ namespace Civica.ViewModels
             }
         }
 
-        #region Progress
         public void Progress(Phase fase, Status status, string description)
         {
             Progress prog = new Progress(SelectedProject.GetId(), fase, status, DateTime.Now, description);

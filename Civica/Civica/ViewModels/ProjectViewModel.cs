@@ -19,8 +19,6 @@ namespace Civica.ViewModels
         {
             get
             {
-                if (_owner == string.Empty)
-                    return "Ingen";
                 return _owner;
             }
             set { _owner = value; }
@@ -31,8 +29,6 @@ namespace Civica.ViewModels
         {
             get
             {
-                if (_manager == string.Empty)
-                    return "Ingen";
                 return _manager;
             }
             set { _manager = value; }
@@ -43,9 +39,6 @@ namespace Civica.ViewModels
         {
             get
             {
-                if (_description == string.Empty)
-                    return "Ingen beskrivelse";
-
                 return _description;
             }
             set { _description = value; }
