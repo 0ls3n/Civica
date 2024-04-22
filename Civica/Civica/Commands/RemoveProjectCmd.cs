@@ -49,13 +49,8 @@ namespace Civica.Commands
 
                 if (result == MessageBoxResult.OK)
                 {
-                    MessageBox.Show($"'{ipvm.SelectedProject.Name}' slettet.");
                     ipvm.RemoveProject();
                     ipvm.InformationVisibility = "Visible";
-                }
-                else
-                {
-                    MessageBox.Show($"'{ipvm.SelectedProject.Name}' blev ikke slettet.");
                 }
             }
         }
