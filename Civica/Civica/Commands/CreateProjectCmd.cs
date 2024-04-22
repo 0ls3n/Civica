@@ -1,8 +1,6 @@
-﻿using Civica.Models;
-using Civica.ViewModels;
+﻿using Civica.ViewModels;
 using System;
 using System.Collections.Generic;
-using System.DirectoryServices.ActiveDirectory;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,10 +13,12 @@ namespace Civica.Commands
     {
         public event EventHandler? CanExecuteChanged
         {
-            add {
+            add
+            {
                 CommandManager.RequerySuggested += value;
             }
-            remove {
+            remove
+            {
                 CommandManager.RequerySuggested -= value;
             }
         }
@@ -27,9 +27,9 @@ namespace Civica.Commands
         {
             bool succes = false;
 
-            if (parameter is CreateProjectViewModel CPVM)
+            if (parameter is InProgressViewModel ipvm)
             {
-                if (!string.IsNullOrEmpty(CPVM.ProjectName))
+                if (!string.IsNullOrEmpty(ipvm.ProjectName))
                 {
                     succes = true;
                 }
@@ -40,10 +40,11 @@ namespace Civica.Commands
         public void Execute(object? parameter)
         {
 
-            if (parameter is CreateProjectViewModel CPVM)
+            if (parameter is InProgressViewModel ipvm)
             {
-                CPVM.CreateProject();
-                MessageBox.Show("Projekt er oprettet");
+                ipvm.CreateProject();
+                ipvm.CreateVisibility = "Hidden";
+                ipvm.InformationVisibility = "Visible";
             }
         }
     }

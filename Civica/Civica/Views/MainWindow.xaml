@@ -59,7 +59,7 @@
                          IsChecked="True"
                          Cursor="Hand"
                          Style="{StaticResource MenuButtonTheme}"
-                         Command="{Binding IPVMCmd}"
+                         Command="{Binding InProgressViewCmd}"
                          CommandParameter="{Binding}"/>
             <RadioButton Content="Identificeret"
                          FontSize="14"
@@ -75,15 +75,6 @@
             <Border Margin="30 50 30 50"
                     BorderBrush="#E8E8E8"
                     BorderThickness="0 1 0 0" Opacity="0.5"/>
-
-            <RadioButton Content="Opret projekt"
-                         FontSize="14"
-                         Height="50"
-                         Cursor="Hand"
-                         Style="{StaticResource MenuButtonTheme}"
-                         Margin="0 0 0 0"
-                         Command="{Binding CPVMCmd}"
-                         CommandParameter="{Binding}"/>
         </StackPanel>
 
         <Border Grid.Column="1"
