@@ -33,7 +33,6 @@ namespace Civica.Commands
             {
                 mvm.CurrentView = mvm.IPVM;
                 mvm.ViewTitle = mvm.IPVM.WindowTitle;
-                mvm.IPVM.UpdateList();
             }
         }
     }

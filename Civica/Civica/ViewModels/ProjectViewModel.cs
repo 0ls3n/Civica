@@ -44,7 +44,7 @@ namespace Civica.ViewModels
             get
             {
                 if (_description == string.Empty)
-                    return "Ingen Beskrivelse";
+                    return "Ingen beskrivelse";
 
                 return _description;
             }

@@ -24,13 +24,13 @@ namespace Civica.ViewModels
         }
 
         private string _informationVisibility;
-        public string InformationVisivility
+        public string InformationVisibility
         {
             get => _informationVisibility;
             set
             {
                 _informationVisibility = value;
-                OnPropertyChanged(nameof(InformationVisivility));
+                OnPropertyChanged(nameof(InformationVisibility));
             }
         }
 
@@ -43,7 +43,7 @@ namespace Civica.ViewModels
             set
             {
                 _selectedProject = value;
-                InformationVisivility = "Hidden";
+                InformationVisibility = "Hidden";
                 OnPropertyChanged(nameof(SelectedProject));
             }
         }

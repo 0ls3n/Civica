@@ -45,7 +45,7 @@ namespace Civica.Commands
             if (parameter is InProgressViewModel IPVM)
             {
                 IPVM.RemoveProject();
-                IPVM.InformationVisivility = "Visible";
+                IPVM.InformationVisibility = "Visible";
             }
         }
     }

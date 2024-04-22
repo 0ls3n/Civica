@@ -90,7 +90,7 @@
         <Border Grid.Row="1"
                 Background="White"
                 CornerRadius="10"
-                Visibility="{Binding InformationVisivility}">
+                Visibility="{Binding InformationVisibility}">
 
             <StackPanel Orientation="Vertical"
                         Width="400"
@@ -112,6 +112,10 @@
 
             </StackPanel>
 
+        </Border>
+
+        <Border Grid.Row="1">
+            
         </Border>
 
 
@@ -137,7 +141,7 @@
                 </Grid.RowDefinitions>
 
                 <ListBox Background="Transparent"
-                     Margin="10"
+                     Margin="10 0 10 75"
                          Grid.RowSpan="2"
                      MouseDoubleClick="ListBox_MouseDoubleClick"
                      BorderThickness="0"
