@@ -29,15 +29,18 @@ namespace Civica.ViewModels
             }
             set
             {
-                selectedProject = value;
-                OnPropertyChanged(nameof(SelectedProject));
-                OnPropertyChanged(nameof(CanUpdateProject));
-
-                SelectedProgresses.Clear();
-
-                foreach (Progress prog in progressRepo.Get(SelectedProject.GetId()))
+                if (value is not null)
                 {
-                    SelectedProgresses.Add(new ProgressViewModel(prog));
+                    selectedProject = value;
+                    OnPropertyChanged(nameof(SelectedProject));
+                    OnPropertyChanged(nameof(CanUpdateProject));
+
+                    SelectedProgresses.Clear();
+
+                    foreach (Progress prog in progressRepo.Get(SelectedProject.GetId()))
+                    {
+                        SelectedProgresses.Add(new ProgressViewModel(prog));
+                    }
                 }
             }
         }
