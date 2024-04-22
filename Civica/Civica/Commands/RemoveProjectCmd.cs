@@ -29,9 +29,9 @@ namespace Civica.Commands
         {
             bool succes = false;
 
-            if (parameter is InProgressViewModel IPVM)
+            if (parameter is InProgressViewModel ipvm)
             {
-                if (IPVM.SelectedProject != null)
+                if (ipvm.SelectedProject != null)
                 {
                     succes = true;
                 }
@@ -42,10 +42,21 @@ namespace Civica.Commands
 
         public void Execute(object? parameter)
         {
-            if (parameter is InProgressViewModel IPVM)
+            if (parameter is InProgressViewModel ipvm)
             {
-                IPVM.RemoveProject();
-                IPVM.InformationVisibility = "Visible";
+                MessageBoxButton button = MessageBoxButton.OKCancel;
+                MessageBoxResult result = MessageBox.Show($"Er du sikker på du vil slette '{ipvm.SelectedProject.Name}'?", "Bekræft sletning", button);
+
+                if (result == MessageBoxResult.OK)
+                {
+                    MessageBox.Show($"'{ipvm.SelectedProject.Name}' slettet.");
+                    ipvm.RemoveProject();
+                    ipvm.InformationVisibility = "Visible";
+                }
+                else
+                {
+                    MessageBox.Show($"'{ipvm.SelectedProject.Name}' blev ikke slettet.");
+                }
             }
         }
     }
