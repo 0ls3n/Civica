@@ -1,0 +1,259 @@
+﻿<UserControl x:Class="Civica.Views.InProgressView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:viewModel="clr-namespace:Civica.ViewModels"
+             xmlns:local="clr-namespace:Civica.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="650" d:DesignWidth="1200">
+
+    <UserControl.DataContext>
+        <viewModel:InProgressViewModel/>
+    </UserControl.DataContext>
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition MaxWidth="400"
+                              MinWidth="400"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.Row="0"
+                   Grid.Column="0"
+                   Text="Info"
+                   HorizontalAlignment="Left"
+                   VerticalAlignment="Bottom"
+                   Margin="0 0 0 10"
+                   Foreground="#8A8A8A"/>
+
+        <Border Grid.Row="1"
+                Background="White"
+                CornerRadius="10">
+
+            <ScrollViewer Margin="0 10 0 10">
+                <StackPanel Orientation="Vertical">
+                    <TextBlock Text="{Binding SelectedProject.Name}"
+                               TextAlignment="Center"
+                               FontSize="30"/>
+
+                    <Grid Margin="5 10 0 0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="115"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock 
+                               FontSize="20"
+                               Text="Projekt Ejer:"/>
+
+                        <TextBlock Grid.Column="1"
+                                   FontSize="20"
+                                   FontWeight="Medium"
+                                   Text="{Binding SelectedProject.Owner}"/>
+                    </Grid>
+
+                    <Grid Margin="5 10 0 0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="130"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock FontSize="20"
+                                   Text="Projekt Leder:"/>
+
+                        <TextBlock Grid.Column="1"
+                                   FontSize="20"
+                                   FontWeight="Medium"
+                                   Text="{Binding SelectedProject.Manager}"/>
+                    </Grid>
+
+                    <TextBlock Text="Beskrivelse: "
+                               Margin="5 20 0 0"
+                               FontSize="20"/>
+
+                    <TextBlock Text="{Binding SelectedProject.Description}"
+                               FontSize="15"
+                               Margin="5 10 20 0"
+                               TextWrapping="Wrap"/>
+
+                </StackPanel>
+            </ScrollViewer>
+
+        </Border>
+
+        <Border Grid.Row="1"
+                Background="White"
+                CornerRadius="10"
+                Visibility="{Binding InformationVisibility}">
+
+            <StackPanel Orientation="Vertical"
+                        Width="400"
+                        VerticalAlignment="Center">
+
+                <TextBlock Text="Klik på et projekt for at læse"
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Bottom"
+                           FontSize="30"
+                           Margin="0 0 0 20"
+                           Opacity="0.3"/>
+
+                <Image Grid.Row="1"
+                       Source="/Resources/Images/read_placeholder.png"
+                       Opacity="0.3"
+                       Width="200"
+                       Height="200"
+                       VerticalAlignment="Top"/>
+
+            </StackPanel>
+
+        </Border>
+
+        <Border Grid.Row="1">
+            
+        </Border>
+
+
+        <TextBlock Grid.Row="0"
+                   Grid.Column="1"
+                   Text="Projekter"
+                   HorizontalAlignment="Left"
+                   VerticalAlignment="Bottom"
+                   Margin="30 0 0 10"
+                   Foreground="#8A8A8A"/>
+
+        <Border Grid.Column="1"
+                Grid.Row="1"
+                Background="White"
+                CornerRadius="10"
+                Margin="30 0 0 0">
+
+            <Grid>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="75"/>
+                </Grid.RowDefinitions>
+
+                <ListBox Background="Transparent"
+                     Margin="10 0 10 75"
+                         Grid.RowSpan="2"
+                     MouseDoubleClick="ListBox_MouseDoubleClick"
+                     BorderThickness="0"
+                     ScrollViewer.HorizontalScrollBarVisibility="Hidden"
+                     ItemsSource="{Binding Projects}"
+                     SelectedItem="{Binding SelectedProject}">
+
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="50"/>
+                                    <ColumnDefinition Width="285"/>
+                                </Grid.ColumnDefinitions>
+
+                                <Border Grid.RowSpan="2"
+                                    Grid.Column="1"
+                                    Margin="10 0 0 0"
+                                    Width="325"
+                                    Height="50"
+                                    BorderThickness="0 0 0 1"
+                                    BorderBrush="#E8E8E8">
+
+                                </Border>
+
+                                <TextBlock Grid.Column="1"
+                                       Margin="10 5 0 0"
+                                       FontWeight="Medium"
+                                       Text="{Binding Name}"/>
+
+                                <TextBlock Grid.Column="1"
+                                       Margin="10 0 0 0"
+                                       Grid.Row="1"
+                                       Foreground="#8A8A8A"
+                                       Text="{Binding Manager}"/>
+
+                                <Border Grid.Column="0"
+                                    HorizontalAlignment="Left"
+                                    Margin="20 0 0 0"
+                                    Grid.RowSpan="2"
+                                    Width="8"
+                                    Height="8"
+                                    CornerRadius="10"
+                                    Background="{Binding StatusColor}"/>
+
+                            </Grid>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+
+                </ListBox>
+
+                <Border Grid.Row="1">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="100"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Button Grid.Column="1"
+                                BorderThickness="0"
+                                HorizontalAlignment="Right"
+                                Margin="0 0 10 0"
+                                Width="60"
+                                Cursor="Hand"
+                                Height="60"
+                                Command="{Binding RemoveProjectCmd}"
+                                CommandParameter="{Binding}">
+
+                            <Button.Style>
+                                <Style TargetType="Button">
+                                    <Setter Property="Background" Value="#FDC300"/>
+
+                                    <Style.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter Property="Background" Value="#FFFFD134"/>
+                                        </Trigger>
+                                    </Style.Triggers>
+
+                                </Style>
+                            </Button.Style>
+
+
+                            <Button.Template>
+                                <ControlTemplate TargetType="Button">
+                                    <Border Width="50" 
+                                            Height="50"
+                                            Background="{TemplateBinding Background}"
+                                            CornerRadius="25">
+                                        <Image Source="/Resources/Images/remove_logo.png" 
+                                               Width="25"/>
+                                    </Border>
+                                </ControlTemplate>
+                            </Button.Template>
+
+                        </Button>
+
+
+
+
+                    </Grid>
+                </Border>
+
+            </Grid>
+
+        </Border>
+
+
+
+    </Grid>
+</UserControl>

@@ -1,29 +1,25 @@
-﻿using System;
+﻿using Civica.Commands;
+using Civica.Models;
+using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.ComponentModel;
 using System.Linq;
-using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
-using Civica.Commands;
-using Civica.Models;
-using Microsoft.Identity.Client;
 
 namespace Civica.ViewModels
 {
-    public class CreateProjectViewModel : INotifyPropertyChanged
+    public class CreateProjectViewModel : ObservableObject
     {
-        //private ObservableCollection<ProjectViewModel> projects;
-
-        private MainViewModel mvm;
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        private void OnPropertyChanged(string propertyName = null)
+        private string _windowTitle;
+        public string WindowTitle
         {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+            get => _windowTitle;
+            set
+            {
+                _windowTitle = value;
+                OnPropertyChanged(nameof(WindowTitle));
+            }
         }
 
         private string _projectName = "";
@@ -36,43 +32,66 @@ namespace Civica.ViewModels
                 OnPropertyChanged(nameof(ProjectName));
             }
         }
-        private string _owner = "";
-        public string Owner
+
+        private string _projectOwner = "";
+        public string ProjectOwner
         {
-            get => _owner;
+            get => _projectOwner;
             set
             {
-                _owner = value;
-                OnPropertyChanged(nameof(Owner));
-            }
-        }
-        private string _manager = "";
-        public string Manager
-        {
-            get => _manager;
-            set
-            {
-                _manager = value;
-                OnPropertyChanged(nameof(Manager));
-            }
-        }
-        private string _description = "";
-        public string Description
-        {
-            get => _description;
-            set
-            {
-                _description = value;
-                OnPropertyChanged(nameof(Description));
+                _projectOwner = value;
+                OnPropertyChanged(nameof(ProjectOwner));
             }
         }
 
-        public ICommand CreateProjectCmd { get; set; }
+        private string _projectManager = "";
 
-        public CreateProjectViewModel(MainViewModel mvm)
+        public string ProjectManager
         {
-            this.mvm = mvm;
-            CreateProjectCmd = new CreateProjectCmd(mvm);
+            get => _projectManager; 
+            set 
+            { 
+                _projectManager = value; 
+                OnPropertyChanged(nameof(ProjectManager)); 
+            }
         }
+
+        private string _projectDescription = "";
+
+        public string ProjectDescription
+        {
+            get => _projectDescription;
+            set
+            {
+                _projectDescription = value;
+                OnPropertyChanged(nameof(ProjectDescription));
+            }
+        }
+
+        public ICommand CreateProjectCmd { get; set; } = new CreateProjectCmd();
+
+        ProjectRepository projectRepo = new ProjectRepository();
+
+        public CreateProjectViewModel()
+        {
+            WindowTitle = "Opret";
+        }
+
+        public void CreateProject()
+        {
+            Project p = new Project(ProjectName, ProjectOwner, ProjectManager, ProjectDescription);
+            projectRepo.Add(p);
+        }
+
+        //public void CreateNewProject(string name, string owner = "", string manager = "", string description = "")
+        //{
+        //    Project p = new Project(name, owner, manager, description);
+
+        //    projectRepo.Add(p);
+
+        //    ProjectViewModel pvm = new ProjectViewModel(p);
+
+        //    Projects.Add(pvm);
+        //}
     }
 }

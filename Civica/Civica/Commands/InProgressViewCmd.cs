@@ -1,17 +1,14 @@
-﻿using Civica.Models;
-using Civica.ViewModels;
+﻿using Civica.ViewModels;
 using System;
 using System.Collections.Generic;
-using System.DirectoryServices.ActiveDirectory;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows;
 using System.Windows.Input;
 
 namespace Civica.Commands
 {
-    public class RemoveProjectCmd : ICommand
+    public class InProgressViewCmd : ICommand
     {
         public event EventHandler? CanExecuteChanged
         {
@@ -27,26 +24,17 @@ namespace Civica.Commands
 
         public bool CanExecute(object? parameter)
         {
-            bool succes = false;
-
-            if (parameter is InProgressViewModel IPVM)
-            {
-                if (IPVM.SelectedProject != null)
-                {
-                    succes = true;
-                }
-            }
-
-            return succes;
+            return true;
         }
 
         public void Execute(object? parameter)
         {
-            if (parameter is InProgressViewModel IPVM)
+            if (parameter is MainViewModel mvm)
             {
-                IPVM.RemoveProject();
-                IPVM.InformationVisibility = "Visible";
+                mvm.CurrentView = mvm.IPVM;
+                mvm.ViewTitle = mvm.IPVM.WindowTitle;
             }
         }
     }
 }
+

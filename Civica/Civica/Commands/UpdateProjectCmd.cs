@@ -10,55 +10,55 @@ using System.Windows.Input;
 
 namespace Civica.Commands
 {
-    public class UpdateProjectCmd : ICommand
-    {
-        public event EventHandler? CanExecuteChanged
-        {
-            add
-            {
-                CommandManager.RequerySuggested += value;
-            }
-            remove
-            {
-                CommandManager.RequerySuggested -= value;
-            }
-        }
+    //public class UpdateProjectCmd : ICommand
+    //{
+    //    public event EventHandler? CanExecuteChanged
+    //    {
+    //        add
+    //        {
+    //            CommandManager.RequerySuggested += value;
+    //        }
+    //        remove
+    //        {
+    //            CommandManager.RequerySuggested -= value;
+    //        }
+    //    }
 
-        private MainViewModel mvm;
+    //    private MainViewModel mvm;
 
-        public UpdateProjectCmd(MainViewModel mvm)
-        {
-            this.mvm = mvm;
-        }
+    //    public UpdateProjectCmd(MainViewModel mvm)
+    //    {
+    //        this.mvm = mvm;
+    //    }
 
-        public bool CanExecute(object? parameter)
-        {
-            bool succes = false;
+    //    public bool CanExecute(object? parameter)
+    //    {
+    //        bool succes = false;
 
-            if (parameter is UpdateProjectViewModel upvm)
-            {
-                if (!string.IsNullOrEmpty(upvm.ProjectName))
-                {
-                    succes = true;
-                }
-            }
-            return succes;
-        }
+    //        if (parameter is UpdateProjectViewModel upvm)
+    //        {
+    //            if (!string.IsNullOrEmpty(upvm.ProjectName))
+    //            {
+    //                succes = true;
+    //            }
+    //        }
+    //        return succes;
+    //    }
 
-        public void Execute(object? parameter)
-        {
-            if (parameter is UpdateProjectViewModel upvm)
-            {
-                if (mvm.Projects.FirstOrDefault(x => x.Name.ToLower() == upvm.ProjectName.ToLower()) is null || upvm.ProjectName.ToLower() == upvm.OldName.ToLower())
-                {
-                    mvm.UpdateProject(mvm.SelectedProject, upvm.ProjectName, upvm.Owner, upvm.Manager, upvm.Description);
-                    MessageBox.Show($"Projekt information for '{upvm.ProjectName}' opdateret!\nTryk for at afslutte.");
-                }
-                else
-                {
-                    MessageBox.Show($"Projekt '{upvm.ProjectName}' findes allerede!\nTryk for at afslutte.");
-                }
-            }
-        }
-    }
+    //    public void Execute(object? parameter)
+    //    {
+    //        if (parameter is UpdateProjectViewModel upvm)
+    //        {
+    //            if (mvm.Projects.FirstOrDefault(x => x.Name.ToLower() == upvm.ProjectName.ToLower()) is null || upvm.ProjectName.ToLower() == upvm.OldName.ToLower())
+    //            {
+    //                mvm.UpdateProject(mvm.SelectedProject, upvm.ProjectName, upvm.Owner, upvm.Manager, upvm.Description);
+    //                MessageBox.Show($"Projekt information for '{upvm.ProjectName}' opdateret!\nTryk for at afslutte.");
+    //            }
+    //            else
+    //            {
+    //                MessageBox.Show($"Projekt '{upvm.ProjectName}' findes allerede!\nTryk for at afslutte.");
+    //            }
+    //        }
+    //    }
+    //}
 }

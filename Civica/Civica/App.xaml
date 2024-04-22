@@ -2,8 +2,25 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:Civica"
-             StartupUri="Views/StartWindow.xaml">
+             xmlns:viewModel="clr-namespace:Civica.ViewModels"
+             xmlns:view="clr-namespace:Civica.Views"
+             StartupUri="Views/MainWindow.xaml">
     <Application.Resources>
-         
+        
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Resources/Themes/MenuButtonTheme.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+
+            <DataTemplate DataType="{x:Type viewModel:InProgressViewModel}">
+                <view:InProgressView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewModel:CreateProjectViewModel}">
+                <view:CreateProjectView/>
+            </DataTemplate>
+
+        </ResourceDictionary>
+        
     </Application.Resources>
 </Application>
