@@ -232,7 +232,7 @@
                                             Background="{TemplateBinding Background}"
                                             CornerRadius="25">
                                         <Image Source="/Resources/Images/remove_logo.png" 
-                                               Width="20"/>
+                                               Width="25"/>
                                     </Border>
                                 </ControlTemplate>
                             </Button.Template>
