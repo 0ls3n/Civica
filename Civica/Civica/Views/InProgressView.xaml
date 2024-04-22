@@ -360,7 +360,9 @@
 
                 </ListBox>
 
-                <Border Grid.Row="1">
+                <Border Grid.Row="1"
+                        BorderThickness="0 1 0 0"
+                        BorderBrush="#338A8A8A">
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*"/>
