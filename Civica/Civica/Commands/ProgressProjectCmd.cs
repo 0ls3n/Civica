@@ -46,7 +46,7 @@ namespace Civica.Commands
         {
             if (parameter is InProgressViewModel ipvm)
             {
-                ipvm.Progress(ipvm.Phase, ipvm.Status, ipvm.ProgressDescription);
+                ipvm.CreateProgress(ipvm.Phase, ipvm.Status, ipvm.ProgressDescription);
 
                 ipvm.UpdateList();
 
