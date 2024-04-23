@@ -24,12 +24,6 @@ namespace Civica.Views
         public InProgressView()
         {
             InitializeComponent();
-            
-        }
-
-        private void ListBox_MouseDoubleClick(object sender, MouseButtonEventArgs e)
-        {
-            
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Civica.Models.Enums;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -25,5 +26,19 @@ namespace Civica.Models
         public List<Progress> GetAll() => _progresses;
 
         public List<Progress> Get(int id) => _progresses.FindAll(x => x.ProjectId == id);
+
+        public void Update(Progress prog, Phase phase, Status status, string description) 
+        {
+            prog.Phase = phase;
+            prog.Status = status;
+            prog.Description = description;
+            DatabaseHelper.Update(prog); 
+        }
+
+        public void Remove(Progress prog) 
+        {
+            DatabaseHelper.Remove(prog);
+            _progresses.Remove(prog);
+        }
     }
 }

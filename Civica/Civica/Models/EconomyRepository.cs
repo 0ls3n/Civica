@@ -18,11 +18,21 @@ namespace Civica.Models
 
         public void Add(Economy economy)
         {
+            economy.Id = DatabaseHelper.Add(economy);
             _economyList.Add(economy);
+
+        }
+
+        public void Update(Economy economy, decimal startAmount, decimal expectedYearlyCost)
+        {
+            economy.StartAmount = startAmount;
+            economy.ExpectedYearlyCost = expectedYearlyCost;
+            DatabaseHelper.Update(economy);
         }
 
         public void Remove(Economy economy)
         {
+            DatabaseHelper.Remove(economy);
             _economyList.Remove(economy);
         }
         public Economy Get(int id)

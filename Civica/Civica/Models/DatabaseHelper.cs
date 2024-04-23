@@ -15,10 +15,12 @@ namespace Civica.Models
 {
     public static class DatabaseHelper
     {
+        #region DB Connection
         private static IConfigurationRoot config = new ConfigurationBuilder().AddJsonFile("appsettings.json").Build();
 
         private static string? connectionString = config.GetConnectionString("MyDBConnection");
-
+        #endregion
+        #region Initialize
         public static List<Project> InitializeProjects()
         {
             List<Project> projects = new List<Project>();
@@ -47,7 +49,6 @@ namespace Civica.Models
             }
             return projects;
         }
-
         public static List<Progress> InitializeProgress()
         {
             List<Progress> progresses = new List<Progress>();
@@ -77,86 +78,6 @@ namespace Civica.Models
                 }
             }
             return progresses;
-        }
-
-        public static int Add(Project p)
-        {
-            int id = -1;
-            using (SqlConnection con = new SqlConnection(connectionString))
-            {
-                con.Open();
-                SqlCommand cmd = new SqlCommand("INSERT INTO PROJECTS (ProjectName, OwnerName, ManagerName, Description)" +
-                                                                     "VALUES (@PN, @ON, @MN, @DESC) SELECT @@IDENTITY ", con);
-
-                cmd.Parameters.Add("@PN", SqlDbType.NVarChar).Value = p.Name;
-                cmd.Parameters.Add("@ON", SqlDbType.NVarChar).Value = p.Owner;
-                cmd.Parameters.Add("@MN", SqlDbType.NVarChar).Value = p.Manager;
-                cmd.Parameters.Add("@DESC", SqlDbType.Text).Value = p.Description;
-
-                id = Convert.ToInt32(cmd.ExecuteScalar());
-            }
-            return id;
-        }
-
-        public static int Add(Progress prog)
-        {
-            int id = -1;
-            using (SqlConnection con = new SqlConnection(connectionString))
-            {
-                con.Open();
-                SqlCommand cmd = new SqlCommand("INSERT INTO PROGRESSES (Phase, Status, Date, Description, ProjectId)" +
-                                                                     "VALUES (@PH, @ST, @DA, @DESC, @PID) SELECT @@IDENTITY ", con);
-
-                cmd.Parameters.Add("@PH", SqlDbType.NVarChar).Value = prog.Phase;
-                cmd.Parameters.Add("@ST", SqlDbType.NVarChar).Value = prog.Status;
-                cmd.Parameters.Add("@DA", SqlDbType.NVarChar).Value = prog.Date;
-                cmd.Parameters.Add("@DESC", SqlDbType.Text).Value = prog.Description;
-                cmd.Parameters.Add("@PID", SqlDbType.Int).Value = prog.ProjectId;
-
-                id = Convert.ToInt32(cmd.ExecuteScalar());
-            }
-            return id;
-        }
-
-        public static void Remove(Project p)
-        {
-            using (SqlConnection con = new SqlConnection(connectionString))
-
-            {
-                con.Open();
-                SqlCommand RemoveProgress = new SqlCommand("DELETE FROM PROGRESSES WHERE ProjectId=@ID", con);
-                SqlCommand RemoveEconomy = new SqlCommand("DELETE FROM ECONOMIES WHERE ProjectId=@ID", con);
-                SqlCommand RemoveProject = new SqlCommand("DELETE FROM PROJECTS WHERE ProjectId=@ID", con);
-
-                RemoveProgress.Parameters.Add("@ID", SqlDbType.Int).Value = p.Id;
-                RemoveEconomy.Parameters.Add("@ID", SqlDbType.Int).Value = p.Id;
-                RemoveProject.Parameters.Add("@ID", SqlDbType.Int).Value = p.Id;
-
-                RemoveProgress.ExecuteNonQuery();
-                RemoveEconomy.ExecuteNonQuery();
-                RemoveProject.ExecuteNonQuery();
-            }
-        }
-
-        public static void Update(Project p)
-        {
-            using (SqlConnection con = new SqlConnection(connectionString))
-            {
-                con.Open();
-                SqlCommand cmd = new SqlCommand("UPDATE PROJECTS SET ProjectName = @PN, OwnerName = @ON, ManagerName = @MN, Description = @DESC " +
-                                                "WHERE ProjectId = @ID", con); // Opsætter parameterne der skal opdateres.
-
-                // Indsætter opdaterede værdier i parameterne 
-                cmd.Parameters.Add("@ID", SqlDbType.Int).Value = p.Id;
-                cmd.Parameters.Add("@PN", SqlDbType.NVarChar).Value = p.Name;
-                cmd.Parameters.Add("@ON", SqlDbType.NVarChar).Value = p.Owner;
-                cmd.Parameters.Add("@MN", SqlDbType.NVarChar).Value = p.Manager;
-                cmd.Parameters.Add("@DESC", SqlDbType.Text).Value = p.Description;
-
-                // Exe
-                cmd.ExecuteNonQuery();
-            }
-
         }
         public static List<Economy> InitializeEconomy()
         {
@@ -212,6 +133,45 @@ namespace Civica.Models
             }
             return audits;
         }
+        #endregion
+        #region Add
+        public static int Add(Project p)
+        {
+            int id = -1;
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+                con.Open();
+                SqlCommand cmd = new SqlCommand("INSERT INTO PROJECTS (ProjectName, OwnerName, ManagerName, Description)" +
+                                                                     "VALUES (@PN, @ON, @MN, @DESC) SELECT @@IDENTITY ", con);
+
+                cmd.Parameters.Add("@PN", SqlDbType.NVarChar).Value = p.Name;
+                cmd.Parameters.Add("@ON", SqlDbType.NVarChar).Value = p.Owner;
+                cmd.Parameters.Add("@MN", SqlDbType.NVarChar).Value = p.Manager;
+                cmd.Parameters.Add("@DESC", SqlDbType.Text).Value = p.Description;
+
+                id = Convert.ToInt32(cmd.ExecuteScalar());
+            }
+            return id;
+        }
+        public static int Add(Progress prog)
+        {
+            int id = -1;
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+                con.Open();
+                SqlCommand cmd = new SqlCommand("INSERT INTO PROGRESSES (Phase, Status, Date, Description, ProjectId)" +
+                                                                     "VALUES (@PH, @ST, @DA, @DESC, @PID) SELECT @@IDENTITY ", con);
+
+                cmd.Parameters.Add("@PH", SqlDbType.NVarChar).Value = prog.Phase;
+                cmd.Parameters.Add("@ST", SqlDbType.NVarChar).Value = prog.Status;
+                cmd.Parameters.Add("@DA", SqlDbType.NVarChar).Value = prog.Date;
+                cmd.Parameters.Add("@DESC", SqlDbType.Text).Value = prog.Description;
+                cmd.Parameters.Add("@PID", SqlDbType.Int).Value = prog.ProjectId;
+
+                id = Convert.ToInt32(cmd.ExecuteScalar());
+            }
+            return id;
+        }
         public static int Add(Economy econ)
         {
             int id = -1;
@@ -245,6 +205,43 @@ namespace Civica.Models
                 id = Convert.ToInt32(cmd.ExecuteScalar());
             }
             return id;
+        }
+        #endregion
+        #region Update
+        public static void Update(Project p)
+        {
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+                con.Open();
+                SqlCommand cmd = new SqlCommand("UPDATE PROJECTS SET ProjectName = @PN, OwnerName = @ON, ManagerName = @MN, Description = @DESC " +
+                                                "WHERE ProjectId = @ID", con); // Opsætter parameterne der skal opdateres.
+
+                // Indsætter opdaterede værdier i parameterne 
+                cmd.Parameters.Add("@ID", SqlDbType.Int).Value = p.Id;
+                cmd.Parameters.Add("@PN", SqlDbType.NVarChar).Value = p.Name;
+                cmd.Parameters.Add("@ON", SqlDbType.NVarChar).Value = p.Owner;
+                cmd.Parameters.Add("@MN", SqlDbType.NVarChar).Value = p.Manager;
+                cmd.Parameters.Add("@DESC", SqlDbType.Text).Value = p.Description;
+
+                // Exe
+                cmd.ExecuteNonQuery();
+            }
+        }
+        public static void Update(Progress p)
+        {
+            using(SqlConnection con = new SqlConnection(connectionString))
+            {
+                con.Open();
+                SqlCommand UpdateProgress = new SqlCommand("UPDATE PROGRESSES SET Phase = @PH, Status = @ST, Date = @DA, Description = @DESC" +
+                                                           "WHERE ProgressId = @ID");
+                UpdateProgress.Parameters.Add("@PH", SqlDbType.NVarChar).Value = p.Phase;
+                UpdateProgress.Parameters.Add("@ST", SqlDbType.NVarChar).Value = p.Status;
+                UpdateProgress.Parameters.Add("@DA", SqlDbType.DateTime2).Value = p.Date;
+                UpdateProgress.Parameters.Add("@DESC", SqlDbType.Text).Value = p.Description;
+                UpdateProgress.Parameters.Add("@ID", SqlDbType.Int).Value = p.Id;
+
+                UpdateProgress.ExecuteNonQuery();
+            }
         }
         public static void Update(Economy e)
         {
@@ -284,6 +281,36 @@ namespace Civica.Models
             }
 
         }
+        #endregion
+        #region Remove
+        public static void Remove(Project p)
+        {
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+                con.Open();
+                SqlCommand RemoveProgress = new SqlCommand("DELETE FROM PROGRESSES WHERE ProjectId=@ID", con);
+                SqlCommand RemoveEconomy = new SqlCommand("DELETE FROM ECONOMIES WHERE ProjectId=@ID", con);
+                SqlCommand RemoveProject = new SqlCommand("DELETE FROM PROJECTS WHERE ProjectId=@ID", con);
+
+                RemoveProgress.Parameters.Add("@ID", SqlDbType.Int).Value = p.Id;
+                RemoveEconomy.Parameters.Add("@ID", SqlDbType.Int).Value = p.Id;
+                RemoveProject.Parameters.Add("@ID", SqlDbType.Int).Value = p.Id;
+
+                RemoveProgress.ExecuteNonQuery();
+                RemoveEconomy.ExecuteNonQuery();
+                RemoveProject.ExecuteNonQuery();
+            }
+        }
+        public static void Remove(Progress p)
+        {
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+                con.Open();
+                SqlCommand RemoveProgress = new SqlCommand("DELETE FROM PROGRESSES WHERE ProgressId = @ID", con);
+                RemoveProgress.Parameters.Add("@ID", SqlDbType.Int).Value = p.Id;
+                RemoveProgress.ExecuteNonQuery();
+            }
+        }
         public static void Remove(Economy e)
         {
 
@@ -313,5 +340,6 @@ namespace Civica.Models
                 cmd.ExecuteNonQuery();
             }
         }
+        #endregion
     }
 }

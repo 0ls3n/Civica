@@ -18,11 +18,20 @@ namespace Civica.Models
 
         public void Add(Audit audit)
         {
+            audit.Id = DatabaseHelper.Add(audit);
             _auditList.Add(audit);
+        }
+
+        public void Update(Audit audit, DateTime year, decimal amount)
+        {
+            audit.Year = year;
+            audit.Amount = amount;
+            DatabaseHelper.Update(audit);
         }
 
         public void Remove(Audit audit)
         {
+            DatabaseHelper.Remove(audit);
             _auditList.Remove(audit);
         }
         public Audit Get(int id) => _auditList.Find(x => x.Id == id);

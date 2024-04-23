@@ -73,7 +73,7 @@ ProgressProject(fase, status, description)</panel_attributes>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>790</x>
+      <x>900</x>
       <y>470</y>
       <w>140</w>
       <h>30</h>
@@ -86,12 +86,12 @@ ProgressProject(fase, status, description)</panel_attributes>
     <coordinates>
       <x>490</x>
       <y>470</y>
-      <w>320</w>
+      <w>430</w>
       <h>40</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;-
-&lt;&lt;create&gt;&gt;(projectId, fase, status, description)</panel_attributes>
-    <additional_attributes>300.0;20.0;10.0;20.0</additional_attributes>
+&lt;&lt;create&gt;&gt;(projectId, fase, status, DateTime.Now, description)</panel_attributes>
+    <additional_attributes>410.0;20.0;10.0;20.0</additional_attributes>
   </element>
   <element>
     <id>Text</id>

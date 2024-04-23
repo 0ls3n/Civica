@@ -13,15 +13,13 @@ namespace Civica.ViewModels
         public decimal StartAmount { get; set; }
         public decimal ExpectedYearlyCost { get; set; }
 
-
-        public EconomyViewModel( Economy e)
+        public EconomyViewModel(Economy e)
         {
             StartAmount = e.StartAmount;
             ExpectedYearlyCost = e.ExpectedYearlyCost;
             economy = e;
 
         }
-
         public int GetId()
         {
             return economy.Id;
