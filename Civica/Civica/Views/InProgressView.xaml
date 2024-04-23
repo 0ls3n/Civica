@@ -155,11 +155,11 @@
                      Text="{Binding SelectedProject.Description, UpdateSourceTrigger=PropertyChanged}"/>
 
                 <Button Height="20"
-                    Width="75"
-                    Margin="0 15 100 0"
-                    Content="Opdater"
-                    Command="{Binding UpdateProjectCmd}"
-                    CommandParameter="{Binding}"/>
+                        Width="75"
+                        Margin="0 12 0 0"
+                        Content="Opdater"
+                        Command="{Binding UpdateProjectCmd}"
+                        CommandParameter="{Binding}"/>
             </StackPanel>
         </Border>
 
@@ -284,11 +284,11 @@
                      Text="{Binding ProgressDescription, UpdateSourceTrigger=PropertyChanged}"/>
 
                 <Button Height="20"
-                    Width="75"
-                    Margin="0 15 100 0"
-                    Content="Opret"
-                    Command="{Binding ProgressProjectCmd}"
-                    CommandParameter="{Binding}"/>
+                        Width="75"
+                        Margin="0 20 0 0"
+                        Content="Opret"
+                        Command="{Binding ProgressProjectCmd}"
+                        CommandParameter="{Binding}"/>
 
             </StackPanel>
         </Border>
