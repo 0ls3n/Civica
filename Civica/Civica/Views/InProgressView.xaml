@@ -36,7 +36,8 @@
                 Background="White"
                 CornerRadius="10">
 
-            <ScrollViewer Margin="0 10 0 10">
+            <ScrollViewer Margin="0 10 0 10"
+                          VerticalScrollBarVisibility="Auto">
                 <StackPanel Orientation="Vertical">
                     <TextBlock Text="{Binding SelectedProject.Name}"
                                TextAlignment="Center"
