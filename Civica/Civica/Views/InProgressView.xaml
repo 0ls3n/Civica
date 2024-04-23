@@ -225,6 +225,8 @@
                          FontSize="16"
                          TextWrapping="Wrap"
                          Background="#FAFAFA"
+                         AcceptsReturn="True"
+                         AcceptsTab="True"
                          Text="{Binding ProjectDescription}"/>
 
                 <Button Content="Opret"
