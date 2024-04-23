@@ -78,8 +78,13 @@
                                Margin="5 20 0 0"
                                FontSize="20"/>
 
-                    <TextBlock Text="{Binding SelectedProject.Description}"
+                    <TextBox Text="{Binding SelectedProject.Description}"
                                FontSize="15"
+                             Background="Transparent"
+                             BorderThickness="0"
+                             IsReadOnly="True"
+                             AcceptsReturn="True"
+                             AcceptsTab="True"
                                Margin="5 10 20 0"
                                TextWrapping="Wrap"/>
 
