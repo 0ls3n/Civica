@@ -16,14 +16,12 @@ namespace Civica.Models
 
         public string Manager { get; set; }
         public string Description { get; set; }
-        public Economy Economy { get; set; }
 
         public Project(string name, string owner, string manager, string description) : this(name)
         {
             Owner = owner;
             Manager = manager;
             Description = description;
-
         }
         public Project(string name)
         {
