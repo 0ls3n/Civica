@@ -95,6 +95,16 @@ namespace Civica.ViewModels
             ProjectDescription = "";
         }
 
+        public void CreateProgress(Phase fase, Status status, string description)
+        {
+            Progress prog = new Progress(SelectedProject.GetId(), fase, status, DateTime.Now, description);
+            prog.ProjectId = SelectedProject.GetId();
+
+            progressRepo.Add(prog);
+
+            SelectedProgresses.Add(new ProgressViewModel(prog));
+        }
+
         public ICommand CreateProjectViewCmd { get; set; } = new CreateProjectViewCmd();
         public ICommand CreateProjectCmd { get; set; } = new CreateProjectCmd();
         #endregion
@@ -202,16 +212,6 @@ namespace Civica.ViewModels
                 _progressVisibility = value;
                 OnPropertyChanged(nameof(ProgressVisibility));
             }
-        }
-
-        public void CreateProgress(Phase fase, Status status, string description)
-        {
-            Progress prog = new Progress(SelectedProject.GetId(), fase, status, DateTime.Now, description);
-            prog.ProjectId = SelectedProject.GetId();
-
-            progressRepo.Add(prog);
-
-            SelectedProgresses.Add(new ProgressViewModel(prog));
         }
         #endregion
 
