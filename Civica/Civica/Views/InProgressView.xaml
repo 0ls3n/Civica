@@ -76,6 +76,7 @@
                     <TextBox Text="{Binding SelectedProject.Description}"
                              FontSize="15"
                              Margin="5 10 20 0"
+                             IsReadOnly="True"
                              Background="Transparent"
                              BorderThickness="0"
                              AcceptsReturn="True"
