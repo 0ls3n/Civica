@@ -96,9 +96,9 @@ namespace Civica.ViewModels
             ProjectDescription = "";
         }
 
-        public void CreateProgress(Phase fase, Status status, string description)
+        public void CreateProgress(Phase phase, Status status, string description)
         {
-            Progress prog = new Progress(SelectedProject.GetId(), fase, status, DateTime.Now, description);
+            Progress prog = new Progress(SelectedProject.GetId(), phase, status, DateTime.Now, description);
 
             progressRepo.Add(prog);
 
