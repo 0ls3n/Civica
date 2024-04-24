@@ -135,7 +135,6 @@ namespace Civica.ViewModels
                     ipvm.CreateProject();
                     ipvm.CreateVisibility = "Hidden";
                     ipvm.InformationVisibility = "Visible";
-                    MessageBox.Show(ipvm.mvm.ToString());
                 }
             },
             parameter =>
