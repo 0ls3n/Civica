@@ -169,17 +169,6 @@ namespace Civica.ViewModels
 
         public void UpdateProject(ProjectViewModel projectVM)
         {
-            int index = Projects.IndexOf(projectVM);
-
-            Projects[index] = null;
-
-            //project.Name = name;
-            //project.Owner = owner;
-            //project.Manager = manager;
-            //project.Description = description;
-
-            Projects[index] = projectVM;
-
             projectRepo.Update(projectRepo.Get(projectVM.GetId()), projectVM.Name, projectVM.Owner, projectVM.Manager, projectVM.Description);
         }
 
