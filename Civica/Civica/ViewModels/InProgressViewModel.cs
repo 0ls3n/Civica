@@ -167,9 +167,9 @@ namespace Civica.ViewModels
             }
         }
 
-        public void UpdateProject(ProjectViewModel project)
+        public void UpdateProject(ProjectViewModel projectVM)
         {
-            int index = Projects.IndexOf(project);
+            int index = Projects.IndexOf(projectVM);
 
             Projects[index] = null;
 
@@ -178,9 +178,9 @@ namespace Civica.ViewModels
             //project.Manager = manager;
             //project.Description = description;
 
-            Projects[index] = project;
+            Projects[index] = projectVM;
 
-            projectRepo.Update(projectRepo.Get(project.GetId()), project.Name, project.Owner, project.Manager, project.Description);
+            projectRepo.Update(projectRepo.Get(projectVM.GetId()), projectVM.Name, projectVM.Owner, projectVM.Manager, projectVM.Description);
         }
 
         public RelayCommand UpdateProjectViewCmd { get; set; } = new RelayCommand
