@@ -8,8 +8,10 @@ using System.Windows.Input;
 
 namespace Civica.Commands
 {
-    public class CreateProjectViewCmd : ICommand
+    public class RelayCommand : ICommand
     {
+        private Action<object> _execute;
+        private Predicate<object> _canExecute;
         public event EventHandler? CanExecuteChanged
         {
             add
@@ -21,21 +23,19 @@ namespace Civica.Commands
                 CommandManager.RequerySuggested -= value;
             }
         }
-
+        public RelayCommand(Action<object> execute, Predicate<object> canExecute)
+        {
+            _execute = execute;
+            _canExecute = canExecute;
+        }
         public bool CanExecute(object? parameter)
         {
-            return true;
+            return _canExecute == null || _canExecute(parameter);
         }
 
         public void Execute(object? parameter)
         {
-            if (parameter is InProgressViewModel ipvm)
-            {
-                ipvm.CreateVisibility = "Visible";
-                ipvm.InformationVisibility = "Hidden";
-                ipvm.EditVisibility = "Hidden";
-                ipvm.ProgressVisibility = "Hidden";
-            }
+            _execute(parameter);
         }
     }
 }
