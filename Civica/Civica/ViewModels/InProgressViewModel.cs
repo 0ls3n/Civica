@@ -7,6 +7,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
 
 namespace Civica.ViewModels
@@ -104,8 +105,50 @@ namespace Civica.ViewModels
             SelectedProgresses.Add(new ProgressViewModel(prog));
         }
 
-        public ICommand CreateProjectViewCmd { get; set; } = new CreateProjectViewCmd();
-        public ICommand CreateProjectCmd { get; set; } = new CreateProjectCmd();
+        //public ICommand CreateProjectViewCmd { get; set; } = new CreateProjectViewCmd();
+        public RelayCommand CreateProjectViewCmd { get; set; } = new RelayCommand
+        (
+            parameter =>
+            {
+                if (parameter is InProgressViewModel ipvm)
+                {
+                    ipvm.CreateVisibility = "Visible";
+                    ipvm.InformationVisibility = "Hidden";
+                    ipvm.EditVisibility = "Hidden";
+                    ipvm.ProgressVisibility = "Hidden";
+                }
+            },
+            parameter =>
+            {
+                return true;
+            }
+        );
+        //public ICommand CreateProjectCmd { get; set; } = new CreateProjectCmd();
+        public RelayCommand CreateProjectCmd { get; set; } = new RelayCommand
+        (
+            parameter =>
+            {
+                if (parameter is InProgressViewModel ipvm)
+                {
+                    ipvm.CreateProject();
+                    ipvm.CreateVisibility = "Hidden";
+                    ipvm.InformationVisibility = "Visible";
+                }
+            },
+            parameter =>
+            {
+                bool succes = false;
+
+                if (parameter is InProgressViewModel ipvm)
+                {
+                    if (!string.IsNullOrEmpty(ipvm.ProjectName))
+                    {
+                        succes = true;
+                    }
+                }
+                return succes;
+            }
+        );
         #endregion
 
         #region Update
@@ -137,9 +180,52 @@ namespace Civica.ViewModels
 
             projectRepo.Update(projectRepo.Get(project.GetId()), project.Name, project.Owner, project.Manager, project.Description);
         }
-        public ICommand UpdateProjectViewCmd { get; set; } = new UpdateProjectViewCmd();
-        public ICommand UpdateProjectCmd { get; set; } = new UpdateProjectCmd();
+        //public ICommand UpdateProjectViewCmd { get; set; } = new UpdateProjectViewCmd();
+        public RelayCommand UpdateProjectViewCmd { get; set; } = new RelayCommand
+        (
+            parameter =>
+            {
+                if (parameter is InProgressViewModel ipvm)
+                {
+                    ipvm.EditVisibility = "Visible";
+                    ipvm.InformationVisibility = "Hidden";
+                    ipvm.CreateVisibility = "Hidden";
+                    ipvm.ProgressVisibility = "Hidden";
+                }
+            },
+            parameter =>
+            {
+                if (parameter is InProgressViewModel ipvm)
+                {
+                    if (ipvm.SelectedProject != null)
+                    {
+                        return true;
+                    }
+                }
+                return false;
+            }
+        );
+        //public ICommand UpdateProjectCmd { get; set; } = new UpdateProjectCmd();
+        public RelayCommand UpdateProjectCmd { get; set; } = new RelayCommand
+        (
+            parameter =>
+            {
+                if (parameter is InProgressViewModel ipvm)
+                {
+                    if (ipvm.Projects.FirstOrDefault(x => x.Name.ToLower() == ipvm.ProjectName.ToLower()) is null || ipvm.ProjectName.ToLower() == ipvm.OldName.ToLower())
+                    {
+                        ipvm.UpdateProject(ipvm.SelectedProject);
 
+                        ipvm.EditVisibility = "Hidden";
+                        ipvm.InformationVisibility = "Visible";
+                    }
+                }
+            },
+            parameter =>
+            {
+                return true;
+            }
+        );
         #endregion
 
         #region Progress
@@ -199,9 +285,69 @@ namespace Civica.ViewModels
             }
         }
 
-        public ICommand ProgressProjectCmd { get; set; } = new ProgressProjectCmd();
-        public ICommand ProgressProjectViewCmd { get; set; } = new ProgressProjectViewCmd();
+        //public ICommand ProgressProjectCmd { get; set; } = new ProgressProjectCmd();
+        public RelayCommand ProgressProjectCmd { get; set; } = new RelayCommand
+        (
+            parameter =>
+            {
+                if (parameter is InProgressViewModel ipvm)
+                {
+                    ipvm.CreateProgress(ipvm.Phase, ipvm.Status, ipvm.ProgressDescription);
 
+                    ipvm.UpdateList();
+
+                    ipvm.ProgressVisibility = "Hidden";
+                    ipvm.InformationVisibility = "Visible";
+                }
+            },
+            parameter =>
+            {
+                bool succes = false;
+
+                if (parameter is InProgressViewModel ipvm)
+                {
+                    if (ipvm.SelectedProject is not null)
+                    {
+                        if (!string.IsNullOrEmpty(ipvm.ProgressDescription))
+                        {
+                            succes = true;
+                        }
+                    }
+                }
+                return succes;
+            }
+        );
+
+        //public ICommand ProgressProjectViewCmd { get; set; } = new ProgressProjectViewCmd();
+        public RelayCommand ProgressProjectViewCmd { get; set; } = new RelayCommand
+        (
+            parameter =>
+            {
+                if (parameter is InProgressViewModel ipvm)
+                {
+                    ipvm.ProgressDescription = "";
+                    ipvm.Phase = Phase.IDENTIFIED;
+                    ipvm.Status = Status.NONE;
+
+                    ipvm.ProgressVisibility = "Visible";
+                    ipvm.EditVisibility = "Hidden";
+                    ipvm.InformationVisibility = "Hidden";
+                    ipvm.CreateVisibility = "Hidden";
+                }
+            },
+            parameter =>
+            {
+                if (parameter is InProgressViewModel ipvm)
+                {
+                    if (ipvm.SelectedProject != null)
+                    {
+                        return true;
+                    }
+                }
+                return false;
+            }
+        );
+        
         private string _progressVisibility;
         public string ProgressVisibility
         {
@@ -242,8 +388,38 @@ namespace Civica.ViewModels
             }
         }
 
-        public ICommand RemoveProjectCmd { get; set; } = new RemoveProjectCmd();
+        //public ICommand RemoveProjectCmd { get; set; } = new RemoveProjectCmd();
+        public RelayCommand RemoveProjectCmd { get; set; } = new RelayCommand
+        (
+            parameter =>
+            {
+                if (parameter is InProgressViewModel ipvm)
+                {
+                    MessageBoxButton button = MessageBoxButton.OKCancel;
+                    MessageBoxResult result = MessageBox.Show($"Er du sikker på du vil slette '{ipvm.SelectedProject.Name}'?", "Bekræft sletning", button);
 
+                    if (result == MessageBoxResult.OK)
+                    {
+                        ipvm.RemoveProject();
+                        ipvm.InformationVisibility = "Visible";
+                    }
+                }
+            },
+            parameter =>
+            {
+                bool succes = false;
+
+                if (parameter is InProgressViewModel ipvm)
+                {
+                    if (ipvm.SelectedProject != null)
+                    {
+                        succes = true;
+                    }
+                }
+                return succes;
+            }
+        );
+        
         private ProjectRepository projectRepo = new ProjectRepository();
         private ProgressRepository progressRepo = new ProgressRepository();
 

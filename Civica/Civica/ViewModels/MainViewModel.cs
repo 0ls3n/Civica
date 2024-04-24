@@ -139,7 +139,21 @@ namespace Civica.ViewModels
 
         public InProgressViewModel ipvm;
 
-        public ICommand InProgressViewCmd { get; set; } = new InProgressViewCmd();
+        //public ICommand InProgressViewCmd { get; set; } = new InProgressViewCmd();
+        public RelayCommand InProgressViewCmd { get; set; } = new RelayCommand
+        (
+            execute: (object? parameter) =>
+            {
+                if (parameter is MainViewModel mvm)
+                {
+                    mvm.CurrentView = mvm.ipvm;
+                    mvm.ViewTitle = mvm.ipvm.WindowTitle;
+                }
+            },
+            canExecute: (object? parameter) =>
+            {
+                return true;
+            });
 
         public MainViewModel()
         {
