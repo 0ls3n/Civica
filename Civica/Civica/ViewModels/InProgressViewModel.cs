@@ -14,6 +14,9 @@ namespace Civica.ViewModels
 {
     public class InProgressViewModel : ObservableObject
     {
+
+        public MainViewModel mvm;
+
         private string _Windowtitle;
         public string WindowTitle
         {
@@ -132,6 +135,7 @@ namespace Civica.ViewModels
                     ipvm.CreateProject();
                     ipvm.CreateVisibility = "Hidden";
                     ipvm.InformationVisibility = "Visible";
+                    MessageBox.Show(ipvm.mvm.ToString());
                 }
             },
             parameter =>
@@ -466,6 +470,11 @@ namespace Civica.ViewModels
                     p.StatusColor = "#E8E8E8";
                 }
             }
+        }
+
+        public void Init(MainViewModel mvm)
+        {
+            this.mvm = mvm;
         }
 
         public void RemoveProject()

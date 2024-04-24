@@ -7,11 +7,6 @@
              xmlns:local="clr-namespace:Civica.Views"
              mc:Ignorable="d" 
              d:DesignHeight="650" d:DesignWidth="1200">
-
-    <UserControl.DataContext>
-        <viewModel:InProgressViewModel/>
-    </UserControl.DataContext>
-
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>

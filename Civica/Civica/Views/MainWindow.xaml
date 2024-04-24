@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Civica.Views"
         xmlns:viewModel="clr-namespace:Civica.ViewModels"
+        xmlns:view="clr-namespace:Civica.Views"
         mc:Ignorable="d"
         MinHeight="800"
         MinWidth="1200"
@@ -15,7 +16,7 @@
     <Window.DataContext>
         <viewModel:MainViewModel/>
     </Window.DataContext>
-    
+
     <Grid>
 
         <Grid.ColumnDefinitions>
@@ -34,7 +35,7 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
-            
+
 
             <TextBlock Text="{Binding ViewTitle, UpdateSourceTrigger=PropertyChanged}"
                        HorizontalAlignment="Left"
@@ -81,10 +82,13 @@
                 Grid.Row="1"
                 Background="#FAFAFA">
 
-            <ContentControl Margin="30 10 30 10"
-                            Content="{Binding CurrentView, UpdateSourceTrigger=PropertyChanged}"/>
+            <!--<ContentControl Margin="30 10 30 10"
+                            Content="{Binding CurrentView, UpdateSourceTrigger=PropertyChanged}"/>-->
+            <Border Margin="30 10 30 10" Visibility="{Binding InProgressView}">
+                <view:InProgressView DataContext="{Binding Path=ipvm}"/>
+            </Border>
 
         </Border>
-        
+
     </Grid>
 </Window>

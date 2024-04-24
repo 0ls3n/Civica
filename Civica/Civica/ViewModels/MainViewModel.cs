@@ -7,6 +7,7 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
 using Civica.Commands;
 using Civica.Models;
@@ -137,7 +138,19 @@ namespace Civica.ViewModels
             }
         }
 
-        public InProgressViewModel ipvm;
+        private string _inProgressView;
+        public string InProgressView
+        {
+            get => _inProgressView;
+
+            set
+            {
+                _inProgressView = value;
+                OnPropertyChanged(nameof(InProgressView));
+            }
+        }
+
+        public InProgressViewModel ipvm { get; set; } = new InProgressViewModel(); 
 
         //public ICommand InProgressViewCmd { get; set; } = new InProgressViewCmd();
         public RelayCommand InProgressViewCmd { get; set; } = new RelayCommand
@@ -157,9 +170,8 @@ namespace Civica.ViewModels
 
         public MainViewModel()
         {
-            ipvm = new InProgressViewModel();
-            CurrentView = ipvm;
-
+            ipvm.Init(this);
+            
             ViewTitle = ipvm.WindowTitle;
         }
         #endregion
