@@ -105,7 +105,6 @@ namespace Civica.ViewModels
             SelectedProgresses.Add(new ProgressViewModel(prog));
         }
 
-        //public ICommand CreateProjectViewCmd { get; set; } = new CreateProjectViewCmd();
         public RelayCommand CreateProjectViewCmd { get; set; } = new RelayCommand
         (
             parameter =>
@@ -123,7 +122,7 @@ namespace Civica.ViewModels
                 return true;
             }
         );
-        //public ICommand CreateProjectCmd { get; set; } = new CreateProjectCmd();
+
         public RelayCommand CreateProjectCmd { get; set; } = new RelayCommand
         (
             parameter =>
@@ -180,7 +179,7 @@ namespace Civica.ViewModels
 
             projectRepo.Update(projectRepo.Get(project.GetId()), project.Name, project.Owner, project.Manager, project.Description);
         }
-        //public ICommand UpdateProjectViewCmd { get; set; } = new UpdateProjectViewCmd();
+
         public RelayCommand UpdateProjectViewCmd { get; set; } = new RelayCommand
         (
             parameter =>
@@ -205,7 +204,7 @@ namespace Civica.ViewModels
                 return false;
             }
         );
-        //public ICommand UpdateProjectCmd { get; set; } = new UpdateProjectCmd();
+
         public RelayCommand UpdateProjectCmd { get; set; } = new RelayCommand
         (
             parameter =>
@@ -285,7 +284,6 @@ namespace Civica.ViewModels
             }
         }
 
-        //public ICommand ProgressProjectCmd { get; set; } = new ProgressProjectCmd();
         public RelayCommand ProgressProjectCmd { get; set; } = new RelayCommand
         (
             parameter =>
@@ -317,8 +315,6 @@ namespace Civica.ViewModels
                 return succes;
             }
         );
-
-        //public ICommand ProgressProjectViewCmd { get; set; } = new ProgressProjectViewCmd();
         public RelayCommand ProgressProjectViewCmd { get; set; } = new RelayCommand
         (
             parameter =>
@@ -388,7 +384,6 @@ namespace Civica.ViewModels
             }
         }
 
-        //public ICommand RemoveProjectCmd { get; set; } = new RemoveProjectCmd();
         public RelayCommand RemoveProjectCmd { get; set; } = new RelayCommand
         (
             parameter =>
