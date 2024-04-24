@@ -18,7 +18,7 @@ namespace Civica.Models
 
         public void Add(Progress prog)
         {
-            DatabaseHelper.Add(prog);
+            prog.Id = DatabaseHelper.Add(prog);
 
             _progresses.Add(prog);
         }
