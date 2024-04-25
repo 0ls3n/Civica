@@ -84,9 +84,15 @@
 
             <!--<ContentControl Margin="30 10 30 10"
                             Content="{Binding CurrentView, UpdateSourceTrigger=PropertyChanged}"/>-->
-            <Border Margin="30 10 30 10" Visibility="{Binding InProgressView}">
-                <view:InProgressView DataContext="{Binding Path=ipvm}"/>
-            </Border>
+            <Grid>
+                <Border Margin="30 10 30 10" Visibility="{Binding InProgressView}">
+                    <view:InProgressView DataContext="{Binding Path=ipvm}"/>
+                </Border>
+            </Grid>
+            
+            
+
+
 
         </Border>
 
