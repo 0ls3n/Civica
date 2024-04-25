@@ -13,7 +13,7 @@ namespace Civica.ViewModels
         private Progress progress;
         public Phase Phase { get; set; }
         public Status Status { get; set; }
-        public DateTime Date { get; set; }
+        public string Date { get; set; }
         public string Description { get; set; }
 
         public ProgressViewModel(Progress progress)
@@ -21,7 +21,7 @@ namespace Civica.ViewModels
             this.progress = progress;
             Phase = progress.Phase;
             Status = progress.Status;
-            Date = progress.Date;
+            Date = "d. " + progress.Date.ToString("dd. MMMM yyyy kl. HH:mm");
             Description = progress.Description;
         }
 

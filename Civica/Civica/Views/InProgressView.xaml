@@ -5,6 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:viewModel="clr-namespace:Civica.ViewModels"
              xmlns:local="clr-namespace:Civica.Views"
+             
              mc:Ignorable="d" 
              d:DesignHeight="650" d:DesignWidth="1200">
     <Grid>
@@ -31,58 +32,132 @@
                 Background="White"
                 CornerRadius="10">
 
-            <ScrollViewer Margin="0 10 0 10"
+            <ScrollViewer Margin="0,11,0,9"
                           VerticalScrollBarVisibility="Auto">
                 <StackPanel Orientation="Vertical">
                     <TextBlock Text="{Binding SelectedProject.Name}"
                                TextAlignment="Center"
                                FontSize="30"/>
-
-                    <Grid Margin="5 10 0 0">
+                    <Border BorderBrush="Gray"
+                            BorderThickness="0,0,0,1"
+                            Margin="5, 5, 5, 0"
+                            Opacity="0.2">
+                    </Border>
+                    <Grid Margin="5 25 0 0">
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="115"/>
+                            <ColumnDefinition Width="auto"/>
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
 
                         <TextBlock 
                                FontSize="20"
-                               Text="Projektejer:"/>
+                               Text="Projektejer: "/>
 
                         <TextBlock Grid.Column="1"
                                    FontSize="20"
-                                   FontWeight="Medium"
                                    Text="{Binding SelectedProject.Owner}"/>
                     </Grid>
 
                     <Grid Margin="5 10 0 0">
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="130"/>
+                            <ColumnDefinition Width="auto"/>
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
 
                         <TextBlock FontSize="20"
-                                   Text="Projektleder:"/>
+                                   Text="Projektleder: "/>
 
                         <TextBlock Grid.Column="1"
                                    FontSize="20"
-                                   FontWeight="Medium"
                                    Text="{Binding SelectedProject.Manager}"/>
                     </Grid>
+                    <Border BorderBrush="Gray"
+                            BorderThickness="0,0,0,1"
+                            Margin="5, 25, 5, 0"
+                            Opacity="0.2">
+                    </Border>
+                    <TextBlock Text="Fremdriftsoversigt:"
+             Margin="5 25 0 0"
+             FontSize="20"/>
+                    <Grid Margin="5 0 0 0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="auto"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock FontSize="13"
+                                   FontStyle="Italic"
+                                   Text="Fase: "/>
 
+                        <TextBlock Grid.Column="1"
+                                   FontSize="13"
+                                   FontStyle="Italic"
+                                   Text="{Binding SelectedProgress.Phase}"/>
+
+                        <TextBlock FontSize="13" 
+                                   Grid.Column="2"
+                                   FontStyle="Italic"
+                                   Text="   |   Status: "/>
+                        <TextBlock Grid.Column="4"
+                                   FontSize="13"
+                                   FontStyle="Italic"
+                                   Text="{Binding SelectedProgress.Status}"/>
+                    </Grid>
+
+                    <Grid Margin="5 0 0 0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock FontSize="13"
+                                   FontStyle="Italic"
+                                   Text="Sidst ændret: "/>
+
+                        <TextBlock Grid.Column="1"
+                                   FontSize="13"
+                                   FontStyle="Italic"
+                                   Text="{Binding SelectedProgress.Date}"/>
+                    </Grid>
+
+                    <TextBlock Text="Beskrivelse: "
+                               Margin="5 10 0 0"
+                               FontSize="18"/>
+
+                    <TextBox Text="{Binding SelectedProgress.Description}"
+                             FontSize="15"
+                             Background="Transparent"
+                             BorderThickness="0"                             
+                             IsReadOnly="True"
+                             AcceptsReturn="True"
+                             AcceptsTab="True"
+                             Margin="5 0 20 0"
+                             TextWrapping="Wrap"/>
+
+                    <Border BorderBrush="Gray"
+                            BorderThickness="0,0,0,1"
+                            Margin="5, 25, 5, 0"
+                            Opacity="0.2">
+                    </Border>
                     <TextBlock Text="Projektbeskrivelse: "
-                               Margin="5 20 0 0"
+                               Margin="5 25 0 0"
                                FontSize="20"/>
 
                     <TextBox Text="{Binding SelectedProject.Description}"
                              FontSize="15"
-                             Margin="5 10 20 0"
-                             IsReadOnly="True"
                              Background="Transparent"
                              BorderThickness="0"
                              AcceptsReturn="True"
                              AcceptsTab="True"
-                             TextWrapping="Wrap"/>
+                               Margin="5 10 20 0"
+                               TextWrapping="Wrap"/>
 
+                    <Border BorderBrush="Gray"
+                            BorderThickness="0,0,0,1"
+                            Margin="5, 25, 5, 0"
+                            Opacity="0.2">
+                    </Border>
                 </StackPanel>
             </ScrollViewer>
 

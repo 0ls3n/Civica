@@ -221,7 +221,7 @@ namespace Civica.ViewModels
 
         #region Progress
         public ObservableCollection<string> Phases { get; set; } = new ObservableCollection<string> { "Identificeret", "Planlægning", "Gennemførsel", "Drift", "Opfølgning", "Afsluttet" };
-        public ObservableCollection<string> Statuses { get; set; } = new ObservableCollection<string> { "Ingen Vurdering", "Kritisk", "Forsinket", "Planmæssigt" };
+        public ObservableCollection<string> Statuses { get; set; } = new ObservableCollection<string> { "Ingen vurdering", "Kritisk", "Forsinket", "Planmæssigt" };
         public ObservableCollection<ProgressViewModel> SelectedProgresses { get; set; } = new ObservableCollection<ProgressViewModel>();
         private ProgressViewModel _selectedProgress = null;
         public ProgressViewModel SelectedProgress
@@ -396,7 +396,7 @@ namespace Civica.ViewModels
                 return false;
             }
         );
-        
+
         private string _progressVisibility;
         public string ProgressVisibility
         {
@@ -433,6 +433,15 @@ namespace Civica.ViewModels
                 CreateVisibility = "Hidden";
                 ProgressVisibility = "Hidden";
                 EditVisibility = "Hidden";
+
+                List<Progress> sortedList = progressRepo.Get(SelectedProject.GetId()).OrderByDescending(x => x.Date).ToList();
+                Progress prog = sortedList.FirstOrDefault();
+
+                SelectedProgress = null;
+                if (prog is not null)
+                {
+                    SelectedProgress = new ProgressViewModel(sortedList.FirstOrDefault());
+                }
                 OnPropertyChanged(nameof(SelectedProject));
             }
         }
@@ -467,7 +476,7 @@ namespace Civica.ViewModels
                 return succes;
             }
         );
-        
+
         private ProjectRepository projectRepo = new ProjectRepository();
         private ProgressRepository progressRepo = new ProgressRepository();
 
@@ -480,6 +489,8 @@ namespace Civica.ViewModels
             CreateVisibility = "Hidden";
             EditVisibility = "Hidden";
             ProgressVisibility = "Hidden";
+            InformationVisibility = "Hidden";
+
         }
 
         public void UpdateList()
