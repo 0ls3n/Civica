@@ -220,8 +220,8 @@ namespace Civica.ViewModels
         #endregion
 
         #region Progress
-        public IEnumerable<Phase> Phases => Enum.GetValues(typeof(Phase)).Cast<Phase>();
-        public IEnumerable<Status> Statuses => Enum.GetValues(typeof(Status)).Cast<Status>();
+        public ObservableCollection<string> Phases { get; set; } = new ObservableCollection<string> { "Identificeret", "Planlægning", "Implementering", "Operation", "Opfølgning", "Afsluttet" };
+        public ObservableCollection<string> Statuses { get; set; } = new ObservableCollection<string> { "Ingen", "Kritisk", "Forsinket", "På Sporet" };
         public ObservableCollection<ProgressViewModel> SelectedProgresses { get; set; } = new ObservableCollection<ProgressViewModel>();
         private ProgressViewModel _selectedProgress = null;
         public ProgressViewModel SelectedProgress
@@ -250,29 +250,90 @@ namespace Civica.ViewModels
                 OnPropertyChanged(nameof(ProgressDescription));
             }
         }
+        private string _selectedPhase;
 
-        private Phase _phase;
-        public Phase Phase
+        public string SelectedPhase
         {
-            get
-            { return _phase; }
+            get { return _selectedPhase; }
             set
             {
-                _phase = value;
-                OnPropertyChanged(nameof(Phase));
+                _selectedPhase = value;
+                OnPropertyChanged(nameof(SelectedPhase));
+                switch (value)
+                {
+                    case "Identificeret":
+                        EnumPhase = Phase.IDENTIFIED;
+                        break;
+                    case "Planlægning":
+                        EnumPhase = Phase.PLANNING;
+                        break;
+                    case "Implementering":
+                        EnumPhase = Phase.IMPLEMENTATION;
+                        break;
+                    case "Operation":
+                        EnumPhase = Phase.OPERATION;
+                        break;
+                    case "Opfølgning":
+                        EnumPhase = Phase.FOLLOW_UP;
+                        break;
+                    case "Afsluttet":
+                        EnumPhase = Phase.DONE;
+                        break;
+                }
             }
         }
-        private Status _status;
-        public Status Status
+
+        private Phase _enumPhase;
+        public Phase EnumPhase
+        {
+            get
+            { return _enumPhase; }
+            set
+            {
+                _enumPhase = value;
+                OnPropertyChanged(nameof(EnumPhase));
+            }
+        }
+        private string _selectedStatus;
+
+        public string SelectedStatus
+        {
+            get { return _selectedStatus; }
+            set 
+            { 
+                _selectedStatus = value;
+                OnPropertyChanged(nameof(SelectedStatus));
+                switch (value)
+                
+                {
+                    case "Ingen":
+                        EnumStatus = Status.NONE;
+                        break;
+                    case "Kritisk":
+                        EnumStatus = Status.CRITICAL;
+                        break;
+                    case "Forsinket":
+                        EnumStatus = Status.DELAYED;
+                        break;
+                    case "På Sporet":
+                        EnumStatus = Status.ON_TRACK;
+                        break;
+                }
+            }
+        }
+
+
+        private Status _enumStatus;
+        public Status EnumStatus
         {
             get
             {
-                return _status;
+                return _enumStatus;
             }
             set
             {
-                _status = value;
-                OnPropertyChanged(nameof(Status));
+                _enumStatus = value;
+                OnPropertyChanged(nameof(EnumStatus));
             }
         }
 
@@ -282,7 +343,7 @@ namespace Civica.ViewModels
             {
                 if (parameter is InProgressViewModel ipvm)
                 {
-                    ipvm.CreateProgress(ipvm.Phase, ipvm.Status, ipvm.ProgressDescription);
+                    ipvm.CreateProgress(ipvm.EnumPhase, ipvm.EnumStatus, ipvm.ProgressDescription);
 
                     ipvm.UpdateList();
 
@@ -314,8 +375,8 @@ namespace Civica.ViewModels
                 if (parameter is InProgressViewModel ipvm)
                 {
                     ipvm.ProgressDescription = "";
-                    ipvm.Phase = Phase.IDENTIFIED;
-                    ipvm.Status = Status.NONE;
+                    ipvm.SelectedPhase = "Identificeret";
+                    ipvm.SelectedStatus = "Ingen";
 
                     ipvm.ProgressVisibility = "Visible";
                     ipvm.EditVisibility = "Hidden";

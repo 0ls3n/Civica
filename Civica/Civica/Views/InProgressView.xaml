@@ -266,12 +266,12 @@
                 <TextBlock Text="Fase"
                        Margin="0 10 0 0"/>
 
-                <ComboBox x:Name="cmbPh" ItemsSource="{Binding Phases}" SelectedItem="{Binding Phase}"/>
+                <ComboBox x:Name="cmbPh" ItemsSource="{Binding Phases}" SelectedItem="{Binding SelectedPhase}"/>
 
                 <TextBlock Text="Status"
                        Margin="0 10 0 0"/>
 
-                <ComboBox x:Name="cmbStatus" ItemsSource="{Binding Statuses}" SelectedItem="{Binding Status}"/>
+                <ComboBox x:Name="cmbStatus" ItemsSource="{Binding Statuses}" SelectedItem="{Binding SelectedStatus}"/>
 
                 <TextBlock Text="Fremdrift beskrivelse"
                        Margin="0 10 0 0"/>
