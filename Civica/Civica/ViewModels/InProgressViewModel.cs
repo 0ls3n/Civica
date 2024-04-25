@@ -220,8 +220,8 @@ namespace Civica.ViewModels
         #endregion
 
         #region Progress
-        public ObservableCollection<string> Phases { get; set; } = new ObservableCollection<string> { "Identificeret", "Planlægning", "Implementering", "Operation", "Opfølgning", "Afsluttet" };
-        public ObservableCollection<string> Statuses { get; set; } = new ObservableCollection<string> { "Ingen", "Kritisk", "Forsinket", "På Sporet" };
+        public ObservableCollection<string> Phases { get; set; } = new ObservableCollection<string> { "Identificeret", "Planlægning", "Gennemførsel", "Drift", "Opfølgning", "Afsluttet" };
+        public ObservableCollection<string> Statuses { get; set; } = new ObservableCollection<string> { "Ingen Vurdering", "Kritisk", "Forsinket", "Planmæssigt" };
         public ObservableCollection<ProgressViewModel> SelectedProgresses { get; set; } = new ObservableCollection<ProgressViewModel>();
         private ProgressViewModel _selectedProgress = null;
         public ProgressViewModel SelectedProgress
@@ -267,10 +267,10 @@ namespace Civica.ViewModels
                     case "Planlægning":
                         EnumPhase = Phase.PLANNING;
                         break;
-                    case "Implementering":
+                    case "Gennemførsel":
                         EnumPhase = Phase.IMPLEMENTATION;
                         break;
-                    case "Operation":
+                    case "Drift":
                         EnumPhase = Phase.OPERATION;
                         break;
                     case "Opfølgning":
@@ -306,7 +306,7 @@ namespace Civica.ViewModels
                 switch (value)
                 
                 {
-                    case "Ingen":
+                    case "Ingen Vurdering":
                         EnumStatus = Status.NONE;
                         break;
                     case "Kritisk":
@@ -315,7 +315,7 @@ namespace Civica.ViewModels
                     case "Forsinket":
                         EnumStatus = Status.DELAYED;
                         break;
-                    case "På Sporet":
+                    case "Planmæssigt":
                         EnumStatus = Status.ON_TRACK;
                         break;
                 }
@@ -376,7 +376,7 @@ namespace Civica.ViewModels
                 {
                     ipvm.ProgressDescription = "";
                     ipvm.SelectedPhase = "Identificeret";
-                    ipvm.SelectedStatus = "Ingen";
+                    ipvm.SelectedStatus = "Ingen Vurdering";
 
                     ipvm.ProgressVisibility = "Visible";
                     ipvm.EditVisibility = "Hidden";
