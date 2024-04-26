@@ -1,0 +1,86 @@
+﻿<UserControl x:Class="Civica.Views.CreateProjectView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Civica.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="600" d:DesignWidth="600">
+    <Grid>
+        <Border Grid.Row="1"
+        Background="White"
+        CornerRadius="10"
+        Visibility="{Binding CreateVisibility}">
+
+            <StackPanel HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Orientation="Vertical"
+                Width="400">
+
+                <TextBlock Text="Opret nyt projekt"
+                   TextAlignment="Center"
+                   FontSize="20"/>
+
+                <Label Content="Projektnavn:"
+               Margin="0 0 10 0"
+               FontSize="16"
+               HorizontalAlignment="Left"/>
+                <TextBox Width="390"
+                 FontSize="16"
+                 Background="#FAFAFA"
+                 Text="{Binding ProjectName, UpdateSourceTrigger=PropertyChanged}"/>
+
+                <Grid Margin="0 0 0 0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <Label Content="Projektejer:"
+                   FontSize="16"/>
+                    <TextBox Grid.Row="1" 
+                     Margin="5 0 5 0"
+                     FontSize="16"
+                     Background="#FAFAFA"
+                     Text="{Binding ProjectOwner}"/>
+
+                    <Label Content="Projektleder:" 
+                   Grid.Column="1"
+                   FontSize="16"/>
+                    <TextBox Grid.Row="1" 
+                     Margin="5 0 5 0" 
+                     Grid.Column="1"
+                     FontSize="16"
+                     Background="#FAFAFA"
+                     Text="{Binding ProjectManager}"/>
+
+                </Grid>
+
+                <Label Content="Beskrivelse"
+               Margin="0 0 10 0"
+               HorizontalAlignment="Left"
+               FontSize="16"/>
+                <TextBox Width="390"
+                 Height="125"
+                 FontSize="16"
+                 TextWrapping="Wrap"
+                 Background="#FAFAFA"
+                 Text="{Binding ProjectDescription}"/>
+
+                <Button Content="Opret"
+                Width="100"
+                Margin="0 10 0 0"
+                Background="#FAFAFA"
+                Command="{Binding CreateProjectCmd}"
+                CommandParameter="{Binding}"/>
+
+            </StackPanel>
+
+        </Border>
+    </Grid>
+</UserControl>
