@@ -9,8 +9,7 @@
     <Grid>
         <Border Grid.Row="1"
                 Background="White"
-                CornerRadius="10"
-                Visibility="{Binding ProgressVisibility}">
+                CornerRadius="10">
 
             <StackPanel Width="300"
                         Height="350"

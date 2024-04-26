@@ -29,51 +29,7 @@ namespace Civica.ViewModels
         }
 
         #region Create
-        private string _projectName = "";
-        public string ProjectName
-        {
-            get => _projectName;
-            set
-            {
-                _projectName = value;
-                OnPropertyChanged(nameof(ProjectName));
-            }
-        }
-
-        private string _projectOwner = "";
-        public string ProjectOwner
-        {
-            get => _projectOwner;
-            set
-            {
-                _projectOwner = value;
-                OnPropertyChanged(nameof(ProjectOwner));
-            }
-        }
-
-        private string _projectManager = "";
-
-        public string ProjectManager
-        {
-            get => _projectManager;
-            set
-            {
-                _projectManager = value;
-                OnPropertyChanged(nameof(ProjectManager));
-            }
-        }
-
-        private string _projectDescription = "";
-
-        public string ProjectDescription
-        {
-            get => _projectDescription;
-            set
-            {
-                _projectDescription = value;
-                OnPropertyChanged(nameof(ProjectDescription));
-            }
-        }
+        
 
         private string _createVisibility;
         public string CreateVisibility
@@ -86,18 +42,7 @@ namespace Civica.ViewModels
             }
         }
 
-        public void CreateProject()
-        {
-            Project p = new Project(ProjectName, ProjectOwner, ProjectManager, ProjectDescription);
-            projectRepo.Add(p);
-
-            UpdateList();
-
-            ProjectName = "";
-            ProjectManager = "";
-            ProjectOwner = "";
-            ProjectDescription = "";
-        }
+       
 
         public void CreateProgress(Phase phase, Status status, string description)
         {
@@ -126,31 +71,7 @@ namespace Civica.ViewModels
             }
         );
 
-        public RelayCommand CreateProjectCmd { get; set; } = new RelayCommand
-        (
-            parameter =>
-            {
-                if (parameter is InProgressViewModel ipvm)
-                {
-                    ipvm.CreateProject();
-                    ipvm.CreateVisibility = "Hidden";
-                    ipvm.InformationVisibility = "Visible";
-                }
-            },
-            parameter =>
-            {
-                bool succes = false;
-
-                if (parameter is InProgressViewModel ipvm)
-                {
-                    if (!string.IsNullOrEmpty(ipvm.ProjectName))
-                    {
-                        succes = true;
-                    }
-                }
-                return succes;
-            }
-        );
+       
         #endregion
 
         #region Update
@@ -203,7 +124,7 @@ namespace Civica.ViewModels
             {
                 if (parameter is InProgressViewModel ipvm)
                 {
-                    if (ipvm.Projects.FirstOrDefault(x => x.Name.ToLower() == ipvm.ProjectName.ToLower()) is null || ipvm.ProjectName.ToLower() == ipvm.OldName.ToLower())
+                    if (ipvm.Projects.FirstOrDefault(x => x.Name.ToLower() == ipvm.SelectedProject.Name.ToLower()) is null || ipvm.SelectedProject.Name.ToLower() == ipvm.OldName.ToLower())
                     {
                         ipvm.UpdateProject(ipvm.SelectedProject);
 
@@ -480,8 +401,14 @@ namespace Civica.ViewModels
         private ProjectRepository projectRepo = new ProjectRepository();
         private ProgressRepository progressRepo = new ProgressRepository();
 
+        public CreateProjectViewModel CreateProjectVM { get; set; }
+
         public InProgressViewModel()
         {
+            CreateProjectVM = new CreateProjectViewModel();
+            CreateProjectVM.Init(this);
+            CreateProjectVM.GetRepo(projectRepo);
+
             UpdateList();
 
             WindowTitle = "Igangværende";
@@ -532,9 +459,9 @@ namespace Civica.ViewModels
             }
         }
 
-        public void Init(MainViewModel mvm)
+        public void Init(ObservableObject o)
         {
-            this.mvm = mvm;
+            this.mvm = (o as MainViewModel);
         }
 
         public void RemoveProject()

@@ -8,9 +8,8 @@
              d:DesignHeight="600" d:DesignWidth="600">
     <Grid>
         <Border Grid.Row="1"
-        Background="White"
-        CornerRadius="10"
-        Visibility="{Binding CreateVisibility}">
+                Background="White"
+                CornerRadius="10">
 
             <StackPanel HorizontalAlignment="Center"
                 VerticalAlignment="Center"
