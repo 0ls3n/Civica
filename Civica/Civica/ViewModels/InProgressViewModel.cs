@@ -489,7 +489,7 @@ namespace Civica.ViewModels
             CreateVisibility = "Hidden";
             EditVisibility = "Hidden";
             ProgressVisibility = "Hidden";
-            InformationVisibility = "Hidden";
+            InformationVisibility = "Visible";
 
         }
 
