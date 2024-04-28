@@ -1,4 +1,5 @@
 ﻿using Civica.Commands;
+using Civica.Interfaces;
 using Civica.Models;
 using System;
 using System.Collections.Generic;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Civica.ViewModels
 {
-    public class CreateProjectViewModel : ObservableObject
+    public class CreateProjectViewModel : ObservableObject, IViewModelChild
     {
         private string _projectName = "";
         public string ProjectName

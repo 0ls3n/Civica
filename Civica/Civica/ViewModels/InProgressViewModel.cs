@@ -1,4 +1,5 @@
 ﻿using Civica.Commands;
+using Civica.Interfaces;
 using Civica.Models;
 using Civica.Models.Enums;
 using System;
@@ -12,10 +13,9 @@ using System.Windows.Input;
 
 namespace Civica.ViewModels
 {
-    public class InProgressViewModel : ObservableObject
+    public class InProgressViewModel : ObservableObject, IViewModelChild
     {
-
-        public MainViewModel mvm;
+        private MainViewModel mvm;
 
         private string _Windowtitle;
         public string WindowTitle
@@ -28,8 +28,7 @@ namespace Civica.ViewModels
             }
         }
 
-        #region Create
-        
+        #region VisibilityProperties
 
         private string _createVisibility;
         public string CreateVisibility
@@ -42,41 +41,6 @@ namespace Civica.ViewModels
             }
         }
 
-       
-
-        public void CreateProgress(Phase phase, Status status, string description)
-        {
-            Progress prog = new Progress(SelectedProject.GetId(), phase, status, DateTime.Now, description);
-
-            progressRepo.Add(prog);
-
-            SelectedProgresses.Add(new ProgressViewModel(prog));
-        }
-
-        public RelayCommand CreateProjectViewCmd { get; set; } = new RelayCommand
-        (
-            parameter =>
-            {
-                if (parameter is InProgressViewModel ipvm)
-                {
-                    ipvm.CreateVisibility = "Visible";
-                    ipvm.InformationVisibility = "Hidden";
-                    ipvm.EditVisibility = "Hidden";
-                    ipvm.ProgressVisibility = "Hidden";
-                }
-            },
-            parameter =>
-            {
-                return true;
-            }
-        );
-
-       
-        #endregion
-
-        #region Update
-        public string OldName;
-
         private string _editVisibility;
         public string EditVisibility
         {
@@ -88,236 +52,6 @@ namespace Civica.ViewModels
             }
         }
 
-        public void UpdateProject(ProjectViewModel projectVM)
-        {
-            projectRepo.Update(projectRepo.Get(projectVM.GetId()), projectVM.Name, projectVM.Owner, projectVM.Manager, projectVM.Description);
-        }
-
-        public RelayCommand UpdateProjectViewCmd { get; set; } = new RelayCommand
-        (
-            parameter =>
-            {
-                if (parameter is InProgressViewModel ipvm)
-                {
-                    ipvm.EditVisibility = "Visible";
-                    ipvm.InformationVisibility = "Hidden";
-                    ipvm.CreateVisibility = "Hidden";
-                    ipvm.ProgressVisibility = "Hidden";
-                }
-            },
-            parameter =>
-            {
-                if (parameter is InProgressViewModel ipvm)
-                {
-                    if (ipvm.SelectedProject != null)
-                    {
-                        return true;
-                    }
-                }
-                return false;
-            }
-        );
-
-        public RelayCommand UpdateProjectCmd { get; set; } = new RelayCommand
-        (
-            parameter =>
-            {
-                if (parameter is InProgressViewModel ipvm)
-                {
-                    if (ipvm.Projects.FirstOrDefault(x => x.Name.ToLower() == ipvm.SelectedProject.Name.ToLower()) is null || ipvm.SelectedProject.Name.ToLower() == ipvm.OldName.ToLower())
-                    {
-                        ipvm.UpdateProject(ipvm.SelectedProject);
-
-                        ipvm.EditVisibility = "Hidden";
-                        ipvm.InformationVisibility = "Visible";
-                    }
-                }
-            },
-            parameter =>
-            {
-                return true;
-            }
-        );
-        #endregion
-
-        #region Progress
-        public ObservableCollection<string> Phases { get; set; } = new ObservableCollection<string> { "Identificeret", "Planlægning", "Gennemførsel", "Drift", "Opfølgning", "Afsluttet" };
-        public ObservableCollection<string> Statuses { get; set; } = new ObservableCollection<string> { "Ingen vurdering", "Kritisk", "Forsinket", "Planmæssigt" };
-        public ObservableCollection<ProgressViewModel> SelectedProgresses { get; set; } = new ObservableCollection<ProgressViewModel>();
-        private ProgressViewModel _selectedProgress = null;
-        public ProgressViewModel SelectedProgress
-        {
-            get
-            {
-                return _selectedProgress;
-            }
-            set
-            {
-                _selectedProgress = value;
-                OnPropertyChanged(nameof(SelectedProgress));
-            }
-        }
-
-        private string _progressDescription = "";
-        public string ProgressDescription
-        {
-            get
-            {
-                return _progressDescription;
-            }
-            set
-            {
-                _progressDescription = value;
-                OnPropertyChanged(nameof(ProgressDescription));
-            }
-        }
-        private string _selectedPhase;
-
-        public string SelectedPhase
-        {
-            get { return _selectedPhase; }
-            set
-            {
-                _selectedPhase = value;
-                OnPropertyChanged(nameof(SelectedPhase));
-                switch (value)
-                {
-                    case "Identificeret":
-                        EnumPhase = Phase.IDENTIFIED;
-                        break;
-                    case "Planlægning":
-                        EnumPhase = Phase.PLANNING;
-                        break;
-                    case "Gennemførsel":
-                        EnumPhase = Phase.IMPLEMENTATION;
-                        break;
-                    case "Drift":
-                        EnumPhase = Phase.OPERATION;
-                        break;
-                    case "Opfølgning":
-                        EnumPhase = Phase.FOLLOW_UP;
-                        break;
-                    case "Afsluttet":
-                        EnumPhase = Phase.DONE;
-                        break;
-                }
-            }
-        }
-
-        private Phase _enumPhase;
-        public Phase EnumPhase
-        {
-            get
-            { return _enumPhase; }
-            set
-            {
-                _enumPhase = value;
-                OnPropertyChanged(nameof(EnumPhase));
-            }
-        }
-        private string _selectedStatus;
-
-        public string SelectedStatus
-        {
-            get { return _selectedStatus; }
-            set 
-            { 
-                _selectedStatus = value;
-                OnPropertyChanged(nameof(SelectedStatus));
-                switch (value)
-                
-                {
-                    case "Ingen Vurdering":
-                        EnumStatus = Status.NONE;
-                        break;
-                    case "Kritisk":
-                        EnumStatus = Status.CRITICAL;
-                        break;
-                    case "Forsinket":
-                        EnumStatus = Status.DELAYED;
-                        break;
-                    case "Planmæssigt":
-                        EnumStatus = Status.ON_TRACK;
-                        break;
-                }
-            }
-        }
-
-
-        private Status _enumStatus;
-        public Status EnumStatus
-        {
-            get
-            {
-                return _enumStatus;
-            }
-            set
-            {
-                _enumStatus = value;
-                OnPropertyChanged(nameof(EnumStatus));
-            }
-        }
-
-        public RelayCommand ProgressProjectCmd { get; set; } = new RelayCommand
-        (
-            parameter =>
-            {
-                if (parameter is InProgressViewModel ipvm)
-                {
-                    ipvm.CreateProgress(ipvm.EnumPhase, ipvm.EnumStatus, ipvm.ProgressDescription);
-
-                    ipvm.UpdateList();
-
-                    ipvm.ProgressVisibility = "Hidden";
-                    ipvm.InformationVisibility = "Visible";
-                }
-            },
-            parameter =>
-            {
-                bool succes = false;
-
-                if (parameter is InProgressViewModel ipvm)
-                {
-                    if (ipvm.SelectedProject is not null)
-                    {
-                        if (!string.IsNullOrEmpty(ipvm.ProgressDescription))
-                        {
-                            succes = true;
-                        }
-                    }
-                }
-                return succes;
-            }
-        );
-        public RelayCommand ProgressProjectViewCmd { get; set; } = new RelayCommand
-        (
-            parameter =>
-            {
-                if (parameter is InProgressViewModel ipvm)
-                {
-                    ipvm.ProgressDescription = "";
-                    ipvm.SelectedPhase = "Identificeret";
-                    ipvm.SelectedStatus = "Ingen Vurdering";
-
-                    ipvm.ProgressVisibility = "Visible";
-                    ipvm.EditVisibility = "Hidden";
-                    ipvm.InformationVisibility = "Hidden";
-                    ipvm.CreateVisibility = "Hidden";
-                }
-            },
-            parameter =>
-            {
-                if (parameter is InProgressViewModel ipvm)
-                {
-                    if (ipvm.SelectedProject != null)
-                    {
-                        return true;
-                    }
-                }
-                return false;
-            }
-        );
-
         private string _progressVisibility;
         public string ProgressVisibility
         {
@@ -328,7 +62,6 @@ namespace Civica.ViewModels
                 OnPropertyChanged(nameof(ProgressVisibility));
             }
         }
-        #endregion
 
         private string _informationVisibility;
         public string InformationVisibility
@@ -341,7 +74,11 @@ namespace Civica.ViewModels
             }
         }
 
+        #endregion
+
         public ObservableCollection<ProjectViewModel> Projects { get; set; } = new ObservableCollection<ProjectViewModel>();
+
+        //public ObservableCollection<ProgressViewModel> SelectedProgresses { get; set; } = new ObservableCollection<ProgressViewModel>();
 
         private ProjectViewModel _selectedProject;
         public ProjectViewModel SelectedProject
@@ -367,47 +104,37 @@ namespace Civica.ViewModels
             }
         }
 
-        public RelayCommand RemoveProjectCmd { get; set; } = new RelayCommand
-        (
-            parameter =>
+        private ProgressViewModel _selectedProgress = null;
+        public ProgressViewModel SelectedProgress
+        {
+            get
             {
-                if (parameter is InProgressViewModel ipvm)
-                {
-                    MessageBoxButton button = MessageBoxButton.OKCancel;
-                    MessageBoxResult result = MessageBox.Show($"Er du sikker på du vil slette '{ipvm.SelectedProject.Name}'?", "Bekræft sletning", button);
-
-                    if (result == MessageBoxResult.OK)
-                    {
-                        ipvm.RemoveProject();
-                        ipvm.InformationVisibility = "Visible";
-                    }
-                }
-            },
-            parameter =>
-            {
-                bool succes = false;
-
-                if (parameter is InProgressViewModel ipvm)
-                {
-                    if (ipvm.SelectedProject != null)
-                    {
-                        succes = true;
-                    }
-                }
-                return succes;
+                return _selectedProgress;
             }
-        );
+            set
+            {
+                _selectedProgress = value;
+                OnPropertyChanged(nameof(SelectedProgress));
+            }
+        }
+
+        public string OldName;
 
         private ProjectRepository projectRepo = new ProjectRepository();
         private ProgressRepository progressRepo = new ProgressRepository();
 
         public CreateProjectViewModel CreateProjectVM { get; set; }
+        public CreateProgressViewModel CreateProgressVM { get; set; }
 
         public InProgressViewModel()
         {
             CreateProjectVM = new CreateProjectViewModel();
             CreateProjectVM.Init(this);
             CreateProjectVM.GetRepo(projectRepo);
+
+            CreateProgressVM = new CreateProgressViewModel();
+            CreateProgressVM.Init(this);
+            CreateProgressVM.GetRepo(progressRepo);
 
             UpdateList();
 
@@ -417,7 +144,6 @@ namespace Civica.ViewModels
             EditVisibility = "Hidden";
             ProgressVisibility = "Hidden";
             InformationVisibility = "Visible";
-
         }
 
         public void UpdateList()
@@ -469,5 +195,144 @@ namespace Civica.ViewModels
             projectRepo.Remove(projectRepo.Get(SelectedProject.GetId()));
             UpdateList();
         }
+
+        public void UpdateProject(ProjectViewModel projectVM)
+        {
+            projectRepo.Update(projectRepo.Get(projectVM.GetId()), projectVM.Name, projectVM.Owner, projectVM.Manager, projectVM.Description);
+        }
+
+        #region ViewCommands
+
+        public RelayCommand CreateProjectViewCmd { get; set; } = new RelayCommand
+        (
+            parameter =>
+            {
+                if (parameter is InProgressViewModel ipvm)
+                {
+                    ipvm.CreateVisibility = "Visible";
+                    ipvm.InformationVisibility = "Hidden";
+                    ipvm.EditVisibility = "Hidden";
+                    ipvm.ProgressVisibility = "Hidden";
+                }
+            },
+            parameter =>
+            {
+                return true;
+            }
+        );
+
+        public RelayCommand UpdateProjectViewCmd { get; set; } = new RelayCommand
+        (
+            parameter =>
+            {
+                if (parameter is InProgressViewModel ipvm)
+                {
+                    ipvm.EditVisibility = "Visible";
+                    ipvm.InformationVisibility = "Hidden";
+                    ipvm.CreateVisibility = "Hidden";
+                    ipvm.ProgressVisibility = "Hidden";
+                }
+            },
+            parameter =>
+            {
+                if (parameter is InProgressViewModel ipvm)
+                {
+                    if (ipvm.SelectedProject != null)
+                    {
+                        return true;
+                    }
+                }
+                return false;
+            }
+        );
+
+        public RelayCommand ProgressProjectViewCmd { get; set; } = new RelayCommand
+        (
+            parameter =>
+            {
+                if (parameter is InProgressViewModel ipvm)
+                {
+                    ipvm.CreateProgressVM.ProgressDescription = "";
+                    ipvm.CreateProgressVM.SelectedPhase = "Identificeret";
+                    ipvm.CreateProgressVM.SelectedStatus = "Ingen vurdering";
+
+                    ipvm.ProgressVisibility = "Visible";
+                    ipvm.EditVisibility = "Hidden";
+                    ipvm.InformationVisibility = "Hidden";
+                    ipvm.CreateVisibility = "Hidden";
+                }
+            },
+            parameter =>
+            {
+                if (parameter is InProgressViewModel ipvm)
+                {
+                    if (ipvm.SelectedProject != null)
+                    {
+                        return true;
+                    }
+                }
+                return false;
+            }
+        );
+
+        #endregion
+
+        #region FunctionalityCommands
+
+        public RelayCommand UpdateProjectCmd { get; set; } = new RelayCommand
+        (
+            parameter =>
+            {
+                if (parameter is InProgressViewModel ipvm)
+                {
+                    if (ipvm.Projects.FirstOrDefault(x => x.Name.ToLower() == ipvm.CreateProjectVM.ProjectName.ToLower()) is null || ipvm.CreateProjectVM.ProjectName.ToLower() == ipvm.OldName.ToLower())
+                    {
+                        ipvm.UpdateProject(ipvm.SelectedProject);
+
+                        ipvm.EditVisibility = "Hidden";
+                        ipvm.InformationVisibility = "Visible";
+                    }
+                }
+            },
+            parameter =>
+            {
+                return true;
+            }
+        );
+
+        public RelayCommand RemoveProjectCmd { get; set; } = new RelayCommand
+        (
+            parameter =>
+            {
+                if (parameter is InProgressViewModel ipvm)
+                {
+                    MessageBoxButton button = MessageBoxButton.OKCancel;
+                    MessageBoxResult result = MessageBox.Show($"Er du sikker på du vil slette '{ipvm.SelectedProject.Name}'?", "Bekræft sletning", button);
+
+                    if (result == MessageBoxResult.OK)
+                    {
+                        ipvm.RemoveProject();
+                        ipvm.InformationVisibility = "Visible";
+                    }
+                }
+            },
+            parameter =>
+            {
+                bool succes = false;
+
+                if (parameter is InProgressViewModel ipvm)
+                {
+                    if (ipvm.SelectedProject != null)
+                    {
+                        succes = true;
+                    }
+                }
+                return succes;
+            }
+        );
+
+        #endregion
+
+
     }
 }

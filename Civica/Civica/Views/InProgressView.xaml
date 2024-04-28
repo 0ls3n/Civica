@@ -29,6 +29,10 @@
                    Margin="0 0 0 10"
                    Foreground="#8A8A8A"/>
 
+        <Border Grid.Row="1">
+            <view:ProjectInformationView/>
+        </Border>
+
         <Border Grid.Row="1"
                 Visibility="{Binding InformationVisibility}">
             <view:InformationPlaceholderView/>
@@ -43,8 +47,11 @@
                 Visibility="{Binding ProgressVisibility}">
             <view:CreateProgressView DataContext="{Binding Path=CreateProgressVM}"/>
         </Border>
-        
-        
+
+        <Border Grid.Row="1"
+                Visibility="{Binding EditVisibility}">
+            <view:EditProjectViewModel/>
+        </Border>
 
         <TextBlock Grid.Row="0"
                    Grid.Column="1"
@@ -61,7 +68,6 @@
                 Margin="30 0 0 0">
 
             <Grid>
-
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="75"/>
@@ -121,7 +127,6 @@
                             </Grid>
                         </DataTemplate>
                     </ListBox.ItemTemplate>
-
                 </ListBox>
 
                 <Border Grid.Row="1"
@@ -143,9 +148,9 @@
                                 Command="{Binding RemoveProjectCmd}"
                                 CommandParameter="{Binding}"
                                 ToolTipService.InitialShowDelay="0">
-                                <Button.ToolTip>
-                                    <ToolTip Content="Slet projekt" Style="{StaticResource ToolTipTheme}"/>
-                                </Button.ToolTip>
+                            <Button.ToolTip>
+                                <ToolTip Content="Slet projekt" Style="{StaticResource ToolTipTheme}"/>
+                            </Button.ToolTip>
 
                             <Button.Style>
                                 <Style TargetType="Button">
@@ -159,7 +164,6 @@
 
                                 </Style>
                             </Button.Style>
-
 
                             <Button.Template>
                                 <ControlTemplate TargetType="Button">
@@ -201,7 +205,6 @@
                                 </Style>
                             </Button.Style>
 
-
                             <Button.Template>
                                 <ControlTemplate TargetType="{x:Type Button}">
                                     <Border Width="50" 
@@ -242,7 +245,6 @@
 
                                 </Style>
                             </Button.Style>
-
 
                             <Button.Template>
                                 <ControlTemplate TargetType="{x:Type Button}">
@@ -297,18 +299,9 @@
                             </Button.Template>
 
                         </Button>
-
-
-
-
                     </Grid>
                 </Border>
-
             </Grid>
-
         </Border>
-
-
-
     </Grid>
 </UserControl>
