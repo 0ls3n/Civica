@@ -16,7 +16,23 @@ namespace Civica.ViewModels
         private InProgressViewModel ipvm;
 
         private ProgressRepository progressRepo;
+        public Dictionary<Phase, string> PhaseDict { get; set; } = new Dictionary<Phase, string>
+        {
+            { Phase.IDENTIFIED, "Identificeret" },
+            { Phase.PLANNING, "Planlægning" },
+            { Phase.IMPLEMENTATION, "Gennemførsel" },
+            { Phase.OPERATION, "Drift" },
+            { Phase.FOLLOW_UP, "Opfølgning" },
+            { Phase.DONE, "Afsluttet" }
+        };
 
+        public Dictionary<Status, string> StatusDict { get; set; } = new Dictionary<Status, string>
+        {
+            { Status.NONE, "Ingen vurdering" },
+            { Status.CRITICAL, "Kritisk" },
+            { Status.DELAYED, "Forsinket" },
+            { Status.ON_TRACK, "Planmæssigt" }
+        };
         public ObservableCollection<string> Phases { get; set; } = new ObservableCollection<string> { "Identificeret", "Planlægning", "Gennemførsel", "Drift", "Opfølgning", "Afsluttet" };
         public ObservableCollection<string> Statuses { get; set; } = new ObservableCollection<string> { "Ingen vurdering", "Kritisk", "Forsinket", "Planmæssigt" };
 

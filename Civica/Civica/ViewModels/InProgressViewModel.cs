@@ -17,13 +17,13 @@ namespace Civica.ViewModels
     {
         private MainViewModel mvm;
 
-        private string _Windowtitle;
+        private string _windowTitle;
         public string WindowTitle
         {
-            get => _Windowtitle;
+            get => _windowTitle;
             set
             {
-                _Windowtitle = value;
+                _windowTitle = value;
                 OnPropertyChanged(nameof(WindowTitle));
             }
         }
