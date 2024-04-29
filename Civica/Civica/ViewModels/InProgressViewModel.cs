@@ -86,21 +86,24 @@ namespace Civica.ViewModels
             get => _selectedProject;
             set
             {
-                _selectedProject = value;
-                InformationVisibility = "Hidden";
-                CreateVisibility = "Hidden";
-                ProgressVisibility = "Hidden";
-                EditVisibility = "Hidden";
-
-                List<Progress> sortedList = progressRepo.Get(SelectedProject.GetId()).OrderByDescending(x => x.Date).ToList();
-                Progress prog = sortedList.FirstOrDefault();
-
-                SelectedProgress = null;
-                if (prog is not null)
+                if (value is not null)
                 {
-                    SelectedProgress = new ProgressViewModel(sortedList.FirstOrDefault());
+                    _selectedProject = value;
+                    InformationVisibility = "Hidden";
+                    CreateVisibility = "Hidden";
+                    ProgressVisibility = "Hidden";
+                    EditVisibility = "Hidden";
+
+                    List<Progress> sortedList = progressRepo.Get(SelectedProject.GetId()).OrderByDescending(x => x.Date).ToList();
+                    Progress prog = sortedList.FirstOrDefault();
+
+                    SelectedProgress = null;
+                    if (prog is not null)
+                    {
+                        SelectedProgress = new ProgressViewModel(sortedList.FirstOrDefault());
+                    }
+                    OnPropertyChanged(nameof(SelectedProject));
                 }
-                OnPropertyChanged(nameof(SelectedProject));
             }
         }
 
@@ -253,10 +256,9 @@ namespace Civica.ViewModels
                 if (parameter is InProgressViewModel ipvm)
                 {
                     ipvm.CreateProgressVM.ProgressDescription = "";
-                    //ipvm.CreateProgressVM.SelectedPhase = ipvm.CreateProgressVM.Phases.FirstOrDefault(x => x.Value == "Identificeret").Key.ToString();
-                    ipvm.CreateProgressVM.SelectedPhase = Phase.IDENTIFIED.ToString();
-                    //ipvm.CreateProgressVM.SelectedStatus = ipvm.CreateProgressVM.Statuses.FirstOrDefault(x => x.Value == "Ingen vurdering").Key.ToString();
-                    ipvm.CreateProgressVM.SelectedStatus = Status.NONE.ToString();
+
+                    ipvm.CreateProgressVM.SelectedPhase = Phase.IDENTIFIED;
+                    ipvm.CreateProgressVM.SelectedStatus = Status.NONE;
 
                     ipvm.ProgressVisibility = "Visible";
                     ipvm.EditVisibility = "Hidden";

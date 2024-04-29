@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:Civica.Views"
+             xmlns:local="clr-namespace:Civica.ViewModels"
              mc:Ignorable="d" 
              d:DesignHeight="600" d:DesignWidth="600">
     <Grid>
@@ -25,7 +25,7 @@
                            Margin="0 10 0 0"/>
 
                 <ComboBox x:Name="cmbPh" 
-                          ItemsSource="{Binding Phases}" 
+                          ItemsSource="{x:Static local:Helper.Phases}" 
                           DisplayMemberPath="Value"
                           SelectedValuePath="Key"
                           SelectedValue="{Binding SelectedPhase, UpdateSourceTrigger=PropertyChanged}"/>
@@ -34,7 +34,7 @@
                            Margin="0 10 0 0"/>
 
                 <ComboBox x:Name="cmbStatus" 
-                          ItemsSource="{Binding Statuses}" 
+                          ItemsSource="{x:Static local:Helper.Statuses}" 
                           DisplayMemberPath="Value"
                           SelectedValuePath="Key"
                           SelectedValue="{Binding SelectedStatus, UpdateSourceTrigger=PropertyChanged}"/>
