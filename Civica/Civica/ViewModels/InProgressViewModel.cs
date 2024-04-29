@@ -253,8 +253,10 @@ namespace Civica.ViewModels
                 if (parameter is InProgressViewModel ipvm)
                 {
                     ipvm.CreateProgressVM.ProgressDescription = "";
-                    ipvm.CreateProgressVM.SelectedPhase = "Identificeret";
-                    ipvm.CreateProgressVM.SelectedStatus = "Ingen vurdering";
+                    //ipvm.CreateProgressVM.SelectedPhase = ipvm.CreateProgressVM.Phases.FirstOrDefault(x => x.Value == "Identificeret").Key.ToString();
+                    ipvm.CreateProgressVM.SelectedPhase = Phase.IDENTIFIED.ToString();
+                    //ipvm.CreateProgressVM.SelectedStatus = ipvm.CreateProgressVM.Statuses.FirstOrDefault(x => x.Value == "Ingen vurdering").Key.ToString();
+                    ipvm.CreateProgressVM.SelectedStatus = Status.NONE.ToString();
 
                     ipvm.ProgressVisibility = "Visible";
                     ipvm.EditVisibility = "Hidden";

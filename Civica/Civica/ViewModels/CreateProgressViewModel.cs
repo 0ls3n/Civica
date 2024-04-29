@@ -17,8 +17,26 @@ namespace Civica.ViewModels
 
         private ProgressRepository progressRepo;
 
-        public ObservableCollection<string> Phases { get; set; } = new ObservableCollection<string> { "Identificeret", "Planlægning", "Gennemførsel", "Drift", "Opfølgning", "Afsluttet" };
-        public ObservableCollection<string> Statuses { get; set; } = new ObservableCollection<string> { "Ingen vurdering", "Kritisk", "Forsinket", "Planmæssigt" };
+        public Dictionary<Phase, string> Phases { get; set; } = new Dictionary<Phase, string>
+        {
+            { Phase.IDENTIFIED, "Identificeret" },
+            { Phase.PLANNING, "Planlægning" },
+            { Phase.IMPLEMENTATION, "Gennemførsel" },
+            { Phase.OPERATION, "Drift" },
+            { Phase.FOLLOW_UP, "Opfølgning" },
+            { Phase.DONE, "Afsluttet" }
+        };
+
+        public Dictionary<Status, string> Statuses { get; set; } = new Dictionary<Status, string>
+        {
+            { Status.NONE, "Ingen vurdering" },
+            { Status.CRITICAL, "Kritisk" },
+            { Status.DELAYED, "Forsinket" },
+            { Status.ON_TRACK, "Planmæssigt" }
+        };
+
+        //public ObservableCollection<string> Phases { get; set; } = new ObservableCollection<string> { "Identificeret", "Planlægning", "Gennemførsel", "Drift", "Opfølgning", "Afsluttet" };
+        //public ObservableCollection<string> Statuses { get; set; } = new ObservableCollection<string> { "Ingen vurdering", "Kritisk", "Forsinket", "Planmæssigt" };
 
         private string _progressDescription = "";
         public string ProgressDescription

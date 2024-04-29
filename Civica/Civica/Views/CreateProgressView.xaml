@@ -24,12 +24,20 @@
                 <TextBlock Text="Fase"
                            Margin="0 10 0 0"/>
 
-                <ComboBox x:Name="cmbPh" ItemsSource="{Binding Phases}" SelectedItem="{Binding SelectedPhase, UpdateSourceTrigger=PropertyChanged}"/>
+                <ComboBox x:Name="cmbPh" 
+                          ItemsSource="{Binding Phases}" 
+                          DisplayMemberPath="Value"
+                          SelectedValuePath="Key"
+                          SelectedValue="{Binding SelectedPhase, UpdateSourceTrigger=PropertyChanged}"/>
 
                 <TextBlock Text="Status"
                            Margin="0 10 0 0"/>
 
-                <ComboBox x:Name="cmbStatus" ItemsSource="{Binding Statuses}" SelectedItem="{Binding SelectedStatus, UpdateSourceTrigger=PropertyChanged}"/>
+                <ComboBox x:Name="cmbStatus" 
+                          ItemsSource="{Binding Statuses}" 
+                          DisplayMemberPath="Value"
+                          SelectedValuePath="Key"
+                          SelectedValue="{Binding SelectedStatus, UpdateSourceTrigger=PropertyChanged}"/>
 
                 <TextBlock Text="Fremdrift beskrivelse"
                            Margin="0 10 0 0"/>
