@@ -26,15 +26,7 @@ namespace Civica.ViewModels
             { Phase.DONE, "Afsluttet" }
         };
 
-        public Dictionary<Status, string> StatusDict { get; set; } = new Dictionary<Status, string>
-        {
-            { Status.NONE, "Ingen vurdering" },
-            { Status.CRITICAL, "Kritisk" },
-            { Status.DELAYED, "Forsinket" },
-            { Status.ON_TRACK, "Planmæssigt" }
-        };
-        public ObservableCollection<string> Phases { get; set; } = new ObservableCollection<string> { "Identificeret", "Planlægning", "Gennemførsel", "Drift", "Opfølgning", "Afsluttet" };
-        public ObservableCollection<string> Statuses { get; set; } = new ObservableCollection<string> { "Ingen vurdering", "Kritisk", "Forsinket", "Planmæssigt" };
+
 
         private string _progressDescription = "";
         public string ProgressDescription
@@ -50,90 +42,29 @@ namespace Civica.ViewModels
             }
         }
 
-        private string _selectedPhase;
-        public string SelectedPhase
+        private Phase _selectedPhase;
+        public Phase SelectedPhase
         {
             get { return _selectedPhase; }
             set
             {
                 _selectedPhase = value;
                 OnPropertyChanged(nameof(SelectedPhase));
-                switch (value)
-                {
-                    case "Identificeret":
-                        EnumPhase = Phase.IDENTIFIED;
-                        break;
-                    case "Planlægning":
-                        EnumPhase = Phase.PLANNING;
-                        break;
-                    case "Gennemførsel":
-                        EnumPhase = Phase.IMPLEMENTATION;
-                        break;
-                    case "Drift":
-                        EnumPhase = Phase.OPERATION;
-                        break;
-                    case "Opfølgning":
-                        EnumPhase = Phase.FOLLOW_UP;
-                        break;
-                    case "Afsluttet":
-                        EnumPhase = Phase.DONE;
-                        break;
-                }
             }
         }
 
-        private Phase _enumPhase;
-        public Phase EnumPhase
-        {
-            get
-            { return _enumPhase; }
-            set
-            {
-                _enumPhase = value;
-                OnPropertyChanged(nameof(EnumPhase));
-            }
-        }
-        private string _selectedStatus;
+        private Status _selectedStatus;
 
-        public string SelectedStatus
+        public Status SelectedStatus
         {
             get { return _selectedStatus; }
             set
             {
                 _selectedStatus = value;
                 OnPropertyChanged(nameof(SelectedStatus));
-                switch (value)
-
-                {
-                    case "Ingen Vurdering":
-                        EnumStatus = Status.NONE;
-                        break;
-                    case "Kritisk":
-                        EnumStatus = Status.CRITICAL;
-                        break;
-                    case "Forsinket":
-                        EnumStatus = Status.DELAYED;
-                        break;
-                    case "Planmæssigt":
-                        EnumStatus = Status.ON_TRACK;
-                        break;
-                }
             }
         }
 
-        private Status _enumStatus;
-        public Status EnumStatus
-        {
-            get
-            {
-                return _enumStatus;
-            }
-            set
-            {
-                _enumStatus = value;
-                OnPropertyChanged(nameof(EnumStatus));
-            }
-        }
 
         public void Init(ObservableObject o)
         {
@@ -162,7 +93,7 @@ namespace Civica.ViewModels
             {
                 if (parameter is CreateProgressViewModel cpvm)
                 {
-                    cpvm.CreateProgress(cpvm.EnumPhase, cpvm.EnumStatus, cpvm.ProgressDescription);
+                    cpvm.CreateProgress(cpvm.SelectedPhase, cpvm.SelectedStatus, cpvm.ProgressDescription);
 
                     cpvm.ipvm.UpdateList();
 
