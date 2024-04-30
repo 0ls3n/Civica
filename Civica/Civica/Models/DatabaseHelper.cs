@@ -115,35 +115,32 @@ namespace Civica.Models
                         }
                     }
                 }
-            }
-            return list;
-        }
-        public static List<WorkTime> InitializeWorkTime()
-        {
-            List<WorkTime> workTimes = new List<WorkTime>();
-
-            using (SqlConnection con = new SqlConnection(connectionString))
-            {
-                con.Open();
-                SqlCommand workTimeCmd = new SqlCommand("SELECT WorkTimeId, Time, InvolvedName, ResourceId FROM WORKTIMES", con);
-                using (SqlDataReader reader = workTimeCmd.ExecuteReader())
+                else if (o == typeof(WorkTime))
                 {
-                    while (reader.Read())
+                    SqlCommand workTimeCmd = new SqlCommand("SELECT WorkTimeId, Time, InvolvedName, ResourceId FROM WORKTIMES", con);
+                    using (SqlDataReader reader = workTimeCmd.ExecuteReader())
                     {
-                        int id = Convert.ToInt32(reader["WorkTimeId"]);
-                        double Time = Convert.ToDouble(reader["Time"]);
-                        string InvolvedName = Convert.ToString(reader["InvolvedName"]);
-                        int resourceId = Convert.ToInt32(reader["ResourceId"]);
+                        while (reader.Read())
+                        {
+                            int id = Convert.ToInt32(reader["WorkTimeId"]);
+                            double Time = Convert.ToDouble(reader["Time"]);
+                            string InvolvedName = Convert.ToString(reader["InvolvedName"]);
+                            int resourceId = Convert.ToInt32(reader["ResourceId"]);
 
-                        WorkTime wt = new WorkTime(Time, InvolvedName);
+                            WorkTime wt = new WorkTime(Time, InvolvedName);
 
-                        wt.Id = id;
-                        wt.ResourceId = resourceId;
-                        workTimes.Add(wt);
+                            wt.Id = id;
+                            wt.RefId = resourceId;
+                            list.Add(wt);
+                        }
                     }
                 }
+                else
+                {
+                    throw new ArgumentNullException($"{o} er ikke implementeret i DatabaseHelper!");
+                }
             }
-            return workTimes;
+            return list;
         }
         #endregion
         #region Add
