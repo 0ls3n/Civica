@@ -79,9 +79,9 @@ namespace Civica.Models
             }
             return progresses;
         }
-        public static List<Economy> InitializeEconomy()
+        public static List<Resource> InitializeEconomy()
         {
-            List<Economy> economies = new List<Economy>();
+            List<Resource> economies = new List<Resource>();
 
             using (SqlConnection con = new SqlConnection(connectionString))
             {
@@ -96,7 +96,7 @@ namespace Civica.Models
                         decimal expectedYearlyCost = Convert.ToDecimal(reader["ExpectedYearlyCost"]);
                         int projectId = Convert.ToInt32(reader["ProjectId"]);
 
-                        Economy econ = new Economy(projectId, startAmount, expectedYearlyCost);
+                        Resource econ = new Resource(projectId, startAmount, expectedYearlyCost);
 
                         econ.Id = id;
 
@@ -126,12 +126,39 @@ namespace Civica.Models
                         Audit aud = new Audit(Amount, Year);
 
                         aud.Id = id;
-                        aud.EconomyId = economyId;
+                        aud.ResourceId = economyId;
                         audits.Add(aud);
                     }
                 }
             }
             return audits;
+        }
+        public static List<WorkTime> InitializeWorkTime()
+        {
+            List<WorkTime> workTimes = new List<WorkTime>();
+
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+                con.Open();
+                SqlCommand workTimeCmd = new SqlCommand("SELECT WorkTimeId, Time, InvolvedName, ResourceId FROM WORKTIMES", con);
+                using (SqlDataReader reader = workTimeCmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        int id = Convert.ToInt32(reader["WorkTimeId"]);
+                        double Time = Convert.ToDouble(reader["Time"]);
+                        string InvolvedName = Convert.ToString(reader["InvolvedName"]);
+                        int resourceId = Convert.ToInt32(reader["ResourceId"]);
+
+                        WorkTime wt = new WorkTime(Time, InvolvedName);
+
+                        wt.Id = id;
+                        wt.ResourceId = resourceId;
+                        workTimes.Add(wt);
+                    }
+                }
+            }
+            return workTimes;
         }
         #endregion
         #region Add
@@ -172,7 +199,7 @@ namespace Civica.Models
             }
             return id;
         }
-        public static int Add(Economy econ)
+        public static int Add(Resource econ)
         {
             int id = -1;
             using (SqlConnection con = new SqlConnection(connectionString))
@@ -243,7 +270,7 @@ namespace Civica.Models
                 UpdateProgress.ExecuteNonQuery();
             }
         }
-        public static void Update(Economy e)
+        public static void Update(Resource e)
         {
             using (SqlConnection con = new SqlConnection(connectionString))
             {
@@ -311,7 +338,7 @@ namespace Civica.Models
                 RemoveProgress.ExecuteNonQuery();
             }
         }
-        public static void Remove(Economy e)
+        public static void Remove(Resource e)
         {
 
             using (SqlConnection con = new SqlConnection(connectionString))

@@ -7,22 +7,22 @@ using Civica.Models;
 
 namespace Civica.ViewModels
 {
-   public class EconomyViewModel
+   public class ResourceViewModel
     {
-        private Economy economy;
+        private Resource resource;
         public decimal StartAmount { get; set; }
         public decimal ExpectedYearlyCost { get; set; }
 
-        public EconomyViewModel(Economy e)
+        public ResourceViewModel(Resource r)
         {
-            StartAmount = e.StartAmount;
-            ExpectedYearlyCost = e.ExpectedYearlyCost;
-            economy = e;
+            StartAmount = r.StartAmount;
+            ExpectedYearlyCost = r.ExpectedYearlyCost;
+            resource = r;
 
         }
         public int GetId()
         {
-            return economy.Id;
+            return resource.Id;
         }
 
 
