@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Civica.Models
 {
-    public class Economy
+    public class Resource
     {
  
         public decimal StartAmount { get; set; }
@@ -18,7 +18,7 @@ namespace Civica.Models
 
 
 
-        public Economy(int projectId, decimal startAmount = default, decimal expectedYearlyCost = default)
+        public Resource(int projectId, decimal startAmount = default, decimal expectedYearlyCost = default)
         {
             this.StartAmount = startAmount;
             this.ExpectedYearlyCost = expectedYearlyCost;

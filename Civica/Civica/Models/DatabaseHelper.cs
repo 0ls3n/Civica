@@ -79,9 +79,9 @@ namespace Civica.Models
             }
             return progresses;
         }
-        public static List<Economy> InitializeEconomy()
+        public static List<Resource> InitializeEconomy()
         {
-            List<Economy> economies = new List<Economy>();
+            List<Resource> economies = new List<Resource>();
 
             using (SqlConnection con = new SqlConnection(connectionString))
             {
@@ -96,7 +96,7 @@ namespace Civica.Models
                         decimal expectedYearlyCost = Convert.ToDecimal(reader["ExpectedYearlyCost"]);
                         int projectId = Convert.ToInt32(reader["ProjectId"]);
 
-                        Economy econ = new Economy(projectId, startAmount, expectedYearlyCost);
+                        Resource econ = new Resource(projectId, startAmount, expectedYearlyCost);
 
                         econ.Id = id;
 
@@ -172,7 +172,7 @@ namespace Civica.Models
             }
             return id;
         }
-        public static int Add(Economy econ)
+        public static int Add(Resource econ)
         {
             int id = -1;
             using (SqlConnection con = new SqlConnection(connectionString))
@@ -243,7 +243,7 @@ namespace Civica.Models
                 UpdateProgress.ExecuteNonQuery();
             }
         }
-        public static void Update(Economy e)
+        public static void Update(Resource e)
         {
             using (SqlConnection con = new SqlConnection(connectionString))
             {
@@ -311,7 +311,7 @@ namespace Civica.Models
                 RemoveProgress.ExecuteNonQuery();
             }
         }
-        public static void Remove(Economy e)
+        public static void Remove(Resource e)
         {
 
             using (SqlConnection con = new SqlConnection(connectionString))

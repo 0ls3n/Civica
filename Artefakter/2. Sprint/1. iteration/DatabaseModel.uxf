@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="15.0.0">
+  <zoom_level>9</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>171</x>
+      <y>243</y>
+      <w>216</w>
+      <h>144</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;table&gt;&gt;
+PROJECTS
+-
+&lt;&lt;PK&gt;&gt; &lt;&lt;surrogate&gt;&gt; ProjectId : Int
+ProjectName : NVarChar(69)
+OwnerName : NVarChar(69)
+ManagerName : NVarChar(69)
+Description : TEXT
+-
+&lt;&lt;PK&gt;&gt; PK_ProjectId()</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>468</x>
+      <y>243</y>
+      <w>261</w>
+      <h>171</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;table&gt;&gt;
+RESOURCES
+-
+&lt;&lt;PK&gt;&gt; &lt;&lt;surrogate&gt;&gt; ResourceId : Int
+StartAmount : BigInt
+ExpectedYearlyCost : BigInt
+&lt;&lt;FK&gt;&gt; ProjectId : Int
+-
+&lt;&lt;PK&gt;&gt; PK_ResourceId()
+&lt;&lt;FK&gt;&gt; FK_Resources_Projects(ProjectId)</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>801</x>
+      <y>243</y>
+      <w>261</w>
+      <h>171</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;table&gt;&gt;
+AUDITS
+-
+&lt;&lt;PK&gt;&gt; &lt;&lt;surrogate&gt;&gt; AuditId : Int
+Total : BigInt
+Year : Date
+&lt;&lt;FK&gt;&gt; ResourceId
+-
+&lt;&lt;PK&gt;&gt; PK_AuditId()
+&lt;&lt;FK&gt;&gt; FK_Audits_Resources(ResourceId)</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>720</x>
+      <y>315</y>
+      <w>99</w>
+      <h>36</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=1
+m2=*</panel_attributes>
+    <additional_attributes>10.0;10.0;90.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>378</x>
+      <y>315</y>
+      <w>108</w>
+      <h>36</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=1
+m2=1</panel_attributes>
+    <additional_attributes>10.0;10.0;100.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>171</x>
+      <y>459</y>
+      <w>216</w>
+      <h>144</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;table&gt;&gt;
+PROGRESSES
+-
+&lt;&lt;PK&gt;&gt; &lt;&lt;Surrogate&gt;&gt; ProcessId : Int
+Fase : NVarChar(69)
+Status : NVarChar(69)
+Date : DateTime2
+Description : TEXT
+ProjectId : int
+-
+&lt;&lt;PK&gt;&gt; PK_PROGRESSES()
+&lt;&lt;FK&gt;&gt; FK_PROJECT(ProjectId)</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>261</x>
+      <y>378</y>
+      <w>36</w>
+      <h>99</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=*
+m2=1</panel_attributes>
+    <additional_attributes>10.0;90.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>486</x>
+      <y>477</y>
+      <w>216</w>
+      <h>144</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;table&gt;&gt;
+WORKTIME
+-
+&lt;&lt;PK&gt;&gt; &lt;&lt;surrogate&gt;&gt; WorkTimeId : Int
+InvolvedName : NVarChar(69)
+Time : Int
+
+-
+&lt;&lt;PK&gt;&gt; PK_WorkTimeId()
+&lt;&lt;FK&gt;&gt; FK_ResourceId()</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>576</x>
+      <y>405</y>
+      <w>36</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=1
+m2=*</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;80.0</additional_attributes>
+  </element>
+</diagram>
