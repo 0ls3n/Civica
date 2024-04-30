@@ -11,23 +11,23 @@
                 Background="White"
                 CornerRadius="10">
 
-            <StackPanel HorizontalAlignment="Center"
-                VerticalAlignment="Center"
-                Orientation="Vertical"
-                Width="400">
+            <StackPanel 
+                        VerticalAlignment="Top"
+                        Margin="0 20 0 0"
+                        Orientation="Vertical">
 
                 <TextBlock Text="Opret nyt projekt"
-                   TextAlignment="Center"
-                   FontSize="20"/>
+                           TextAlignment="Center"
+                           FontSize="20"/>
 
                 <Label Content="Projektnavn:"
-               Margin="0 0 10 0"
-               FontSize="16"
-               HorizontalAlignment="Left"/>
-                <TextBox Width="390"
-                 FontSize="16"
-                 Background="#FAFAFA"
-                 Text="{Binding ProjectName, UpdateSourceTrigger=PropertyChanged}"/>
+                       Margin="0 0 10 0"
+                       FontSize="16"
+                       HorizontalAlignment="Left"/>
+                
+                <TextBox FontSize="16"
+                         Background="#FAFAFA"
+                         Text="{Binding ProjectName, UpdateSourceTrigger=PropertyChanged}"/>
 
                 <Grid Margin="0 0 0 0">
                     <Grid.ColumnDefinitions>

@@ -126,12 +126,39 @@ namespace Civica.Models
                         Audit aud = new Audit(Amount, Year);
 
                         aud.Id = id;
-                        aud.EconomyId = economyId;
+                        aud.ResourceId = economyId;
                         audits.Add(aud);
                     }
                 }
             }
             return audits;
+        }
+        public static List<WorkTime> InitializeWorkTime()
+        {
+            List<WorkTime> workTimes = new List<WorkTime>();
+
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+                con.Open();
+                SqlCommand workTimeCmd = new SqlCommand("SELECT WorkTimeId, Time, InvolvedName, ResourceId FROM WORKTIMES", con);
+                using (SqlDataReader reader = workTimeCmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        int id = Convert.ToInt32(reader["WorkTimeId"]);
+                        double Time = Convert.ToDouble(reader["Time"]);
+                        string InvolvedName = Convert.ToString(reader["InvolvedName"]);
+                        int resourceId = Convert.ToInt32(reader["ResourceId"]);
+
+                        WorkTime wt = new WorkTime(Time, InvolvedName);
+
+                        wt.Id = id;
+                        wt.ResourceId = resourceId;
+                        workTimes.Add(wt);
+                    }
+                }
+            }
+            return workTimes;
         }
         #endregion
         #region Add

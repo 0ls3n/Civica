@@ -6,18 +6,17 @@ using System.Threading.Tasks;
 
 namespace Civica.Models
 {
-    public class Audit
+    public class WorkTime
     {
-        public decimal Amount { get; set; }
-        public DateTime Year { get; set; }
+        public double Time { get; set; }
+        public string InvolvedName { get; set; }
         public int Id { get; set; }
-
         public int ResourceId { get; set; }
 
-        public Audit(decimal amount, DateTime year)
+        public WorkTime(double time, string involvedName)
         {
-            this.Amount = amount;
-            this.Year = year;
+            this.Time = time;
+            this.InvolvedName = involvedName;
         }
     }
 }
