@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<diagram program="umlet" version="15.0.0">
+<diagram program="umlet" version="15.1">
   <zoom_level>9</zoom_level>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>900</x>
-      <y>243</y>
+      <x>567</x>
+      <y>234</y>
       <w>27</w>
-      <h>324</h>
+      <h>225</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;340.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;230.0</additional_attributes>
   </element>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>864</x>
-      <y>225</y>
+      <x>531</x>
+      <y>216</y>
       <w>90</w>
       <h>27</h>
     </coordinates>
@@ -26,8 +26,8 @@
   <element>
     <id>UMLActor</id>
     <coordinates>
-      <x>117</x>
-      <y>198</y>
+      <x>126</x>
+      <y>189</y>
       <w>90</w>
       <h>99</h>
     </coordinates>
@@ -37,48 +37,49 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>153</x>
-      <y>279</y>
+      <x>162</x>
+      <y>270</y>
       <w>27</w>
-      <h>261</h>
+      <h>189</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;270.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;190.0</additional_attributes>
   </element>
   <element>
     <id>Text</id>
     <coordinates>
-      <x>432</x>
-      <y>243</y>
-      <w>135</w>
+      <x>297</x>
+      <y>216</y>
+      <w>207</w>
       <h>27</h>
     </coordinates>
-    <panel_attributes>Opstart et nyt projekt
+    <panel_attributes>Vis seneste fremdriftbeskrivelse
 style=wordwrap</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>153</x>
-      <y>306</y>
-      <w>774</w>
+      <x>162</x>
+      <y>360</y>
+      <w>432</w>
       <h>36</h>
     </coordinates>
-    <panel_attributes>lt=&lt;&lt;&lt;-
-OpretNytProjekt(navn, ejer, leder, beskrivelse, opstartsbeløb, forventet årlige omkostning, estimerede tidsressource, involveret part )</panel_attributes>
-    <additional_attributes>840.0;20.0;10.0;20.0</additional_attributes>
+    <panel_attributes>lt=&lt;&lt;.
+Fremdriftbeskrivelse</panel_attributes>
+    <additional_attributes>10.0;20.0;460.0;20.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>153</x>
-      <y>369</y>
-      <w>765</w>
-      <h>36</h>
+      <x>162</x>
+      <y>297</y>
+      <w>432</w>
+      <h>45</h>
     </coordinates>
-    <panel_attributes>lt=&lt;&lt;.
-Projekt oprettet</panel_attributes>
-    <additional_attributes>10.0;20.0;830.0;20.0</additional_attributes>
+    <panel_attributes>lt=&lt;&lt;&lt;-
+VælgProjekt()
+</panel_attributes>
+    <additional_attributes>460.0;20.0;10.0;20.0</additional_attributes>
   </element>
 </diagram>
