@@ -227,7 +227,7 @@ namespace Civica.Models
 
                 cmd.Parameters.Add("@Am", SqlDbType.Decimal).Value = aud.Amount;
                 cmd.Parameters.Add("@Ye", SqlDbType.DateTime2).Value = aud.Year;
-                cmd.Parameters.Add("@Eid", SqlDbType.Int).Value = aud.EconomyId;
+                cmd.Parameters.Add("@Eid", SqlDbType.Int).Value = aud.ResourceId;
 
                 id = Convert.ToInt32(cmd.ExecuteScalar());
             }
