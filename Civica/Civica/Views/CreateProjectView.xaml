@@ -11,25 +11,32 @@
                 Background="White"
                 CornerRadius="10">
 
-            <StackPanel HorizontalAlignment="Center"
-                VerticalAlignment="Center"
-                Orientation="Vertical"
-                Width="400">
+            <StackPanel VerticalAlignment="Top"
+                        Margin="0 20 0 0"
+                        Orientation="Vertical">
 
                 <TextBlock Text="Opret nyt projekt"
-                   TextAlignment="Center"
-                   FontSize="20"/>
+                           TextAlignment="Center"
+                           FontSize="30"/>
 
                 <Label Content="Projektnavn:"
-               Margin="0 0 10 0"
-               FontSize="16"
-               HorizontalAlignment="Left"/>
-                <TextBox Width="390"
-                 FontSize="16"
-                 Background="#FAFAFA"
-                 Text="{Binding ProjectName, UpdateSourceTrigger=PropertyChanged}"/>
+                       Margin="0 0 10 0"
+                       FontSize="16"
+                       HorizontalAlignment="Left"/>
 
-                <Grid Margin="0 0 0 0">
+                <Border Margin="5 0 5 0"
+                        Background="#FFF3F2F2"
+                        BorderBrush="LightGray"
+                        BorderThickness="1"
+                        CornerRadius="2">
+                    <TextBox FontSize="16"
+                             Background="Transparent"
+                             BorderThickness="0"
+                             Margin="2 5 2 5"
+                             Text="{Binding ProjectName, UpdateSourceTrigger=PropertyChanged}"/>
+                </Border>
+
+                <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition/>
                         <ColumnDefinition/>
@@ -41,42 +48,104 @@
                     </Grid.RowDefinitions>
 
                     <Label Content="Projektejer:"
-                   FontSize="16"/>
-                    <TextBox Grid.Row="1" 
-                     Margin="5 0 5 0"
-                     FontSize="16"
-                     Background="#FAFAFA"
-                     Text="{Binding ProjectOwner}"/>
+                           FontSize="16"/>
+
+                    <Border Grid.Row="1"
+                            Margin="5 0 5 0"
+                            Background="#FFF3F2F2"
+                            BorderBrush="LightGray"
+                            BorderThickness="1"
+                            CornerRadius="2">
+
+                        <TextBox FontSize="16"
+                                 Margin="2 5 2 5"
+                                 BorderThickness="0"
+                                 Background="Transparent"
+                                 Text="{Binding ProjectOwner}"/>
+                    </Border>
 
                     <Label Content="Projektleder:" 
-                   Grid.Column="1"
-                   FontSize="16"/>
-                    <TextBox Grid.Row="1" 
-                     Margin="5 0 5 0" 
-                     Grid.Column="1"
-                     FontSize="16"
-                     Background="#FAFAFA"
-                     Text="{Binding ProjectManager}"/>
+                           Grid.Column="1"
+                           FontSize="16"/>
 
+                    <Border Grid.Row="1"
+                            Margin="5 0 5 0"
+                            Grid.Column="1"
+                            Background="#FFF3F2F2"
+                            BorderBrush="LightGray"
+                            BorderThickness="1"
+                            CornerRadius="2">
+
+                        <TextBox FontSize="16"
+                                 Margin="2 5 2 5"
+                                 Background="Transparent"
+                                 BorderThickness="0"
+                                 Text="{Binding ProjectManager}"/>
+
+                    </Border>
                 </Grid>
 
                 <Label Content="Beskrivelse"
-               Margin="0 0 10 0"
-               HorizontalAlignment="Left"
-               FontSize="16"/>
-                <TextBox Width="390"
-                 Height="125"
-                 FontSize="16"
-                 TextWrapping="Wrap"
-                 Background="#FAFAFA"
-                 Text="{Binding ProjectDescription}"/>
+                       Margin="0 0 10 0"
+                       HorizontalAlignment="Left"
+                       FontSize="16"/>
+
+                <Border Margin="5 0 5 0"
+                        Background="#FFF3F2F2"
+                        BorderBrush="LightGray"
+                        BorderThickness="1"
+                        CornerRadius="2">
+                    
+                    <TextBox Height="300"
+                             FontSize="16"
+                             Margin="2 5 2 5"
+                             TextWrapping="Wrap"
+                             AcceptsReturn="True"
+                             AcceptsTab="True"
+                             Background="Transparent"
+                             BorderThickness="0"
+                             Text="{Binding ProjectDescription}"/>
+                    
+                </Border>
 
                 <Button Content="Opret"
-                Width="100"
-                Margin="0 10 0 0"
-                Background="#FAFAFA"
-                Command="{Binding CreateProjectCmd}"
-                CommandParameter="{Binding}"/>
+                        Width="150"
+                        Height="40"
+                        Cursor="Hand"
+                        Margin="0 10 0 0"
+                        Command="{Binding CreateProjectCmd}"
+                        CommandParameter="{Binding}">
+
+                    <Button.Style>
+                        <Style TargetType="Button">
+                            <Setter Property="Background" Value="#FFF3F2F2"/>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="#FFE1E1E1"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Border Width="{TemplateBinding Width}"
+                                    Height="{TemplateBinding Height}"
+                                    Background="{TemplateBinding Background}"
+                                    CornerRadius="5"
+                                    BorderBrush="LightGray"
+                                    BorderThickness="1">
+                                
+                                <TextBlock Text="Opret"
+                                           FontSize="16"
+                                           HorizontalAlignment="Center"
+                                           VerticalAlignment="Center"/>
+                                
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+
+                </Button>
 
             </StackPanel>
 
