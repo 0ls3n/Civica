@@ -18,7 +18,7 @@
 
                 <TextBlock Text="Opdater projekt"
                            TextAlignment="Center"
-                           FontSize="20"/>
+                           FontSize="30"/>
 
                 <Label Content="Projektnavn"
                        Margin="0 10 0 0"
