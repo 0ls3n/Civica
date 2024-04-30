@@ -15,7 +15,7 @@ namespace Civica.ViewModels
     {
         private InProgressViewModel ipvm;
 
-        private ProgressRepository progressRepo;
+        private Repository<Progress> progressRepo;
 
         private string _progressDescription = "";
         public string ProgressDescription
@@ -60,7 +60,7 @@ namespace Civica.ViewModels
             this.ipvm = (o as InProgressViewModel);
         }
 
-        public void GetRepo(ProgressRepository progressRepo)
+        public void GetRepo(Repository<Progress> progressRepo)
         {
             this.progressRepo = progressRepo;
         }
@@ -73,8 +73,6 @@ namespace Civica.ViewModels
 
             //ipvm.SelectedProgresses.Add(new ProgressViewModel(prog));
         }
-
-
 
         public RelayCommand ProgressProjectCmd { get; set; } = new RelayCommand
         (

@@ -58,14 +58,14 @@ namespace Civica.ViewModels
         }
 
         private InProgressViewModel ipvm;
-        private ProjectRepository projectRepo;
+        private Repository<Project> projectRepo;
 
         public void Init(ObservableObject o)
         {
             ipvm = (o as InProgressViewModel);
         }
 
-        public void GetRepo(ProjectRepository projectRepo)
+        public void GetRepo(Repository<Project> projectRepo)
         {
             this.projectRepo = projectRepo;
         }

@@ -32,7 +32,7 @@ namespace Civica.ViewModels
 
         public int GetProjectId()
         {
-            return progress.ProjectId;
+            return progress.RefId;
         }
     }
 }

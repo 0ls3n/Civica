@@ -123,14 +123,23 @@ namespace Civica.ViewModels
 
         public string OldName;
 
-        private ProjectRepository projectRepo = new ProjectRepository();
-        private ProgressRepository progressRepo = new ProgressRepository();
+        private Repository<Project> projectRepo;
+        private Repository<Progress> progressRepo;
 
         public CreateProjectViewModel CreateProjectVM { get; set; }
         public CreateProgressViewModel CreateProgressVM { get; set; }
 
         public InProgressViewModel()
         {
+            projectRepo = new Repository<Project>(id =>
+            {
+                return projectRepo.GetAll().FindAll(x => x.Id == id);
+            });
+            progressRepo = new Repository<Progress>(id =>
+            {
+                return progressRepo.GetAll().FindAll(x => x.RefId == id);
+            });
+
             CreateProjectVM = new CreateProjectViewModel();
             CreateProjectVM.Init(this);
             CreateProjectVM.GetRepo(projectRepo);
@@ -195,13 +204,19 @@ namespace Civica.ViewModels
 
         public void RemoveProject()
         {
-            projectRepo.Remove(projectRepo.Get(SelectedProject.GetId()));
+            projectRepo.Remove(projectRepo.GetById(SelectedProject.GetId()));
             UpdateList();
         }
 
         public void UpdateProject(ProjectViewModel projectVM)
         {
-            projectRepo.Update(projectRepo.Get(projectVM.GetId()), projectVM.Name, projectVM.Owner, projectVM.Manager, projectVM.Description);
+            Project p = projectRepo.GetById(projectVM.GetId());
+            p.Name = projectVM.Name;
+            p.Owner = projectVM.Owner;
+            p.Manager = projectVM.Manager;
+            p.Description = projectVM.Description;
+
+            projectRepo.Update(p);
         }
 
         #region ViewCommands

@@ -7,10 +7,9 @@ using System.Windows.Forms;
 
 namespace Civica.Models
 {
-    public class Project
+    public class Project : DomainModel
     {
         public string Name { get; set; }
-        public int Id { get; set; }
 
         public string Owner { get; set; }
 
