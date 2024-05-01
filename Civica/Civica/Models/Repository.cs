@@ -1,4 +1,5 @@
-﻿using Civica.Models.Enums;
+﻿using Civica.Interfaces;
+using Civica.Models.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,11 +8,11 @@ using System.Threading.Tasks;
 
 namespace Civica.Models
 {
-    public class Repository<T>
+    public class Repository<T> : IRepository<T>
     {
         private List<DomainModel> _list;
 
-        public Func<int, List<DomainModel>> _execute { get; set; }
+        private Func<int, List<DomainModel>> _execute { get; set; }
 
 
         public Repository(Func<int, List<DomainModel>> execute)
@@ -31,7 +32,7 @@ namespace Civica.Models
 
         public List<DomainModel> GetAll() => _list;
 
-        public List<T> Get(int id)
+        public List<T> GetByRefId(int id)
         {
             return _execute(id).OfType<T>().ToList();
         }

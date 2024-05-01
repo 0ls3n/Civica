@@ -94,7 +94,7 @@ namespace Civica.ViewModels
                     ProgressVisibility = "Hidden";
                     EditVisibility = "Hidden";
 
-                    List<Progress> sortedList = progressRepo.Get(SelectedProject.GetId()).OrderByDescending(x => x.Date).ToList();
+                    List<Progress> sortedList = progressRepo.GetByRefId(SelectedProject.GetId()).OrderByDescending(x => x.Date).ToList();
                     Progress prog = sortedList.FirstOrDefault();
 
                     SelectedProgress = null;
@@ -123,8 +123,8 @@ namespace Civica.ViewModels
 
         public string OldName;
 
-        private Repository<Project> projectRepo;
-        private Repository<Progress> progressRepo;
+        private IRepository<Project> projectRepo;
+        private IRepository<Progress> progressRepo;
 
         public CreateProjectViewModel CreateProjectVM { get; set; }
         public CreateProgressViewModel CreateProgressVM { get; set; }
@@ -168,7 +168,7 @@ namespace Civica.ViewModels
 
             foreach (ProjectViewModel p in Projects)
             {
-                List<Progress> sortedList = progressRepo.Get(p.GetId()).OrderByDescending(x => x.Date).ToList();
+                List<Progress> sortedList = progressRepo.GetByRefId(p.GetId()).OrderByDescending(x => x.Date).ToList();
 
                 Progress prog = sortedList.FirstOrDefault();
 
