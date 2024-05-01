@@ -162,9 +162,7 @@ namespace Civica.ViewModels
 
             foreach (ProjectViewModel p in Projects)
             {
-                List<Progress> sortedList = progressRepo.GetByRefId(p.GetId()).OrderByDescending(x => x.Date).ToList();
-
-                Progress prog = sortedList.FirstOrDefault();
+                Progress prog = progressRepo.GetByRefId(p.GetId()).OrderByDescending(x => x.Date).FirstOrDefault();
 
                 if (prog != null)
                 {
