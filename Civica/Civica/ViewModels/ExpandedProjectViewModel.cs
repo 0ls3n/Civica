@@ -1,6 +1,8 @@
 ﻿using Civica.Interfaces;
+using Civica.Models;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,12 +12,24 @@ namespace Civica.ViewModels
 {
     public class ExpandedProjectViewModel : ObservableObject, IViewModelChild
     {
-        private MainViewModel mvm;
+        public MainViewModel mvm { get; set; }
+
+        IRepository<Progress> progressRepo;
+        ObservableCollection<ProgressViewModel> Progresses { get; set; } = new ObservableCollection<ProgressViewModel>();
 
         public void Init(ObservableObject o)
         {
             mvm = (o as MainViewModel);
-            MessageBox.Show(mvm.ToString());
+        }
+
+        public void GetRepo(IRepository<Progress> progressRepo)
+        {
+            this.progressRepo = progressRepo;
+        }
+
+        public void UpdateList()
+        {
+
         }
     }
 }

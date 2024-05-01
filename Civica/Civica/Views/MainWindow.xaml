@@ -31,6 +31,7 @@
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
 
@@ -38,8 +39,29 @@
             <TextBlock Text="{Binding ViewTitle, UpdateSourceTrigger=PropertyChanged}"
                        HorizontalAlignment="Left"
                        VerticalAlignment="Center"
-                       Margin="20 0 0 0"
+                       Margin="30 0 0 0"
                        FontSize="20"/>
+
+            <Border Grid.Column="0"
+                    Margin="10 5 0 0"
+                    Width="8"
+                    Height="8"
+                    HorizontalAlignment="Left"
+                    Background="{Binding Path=ipvm.SelectedProject.StatusColor}"
+                    CornerRadius="7.5">
+
+                <Border.Style>
+                    <Style TargetType="Border">
+                        <Setter Property="Visibility" Value="Collapsed"/>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding ExpandedProjectView}" Value="Visible">
+                                <Setter Property="Visibility" Value="Visible"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Border.Style>
+
+            </Border>
 
         </Grid>
 
@@ -119,14 +141,13 @@
                         </Style>
                     </Border.Style>
                 </Border>
-                
+
             </Grid>
-            
-            
+
+
 
 
 
         </Border>
-
     </Grid>
 </Window>

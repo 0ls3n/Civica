@@ -206,13 +206,31 @@ namespace Civica.ViewModels
                 return isEnabled;
             });
 
+        private IRepository<Project> projectRepo;
+        private IRepository<Progress> progressRepo;
+
         public MainViewModel()
         {
+            projectRepo = new Repository<Project>(id =>
+            {
+                return projectRepo.GetAll().FindAll(x => x.Id == id);
+            });
+            progressRepo = new Repository<Progress>(id =>
+            {
+                return progressRepo.GetAll().FindAll(x => x.RefId == id);
+            });
+
             ipvm.Init(this);
             epvm.Init(this);
+
+            InProgressView = WindowVisibility.Visible;
+            ExpandedProjectView = WindowVisibility.Hidden;
             
             ViewTitle = ipvm.WindowTitle;
         }
+
+        public IRepository<Project> GetProjectRepo() => projectRepo;
+        public IRepository<Progress> GetProgressRepo() => progressRepo;
         #endregion
     }
 }
