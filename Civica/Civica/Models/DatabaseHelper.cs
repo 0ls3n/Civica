@@ -77,12 +77,12 @@ namespace Civica.Models
                 }
                 else if (o == typeof(Resource))
                 {
-                    SqlCommand economyCmd = new SqlCommand("SELECT EconomyId, StartAmount, ExpectedYearlyCost, ProjectId FROM ECONOMIES", con);
-                    using (SqlDataReader reader = economyCmd.ExecuteReader())
+                    SqlCommand resourceCmd = new SqlCommand("SELECT ResourceId, StartAmount, ExpectedYearlyCost, ProjectId FROM ECONOMIES", con);
+                    using (SqlDataReader reader = resourceCmd.ExecuteReader())
                     {
                         while (reader.Read())
                         {
-                            int id = Convert.ToInt32(reader["EconomyId"]);
+                            int id = Convert.ToInt32(reader["ResourceId"]);
                             decimal startAmount = Convert.ToDecimal(reader["StartAmount"]);
                             decimal expectedYearlyCost = Convert.ToDecimal(reader["ExpectedYearlyCost"]);
                             int projectId = Convert.ToInt32(reader["ProjectId"]);
@@ -97,7 +97,7 @@ namespace Civica.Models
                 }
                 else if (o == typeof(Audit))
                 {
-                    SqlCommand auditCmd = new SqlCommand("SELECT AuditId, Amount, Year, EconomyId FROM AUDITS", con);
+                    SqlCommand auditCmd = new SqlCommand("SELECT AuditId, Amount, Year, ResourceId FROM AUDITS", con);
                     using (SqlDataReader reader = auditCmd.ExecuteReader())
                     {
                         while (reader.Read())
@@ -105,7 +105,7 @@ namespace Civica.Models
                             int id = Convert.ToInt32(reader["AuditId"]);
                             decimal Amount = Convert.ToDecimal(reader["Amount"]);
                             DateTime Year = Convert.ToDateTime(reader["Year"]);
-                            int economyId = Convert.ToInt32(reader["EconomyId"]);
+                            int economyId = Convert.ToInt32(reader["ResourceId"]);
 
                             Audit a = new Audit(Amount, Year);
 
@@ -179,7 +179,7 @@ namespace Civica.Models
                 }
                 else if (o is Resource r)
                 {
-                    cmd = new SqlCommand("INSERT INTO ECONOMIES (StartAmount, ExpectedYearlyCost, ProjectId)" +
+                    cmd = new SqlCommand("INSERT INTO RESOURCES (StartAmount, ExpectedYearlyCost, ProjectId)" +
                                                                          "VALUES (@SA, @EYC, @PID) SELECT @@IDENTITY ", con);
 
                     cmd.Parameters.Add("@SA", SqlDbType.Decimal).Value = r.StartAmount;
@@ -190,14 +190,25 @@ namespace Civica.Models
                 }
                 else if (o is Audit a)
                 {
-                    cmd = new SqlCommand("INSERT INTO AUDITS (Amount, Year, EconomyId)" +
-                                                                         "VALUES (@Am, @Ye, @EID) SELECT @@IDENTITY ", con);
+                    cmd = new SqlCommand("INSERT INTO AUDITS (Amount, Year, ResourceId)" +
+                                                                         "VALUES (@Am, @Ye, @RID) SELECT @@IDENTITY ", con);
 
                     cmd.Parameters.Add("@Am", SqlDbType.Decimal).Value = a.Amount;
                     cmd.Parameters.Add("@Ye", SqlDbType.DateTime2).Value = a.Year;
-                    cmd.Parameters.Add("@Eid", SqlDbType.Int).Value = a.RefId;
+                    cmd.Parameters.Add("@Rid", SqlDbType.Int).Value = a.RefId;
 
                     d = a;
+                }
+                else if(o is WorkTime w)
+                    {
+                    cmd = new SqlCommand("INSERT INTO WORKTIMES (Time, InvolvedName, ResourceId)" +
+                                                                       "VALUES (@Ti, @IN, @RID) SELECT @@IDENTITY ", con);
+
+                    cmd.Parameters.Add("@Ti", SqlDbType.Decimal).Value = w.Time;
+                    cmd.Parameters.Add("@IN", SqlDbType.NVarChar).Value = w.InvolvedName;
+                    cmd.Parameters.Add("@Rid", SqlDbType.Int).Value = w.RefId;
+
+                    d = w;
                 }
                 else
                 {
@@ -239,8 +250,8 @@ namespace Civica.Models
                 }
                 else if (o is Resource r)
                 {
-                    cmd = new SqlCommand("UPDATE ECONOMIES SET StartAmount = @SA, ExpectedYearlyCost = @EYC" +
-                                            "WHERE EconomyId = @ID", con); // Opsætter parameterne der skal opdateres.
+                    cmd = new SqlCommand("UPDATE RESOURCES SET StartAmount = @SA, ExpectedYearlyCost = @EYC" +
+                                            "WHERE ResourceId = @ID", con); // Opsætter parameterne der skal opdateres.
 
                     // Indsætter opdaterede værdier i parameterne 
                     cmd.Parameters.Add("@ID", SqlDbType.Int).Value = r.Id;
@@ -256,6 +267,16 @@ namespace Civica.Models
                     cmd.Parameters.Add("@ID", SqlDbType.Int).Value = a.Id;
                     cmd.Parameters.Add("@Am", SqlDbType.Decimal).Value = a.Amount;
                     cmd.Parameters.Add("@Ye", SqlDbType.DateTime2).Value = a.Year;
+                }
+                else if (o is WorkTime w)
+                {
+                    cmd = new SqlCommand("UPDATE WORKTIMES SET Time = @Ti, InvolvedName = @IN" +
+                                        "WHERE WorkTimeId = @ID", con); // Opsætter parameterne der skal opdateres.
+
+                    // Indsætter opdaterede værdier i parameterne 
+                    cmd.Parameters.Add("@ID", SqlDbType.Int).Value = w.Id;
+                    cmd.Parameters.Add("@Ti", SqlDbType.Decimal).Value = w.Time;
+                    cmd.Parameters.Add("@In", SqlDbType.NVarChar).Value = w.InvolvedName;
                 }
                 else
                 {
@@ -275,15 +296,21 @@ namespace Civica.Models
                 if (o is Project p)
                 {
                     SqlCommand RemoveProgress = new SqlCommand("DELETE FROM PROGRESSES WHERE ProjectId=@ID", con);
-                    SqlCommand RemoveEconomy = new SqlCommand("DELETE FROM ECONOMIES WHERE ProjectId=@ID", con);
+                    SqlCommand RemoveAudit = new SqlCommand("DELETE FROM AUDITS WHERE ResourceId=@ID", con);
+                    SqlCommand RemoveWorktime = new SqlCommand("DELETE FROM WORKTIMES WHERE ResourceId=@ID", con);
+                    SqlCommand RemoveResource = new SqlCommand("DELETE FROM RESOURCES WHERE ProjectId=@ID", con);
                     SqlCommand RemoveProject = new SqlCommand("DELETE FROM PROJECTS WHERE ProjectId=@ID", con);
 
                     RemoveProgress.Parameters.Add("@ID", SqlDbType.Int).Value = p.Id;
-                    RemoveEconomy.Parameters.Add("@ID", SqlDbType.Int).Value = p.Id;
+                    RemoveAudit.Parameters.Add("@ID", SqlDbType.Int).Value = p.RefId;
+                    RemoveWorktime.Parameters.Add("@ID", SqlDbType.Int).Value = p.RefId;
+                    RemoveResource.Parameters.Add("@ID", SqlDbType.Int).Value = p.Id;
                     RemoveProject.Parameters.Add("@ID", SqlDbType.Int).Value = p.Id;
 
                     RemoveProgress.ExecuteNonQuery();
-                    RemoveEconomy.ExecuteNonQuery();
+                    RemoveAudit.ExecuteNonQuery();
+                    RemoveWorktime.ExecuteNonQuery();
+                    RemoveResource.ExecuteNonQuery();
                     RemoveProject.ExecuteNonQuery();
                 }
                 else if (o is Progress prog)
@@ -294,17 +321,26 @@ namespace Civica.Models
                 }
                 else if (o is Resource r)
                 {
-                    SqlCommand RemoveAudits = new SqlCommand("DELETE FROM AUDITS WHERE EconomyId=@ID", con);
-                    SqlCommand RemoveEconomy = new SqlCommand("DELETE FROM ECONOMIES WHERE EconomyId=@ID", con);
+                    SqlCommand RemoveAudits = new SqlCommand("DELETE FROM AUDITS WHERE ResourceId=@ID", con);
+                    SqlCommand RemoveWorktimes = new SqlCommand("DELETE FROM WORKTIMES WHERE ResourceId=@ID", con);
+                    SqlCommand RemoveResource = new SqlCommand("DELETE FROM RESOURCES WHERE ResourceId=@ID", con);
                     RemoveAudits.Parameters.Add("@ID", SqlDbType.Int).Value = r.Id;
-                    RemoveEconomy.Parameters.Add("@ID", SqlDbType.Int).Value = r.Id;
+                    RemoveWorktimes.Parameters.Add("@ID", SqlDbType.Int).Value = r.Id;
+                    RemoveResource.Parameters.Add("@ID", SqlDbType.Int).Value = r.Id;
                     RemoveAudits.ExecuteNonQuery();
-                    RemoveEconomy.ExecuteNonQuery();
+                    RemoveWorktimes.ExecuteNonQuery();
+                    RemoveResource.ExecuteNonQuery();
                 }
                 else if (o is Audit a)
                 {
                     SqlCommand cmd = new SqlCommand("DELETE FROM AUDITS WHERE AuditId=@ID", con);
                     cmd.Parameters.Add("@ID", SqlDbType.Int).Value = a.Id;
+                    cmd.ExecuteNonQuery();
+                }
+                else if (o is WorkTime w)
+                {
+                    SqlCommand cmd = new SqlCommand("DELETE FROM WORKTIMES WHERE WorkTimeId=@ID", con);
+                    cmd.Parameters.Add("@ID", SqlDbType.Int).Value = w.Id;
                     cmd.ExecuteNonQuery();
                 }
                 else

@@ -10,8 +10,7 @@ namespace Civica.Models
     {
         public double Time { get; set; }
         public string InvolvedName { get; set; }
-        public int Id { get; set; }
-
+        
         public WorkTime(double time, string involvedName)
         {
             this.Time = time;
