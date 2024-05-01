@@ -65,13 +65,11 @@ namespace Civica.ViewModels
             this.progressRepo = progressRepo;
         }
 
-        public void CreateProgress(Phase phase, Status status, string description)
+        public void CreateProgress()
         {
-            Progress prog = new Progress(ipvm.SelectedProject.GetId(), phase, status, DateTime.Now, description);
+            Progress prog = new Progress(ipvm.SelectedProject.GetId(), SelectedPhase, SelectedStatus, DateTime.Now, ProgressDescription);
 
             progressRepo.Add(prog);
-
-            //ipvm.SelectedProgresses.Add(new ProgressViewModel(prog));
         }
 
         public RelayCommand ProgressProjectCmd { get; set; } = new RelayCommand
@@ -80,7 +78,7 @@ namespace Civica.ViewModels
             {
                 if (parameter is CreateProgressViewModel cpvm)
                 {
-                    cpvm.CreateProgress(cpvm.SelectedPhase, cpvm.SelectedStatus, cpvm.ProgressDescription);
+                    cpvm.CreateProgress();
 
                     cpvm.ipvm.UpdateList();
 
