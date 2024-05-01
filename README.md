@@ -1,6 +1,6 @@
 # Civica Project Management System
 
-Civica Project Management System is a comprehensive solution designed to streamline project planning, execution, and monitoring. With powerful features tailored for teams of all sizes, Civica helps organizations effectively manage projects from inception to completion.
+Civica Project Management System is a comprehensive solution designed to streamline project planning, execution, and monitoring. With powerful features tailored for teams of all sizes.
 
 ## Features
 
