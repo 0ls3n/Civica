@@ -23,7 +23,7 @@ namespace Civica.Models
         private static string? connectionString = config.GetConnectionString("MyDBConnection");
         #endregion
         #region Initialize
-        public static List<DomainModel> Initialize(Type o)
+        public static List<DomainModel> Initialize(Type type)
         {
             List<DomainModel> list = new List<DomainModel>();
 
@@ -31,7 +31,7 @@ namespace Civica.Models
             {
                 con.Open();
 
-                if (o == typeof(Project))
+                if (type == typeof(Project))
                 {
                     SqlCommand projectCmd = new SqlCommand("SELECT ProjectId, ProjectName, OwnerName, ManagerName, Description FROM PROJECTS", con);
                     using (SqlDataReader reader = projectCmd.ExecuteReader())
@@ -52,7 +52,7 @@ namespace Civica.Models
                         }
                     }
                 }
-                else if (o == typeof(Progress))
+                else if (type == typeof(Progress))
                 {
                     SqlCommand progressCmd = new SqlCommand("SELECT ProgressId, Phase, Status, Date, Description, ProjectId FROM PROGRESSES", con);
                     using (SqlDataReader reader = progressCmd.ExecuteReader())
@@ -75,7 +75,7 @@ namespace Civica.Models
                         }
                     }
                 }
-                else if (o == typeof(Resource))
+                else if (type == typeof(Resource))
                 {
                     SqlCommand economyCmd = new SqlCommand("SELECT EconomyId, StartAmount, ExpectedYearlyCost, ProjectId FROM ECONOMIES", con);
                     using (SqlDataReader reader = economyCmd.ExecuteReader())
@@ -95,7 +95,7 @@ namespace Civica.Models
                         }
                     }
                 }
-                else if (o == typeof(Audit))
+                else if (type == typeof(Audit))
                 {
                     SqlCommand auditCmd = new SqlCommand("SELECT AuditId, Amount, Year, EconomyId FROM AUDITS", con);
                     using (SqlDataReader reader = auditCmd.ExecuteReader())
@@ -115,7 +115,7 @@ namespace Civica.Models
                         }
                     }
                 }
-                else if (o == typeof(WorkTime))
+                else if (type == typeof(WorkTime))
                 {
                     SqlCommand workTimeCmd = new SqlCommand("SELECT WorkTimeId, Time, InvolvedName, ResourceId FROM WORKTIMES", con);
                     using (SqlDataReader reader = workTimeCmd.ExecuteReader())
@@ -137,7 +137,7 @@ namespace Civica.Models
                 }
                 else
                 {
-                    throw new ArgumentNullException($"{o} er ikke implementeret i DatabaseHelper!");
+                    throw new ArgumentNullException($"{type} er ikke implementeret i DatabaseHelper!");
                 }
             }
             return list;
