@@ -60,7 +60,7 @@ namespace Civica.ViewModels
             this.ipvm = (o as InProgressViewModel);
         }
 
-        public void GetRepo(IRepository<Progress> progressRepo)
+        public void SetRepo(IRepository<Progress> progressRepo)
         {
             this.progressRepo = progressRepo;
         }

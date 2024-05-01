@@ -122,24 +122,11 @@ namespace Civica.ViewModels
 
         public InProgressViewModel()
         {
-            projectRepo = new Repository<Project>(id =>
-            {
-                return projectRepo.GetAll().FindAll(x => x.Id == id);
-            });
-            progressRepo = new Repository<Progress>(id =>
-            {
-                return progressRepo.GetAll().FindAll(x => x.RefId == id);
-            });
-
             CreateProjectVM = new CreateProjectViewModel();
             CreateProjectVM.Init(this);
-            CreateProjectVM.GetRepo(projectRepo);
 
             CreateProgressVM = new CreateProgressViewModel();
             CreateProgressVM.Init(this);
-            CreateProgressVM.GetRepo(progressRepo);
-
-            UpdateList();
 
             WindowTitle = "Igangværende";
 
@@ -189,6 +176,13 @@ namespace Civica.ViewModels
         public void Init(ObservableObject o)
         {
             this.mvm = (o as MainViewModel);
+            projectRepo = this.mvm.GetProjectRepo();
+            progressRepo = this.mvm.GetProgressRepo();
+
+            CreateProgressVM.SetRepo(progressRepo);
+            CreateProjectVM.SetRepo(projectRepo);
+
+            UpdateList();
         }
 
         public void RemoveProject()
