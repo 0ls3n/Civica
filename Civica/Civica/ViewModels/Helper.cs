@@ -26,5 +26,7 @@ namespace Civica.ViewModels
             { Status.DELAYED, "Forsinket" },
             { Status.ON_TRACK, "Planmæssigt" }
         };
+
+        public static List<int> Years { get; set; } = Enumerable.Range(DateTime.Now.Year, 5).ToList();
     }
 }
