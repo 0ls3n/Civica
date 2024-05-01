@@ -72,8 +72,6 @@ namespace Civica.ViewModels
 
         public ObservableCollection<ProjectViewModel> Projects { get; set; } = new ObservableCollection<ProjectViewModel>();
 
-        //public ObservableCollection<ProgressViewModel> SelectedProgresses { get; set; } = new ObservableCollection<ProgressViewModel>();
-
         private ProjectViewModel _selectedProject;
         public ProjectViewModel SelectedProject
         {
@@ -88,13 +86,12 @@ namespace Civica.ViewModels
                     ProgressVisibility = WindowVisibility.Hidden;
                     EditVisibility = WindowVisibility.Hidden;
 
-                    List<Progress> sortedList = progressRepo.GetByRefId(SelectedProject.GetId()).OrderByDescending(x => x.Date).ToList();
-                    Progress prog = sortedList.FirstOrDefault();
+                    Progress prog = progressRepo.GetByRefId(SelectedProject.GetId()).OrderByDescending(x => x.Date).FirstOrDefault();
 
                     SelectedProgress = null;
                     if (prog is not null)
                     {
-                        SelectedProgress = new ProgressViewModel(sortedList.FirstOrDefault());
+                        SelectedProgress = new ProgressViewModel(prog);
                     }
                     OnPropertyChanged(nameof(SelectedProject));
                 }
