@@ -2,14 +2,8 @@
 using Civica.Interfaces;
 using Civica.Models;
 using Civica.Models.Enums;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Input;
 
 namespace Civica.ViewModels
 {
@@ -30,8 +24,8 @@ namespace Civica.ViewModels
 
         #region VisibilityProperties
 
-        private string _createVisibility;
-        public string CreateVisibility
+        private WindowVisibility _createVisibility;
+        public WindowVisibility CreateVisibility
         {
             get => _createVisibility;
             set
@@ -41,8 +35,8 @@ namespace Civica.ViewModels
             }
         }
 
-        private string _editVisibility;
-        public string EditVisibility
+        private WindowVisibility _editVisibility;
+        public WindowVisibility EditVisibility
         {
             get => _editVisibility;
             set
@@ -52,8 +46,8 @@ namespace Civica.ViewModels
             }
         }
 
-        private string _progressVisibility;
-        public string ProgressVisibility
+        private WindowVisibility _progressVisibility;
+        public WindowVisibility ProgressVisibility
         {
             get => _progressVisibility;
             set
@@ -63,8 +57,8 @@ namespace Civica.ViewModels
             }
         }
 
-        private string _informationVisibility;
-        public string InformationVisibility
+        private WindowVisibility _informationVisibility;
+        public WindowVisibility InformationVisibility
         {
             get => _informationVisibility;
             set
@@ -89,10 +83,10 @@ namespace Civica.ViewModels
                 if (value is not null)
                 {
                     _selectedProject = value;
-                    InformationVisibility = "Hidden";
-                    CreateVisibility = "Hidden";
-                    ProgressVisibility = "Hidden";
-                    EditVisibility = "Hidden";
+                    InformationVisibility = WindowVisibility.Hidden;
+                    CreateVisibility = WindowVisibility.Hidden;
+                    ProgressVisibility = WindowVisibility.Hidden;
+                    EditVisibility = WindowVisibility.Hidden;
 
                     List<Progress> sortedList = progressRepo.GetByRefId(SelectedProject.GetId()).OrderByDescending(x => x.Date).ToList();
                     Progress prog = sortedList.FirstOrDefault();
@@ -152,10 +146,10 @@ namespace Civica.ViewModels
 
             WindowTitle = "Igangværende";
 
-            CreateVisibility = "Hidden";
-            EditVisibility = "Hidden";
-            ProgressVisibility = "Hidden";
-            InformationVisibility = "Visible";
+            CreateVisibility = WindowVisibility.Hidden;
+            EditVisibility = WindowVisibility.Hidden;
+            ProgressVisibility = WindowVisibility.Hidden;
+            InformationVisibility = WindowVisibility.Visible;
         }
 
         public void UpdateList()
@@ -227,10 +221,10 @@ namespace Civica.ViewModels
             {
                 if (parameter is InProgressViewModel ipvm)
                 {
-                    ipvm.CreateVisibility = "Visible";
-                    ipvm.InformationVisibility = "Hidden";
-                    ipvm.EditVisibility = "Hidden";
-                    ipvm.ProgressVisibility = "Hidden";
+                    ipvm.CreateVisibility = WindowVisibility.Visible;
+                    ipvm.InformationVisibility = WindowVisibility.Hidden;
+                    ipvm.EditVisibility = WindowVisibility.Hidden;
+                    ipvm.ProgressVisibility = WindowVisibility.Hidden;
                 }
             },
             parameter =>
@@ -245,10 +239,10 @@ namespace Civica.ViewModels
             {
                 if (parameter is InProgressViewModel ipvm)
                 {
-                    ipvm.EditVisibility = "Visible";
-                    ipvm.InformationVisibility = "Hidden";
-                    ipvm.CreateVisibility = "Hidden";
-                    ipvm.ProgressVisibility = "Hidden";
+                    ipvm.EditVisibility = WindowVisibility.Visible;
+                    ipvm.InformationVisibility = WindowVisibility.Hidden;
+                    ipvm.CreateVisibility = WindowVisibility.Hidden;
+                    ipvm.ProgressVisibility = WindowVisibility.Hidden;
                 }
             },
             parameter =>
@@ -275,10 +269,10 @@ namespace Civica.ViewModels
                     ipvm.CreateProgressVM.SelectedPhase = Phase.IDENTIFIED;
                     ipvm.CreateProgressVM.SelectedStatus = Status.NONE;
 
-                    ipvm.ProgressVisibility = "Visible";
-                    ipvm.EditVisibility = "Hidden";
-                    ipvm.InformationVisibility = "Hidden";
-                    ipvm.CreateVisibility = "Hidden";
+                    ipvm.ProgressVisibility = WindowVisibility.Visible;
+                    ipvm.EditVisibility = WindowVisibility.Hidden;
+                    ipvm.InformationVisibility = WindowVisibility.Hidden;
+                    ipvm.CreateVisibility = WindowVisibility.Hidden;
                 }
             },
             parameter =>
@@ -308,8 +302,8 @@ namespace Civica.ViewModels
                     {
                         ipvm.UpdateProject(ipvm.SelectedProject);
 
-                        ipvm.EditVisibility = "Hidden";
-                        ipvm.InformationVisibility = "Visible";
+                        ipvm.EditVisibility = WindowVisibility.Hidden;
+                        ipvm.InformationVisibility = WindowVisibility.Visible;
                     }
                 }
             },
@@ -331,7 +325,7 @@ namespace Civica.ViewModels
                     if (result == MessageBoxResult.OK)
                     {
                         ipvm.RemoveProject();
-                        ipvm.InformationVisibility = "Visible";
+                        ipvm.InformationVisibility = WindowVisibility.Visible;
                     }
                 }
             },

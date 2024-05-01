@@ -33,24 +33,60 @@
             <view:ProjectInformationView/>
         </Border>
 
-        <Border Grid.Row="1"
-                Visibility="{Binding InformationVisibility}">
+        <Border Grid.Row="1">
             <view:InformationPlaceholderView/>
+            <Border.Style>
+                <Style TargetType="Border">
+                    <Setter Property="Visibility" Value="Collapsed"/>
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding InformationVisibility}" Value="Visible">
+                            <Setter Property="Visibility" Value="Visible"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Border.Style>
         </Border>
 
-        <Border Grid.Row="1"
-                Visibility="{Binding CreateVisibility}">
+        <Border Grid.Row="1">
             <view:CreateProjectView DataContext="{Binding Path=CreateProjectVM}"/>
+            <Border.Style>
+                <Style TargetType="Border">
+                    <Setter Property="Visibility" Value="Collapsed"/>
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding CreateVisibility}" Value="Visible">
+                            <Setter Property="Visibility" Value="Visible"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Border.Style>
         </Border>
 
-        <Border Grid.Row="1"
-                Visibility="{Binding ProgressVisibility}">
+        <Border Grid.Row="1">
             <view:CreateProgressView DataContext="{Binding Path=CreateProgressVM}"/>
+            <Border.Style>
+                <Style TargetType="Border">
+                    <Setter Property="Visibility" Value="Collapsed"/>
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding ProgressVisibility}" Value="Visible">
+                            <Setter Property="Visibility" Value="Visible"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Border.Style>
         </Border>
 
-        <Border Grid.Row="1"
-                Visibility="{Binding EditVisibility}">
+        <Border Grid.Row="1">
             <view:EditProjectViewModel/>
+            <Border.Style>
+                <Style TargetType="Border">
+                    <Setter Property="Visibility" Value="Collapsed"/>
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding EditVisibility}" Value="Visible">
+                            <Setter Property="Visibility" Value="Visible"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Border.Style>
         </Border>
 
         <TextBlock Grid.Row="0"

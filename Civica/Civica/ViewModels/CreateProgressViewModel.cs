@@ -84,8 +84,8 @@ namespace Civica.ViewModels
 
                     cpvm.ipvm.UpdateList();
 
-                    cpvm.ipvm.ProgressVisibility = "Hidden";
-                    cpvm.ipvm.InformationVisibility = "Visible";
+                    cpvm.ipvm.ProgressVisibility = WindowVisibility.Hidden;
+                    cpvm.ipvm.InformationVisibility = WindowVisibility.Visible;
                 }
             },
             parameter =>

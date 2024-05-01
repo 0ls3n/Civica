@@ -1,6 +1,7 @@
 ﻿using Civica.Commands;
 using Civica.Interfaces;
 using Civica.Models;
+using Civica.Models.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -90,8 +91,8 @@ namespace Civica.ViewModels
                 if (parameter is CreateProjectViewModel cpvm)
                 {
                     cpvm.CreateProject();
-                    cpvm.ipvm.CreateVisibility = "Hidden";
-                    cpvm.ipvm.InformationVisibility = "Visible";
+                    cpvm.ipvm.CreateVisibility = WindowVisibility.Hidden;
+                    cpvm.ipvm.InformationVisibility = WindowVisibility.Visible;
                 }
             },
             parameter =>
