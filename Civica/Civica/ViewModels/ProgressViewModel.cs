@@ -15,6 +15,9 @@ namespace Civica.ViewModels
         public string Status { get; set; }
         public string Date { get; set; }
         public string Description { get; set; }
+        public string StatusColor { get; set; }
+
+        public string DateDetail { get; set; }
 
         public ProgressViewModel(Progress progress)
         {
@@ -22,7 +25,24 @@ namespace Civica.ViewModels
             Phase = Helper.Phases[progress.Phase];
             Status = Helper.Statuses[progress.Status];
             Date = "d. " + progress.Date.ToString("dd. MMMM yyyy kl. HH:mm");
+            DateDetail = progress.Date.ToString("dd. MMMM yyyy");
             Description = progress.Description;
+
+            switch(progress.Status)
+            {
+                case Models.Enums.Status.ON_TRACK:
+                    StatusColor = "#008000";
+                    break;
+                case Models.Enums.Status.DELAYED:
+                    StatusColor = "#FDC300";
+                    break;
+                case Models.Enums.Status.CRITICAL:
+                    StatusColor = "#E20F1A";
+                    break;
+                default:
+                    StatusColor = "#E8E8E8";
+                    break;
+            }
         }
 
         public int GetId()

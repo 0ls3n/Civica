@@ -93,6 +93,7 @@ namespace Civica.ViewModels
                     mvm.ExpandedProjectView = WindowVisibility.Visible;
                     mvm.InProgressView = WindowVisibility.Hidden;
                     mvm.ViewTitle = mvm.ipvm.SelectedProject.Name;
+                    mvm.epvm.UpdateList();
                 }
             },
             parameter =>

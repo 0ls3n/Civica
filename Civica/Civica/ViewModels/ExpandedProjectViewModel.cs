@@ -12,14 +12,26 @@ namespace Civica.ViewModels
 {
     public class ExpandedProjectViewModel : ObservableObject, IViewModelChild
     {
-        public MainViewModel mvm { get; set; }
+        private MainViewModel mvm { get; set; }
 
         IRepository<Progress> progressRepo;
-        ObservableCollection<ProgressViewModel> Progresses { get; set; } = new ObservableCollection<ProgressViewModel>();
+        public ObservableCollection<ProgressViewModel> Progresses { get; set; } = new ObservableCollection<ProgressViewModel>();
+
+        private ProgressViewModel _selectedProgress;
+        public ProgressViewModel SelectedProgress 
+        {
+            get => _selectedProgress;
+            set
+            {
+                _selectedProgress = value;
+                OnPropertyChanged(nameof(SelectedProgress));
+            }
+        }
 
         public void Init(ObservableObject o)
         {
             mvm = (o as MainViewModel);
+            progressRepo = this.mvm.GetProgressRepo();
         }
 
         public void GetRepo(IRepository<Progress> progressRepo)
@@ -29,7 +41,12 @@ namespace Civica.ViewModels
 
         public void UpdateList()
         {
-
+            Progresses.Clear();
+            foreach (Progress p in progressRepo.GetByRefId(mvm.ipvm.SelectedProject.GetId()).OrderByDescending(x=> x.Date))
+            {
+                Progresses.Add(new ProgressViewModel(p));
+            }
+            
         }
     }
 }
