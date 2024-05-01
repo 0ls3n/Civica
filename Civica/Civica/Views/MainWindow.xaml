@@ -74,6 +74,15 @@
             <Border Margin="30 50 30 50"
                     BorderBrush="#E8E8E8"
                     BorderThickness="0 1 0 0" Opacity="0.5"/>
+
+            <RadioButton Content="Projektdetaljer"
+                         FontSize="14"
+                         Height="50"
+                         Cursor="Hand"
+                         Command="{Binding ExpandedProjectViewCmd}"
+                         CommandParameter="{Binding}"
+                         Style="{StaticResource MenuButtonTheme}"/>
+
         </StackPanel>
 
         <Border Grid.Column="1"
@@ -83,9 +92,34 @@
             <!--<ContentControl Margin="30 10 30 10"
                             Content="{Binding CurrentView, UpdateSourceTrigger=PropertyChanged}"/>-->
             <Grid>
-                <Border Margin="30 10 30 10" Visibility="{Binding InProgressView}">
+                <Border Margin="30 10 30 10">
                     <view:InProgressView DataContext="{Binding Path=ipvm}"/>
+                    <Border.Style>
+                        <Style TargetType="Border">
+                            <Setter Property="Visibility" Value="Collapsed"/>
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding InProgressView}" Value="Visible">
+                                    <Setter Property="Visibility" Value="Visible"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Border.Style>
                 </Border>
+
+                <Border Margin="30 10 30 10">
+                    <view:ExpandedProjectView DataContext="{Binding Path=epvm}"/>
+                    <Border.Style>
+                        <Style TargetType="Border">
+                            <Setter Property="Visibility" Value="Collapsed"/>
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding ExpandedProjectView}" Value="Visible">
+                                    <Setter Property="Visibility" Value="Visible"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Border.Style>
+                </Border>
+                
             </Grid>
             
             
