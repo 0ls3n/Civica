@@ -131,12 +131,6 @@
                              AcceptsTab="True"
                              Margin="5 10 20 0"
                              TextWrapping="Wrap"/>
-
-                    <Border BorderBrush="Gray"
-                            BorderThickness="0,0,0,1"
-                            Margin="5, 25, 5, 0"
-                            Opacity="0.2">
-                    </Border>
                 </StackPanel>
             </ScrollViewer>
 
