@@ -113,7 +113,7 @@
                                  Margin="2 5 2 5"
                                  BorderThickness="0"
                                  Background="Transparent"
-                                 Text="{Binding ProjectOwner}"/>
+                                 Text="{Binding ResourceStartAmount }"/>
                         </Border>
 
                         <Label Content="År:"
@@ -130,6 +130,7 @@
                                  Opacity="0.6"
                                  BorderBrush="LightGray"
                                  SelectedIndex='0'
+                                 SelectedValue="{Binding ResourceYear}"
                                  ItemsSource="{x:Static viewModel:Helper.Years}">
                             </ComboBox>
                         <Label Content="Forventet omkostning:"
@@ -146,7 +147,7 @@
              Margin="2 5 2 5"
              Background="Transparent"
              BorderThickness="0"
-             Text="{Binding ProjectManager}"/>
+             Text="{Binding ResourceExpectedYearlyCost }"/>
 
                         </Border>
 

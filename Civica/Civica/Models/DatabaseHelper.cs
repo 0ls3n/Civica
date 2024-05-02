@@ -77,7 +77,7 @@ namespace Civica.Models
                 }
                 else if (type == typeof(Resource))
                 {
-                    SqlCommand resourceCmd = new SqlCommand("SELECT ResourceId, StartAmount, ExpectedYearlyCost, ProjectId FROM ECONOMIES", con);
+                    SqlCommand resourceCmd = new SqlCommand("SELECT ResourceId, StartAmount, ExpectedYearlyCost, Year, ProjectId FROM RESOURCES", con);
                     using (SqlDataReader reader = resourceCmd.ExecuteReader())
                     {
                         while (reader.Read())
@@ -85,6 +85,7 @@ namespace Civica.Models
                             int id = Convert.ToInt32(reader["ResourceId"]);
                             decimal startAmount = Convert.ToDecimal(reader["StartAmount"]);
                             decimal expectedYearlyCost = Convert.ToDecimal(reader["ExpectedYearlyCost"]);
+                            DateTime year = Convert.ToDateTime(reader["Year"]);
                             int projectId = Convert.ToInt32(reader["ProjectId"]);
 
                             Resource r = new Resource(projectId, startAmount, expectedYearlyCost);
@@ -179,11 +180,12 @@ namespace Civica.Models
                 }
                 else if (o is Resource r)
                 {
-                    cmd = new SqlCommand("INSERT INTO RESOURCES (StartAmount, ExpectedYearlyCost, ProjectId)" +
-                                                                         "VALUES (@SA, @EYC, @PID) SELECT @@IDENTITY ", con);
+                    cmd = new SqlCommand("INSERT INTO RESOURCES (StartAmount, ExpectedYearlyCost,Year, ProjectId)" +
+                                                                         "VALUES (@SA, @EYC, @Y, @PID) SELECT @@IDENTITY ", con);
 
                     cmd.Parameters.Add("@SA", SqlDbType.Decimal).Value = r.StartAmount;
                     cmd.Parameters.Add("@EYC", SqlDbType.Decimal).Value = r.ExpectedYearlyCost;
+                    cmd.Parameters.Add("@Y", SqlDbType.DateTime2).Value = r.Year;
                     cmd.Parameters.Add("@PID", SqlDbType.Int).Value = r.RefId;
 
                     d = r;
@@ -250,13 +252,14 @@ namespace Civica.Models
                 }
                 else if (o is Resource r)
                 {
-                    cmd = new SqlCommand("UPDATE RESOURCES SET StartAmount = @SA, ExpectedYearlyCost = @EYC" +
+                    cmd = new SqlCommand("UPDATE RESOURCES SET StartAmount = @SA, ExpectedYearlyCost = @EYC, Year = @Y" +
                                             "WHERE ResourceId = @ID", con); // Opsætter parameterne der skal opdateres.
 
                     // Indsætter opdaterede værdier i parameterne 
                     cmd.Parameters.Add("@ID", SqlDbType.Int).Value = r.Id;
                     cmd.Parameters.Add("@SA", SqlDbType.Decimal).Value = r.StartAmount;
                     cmd.Parameters.Add("@EYC", SqlDbType.Decimal).Value = r.ExpectedYearlyCost;
+                    cmd.Parameters.Add("@Y", SqlDbType.DateTime2).Value = r.Year;
                 }
                 else if (o is Audit a)
                 {

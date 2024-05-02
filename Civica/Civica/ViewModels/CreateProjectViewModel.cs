@@ -57,9 +57,41 @@ namespace Civica.ViewModels
                 OnPropertyChanged(nameof(ProjectDescription));
             }
         }
+        private decimal _resourceStartAmount;
+        public decimal ResourceStartAmount   
+        {
+            get => _resourceStartAmount;
+            set
+            {
+                _resourceStartAmount = value;
+                OnPropertyChanged(nameof(ResourceStartAmount));
+            }
+        }
+        private decimal _resourceExpectedYearlyCost;
+        public decimal ResourceExpectedYearlyCost
+        {
+            get => _resourceExpectedYearlyCost;
+            set
+            {
+                _resourceExpectedYearlyCost = value;
+                OnPropertyChanged(nameof(ResourceExpectedYearlyCost));
+            }
+        }
+
+        private DateTime _resourceYear;
+        public DateTime ResourceYear
+        {
+            get => _resourceYear;
+            set
+            {
+                _resourceYear = value;
+                OnPropertyChanged(nameof(ResourceYear));
+            }
+        }
 
         private InProgressViewModel ipvm;
         private IRepository<Project> projectRepo;
+        private IRepository<Resource> resourceRepo;
 
         public void Init(ObservableObject o)
         {
@@ -70,11 +102,19 @@ namespace Civica.ViewModels
         {
             this.projectRepo = projectRepo;
         }
+        public void SetRepo(IRepository<Resource> resourceRepo)
+        {
+            this.resourceRepo = resourceRepo;
+        }
 
         public void CreateProject()
         {
             Project p = new Project(ProjectName, ProjectOwner, ProjectManager, ProjectDescription);
+            
             projectRepo.Add(p);
+
+            Resource r = new Resource(p.Id, ResourceStartAmount, ResourceExpectedYearlyCost, ResourceYear);
+            resourceRepo.Add(r);
 
             ipvm.UpdateList();
 
@@ -83,6 +123,7 @@ namespace Civica.ViewModels
             ProjectOwner = "";
             ProjectDescription = "";
         }
+        
 
         public RelayCommand CreateProjectCmd { get; set; } = new RelayCommand
         (
