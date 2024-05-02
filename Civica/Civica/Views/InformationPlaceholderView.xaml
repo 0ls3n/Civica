@@ -6,16 +6,16 @@
              xmlns:local="clr-namespace:Civica.Views"
              mc:Ignorable="d" 
              d:DesignHeight="600" d:DesignWidth="600">
+
     <Grid>
         <Border Grid.Row="1"
                 Background="White"
                 CornerRadius="10">
 
             <StackPanel Orientation="Vertical"
-                        Width="400"
                         VerticalAlignment="Center">
 
-                <TextBlock Text="Klik på et projekt for at læse"
+                <TextBlock x:Name="placeholder_text"
                            HorizontalAlignment="Center"
                            VerticalAlignment="Bottom"
                            FontSize="30"
@@ -23,10 +23,9 @@
                            Opacity="0.3"/>
 
                 <Image Grid.Row="1"
+                       x:Name="placeholder_image"
                        Source="/Resources/Images/read_placeholder.png"
                        Opacity="0.3"
-                       Width="200"
-                       Height="200"
                        VerticalAlignment="Top"/>
 
             </StackPanel>
