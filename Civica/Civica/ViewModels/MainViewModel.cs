@@ -111,6 +111,7 @@ namespace Civica.ViewModels
 
         private IRepository<Project> projectRepo;
         private IRepository<Progress> progressRepo;
+        private IRepository<Resource> resourceRepo;
 
         public MainViewModel()
         {
@@ -121,6 +122,10 @@ namespace Civica.ViewModels
             progressRepo = new Repository<Progress>(id =>
             {
                 return progressRepo.GetAll().FindAll(x => x.RefId == id);
+            });
+            resourceRepo = new Repository<Resource>(id =>
+            {
+                return resourceRepo.GetAll().FindAll(x => x.RefId == id);
             });
 
             ipvm.Init(this);
@@ -134,5 +139,6 @@ namespace Civica.ViewModels
 
         public IRepository<Project> GetProjectRepo() => projectRepo;
         public IRepository<Progress> GetProgressRepo() => progressRepo;
+        public IRepository<Resource> GetResourceRepo() => resourceRepo;
     }
 }
