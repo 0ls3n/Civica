@@ -105,12 +105,11 @@ namespace Civica.Models
                             int id = Convert.ToInt32(reader["AuditId"]);
                             decimal Amount = Convert.ToDecimal(reader["Amount"]);
                             DateTime Year = Convert.ToDateTime(reader["Year"]);
-                            int economyId = Convert.ToInt32(reader["ResourceId"]);
+                            int ResourceId = Convert.ToInt32(reader["ResourceId"]);
 
-                            Audit a = new Audit(Amount, Year);
+                            Audit a = new Audit(ResourceId, Amount, Year);
 
                             a.Id = id;
-                            a.RefId = economyId;
                             list.Add(a);
                         }
                     }
@@ -132,6 +131,23 @@ namespace Civica.Models
                             wt.Id = id;
                             wt.RefId = resourceId;
                             list.Add(wt);
+                        }
+                    }
+                }
+                else if (type == typeof(User))
+                {
+                    SqlCommand userCmd = new SqlCommand("SELECT UserId, FirstName, LastName, Password FROM USERS", con);
+                    using (SqlDataReader reader = userCmd.ExecuteReader())
+                    {
+                        while(reader.Read())
+                        {
+                            int id = Convert.ToInt32(reader["UserId"]);
+                            string firstName = Convert.ToString(reader["FirstName"]);
+                            string lastName = Convert.ToString(reader["LastName"]);
+                            int password = Convert.ToInt32(reader["Password"]);
+                            User u = new User(firstName, lastName, password);
+                            u.Id = id;
+                            list.Add(u);
                         }
                     }
                 }
@@ -210,6 +226,16 @@ namespace Civica.Models
 
                     d = w;
                 }
+                else if (o is User u)
+                {
+                    cmd = new SqlCommand("INSERT INTO USERS (FirstName, LastName, Password)" + 
+                                         "VALUES (@FN, @LN, @PW) SELECT @@IDENTITY", con);
+                    cmd.Parameters.Add("@FN", SqlDbType.NVarChar).Value = u.FirstName;
+                    cmd.Parameters.Add("@LN", SqlDbType.NVarChar).Value = u.LastName;
+                    cmd.Parameters.Add("@PW", SqlDbType.Int).Value = u.Password;
+                    d = u;
+
+                }
                 else
                 {
                     throw new ArgumentNullException($"{o} er ikke implementeret i DatabaseHelper!");
@@ -278,6 +304,16 @@ namespace Civica.Models
                     cmd.Parameters.Add("@Ti", SqlDbType.Decimal).Value = w.Time;
                     cmd.Parameters.Add("@In", SqlDbType.NVarChar).Value = w.InvolvedName;
                 }
+                else if (o is User u) 
+                {
+                    cmd = new SqlCommand("UPDATE USERS SET FirstName = @FN, LastName = @LN, Password = @PW" +
+                                         "WHERE UserId = @ID", con);
+                    cmd.Parameters.Add("@ID", SqlDbType.Int).Value= u.Id;
+                    cmd.Parameters.Add("@FN", SqlDbType.NVarChar).Value = u.FirstName;
+                    cmd.Parameters.Add("@LN", SqlDbType.NVarChar).Value = u.LastName;
+                    cmd.Parameters.Add("@PW", SqlDbType.Int).Value = u.Password;
+                }
+
                 else
                 {
                     throw new ArgumentNullException($"{o} er ikke implementeret i DatabaseHelper!");
@@ -341,6 +377,12 @@ namespace Civica.Models
                 {
                     SqlCommand cmd = new SqlCommand("DELETE FROM WORKTIMES WHERE WorkTimeId=@ID", con);
                     cmd.Parameters.Add("@ID", SqlDbType.Int).Value = w.Id;
+                    cmd.ExecuteNonQuery();
+                }
+                else if (o is User u) 
+                {
+                    SqlCommand cmd = new SqlCommand("DELETE FROM USERS WHERE UserId=@ID", con);
+                    cmd.Parameters.Add("@ID", SqlDbType.Int).Value = u.Id;
                     cmd.ExecuteNonQuery();
                 }
                 else

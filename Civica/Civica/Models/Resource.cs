@@ -18,5 +18,12 @@ namespace Civica.Models
             this.ExpectedYearlyCost = expectedYearlyCost;
             RefId = projectId;   
         }
+        public Resource(int userId, int projectId, decimal startAmount = default, decimal expectedYearlyCost = default)
+        {
+            this.StartAmount = startAmount;
+            this.ExpectedYearlyCost = expectedYearlyCost;
+            RefId = projectId;
+            UserId = userId;   
+        }
     }
 }

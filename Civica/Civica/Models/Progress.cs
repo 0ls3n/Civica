@@ -22,5 +22,14 @@ namespace Civica.Models
             Date = date;
             Description = description;
         }
+        public Progress(int userId, int projectId, Phase fase, Status status, DateTime date, string description)
+        {
+            RefId = projectId;
+            Phase = fase;
+            Status = status;
+            Date = date;
+            Description = description;
+            UserId = userId;
+        }
     }
 }

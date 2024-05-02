@@ -26,5 +26,17 @@ namespace Civica.Models
         {
             Name = name;
         }
+        public Project(int userId, string name, string owner, string manager, string description) : this(name)
+        {
+            Owner = owner;
+            Manager = manager;
+            Description = description;
+            UserId = userId;
+        }
+        public Project(int userId, string name)
+        {
+            Name = name;
+            UserId = userId;
+        }
     }
 }

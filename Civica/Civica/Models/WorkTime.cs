@@ -16,5 +16,12 @@ namespace Civica.Models
             this.Time = time;
             this.InvolvedName = involvedName;
         }
+        public WorkTime(int userId, double time, string involvedName)
+        {
+            this.Time = time;
+            this.InvolvedName = involvedName;
+            UserId = userId;
+        }
+
     }
 }

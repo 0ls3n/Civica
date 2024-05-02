@@ -11,5 +11,6 @@ namespace Civica.Models
         public int Id { get; set; }
 
         public int RefId { get; set; }
+        public int UserId { get; set; }
     }
 }

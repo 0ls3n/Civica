@@ -67,7 +67,8 @@ namespace Civica.ViewModels
         public InProgressViewModel ipvm { get; set; } = new InProgressViewModel();
         public ExpandedProjectViewModel epvm { get; set; } = new ExpandedProjectViewModel();
 
-        //public ICommand InProgressViewCmd { get; set; } = new InProgressViewCmd();
+        public SettingsViewModel svm { get; set; } = new SettingsViewModel();
+
         public RelayCommand InProgressViewCmd { get; set; } = new RelayCommand
         (
             execute: (object? parameter) =>
@@ -85,6 +86,30 @@ namespace Civica.ViewModels
             });
 
         public RelayCommand ExpandedProjectViewCmd { get; set; } = new RelayCommand
+            (
+            parameter =>
+            {
+                if (parameter is MainViewModel mvm)
+                {
+                    mvm.ExpandedProjectView = WindowVisibility.Visible;
+                    mvm.InProgressView = WindowVisibility.Hidden;
+                    mvm.ViewTitle = mvm.ipvm.SelectedProject.Name;
+                    mvm.epvm.UpdateList();
+                }
+            },
+            parameter =>
+            {
+                bool isEnabled = false;
+                if (parameter is MainViewModel mvm)
+                {
+                    if (mvm.ipvm.SelectedProject != null)
+                    {
+                        isEnabled = true;
+                    }
+                }
+                return isEnabled;
+            });
+        public RelayCommand SettingsViewCmd { get; set; } = new RelayCommand
             (
             parameter =>
             {
