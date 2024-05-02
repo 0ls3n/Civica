@@ -70,7 +70,8 @@
                 BorderThickness="0 0 1 0"
                 BorderBrush="#E8E8E8"/>
 
-        <Image Source="/Resources/Images/Civica_Logo.png"/>
+        <Image Source="/Resources/Images/Civica_Logo.png"
+               Width="150"/>
 
         <StackPanel Grid.Row="1"
                     Margin="0 15 0 0">

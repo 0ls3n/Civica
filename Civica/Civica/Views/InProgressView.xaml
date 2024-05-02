@@ -6,7 +6,6 @@
              xmlns:view="clr-namespace:Civica.Views"
              xmlns:viewModel="clr-namespace:Civica.ViewModels"
              xmlns:local="clr-namespace:Civica.Views"
-             
              mc:Ignorable="d" 
              d:DesignHeight="650" d:DesignWidth="1200">
 
