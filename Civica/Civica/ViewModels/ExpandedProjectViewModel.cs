@@ -1,5 +1,6 @@
 ﻿using Civica.Interfaces;
 using Civica.Models;
+using Civica.Models.Enums;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -23,8 +24,31 @@ namespace Civica.ViewModels
             get => _selectedProgress;
             set
             {
+                InformationPlaceholderVisibility = WindowVisibility.Hidden;
                 _selectedProgress = value;
                 OnPropertyChanged(nameof(SelectedProgress));
+            }
+        }
+
+        private ProjectViewModel _selectedProject;
+        public ProjectViewModel SelectedProject
+        {
+            get => _selectedProject;
+            set
+            {
+                _selectedProject = value;
+                OnPropertyChanged(nameof(SelectedProject));
+            }
+        }
+
+        private WindowVisibility _informationPlaceholderVisibility;
+        public WindowVisibility InformationPlaceholderVisibility
+        {
+            get => _informationPlaceholderVisibility;
+            set
+            {
+                _informationPlaceholderVisibility = value;
+                OnPropertyChanged(nameof(InformationPlaceholderVisibility));
             }
         }
 
@@ -46,7 +70,6 @@ namespace Civica.ViewModels
             {
                 Progresses.Add(new ProgressViewModel(p));
             }
-            
         }
     }
 }

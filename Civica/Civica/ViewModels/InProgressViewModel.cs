@@ -116,6 +116,7 @@ namespace Civica.ViewModels
 
         private IRepository<Project> projectRepo;
         private IRepository<Progress> progressRepo;
+        private IRepository<Resource> resourceRepo;
 
         public CreateProjectViewModel CreateProjectVM { get; set; }
         public CreateProgressViewModel CreateProgressVM { get; set; }
@@ -178,9 +179,11 @@ namespace Civica.ViewModels
             this.mvm = (o as MainViewModel);
             projectRepo = this.mvm.GetProjectRepo();
             progressRepo = this.mvm.GetProgressRepo();
+            resourceRepo = this.mvm.GetResourceRepo();
 
             CreateProgressVM.SetRepo(progressRepo);
             CreateProjectVM.SetRepo(projectRepo);
+            CreateProjectVM.SetRepo(resourceRepo);
 
             UpdateList();
         }

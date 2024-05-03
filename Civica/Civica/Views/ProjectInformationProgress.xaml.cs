@@ -16,15 +16,13 @@ using System.Windows.Shapes;
 namespace Civica.Views
 {
     /// <summary>
-    /// Interaction logic for CreateProjectView.xaml
+    /// Interaction logic for ProjectInformationView.xaml
     /// </summary>
-    public partial class CreateProjectView : UserControl
+    public partial class ProjectInformationProgress : UserControl
     {
-        public CreateProjectView()
+        public ProjectInformationProgress()
         {
             InitializeComponent();
         }
-
-       
     }
 }
