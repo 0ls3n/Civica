@@ -63,6 +63,19 @@ namespace Civica.ViewModels
                 OnPropertyChanged(nameof(ExpandedProjectView));
             }
         }
+        private WindowVisibility _settingsView;
+
+        public WindowVisibility SettingsView
+        {
+            get { return _settingsView; }
+            set 
+            { 
+                _settingsView = value; 
+                OnPropertyChanged(nameof(SettingsView));
+            }
+        }
+
+
 
         public InProgressViewModel ipvm { get; set; } = new InProgressViewModel();
         public ExpandedProjectViewModel epvm { get; set; } = new ExpandedProjectViewModel();
@@ -77,6 +90,7 @@ namespace Civica.ViewModels
                 {
                     mvm.InProgressView = WindowVisibility.Visible;
                     mvm.ExpandedProjectView = WindowVisibility.Hidden;
+                    mvm.SettingsView = WindowVisibility.Hidden;
                     mvm.ViewTitle = mvm.ipvm.WindowTitle;
                 }
             },
@@ -93,6 +107,7 @@ namespace Civica.ViewModels
                 {
                     mvm.ExpandedProjectView = WindowVisibility.Visible;
                     mvm.InProgressView = WindowVisibility.Hidden;
+                    mvm.SettingsView = WindowVisibility.Hidden;
                     mvm.ViewTitle = mvm.ipvm.SelectedProject.Name;
                     mvm.epvm.UpdateList();
                     mvm.epvm.SelectedProject = mvm.ipvm.SelectedProject;
@@ -117,28 +132,23 @@ namespace Civica.ViewModels
             {
                 if (parameter is MainViewModel mvm)
                 {
-                    mvm.ExpandedProjectView = WindowVisibility.Visible;
+                    mvm.SettingsView = WindowVisibility.Visible;
+                    mvm.ExpandedProjectView = WindowVisibility.Hidden;
                     mvm.InProgressView = WindowVisibility.Hidden;
-                    mvm.ViewTitle = mvm.ipvm.SelectedProject.Name;
-                    mvm.epvm.UpdateList();
+                    mvm.ViewTitle = mvm.svm.WindowTitle;
+                    mvm.svm.UpdateList();
+                    mvm.svm.InformationVisibility = WindowVisibility.Visible;
                 }
             },
             parameter =>
             {
-                bool isEnabled = false;
-                if (parameter is MainViewModel mvm)
-                {
-                    if (mvm.ipvm.SelectedProject != null)
-                    {
-                        isEnabled = true;
-                    }
-                }
-                return isEnabled;
+                return true;
             });
 
         private IRepository<Project> projectRepo;
         private IRepository<Progress> progressRepo;
         private IRepository<Resource> resourceRepo;
+        private IRepository<User> userRepo;
 
         public MainViewModel()
         {
@@ -154,12 +164,16 @@ namespace Civica.ViewModels
             {
                 return resourceRepo.GetAll().FindAll(x => x.RefId == id);
             });
-
+            userRepo = new Repository<User>(id =>
+            {
+                return userRepo.GetAll().FindAll(x => x.Id == id);
+            });
             ipvm.Init(this);
             epvm.Init(this);
-
+            svm.Init(this);
             InProgressView = WindowVisibility.Visible;
             ExpandedProjectView = WindowVisibility.Hidden;
+            SettingsView = WindowVisibility.Hidden;
             
             ViewTitle = ipvm.WindowTitle;
         }
@@ -167,5 +181,6 @@ namespace Civica.ViewModels
         public IRepository<Project> GetProjectRepo() => projectRepo;
         public IRepository<Progress> GetProgressRepo() => progressRepo;
         public IRepository<Resource> GetResourceRepo() => resourceRepo;
+        public IRepository<User> GetUserRepo() => userRepo;
     }
 }

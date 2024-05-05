@@ -7,10 +7,124 @@
              xmlns:viewModel="clr-namespace:Civica.ViewModels"
              xmlns:local="clr-namespace:Civica.Views"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="650" d:DesignWidth="1200">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <Style x:Key="ScrollThumbs" TargetType="{x:Type Thumb}">
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate>
+                            <Grid x:Name="Grid">
+                                <Rectangle HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="Auto" 
+                                       Height="Auto" Fill="Transparent"/>
+                                <Border x:Name="Rectangle1" CornerRadius="10 0 0 10" HorizontalAlignment="Stretch" 
+                                    VerticalAlignment="Stretch" Width="Auto" Height="Auto" 
+                                    Background="{TemplateBinding Background}"/>
+                            </Grid>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="Tag" Value="Horizontal">
+                                    <Setter TargetName="Rectangle1" Property="Width" Value="Auto"/>
+                                    <Setter TargetName="Rectangle1" Property="Height" Value="7"/>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
+            <!--SCROLLBARS-->
+            <Style x:Key="{x:Type ScrollBar}" TargetType="{x:Type ScrollBar}">
+                <Setter Property="Stylus.IsFlicksEnabled" Value="False"/>
+                <Setter Property="Foreground" Value="LightGray"/>
+                <Setter Property="Background" Value="DarkGray"/>
+                <Setter Property="Width" Value="10"/>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type ScrollBar}">
+                            <Grid x:Name="GridRoot" Width="12" Background="{x:Null}">
+                                <Track x:Name="PART_Track" Grid.Row="0" IsDirectionReversed="true" Focusable="False">
+                                    <Track.Thumb>
+                                        <Thumb x:Name="Thumb" Background="{TemplateBinding Foreground}" 
+                                           Style="{DynamicResource ScrollThumbs}"/>
+                                    </Track.Thumb>
+                                    <Track.IncreaseRepeatButton>
+                                        <RepeatButton x:Name="PageUp" Command="ScrollBar.PageDownCommand" Opacity="0" Focusable="False"/>
+                                    </Track.IncreaseRepeatButton>
+                                    <Track.DecreaseRepeatButton>
+                                        <RepeatButton x:Name="PageDown" Command="ScrollBar.PageUpCommand" Opacity="0" Focusable="False"/>
+                                    </Track.DecreaseRepeatButton>
+                                </Track>
+                            </Grid>
+
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsEnabled" Value="false">
+                                    <Setter TargetName="Thumb" Property="Visibility" Value="Collapsed"/>
+                                </Trigger>
+                                <Trigger Property="Orientation" Value="Horizontal">
+                                    <Setter TargetName="GridRoot" Property="LayoutTransform">
+                                        <Setter.Value>
+                                            <RotateTransform Angle="-90"/>
+                                        </Setter.Value>
+                                    </Setter>
+                                    <Setter TargetName="PART_Track" Property="LayoutTransform">
+                                        <Setter.Value>
+                                            <RotateTransform Angle="-90"/>
+                                        </Setter.Value>
+                                    </Setter>
+                                    <Setter Property="Width" Value="Auto"/>
+                                    <Setter Property="Height" Value="12"/>
+                                    <Setter TargetName="Thumb" Property="Tag" Value="Horizontal"/>
+                                    <Setter TargetName="PageDown" Property="Command" Value="ScrollBar.PageLeftCommand"/>
+                                    <Setter TargetName="PageUp" Property="Command" Value="ScrollBar.PageRightCommand"/>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+        </ResourceDictionary>
+    </UserControl.Resources>
+
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition MaxWidth="400"
+                              MinWidth="400"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.Row="0"
+                   Grid.Column="0"
+                   Text="Muligheder"
+                   HorizontalAlignment="Left"
+                   VerticalAlignment="Bottom"
+                   Margin="0 0 0 10"
+                   Foreground="#8A8A8A"/>
+
         <Border Grid.Row="1">
-            <view:CreateProjectView DataContext="{Binding Path=CreateProjectVM}"/>
+            <view:UserInformationView/>
+        </Border>
+
+        <Border Grid.Row="1">
+            <view:InformationPlaceholderView PlaceholderText="Klik på en bruger"/>
+            <Border.Style>
+                <Style TargetType="Border">
+                    <Setter Property="Visibility" Value="Collapsed"/>
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding InformationVisibility}" Value="Visible">
+                            <Setter Property="Visibility" Value="Visible"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Border.Style>
+        </Border>
+
+        <Border Grid.Row="1">
+            <view:CreateUserView DataContext="{Binding Path=CreateUserVM}"/>
             <Border.Style>
                 <Style TargetType="Border">
                     <Setter Property="Visibility" Value="Collapsed"/>
@@ -22,176 +136,224 @@
                 </Style>
             </Border.Style>
         </Border>
-        <Border Grid.Row="1"
-        BorderThickness="0 1 0 0"
-        BorderBrush="#338A8A8A">
-    <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="100"/>
-        </Grid.ColumnDefinitions>
 
-        <Button Grid.Column="1"
-                BorderThickness="0"
-                HorizontalAlignment="Right"
-                Margin="0 0 10 0"
-                Width="60"
-                Cursor="Hand"
-                Height="60"
-                Command="{Binding RemoveProjectCmd}"
-                CommandParameter="{Binding}"
-                ToolTipService.InitialShowDelay="0">
-            <Button.ToolTip>
-                <ToolTip Content="Slet projekt" Style="{StaticResource ToolTipTheme}"/>
-            </Button.ToolTip>
-
-            <Button.Style>
-                <Style TargetType="Button">
-                    <Setter Property="Background" Value="Red"/>
-
+        <Border Grid.Row="1">
+            <view:EditUserView/>
+            <Border.Style>
+                <Style TargetType="Border">
+                    <Setter Property="Visibility" Value="Collapsed"/>
                     <Style.Triggers>
-                        <Trigger Property="IsMouseOver" Value="True">
-                            <Setter Property="Background" Value="#FFFC5B5B"/>
-                        </Trigger>
+                        <DataTrigger Binding="{Binding EditVisibility}" Value="Visible">
+                            <Setter Property="Visibility" Value="Visible"/>
+                        </DataTrigger>
                     </Style.Triggers>
-
                 </Style>
-            </Button.Style>
+            </Border.Style>
+        </Border>
 
-            <Button.Template>
-                <ControlTemplate TargetType="Button">
-                    <Border Width="50" 
-                            Height="50"
-                            Background="{TemplateBinding Background}"
-                            CornerRadius="25">
-                        <Image Source="/Resources/Images/remove_logo.png" 
-                               Width="25"/>
-                    </Border>
-                </ControlTemplate>
-            </Button.Template>
+        <TextBlock Grid.Row="0"
+                   Grid.Column="1"
+                   Text="Brugere"
+                   HorizontalAlignment="Left"
+                   VerticalAlignment="Bottom"
+                   Margin="30 0 0 10"
+                   Foreground="#8A8A8A"/>
 
-        </Button>
-        <Button
-            BorderThickness="0"
-            HorizontalAlignment="Left"
-            Margin="10,8,0,7"
-            Width="60"
-            Cursor="Hand"
-            Height="60"
-            Command="{Binding CreateProjectViewCmd}"
-            CommandParameter="{Binding}"
-            ToolTipService.InitialShowDelay="0">
-            <Button.ToolTip>
-                <ToolTip Content="Opret nyt projekt" Style="{StaticResource ToolTipTheme}"/>
-            </Button.ToolTip>
+        <Border Grid.Column="1"
+                Grid.Row="1"
+                Background="White"
+                CornerRadius="10"
+                Margin="30 0 0 0">
 
-            <Button.Style>
-                <Style TargetType="{x:Type Button}">
-                    <Setter Property="Background" Value="Green"/>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="458*"/>
+                    <RowDefinition Height="67*"/>
+                    <RowDefinition Height="75"/>
+                </Grid.RowDefinitions>
 
-                    <Style.Triggers>
-                        <Trigger Property="IsMouseOver" Value="True">
-                            <Setter Property="Background" Value="#FF039803"/>
-                        </Trigger>
-                    </Style.Triggers>
+                <ListBox Background="Transparent"
+                     Margin="10,0,10,0"
+                         Grid.RowSpan="2"
+                     BorderThickness="0"
+                     ScrollViewer.HorizontalScrollBarVisibility="Hidden"
+                     ItemsSource="{Binding Users, UpdateSourceTrigger=PropertyChanged}"
+                     SelectedItem="{Binding SelectedUser}">
 
-                </Style>
-            </Button.Style>
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
 
-            <Button.Template>
-                <ControlTemplate TargetType="{x:Type Button}">
-                    <Border Width="50" 
-                        Height="50"
-                        Background="{TemplateBinding Background}"
-                        CornerRadius="25">
-                        <Image Source="/Resources/Images/create_logo.png" 
-                            Width="25"/>
-                    </Border>
-                </ControlTemplate>
-            </Button.Template>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="50"/>
+                                    <ColumnDefinition Width="285"/>
+                                </Grid.ColumnDefinitions>
 
-        </Button>
+                                <Border Grid.RowSpan="2"
+                                    Grid.Column="1"
+                                    Margin="10 0 0 0"
+                                    Width="325"
+                                    Height="50"
+                                    BorderThickness="0 0 0 1"
+                                    BorderBrush="#E8E8E8">
 
-        <Button
-            BorderThickness="0"
-            HorizontalAlignment="Left"
-            Margin="240,8,0,7"
-            Width="60"
-            Cursor="Hand"
-            Height="60"
-            Command="{Binding UpdateProjectViewCmd}"
-            CommandParameter="{Binding}" 
-            Grid.ColumnSpan="2"
-            ToolTipService.InitialShowDelay="0">
-            <Button.ToolTip>
-                <ToolTip Content="Opdater projekt" Style="{StaticResource ToolTipTheme}"/>
-            </Button.ToolTip>
+                                </Border>
 
-            <Button.Style>
-                <Style TargetType="{x:Type Button}">
-                    <Setter Property="Background" Value="Orange"/>
-                    <Style.Triggers>
-                        <Trigger Property="IsMouseOver" Value="True">
-                            <Setter Property="Background" Value="#FFF1B545"/>
-                        </Trigger>
-                    </Style.Triggers>
+                                <TextBlock Grid.Column="1"
+                                       Margin="10 5 0 0"
+                                       FontWeight="Medium"
+                                       Text="{Binding FullName}"/>
+                                <TextBlock Grid.Column="1"
+                                       Margin="10 0 0 0"
+                                       Grid.Row="1"
+                                       Foreground="#8A8A8A"
+                                       Text="Adgangskode:"/>
+                                <TextBlock Grid.Column="1"
+                                       Margin="90 0 0 0"
+                                       Grid.Row="1"
+                                       Foreground="#8A8A8A"
+                                       Text="{Binding Password}"/>
+                            </Grid>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
 
-                </Style>
-            </Button.Style>
+                <Border Grid.Row="2"
+                        BorderThickness="0 1 0 0"
+                        BorderBrush="#338A8A8A">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="100"/>
+                        </Grid.ColumnDefinitions>
 
-            <Button.Template>
-                <ControlTemplate TargetType="{x:Type Button}">
-                    <Border Width="50" 
-                        Height="50"
-                        Background="{TemplateBinding Background}"
-                        CornerRadius="25">
-                        <Image Source="/Resources/Images/edit_Logo.png" 
-                            Width="25"/>
-                    </Border>
-                </ControlTemplate>
-            </Button.Template>
-        </Button>
-        <Button
-            BorderThickness="0"
-            HorizontalAlignment="Left"
-            Margin="180,8,0,7"
-            Width="60"
-            Cursor="Hand"
-            Height="60"
-            Command="{Binding ProgressProjectViewCmd}"
-            CommandParameter="{Binding}"
-            ToolTipService.InitialShowDelay="0">
-            <Button.ToolTip>
-                <ToolTip Content="Opret ny fremdrift" Style="{StaticResource ToolTipTheme}"/>
-            </Button.ToolTip>
+                        <Button Grid.Column="1"
+                                BorderThickness="0"
+                                HorizontalAlignment="Right"
+                                Margin="0 0 10 0"
+                                Width="60"
+                                Cursor="Hand"
+                                Height="60"
+                                Command="{Binding RemoveUserCmd}"
+                                CommandParameter="{Binding}"
+                                ToolTipService.InitialShowDelay="0">
+                            <Button.ToolTip>
+                                <ToolTip Content="Slet bruger" Style="{StaticResource ToolTipTheme}"/>
+                            </Button.ToolTip>
 
-            <Button.Style>
-                <Style TargetType="{x:Type Button}">
-                    <Setter Property="Background" Value="#FF4444F0"/>
+                            <Button.Style>
+                                <Style TargetType="Button">
+                                    <Setter Property="Background" Value="Red"/>
 
-                    <Style.Triggers>
-                        <Trigger Property="IsMouseOver" Value="True">
-                            <Setter Property="Background" Value="#FF6B6BED"/>
-                        </Trigger>
-                    </Style.Triggers>
+                                    <Style.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter Property="Background" Value="#FFFC5B5B"/>
+                                        </Trigger>
+                                    </Style.Triggers>
 
-                </Style>
-            </Button.Style>
+                                </Style>
+                            </Button.Style>
 
+                            <Button.Template>
+                                <ControlTemplate TargetType="Button">
+                                    <Border Width="50" 
+                                            Height="50"
+                                            Background="{TemplateBinding Background}"
+                                            CornerRadius="25">
+                                        <Image Source="/Resources/Images/remove_logo.png" 
+                                               Width="25"/>
+                                    </Border>
+                                </ControlTemplate>
+                            </Button.Template>
 
-            <Button.Template>
-                <ControlTemplate TargetType="{x:Type Button}">
-                    <Border Width="50" 
-                        Height="50"
-                        Background="{TemplateBinding Background}"
-                        CornerRadius="25">
-                        <Image Source="/Resources/Images/progress_logo.png" 
-                            Width="25"/>
-                    </Border>
-                </ControlTemplate>
-            </Button.Template>
+                        </Button>
+                        <Button
+                            BorderThickness="0"
+                            HorizontalAlignment="Left"
+                            Margin="10,8,0,7"
+                            Width="60"
+                            Cursor="Hand"
+                            Height="60"
+                            Command="{Binding CreateUserViewCmd}"
+                            CommandParameter="{Binding}"
+                            ToolTipService.InitialShowDelay="0">
+                            <Button.ToolTip>
+                                <ToolTip Content="Opret ny bruger" Style="{StaticResource ToolTipTheme}"/>
+                            </Button.ToolTip>
 
-        </Button>
+                            <Button.Style>
+                                <Style TargetType="{x:Type Button}">
+                                    <Setter Property="Background" Value="Green"/>
 
+                                    <Style.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter Property="Background" Value="#FF039803"/>
+                                        </Trigger>
+                                    </Style.Triggers>
+
+                                </Style>
+                            </Button.Style>
+
+                            <Button.Template>
+                                <ControlTemplate TargetType="{x:Type Button}">
+                                    <Border Width="50" 
+                                        Height="50"
+                                        Background="{TemplateBinding Background}"
+                                        CornerRadius="25">
+                                        <Image Source="/Resources/Images/create_logo.png" 
+                                            Width="25"/>
+                                    </Border>
+                                </ControlTemplate>
+                            </Button.Template>
+
+                        </Button>
+
+                        <Button
+                            BorderThickness="0"
+                            HorizontalAlignment="Left"
+                            Margin="240,8,0,7"
+                            Width="60"
+                            Cursor="Hand"
+                            Height="60"
+                            Command="{Binding UpdateUserViewCmd}"
+                            CommandParameter="{Binding}" 
+                            Grid.ColumnSpan="2"
+                            ToolTipService.InitialShowDelay="0">
+                            <Button.ToolTip>
+                                <ToolTip Content="Opdater bruger" Style="{StaticResource ToolTipTheme}"/>
+                            </Button.ToolTip>
+
+                            <Button.Style>
+                                <Style TargetType="{x:Type Button}">
+                                    <Setter Property="Background" Value="Orange"/>
+                                    <Style.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter Property="Background" Value="#FFF1B545"/>
+                                        </Trigger>
+                                    </Style.Triggers>
+
+                                </Style>
+                            </Button.Style>
+
+                            <Button.Template>
+                                <ControlTemplate TargetType="{x:Type Button}">
+                                    <Border Width="50" 
+                                        Height="50"
+                                        Background="{TemplateBinding Background}"
+                                        CornerRadius="25">
+                                        <Image Source="/Resources/Images/edit_Logo.png" 
+                                            Width="25"/>
+                                    </Border>
+                                </ControlTemplate>
+                            </Button.Template>
+                        </Button>
+                    </Grid>
+                </Border>
+            </Grid>
+        </Border>
     </Grid>
 </UserControl>

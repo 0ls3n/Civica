@@ -309,8 +309,7 @@ namespace Civica.Models
                 }
                 else if (o is User u) 
                 {
-                    cmd = new SqlCommand("UPDATE USERS SET FirstName = @FN, LastName = @LN, Password = @PW" +
-                                         "WHERE UserId = @ID", con);
+                    cmd = new SqlCommand("UPDATE USERS SET FirstName = @FN, LastName = @LN, Password = @PW WHERE UserId = @ID", con);
                     cmd.Parameters.Add("@ID", SqlDbType.Int).Value= u.Id;
                     cmd.Parameters.Add("@FN", SqlDbType.NVarChar).Value = u.FirstName;
                     cmd.Parameters.Add("@LN", SqlDbType.NVarChar).Value = u.LastName;

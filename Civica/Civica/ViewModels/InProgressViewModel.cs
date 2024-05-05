@@ -235,6 +235,7 @@ namespace Civica.ViewModels
                     ipvm.InformationVisibility = WindowVisibility.Hidden;
                     ipvm.CreateVisibility = WindowVisibility.Hidden;
                     ipvm.ProgressVisibility = WindowVisibility.Hidden;
+                    ipvm.OldName = ipvm.SelectedProject.Name;
                 }
             },
             parameter =>
@@ -290,7 +291,7 @@ namespace Civica.ViewModels
             {
                 if (parameter is InProgressViewModel ipvm)
                 {
-                    if (ipvm.Projects.FirstOrDefault(x => x.Name.ToLower() == ipvm.CreateProjectVM.ProjectName.ToLower()) is null || ipvm.CreateProjectVM.ProjectName.ToLower() == ipvm.OldName.ToLower())
+                    if (ipvm.Projects.FirstOrDefault(x => x.Name.ToLower() == ipvm.SelectedProject.Name.ToLower()) is null || ipvm.SelectedProject.Name.ToLower() == ipvm.OldName.ToLower())
                     {
                         ipvm.UpdateProject(ipvm.SelectedProject);
 

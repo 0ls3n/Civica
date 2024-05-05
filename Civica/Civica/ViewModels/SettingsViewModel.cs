@@ -7,6 +7,8 @@ using System.Threading.Tasks;
 using Civica.Models;
 using System.Collections.ObjectModel;
 using Civica.Commands;
+using Civica.Models.Enums;
+using System.Windows;
 
 namespace Civica.ViewModels
 {
@@ -14,37 +16,123 @@ namespace Civica.ViewModels
     {
         private MainViewModel mvm;
         private IRepository<User> userRepo;
-        public ObservableCollection<UserViewModel> Users { get; set; } = new ObservableCollection<UserViewModel>();
-        private UserViewModel selectedUser;
-
-        public UserViewModel SelectedUSer
+        private string _windowTitle;
+        public string WindowTitle
         {
-            get { return selectedUser; }
+            get => _windowTitle;
             set
             {
-                selectedUser = value;
-                OnPropertyChanged(nameof(SelectedUSer));
+                _windowTitle = value;
+                OnPropertyChanged(nameof(WindowTitle));
+            }
+        }
+        private WindowVisibility _createVisibility;
+        public WindowVisibility CreateVisibility
+        {
+            get => _createVisibility;
+            set
+            {
+                _createVisibility = value;
+                OnPropertyChanged(nameof(CreateVisibility));
             }
         }
 
-        public void SetRepo(IRepository<User> userRepo)
+        private WindowVisibility _editVisibility;
+        public WindowVisibility EditVisibility
         {
-            this.userRepo = userRepo;
+            get => _editVisibility;
+            set
+            {
+                _editVisibility = value;
+                OnPropertyChanged(nameof(EditVisibility));
+            }
         }
+        private WindowVisibility _informationVisibility;
+
+        public WindowVisibility InformationVisibility
+        {
+            get { return _informationVisibility; }
+            set
+            {
+                _informationVisibility = value;
+                OnPropertyChanged(nameof(InformationVisibility));
+            }
+        }
+        private ObservableCollection<UserViewModel> users;
+
+        public ObservableCollection<UserViewModel> Users
+        {
+            get { return users; }
+            set
+            {
+                users = value;
+                OnPropertyChanged(nameof(Users));
+            }
+        }
+
+        private UserViewModel _selectedUser;
+
+        public UserViewModel SelectedUser
+        {
+            get { return _selectedUser; }
+            set
+            {
+                if (value is not null)
+                {
+                    _selectedUser = value;
+                    InformationVisibility = WindowVisibility.Hidden;
+                    CreateVisibility = WindowVisibility.Hidden;
+                    EditVisibility = WindowVisibility.Hidden;
+                    OnPropertyChanged(nameof(SelectedUser));
+                }
+            }
+        }
+        public string OldName;
+        public int OldPassword;
+        public CreateUserViewModel CreateUserVM { get; set; }
+
+        public SettingsViewModel()
+        {
+            CreateUserVM = new CreateUserViewModel();
+            CreateUserVM.Init(this);
+            CreateUserVM.SetRepo(userRepo);
+
+            WindowTitle = "Indstillinger";
+
+            CreateVisibility = WindowVisibility.Hidden;
+            EditVisibility = WindowVisibility.Hidden;
+            InformationVisibility = WindowVisibility.Visible;
+        }
+
         public void Init(ObservableObject o)
         {
             this.mvm = (o as MainViewModel);
+            userRepo = mvm.GetUserRepo();
 
+            CreateUserVM.SetRepo(userRepo);
+            UpdateList();
 
         }
-        public void UpdateUser(UserViewModel userVM) 
+        public void UpdateUser(UserViewModel userVM)
         {
             User u = userRepo.GetById(userVM.GetId());
             u.FirstName = userVM.FirstName;
             u.LastName = userVM.LastName;
-            u.Password = userVM.Password;
-            
+            u.Password = int.Parse(userVM.Password);
+
             userRepo.Update(u);
+        }
+        public void RemoveUser()
+        {
+            userRepo.Remove(userRepo.GetById(SelectedUser.GetId()));
+            UpdateList();
+        }
+        public void UpdateList()
+        {
+            Users = new ObservableCollection<UserViewModel>
+            (
+                userRepo.GetAll().Select(user => new UserViewModel(user as User))
+            );
         }
         #region ViewCommands
 
@@ -52,12 +140,11 @@ namespace Civica.ViewModels
         (
             parameter =>
             {
-                if (parameter is InProgressViewModel ipvm)
+                if (parameter is SettingsViewModel svm)
                 {
-                    //ipvm.CreateVisibility = WindowVisibility.Visible;
-                    //ipvm.InformationVisibility = WindowVisibility.Hidden;
-                    //ipvm.EditVisibility = WindowVisibility.Hidden;
-                    //ipvm.ProgressVisibility = WindowVisibility.Hidden;
+                    svm.CreateVisibility = WindowVisibility.Visible;
+                    svm.EditVisibility = WindowVisibility.Hidden;
+                    svm.InformationVisibility = WindowVisibility.Hidden;
                 }
             },
             parameter =>
@@ -70,19 +157,20 @@ namespace Civica.ViewModels
         (
             parameter =>
             {
-                if (parameter is MainViewModel ipvm)
+                if (parameter is SettingsViewModel svm)
                 {
-                    //ipvm.EditVisibility = WindowVisibility.Visible;
-                    //ipvm.InformationVisibility = WindowVisibility.Hidden;
-                    //ipvm.CreateVisibility = WindowVisibility.Hidden;
-                    //ipvm.ProgressVisibility = WindowVisibility.Hidden;
+                    svm.EditVisibility = WindowVisibility.Visible;
+                    svm.InformationVisibility = WindowVisibility.Hidden;
+                    svm.CreateVisibility = WindowVisibility.Hidden;
+                    svm.OldName = svm.SelectedUser.FullName;
+                    svm.OldPassword = int.Parse(svm.SelectedUser.Password);
                 }
             },
             parameter =>
             {
-                if (parameter is MainViewModel ipvm)
+                if (parameter is SettingsViewModel svm)
                 {
-                    if (ipvm.SelectedProject != null)
+                    if (svm.SelectedUser != null)
                     {
                         return true;
                     }
@@ -90,75 +178,72 @@ namespace Civica.ViewModels
                 return false;
             }
         );
-
-        public RelayCommand ProgressProjectViewCmd { get; set; } = new RelayCommand
-        (
-            parameter =>
-            {
-                if (parameter is InProgressViewModel ipvm)
-                {
-                    ipvm.CreateProgressVM.ProgressDescription = "";
-
-                    ipvm.CreateProgressVM.SelectedPhase = Phase.IDENTIFIED;
-                    ipvm.CreateProgressVM.SelectedStatus = Status.NONE;
-
-                    ipvm.ProgressVisibility = WindowVisibility.Visible;
-                    ipvm.EditVisibility = WindowVisibility.Hidden;
-                    ipvm.InformationVisibility = WindowVisibility.Hidden;
-                    ipvm.CreateVisibility = WindowVisibility.Hidden;
-                }
-            },
-            parameter =>
-            {
-                if (parameter is InProgressViewModel ipvm)
-                {
-                    if (ipvm.SelectedProject != null)
-                    {
-                        return true;
-                    }
-                }
-                return false;
-            }
-        );
-
         #endregion
 
         #region FunctionalityCommands
 
-        public RelayCommand UpdateProjectCmd { get; set; } = new RelayCommand
+        public RelayCommand UpdateUserCmd { get; set; } = new RelayCommand
         (
             parameter =>
             {
-                if (parameter is InProgressViewModel ipvm)
+                if (parameter is SettingsViewModel svm)
                 {
-                    if (ipvm.Projects.FirstOrDefault(x => x.Name.ToLower() == ipvm.CreateProjectVM.ProjectName.ToLower()) is null || ipvm.CreateProjectVM.ProjectName.ToLower() == ipvm.OldName.ToLower())
+                    if (svm.userRepo.GetAll().OfType<User>().FirstOrDefault(x => x.Password == int.Parse(svm.SelectedUser.Password)) is null ||
+                        int.Parse(svm.SelectedUser.Password) == svm.OldPassword)
                     {
-                        ipvm.UpdateProject(ipvm.SelectedProject);
+                        if (svm.userRepo.GetAll().OfType<User>().FirstOrDefault(x => x.FullName.ToLower() == svm.SelectedUser.FullName.ToLower()) is null ||
+                        svm.SelectedUser.FullName.ToLower() == svm.OldName.ToLower())
+                        {
+                            svm.UpdateUser(svm.SelectedUser);
 
-                        ipvm.EditVisibility = WindowVisibility.Hidden;
-                        ipvm.InformationVisibility = WindowVisibility.Visible;
+                            svm.EditVisibility = WindowVisibility.Hidden;
+                            svm.InformationVisibility = WindowVisibility.Visible;
+                            svm.UpdateList();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Navnet " + svm.SelectedUser.FullName + " findes allerede.");
+                        }
+
+                    }
+                    else
+                    {
+                        MessageBox.Show("Adgangskoden " + svm.SelectedUser.Password + " er allerede i brug");
                     }
                 }
             },
             parameter =>
             {
-                return true;
+                bool result = false;
+
+                if (parameter is SettingsViewModel svm)
+                {
+                    if (svm.SelectedUser is not null)
+                    {
+                        if (svm.SelectedUser.FirstName is not "" && svm.SelectedUser.LastName is not "" && svm.SelectedUser.Password.Length == 4)
+                        {
+                            result = true;
+
+                        }
+                    }
+                }
+                return result;
             }
         );
 
-        public RelayCommand RemoveProjectCmd { get; set; } = new RelayCommand
+        public RelayCommand RemoveUserCmd { get; set; } = new RelayCommand
         (
             parameter =>
             {
-                if (parameter is InProgressViewModel ipvm)
+                if (parameter is SettingsViewModel svm)
                 {
                     MessageBoxButton button = MessageBoxButton.OKCancel;
-                    MessageBoxResult result = MessageBox.Show($"Er du sikker på du vil slette '{ipvm.SelectedProject.Name}'?", "Bekræft sletning", button);
+                    MessageBoxResult result = MessageBox.Show($"Er du sikker på du vil slette '{svm.SelectedUser.FullName}'?", "Bekræft sletning", button);
 
                     if (result == MessageBoxResult.OK)
                     {
-                        ipvm.RemoveProject();
-                        ipvm.InformationVisibility = WindowVisibility.Visible;
+                        svm.RemoveUser();
+                        svm.InformationVisibility = WindowVisibility.Visible;
                     }
                 }
             },
@@ -166,9 +251,9 @@ namespace Civica.ViewModels
             {
                 bool succes = false;
 
-                if (parameter is InProgressViewModel ipvm)
+                if (parameter is SettingsViewModel svm)
                 {
-                    if (ipvm.SelectedProject != null)
+                    if (svm.SelectedUser != null)
                     {
                         succes = true;
                     }

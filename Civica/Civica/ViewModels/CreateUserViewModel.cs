@@ -7,21 +7,22 @@ using System.Threading.Tasks;
 using Civica.Models;
 using Civica.Commands;
 using System.Windows;
+using Civica.Models.Enums;
 
 namespace Civica.ViewModels
 {
     public class CreateUserViewModel : ObservableObject, IViewModelChild
     {
-        private InProgressViewModel ipvm;
+        private SettingsViewModel svm;
         private IRepository<User> userRepo;
         private string firstName;
 
         public string FirstName
         {
             get { return firstName; }
-            set 
-            { 
-                firstName = value; 
+            set
+            {
+                firstName = value;
                 OnPropertyChanged(nameof(FirstName));
             }
         }
@@ -30,41 +31,58 @@ namespace Civica.ViewModels
         public string LastName
         {
             get { return lastName; }
-            set 
-            { 
-                lastName = value; 
+            set
+            {
+                lastName = value;
                 OnPropertyChanged(nameof(LastName));
             }
         }
+
         private string password;
 
         public string Password
         {
             get { return password; }
-            set 
-            { 
-                if (value.Length > 4) 
-                {
-                    MessageBox.Show("Max 4 tal");
-                }
-                else 
+            set
+            {
+                if (value.Length < 5)
                 {
                     password = value;
-                    OnPropertyChanged(nameof(Password));
                 }
-               
+                else
+                {
+                    MessageBox.Show("Password må kun være på 4 cifre");
+                    password = value.Substring(0, 4);
+                }
+                OnPropertyChanged(nameof(Password));
             }
         }
 
         public RelayCommand CreateUserCmd { get; set; } = new RelayCommand
-       (
+        (
            parameter =>
            {
                if (parameter is CreateUserViewModel cuvm)
                {
-                   cuvm.CreateUser();
-                   //cuvm.ipvm.CreateVisibility = WindowVisibility.Hidden;
-                   //cuvm.ipvm.InformationVisibility = WindowVisibility.Visible;
+                   if (cuvm.userRepo.GetAll().OfType<User>().FirstOrDefault(x => x.Password == int.Parse(cuvm.Password)) is null)
+                   {
+                       if (cuvm.userRepo.GetAll().OfType<User>().FirstOrDefault(x => x.FullName.ToLower() == cuvm.FirstName.ToLower() + " " + cuvm.LastName.ToLower()) is null)
+                       {
+                           cuvm.CreateUser();
+                           cuvm.svm.CreateVisibility = WindowVisibility.Hidden;
+                           cuvm.svm.InformationVisibility = WindowVisibility.Visible;
+                           cuvm.svm.UpdateList();
+                       }
+                       else
+                       {
+                           MessageBox.Show("Navnet " + cuvm.FirstName + " " + cuvm.LastName + " findes allerede.");
+                       }
+
+                   }
+                   else
+                   {
+                       MessageBox.Show("Adgangskoden " + cuvm.Password + " er allerede i brug");
+                   }
                }
            },
            parameter =>
@@ -73,14 +91,14 @@ namespace Civica.ViewModels
 
                if (parameter is CreateUserViewModel cuvm)
                {
-                   if (!string.IsNullOrEmpty(cuvm.FirstName) && !string.IsNullOrEmpty(cuvm.LastName) && cuvm.Password.Length == 4);
+                   if (!string.IsNullOrEmpty(cuvm.FirstName) && !string.IsNullOrEmpty(cuvm.LastName) && cuvm.Password.Length == 4) ;
                    {
                        succes = true;
                    }
                }
                return succes;
            }
-       );
+        );
         public void SetRepo(IRepository<User> userRepo)
         {
             this.userRepo = userRepo;
@@ -88,14 +106,14 @@ namespace Civica.ViewModels
 
         public void Init(ObservableObject o)
         {
-            ipvm = (o as InProgressViewModel); //Change to appropriate viewmodel
-       
+            svm = (o as SettingsViewModel);
+
         }
-        public void CreateUser() 
+        public void CreateUser()
         {
             User u = new User(FirstName, LastName, int.Parse(Password));
             userRepo.Add(u);
-            ipvm.UpdateList(); //change to appropriate viewmodel
+            svm.UpdateList();
             FirstName = "";
             LastName = "";
             Password = "";
