@@ -21,9 +21,14 @@ namespace Civica.ViewModels
             audit = a;
         }
 
-        public int GetId ()
+        public int GetId()
         {
             return audit.Id;
+        }
+
+        public int GetRefId()
+        {
+            return audit.RefId;
         }
     }
 }

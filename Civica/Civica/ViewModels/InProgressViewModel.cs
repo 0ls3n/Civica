@@ -93,8 +93,31 @@ namespace Civica.ViewModels
                     {
                         SelectedProgress = new ProgressViewModel(prog);
                     }
+
+                    Resource r = resourceRepo.GetByRefId(SelectedProject.GetId()).FirstOrDefault();
+
+                    SelectedAudit = null;
+                    if (r is not null)
+                    {
+                        Audit aud = auditRepo.GetByRefId(r.GetId()).OrderByDescending(x => x.Year).FirstOrDefault();
+                        if (aud is not null)
+                        {
+                            SelectedAudit = new AuditViewModel(aud);
+                        }
+                    }
                     OnPropertyChanged(nameof(SelectedProject));
                 }
+            }
+        }
+
+        private AuditViewModel _selectedAudit = null;
+        public AuditViewModel SelectedAudit
+        {
+            get => _selectedAudit;
+            set
+            {
+                _selectedAudit = value;
+                OnPropertyChanged(nameof(SelectedAudit));
             }
         }
 
@@ -112,11 +135,10 @@ namespace Civica.ViewModels
             }
         }
 
-        public string OldName;
-
         private IRepository<Project> projectRepo;
         private IRepository<Progress> progressRepo;
         private IRepository<Resource> resourceRepo;
+        private IRepository<Audit> auditRepo;
 
         public CreateProjectViewModel CreateProjectVM { get; set; }
         public CreateProgressViewModel CreateProgressVM { get; set; }
@@ -180,10 +202,12 @@ namespace Civica.ViewModels
             projectRepo = this.mvm.GetProjectRepo();
             progressRepo = this.mvm.GetProgressRepo();
             resourceRepo = this.mvm.GetResourceRepo();
+            auditRepo = this.mvm.GetAuditRepo();
 
             CreateProgressVM.SetRepo(progressRepo);
             CreateProjectVM.SetRepo(projectRepo);
             CreateProjectVM.SetRepo(resourceRepo);
+            CreateProjectVM.SetRepo(auditRepo);
 
             UpdateList();
         }
@@ -194,7 +218,7 @@ namespace Civica.ViewModels
             UpdateList();
         }
 
-        public void UpdateProject(ProjectViewModel projectVM)
+        public void UpdateProject(ProjectViewModel projectVM, AuditViewModel auditVM)
         {
             Project p = projectRepo.GetById(projectVM.GetId());
             p.Name = projectVM.Name;
@@ -203,6 +227,12 @@ namespace Civica.ViewModels
             p.Description = projectVM.Description;
 
             projectRepo.Update(p);
+
+            Audit a = auditRepo.GetById(auditVM.GetRefId());
+            a.Amount = auditVM.Amount;
+            a.Year = auditVM.Year;
+
+            auditRepo.Update(a);
         }
 
         #region ViewCommands
@@ -235,7 +265,6 @@ namespace Civica.ViewModels
                     ipvm.InformationVisibility = WindowVisibility.Hidden;
                     ipvm.CreateVisibility = WindowVisibility.Hidden;
                     ipvm.ProgressVisibility = WindowVisibility.Hidden;
-                    ipvm.OldName = ipvm.SelectedProject.Name;
                 }
             },
             parameter =>
@@ -291,13 +320,10 @@ namespace Civica.ViewModels
             {
                 if (parameter is InProgressViewModel ipvm)
                 {
-                    if (ipvm.Projects.FirstOrDefault(x => x.Name.ToLower() == ipvm.SelectedProject.Name.ToLower()) is null || ipvm.SelectedProject.Name.ToLower() == ipvm.OldName.ToLower())
-                    {
-                        ipvm.UpdateProject(ipvm.SelectedProject);
+                    ipvm.UpdateProject(ipvm.SelectedProject, ipvm.SelectedAudit);
 
-                        ipvm.EditVisibility = WindowVisibility.Hidden;
-                        ipvm.InformationVisibility = WindowVisibility.Visible;
-                    }
+                    ipvm.EditVisibility = WindowVisibility.Hidden;
+                    ipvm.InformationVisibility = WindowVisibility.Visible;
                 }
             },
             parameter =>

@@ -276,24 +276,23 @@ namespace Civica.Models
                 }
                 else if (o is Resource r)
                 {
-                    cmd = new SqlCommand("UPDATE RESOURCES SET StartAmount = @SA, ExpectedYearlyCost = @EYC, Year = @Y" +
+                    cmd = new SqlCommand("UPDATE RESOURCES SET StartAmount = @SA, ExpectedYearlyCost = @EYC" +
                                             "WHERE ResourceId = @ID", con); // Opsætter parameterne der skal opdateres.
 
                     // Indsætter opdaterede værdier i parameterne 
                     cmd.Parameters.Add("@ID", SqlDbType.Int).Value = r.Id;
                     cmd.Parameters.Add("@SA", SqlDbType.Decimal).Value = r.StartAmount;
                     cmd.Parameters.Add("@EYC", SqlDbType.Decimal).Value = r.ExpectedYearlyCost;
-                    cmd.Parameters.Add("@Y", SqlDbType.DateTime2).Value = r.Year;
                 }
                 else if (o is Audit a)
                 {
-                    cmd = new SqlCommand("UPDATE AUDITS SET Amount = @Am, Year = @Ye" +
+                    cmd = new SqlCommand("UPDATE AUDITS SET Amount = @Am, Year = @Ye " +
                                           "WHERE AuditId = @ID", con); // Opsætter parameterne der skal opdateres.
 
                     // Indsætter opdaterede værdier i parameterne 
                     cmd.Parameters.Add("@ID", SqlDbType.Int).Value = a.Id;
                     cmd.Parameters.Add("@Am", SqlDbType.Decimal).Value = a.Amount;
-                    cmd.Parameters.Add("@Ye", SqlDbType.DateTime2).Value = a.Year;
+                    cmd.Parameters.Add("@Ye", SqlDbType.Int).Value = a.Year;
                 }
                 else if (o is WorkTime w)
                 {
@@ -331,14 +330,18 @@ namespace Civica.Models
                 con.Open();
                 if (o is Project p)
                 {
+                    SqlCommand GetResourceId = new SqlCommand("SELECT ResourceId FROM RESOURCES WHERE ProjectId=@ID", con);
+
                     SqlCommand RemoveProgress = new SqlCommand("DELETE FROM PROGRESSES WHERE ProjectId=@ID", con);
                     SqlCommand RemoveAudit = new SqlCommand("DELETE FROM AUDITS WHERE ResourceId=@ID", con);
                     SqlCommand RemoveWorktime = new SqlCommand("DELETE FROM WORKTIMES WHERE ResourceId=@ID", con);
                     SqlCommand RemoveResource = new SqlCommand("DELETE FROM RESOURCES WHERE ProjectId=@ID", con);
                     SqlCommand RemoveProject = new SqlCommand("DELETE FROM PROJECTS WHERE ProjectId=@ID", con);
 
+                    GetResourceId.Parameters.Add("@ID", SqlDbType.Int).Value = p.Id;
+
                     RemoveProgress.Parameters.Add("@ID", SqlDbType.Int).Value = p.Id;
-                    RemoveAudit.Parameters.Add("@ID", SqlDbType.Int).Value = p.RefId;
+                    RemoveAudit.Parameters.Add("@ID", SqlDbType.Int).Value = Convert.ToInt32(GetResourceId.ExecuteScalar());
                     RemoveWorktime.Parameters.Add("@ID", SqlDbType.Int).Value = p.RefId;
                     RemoveResource.Parameters.Add("@ID", SqlDbType.Int).Value = p.Id;
                     RemoveProject.Parameters.Add("@ID", SqlDbType.Int).Value = p.Id;
