@@ -15,4 +15,4 @@ Civica Project Management System is a comprehensive solution designed to streaml
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/yourusername/civica-project-management.git
+   git clone https://github.com/0ls3n/Civica
