@@ -105,7 +105,7 @@ namespace Civica.Models
                             int id = Convert.ToInt32(reader["AuditId"]);
                             decimal Amount = Convert.ToDecimal(reader["Amount"]);
                             int Year = Convert.ToInt32(reader["Year"]);
-                            int economyId = Convert.ToInt32(reader["ResourceId"]);
+                            int ResourceId = Convert.ToInt32(reader["ResourceId"]);
 
                             Audit a = new Audit(ResourceId, Amount, Year);
 
