@@ -11,13 +11,13 @@ namespace Civica.ViewModels
     {
         private Audit audit;
         public decimal Amount { get; set; }
-        public int Year { get; set; }
+        public string Year { get; set; }
 
 
         public AuditViewModel(Audit a)
         {
             Amount = a.Amount;
-            Year = a.Year;
+            Year = a.CreatedDate.ToString();
             audit = a;
         }
 

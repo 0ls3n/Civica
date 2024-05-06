@@ -33,7 +33,7 @@ namespace Civica.Models
 
                 if (type == typeof(Project))
                 {
-                    SqlCommand projectCmd = new SqlCommand("SELECT ProjectId, ProjectName, OwnerName, ManagerName, Description FROM PROJECTS", con);
+                    SqlCommand projectCmd = new SqlCommand("SELECT UserId, ProjectId, ProjectName, OwnerName, ManagerName, Description, CreatedDate FROM PROJECTS", con);
                     using (SqlDataReader reader = projectCmd.ExecuteReader())
                     {
                         while (reader.Read())

@@ -11,27 +11,16 @@ namespace Civica.Models
     {
         public Phase Phase { get; set; }
         public Status Status { get; set; }
-        public DateTime Date { get; set; }
         public string Description { get; set; }
 
-        public Progress(int projectId, Phase fase, Status status, DateTime date, string description)
+        public Progress(int userId, int projectId, Phase fase, Status status, string description, DateTime createdDate)
         {
-            RefId = projectId;
-            Phase = fase;
-            Status = status;
-            Date = date;
-            Description = description;
-            Created = DateTime.Now;
-        }
-        public Progress(int userId, int projectId, Phase fase, Status status, DateTime date, string description)
-        {
-            RefId = projectId;
-            Phase = fase;
-            Status = status;
-            Date = date;
-            Description = description;
             UserId = userId;
-            Created = DateTime.Now;
+            RefId = projectId;
+            Phase = fase;
+            Status = status;
+            Description = description;
+            CreatedDate = createdDate;
         }
     }
 }

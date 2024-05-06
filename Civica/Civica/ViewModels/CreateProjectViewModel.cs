@@ -121,9 +121,6 @@ namespace Civica.ViewModels
             Resource r = new Resource(ipvm.GetCurrentUser().GetId(), p.Id, ResourceStartAmount, ResourceExpectedYearlyCost);
             resourceRepo.Add(r);
 
-            Audit a = new Audit(r.Id, ResourceExpectedYearlyCost, DateTime.Now.Year);
-            auditRepo.Add(a);
-
             ipvm.UpdateList();
 
             ProjectName = "";

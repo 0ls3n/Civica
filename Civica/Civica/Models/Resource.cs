@@ -12,20 +12,16 @@ namespace Civica.Models
         public decimal StartAmount { get; set; }
         public decimal ExpectedYearlyCost { get; set; }
 
-        public Resource(int projectId, decimal startAmount = default, decimal expectedYearlyCost = default)
+        public Resource(int userId, int projectId, DateTime createdDate)
         {
-            this.StartAmount = startAmount;
-            this.ExpectedYearlyCost = expectedYearlyCost;
-            RefId = projectId;
-            Created = DateTime.Now;
-        }
-        public Resource(int userId, int projectId, decimal startAmount = default, decimal expectedYearlyCost = default)
-        {
-            this.StartAmount = startAmount;
-            this.ExpectedYearlyCost = expectedYearlyCost;
-            RefId = projectId;
             UserId = userId;
-            Created = DateTime.Now;
+            RefId = projectId;
+            CreatedDate = createdDate;
+        }
+        public Resource(int userId, int projectId, decimal startAmount, decimal expectedYearlyCost, DateTime createdDate) : this(userId, projectId, createdDate)
+        {
+            StartAmount = startAmount;
+            ExpectedYearlyCost = expectedYearlyCost;
         }
     }
 }

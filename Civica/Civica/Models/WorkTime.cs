@@ -11,18 +11,13 @@ namespace Civica.Models
         public double Time { get; set; }
         public string InvolvedName { get; set; }
         
-        public WorkTime(double time, string involvedName)
+        public WorkTime(int userId, int resourceId, double time, string involvedName, DateTime createdDate)
         {
-            this.Time = time;
-            this.InvolvedName = involvedName;
-            Created = DateTime.Now;
-        }
-        public WorkTime(int userId, double time, string involvedName)
-        {
-            this.Time = time;
-            this.InvolvedName = involvedName;
+            Time = time;
+            InvolvedName = involvedName;
             UserId = userId;
-            Created = DateTime.Now;
+            RefId = resourceId;
+            CreatedDate = createdDate;
         }
 
     }
