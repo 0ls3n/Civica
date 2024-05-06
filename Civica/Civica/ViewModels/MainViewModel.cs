@@ -183,6 +183,12 @@ namespace Civica.ViewModels
             StartTimerDatabaseRefresh();
         }
 
+        public IRepository<Project> GetProjectRepo() => projectRepo;
+        public IRepository<Progress> GetProgressRepo() => progressRepo;
+        public IRepository<Resource> GetResourceRepo() => resourceRepo;
+        public IRepository<User> GetUserRepo() => userRepo;
+
+        #region AsyncRefresh
         System.Timers.Timer db_timer;
 
         private void StartTimerDatabaseRefresh()
@@ -208,10 +214,6 @@ namespace Civica.ViewModels
                 svm.UpdateList();
             });
         }
-
-        public IRepository<Project> GetProjectRepo() => projectRepo;
-        public IRepository<Progress> GetProgressRepo() => progressRepo;
-        public IRepository<Resource> GetResourceRepo() => resourceRepo;
-        public IRepository<User> GetUserRepo() => userRepo;
+        #endregion
     }
 }
