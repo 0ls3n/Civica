@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<diagram program="umlet" version="15.1">
-  <zoom_level>10</zoom_level>
+<diagram program="umlet" version="15.0.0">
+  <zoom_level>8</zoom_level>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>360</x>
-      <y>180</y>
-      <w>210</w>
-      <h>100</h>
+      <x>408</x>
+      <y>248</y>
+      <w>168</w>
+      <h>80</h>
     </coordinates>
     <panel_attributes>Projekt
 --
@@ -20,10 +20,10 @@ beskrivelse</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>20</x>
-      <y>180</y>
-      <w>210</w>
-      <h>100</h>
+      <x>136</x>
+      <y>248</y>
+      <w>168</w>
+      <h>80</h>
     </coordinates>
     <panel_attributes>Fremdrift
 --
@@ -37,10 +37,10 @@ beskrivelse
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>220</x>
-      <y>210</y>
-      <w>160</w>
-      <h>50</h>
+      <x>296</x>
+      <y>272</y>
+      <w>128</w>
+      <h>40</h>
     </coordinates>
     <panel_attributes>lt=-
 m1=*
@@ -51,10 +51,10 @@ m2=1
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>710</x>
-      <y>360</y>
-      <w>210</w>
-      <h>100</h>
+      <x>688</x>
+      <y>392</y>
+      <w>168</w>
+      <h>80</h>
     </coordinates>
     <panel_attributes>Revision
 --
@@ -67,10 +67,10 @@ beløb
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>700</x>
-      <y>180</y>
-      <w>210</w>
-      <h>100</h>
+      <x>680</x>
+      <y>248</y>
+      <w>168</w>
+      <h>80</h>
     </coordinates>
     <panel_attributes>Økonomi
 --
@@ -82,10 +82,10 @@ forventetÅrligOmkostning
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>800</x>
-      <y>270</y>
-      <w>40</w>
-      <h>110</h>
+      <x>760</x>
+      <y>320</y>
+      <w>32</w>
+      <h>88</h>
     </coordinates>
     <panel_attributes>lt=-
 m1=*
@@ -96,10 +96,10 @@ m2=1
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>560</x>
-      <y>210</y>
-      <w>160</w>
-      <h>50</h>
+      <x>568</x>
+      <y>272</y>
+      <w>128</w>
+      <h>40</h>
     </coordinates>
     <panel_attributes>lt=-
 m1=1
