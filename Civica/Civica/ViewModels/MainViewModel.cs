@@ -6,15 +6,12 @@ using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
-using System.Timers;
 using Civica.Commands;
 using Civica.Interfaces;
 using Civica.Models;
 using Civica.Models.Enums;
-using System.Windows.Threading;
 
 namespace Civica.ViewModels
 {
