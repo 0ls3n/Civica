@@ -14,7 +14,6 @@ namespace Civica.Models
 
         private Func<int, List<DomainModel>> _execute { get; set; }
 
-
         public Repository(Func<int, List<DomainModel>> execute)
         {
             _list = DatabaseHelper<DomainModel>.Initialize(typeof(T));
@@ -54,6 +53,12 @@ namespace Civica.Models
             {
                 _list.Remove(d);
             }
+        }
+
+        public async Task RefreshAsync()
+        {
+            _list.Clear();
+            _list = await DatabaseHelper<DomainModel>.InitializeAsync(typeof(T));
         }
     }
 }
