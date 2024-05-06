@@ -54,7 +54,7 @@ namespace Civica.Models
                 }
                 else if (type == typeof(Progress))
                 {
-                    SqlCommand progressCmd = new SqlCommand("SELECT ProgressId, Phase, Status, Date, Description, ProjectId FROM PROGRESSES", con);
+                    SqlCommand progressCmd = new SqlCommand("SELECT ProgressId, Phase, Status, CreatedDate, Description, ProjectId FROM PROGRESSES", con);
                     using (SqlDataReader reader = progressCmd.ExecuteReader())
                     {
                         while (reader.Read())
@@ -64,7 +64,7 @@ namespace Civica.Models
                             Status status = Enum.Parse<Status>(Convert.ToString(reader["Status"]));
                             string desc = Convert.ToString(reader["Description"]);
                             int projectId = Convert.ToInt32(reader["ProjectId"]);
-                            DateTime date = Convert.ToDateTime(reader["Date"]);
+                            DateTime date = Convert.ToDateTime(reader["CreatedDate"]);
 
                             Progress prog = new Progress(projectId, phase, status, DateTime.Now, desc);
 
@@ -182,7 +182,7 @@ namespace Civica.Models
                 }
                 else if (o is Progress prog)
                 {
-                    cmd = new SqlCommand("INSERT INTO PROGRESSES (Phase, Status, Date, Description, ProjectId)" +
+                    cmd = new SqlCommand("INSERT INTO PROGRESSES (Phase, Status, CreatedDate, Description, ProjectId)" +
                                                                          "VALUES (@PH, @ST, @DA, @DESC, @PID) SELECT @@IDENTITY ", con);
 
                     cmd.Parameters.Add("@PH", SqlDbType.NVarChar).Value = prog.Phase;
@@ -266,7 +266,7 @@ namespace Civica.Models
                 }
                 else if (o is Progress prog)
                 {
-                    cmd = new SqlCommand("UPDATE PROGRESSES SET Phase = @PH, Status = @ST, Date = @DA, Description = @DESC" +
+                    cmd = new SqlCommand("UPDATE PROGRESSES SET Phase = @PH, Status = @ST, CreatedDate = @DA, Description = @DESC" +
                                                        "WHERE ProgressId = @ID");
                     cmd.Parameters.Add("@PH", SqlDbType.NVarChar).Value = prog.Phase;
                     cmd.Parameters.Add("@ST", SqlDbType.NVarChar).Value = prog.Status;
