@@ -12,21 +12,17 @@ namespace Civica.ViewModels
         private Resource resource;
         public decimal StartAmount { get; set; }
         public decimal ExpectedYearlyCost { get; set; }
-        public int Year {  get; set; }
 
         public ResourceViewModel(Resource r)
         {
             StartAmount = r.StartAmount;
             ExpectedYearlyCost = r.ExpectedYearlyCost;
-            Year = r.Year;
             resource = r;
-
         }
+
         public int GetId()
         {
             return resource.Id;
         }
-
-
     }
 }

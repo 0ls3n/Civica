@@ -8,16 +8,14 @@ namespace Civica.Models
 {
     public class Resource : DomainModel
     {
- 
+
         public decimal StartAmount { get; set; }
         public decimal ExpectedYearlyCost { get; set; }
-        public int Year {  get; set; }
 
-        public Resource(int projectId, decimal startAmount = default, decimal expectedYearlyCost = default, int year = default)
+        public Resource(int projectId, decimal startAmount = default, decimal expectedYearlyCost = default)
         {
             this.StartAmount = startAmount;
             this.ExpectedYearlyCost = expectedYearlyCost;
-            this.Year = year;
             RefId = projectId;   
         }
         public Resource(int userId, int projectId, decimal startAmount = default, decimal expectedYearlyCost = default)
@@ -26,6 +24,15 @@ namespace Civica.Models
             this.ExpectedYearlyCost = expectedYearlyCost;
             RefId = projectId;
             UserId = userId;   
+        }
+
+        public int GetId()
+        {
+            return Id;
+        }
+        public int GetRefId()
+        {
+            return RefId;
         }
     }
 }
