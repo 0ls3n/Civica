@@ -232,7 +232,7 @@ namespace Civica.ViewModels
             a.Amount = auditVM.Amount;
             a.Year = auditVM.Year;
 
-            auditRepo.Update(a);
+            auditRepo.Add(a);
         }
 
         public UserViewModel GetCurrentUser()

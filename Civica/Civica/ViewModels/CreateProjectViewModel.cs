@@ -78,17 +78,6 @@ namespace Civica.ViewModels
             }
         }
 
-        //private int _resourceYear = DateTime.Now.Year;
-        //public int ResourceYear
-        //{
-        //    get => _resourceYear;
-        //    set
-        //    {
-        //        _resourceYear = value;
-        //        OnPropertyChanged(nameof(ResourceYear));
-        //    }
-        //}
-
         private InProgressViewModel ipvm;
         private IRepository<Project> projectRepo;
         private IRepository<Resource> resourceRepo;
