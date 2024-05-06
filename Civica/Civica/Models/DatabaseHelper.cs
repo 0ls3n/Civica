@@ -179,12 +179,11 @@ namespace Civica.Models
                 }
                 else if (o is Resource r)
                 {
-                    cmd = new SqlCommand("INSERT INTO RESOURCES (StartAmount, ExpectedYearlyCost,Year, ProjectId)" +
-                                                                         "VALUES (@SA, @EYC, @Y, @PID) SELECT @@IDENTITY ", con);
+                    cmd = new SqlCommand("INSERT INTO RESOURCES (StartAmount, ExpectedYearlyCost, ProjectId)" +
+                                                                         "VALUES (@SA, @EYC, @PID) SELECT @@IDENTITY ", con);
 
                     cmd.Parameters.Add("@SA", SqlDbType.Decimal).Value = r.StartAmount;
                     cmd.Parameters.Add("@EYC", SqlDbType.Decimal).Value = r.ExpectedYearlyCost;
-                    cmd.Parameters.Add("@Y", SqlDbType.Int).Value = r.Year;
                     cmd.Parameters.Add("@PID", SqlDbType.Int).Value = r.RefId;
 
                     d = r;
