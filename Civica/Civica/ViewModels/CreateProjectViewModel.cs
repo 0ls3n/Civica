@@ -78,8 +78,8 @@ namespace Civica.ViewModels
             }
         }
 
-        private DateTime _resourceYear;
-        public DateTime ResourceYear
+        private int _resourceYear = DateTime.Now.Year;
+        public int ResourceYear
         {
             get => _resourceYear;
             set
