@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace Civica.Views
 {
     /// <summary>
-    /// Interaction logic for UserInformationView.xaml
+    /// Interaction logic for OptionsView.xaml
     /// </summary>
-    public partial class UserInformationView : UserControl
+    public partial class OptionsView : UserControl
     {
-        public UserInformationView()
+        public OptionsView()
         {
             InitializeComponent();
         }

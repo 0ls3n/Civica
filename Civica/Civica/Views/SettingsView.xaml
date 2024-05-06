@@ -106,11 +106,7 @@
                    Foreground="#8A8A8A"/>
 
         <Border Grid.Row="1">
-            <view:UserInformationView/>
-        </Border>
-
-        <Border Grid.Row="1">
-            <view:InformationPlaceholderView PlaceholderText="Klik på en bruger"/>
+            <view:OptionsView/>
             <Border.Style>
                 <Style TargetType="Border">
                     <Setter Property="Visibility" Value="Collapsed"/>
@@ -122,7 +118,7 @@
                 </Style>
             </Border.Style>
         </Border>
-
+        
         <Border Grid.Row="1">
             <view:CreateUserView DataContext="{Binding Path=CreateUserVM}"/>
             <Border.Style>
