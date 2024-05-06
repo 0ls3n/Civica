@@ -129,7 +129,7 @@
                      CommandParameter="{Binding}"
                      ToolTipService.InitialShowDelay="0">
             <RadioButton.ToolTip>
-                <ToolTip Content="Skift til Worktimes" Style="{StaticResource ToolTipTheme}"/>
+                <ToolTip Content="Skift mellem Audits/Worktimes" Style="{StaticResource ToolTipTheme}"/>
             </RadioButton.ToolTip>
             <RadioButton.Style>
                 <Style TargetType="{x:Type RadioButton}">
