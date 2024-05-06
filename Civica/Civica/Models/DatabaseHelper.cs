@@ -395,5 +395,142 @@ namespace Civica.Models
             }
         }
         #endregion
+        #region InitializeAsync
+        public static async Task<List<DomainModel>> InitializeAsync(Type type)
+        {
+            List<DomainModel> list = new List<DomainModel>();
+
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+                await con.OpenAsync();
+
+                if (type == typeof(Project))
+                {
+                    SqlCommand projectCmd = new SqlCommand("SELECT ProjectId, ProjectName, OwnerName, ManagerName, Description FROM PROJECTS", con);
+                    using (SqlDataReader reader = await projectCmd.ExecuteReaderAsync())
+                    {
+                        while (await reader.ReadAsync())
+                        {
+                            int id = Convert.ToInt32(reader["ProjectId"]);
+                            string name = Convert.ToString(reader["ProjectName"]);
+                            string owner = Convert.ToString(reader["OwnerName"]);
+                            string manager = Convert.ToString(reader["ManagerName"]);
+                            string desc = Convert.ToString(reader["Description"]);
+
+                            Project p = new Project(name, owner, manager, desc);
+
+                            p.Id = id;
+
+                            list.Add(p);
+                        }
+                    }
+                }
+                else if (type == typeof(Progress))
+                {
+                    SqlCommand progressCmd = new SqlCommand("SELECT ProgressId, Phase, Status, Date, Description, ProjectId FROM PROGRESSES", con);
+                    using (SqlDataReader reader = await progressCmd.ExecuteReaderAsync())
+                    {
+                        while (await reader.ReadAsync())
+                        {
+                            int id = Convert.ToInt32(reader["ProgressId"]);
+                            Phase phase = Enum.Parse<Phase>(Convert.ToString(reader["Phase"]));
+                            Status status = Enum.Parse<Status>(Convert.ToString(reader["Status"]));
+                            string desc = Convert.ToString(reader["Description"]);
+                            int projectId = Convert.ToInt32(reader["ProjectId"]);
+                            DateTime date = Convert.ToDateTime(reader["Date"]);
+
+                            Progress prog = new Progress(projectId, phase, status, DateTime.Now, desc);
+
+                            prog.Date = date;
+                            prog.Id = id;
+
+                            list.Add(prog);
+                        }
+                    }
+                }
+                else if (type == typeof(Resource))
+                {
+                    SqlCommand resourceCmd = new SqlCommand("SELECT ResourceId, StartAmount, ExpectedYearlyCost, ProjectId FROM RESOURCES", con);
+                    using (SqlDataReader reader = await resourceCmd.ExecuteReaderAsync())
+                    {
+                        while (await reader.ReadAsync())
+                        {
+                            int id = Convert.ToInt32(reader["ResourceId"]);
+                            decimal startAmount = Convert.ToDecimal(reader["StartAmount"]);
+                            decimal expectedYearlyCost = Convert.ToDecimal(reader["ExpectedYearlyCost"]);
+                            int projectId = Convert.ToInt32(reader["ProjectId"]);
+
+                            Resource r = new Resource(projectId, startAmount, expectedYearlyCost);
+
+                            r.Id = id;
+
+                            list.Add(r);
+                        }
+                    }
+                }
+                else if (type == typeof(Audit))
+                {
+                    SqlCommand auditCmd = new SqlCommand("SELECT AuditId, Amount, Year, ResourceId FROM AUDITS", con);
+                    using (SqlDataReader reader = await auditCmd.ExecuteReaderAsync())
+                    {
+                        while (await reader.ReadAsync())
+                        {
+                            int id = Convert.ToInt32(reader["AuditId"]);
+                            decimal Amount = Convert.ToDecimal(reader["Amount"]);
+                            int Year = Convert.ToInt32(reader["Year"]);
+                            int ResourceId = Convert.ToInt32(reader["ResourceId"]);
+
+                            Audit a = new Audit(ResourceId, Amount, Year);
+
+                            a.Id = id;
+                            list.Add(a);
+                        }
+                    }
+                }
+                else if (type == typeof(WorkTime))
+                {
+                    SqlCommand workTimeCmd = new SqlCommand("SELECT WorkTimeId, Time, InvolvedName, ResourceId FROM WORKTIMES", con);
+                    using (SqlDataReader reader = await workTimeCmd.ExecuteReaderAsync())
+                    {
+                        while (await reader.ReadAsync())
+                        {
+                            int id = Convert.ToInt32(reader["WorkTimeId"]);
+                            double Time = Convert.ToDouble(reader["Time"]);
+                            string InvolvedName = Convert.ToString(reader["InvolvedName"]);
+                            int resourceId = Convert.ToInt32(reader["ResourceId"]);
+
+                            WorkTime wt = new WorkTime(Time, InvolvedName);
+
+                            wt.Id = id;
+                            wt.RefId = resourceId;
+                            list.Add(wt);
+                        }
+                    }
+                }
+                else if (type == typeof(User))
+                {
+                    SqlCommand userCmd = new SqlCommand("SELECT UserId, FirstName, LastName, Password FROM USERS", con);
+                    using (SqlDataReader reader = await userCmd.ExecuteReaderAsync())
+                    {
+                        while (await reader.ReadAsync())
+                        {
+                            int id = Convert.ToInt32(reader["UserId"]);
+                            string firstName = Convert.ToString(reader["FirstName"]);
+                            string lastName = Convert.ToString(reader["LastName"]);
+                            int password = Convert.ToInt32(reader["Password"]);
+                            User u = new User(firstName, lastName, password);
+                            u.Id = id;
+                            list.Add(u);
+                        }
+                    }
+                }
+                else
+                {
+                    throw new ArgumentNullException($"{type} er ikke implementeret i DatabaseHelper!");
+                }
+            }
+            return list;
+        }
+        #endregion
     }
 }

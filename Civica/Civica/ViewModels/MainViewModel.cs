@@ -9,10 +9,12 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
+using System.Timers;
 using Civica.Commands;
 using Civica.Interfaces;
 using Civica.Models;
 using Civica.Models.Enums;
+using System.Windows.Threading;
 
 namespace Civica.ViewModels
 {
@@ -103,6 +105,7 @@ namespace Civica.ViewModels
                     mvm.SettingsView = WindowVisibility.Hidden;
                     mvm.ResourceView = WindowVisibility.Hidden;
                     mvm.ViewTitle = mvm.ipvm.WindowTitle;
+                    mvm.ipvm.UpdateList();
                 }
             },
             canExecute: (object? parameter) =>
@@ -227,6 +230,29 @@ namespace Civica.ViewModels
             ResourceView = WindowVisibility.Hidden;
             
             ViewTitle = ipvm.WindowTitle;
+
+            StartTimerDatabaseRefresh();
+        }
+
+        System.Timers.Timer db_timer;
+        System.Timers.Timer ul_timer;
+
+        private void StartTimerDatabaseRefresh()
+        {
+            db_timer = new System.Timers.Timer(2500);
+            db_timer.Elapsed += async (sender, e) => await RefreshDataAsync();
+            db_timer.AutoReset = true;
+            db_timer.Start();
+        }
+
+        private async Task RefreshDataAsync()
+        {
+            await projectRepo.RefreshAsync();
+            await progressRepo.RefreshAsync();
+            await resourceRepo.RefreshAsync();
+            await userRepo.RefreshAsync();
+
+            await Task.Delay(1000);
         }
 
         public IRepository<Project> GetProjectRepo() => projectRepo;
