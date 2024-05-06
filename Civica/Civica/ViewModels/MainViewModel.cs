@@ -234,7 +234,6 @@ namespace Civica.ViewModels
         }
 
         System.Timers.Timer db_timer;
-        System.Timers.Timer ul_timer;
 
         private void StartTimerDatabaseRefresh()
         {
@@ -252,6 +251,12 @@ namespace Civica.ViewModels
             await userRepo.RefreshAsync();
 
             await Task.Delay(1000);
+
+            Application.Current.Dispatcher.Invoke(() =>
+            {
+                ipvm.UpdateList();
+                svm.UpdateList();
+            });
         }
 
         public IRepository<Project> GetProjectRepo() => projectRepo;
