@@ -427,7 +427,7 @@ namespace Civica.Models
                 }
                 else if (type == typeof(Progress))
                 {
-                    SqlCommand progressCmd = new SqlCommand("SELECT ProgressId, Phase, Status, Date, Description, ProjectId FROM PROGRESSES", con);
+                    SqlCommand progressCmd = new SqlCommand("SELECT ProgressId, Phase, Status, CreatedDate, Description, ProjectId FROM PROGRESSES", con);
                     using (SqlDataReader reader = await progressCmd.ExecuteReaderAsync())
                     {
                         while (await reader.ReadAsync())
@@ -437,7 +437,7 @@ namespace Civica.Models
                             Status status = Enum.Parse<Status>(Convert.ToString(reader["Status"]));
                             string desc = Convert.ToString(reader["Description"]);
                             int projectId = Convert.ToInt32(reader["ProjectId"]);
-                            DateTime date = Convert.ToDateTime(reader["Date"]);
+                            DateTime date = Convert.ToDateTime(reader["CreatedDate"]);
 
                             Progress prog = new Progress(projectId, phase, status, DateTime.Now, desc);
 
