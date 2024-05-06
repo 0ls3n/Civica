@@ -9,6 +9,8 @@ namespace Civica.Models
     public class Audit : DomainModel
     {
         public decimal Amount { get; set; }
+        public int Year { get; set; }
+        public Audit(decimal amount, int year)
         public DateTime Year { get; set; }
         public Audit(int resourceId, decimal amount, DateTime year)
         {

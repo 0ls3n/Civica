@@ -77,7 +77,7 @@ namespace Civica.Models
                 }
                 else if (type == typeof(Resource))
                 {
-                    SqlCommand resourceCmd = new SqlCommand("SELECT ResourceId, StartAmount, ExpectedYearlyCost, Year, ProjectId FROM RESOURCES", con);
+                    SqlCommand resourceCmd = new SqlCommand("SELECT ResourceId, StartAmount, ExpectedYearlyCost, ProjectId FROM RESOURCES", con);
                     using (SqlDataReader reader = resourceCmd.ExecuteReader())
                     {
                         while (reader.Read())
@@ -85,7 +85,6 @@ namespace Civica.Models
                             int id = Convert.ToInt32(reader["ResourceId"]);
                             decimal startAmount = Convert.ToDecimal(reader["StartAmount"]);
                             decimal expectedYearlyCost = Convert.ToDecimal(reader["ExpectedYearlyCost"]);
-                            DateTime year = Convert.ToDateTime(reader["Year"]);
                             int projectId = Convert.ToInt32(reader["ProjectId"]);
 
                             Resource r = new Resource(projectId, startAmount, expectedYearlyCost);
@@ -105,8 +104,8 @@ namespace Civica.Models
                         {
                             int id = Convert.ToInt32(reader["AuditId"]);
                             decimal Amount = Convert.ToDecimal(reader["Amount"]);
-                            DateTime Year = Convert.ToDateTime(reader["Year"]);
-                            int ResourceId = Convert.ToInt32(reader["ResourceId"]);
+                            int Year = Convert.ToInt32(reader["Year"]);
+                            int economyId = Convert.ToInt32(reader["ResourceId"]);
 
                             Audit a = new Audit(ResourceId, Amount, Year);
 
@@ -196,12 +195,11 @@ namespace Civica.Models
                 }
                 else if (o is Resource r)
                 {
-                    cmd = new SqlCommand("INSERT INTO RESOURCES (StartAmount, ExpectedYearlyCost,Year, ProjectId)" +
-                                                                         "VALUES (@SA, @EYC, @Y, @PID) SELECT @@IDENTITY ", con);
+                    cmd = new SqlCommand("INSERT INTO RESOURCES (StartAmount, ExpectedYearlyCost, ProjectId)" +
+                                                                         "VALUES (@SA, @EYC, @PID) SELECT @@IDENTITY ", con);
 
                     cmd.Parameters.Add("@SA", SqlDbType.Decimal).Value = r.StartAmount;
                     cmd.Parameters.Add("@EYC", SqlDbType.Decimal).Value = r.ExpectedYearlyCost;
-                    cmd.Parameters.Add("@Y", SqlDbType.DateTime2).Value = r.Year;
                     cmd.Parameters.Add("@PID", SqlDbType.Int).Value = r.RefId;
 
                     d = r;
@@ -212,7 +210,7 @@ namespace Civica.Models
                                                                          "VALUES (@Am, @Ye, @RID) SELECT @@IDENTITY ", con);
 
                     cmd.Parameters.Add("@Am", SqlDbType.Decimal).Value = a.Amount;
-                    cmd.Parameters.Add("@Ye", SqlDbType.DateTime2).Value = a.Year;
+                    cmd.Parameters.Add("@Ye", SqlDbType.Int).Value = a.Year;
                     cmd.Parameters.Add("@Rid", SqlDbType.Int).Value = a.RefId;
 
                     d = a;

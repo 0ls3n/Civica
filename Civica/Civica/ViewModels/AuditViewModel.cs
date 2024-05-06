@@ -11,7 +11,7 @@ namespace Civica.ViewModels
     {
         private Audit audit;
         public decimal Amount { get; set; }
-        public DateTime Year { get; set; }
+        public int Year { get; set; }
 
 
         public AuditViewModel(Audit a)
