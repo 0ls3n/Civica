@@ -574,7 +574,7 @@ namespace Civica.Models
                             Status status = Enum.Parse<Status>(Convert.ToString(reader["Status"]));
                             string desc = Convert.ToString(reader["Description"]);
                             int projectId = Convert.ToInt32(reader["ProjectId"]);
-                            DateTime date = Convert.ToDateTime(reader["Date"]);
+                            DateTime date = Convert.ToDateTime(reader["CreatedDate"]);
 
                             Progress prog = new Progress(projectId, phase, status, DateTime.Now, desc);
 
