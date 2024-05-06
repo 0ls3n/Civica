@@ -4,19 +4,19 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>900</x>
-      <y>243</y>
+      <x>738</x>
+      <y>252</y>
       <w>27</w>
-      <h>324</h>
+      <h>297</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;340.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;310.0</additional_attributes>
   </element>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>864</x>
-      <y>225</y>
+      <x>702</x>
+      <y>234</y>
       <w>90</w>
       <h>27</h>
     </coordinates>
@@ -62,23 +62,23 @@ style=wordwrap</panel_attributes>
     <coordinates>
       <x>153</x>
       <y>306</y>
-      <w>774</w>
+      <w>612</w>
       <h>36</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;-
-OpretNytProjekt(navn, ejer, leder, beskrivelse, opstartsbeløb, forventet årlige omkostning, estimerede tidsressource, involveret part )</panel_attributes>
-    <additional_attributes>840.0;20.0;10.0;20.0</additional_attributes>
+OpretNytProjekt(navn, ejer, leder, beskrivelse, opstartsbeløb, forventet årlige omkostning )</panel_attributes>
+    <additional_attributes>660.0;20.0;10.0;20.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
       <x>153</x>
       <y>369</y>
-      <w>765</w>
+      <w>612</w>
       <h>36</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;.
 Projekt oprettet</panel_attributes>
-    <additional_attributes>10.0;20.0;830.0;20.0</additional_attributes>
+    <additional_attributes>10.0;20.0;660.0;20.0</additional_attributes>
   </element>
 </diagram>
