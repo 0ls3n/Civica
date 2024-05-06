@@ -21,10 +21,12 @@ namespace Civica.Models
             Owner = owner;
             Manager = manager;
             Description = description;
+            Created = DateTime.Now;
         }
         public Project(string name)
         {
             Name = name;
+            Created = DateTime.Now;
         }
         public Project(int userId, string name, string owner, string manager, string description) : this(name)
         {
@@ -32,11 +34,13 @@ namespace Civica.Models
             Manager = manager;
             Description = description;
             UserId = userId;
+            Created = DateTime.Now;
         }
         public Project(int userId, string name)
         {
             Name = name;
             UserId = userId;
+            Created = DateTime.Now;
         }
     }
 }

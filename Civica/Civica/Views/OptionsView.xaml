@@ -29,11 +29,8 @@
                         </Grid.ColumnDefinitions>
 
                         <TextBlock FontSize="20"
-                                   Text="Projektejer: "/>
+                                   Text="Darkmode: "/>
 
-                        <TextBlock Grid.Column="1"
-                                   FontSize="20"
-                                   Text="{Binding SelectedProject.Owner}"/>
                     </Grid>
 
                     <Grid Margin="5 10 0 0">
@@ -43,94 +40,15 @@
                         </Grid.ColumnDefinitions>
 
                         <TextBlock FontSize="20"
-                                   Text="Projektleder: "/>
+                                   Text="Print: "/>
 
-                        <TextBlock Grid.Column="1"
-                                   FontSize="20"
-                                   Text="{Binding SelectedProject.Manager}"/>
                     </Grid>
-                    <Border BorderBrush="Gray"
-                            BorderThickness="0,0,0,1"
-                            Margin="5, 25, 5, 0"
-                            Opacity="0.2">
-                    </Border>
-                    <TextBlock Text="Fremdriftsoversigt:"
-                               Margin="5 25 0 0"
-                               FontSize="20"/>
-                    <Grid Margin="5 0 0 0">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="auto"/>
-                            <ColumnDefinition Width="auto"/>
-                            <ColumnDefinition Width="auto"/>
-                            <ColumnDefinition Width="auto"/>
-                        </Grid.ColumnDefinitions>
-                        <TextBlock FontSize="13"
-                                   FontStyle="Italic"
-                                   Text="Fase: "/>
+                   
+                    
 
-                        <TextBlock Grid.Column="1"
-                                   FontSize="13"
-                                   FontStyle="Italic"
-                                   Text="{Binding SelectedProgress.Phase}"/>
+                    
 
-                        <TextBlock FontSize="13" 
-                                   Grid.Column="2"
-                                   FontStyle="Italic"
-                                   Text="   |   Status: "/>
-                        <TextBlock Grid.Column="4"
-                                   FontSize="13"
-                                   FontStyle="Italic"
-                                   Text="{Binding SelectedProgress.Status}"/>
-                    </Grid>
-
-                    <Grid Margin="5 0 0 0">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="auto"/>
-                            <ColumnDefinition Width="*"/>
-                        </Grid.ColumnDefinitions>
-
-                        <TextBlock FontSize="13"
-                                   FontStyle="Italic"
-                                   Text="Sidst ændret: "/>
-
-                        <TextBlock Grid.Column="1"
-                                   FontSize="13"
-                                   FontStyle="Italic"
-                                   Text="{Binding SelectedProgress.Date}"/>
-                    </Grid>
-
-                    <TextBlock Text="Beskrivelse: "
-                               Margin="5 10 0 0"
-                               FontSize="18"/>
-
-                    <TextBox Text="{Binding SelectedProgress.Description}"
-                             FontSize="15"
-                             Background="Transparent"
-                             BorderThickness="0"                             
-                             IsReadOnly="True"
-                             AcceptsReturn="True"
-                             AcceptsTab="True"
-                             Margin="5 0 20 0"
-                             TextWrapping="Wrap"/>
-
-                    <Border BorderBrush="Gray"
-                            BorderThickness="0,0,0,1"
-                            Margin="5, 25, 5, 0"
-                            Opacity="0.2">
-                    </Border>
-                    <TextBlock Text="Projektbeskrivelse: "
-                               Margin="5 25 0 0"
-                               FontSize="20"/>
-
-                    <TextBox Text="{Binding SelectedProject.Description}"
-                             FontSize="15"
-                             Background="Transparent"
-                             BorderThickness="0"
-                             AcceptsReturn="True"
-                             IsReadOnly="True"
-                             AcceptsTab="True"
-                             Margin="5 10 20 0"
-                             TextWrapping="Wrap"/>
+                   
                 </StackPanel>
             </ScrollViewer>
 

@@ -15,12 +15,14 @@ namespace Civica.Models
         {
             this.Time = time;
             this.InvolvedName = involvedName;
+            Created = DateTime.Now;
         }
         public WorkTime(int userId, double time, string involvedName)
         {
             this.Time = time;
             this.InvolvedName = involvedName;
             UserId = userId;
+            Created = DateTime.Now;
         }
 
     }

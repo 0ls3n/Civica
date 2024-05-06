@@ -205,6 +205,10 @@ namespace Civica.ViewModels
             projectRepo.Update(p);
         }
 
+        public UserViewModel GetCurrentUser()
+        {
+            return mvm.CurrentUser;
+        }
         #region ViewCommands
 
         public RelayCommand CreateProjectViewCmd { get; set; } = new RelayCommand

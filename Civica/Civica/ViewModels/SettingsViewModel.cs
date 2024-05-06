@@ -80,7 +80,7 @@ namespace Civica.ViewModels
                 if (value is not null)
                 {
                     _selectedUser = value;
-                    InformationVisibility = WindowVisibility.Hidden;
+                    InformationVisibility = WindowVisibility.Visible;
                     CreateVisibility = WindowVisibility.Hidden;
                     EditVisibility = WindowVisibility.Hidden;
                     OnPropertyChanged(nameof(SelectedUser));

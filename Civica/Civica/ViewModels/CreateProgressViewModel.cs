@@ -8,6 +8,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace Civica.ViewModels
 {
@@ -67,7 +68,7 @@ namespace Civica.ViewModels
 
         public void CreateProgress()
         {
-            Progress prog = new Progress(ipvm.SelectedProject.GetId(), SelectedPhase, SelectedStatus, DateTime.Now, ProgressDescription);
+            Progress prog = new Progress(ipvm.GetCurrentUser().GetId(), ipvm.SelectedProject.GetId(), SelectedPhase, SelectedStatus, DateTime.Now, ProgressDescription);
 
             progressRepo.Add(prog);
         }

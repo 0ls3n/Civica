@@ -40,6 +40,30 @@ namespace Civica.ViewModels
                 OnPropertyChanged(nameof(CurrentView));
             }
         }
+        private UserViewModel currentUser;
+
+        public UserViewModel CurrentUser
+        {
+            get { return currentUser; }
+            set 
+            { 
+                currentUser = value; 
+                OnPropertyChanged(nameof(CurrentUser));
+            }
+        }
+        private string loginButtonText = "Login";
+
+        public string LoginButtonText
+        {
+            get { return loginButtonText; }
+            set 
+            { 
+                loginButtonText = value; 
+                OnPropertyChanged(nameof(LoginButtonText));
+            }
+        }
+
+
 
         private WindowVisibility _inProgressView;
         public WindowVisibility InProgressView
@@ -74,6 +98,18 @@ namespace Civica.ViewModels
                 OnPropertyChanged(nameof(SettingsView));
             }
         }
+        private WindowVisibility _loginView;
+
+        public WindowVisibility LoginView
+        {
+            get { return _loginView; }
+            set 
+            { 
+                _loginView = value;
+                OnPropertyChanged(nameof(LoginView));
+            }
+        }
+
 
 
 
@@ -81,6 +117,7 @@ namespace Civica.ViewModels
         public ExpandedProjectViewModel epvm { get; set; } = new ExpandedProjectViewModel();
 
         public SettingsViewModel svm { get; set; } = new SettingsViewModel();
+        public LoginViewModel lvm { get; set; } = new LoginViewModel();
 
         public RelayCommand InProgressViewCmd { get; set; } = new RelayCommand
         (
@@ -91,6 +128,7 @@ namespace Civica.ViewModels
                     mvm.InProgressView = WindowVisibility.Visible;
                     mvm.ExpandedProjectView = WindowVisibility.Hidden;
                     mvm.SettingsView = WindowVisibility.Hidden;
+                    mvm.LoginView = WindowVisibility.Hidden;
                     mvm.ViewTitle = mvm.ipvm.WindowTitle;
                 }
             },
@@ -108,6 +146,7 @@ namespace Civica.ViewModels
                     mvm.ExpandedProjectView = WindowVisibility.Visible;
                     mvm.InProgressView = WindowVisibility.Hidden;
                     mvm.SettingsView = WindowVisibility.Hidden;
+                    mvm.LoginView = WindowVisibility.Hidden;
                     mvm.ViewTitle = mvm.ipvm.SelectedProject.Name;
                     mvm.epvm.UpdateList();
                     mvm.epvm.SelectedProject = mvm.ipvm.SelectedProject;
@@ -135,9 +174,35 @@ namespace Civica.ViewModels
                     mvm.SettingsView = WindowVisibility.Visible;
                     mvm.ExpandedProjectView = WindowVisibility.Hidden;
                     mvm.InProgressView = WindowVisibility.Hidden;
+                    mvm.LoginView = WindowVisibility.Hidden;
                     mvm.ViewTitle = mvm.svm.WindowTitle;
                     mvm.svm.UpdateList();
                     mvm.svm.InformationVisibility = WindowVisibility.Visible;
+                }
+            },
+            parameter =>
+            {
+                return true;
+            });
+        public RelayCommand LoginViewCmd { get; set; } = new RelayCommand
+            (
+            parameter =>
+            {
+                if (parameter is MainViewModel mvm)
+                {
+                    if (mvm.LoginButtonText == "Login")
+                    {
+                        mvm.LoginView = WindowVisibility.Visible;
+                        mvm.SettingsView = WindowVisibility.Hidden;
+                        mvm.ExpandedProjectView = WindowVisibility.Hidden;
+                        mvm.InProgressView = WindowVisibility.Hidden;
+                        mvm.ViewTitle = mvm.lvm.WindowTitle;
+                    }
+                    else
+                    {
+                        mvm.CurrentUser = null;
+                        mvm.LoginButtonText = "Login";
+                    }
                 }
             },
             parameter =>
@@ -171,9 +236,11 @@ namespace Civica.ViewModels
             ipvm.Init(this);
             epvm.Init(this);
             svm.Init(this);
+            lvm.Init(this);
             InProgressView = WindowVisibility.Visible;
             ExpandedProjectView = WindowVisibility.Hidden;
             SettingsView = WindowVisibility.Hidden;
+            LoginView = WindowVisibility.Hidden;
             
             ViewTitle = ipvm.WindowTitle;
         }
