@@ -97,8 +97,11 @@ namespace Civica.ViewModels
                     Resource r = resourceRepo.GetByRefId(SelectedProject.GetId()).FirstOrDefault();
 
                     SelectedAudit = null;
+                    SelectedResource = null;
                     if (r is not null)
                     {
+                        SelectedResource = new ResourceViewModel(r);
+
                         Audit aud = auditRepo.GetByRefId(r.GetId()).OrderByDescending(x => x.Year).FirstOrDefault();
                         if (aud is not null)
                         {
@@ -110,6 +113,9 @@ namespace Civica.ViewModels
             }
         }
 
+        public string Title { get; set; } = "Audits";
+
+
         private AuditViewModel _selectedAudit = null;
         public AuditViewModel SelectedAudit
         {
@@ -118,6 +124,17 @@ namespace Civica.ViewModels
             {
                 _selectedAudit = value;
                 OnPropertyChanged(nameof(SelectedAudit));
+            }
+        }
+
+        private ResourceViewModel _selectedResource;
+        public ResourceViewModel SelectedResource
+        {
+            get => _selectedResource;
+            set
+            {
+                _selectedResource = value;
+                OnPropertyChanged(nameof(SelectedResource));
             }
         }
 
@@ -228,9 +245,7 @@ namespace Civica.ViewModels
 
             projectRepo.Update(p);
 
-            Audit a = auditRepo.GetById(auditVM.GetRefId());
-            a.Amount = auditVM.Amount;
-            a.Year = auditVM.Year;
+            Audit a = new Audit(auditVM.GetRefId(), auditVM.Amount, auditVM.Year);
 
             auditRepo.Add(a);
         }

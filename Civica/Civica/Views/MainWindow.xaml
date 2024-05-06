@@ -73,8 +73,7 @@
         <Image Source="/Resources/Images/Civica_Logo.png"
                Width="150"/>
 
-        <StackPanel Grid.Row="1"
-                    Margin="0 15 0 0">
+        <StackPanel Grid.Row="1" Height="694" VerticalAlignment="Bottom">
             <RadioButton Content="Igangværende"
                          FontSize="14"
                          Height="50"
@@ -105,12 +104,20 @@
                          Command="{Binding ExpandedProjectViewCmd}"
                          CommandParameter="{Binding}"
                          Style="{StaticResource MenuButtonTheme}"/>
-            <Border Margin="30 240 30 50"
+            <RadioButton Content="Resourcedetaljer"
+                         FontSize="14"
+                         Height="50"
+                         Cursor="Hand"
+                         Command="{Binding ResourceViewCmd}"
+                         CommandParameter="{Binding}"
+                         Style="{StaticResource MenuButtonTheme}"/>
+            <Border Margin="30 200 30 50"
                     BorderBrush="#E8E8E8"
-                    BorderThickness="0 1 0 0" Opacity="0.0"/>
+                    BorderThickness="0 1 0 0" 
+                    Opacity="0.0"/>
             <RadioButton BorderThickness="0"
                          HorizontalAlignment="Center"
-                         Margin="0,0,5,0"
+                         VerticalAlignment="Bottom"
                          Width="60"
                          Cursor="Hand"
                          Height="60"
@@ -173,6 +180,19 @@
                             <Setter Property="Visibility" Value="Collapsed"/>
                             <Style.Triggers>
                                 <DataTrigger Binding="{Binding ExpandedProjectView}" Value="Visible">
+                                    <Setter Property="Visibility" Value="Visible"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Border.Style>
+                </Border>
+                <Border Margin="30 10 30 10">
+                    <view:ExpandedResourceView DataContext="{Binding Path=rpvm}"/>
+                    <Border.Style>
+                        <Style TargetType="Border">
+                            <Setter Property="Visibility" Value="Collapsed"/>
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding ResourceView}" Value="Visible">
                                     <Setter Property="Visibility" Value="Visible"/>
                                 </DataTrigger>
                             </Style.Triggers>
