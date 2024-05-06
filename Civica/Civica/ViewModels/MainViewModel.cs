@@ -253,7 +253,7 @@ namespace Civica.ViewModels
 
         private void StartTimerDatabaseRefresh()
         {
-            db_timer = new System.Timers.Timer(2500);
+            db_timer = new System.Timers.Timer(5000);
             db_timer.Elapsed += async (sender, e) => await RefreshDataAsync();
             db_timer.AutoReset = true;
             db_timer.Start();
@@ -265,8 +265,6 @@ namespace Civica.ViewModels
             await progressRepo.RefreshAsync();
             await resourceRepo.RefreshAsync();
             await userRepo.RefreshAsync();
-
-            await Task.Delay(1000);
 
             Application.Current.Dispatcher.Invoke(() =>
             {
