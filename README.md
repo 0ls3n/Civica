@@ -1,4 +1,4 @@
-# Civica Project Management System
+# Civica - Project Management System
 
 Civica Project Management System is a comprehensive solution designed to streamline project planning, execution, and monitoring. With powerful features tailored for teams of all sizes.
 
@@ -15,4 +15,4 @@ Civica Project Management System is a comprehensive solution designed to streaml
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/yourusername/civica-project-management.git
+   git clone https://github.com/0ls3n/Civica

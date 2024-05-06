@@ -8,7 +8,7 @@ namespace Civica.Models
 {
     public class Resource : DomainModel
     {
- 
+
         public decimal StartAmount { get; set; }
         public decimal ExpectedYearlyCost { get; set; }
 

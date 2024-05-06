@@ -78,20 +78,21 @@ namespace Civica.ViewModels
             }
         }
 
-        private int _resourceYear = DateTime.Now.Year;
-        public int ResourceYear
-        {
-            get => _resourceYear;
-            set
-            {
-                _resourceYear = value;
-                OnPropertyChanged(nameof(ResourceYear));
-            }
-        }
+        //private int _resourceYear = DateTime.Now.Year;
+        //public int ResourceYear
+        //{
+        //    get => _resourceYear;
+        //    set
+        //    {
+        //        _resourceYear = value;
+        //        OnPropertyChanged(nameof(ResourceYear));
+        //    }
+        //}
 
         private InProgressViewModel ipvm;
         private IRepository<Project> projectRepo;
         private IRepository<Resource> resourceRepo;
+        private IRepository<Audit> auditRepo;
 
         public void Init(ObservableObject o)
         {
@@ -106,6 +107,10 @@ namespace Civica.ViewModels
         {
             this.resourceRepo = resourceRepo;
         }
+        public void SetRepo(IRepository<Audit> auditRepo)
+        {
+            this.auditRepo = auditRepo;
+        }
 
         public void CreateProject()
         {
@@ -115,6 +120,9 @@ namespace Civica.ViewModels
 
             Resource r = new Resource(ipvm.GetCurrentUser().GetId(), p.Id, ResourceStartAmount, ResourceExpectedYearlyCost);
             resourceRepo.Add(r);
+
+            Audit a = new Audit(r.Id, ResourceExpectedYearlyCost, DateTime.Now.Year);
+            auditRepo.Add(a);
 
             ipvm.UpdateList();
 
