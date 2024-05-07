@@ -189,6 +189,7 @@ namespace Civica.ViewModels
                    mvm.ExpandedProjectView = WindowVisibility.Hidden;
                    mvm.InProgressView = WindowVisibility.Hidden;
                    mvm.SettingsView = WindowVisibility.Hidden;
+                   mvm.LoginView = WindowVisibility.Hidden;
                    mvm.ViewTitle = mvm.ipvm.SelectedProject.Name;
                    mvm.rpvm.SelectedProject = mvm.ipvm.SelectedProject;
                    mvm.rpvm.SelectedResource = mvm.ipvm.SelectedResource;
@@ -242,6 +243,7 @@ namespace Civica.ViewModels
                         mvm.SettingsView = WindowVisibility.Hidden;
                         mvm.ExpandedProjectView = WindowVisibility.Hidden;
                         mvm.InProgressView = WindowVisibility.Hidden;
+                        mvm.ResourceView = WindowVisibility.Hidden;
                         mvm.ViewTitle = mvm.lvm.WindowTitle;
                     }
                     else

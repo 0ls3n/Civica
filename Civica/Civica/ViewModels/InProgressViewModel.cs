@@ -243,7 +243,7 @@ namespace Civica.ViewModels
 
             projectRepo.Update(p);
 
-            Audit a = new Audit(auditVM.GetRefId(), int.Parse(auditVM.Amount), auditVM.Year);
+            Audit a = new Audit(mvm.CurrentUser.GetId(), auditVM.GetRefId(), int.Parse(auditVM.Amount), auditVM.Year, DateTime.Now);
 
             auditRepo.Add(a);
         }

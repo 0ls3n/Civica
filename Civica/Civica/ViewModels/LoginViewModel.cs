@@ -16,8 +16,8 @@ namespace Civica.ViewModels
         private MainViewModel mvm;
         private IRepository<User> userRepo;
         public string WindowTitle { get; } = "Login";
-        private string password = string.Empty;
 
+        private string password = string.Empty;
         public string Password 
         {
             get { return password; }
