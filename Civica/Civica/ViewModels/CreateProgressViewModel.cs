@@ -68,7 +68,7 @@ namespace Civica.ViewModels
 
         public void CreateProgress()
         {
-            Progress prog = new Progress(ipvm.GetCurrentUser().GetId(), ipvm.SelectedProject.GetId(), SelectedPhase, SelectedStatus, DateTime.Now, ProgressDescription);
+            Progress prog = new Progress(ipvm.GetCurrentUser().GetId(), ipvm.SelectedProject.GetId(), SelectedPhase, SelectedStatus, ProgressDescription, DateTime.Now);
 
             progressRepo.Add(prog);
         }

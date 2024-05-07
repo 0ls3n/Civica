@@ -24,8 +24,8 @@ namespace Civica.ViewModels
             this.progress = progress;
             Phase = Helper.Phases[progress.Phase];
             Status = Helper.Statuses[progress.Status];
-            Date = "d. " + progress.Date.ToString("dd. MMMM yyyy kl. HH:mm");
-            DateDetail = progress.Date.ToString("dd. MMMM yyyy");
+            Date = "d. " + progress.CreatedDate.ToString("dd. MMMM yyyy kl. HH:mm");
+            DateDetail = progress.CreatedDate.ToString("dd. MMMM yyyy");
             Description = progress.Description;
 
             switch(progress.Status)

@@ -103,11 +103,11 @@ namespace Civica.ViewModels
 
         public void CreateProject()
         {
-            Project p = new Project(ipvm.GetCurrentUser().GetId(), ProjectName, ProjectOwner, ProjectManager, ProjectDescription);
+            Project p = new Project(ipvm.GetCurrentUser().GetId(), ProjectName, ProjectOwner, ProjectManager, ProjectDescription, DateTime.Now);
             
             projectRepo.Add(p);
 
-            Resource r = new Resource(ipvm.GetCurrentUser().GetId(), p.Id, ResourceStartAmount, ResourceExpectedYearlyCost);
+            Resource r = new Resource(ipvm.GetCurrentUser().GetId(), p.Id, ResourceStartAmount, ResourceExpectedYearlyCost, DateTime.Now);
             resourceRepo.Add(r);
 
             ipvm.UpdateList();

@@ -38,8 +38,8 @@ namespace Civica.Models
                     {
                         while (reader.Read())
                         {
-                            int userId = Convert.ToInt32(reader["UserId"]);
-                            DateTime createdDate = Convert.ToDateTime(reader["CreatedDate"]);
+                            int userId = reader["UserId"] != DBNull.Value ? Convert.ToInt32(reader["UserId"]) : 0;
+                            DateTime createdDate = reader["CreatedDate"] != DBNull.Value ? Convert.ToDateTime(reader["CreatedDate"]) : new DateTime(default);
                             int id = Convert.ToInt32(reader["ProjectId"]);
                             string name = Convert.ToString(reader["ProjectName"]);
                             string owner = Convert.ToString(reader["OwnerName"]);
@@ -61,8 +61,8 @@ namespace Civica.Models
                     {
                         while (reader.Read())
                         {
-                            int userId = Convert.ToInt32(reader["UserId"]);
-                            DateTime createdDate = Convert.ToDateTime(reader["CreatedDate"]);
+                            int userId = reader["UserId"] != DBNull.Value ? Convert.ToInt32(reader["UserId"]) : 0;
+                            DateTime createdDate = reader["CreatedDate"] != DBNull.Value ? Convert.ToDateTime(reader["CreatedDate"]) : new DateTime(0, 0, 0);
                             int id = Convert.ToInt32(reader["ProgressId"]);
                             Phase phase = Enum.Parse<Phase>(Convert.ToString(reader["Phase"]));
                             Status status = Enum.Parse<Status>(Convert.ToString(reader["Status"]));
@@ -84,8 +84,8 @@ namespace Civica.Models
                     {
                         while (reader.Read())
                         {
-                            int userId = Convert.ToInt32(reader["UserId"]);
-                            DateTime createdDate = Convert.ToDateTime(reader["CreatedDate"]);
+                            int userId = reader["UserId"] != DBNull.Value ? Convert.ToInt32(reader["UserId"]) : 0;
+                            DateTime createdDate = reader["CreatedDate"] != DBNull.Value ? Convert.ToDateTime(reader["CreatedDate"]) : new DateTime();
                             int id = Convert.ToInt32(reader["ResourceId"]);
                             decimal startAmount = Convert.ToDecimal(reader["StartAmount"]);
                             decimal expectedYearlyCost = Convert.ToDecimal(reader["ExpectedYearlyCost"]);
@@ -106,11 +106,11 @@ namespace Civica.Models
                     {
                         while (reader.Read())
                         {
-                            int userId = Convert.ToInt32(reader["UserId"]);
-                            DateTime createdDate = Convert.ToDateTime(reader["CreatedDate"]);
+                            int userId = reader["UserId"] != DBNull.Value ? Convert.ToInt32(reader["UserId"]) : 0;
+                            DateTime createdDate = reader["CreatedDate"] != DBNull.Value ? Convert.ToDateTime(reader["CreatedDate"]) : DateTime.MinValue;
                             int id = Convert.ToInt32(reader["AuditId"]);
                             decimal Amount = Convert.ToDecimal(reader["Amount"]);
-                            DateTime Year = Convert.ToDateTime(reader["Year"]);
+                            int Year = Convert.ToInt32(reader["Year"]);
                             int ResourceId = Convert.ToInt32(reader["ResourceId"]);
 
                             Audit a = new Audit(userId, ResourceId, Amount, Year, createdDate);
@@ -127,8 +127,8 @@ namespace Civica.Models
                     {
                         while (reader.Read())
                         {
-                            int userId = Convert.ToInt32(reader["UserId"]);
-                            DateTime createdDate = Convert.ToDateTime(reader["CreatedDate"]);
+                            int userId = reader["UserId"] != DBNull.Value ? Convert.ToInt32(reader["UserId"]) : 0;
+                            DateTime createdDate = reader["CreatedDate"] != DBNull.Value ? Convert.ToDateTime(reader["CreatedDate"]) : new DateTime(0, 0, 0);
                             int id = Convert.ToInt32(reader["WorkTimeId"]);
                             double Time = Convert.ToDouble(reader["Time"]);
                             string InvolvedName = Convert.ToString(reader["InvolvedName"]);
@@ -143,7 +143,7 @@ namespace Civica.Models
                 }
                 else if (type == typeof(User))
                 {
-                    SqlCommand userCmd = new SqlCommand("SELECT UserId, FirstName, LastName, Password, CreatedDate FROM USERS", con);
+                    SqlCommand userCmd = new SqlCommand("SELECT UserId, FirstName, LastName, Password FROM USERS", con);
                     using (SqlDataReader reader = userCmd.ExecuteReader())
                     {
                         while(reader.Read())
@@ -283,7 +283,7 @@ namespace Civica.Models
                                                        "WHERE ProgressId = @ID");
                     cmd.Parameters.Add("@PH", SqlDbType.NVarChar).Value = prog.Phase;
                     cmd.Parameters.Add("@ST", SqlDbType.NVarChar).Value = prog.Status;
-                    cmd.Parameters.Add("@DA", SqlDbType.DateTime2).Value = prog.Date;
+                    cmd.Parameters.Add("@DA", SqlDbType.DateTime2).Value = prog.CreatedDate;
                     cmd.Parameters.Add("@DESC", SqlDbType.Text).Value = prog.Description;
                     cmd.Parameters.Add("@ID", SqlDbType.Int).Value = prog.Id;
                 }

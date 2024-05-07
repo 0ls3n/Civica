@@ -58,6 +58,7 @@ namespace Civica.ViewModels
                         lvm.mvm.LoginButtonText = "Logud";
                         lvm.mvm.LoginView = WindowVisibility.Hidden;
                         lvm.mvm.InProgressView = WindowVisibility.Visible;
+                        lvm.Password = string.Empty;
                     }
                     else
                     {

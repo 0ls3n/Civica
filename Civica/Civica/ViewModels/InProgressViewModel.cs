@@ -86,7 +86,7 @@ namespace Civica.ViewModels
                     ProgressVisibility = WindowVisibility.Hidden;
                     EditVisibility = WindowVisibility.Hidden;
 
-                    Progress prog = progressRepo.GetByRefId(SelectedProject.GetId()).OrderByDescending(x => x.Date).FirstOrDefault();
+                    Progress prog = progressRepo.GetByRefId(SelectedProject.GetId()).OrderByDescending(x => x.CreatedDate).FirstOrDefault();
 
                     SelectedProgress = null;
                     if (prog is not null)
@@ -99,7 +99,7 @@ namespace Civica.ViewModels
                     SelectedAudit = null;
                     if (r is not null)
                     {
-                        Audit aud = auditRepo.GetByRefId(r.GetId()).OrderByDescending(x => x.Year).FirstOrDefault();
+                        Audit aud = auditRepo.GetByRefId(r.Id).OrderByDescending(x => x.Year).FirstOrDefault();
                         if (aud is not null)
                         {
                             SelectedAudit = new AuditViewModel(aud);
@@ -169,7 +169,7 @@ namespace Civica.ViewModels
 
             foreach (ProjectViewModel p in Projects)
             {
-                Progress prog = progressRepo.GetByRefId(p.GetId()).OrderByDescending(x => x.Date).FirstOrDefault();
+                Progress prog = progressRepo.GetByRefId(p.GetId()).OrderByDescending(x => x.CreatedDate).FirstOrDefault();
 
                 if (prog != null)
                 {
@@ -230,7 +230,7 @@ namespace Civica.ViewModels
 
             Audit a = auditRepo.GetById(auditVM.GetRefId());
             a.Amount = auditVM.Amount;
-            a.Year = auditVM.Year;
+            a.Year = Convert.ToInt32(auditVM.Year);
 
             auditRepo.Add(a);
         }

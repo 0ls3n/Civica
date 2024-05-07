@@ -66,7 +66,7 @@ namespace Civica.ViewModels
         public void UpdateList()
         {
             Progresses.Clear();
-            foreach (Progress p in progressRepo.GetByRefId(mvm.ipvm.SelectedProject.GetId()).OrderByDescending(x=> x.Date))
+            foreach (Progress p in progressRepo.GetByRefId(mvm.ipvm.SelectedProject.GetId()).OrderByDescending(x=> x.CreatedDate))
             {
                 Progresses.Add(new ProgressViewModel(p));
             }
