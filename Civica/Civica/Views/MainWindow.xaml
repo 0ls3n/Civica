@@ -54,7 +54,7 @@
                     <Style TargetType="Border">
                         <Setter Property="Visibility" Value="Collapsed"/>
                         <Style.Triggers>
-                            <DataTrigger Binding="{Binding ExpandedProjectView}" Value="Visible">
+                            <DataTrigger Binding="{Binding StatusDot}" Value="Visible">
                                 <Setter Property="Visibility" Value="Visible"/>
                             </DataTrigger>
                         </Style.Triggers>

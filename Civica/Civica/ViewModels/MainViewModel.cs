@@ -85,6 +85,17 @@ namespace Civica.ViewModels
             }
         }
 
+        private WindowVisibility _statusDot;
+        public WindowVisibility StatusDot
+        {
+            get => _statusDot;
+            set
+            {
+                _statusDot = value;
+                OnPropertyChanged(nameof(StatusDot));
+            }
+        }
+
         public InProgressViewModel ipvm { get; set; } = new InProgressViewModel();
         public ExpandedProjectViewModel epvm { get; set; } = new ExpandedProjectViewModel();
 
@@ -102,6 +113,7 @@ namespace Civica.ViewModels
                     mvm.ExpandedProjectView = WindowVisibility.Hidden;
                     mvm.SettingsView = WindowVisibility.Hidden;
                     mvm.ResourceView = WindowVisibility.Hidden;
+                    mvm.StatusDot = WindowVisibility.Hidden;
                     mvm.ViewTitle = mvm.ipvm.WindowTitle;
                 }
             },
@@ -117,6 +129,7 @@ namespace Civica.ViewModels
                 if (parameter is MainViewModel mvm)
                 {
                     mvm.ExpandedProjectView = WindowVisibility.Visible;
+                    mvm.StatusDot = WindowVisibility.Visible;
                     mvm.InProgressView = WindowVisibility.Hidden;
                     mvm.SettingsView = WindowVisibility.Hidden;
                     mvm.ResourceView = WindowVisibility.Hidden;
@@ -145,6 +158,7 @@ namespace Civica.ViewModels
                if (parameter is MainViewModel mvm)
                {
                    mvm.ResourceView = WindowVisibility.Visible;
+                   mvm.StatusDot = WindowVisibility.Visible;
                    mvm.ExpandedProjectView = WindowVisibility.Hidden;
                    mvm.InProgressView = WindowVisibility.Hidden;
                    mvm.SettingsView = WindowVisibility.Hidden;
@@ -176,6 +190,7 @@ namespace Civica.ViewModels
                 if (parameter is MainViewModel mvm)
                 {
                     mvm.SettingsView = WindowVisibility.Visible;
+                    mvm.StatusDot = WindowVisibility.Hidden;
                     mvm.ExpandedProjectView = WindowVisibility.Hidden;
                     mvm.InProgressView = WindowVisibility.Hidden;
                     mvm.ResourceView = WindowVisibility.Hidden;
