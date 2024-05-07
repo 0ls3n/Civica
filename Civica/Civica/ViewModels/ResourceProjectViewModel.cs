@@ -142,7 +142,7 @@ namespace Civica.ViewModels
         public void UpdateList()
         {
             Audits.Clear();
-            List<Audit> audits = auditRepo.GetByRefId(mvm.ipvm.SelectedResource.GetId()).OrderBy(x => x.Year).ToList<Audit>();
+            List<Audit> audits = auditRepo.GetByRefId(SelectedResource.GetId()).OrderBy(x => x.Year).ToList<Audit>();
             foreach (Audit a in audits)
             {
                 Audits.Add(new AuditViewModel(a));
