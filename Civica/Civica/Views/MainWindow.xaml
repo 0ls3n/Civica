@@ -45,16 +45,16 @@
                        Grid.Column="2"
                        HorizontalAlignment="Right"
                        VerticalAlignment="Center"
-                       Margin="60 0 60 0"
+                       Margin="60 0 45 0"
                        FontSize="15"/>
             <Button
                 Grid.Column="3"
     BorderThickness="0"
     HorizontalAlignment="Right"
     Margin="10,8,15,7"
-    Width="40"
+    Width="20"
     Cursor="Hand"
-    Height="40"
+    Height="20"
     Command="{Binding LoginViewCmd}"
     CommandParameter="{Binding}"
     ToolTipService.InitialShowDelay="0">
@@ -77,8 +77,8 @@
 
                 <Button.Template>
                     <ControlTemplate TargetType="{x:Type Button}">
-                        <Border Width="40" 
-                Height="40"
+                        <Border Width="20" 
+                Height="20"
                 Background="{TemplateBinding Background}"
                 CornerRadius="25">
                             <Image Source="{Binding UserIconPath, UpdateSourceTrigger=PropertyChanged}" 
