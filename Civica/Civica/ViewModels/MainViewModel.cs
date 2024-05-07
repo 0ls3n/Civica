@@ -45,9 +45,9 @@ namespace Civica.ViewModels
         public UserViewModel CurrentUser
         {
             get { return currentUser; }
-            set 
-            { 
-                currentUser = value; 
+            set
+            {
+                currentUser = value;
                 OnPropertyChanged(nameof(CurrentUser));
             }
         }
@@ -56,9 +56,9 @@ namespace Civica.ViewModels
         public string LoginButtonText
         {
             get { return loginButtonText; }
-            set 
-            { 
-                loginButtonText = value; 
+            set
+            {
+                loginButtonText = value;
                 OnPropertyChanged(nameof(LoginButtonText));
             }
         }
@@ -102,9 +102,9 @@ namespace Civica.ViewModels
         public WindowVisibility SettingsView
         {
             get { return _settingsView; }
-            set 
-            { 
-                _settingsView = value; 
+            set
+            {
+                _settingsView = value;
                 OnPropertyChanged(nameof(SettingsView));
             }
         }
@@ -113,8 +113,8 @@ namespace Civica.ViewModels
         public WindowVisibility LoginView
         {
             get { return _loginView; }
-            set 
-            { 
+            set
+            {
                 _loginView = value;
                 OnPropertyChanged(nameof(LoginView));
             }
@@ -241,14 +241,8 @@ namespace Civica.ViewModels
             },
             parameter =>
             {
-                if (parameter is MainViewModel mvm)
-                {
-                    if (mvm.CurrentUser != null)
-                    {
-                        return true;
-                    }
-                }
-                return false;
+                return true;
+
             });
         public RelayCommand LoginViewCmd { get; set; } = new RelayCommand
             (
@@ -316,7 +310,7 @@ namespace Civica.ViewModels
             SettingsView = WindowVisibility.Hidden;
             ResourceView = WindowVisibility.Hidden;
             LoginView = WindowVisibility.Hidden;
-            
+
             ViewTitle = ipvm.WindowTitle;
         }
 

@@ -149,7 +149,14 @@ namespace Civica.ViewModels
             },
             parameter =>
             {
-                return true;
+                if (parameter is SettingsViewModel svm)
+                {
+                    if (svm.mvm.CurrentUser != null)
+                    {
+                        return true;
+                    }
+                }
+                return false;
             }
         );
 
@@ -170,7 +177,7 @@ namespace Civica.ViewModels
             {
                 if (parameter is SettingsViewModel svm)
                 {
-                    if (svm.SelectedUser != null)
+                    if (svm.SelectedUser != null && svm.mvm.CurrentUser != null)
                     {
                         return true;
                     }
@@ -253,7 +260,7 @@ namespace Civica.ViewModels
 
                 if (parameter is SettingsViewModel svm)
                 {
-                    if (svm.SelectedUser != null)
+                    if (svm.SelectedUser != null && svm.mvm.CurrentUser != null)
                     {
                         succes = true;
                     }
