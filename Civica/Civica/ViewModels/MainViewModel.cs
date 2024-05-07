@@ -131,6 +131,17 @@ namespace Civica.ViewModels
             }
         }
 
+        private string _userIconPath = "/Resources/Images/login.png";
+        public string UserIconPath
+        {
+            get => _userIconPath;
+            set
+            {
+                _userIconPath = value;
+                OnPropertyChanged(nameof(UserIconPath));
+            }
+        }
+
         public InProgressViewModel ipvm { get; set; } = new InProgressViewModel();
         public ExpandedProjectViewModel epvm { get; set; } = new ExpandedProjectViewModel();
 
@@ -264,6 +275,7 @@ namespace Civica.ViewModels
                     {
                         mvm.CurrentUser = null;
                         mvm.LoginButtonText = "Login";
+                        mvm.UserIconPath = "/Resources/Images/login.png";
                     }
                 }
             },

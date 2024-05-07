@@ -59,6 +59,7 @@ namespace Civica.ViewModels
                         lvm.mvm.LoginView = WindowVisibility.Hidden;
                         lvm.mvm.InProgressView = WindowVisibility.Visible;
                         lvm.Password = string.Empty;
+                        lvm.mvm.UserIconPath = "/Resources/Images/logout.png";
                     }
                     else
                     {

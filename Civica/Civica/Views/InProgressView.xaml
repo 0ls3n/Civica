@@ -323,7 +323,7 @@
                                         Height="50"
                                         Background="{TemplateBinding Background}"
                                         CornerRadius="25">
-                                        <Image Source="/Resources/Images/create_logo.png" 
+                                        <Image Source="{Binding UserIconPath}" 
                                             Width="25"/>
                                     </Border>
                                 </ControlTemplate>

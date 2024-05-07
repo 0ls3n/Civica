@@ -43,9 +43,9 @@
                        FontSize="20"/>
             <TextBlock Text="{Binding CurrentUser.FullName, UpdateSourceTrigger=PropertyChanged}"
                        Grid.Column="2"
-                       HorizontalAlignment="Left"
+                       HorizontalAlignment="Right"
                        VerticalAlignment="Center"
-                       Margin="60 0 0 0"
+                       Margin="60 0 60 0"
                        FontSize="15"/>
             <Button
                 Grid.Column="3"
@@ -59,7 +59,7 @@
     CommandParameter="{Binding}"
     ToolTipService.InitialShowDelay="0">
                 <Button.ToolTip>
-                    <ToolTip Content="Opret nyt projekt" Style="{StaticResource ToolTipTheme}"/>
+                    <ToolTip Content="Login/logud" Style="{StaticResource ToolTipTheme}"/>
                 </Button.ToolTip>
 
                 <Button.Style>
@@ -81,7 +81,7 @@
                 Height="40"
                 Background="{TemplateBinding Background}"
                 CornerRadius="25">
-                            <Image Source="/Resources/Images/login.png" 
+                            <Image Source="{Binding UserIconPath, UpdateSourceTrigger=PropertyChanged}" 
                     Width="35"/>
                         </Border>
                     </ControlTemplate>
