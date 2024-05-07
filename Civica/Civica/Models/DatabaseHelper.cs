@@ -146,7 +146,7 @@ namespace Civica.Models
                     SqlCommand userCmd = new SqlCommand("SELECT UserId, FirstName, LastName, Password FROM USERS", con);
                     using (SqlDataReader reader = userCmd.ExecuteReader())
                     {
-                        while(reader.Read())
+                        while (reader.Read())
                         {
                             int id = Convert.ToInt32(reader["UserId"]);
                             string firstName = Convert.ToString(reader["FirstName"]);
@@ -186,7 +186,7 @@ namespace Civica.Models
                     cmd.Parameters.Add("@ON", SqlDbType.NVarChar).Value = p.Owner;
                     cmd.Parameters.Add("@MN", SqlDbType.NVarChar).Value = p.Manager;
                     cmd.Parameters.Add("@DESC", SqlDbType.Text).Value = p.Description;
-                    
+
 
                     d = p;
                 }
@@ -227,8 +227,8 @@ namespace Civica.Models
 
                     d = a;
                 }
-                else if(o is WorkTime w)
-                    {
+                else if (o is WorkTime w)
+                {
                     cmd = new SqlCommand("INSERT INTO WORKTIMES (UserId, Time, InvolvedName, ResourceId, CreatedDate)" +
                                                                        "VALUES (@UID, @TI, @IN, @RID, @CD) SELECT @@IDENTITY ", con);
                     cmd.Parameters.Add("@UID", SqlDbType.Int).Value = w.UserId;
@@ -241,7 +241,7 @@ namespace Civica.Models
                 }
                 else if (o is User u)
                 {
-                    cmd = new SqlCommand("INSERT INTO USERS (FirstName, LastName, Password)" + 
+                    cmd = new SqlCommand("INSERT INTO USERS (FirstName, LastName, Password)" +
                                          "VALUES (@FN, @LN, @PW) SELECT @@IDENTITY", con);
                     cmd.Parameters.Add("@FN", SqlDbType.NVarChar).Value = u.FirstName;
                     cmd.Parameters.Add("@LN", SqlDbType.NVarChar).Value = u.LastName;
@@ -268,9 +268,9 @@ namespace Civica.Models
                 if (o is Project p)
                 {
                     cmd = new SqlCommand("UPDATE PROJECTS SET ProjectName = @PN, OwnerName = @ON, ManagerName = @MN, Description = @DESC " +
-                                          "WHERE ProjectId = @ID", con); 
+                                          "WHERE ProjectId = @ID", con);
 
-                    
+
                     cmd.Parameters.Add("@ID", SqlDbType.Int).Value = p.Id;
                     cmd.Parameters.Add("@PN", SqlDbType.NVarChar).Value = p.Name;
                     cmd.Parameters.Add("@ON", SqlDbType.NVarChar).Value = p.Owner;
@@ -317,10 +317,10 @@ namespace Civica.Models
                     cmd.Parameters.Add("@Ti", SqlDbType.Decimal).Value = w.Time;
                     cmd.Parameters.Add("@In", SqlDbType.NVarChar).Value = w.InvolvedName;
                 }
-                else if (o is User u) 
+                else if (o is User u)
                 {
                     cmd = new SqlCommand("UPDATE USERS SET FirstName = @FN, LastName = @LN, Password = @PW WHERE UserId = @ID", con);
-                    cmd.Parameters.Add("@ID", SqlDbType.Int).Value= u.Id;
+                    cmd.Parameters.Add("@ID", SqlDbType.Int).Value = u.Id;
                     cmd.Parameters.Add("@FN", SqlDbType.NVarChar).Value = u.FirstName;
                     cmd.Parameters.Add("@LN", SqlDbType.NVarChar).Value = u.LastName;
                     cmd.Parameters.Add("@PW", SqlDbType.Int).Value = u.Password;
@@ -395,7 +395,7 @@ namespace Civica.Models
                     cmd.Parameters.Add("@ID", SqlDbType.Int).Value = w.Id;
                     cmd.ExecuteNonQuery();
                 }
-                else if (o is User u) 
+                else if (o is User u)
                 {
                     SqlCommand cmd = new SqlCommand("DELETE FROM USERS WHERE UserId=@ID", con);
                     cmd.Parameters.Add("@ID", SqlDbType.Int).Value = u.Id;
@@ -419,18 +419,20 @@ namespace Civica.Models
 
                 if (type == typeof(Project))
                 {
-                    SqlCommand projectCmd = new SqlCommand("SELECT ProjectId, ProjectName, OwnerName, ManagerName, Description FROM PROJECTS", con);
+                    SqlCommand projectCmd = new SqlCommand("SELECT UserId, ProjectId, ProjectName, OwnerName, ManagerName, Description, CreatedDate FROM PROJECTS", con);
                     using (SqlDataReader reader = await projectCmd.ExecuteReaderAsync())
                     {
                         while (await reader.ReadAsync())
                         {
+                            int userId = reader["UserId"] != DBNull.Value ? Convert.ToInt32(reader["UserId"]) : 0;
+                            DateTime createdDate = reader["CreatedDate"] != DBNull.Value ? Convert.ToDateTime(reader["CreatedDate"]) : new DateTime(default);
                             int id = Convert.ToInt32(reader["ProjectId"]);
                             string name = Convert.ToString(reader["ProjectName"]);
                             string owner = Convert.ToString(reader["OwnerName"]);
                             string manager = Convert.ToString(reader["ManagerName"]);
                             string desc = Convert.ToString(reader["Description"]);
 
-                            Project p = new Project(name, owner, manager, desc);
+                            Project p = new Project(userId, name, owner, manager, desc, createdDate);
 
                             p.Id = id;
 
@@ -440,21 +442,21 @@ namespace Civica.Models
                 }
                 else if (type == typeof(Progress))
                 {
-                    SqlCommand progressCmd = new SqlCommand("SELECT ProgressId, Phase, Status, CreatedDate, Description, ProjectId FROM PROGRESSES", con);
+                    SqlCommand progressCmd = new SqlCommand("SELECT UserId, ProgressId, Phase, Status, CreatedDate, Description, ProjectId FROM PROGRESSES", con);
                     using (SqlDataReader reader = await progressCmd.ExecuteReaderAsync())
                     {
                         while (await reader.ReadAsync())
                         {
+                            int userId = reader["UserId"] != DBNull.Value ? Convert.ToInt32(reader["UserId"]) : 0;
+                            DateTime createdDate = reader["CreatedDate"] != DBNull.Value ? Convert.ToDateTime(reader["CreatedDate"]) : new DateTime(0, 0, 0);
                             int id = Convert.ToInt32(reader["ProgressId"]);
                             Phase phase = Enum.Parse<Phase>(Convert.ToString(reader["Phase"]));
                             Status status = Enum.Parse<Status>(Convert.ToString(reader["Status"]));
                             string desc = Convert.ToString(reader["Description"]);
                             int projectId = Convert.ToInt32(reader["ProjectId"]);
-                            DateTime date = Convert.ToDateTime(reader["CreatedDate"]);
 
-                            Progress prog = new Progress(projectId, phase, status, DateTime.Now, desc);
+                            Progress prog = new Progress(userId, projectId, phase, status, desc, createdDate);
 
-                            prog.Date = date;
                             prog.Id = id;
 
                             list.Add(prog);
@@ -463,17 +465,19 @@ namespace Civica.Models
                 }
                 else if (type == typeof(Resource))
                 {
-                    SqlCommand resourceCmd = new SqlCommand("SELECT ResourceId, StartAmount, ExpectedYearlyCost, ProjectId FROM RESOURCES", con);
+                    SqlCommand resourceCmd = new SqlCommand("SELECT UserId, ResourceId, StartAmount, ExpectedYearlyCost, ProjectId, CreatedDate FROM RESOURCES", con);
                     using (SqlDataReader reader = await resourceCmd.ExecuteReaderAsync())
                     {
                         while (await reader.ReadAsync())
                         {
+                            int userId = reader["UserId"] != DBNull.Value ? Convert.ToInt32(reader["UserId"]) : 0;
+                            DateTime createdDate = reader["CreatedDate"] != DBNull.Value ? Convert.ToDateTime(reader["CreatedDate"]) : new DateTime();
                             int id = Convert.ToInt32(reader["ResourceId"]);
                             decimal startAmount = Convert.ToDecimal(reader["StartAmount"]);
                             decimal expectedYearlyCost = Convert.ToDecimal(reader["ExpectedYearlyCost"]);
                             int projectId = Convert.ToInt32(reader["ProjectId"]);
 
-                            Resource r = new Resource(projectId, startAmount, expectedYearlyCost);
+                            Resource r = new Resource(userId, projectId, startAmount, expectedYearlyCost, createdDate);
 
                             r.Id = id;
 
@@ -483,17 +487,19 @@ namespace Civica.Models
                 }
                 else if (type == typeof(Audit))
                 {
-                    SqlCommand auditCmd = new SqlCommand("SELECT AuditId, Amount, Year, ResourceId FROM AUDITS", con);
+                    SqlCommand auditCmd = new SqlCommand("SELECT UserId, AuditId, Amount, Year, ResourceId, CreatedDate FROM AUDITS", con);
                     using (SqlDataReader reader = await auditCmd.ExecuteReaderAsync())
                     {
                         while (await reader.ReadAsync())
                         {
+                            int userId = reader["UserId"] != DBNull.Value ? Convert.ToInt32(reader["UserId"]) : 0;
+                            DateTime createdDate = reader["CreatedDate"] != DBNull.Value ? Convert.ToDateTime(reader["CreatedDate"]) : DateTime.MinValue;
                             int id = Convert.ToInt32(reader["AuditId"]);
                             decimal Amount = Convert.ToDecimal(reader["Amount"]);
                             int Year = Convert.ToInt32(reader["Year"]);
                             int ResourceId = Convert.ToInt32(reader["ResourceId"]);
 
-                            Audit a = new Audit(ResourceId, Amount, Year);
+                            Audit a = new Audit(userId, ResourceId, Amount, Year, createdDate);
 
                             a.Id = id;
                             list.Add(a);
@@ -502,20 +508,21 @@ namespace Civica.Models
                 }
                 else if (type == typeof(WorkTime))
                 {
-                    SqlCommand workTimeCmd = new SqlCommand("SELECT WorkTimeId, Time, InvolvedName, ResourceId FROM WORKTIMES", con);
+                    SqlCommand workTimeCmd = new SqlCommand("SELECT UserId, WorkTimeId, Time, InvolvedName, ResourceId, CreatedDate FROM WORKTIMES", con);
                     using (SqlDataReader reader = await workTimeCmd.ExecuteReaderAsync())
                     {
                         while (await reader.ReadAsync())
                         {
+                            int userId = reader["UserId"] != DBNull.Value ? Convert.ToInt32(reader["UserId"]) : 0;
+                            DateTime createdDate = reader["CreatedDate"] != DBNull.Value ? Convert.ToDateTime(reader["CreatedDate"]) : new DateTime(0, 0, 0);
                             int id = Convert.ToInt32(reader["WorkTimeId"]);
                             double Time = Convert.ToDouble(reader["Time"]);
                             string InvolvedName = Convert.ToString(reader["InvolvedName"]);
                             int resourceId = Convert.ToInt32(reader["ResourceId"]);
 
-                            WorkTime wt = new WorkTime(Time, InvolvedName);
+                            WorkTime wt = new WorkTime(userId, resourceId, Time, InvolvedName, createdDate);
 
                             wt.Id = id;
-                            wt.RefId = resourceId;
                             list.Add(wt);
                         }
                     }
@@ -532,6 +539,7 @@ namespace Civica.Models
                             string lastName = Convert.ToString(reader["LastName"]);
                             int password = Convert.ToInt32(reader["Password"]);
                             User u = new User(firstName, lastName, password);
+
                             u.Id = id;
                             list.Add(u);
                         }
