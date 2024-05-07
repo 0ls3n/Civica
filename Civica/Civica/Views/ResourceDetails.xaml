@@ -35,15 +35,20 @@
                     <Grid Margin="5 10 0 0">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="auto"/>
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
 
                         <TextBlock FontSize="20"
-                               Text="Omkostning: "/>
+                                   Text="Omkostning: "/>
 
                         <TextBlock Grid.Column="1"
-                               FontSize="20"
-                               Text="{Binding SelectedAudit.Amount}"/>
+                                   FontSize="20"
+                                   Text="{Binding SelectedAudit.Amount}"/>
+
+                        <TextBlock Grid.Column="2"
+                                   FontSize="20"
+                                   Text=" kr"/>
                     </Grid>
 
                     <Border BorderBrush="Gray"

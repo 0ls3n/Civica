@@ -187,12 +187,12 @@
                 </Grid.RowDefinitions>
 
                 <ListBox Background="Transparent"
-                     Margin="10 0 10 75"
+                         Margin="10 0 10 75"
                          Grid.RowSpan="2"
-                     BorderThickness="0"
-                     ScrollViewer.HorizontalScrollBarVisibility="Hidden"
-                     ItemsSource="{Binding Projects}"
-                     SelectedItem="{Binding SelectedProject}">
+                         BorderThickness="0"
+                         ScrollViewer.HorizontalScrollBarVisibility="Hidden"
+                         ItemsSource="{Binding Projects}"
+                         SelectedItem="{Binding SelectedProject}">
 
                     <ListBox.ItemTemplate>
                         <DataTemplate>
@@ -206,14 +206,13 @@
                                     <ColumnDefinition Width="50"/>
                                     <ColumnDefinition Width="285"/>
                                 </Grid.ColumnDefinitions>
-
+ 
                                 <Border Grid.RowSpan="2"
                                     Grid.Column="1"
-                                    Margin="10 0 0 0"
-                                    Width="325"
+                                    Margin="-70 0 -10 0"
                                     Height="50"
                                     BorderThickness="0 0 0 1"
-                                    BorderBrush="#E8E8E8">
+                                    BorderBrush="#338A8A8A">
 
                                 </Border>
 

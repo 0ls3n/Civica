@@ -76,22 +76,38 @@
         <StackPanel Grid.Row="1" Height="694" VerticalAlignment="Bottom">
             <RadioButton Content="Igangværende"
                          FontSize="14"
-                         Height="50"
+                         Margin="0, 20, 0, 0"
+                         Height="20"
                          IsChecked="True"
                          Cursor="Hand"
                          Style="{StaticResource MenuButtonTheme}"
                          Command="{Binding InProgressViewCmd}"
                          CommandParameter="{Binding}"/>
+            <Border Grid.Column="1"
+                    Margin="30, 5, 50, 15"
+                    BorderThickness="0 1 0 0"
+                    BorderBrush="#338A8A8A"
+                    Cursor="Hand"/>
             <RadioButton Content="Identificeret"
                          FontSize="14"
-                         Height="50"
+                         Height="20"
                          Cursor="Hand"
                          Style="{StaticResource MenuButtonTheme}"/>
+            <Border Grid.Column="1"
+                    Margin="30, 5, 50, 15"
+                    BorderThickness="0 1 0 0"
+                    BorderBrush="#338A8A8A"
+                    Cursor="Hand"/>
             <RadioButton Content="Arkiv"
                          FontSize="14"
-                         Height="50"
+                         Height="20"
                          Cursor="Hand"
                          Style="{StaticResource MenuButtonTheme}"/>
+            <Border Grid.Column="1"
+                    Margin="30, 5, 50, 15"
+                    BorderThickness="0 1 0 0"
+                    BorderBrush="#338A8A8A"
+                    Cursor="Hand"/>
 
             <Border Margin="30 50 30 50"
                     BorderBrush="#E8E8E8"
@@ -99,57 +115,61 @@
 
             <RadioButton Content="Projektdetaljer"
                          FontSize="14"
-                         Height="50"
+                         Height="20"
                          Cursor="Hand"
                          Command="{Binding ExpandedProjectViewCmd}"
                          CommandParameter="{Binding}"
                          Style="{StaticResource MenuButtonTheme}"/>
+            <Border Grid.Column="1"
+                    Margin="30, 5, 50, 15"
+                    BorderThickness="0 1 0 0"
+                    BorderBrush="#338A8A8A"
+                    Cursor="Hand"/>
             <RadioButton Content="Resourcedetaljer"
                          FontSize="14"
-                         Height="50"
+                         Height="20"
                          Cursor="Hand"
                          Command="{Binding ResourceViewCmd}"
                          CommandParameter="{Binding}"
                          Style="{StaticResource MenuButtonTheme}"/>
-            <Border Margin="30 200 30 50"
+            <Border Grid.Column="1"
+                    Margin="30, 5, 50, 15"
+                    BorderThickness="0 1 0 0"
+                    BorderBrush="#338A8A8A"
+                    Cursor="Hand"/>
+            <Border Margin="30 230 30 50"
                     BorderBrush="#E8E8E8"
                     BorderThickness="0 1 0 0" 
                     Opacity="0.0"/>
-            <RadioButton BorderThickness="0"
-                         HorizontalAlignment="Center"
-                         VerticalAlignment="Bottom"
-                         Width="60"
-                         Cursor="Hand"
-                         Height="60"
-                         Command="{Binding SettingsViewCmd}"
-                         CommandParameter="{Binding}"
-                         ToolTipService.InitialShowDelay="0">
-                <RadioButton.ToolTip>
-                    <ToolTip Content="Indstillinger" Style="{StaticResource ToolTipTheme}"/>
-                </RadioButton.ToolTip>
-                <RadioButton.Style>
-                    <Style TargetType="{x:Type RadioButton}">
-                        <Setter Property="Background" Value="Gray"/>
-
-                        <Style.Triggers>
-                            <Trigger Property="IsMouseOver" Value="True">
-                                <Setter Property="Background" Value="Gray"/>
-                            </Trigger>
-                        </Style.Triggers>
-                    </Style>
-                </RadioButton.Style>
-                <RadioButton.Template>
-                    <ControlTemplate TargetType="{x:Type RadioButton}">
-                        <Border Width="50" 
-                        Height="50"
-                        Background="{TemplateBinding Background}"
-                        CornerRadius="25">
-                            <Image Source="/Resources/Images/Cog.png" 
-                            Width="25"/>
-                        </Border>
-                    </ControlTemplate>
-                </RadioButton.Template>
-            </RadioButton>
+            <Border Grid.Row="1"
+                    BorderThickness="0 1 0 0"
+                    BorderBrush="#338A8A8A">
+                <RadioButton BorderThickness="0"
+                             Margin="0, 3, 0, 0"
+                             HorizontalAlignment="Center"
+                             VerticalAlignment="Bottom"
+                             Width="60"
+                             Cursor="Hand"
+                             Height="60"
+                             Command="{Binding SettingsViewCmd}"
+                             CommandParameter="{Binding}"
+                             ToolTipService.InitialShowDelay="0">
+                    <RadioButton.ToolTip>
+                        <ToolTip Content="Indstillinger" Style="{StaticResource ToolTipTheme}"/>
+                    </RadioButton.ToolTip>
+                    <RadioButton.Template>
+                        <ControlTemplate TargetType="{x:Type RadioButton}">
+                            <Border Width="50" 
+                                    Height="50"
+                                    Background="{TemplateBinding Background}"
+                                    CornerRadius="25">
+                                <Image Source="/Resources/Images/Cog.png" 
+                                       Width="100"/>
+                            </Border>
+                        </ControlTemplate>
+                    </RadioButton.Template>
+                </RadioButton>
+            </Border>
         </StackPanel>
 
         <Border Grid.Column="1"

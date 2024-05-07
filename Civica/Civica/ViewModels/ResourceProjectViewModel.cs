@@ -42,7 +42,7 @@ namespace Civica.ViewModels
             }
         }
 
-        private string _title = "Audits";
+        private string _title = "Revision";
         public string Title
         {
             get => _title;
@@ -114,15 +114,15 @@ namespace Civica.ViewModels
                 {
                     switch (Title)
                     {
-                        case "Audits":
-                            Title = "Worktimes";
+                        case "Revision":
+                            Title = "Resourceforbrug";
                             rvm.Audits.Clear();
                             rvm.InformationPlaceholderVisibility = WindowVisibility.Visible;
                             rvm.ResourceDetailsVisibility = WindowVisibility.Hidden;
                             break;
-                        case "Worktimes":
+                        case "Resourceforbrug":
                         default:
-                            Title = "Audits";
+                            Title = "Revision";
                             rvm.UpdateList();
                             break;
                     }

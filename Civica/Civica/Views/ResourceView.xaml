@@ -34,6 +34,10 @@
                                        FontSize="16"
                                        HorizontalAlignment="Center"
                                        Text="{Binding Path=Year}"/>
+                        <Border Grid.Column="1"
+                                Margin="0, 25, 0, 0"
+                                BorderThickness="0 1 0 0"
+                                BorderBrush="#338A8A8A"/>
                     </Grid>
                 </DataTemplate>
             </ListBox.ItemTemplate>
