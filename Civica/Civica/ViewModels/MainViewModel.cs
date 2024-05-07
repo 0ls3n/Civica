@@ -241,7 +241,14 @@ namespace Civica.ViewModels
             },
             parameter =>
             {
-                return true;
+                if (parameter is MainViewModel mvm)
+                {
+                    if (mvm.CurrentUser != null)
+                    {
+                        return true;
+                    }
+                }
+                return false;
             });
         public RelayCommand LoginViewCmd { get; set; } = new RelayCommand
             (

@@ -269,7 +269,14 @@ namespace Civica.ViewModels
             },
             parameter =>
             {
-                return true;
+                if (parameter is InProgressViewModel ipvm)
+                {
+                    if (ipvm.mvm.CurrentUser != null)
+                    {
+                        return true;
+                    }
+                }
+                return false;
             }
         );
 
@@ -289,7 +296,7 @@ namespace Civica.ViewModels
             {
                 if (parameter is InProgressViewModel ipvm)
                 {
-                    if (ipvm.SelectedProject != null)
+                    if (ipvm.SelectedProject != null && ipvm.mvm.CurrentUser != null)
                     {
                         return true;
                     }
@@ -319,7 +326,7 @@ namespace Civica.ViewModels
             {
                 if (parameter is InProgressViewModel ipvm)
                 {
-                    if (ipvm.SelectedProject != null)
+                    if (ipvm.SelectedProject != null && ipvm.mvm.CurrentUser != null)
                     {
                         return true;
                     }
@@ -368,16 +375,14 @@ namespace Civica.ViewModels
             },
             parameter =>
             {
-                bool succes = false;
-
                 if (parameter is InProgressViewModel ipvm)
                 {
-                    if (ipvm.SelectedProject != null)
+                    if (ipvm.SelectedProject != null && ipvm.mvm.CurrentUser != null)
                     {
-                        succes = true;
+                        return true;
                     }
                 }
-                return succes;
+                return false;
             }
         );
 
