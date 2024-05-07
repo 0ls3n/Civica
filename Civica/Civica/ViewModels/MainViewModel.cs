@@ -152,6 +152,7 @@ namespace Civica.ViewModels
                     mvm.StatusDot = WindowVisibility.Hidden;
                     mvm.LoginView = WindowVisibility.Hidden;
                     mvm.ViewTitle = mvm.ipvm.WindowTitle;
+                    mvm.ipvm.UpdateList();
                 }
             },
             canExecute: (object? parameter) =>
