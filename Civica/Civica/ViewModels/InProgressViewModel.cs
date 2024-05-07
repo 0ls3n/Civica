@@ -101,6 +101,7 @@ namespace Civica.ViewModels
                     if (r is not null)
                     {
                         SelectedResource = new ResourceViewModel(r);
+
                         Audit aud = auditRepo.GetByRefId(r.Id).OrderByDescending(x => x.Year).FirstOrDefault();
                         if (aud is not null)
                         {
