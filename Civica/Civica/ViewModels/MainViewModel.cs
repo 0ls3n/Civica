@@ -254,6 +254,7 @@ namespace Civica.ViewModels
             await progressRepo.RefreshAsync();
             await resourceRepo.RefreshAsync();
             await userRepo.RefreshAsync();
+            await auditRepo.RefreshAsync();
 
             Application.Current.Dispatcher.Invoke(() =>
             {
