@@ -172,8 +172,8 @@ namespace Civica.ViewModels
                     mvm.LoginView = WindowVisibility.Hidden;
                     mvm.ResourceView = WindowVisibility.Hidden;
                     mvm.ViewTitle = mvm.ipvm.SelectedProject.Name;
-                    mvm.epvm.UpdateList();
                     mvm.epvm.SelectedProject = mvm.ipvm.SelectedProject;
+                    mvm.epvm.UpdateList();
                     mvm.epvm.InformationPlaceholderVisibility = WindowVisibility.Visible;
                 }
             },
