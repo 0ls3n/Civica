@@ -250,36 +250,6 @@ namespace Civica.ViewModels
         public IRepository<Progress> GetProgressRepo() => progressRepo;
         public IRepository<Resource> GetResourceRepo() => resourceRepo;
         public IRepository<User> GetUserRepo() => userRepo;
-
-        #region AsyncRefresh
-        System.Timers.Timer db_timer;
-
-        private void StartTimerDatabaseRefresh()
-        {
-            db_timer = new System.Timers.Timer(5000);
-            db_timer.Elapsed += async (sender, e) => await RefreshDataAsync();
-            db_timer.AutoReset = true;
-            db_timer.Start();
-        }
-
-        private async Task RefreshDataAsync()
-        {
-            await projectRepo.RefreshAsync();
-            await progressRepo.RefreshAsync();
-            await resourceRepo.RefreshAsync();
-            await userRepo.RefreshAsync();
-
-            Application.Current.Dispatcher.Invoke(() =>
-            {
-                ipvm.UpdateList();
-                svm.UpdateList();
-            });
-        }
-
-        public IRepository<Project> GetProjectRepo() => projectRepo;
-        public IRepository<Progress> GetProgressRepo() => progressRepo;
-        public IRepository<Resource> GetResourceRepo() => resourceRepo;
-        public IRepository<User> GetUserRepo() => userRepo;
         public IRepository<Audit> GetAuditRepo() => auditRepo;
 
         #region AsyncRefresh
@@ -299,7 +269,6 @@ namespace Civica.ViewModels
             await progressRepo.RefreshAsync();
             await resourceRepo.RefreshAsync();
             await userRepo.RefreshAsync();
-            await auditRepo.RefreshAsync();
 
             Application.Current.Dispatcher.Invoke(() =>
             {
