@@ -233,6 +233,7 @@ namespace Civica.ViewModels
         {
             projectRepo.Remove(projectRepo.GetById(SelectedProject.GetId()));
             UpdateList();
+            SelectedProject = null;
         }
 
         public void UpdateProject(ProjectViewModel projectVM, AuditViewModel auditVM)

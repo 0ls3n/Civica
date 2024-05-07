@@ -128,6 +128,8 @@ namespace Civica.ViewModels
                     cpvm.CreateProject();
                     cpvm.ipvm.CreateVisibility = WindowVisibility.Hidden;
                     cpvm.ipvm.InformationVisibility = WindowVisibility.Visible;
+                    cpvm.ResourceStartAmount = 0;
+                    cpvm.ResourceExpectedYearlyCost = 0;
                 }
             },
             parameter =>

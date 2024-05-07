@@ -47,46 +47,48 @@
                        VerticalAlignment="Center"
                        Margin="60 0 0 0"
                        FontSize="15"/>
-            <Button Height="30"
-                    Grid.Column="2"
-                    HorizontalAlignment="Right"
-                    Width="100"
-                    Margin="0 0 5 0"
-                    Content="Login"
-                    Cursor="Hand"
-                    Command="{Binding LoginViewCmd}"
-                    CommandParameter="{Binding}">   
+            <Button
+                Grid.Column="3"
+    BorderThickness="0"
+    HorizontalAlignment="Right"
+    Margin="10,8,0,7"
+    Width="60"
+    Cursor="Hand"
+    Height="60"
+    Command="{Binding LoginViewCmd}"
+    CommandParameter="{Binding}"
+    ToolTipService.InitialShowDelay="0">
+                <Button.ToolTip>
+                    <ToolTip Content="Opret nyt projekt" Style="{StaticResource ToolTipTheme}"/>
+                </Button.ToolTip>
 
                 <Button.Style>
-                    <Style TargetType="Button">
-                        <Setter Property="Background" Value="#FFF3F2F2"/>
+                    <Style TargetType="{x:Type Button}">
+                        <Setter Property="Background" Value="Transparent"/>
+
                         <Style.Triggers>
                             <Trigger Property="IsMouseOver" Value="True">
-                                <Setter Property="Background" Value="#FFE1E1E1"/>
+                                <Setter Property="Background" Value="Transparent"/>
                             </Trigger>
                         </Style.Triggers>
+
                     </Style>
                 </Button.Style>
 
                 <Button.Template>
-                    <ControlTemplate TargetType="Button">
-                        <Border Width="{TemplateBinding Width}"
-                    Height="{TemplateBinding Height}"
-                    Background="{TemplateBinding Background}"
-                    CornerRadius="5"
-                    BorderBrush="LightGray"
-                    BorderThickness="1">
-
-                            <TextBlock Text="{Binding LoginButtonText}"
-                           FontSize="16"
-                           HorizontalAlignment="Center"
-                           VerticalAlignment="Center"/>
-
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border Width="50" 
+                Height="50"
+                Background="{TemplateBinding Background}"
+                CornerRadius="25">
+                            <Image Source="/Resources/Images/login.png" 
+                    Width="25"/>
                         </Border>
                     </ControlTemplate>
                 </Button.Template>
 
             </Button>
+
             <Border Grid.Column="0"
                     Margin="10 5 0 0"
                     Width="8"
