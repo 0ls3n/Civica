@@ -7,16 +7,15 @@ using Civica.Models;
 
 namespace Civica.ViewModels
 {
-   public class AuditViewModel
+    public class AuditViewModel
     {
         private Audit audit;
-        public decimal Amount { get; set; }
+        public string Amount { get; set; }
         public int Year { get; set; }
-
 
         public AuditViewModel(Audit a)
         {
-            Amount = a.Amount;
+            Amount = string.Format("{0:#,0.00}", a.Amount);
             Year = a.Year;
             audit = a;
         }

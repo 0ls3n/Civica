@@ -52,6 +52,8 @@ namespace Civica.ViewModels
             }
         }
 
+        public string Title { get; set; } = "Audits";
+
         public void Init(ObservableObject o)
         {
             mvm = (o as MainViewModel);

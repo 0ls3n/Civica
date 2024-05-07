@@ -87,6 +87,16 @@ namespace Civica.ViewModels
                 OnPropertyChanged(nameof(ExpandedProjectView));
             }
         }
+        private WindowVisibility _resourceView;
+        public WindowVisibility ResourceView
+        {
+            get => _resourceView;
+            set
+            {
+                _resourceView = value;
+                OnPropertyChanged(nameof(ResourceView));
+            }
+        }
         private WindowVisibility _settingsView;
 
         public WindowVisibility SettingsView
@@ -116,6 +126,8 @@ namespace Civica.ViewModels
         public InProgressViewModel ipvm { get; set; } = new InProgressViewModel();
         public ExpandedProjectViewModel epvm { get; set; } = new ExpandedProjectViewModel();
 
+        public ResourceProjectViewModel rpvm { get; set; } = new ResourceProjectViewModel();
+
         public SettingsViewModel svm { get; set; } = new SettingsViewModel();
         public LoginViewModel lvm { get; set; } = new LoginViewModel();
 
@@ -128,6 +140,7 @@ namespace Civica.ViewModels
                     mvm.InProgressView = WindowVisibility.Visible;
                     mvm.ExpandedProjectView = WindowVisibility.Hidden;
                     mvm.SettingsView = WindowVisibility.Hidden;
+                    mvm.ResourceView = WindowVisibility.Hidden;
                     mvm.LoginView = WindowVisibility.Hidden;
                     mvm.ViewTitle = mvm.ipvm.WindowTitle;
                 }
@@ -147,6 +160,7 @@ namespace Civica.ViewModels
                     mvm.InProgressView = WindowVisibility.Hidden;
                     mvm.SettingsView = WindowVisibility.Hidden;
                     mvm.LoginView = WindowVisibility.Hidden;
+                    mvm.ResourceView = WindowVisibility.Hidden;
                     mvm.ViewTitle = mvm.ipvm.SelectedProject.Name;
                     mvm.epvm.UpdateList();
                     mvm.epvm.SelectedProject = mvm.ipvm.SelectedProject;
@@ -165,6 +179,37 @@ namespace Civica.ViewModels
                 }
                 return isEnabled;
             });
+        public RelayCommand ResourceViewCmd { get; set; } = new RelayCommand
+           (
+           parameter =>
+           {
+               if (parameter is MainViewModel mvm)
+               {
+                   mvm.ResourceView = WindowVisibility.Visible;
+                   mvm.ExpandedProjectView = WindowVisibility.Hidden;
+                   mvm.InProgressView = WindowVisibility.Hidden;
+                   mvm.SettingsView = WindowVisibility.Hidden;
+                   mvm.ViewTitle = mvm.ipvm.SelectedProject.Name;
+                   mvm.rpvm.SelectedProject = mvm.ipvm.SelectedProject;
+                   mvm.rpvm.SelectedResource = mvm.ipvm.SelectedResource;
+                   mvm.rpvm.Audits.Clear();
+                   mvm.rpvm.InformationPlaceholderVisibility = WindowVisibility.Visible;
+                   mvm.rpvm.ResourceDetailsVisibility = WindowVisibility.Hidden;
+                   mvm.rpvm.UpdateList();
+               }
+           },
+           parameter =>
+           {
+               bool isEnabled = false;
+               if (parameter is MainViewModel mvm)
+               {
+                   if (mvm.ipvm.SelectedProject != null)
+                   {
+                       isEnabled = true;
+                   }
+               }
+               return isEnabled;
+           });
         public RelayCommand SettingsViewCmd { get; set; } = new RelayCommand
             (
             parameter =>
@@ -175,6 +220,7 @@ namespace Civica.ViewModels
                     mvm.ExpandedProjectView = WindowVisibility.Hidden;
                     mvm.InProgressView = WindowVisibility.Hidden;
                     mvm.LoginView = WindowVisibility.Hidden;
+                    mvm.ResourceView = WindowVisibility.Hidden;
                     mvm.ViewTitle = mvm.svm.WindowTitle;
                     mvm.svm.UpdateList();
                     mvm.svm.InformationVisibility = WindowVisibility.Visible;
@@ -242,9 +288,11 @@ namespace Civica.ViewModels
             epvm.Init(this);
             svm.Init(this);
             lvm.Init(this);
+            rpvm.Init(this);
             InProgressView = WindowVisibility.Visible;
             ExpandedProjectView = WindowVisibility.Hidden;
             SettingsView = WindowVisibility.Hidden;
+            ResourceView = WindowVisibility.Hidden;
             LoginView = WindowVisibility.Hidden;
             
             ViewTitle = ipvm.WindowTitle;
