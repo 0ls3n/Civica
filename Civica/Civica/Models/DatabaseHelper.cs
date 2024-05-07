@@ -38,13 +38,15 @@ namespace Civica.Models
                     {
                         while (reader.Read())
                         {
+                            int userId = Convert.ToInt32(reader["UserId"]);
+                            DateTime createdDate = Convert.ToDateTime(reader["CreatedDate"]);
                             int id = Convert.ToInt32(reader["ProjectId"]);
                             string name = Convert.ToString(reader["ProjectName"]);
                             string owner = Convert.ToString(reader["OwnerName"]);
                             string manager = Convert.ToString(reader["ManagerName"]);
                             string desc = Convert.ToString(reader["Description"]);
 
-                            Project p = new Project(name, owner, manager, desc);
+                            Project p = new Project(userId, name, owner, manager, desc, createdDate);
 
                             p.Id = id;
 
@@ -54,21 +56,21 @@ namespace Civica.Models
                 }
                 else if (type == typeof(Progress))
                 {
-                    SqlCommand progressCmd = new SqlCommand("SELECT ProgressId, Phase, Status, CreatedDate, Description, ProjectId FROM PROGRESSES", con);
+                    SqlCommand progressCmd = new SqlCommand("SELECT UserId, ProgressId, Phase, Status, CreatedDate, Description, ProjectId FROM PROGRESSES", con);
                     using (SqlDataReader reader = progressCmd.ExecuteReader())
                     {
                         while (reader.Read())
                         {
+                            int userId = Convert.ToInt32(reader["UserId"]);
+                            DateTime createdDate = Convert.ToDateTime(reader["CreatedDate"]);
                             int id = Convert.ToInt32(reader["ProgressId"]);
                             Phase phase = Enum.Parse<Phase>(Convert.ToString(reader["Phase"]));
                             Status status = Enum.Parse<Status>(Convert.ToString(reader["Status"]));
                             string desc = Convert.ToString(reader["Description"]);
                             int projectId = Convert.ToInt32(reader["ProjectId"]);
-                            DateTime date = Convert.ToDateTime(reader["CreatedDate"]);
 
-                            Progress prog = new Progress(projectId, phase, status, DateTime.Now, desc);
+                            Progress prog = new Progress(userId, projectId, phase, status, desc, createdDate);
 
-                            prog.Date = date;
                             prog.Id = id;
 
                             list.Add(prog);
@@ -77,17 +79,19 @@ namespace Civica.Models
                 }
                 else if (type == typeof(Resource))
                 {
-                    SqlCommand resourceCmd = new SqlCommand("SELECT ResourceId, StartAmount, ExpectedYearlyCost, ProjectId FROM RESOURCES", con);
+                    SqlCommand resourceCmd = new SqlCommand("SELECT UserId, ResourceId, StartAmount, ExpectedYearlyCost, ProjectId, CreatedDate FROM RESOURCES", con);
                     using (SqlDataReader reader = resourceCmd.ExecuteReader())
                     {
                         while (reader.Read())
                         {
+                            int userId = Convert.ToInt32(reader["UserId"]);
+                            DateTime createdDate = Convert.ToDateTime(reader["CreatedDate"]);
                             int id = Convert.ToInt32(reader["ResourceId"]);
                             decimal startAmount = Convert.ToDecimal(reader["StartAmount"]);
                             decimal expectedYearlyCost = Convert.ToDecimal(reader["ExpectedYearlyCost"]);
                             int projectId = Convert.ToInt32(reader["ProjectId"]);
 
-                            Resource r = new Resource(projectId, startAmount, expectedYearlyCost);
+                            Resource r = new Resource(userId, projectId, startAmount, expectedYearlyCost, createdDate);
 
                             r.Id = id;
 
@@ -97,17 +101,19 @@ namespace Civica.Models
                 }
                 else if (type == typeof(Audit))
                 {
-                    SqlCommand auditCmd = new SqlCommand("SELECT AuditId, Amount, Year, ResourceId FROM AUDITS", con);
+                    SqlCommand auditCmd = new SqlCommand("SELECT UserId, AuditId, Amount, Year, ResourceId, CreatedDate FROM AUDITS", con);
                     using (SqlDataReader reader = auditCmd.ExecuteReader())
                     {
                         while (reader.Read())
                         {
+                            int userId = Convert.ToInt32(reader["UserId"]);
+                            DateTime createdDate = Convert.ToDateTime(reader["CreatedDate"]);
                             int id = Convert.ToInt32(reader["AuditId"]);
                             decimal Amount = Convert.ToDecimal(reader["Amount"]);
-                            int Year = Convert.ToInt32(reader["Year"]);
+                            DateTime Year = Convert.ToDateTime(reader["Year"]);
                             int ResourceId = Convert.ToInt32(reader["ResourceId"]);
 
-                            Audit a = new Audit(ResourceId, Amount, Year);
+                            Audit a = new Audit(userId, ResourceId, Amount, Year, createdDate);
 
                             a.Id = id;
                             list.Add(a);
@@ -116,27 +122,28 @@ namespace Civica.Models
                 }
                 else if (type == typeof(WorkTime))
                 {
-                    SqlCommand workTimeCmd = new SqlCommand("SELECT WorkTimeId, Time, InvolvedName, ResourceId FROM WORKTIMES", con);
+                    SqlCommand workTimeCmd = new SqlCommand("SELECT UserId, WorkTimeId, Time, InvolvedName, ResourceId, CreatedDate FROM WORKTIMES", con);
                     using (SqlDataReader reader = workTimeCmd.ExecuteReader())
                     {
                         while (reader.Read())
                         {
+                            int userId = Convert.ToInt32(reader["UserId"]);
+                            DateTime createdDate = Convert.ToDateTime(reader["CreatedDate"]);
                             int id = Convert.ToInt32(reader["WorkTimeId"]);
                             double Time = Convert.ToDouble(reader["Time"]);
                             string InvolvedName = Convert.ToString(reader["InvolvedName"]);
                             int resourceId = Convert.ToInt32(reader["ResourceId"]);
 
-                            WorkTime wt = new WorkTime(Time, InvolvedName);
+                            WorkTime wt = new WorkTime(userId, resourceId, Time, InvolvedName, createdDate);
 
                             wt.Id = id;
-                            wt.RefId = resourceId;
                             list.Add(wt);
                         }
                     }
                 }
                 else if (type == typeof(User))
                 {
-                    SqlCommand userCmd = new SqlCommand("SELECT UserId, FirstName, LastName, Password FROM USERS", con);
+                    SqlCommand userCmd = new SqlCommand("SELECT UserId, FirstName, LastName, Password, CreatedDate FROM USERS", con);
                     using (SqlDataReader reader = userCmd.ExecuteReader())
                     {
                         while(reader.Read())
@@ -146,6 +153,7 @@ namespace Civica.Models
                             string lastName = Convert.ToString(reader["LastName"]);
                             int password = Convert.ToInt32(reader["Password"]);
                             User u = new User(firstName, lastName, password);
+
                             u.Id = id;
                             list.Add(u);
                         }
@@ -170,24 +178,26 @@ namespace Civica.Models
                 SqlCommand cmd = null;
                 if (o is Project p)
                 {
-                    cmd = new SqlCommand("INSERT INTO PROJECTS (ProjectName, OwnerName, ManagerName, Description)" +
-                                                                         "VALUES (@PN, @ON, @MN, @DESC) SELECT @@IDENTITY ", con);
-
+                    cmd = new SqlCommand("INSERT INTO PROJECTS (UserId, ProjectName, OwnerName, ManagerName, Description, CreatedDate)" +
+                                                                         "VALUES (@UID, @PN, @ON, @MN, @DESC, @CD) SELECT @@IDENTITY ", con);
+                    cmd.Parameters.Add("@UID", SqlDbType.Int).Value = p.UserId;
+                    cmd.Parameters.Add("@CD", SqlDbType.DateTime2).Value = p.CreatedDate;
                     cmd.Parameters.Add("@PN", SqlDbType.NVarChar).Value = p.Name;
                     cmd.Parameters.Add("@ON", SqlDbType.NVarChar).Value = p.Owner;
                     cmd.Parameters.Add("@MN", SqlDbType.NVarChar).Value = p.Manager;
                     cmd.Parameters.Add("@DESC", SqlDbType.Text).Value = p.Description;
+                    
 
                     d = p;
                 }
                 else if (o is Progress prog)
                 {
-                    cmd = new SqlCommand("INSERT INTO PROGRESSES (Phase, Status, CreatedDate, Description, ProjectId)" +
-                                                                         "VALUES (@PH, @ST, @DA, @DESC, @PID) SELECT @@IDENTITY ", con);
-
+                    cmd = new SqlCommand("INSERT INTO PROGRESSES (UserId, Phase, Status, Description, ProjectId, CreatedDate)" +
+                                                                         "VALUES (@UID, @PH, @ST, @DESC, @PID, @CD) SELECT @@IDENTITY ", con);
+                    cmd.Parameters.Add("@UID", SqlDbType.Int).Value = prog.UserId;
+                    cmd.Parameters.Add("@CD", SqlDbType.DateTime2).Value = prog.CreatedDate;
                     cmd.Parameters.Add("@PH", SqlDbType.NVarChar).Value = prog.Phase;
                     cmd.Parameters.Add("@ST", SqlDbType.NVarChar).Value = prog.Status;
-                    cmd.Parameters.Add("@DA", SqlDbType.NVarChar).Value = prog.Date;
                     cmd.Parameters.Add("@DESC", SqlDbType.Text).Value = prog.Description;
                     cmd.Parameters.Add("@PID", SqlDbType.Int).Value = prog.RefId;
 
@@ -195,9 +205,10 @@ namespace Civica.Models
                 }
                 else if (o is Resource r)
                 {
-                    cmd = new SqlCommand("INSERT INTO RESOURCES (StartAmount, ExpectedYearlyCost, ProjectId)" +
-                                                                         "VALUES (@SA, @EYC, @PID) SELECT @@IDENTITY ", con);
-
+                    cmd = new SqlCommand("INSERT INTO RESOURCES (UserId, StartAmount, ExpectedYearlyCost, ProjectId, CreatedDate)" +
+                                                                         "VALUES (@UID, @SA, @EYC, @PID, @CD) SELECT @@IDENTITY ", con);
+                    cmd.Parameters.Add("@UID", SqlDbType.Int).Value = r.UserId;
+                    cmd.Parameters.Add("@CD", SqlDbType.DateTime2).Value = r.CreatedDate;
                     cmd.Parameters.Add("@SA", SqlDbType.Decimal).Value = r.StartAmount;
                     cmd.Parameters.Add("@EYC", SqlDbType.Decimal).Value = r.ExpectedYearlyCost;
                     cmd.Parameters.Add("@PID", SqlDbType.Int).Value = r.RefId;
@@ -206,23 +217,25 @@ namespace Civica.Models
                 }
                 else if (o is Audit a)
                 {
-                    cmd = new SqlCommand("INSERT INTO AUDITS (Amount, Year, ResourceId)" +
-                                                                         "VALUES (@Am, @Ye, @RID) SELECT @@IDENTITY ", con);
-
-                    cmd.Parameters.Add("@Am", SqlDbType.Decimal).Value = a.Amount;
-                    cmd.Parameters.Add("@Ye", SqlDbType.Int).Value = a.Year;
-                    cmd.Parameters.Add("@Rid", SqlDbType.Int).Value = a.RefId;
+                    cmd = new SqlCommand("INSERT INTO AUDITS (UserId, Amount, Year, ResourceId, CreatedDate)" +
+                                                                         "VALUES (@UID, @AM, @YE, @RID, @CD) SELECT @@IDENTITY ", con);
+                    cmd.Parameters.Add("@UID", SqlDbType.Int).Value = a.UserId;
+                    cmd.Parameters.Add("@CD", SqlDbType.DateTime2).Value = a.CreatedDate;
+                    cmd.Parameters.Add("@AM", SqlDbType.Decimal).Value = a.Amount;
+                    cmd.Parameters.Add("@YE", SqlDbType.Int).Value = a.Year;
+                    cmd.Parameters.Add("@RID", SqlDbType.Int).Value = a.RefId;
 
                     d = a;
                 }
                 else if(o is WorkTime w)
                     {
-                    cmd = new SqlCommand("INSERT INTO WORKTIMES (Time, InvolvedName, ResourceId)" +
-                                                                       "VALUES (@Ti, @IN, @RID) SELECT @@IDENTITY ", con);
-
-                    cmd.Parameters.Add("@Ti", SqlDbType.Decimal).Value = w.Time;
+                    cmd = new SqlCommand("INSERT INTO WORKTIMES (UserId, Time, InvolvedName, ResourceId, CreatedDate)" +
+                                                                       "VALUES (@UID, @TI, @IN, @RID, @CD) SELECT @@IDENTITY ", con);
+                    cmd.Parameters.Add("@UID", SqlDbType.Int).Value = w.UserId;
+                    cmd.Parameters.Add("@CD", SqlDbType.DateTime2).Value = w.CreatedDate;
+                    cmd.Parameters.Add("@TI", SqlDbType.Decimal).Value = w.Time;
                     cmd.Parameters.Add("@IN", SqlDbType.NVarChar).Value = w.InvolvedName;
-                    cmd.Parameters.Add("@Rid", SqlDbType.Int).Value = w.RefId;
+                    cmd.Parameters.Add("@RID", SqlDbType.Int).Value = w.RefId;
 
                     d = w;
                 }
@@ -255,9 +268,9 @@ namespace Civica.Models
                 if (o is Project p)
                 {
                     cmd = new SqlCommand("UPDATE PROJECTS SET ProjectName = @PN, OwnerName = @ON, ManagerName = @MN, Description = @DESC " +
-                                          "WHERE ProjectId = @ID", con); // Opsætter parameterne der skal opdateres.
+                                          "WHERE ProjectId = @ID", con); 
 
-                    // Indsætter opdaterede værdier i parameterne 
+                    
                     cmd.Parameters.Add("@ID", SqlDbType.Int).Value = p.Id;
                     cmd.Parameters.Add("@PN", SqlDbType.NVarChar).Value = p.Name;
                     cmd.Parameters.Add("@ON", SqlDbType.NVarChar).Value = p.Owner;
