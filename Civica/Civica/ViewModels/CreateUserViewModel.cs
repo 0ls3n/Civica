@@ -38,7 +38,7 @@ namespace Civica.ViewModels
             }
         }
 
-        private string password;
+        private string password = string.Empty;
 
         public string Password
         {

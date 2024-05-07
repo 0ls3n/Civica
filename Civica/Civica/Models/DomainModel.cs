@@ -12,5 +12,6 @@ namespace Civica.Models
 
         public int RefId { get; set; }
         public int UserId { get; set; }
+        public DateTime CreatedDate { get; set; }
     }
 }

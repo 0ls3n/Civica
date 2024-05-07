@@ -53,8 +53,6 @@ namespace Civica.ViewModels
                 }
             }
         }
-
-        //public string Password { get; set; }
         public UserViewModel(User user)
         {
             this.user = user;
