@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <diagram program="umlet" version="15.0.0">
-  <zoom_level>8</zoom_level>
+  <zoom_level>11</zoom_level>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>304</x>
-      <y>296</y>
-      <w>128</w>
-      <h>24</h>
+      <x>143</x>
+      <y>231</y>
+      <w>231</w>
+      <h>33</h>
     </coordinates>
-    <panel_attributes>: CreateUserViewModel</panel_attributes>
+    <panel_attributes>projectRepo : ProjectRepository</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>360</x>
-      <y>312</y>
-      <w>24</w>
-      <h>40</h>
+      <x>220</x>
+      <y>253</y>
+      <w>33</w>
+      <h>55</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;30.0</additional_attributes>
@@ -26,10 +26,10 @@
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>360</x>
-      <y>336</y>
-      <w>16</w>
-      <h>200</h>
+      <x>220</x>
+      <y>286</y>
+      <w>22</w>
+      <h>275</h>
     </coordinates>
     <panel_attributes/>
     <additional_attributes/>
@@ -37,44 +37,33 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>240</x>
-      <y>328</y>
-      <w>136</w>
-      <h>32</h>
+      <x>22</x>
+      <y>275</y>
+      <w>220</w>
+      <h>44</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;-
-CreateUser()</panel_attributes>
-    <additional_attributes>150.0;20.0;10.0;20.0</additional_attributes>
+ShowProjectHistory()</panel_attributes>
+    <additional_attributes>180.0;20.0;10.0;20.0</additional_attributes>
   </element>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>472</x>
-      <y>368</y>
-      <w>168</w>
-      <h>24</h>
+      <x>374</x>
+      <y>330</y>
+      <w>231</w>
+      <h>33</h>
     </coordinates>
     <panel_attributes>userRepo : Repository&lt;T&gt;</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
-    <id>UMLGeneric</id>
-    <coordinates>
-      <x>776</x>
-      <y>336</y>
-      <w>64</w>
-      <h>24</h>
-    </coordinates>
-    <panel_attributes>u : User</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
     <id>Relation</id>
     <coordinates>
-      <x>544</x>
-      <y>384</y>
-      <w>24</w>
-      <h>40</h>
+      <x>473</x>
+      <y>352</y>
+      <w>33</w>
+      <h>55</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;30.0</additional_attributes>
@@ -82,10 +71,10 @@ CreateUser()</panel_attributes>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>544</x>
-      <y>408</y>
-      <w>16</w>
-      <h>72</h>
+      <x>473</x>
+      <y>385</y>
+      <w>22</w>
+      <h>99</h>
     </coordinates>
     <panel_attributes/>
     <additional_attributes/>
@@ -93,10 +82,10 @@ CreateUser()</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>544</x>
-      <y>472</y>
-      <w>24</w>
-      <h>40</h>
+      <x>473</x>
+      <y>473</y>
+      <w>33</w>
+      <h>55</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;30.0</additional_attributes>
@@ -104,10 +93,10 @@ CreateUser()</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>368</x>
-      <y>336</y>
-      <w>424</w>
-      <h>32</h>
+      <x>231</x>
+      <y>286</y>
+      <w>583</w>
+      <h>44</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;-
 &lt;&lt;create&gt;&gt;(firstName, lastName, password)</panel_attributes>
@@ -116,10 +105,10 @@ CreateUser()</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>368</x>
-      <y>400</y>
-      <w>192</w>
-      <h>32</h>
+      <x>231</x>
+      <y>374</y>
+      <w>264</w>
+      <h>44</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;-
 userRepo.Add(u)</panel_attributes>
@@ -128,10 +117,10 @@ userRepo.Add(u)</panel_attributes>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>720</x>
-      <y>376</y>
-      <w>112</w>
-      <h>24</h>
+      <x>715</x>
+      <y>220</y>
+      <w>154</w>
+      <h>33</h>
     </coordinates>
     <panel_attributes>_DatabaseHelper&lt;T&gt;_</panel_attributes>
     <additional_attributes/>
@@ -139,21 +128,21 @@ userRepo.Add(u)</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>768</x>
-      <y>392</y>
-      <w>24</w>
-      <h>40</h>
+      <x>781</x>
+      <y>242</y>
+      <w>33</w>
+      <h>176</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;30.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;140.0</additional_attributes>
   </element>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>768</x>
-      <y>416</y>
-      <w>16</w>
-      <h>24</h>
+      <x>781</x>
+      <y>396</y>
+      <w>22</w>
+      <h>33</h>
     </coordinates>
     <panel_attributes/>
     <additional_attributes/>
@@ -161,10 +150,10 @@ userRepo.Add(u)</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>552</x>
-      <y>408</y>
-      <w>232</w>
-      <h>32</h>
+      <x>484</x>
+      <y>385</y>
+      <w>319</w>
+      <h>44</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;-
 DatabaseHelper.Add(u)</panel_attributes>
@@ -173,46 +162,35 @@ DatabaseHelper.Add(u)</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>552</x>
-      <y>440</y>
-      <w>120</w>
-      <h>48</h>
+      <x>484</x>
+      <y>429</y>
+      <w>165</w>
+      <h>66</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;-
 _list.Add(u)</panel_attributes>
     <additional_attributes>10.0;40.0;60.0;40.0;60.0;10.0;10.0;10.0</additional_attributes>
   </element>
   <element>
-    <id>UMLNote</id>
-    <coordinates>
-      <x>848</x>
-      <y>376</y>
-      <w>112</w>
-      <h>56</h>
-    </coordinates>
-    <panel_attributes>Static class</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
     <id>Text</id>
     <coordinates>
-      <x>480</x>
-      <y>272</y>
-      <w>152</w>
-      <h>48</h>
+      <x>374</x>
+      <y>187</y>
+      <w>330</w>
+      <h>66</h>
     </coordinates>
     <panel_attributes>style=wordwrap
 fontsize=30
-CreateUser</panel_attributes>
+ShowProjectHistory </panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>360</x>
-      <y>776</y>
-      <w>24</w>
-      <h>80</h>
+      <x>220</x>
+      <y>891</y>
+      <w>33</w>
+      <h>110</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;80.0</additional_attributes>
@@ -220,21 +198,10 @@ CreateUser</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>824</x>
-      <y>376</y>
-      <w>40</w>
-      <h>24</h>
-    </coordinates>
-    <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>10.0;10.0;30.0;10.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>768</x>
-      <y>432</y>
-      <w>24</w>
-      <h>48</h>
+      <x>781</x>
+      <y>418</y>
+      <w>33</w>
+      <h>66</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;40.0</additional_attributes>
@@ -242,10 +209,10 @@ CreateUser</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>368</x>
-      <y>432</y>
-      <w>152</w>
-      <h>88</h>
+      <x>231</x>
+      <y>418</y>
+      <w>209</w>
+      <h>121</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;-
 ipvm.UpdateList()
@@ -258,10 +225,10 @@ Password = ""</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>360</x>
-      <y>528</y>
-      <w>24</w>
-      <h>40</h>
+      <x>220</x>
+      <y>550</y>
+      <w>33</w>
+      <h>55</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;30.0</additional_attributes>
