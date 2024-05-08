@@ -290,6 +290,25 @@
                                    Text=" kr"/>
                         </Grid>
 
+                        <Grid Margin="5 10 0 0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto"/>
+                                <ColumnDefinition Width="auto"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <TextBlock FontSize="20"
+                                       Text="Samlede omkostning: "/>
+
+                            <TextBlock Grid.Column="1"
+                                        FontSize="20"
+                                        Text="{Binding CombinedCost}"/>
+
+                            <TextBlock Grid.Column="2"
+                                        FontSize="20"
+                                        Text=" kr"/>
+                        </Grid>
+
                         <Border BorderBrush="Gray"
                             BorderThickness="0,0,0,1"
                             Margin="5, 25, 5, 0"

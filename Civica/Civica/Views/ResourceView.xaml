@@ -19,6 +19,7 @@
                      Width="auto"
                      ScrollViewer.HorizontalScrollBarVisibility="Hidden"
                      HorizontalAlignment="Center"
+                     SelectionMode="Extended"
                      ItemsSource="{Binding Path=Audits}"
                      SelectedItem="{Binding Path=SelectedAudit}">
 

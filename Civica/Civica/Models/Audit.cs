@@ -17,6 +17,5 @@ namespace Civica.Models
             Year = year;
             CreatedDate = createdDate;
         }
-
     }
 }

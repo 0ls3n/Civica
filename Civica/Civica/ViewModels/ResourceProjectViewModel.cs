@@ -53,6 +53,17 @@ namespace Civica.ViewModels
             }
         }
 
+        private string _combinedCost;
+        public string CombinedCost
+        {
+            get => _combinedCost;
+            set
+            {
+                _combinedCost = value;
+                OnPropertyChanged(nameof(CombinedCost));
+            }
+        }
+
         private ResourceViewModel _selectedResource;
         public ResourceViewModel SelectedResource
         {
@@ -142,11 +153,14 @@ namespace Civica.ViewModels
         public void UpdateList()
         {
             Audits.Clear();
+            double temp = double.Parse(SelectedResource.StartAmount);
             List<Audit> audits = auditRepo.GetByRefId(SelectedResource.GetId()).OrderBy(x => x.Year).ToList<Audit>();
             foreach (Audit a in audits)
             {
                 Audits.Add(new AuditViewModel(a));
+                temp += double.Parse(a.Amount.ToString());
             }
+            CombinedCost = string.Format("{0:#,0.00}", temp);
         }
     }
 }
