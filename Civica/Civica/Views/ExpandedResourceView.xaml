@@ -184,15 +184,30 @@
                 Margin="0 0 10 0"/>
 
             <Border Grid.Row="0"
-                    Margin="0 0 10 0">
+         Margin="0 0 10 0">
                 <view:InformationPlaceholderView ImageWidth="150"
-                         PlaceholderText="Vælg fra listen"/>
+              PlaceholderText="Vælg fra listen"/>
 
                 <Border.Style>
                     <Style TargetType="Border">
                         <Setter Property="Visibility" Value="Collapsed"/>
                         <Style.Triggers>
                             <DataTrigger Binding="{Binding InformationPlaceholderVisibility}" Value="Visible">
+                                <Setter Property="Visibility" Value="Visible"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Border.Style>
+            </Border>
+            <Border Grid.Row="0"
+         Margin="0 0 10 0">
+                <view:CreateAuditView/>
+
+                <Border.Style>
+                    <Style TargetType="Border">
+                        <Setter Property="Visibility" Value="Collapsed"/>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding CreateAuditVisibility}" Value="Visible">
                                 <Setter Property="Visibility" Value="Visible"/>
                             </DataTrigger>
                         </Style.Triggers>
@@ -374,7 +389,7 @@
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
                         <Button BorderThickness="0"
-                                Grid.Column="0"
+                                Grid.Column="1"
                              HorizontalAlignment="Left"
                              Width="60"
                              Cursor="Hand"
@@ -405,6 +420,44 @@
                  CornerRadius="25">
                                         <Image Source="/Resources/Images/edit_Logo.png" 
                          Width="25"/>
+                                    </Border>
+                                </ControlTemplate>
+                            </Button.Template>
+                        </Button>
+                        <Button BorderThickness="0"
+                                Grid.Column="0"
+                                HorizontalAlignment="Left"
+                                Width="60"
+                                Cursor="Hand"
+                                Height="60"
+                                Command="{Binding CreateAuditCmdView}"
+                                CommandParameter="{Binding}"
+                                ToolTipService.InitialShowDelay="0">
+                            <Button.ToolTip>
+                                <ToolTip Content="Opret ny omkostning" Style="{StaticResource ToolTipTheme}"/>
+                            </Button.ToolTip>
+
+                            <Button.Style>
+                                <Style TargetType="{x:Type Button}">
+                                    <Setter Property="Background" Value="Green"/>
+
+                                    <Style.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter Property="Background" Value="#FF039803"/>
+                                        </Trigger>
+                                    </Style.Triggers>
+
+                                </Style>
+                            </Button.Style>
+
+                            <Button.Template>
+                                <ControlTemplate TargetType="{x:Type Button}">
+                                    <Border Width="50" 
+                                             Height="50"
+                                             Background="{TemplateBinding Background}"
+                                             CornerRadius="25">
+                                        <Image Source="/Resources/Images/create_logo.png" 
+                 Width="25"/>
                                     </Border>
                                 </ControlTemplate>
                             </Button.Template>

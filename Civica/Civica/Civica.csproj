@@ -86,4 +86,10 @@
     </None>
   </ItemGroup>
 
+  <ItemGroup>
+    <Page Update="Views\CreateAuditView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+
 </Project>
