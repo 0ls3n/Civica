@@ -162,6 +162,7 @@ namespace Civica.ViewModels
                     mvm.ResourceView = WindowVisibility.Hidden;
                     mvm.StatusDot = WindowVisibility.Hidden;
                     mvm.LoginView = WindowVisibility.Hidden;
+                    mvm.ipvm.InformationVisibility = WindowVisibility.Visible;
                     mvm.ViewTitle = mvm.ipvm.WindowTitle;
                     mvm.ipvm.UpdateList();
                 }
@@ -220,6 +221,10 @@ namespace Civica.ViewModels
                    mvm.rpvm.InformationPlaceholderVisibility = WindowVisibility.Visible;
                    mvm.rpvm.ResourceDetailsVisibility = WindowVisibility.Hidden;
                    mvm.rpvm.EditAuditVisiblity = WindowVisibility.Hidden;
+                   mvm.rpvm.CreateAuditVisibility = WindowVisibility.Hidden;
+                   mvm.rpvm.EditResourceVisibility = WindowVisibility.Hidden;
+                   mvm.rpvm.ResourceVisiblity = WindowVisibility.Visible;
+
                    mvm.rpvm.UpdateList();
                }
            },

@@ -276,12 +276,16 @@ namespace Civica.ViewModels
                  rvm.ResourceDetailsVisibility = WindowVisibility.Hidden;
                  rvm.InformationPlaceholderVisibility = WindowVisibility.Visible;
 
-                 Audit a = rvm.auditRepo.GetById(rvm.SelectedAudit.GetRefId());
+                 Audit a = rvm.auditRepo.GetByRefId(avm.GetRefId()).FirstOrDefault(x => x.Id == avm.GetId());
 
                  a.Amount = decimal.Parse(rvm.SelectedAudit.Amount);
                  a.Year = rvm.SelectedAudit.Year;
 
                  rvm.auditRepo.Update(a);
+
+                 rvm.Audits.Clear();
+
+
 
                  rvm.UpdateList();
 
@@ -332,13 +336,17 @@ namespace Civica.ViewModels
               if (parameter is ResourceProjectViewModel rvm)
               {
                   AuditViewModel avm = rvm.SelectedAudit;
+
+                  Audit a = rvm.auditRepo.GetByRefId(avm.GetRefId()).FirstOrDefault(x => x.Id == avm.GetId());
+
+                  rvm.auditRepo.Remove(a);
+
+                  rvm.Audits.Clear();
+
                   rvm.EditAuditVisiblity = WindowVisibility.Hidden;
                   rvm.ResourceDetailsVisibility = WindowVisibility.Hidden;
                   rvm.InformationPlaceholderVisibility = WindowVisibility.Visible;
-
-                  Audit a = rvm.auditRepo.GetById(rvm.SelectedAudit.GetRefId());
-
-                  rvm.auditRepo.Remove(a);
+                  rvm.CreateAuditVisibility = WindowVisibility.Hidden;
 
                   rvm.UpdateList();
               }
@@ -389,14 +397,17 @@ namespace Civica.ViewModels
              {
                  //string temp = string.Format("{0:#,0}", double.Parse(avm.Amount));
                  //avm.Amount = temp;
-                 rvm.EditAuditVisiblity = WindowVisibility.Hidden;
-                 rvm.ResourceDetailsVisibility = WindowVisibility.Hidden;
-                 rvm.CreateAuditVisibility = WindowVisibility.Hidden;
-                 rvm.InformationPlaceholderVisibility = WindowVisibility.Visible;
 
                  Audit a = new Audit(rvm.mvm.ipvm.GetCurrentUser().GetId(), rvm.SelectedResource.GetId(), rvm.AuditExpectedYearlyCost, rvm.AuditYear, DateTime.Now);
 
                  rvm.auditRepo.Add(a);
+
+                 rvm.Audits.Clear();
+
+                 rvm.EditAuditVisiblity = WindowVisibility.Hidden;
+                 rvm.ResourceDetailsVisibility = WindowVisibility.Hidden;
+                 rvm.CreateAuditVisibility = WindowVisibility.Hidden;
+                 rvm.InformationPlaceholderVisibility = WindowVisibility.Visible;
 
                  rvm.UpdateList();
              }
