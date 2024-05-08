@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using Civica.Models.Enums;
 using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.Configuration;
@@ -289,7 +290,7 @@ namespace Civica.Models
                 }
                 else if (o is Resource r)
                 {
-                    cmd = new SqlCommand("UPDATE RESOURCES SET StartAmount = @SA, ExpectedYearlyCost = @EYC" +
+                    cmd = new SqlCommand("UPDATE RESOURCES SET StartAmount = @SA, ExpectedYearlyCost = @EYC " +
                                             "WHERE ResourceId = @ID", con); // Opsætter parameterne der skal opdateres.
 
                     // Indsætter opdaterede værdier i parameterne 

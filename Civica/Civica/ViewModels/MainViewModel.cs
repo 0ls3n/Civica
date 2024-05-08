@@ -219,6 +219,7 @@ namespace Civica.ViewModels
                    mvm.rpvm.Audits.Clear();
                    mvm.rpvm.InformationPlaceholderVisibility = WindowVisibility.Visible;
                    mvm.rpvm.ResourceDetailsVisibility = WindowVisibility.Hidden;
+                   mvm.rpvm.EditAuditVisiblity = WindowVisibility.Hidden;
                    mvm.rpvm.UpdateList();
                }
            },

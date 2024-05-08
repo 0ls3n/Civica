@@ -56,6 +56,43 @@
                         Margin="5, 25, 5, 0"
                         Opacity="0.2">
                     </Border>
+                    <Button
+                         BorderThickness="0"
+                         HorizontalAlignment="Left"
+                         Width="60"
+                         Cursor="Hand"
+                         Height="60"
+                         Command="{Binding EditAuditViewCmd}"
+                         CommandParameter="{Binding}"
+                         ToolTipService.InitialShowDelay="0">
+                        <Button.ToolTip>
+                            <ToolTip Content="Opdater omkostninger" Style="{StaticResource ToolTipTheme}"/>
+                        </Button.ToolTip>
+
+                        <Button.Style>
+                            <Style TargetType="{x:Type Button}">
+                                <Setter Property="Background" Value="Orange"/>
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Background" Value="#FFF1B545"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+
+                        <Button.Template>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border Width="50" 
+                                        Height="50"
+                                        Background="{TemplateBinding Background}"
+                                        CornerRadius="25">
+                                        <Image Source="/Resources/Images/edit_Logo.png" 
+                                                Width="25"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Button.Template>
+
+                    </Button>
                 </StackPanel>
             </ScrollViewer>
 
