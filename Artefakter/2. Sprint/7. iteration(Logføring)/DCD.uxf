@@ -1,0 +1,1300 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="15.1">
+  <help_text>// Uncomment the following line to change the fontsize and font:
+fontsize=10
+// fontfamily=SansSerif //possible: SansSerif,Serif,Monospaced
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////
+// Welcome to UMLet!
+//
+// Double-click on elements to add them to the diagram, or to copy them
+// Edit elements by modifying the text in this panel
+// Hold Ctrl to select multiple elements
+// Use Ctrl+mouse to select via lasso
+//
+// Use +/- or Ctrl+mouse wheel to zoom
+// Drag a whole relation at its central square icon
+//
+// Press Ctrl+C to copy the whole diagram to the system clipboard (then just paste it to, eg, Word)
+// Edit the files in the "palettes" directory to create your own element palettes
+//
+// Select "Custom Elements &gt; New..." to create new element types
+//////////////////////////////////////////////////////////////////////////////////////////////
+
+
+// This text will be stored with each diagram;  use it for notes.</help_text>
+  <zoom_level>20</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>400</x>
+      <y>400</y>
+      <w>240</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>MainWindow
+-
++ MainWindow()</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>380</x>
+      <y>860</y>
+      <w>200</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>InProgressView
+-
++ InProgressView()
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>720</x>
+      <y>380</y>
+      <w>440</w>
+      <h>200</h>
+    </coordinates>
+    <panel_attributes>MainViewModel
+-
++ ViewTitle : string
++ CurrentView : object
++ ipvm : InProgressViewModel
++ InProgressViewCmd : RelayCommand
+
+-
++ MainViewModel()
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>720</x>
+      <y>140</y>
+      <w>440</w>
+      <h>180</h>
+    </coordinates>
+    <panel_attributes>RelayCommand
+-
+- _execute : Action&lt;object&gt;
+- _canExecute : Predicte&lt;object&gt;
++ &lt;&lt;event&gt;&gt; CanExecuteChanged : EventHandler
+-
++ CanExecute(parameter : object) : bool
++ Execute(parameter : object) 
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1560</x>
+      <y>2340</y>
+      <w>360</w>
+      <h>260</h>
+    </coordinates>
+    <panel_attributes>ProgressViewModel
+--
+- progress : Progress
++ Fase : string
++ Status : string
++ Date : DateTime
++ Description : string
+--
++ ProjectViewModel(p : Progress)
++ GetId() : int
++ GetProjectId() : int</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1560</x>
+      <y>3140</y>
+      <w>360</w>
+      <h>220</h>
+    </coordinates>
+    <panel_attributes>UserViewModel
+--
+- user : User
++ FirstName : string
++ LastName : string 
++ Password : int
+--
++ UserViewModel(u : User)
++ GetId() : int</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1560</x>
+      <y>1780</y>
+      <w>360</w>
+      <h>180</h>
+    </coordinates>
+    <panel_attributes>AuditViewModel
+--
+- audit : Audit
++ Amount : decimal
++ Year : DateTime
+--
++ AuditViewModel(a : Audit)
++ GetId() : int</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1560</x>
+      <y>2020</y>
+      <w>360</w>
+      <h>260</h>
+    </coordinates>
+    <panel_attributes>ProjectViewModel
+--
+- project : Project
++ Name : string
++ Owner : string
++ Manager : string
++ Description : string
++ StatusColor : string
+--
++ ProjectViewModel(p : Project)
++ GetId() : int</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1280</x>
+      <y>400</y>
+      <w>560</w>
+      <h>140</h>
+    </coordinates>
+    <panel_attributes>ObservableObject
+-
++ &lt;&lt;event&gt;&gt; PropertyChanged : PropertyChangedEventHandler
++ OnPropertyChanged(propertyName = null : string)</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1440</x>
+      <y>260</y>
+      <w>240</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;interface&gt;&gt;
+INotifyPropertyChanged</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1540</x>
+      <y>320</y>
+      <w>60</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;40.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>2300</x>
+      <y>720</y>
+      <w>400</w>
+      <h>340</h>
+    </coordinates>
+    <panel_attributes>Project
+--
++ Name : string
++ Owner : string
++ Manager : string 
++ Description : string
+--
++ Project(userId : int,
+               name : string)
++ Project(userId : int,
+               name : string, 
+               owner : string, 
+               manager : string, 
+               description : string)</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1560</x>
+      <y>1020</y>
+      <w>500</w>
+      <h>280</h>
+    </coordinates>
+    <panel_attributes>Repository&lt;T&gt;
+--
+- _list : DomainModel[0.*]
+- _execute : Func&lt;int, DomainModel[0.*]&gt;
+-
++ Repository(execute : Func&lt;int, List&lt;DomainModel&gt;&gt;)
++ Add(o : T)
++ GetAll() : DomainModel[0.*]
++ GetById(id : int) : &lt;T&gt;
++ GetByRefId(id :int) : &lt;T&gt;[0.*]
++ Update(o : T)
++ Remove(o : T)</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1560</x>
+      <y>1360</y>
+      <w>500</w>
+      <h>240</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;static&gt;&gt;
+DatabaseHelper&lt;T&gt;
+--
+- &lt;&lt;static&gt;&gt; connectionString : string
+- &lt;&lt;static&gt;&gt; config : IConfigurationRoot
+--
++ &lt;&lt;static&gt;&gt; Initialize(type : Type) : DomainModel[0.*]
++ &lt;&lt;static&gt;&gt; Add(o : T)
++ &lt;&lt;static&gt;&gt; Update(o : T)
++ &lt;&lt;static&gt;&gt; Remove(o : T)</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>2880</x>
+      <y>1200</y>
+      <w>200</w>
+      <h>240</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;enumeration&gt;&gt;
+Phase
+--
+IDENTIFIED
+PLANNING
+IMPLEMENTATION
+OPERATION
+FOLLOW_UP
+DONE
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>2880</x>
+      <y>1500</y>
+      <w>200</w>
+      <h>200</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;enumeration&gt;&gt;
+Status
+--
+NONE
+CRITICAL
+DELAYED
+ON_TRACK
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>2480</x>
+      <y>1040</y>
+      <w>60</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=*
+m2=1</panel_attributes>
+    <additional_attributes>10.0;40.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>2300</x>
+      <y>1460</y>
+      <w>400</w>
+      <h>220</h>
+    </coordinates>
+    <panel_attributes>Resource
+--
++ StartAmount : decimal
++ ExpectedYearlyCost : decimal
+--
++ Resource(userId : int,
+                    projectId : int, 
+                    startAmount : decimal, 
+                    expectedYearlyCost : decimal)</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>2300</x>
+      <y>1740</y>
+      <w>400</w>
+      <h>220</h>
+    </coordinates>
+    <panel_attributes>Audit
+--
++ Amount : decimal
++ Year : DateTime
+--
++ Audit(userId : int,
+            resoruceId : int, 
+            amount : decimal, 
+            year : DateTime)
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>2480</x>
+      <y>1660</y>
+      <w>60</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=*
+m2=1</panel_attributes>
+    <additional_attributes>10.0;40.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>2220</x>
+      <y>940</y>
+      <w>120</w>
+      <h>620</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=1
+m2=1
+</panel_attributes>
+    <additional_attributes>40.0;10.0;10.0;10.0;10.0;290.0;40.0;290.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1560</x>
+      <y>720</y>
+      <w>500</w>
+      <h>240</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;interface&gt;&gt;
+IRepository&lt;T&gt;
+-
++ Repository(execute : Func&lt;int, List&lt;DomainModel&gt;&gt;)
++ Add(o : T)
++ GetAll() : DomainModel[0.*]
++ GetById(id : int) : &lt;T&gt;
++ GetByRefId(id :int) : &lt;T&gt;[0.*]
++ Update(o : T)
++ Remove(o : T)</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>2300</x>
+      <y>1120</y>
+      <w>400</w>
+      <h>280</h>
+    </coordinates>
+    <panel_attributes>Progress
+--
++ Phase : Phase
++ Status : Status
++ Date : DateTime
++ Description : string
+--
++ Progress(userId : int,
+                  projectId : int, 
+                  phase : Phase, 
+                  status : Status, 
+                  description : string)
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>880</x>
+      <y>560</y>
+      <w>60</w>
+      <h>200</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=
+m2=
+</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;80.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1020</x>
+      <y>0</y>
+      <w>140</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;interface&gt;&gt;
+ICommand</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1080</x>
+      <y>60</y>
+      <w>60</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;40.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>560</x>
+      <y>880</y>
+      <w>240</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=
+m2=
+</panel_attributes>
+    <additional_attributes>10.0;20.0;100.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>620</x>
+      <y>420</y>
+      <w>140</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=
+m2=
+</panel_attributes>
+    <additional_attributes>10.0;20.0;50.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>960</x>
+      <y>300</y>
+      <w>60</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=
+m2=
+</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;40.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>760</x>
+      <y>1640</y>
+      <w>480</w>
+      <h>320</h>
+    </coordinates>
+    <panel_attributes>CreateProjectViewModel
+-
+- ipvm : InProgressViewModel
+- projectRepo : IRepository&lt;Project&gt;
++ ProjectName : string
++ ProjectOwner : string
++ ProjectManager : string
++ ProjectDescription : string
++ CreateProjectCmd : RelayCommand
+-
++ Init(o : ObservableObject)
++ GetRepo(projectRepo : IRepository&lt;Project&gt;)
++ CreateProject()</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>760</x>
+      <y>720</y>
+      <w>480</w>
+      <h>660</h>
+    </coordinates>
+    <panel_attributes>InProgressViewModel
+-
+- mvm : MainViewModel
+- projectRepo : IRepository&lt;Project&gt;
+- progressRepo : IRepository&lt;Progress&gt;
++ WindowTitle : string
++ CreateVisibility : WindowVisibility
++ EditVisibility : WindowVisibility
++ ProgressVisibility : WindowVisibility
++ InformationVisibility : WindowVisibility
++ Projects : ProjectViewModel[0.*]
++ SelectedProject : ProjectViewModel
++ SelectedProgress : ProgressViewModel
++ OldName : string
++ CreateProjectVM : CreateProjectViewModel
++ CreateProgressVM : CreateProgressViewModel
++ CreateProjectViewCmd : RelayCommand
++ UpdateProjectViewCmd : RelayCommand
++ ProgressProjectViewCmd : RelayCommand
++ UpdateProjectCmd : RelayCommand
++ RemoveProjectCmd : RelayCommand
+-
++ InProgressViewModel()
++ UpdateList()
++ Init(o : ObservableObject)
++ RemoveProject()	
++ UpdateProject(projectVM : ProjectViewModel)
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>760</x>
+      <y>2020</y>
+      <w>480</w>
+      <h>380</h>
+    </coordinates>
+    <panel_attributes>CreateProgresViewModel
+-
+- ipvm : InProgressViewModel
+- progressRepo : IRepository&lt;Project&gt;
++ Phases : string[0.*]
++ Statuses : string[0.*]
++ ProgressDescription : string
++ SelectedPhase : string
++ EnumPhase : Phase
++ SelectedStatus : string
++ EnumStatus : Status
++ ProgressProjectCmd : RelayCommand
+-
++ Init(o : ObservableObject)
++ SetRepo(progressRepo : IRepository&lt;Progress&gt;)
++ CreateProgress()
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1820</x>
+      <y>260</y>
+      <w>260</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;interface&gt;&gt;
+IViewModelChild
+-
+Init(o : ObservableObject);</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>280</x>
+      <y>720</y>
+      <w>300</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>InformationPlaceholderView
+-
++ InformationPlaceholderView()</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>440</x>
+      <y>460</y>
+      <w>60</w>
+      <h>300</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=
+m2=
+</panel_attributes>
+    <additional_attributes>10.0;130.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>360</x>
+      <y>1640</y>
+      <w>220</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>CreateProjectView
+-
++ CreateProjectView()
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>340</x>
+      <y>2020</y>
+      <w>240</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>CreateProgressView 
+-
++ CreateProgressView()
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>340</x>
+      <y>1000</y>
+      <w>240</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>EditProjectViewModel
+-
++ EditProjectViewModel()
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>60</x>
+      <y>860</y>
+      <w>260</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>ProjectInformationView
+-
++ ProjectInformationView()
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>300</x>
+      <y>880</y>
+      <w>120</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=
+m2=
+</panel_attributes>
+    <additional_attributes>10.0;20.0;40.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>560</x>
+      <y>1020</y>
+      <w>240</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=
+m2=
+</panel_attributes>
+    <additional_attributes>10.0;20.0;100.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>560</x>
+      <y>1660</y>
+      <w>240</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=
+m2=
+</panel_attributes>
+    <additional_attributes>10.0;20.0;100.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>560</x>
+      <y>2040</y>
+      <w>240</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=
+m2=
+</panel_attributes>
+    <additional_attributes>10.0;20.0;100.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>2300</x>
+      <y>2020</y>
+      <w>400</w>
+      <h>220</h>
+    </coordinates>
+    <panel_attributes>WorkTime
+--
++ Time : double
++ InvolvedName : string
+--
++ WorkTime(userId : int,
+                    resourceId : int, 
+                    time : double, 
+                    involvedName : string)</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>2220</x>
+      <y>1580</y>
+      <w>120</w>
+      <h>540</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=1
+m2=*
+</panel_attributes>
+    <additional_attributes>40.0;10.0;10.0;10.0;10.0;250.0;40.0;250.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1560</x>
+      <y>2660</y>
+      <w>360</w>
+      <h>180</h>
+    </coordinates>
+    <panel_attributes>WorkTimeViewModel
+--
+- workTime : WorkTime
++ EstimatedWorkTime : double 
++ InvolvedName : string
+--
++ WorkTimeViewModel(w : WorkTime)
++ GetId() : int</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1780</x>
+      <y>940</y>
+      <w>60</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;40.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>2180</x>
+      <y>640</y>
+      <w>580</w>
+      <h>1640</h>
+    </coordinates>
+    <panel_attributes>Model (Domain)
+-</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1780</x>
+      <y>1280</y>
+      <w>60</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=
+m2=
+</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;40.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>2100</x>
+      <y>1080</y>
+      <w>120</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=
+m2=
+</panel_attributes>
+    <additional_attributes>40.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1500</x>
+      <y>1700</y>
+      <w>480</w>
+      <h>1700</h>
+    </coordinates>
+    <panel_attributes>ViewModel (Models)
+-</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1420</x>
+      <y>1080</y>
+      <w>120</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=
+m2=
+</panel_attributes>
+    <additional_attributes>40.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1220</x>
+      <y>180</y>
+      <w>920</w>
+      <h>400</h>
+    </coordinates>
+    <panel_attributes>ViewModel (Interfaces)
+-</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1140</x>
+      <y>460</y>
+      <w>180</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>70.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1000</x>
+      <y>1360</y>
+      <w>60</w>
+      <h>320</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=
+m2=
+</panel_attributes>
+    <additional_attributes>10.0;140.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>700</x>
+      <y>640</y>
+      <w>740</w>
+      <h>2760</h>
+    </coordinates>
+    <panel_attributes>ViewModel (Child, Controller)
+-</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>0</x>
+      <y>640</y>
+      <w>640</w>
+      <h>2760</h>
+    </coordinates>
+    <panel_attributes>View (UserControl)
+-</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>520</x>
+      <y>300</y>
+      <w>120</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>Window</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>560</x>
+      <y>320</y>
+      <w>60</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;40.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>520</x>
+      <y>540</y>
+      <w>120</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>UserControl</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>560</x>
+      <y>560</y>
+      <w>60</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;40.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1500</x>
+      <y>640</y>
+      <w>620</w>
+      <h>1000</h>
+    </coordinates>
+    <panel_attributes>Model (Persistance)
+-</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1320</x>
+      <y>560</y>
+      <w>60</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;40.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1420</x>
+      <y>1780</y>
+      <w>120</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=
+m2=
+</panel_attributes>
+    <additional_attributes>40.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>2820</x>
+      <y>1120</y>
+      <w>320</w>
+      <h>620</h>
+    </coordinates>
+    <panel_attributes>Enum (Progress)
+-</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>2680</x>
+      <y>1160</y>
+      <w>180</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>10.0;10.0;70.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>2180</x>
+      <y>420</y>
+      <w>160</w>
+      <h>160</h>
+    </coordinates>
+    <panel_attributes>DomainModel
+-
++ Id : int
++ Iteration : int
++ RefId : int
++ UserId : int</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>2240</x>
+      <y>560</y>
+      <w>60</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;40.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>760</x>
+      <y>1440</y>
+      <w>200</w>
+      <h>140</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;enumeration&gt;&gt;
+WindowVisibility
+--
+Visible
+Hidden</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>840</x>
+      <y>1360</y>
+      <w>60</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;40.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1220</x>
+      <y>1320</y>
+      <w>80</w>
+      <h>800</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=
+m2=
+</panel_attributes>
+    <additional_attributes>10.0;380.0;20.0;380.0;20.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>2480</x>
+      <y>360</y>
+      <w>400</w>
+      <h>220</h>
+    </coordinates>
+    <panel_attributes>User
+-
++ FirstName : string
++ LastName : string
++ Password : int
+-
++ User(firstName : string,
+           lastName : string,
+           password : int)
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1560</x>
+      <y>2900</y>
+      <w>360</w>
+      <h>180</h>
+    </coordinates>
+    <panel_attributes>ResourceViewModel
+--
+- resource : Resource
++ StartAmount : decimal
++ EstimatedWorkTime : double 
+--
++ ResourceViewModel(r : Resource)
++ GetId() : int</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>2320</x>
+      <y>480</y>
+      <w>200</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=1
+m2=*</panel_attributes>
+    <additional_attributes>10.0;10.0;80.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>760</x>
+      <y>2900</y>
+      <w>480</w>
+      <h>380</h>
+    </coordinates>
+    <panel_attributes>CreateUserViewModel
+-
+- svm : SettingsViewModel
+- userRepo : IRepository&lt;User&gt;
++ FirstName : string
++ LastName : string
++ Password : int
++ CreateUserCmd : RelayCommand
+-
++ Init(o : ObservableObject)
++ SetRepo(userRepo : IRepository&lt;User&gt;)
++ CreateUser()
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>560</x>
+      <y>2940</y>
+      <w>240</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=
+m2=
+</panel_attributes>
+    <additional_attributes>10.0;20.0;100.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>340</x>
+      <y>2920</y>
+      <w>240</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>CreateUserView 
+-
++ CreateUserView()
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>760</x>
+      <y>2460</y>
+      <w>480</w>
+      <h>380</h>
+    </coordinates>
+    <panel_attributes>SettingsViewModel
+-
+- mvm : MainViewModel
+- userRepo : IRepository&lt;User&gt;
++ Users : UserViewModel[0.*]
++ SelectedUser : UserViewModel
++ CreateUserViewCmd : RelayCommand
++ UpdateUserViewCmd : RelayCommand
++ CreateUserCmd : RelayCommand
++ UpdateUserCmd : RelayCommand
++ RemoveUserCmd : RelayCommand
+-
++ Init(o : ObservableObject)
++ SetRepo(userRepo : IRepository&lt;User&gt;)
++ UpdateUser(userVM : UserViewModel)
++ DeleteUser()</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>340</x>
+      <y>2480</y>
+      <w>240</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>SettingsView 
+-
++ SettingsView()
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>560</x>
+      <y>2500</y>
+      <w>240</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=
+m2=
+</panel_attributes>
+    <additional_attributes>10.0;20.0;100.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1120</x>
+      <y>560</y>
+      <w>220</w>
+      <h>2020</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=
+m2=
+</panel_attributes>
+    <additional_attributes>60.0;990.0;90.0;990.0;90.0;30.0;10.0;30.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>980</x>
+      <y>2820</y>
+      <w>60</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=
+m2=
+</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;40.0</additional_attributes>
+  </element>
+</diagram>
