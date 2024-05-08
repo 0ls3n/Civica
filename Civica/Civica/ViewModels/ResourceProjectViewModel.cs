@@ -326,6 +326,36 @@ namespace Civica.ViewModels
                 return false;
             });
 
+        public RelayCommand RemoveAuditCmd { get; set; } = new RelayCommand(
+          parameter =>
+          {
+              if (parameter is ResourceProjectViewModel rvm)
+              {
+                  AuditViewModel avm = rvm.SelectedAudit;
+                  rvm.EditAuditVisiblity = WindowVisibility.Hidden;
+                  rvm.ResourceDetailsVisibility = WindowVisibility.Hidden;
+                  rvm.InformationPlaceholderVisibility = WindowVisibility.Visible;
+
+                  Audit a = rvm.auditRepo.GetById(rvm.SelectedAudit.GetRefId());
+
+                  rvm.auditRepo.Remove(a);
+
+                  rvm.UpdateList();
+              }
+          },
+          parameter =>
+          {
+              if (parameter is ResourceProjectViewModel rvm)
+              {
+                  if (rvm.SelectedProject != null && rvm.mvm.ipvm.GetCurrentUser() != null)
+                  {
+                      return true;
+                  }
+              }
+              return false;
+          });
+
+
         public RelayCommand CancelAuditCmd { get; set; } = new RelayCommand(
           parameter =>
           {
