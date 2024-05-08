@@ -236,7 +236,7 @@ namespace Civica.ViewModels
             SelectedProject = null;
         }
 
-        public void UpdateProject(ProjectViewModel projectVM, AuditViewModel auditVM)
+        public void UpdateProject(ProjectViewModel projectVM)
         {
             Project p = projectRepo.GetById(projectVM.GetId());
             p.Name = projectVM.Name;
@@ -247,10 +247,6 @@ namespace Civica.ViewModels
             projectRepo.Update(p);
 
             Resource r = resourceRepo.GetByRefId(p.Id).FirstOrDefault();
-
-            Audit a = new Audit(mvm.CurrentUser.GetId(), r.RefId, int.Parse(auditVM.Amount), auditVM.Year, DateTime.Now);
-
-            auditRepo.Add(a);
         }
 
         public UserViewModel GetCurrentUser()
@@ -349,7 +345,7 @@ namespace Civica.ViewModels
             {
                 if (parameter is InProgressViewModel ipvm)
                 {
-                    ipvm.UpdateProject(ipvm.SelectedProject, ipvm.SelectedAudit);
+                    ipvm.UpdateProject(ipvm.SelectedProject);
 
                     ipvm.EditVisibility = WindowVisibility.Hidden;
                     ipvm.InformationVisibility = WindowVisibility.Visible;
