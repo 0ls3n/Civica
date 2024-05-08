@@ -108,7 +108,7 @@
                         CommandParameter="{Binding}"
                         ToolTipService.InitialShowDelay="0">
                         <Button.ToolTip>
-                            <ToolTip Content="Opdater ændringer" Style="{StaticResource ToolTipTheme}"/>
+                            <ToolTip Content="Gem ændringer" Style="{StaticResource ToolTipTheme}"/>
                         </Button.ToolTip>
 
                         <Button.Style>
