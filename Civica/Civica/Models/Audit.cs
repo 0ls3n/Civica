@@ -14,9 +14,9 @@ namespace Civica.Models
         {
             this.Amount = amount;
             RefId = resourceId;
+            UserId = userId;
             Year = year;
             CreatedDate = createdDate;
         }
-
     }
 }

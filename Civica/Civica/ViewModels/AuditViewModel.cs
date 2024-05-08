@@ -15,7 +15,7 @@ namespace Civica.ViewModels
 
         public AuditViewModel(Audit a)
         {
-            Amount = string.Format("{0:#,0.00}", a.Amount);
+            Amount = string.Format("{0:#,0}", a.Amount);
             Year = a.Year;
             audit = a;
         }

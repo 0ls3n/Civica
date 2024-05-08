@@ -16,8 +16,8 @@ namespace Civica.ViewModels
 
         public ResourceViewModel(Resource r)
         {
-            StartAmount = string.Format("{0:#,0.00}", r.StartAmount);
-            ExpectedYearlyCost = string.Format("{0:#,0.00}", r.ExpectedYearlyCost);
+            StartAmount = string.Format("{0:#,0}", r.StartAmount);
+            ExpectedYearlyCost = string.Format("{0:#,0}", r.ExpectedYearlyCost);
             resource = r;
         }
 
