@@ -1,35 +1,35 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<diagram program="umlet" version="15.0.0">
-  <zoom_level>11</zoom_level>
+<diagram program="umlet" version="15.1">
+  <zoom_level>7</zoom_level>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>143</x>
-      <y>231</y>
-      <w>231</w>
-      <h>33</h>
+      <x>182</x>
+      <y>56</y>
+      <w>175</w>
+      <h>21</h>
     </coordinates>
-    <panel_attributes>projectRepo : ProjectRepository</panel_attributes>
+    <panel_attributes>: InProgressViewModel</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>220</x>
-      <y>253</y>
-      <w>33</w>
-      <h>55</h>
+      <x>231</x>
+      <y>70</y>
+      <w>21</w>
+      <h>49</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;30.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;50.0</additional_attributes>
   </element>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>220</x>
-      <y>286</y>
-      <w>22</w>
-      <h>275</h>
+      <x>231</x>
+      <y>105</y>
+      <w>14</w>
+      <h>343</h>
     </coordinates>
     <panel_attributes/>
     <additional_attributes/>
@@ -37,101 +37,34 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>22</x>
-      <y>275</y>
-      <w>220</w>
-      <h>44</h>
+      <x>105</x>
+      <y>98</y>
+      <w>140</w>
+      <h>28</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;-
 ShowProjectHistory()</panel_attributes>
     <additional_attributes>180.0;20.0;10.0;20.0</additional_attributes>
   </element>
   <element>
-    <id>UMLGeneric</id>
-    <coordinates>
-      <x>374</x>
-      <y>330</y>
-      <w>231</w>
-      <h>33</h>
-    </coordinates>
-    <panel_attributes>userRepo : Repository&lt;T&gt;</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
     <id>Relation</id>
     <coordinates>
-      <x>473</x>
-      <y>352</y>
-      <w>33</w>
-      <h>55</h>
-    </coordinates>
-    <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;30.0</additional_attributes>
-  </element>
-  <element>
-    <id>UMLGeneric</id>
-    <coordinates>
-      <x>473</x>
-      <y>385</y>
-      <w>22</w>
-      <h>99</h>
-    </coordinates>
-    <panel_attributes/>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>473</x>
-      <y>473</y>
-      <w>33</w>
-      <h>55</h>
-    </coordinates>
-    <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;30.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>231</x>
-      <y>286</y>
-      <w>583</w>
-      <h>44</h>
+      <x>238</x>
+      <y>133</y>
+      <w>567</w>
+      <h>28</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;-
-&lt;&lt;create&gt;&gt;(firstName, lastName, password)</panel_attributes>
-    <additional_attributes>510.0;20.0;10.0;20.0</additional_attributes>
+List&lt;Project&gt; projectHistory = projectRepo.GetById(SelectedProject.GetId())</panel_attributes>
+    <additional_attributes>790.0;20.0;10.0;20.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>231</x>
-      <y>374</y>
-      <w>264</w>
-      <h>44</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;&lt;&lt;-
-userRepo.Add(u)</panel_attributes>
-    <additional_attributes>220.0;20.0;10.0;20.0</additional_attributes>
-  </element>
-  <element>
-    <id>UMLGeneric</id>
-    <coordinates>
-      <x>715</x>
-      <y>220</y>
-      <w>154</w>
-      <h>33</h>
-    </coordinates>
-    <panel_attributes>_DatabaseHelper&lt;T&gt;_</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>781</x>
-      <y>242</y>
-      <w>33</w>
-      <h>176</h>
+      <x>791</x>
+      <y>35</y>
+      <w>21</w>
+      <h>112</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;140.0</additional_attributes>
@@ -139,45 +72,21 @@ userRepo.Add(u)</panel_attributes>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>781</x>
-      <y>396</y>
-      <w>22</w>
-      <h>33</h>
+      <x>791</x>
+      <y>133</y>
+      <w>14</w>
+      <h>98</h>
     </coordinates>
     <panel_attributes/>
     <additional_attributes/>
   </element>
   <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>484</x>
-      <y>385</y>
-      <w>319</w>
-      <h>44</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;&lt;&lt;-
-DatabaseHelper.Add(u)</panel_attributes>
-    <additional_attributes>270.0;20.0;10.0;20.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>484</x>
-      <y>429</y>
-      <w>165</w>
-      <h>66</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;&lt;&lt;-
-_list.Add(u)</panel_attributes>
-    <additional_attributes>10.0;40.0;60.0;40.0;60.0;10.0;10.0;10.0</additional_attributes>
-  </element>
-  <element>
     <id>Text</id>
     <coordinates>
-      <x>374</x>
-      <y>187</y>
-      <w>330</w>
-      <h>66</h>
+      <x>406</x>
+      <y>0</y>
+      <w>210</w>
+      <h>42</h>
     </coordinates>
     <panel_attributes>style=wordwrap
 fontsize=30
@@ -185,52 +94,99 @@ ShowProjectHistory </panel_attributes>
     <additional_attributes/>
   </element>
   <element>
-    <id>Relation</id>
+    <id>UMLGeneric</id>
     <coordinates>
-      <x>220</x>
-      <y>891</y>
-      <w>33</w>
-      <h>110</h>
+      <x>735</x>
+      <y>21</y>
+      <w>147</w>
+      <h>21</h>
     </coordinates>
-    <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;80.0</additional_attributes>
+    <panel_attributes>projectRepo : IRepository &lt;T&gt;</panel_attributes>
+    <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>781</x>
-      <y>418</y>
-      <w>33</w>
-      <h>66</h>
+      <x>791</x>
+      <y>224</y>
+      <w>21</w>
+      <h>63</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;40.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;70.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLFrame</id>
+    <coordinates>
+      <x>77</x>
+      <y>280</y>
+      <w>679</w>
+      <h>168</h>
+    </coordinates>
+    <panel_attributes>Loop
+--
+halign=left
+foreach (project in projectHistory)
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>238</x>
+      <y>287</y>
+      <w>364</w>
+      <h>28</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;-
+&lt;&lt;create&gt;&gt;(project)</panel_attributes>
+    <additional_attributes>500.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>588</x>
+      <y>294</y>
+      <w>147</w>
+      <h>21</h>
+    </coordinates>
+    <panel_attributes>pvm : ProjecViewModel</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>238</x>
+      <y>182</y>
+      <w>364</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;-
+ObservableCollection&lt;ProjectViewModel&gt; SelectedProjectHistory
+</panel_attributes>
+    <additional_attributes>10.0;80.0;90.0;80.0;90.0;10.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
       <x>231</x>
-      <y>418</y>
-      <w>209</w>
-      <h>121</h>
+      <y>441</y>
+      <w>21</w>
+      <h>56</h>
     </coordinates>
-    <panel_attributes>lt=&lt;&lt;&lt;-
-ipvm.UpdateList()
-
-FirstName = ""
-LastName = ""
-Password = ""</panel_attributes>
-    <additional_attributes>10.0;90.0;60.0;90.0;60.0;10.0;10.0;10.0</additional_attributes>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;60.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>220</x>
-      <y>550</y>
-      <w>33</w>
-      <h>55</h>
+      <x>238</x>
+      <y>336</y>
+      <w>217</w>
+      <h>70</h>
     </coordinates>
-    <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;30.0</additional_attributes>
+    <panel_attributes>lt=&lt;&lt;&lt;-
+SelectedProjectHistory.Add(pvm)</panel_attributes>
+    <additional_attributes>10.0;80.0;90.0;80.0;90.0;10.0;10.0;10.0</additional_attributes>
   </element>
 </diagram>
