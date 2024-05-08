@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<diagram program="umlet" version="15.1">
+<diagram program="umlet" version="15.0.0">
   <zoom_level>13</zoom_level>
   <element>
     <id>UMLActor</id>
     <coordinates>
-      <x>702</x>
+      <x>234</x>
       <y>156</y>
       <w>156</w>
       <h>143</h>
@@ -15,7 +15,7 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1235</x>
+      <x>767</x>
       <y>273</y>
       <w>39</w>
       <h>377</h>
@@ -26,7 +26,7 @@
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>1183</x>
+      <x>715</x>
       <y>247</y>
       <w>130</w>
       <h>39</h>
@@ -37,7 +37,7 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>767</x>
+      <x>299</x>
       <y>273</y>
       <w>39</w>
       <h>377</h>
@@ -48,7 +48,7 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>767</x>
+      <x>299</x>
       <y>299</y>
       <w>507</w>
       <h>52</h>
@@ -60,7 +60,7 @@ Tryk på tandhjul</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>767</x>
+      <x>299</x>
       <y>351</y>
       <w>507</w>
       <h>52</h>
@@ -72,7 +72,7 @@ Indstillinger</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>767</x>
+      <x>299</x>
       <y>403</y>
       <w>507</w>
       <h>52</h>
@@ -84,7 +84,7 @@ Tryk på "Opret ny bruger"</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>767</x>
+      <x>299</x>
       <y>455</y>
       <w>507</w>
       <h>52</h>
@@ -96,19 +96,19 @@ Bruger oprettelses formular</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>767</x>
+      <x>299</x>
       <y>507</y>
       <w>507</w>
       <h>52</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-
-OpretBruger(fornavn, efternavn, kodeord)</panel_attributes>
+OpretBruger(fornavn, efternavn, initialer, kodeord)</panel_attributes>
     <additional_attributes>370.0;20.0;10.0;20.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>767</x>
+      <x>299</x>
       <y>559</y>
       <w>507</w>
       <h>52</h>

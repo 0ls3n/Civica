@@ -29,7 +29,7 @@
       <x>360</x>
       <y>336</y>
       <w>16</w>
-      <h>200</h>
+      <h>216</h>
     </coordinates>
     <panel_attributes/>
     <additional_attributes/>
@@ -110,7 +110,7 @@ CreateUser()</panel_attributes>
       <h>32</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;-
-&lt;&lt;create&gt;&gt;(firstName, lastName, password)</panel_attributes>
+&lt;&lt;create&gt;&gt;(firstName, lastName, initails, password)</panel_attributes>
     <additional_attributes>510.0;20.0;10.0;20.0</additional_attributes>
   </element>
   <element>
@@ -245,25 +245,27 @@ CreateUser</panel_attributes>
       <x>368</x>
       <y>432</y>
       <w>152</w>
-      <h>88</h>
+      <h>112</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;-
 ipvm.UpdateList()
 
 FirstName = ""
 LastName = ""
-Password = ""</panel_attributes>
-    <additional_attributes>10.0;90.0;60.0;90.0;60.0;10.0;10.0;10.0</additional_attributes>
+Initials = ""
+Password = ""
+</panel_attributes>
+    <additional_attributes>10.0;120.0;60.0;120.0;60.0;10.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
       <x>360</x>
-      <y>528</y>
+      <y>544</y>
       <w>24</w>
-      <h>40</h>
+      <h>56</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;30.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;50.0</additional_attributes>
   </element>
 </diagram>
