@@ -124,7 +124,7 @@ namespace Civica.Models
                 }
                 else if (type == typeof(WorkTime))
                 {
-                    SqlCommand workTimeCmd = new SqlCommand("SELECT UserId, WorkTimeId, Time, InvolvedName, ResourceId, CreatedDate FROM WORKTIMES", con);
+                    SqlCommand workTimeCmd = new SqlCommand("SELECT UserId, WorkTimeId, Time, InvolvedName, ResourceId, WDescription, CreatedDate FROM WORKTIMES", con);
                     using (SqlDataReader reader = workTimeCmd.ExecuteReader())
                     {
                         while (reader.Read())
@@ -132,11 +132,12 @@ namespace Civica.Models
                             int userId = reader["UserId"] != DBNull.Value ? Convert.ToInt32(reader["UserId"]) : 0;
                             DateTime createdDate = reader["CreatedDate"] != DBNull.Value ? Convert.ToDateTime(reader["CreatedDate"]) : new DateTime(0, 0, 0);
                             int id = Convert.ToInt32(reader["WorkTimeId"]);
+                            string desc = Convert.ToString(reader["WDescription"]);
                             double Time = Convert.ToDouble(reader["Time"]);
                             string InvolvedName = Convert.ToString(reader["InvolvedName"]);
                             int resourceId = Convert.ToInt32(reader["ResourceId"]);
 
-                            WorkTime wt = new WorkTime(userId, resourceId, Time, InvolvedName, createdDate);
+                            WorkTime wt = new WorkTime(userId, resourceId, Time, InvolvedName, desc, createdDate);
 
                             wt.Id = id;
                             list.Add(wt);
@@ -232,12 +233,13 @@ namespace Civica.Models
                 }
                 else if(o is WorkTime w)
                     {
-                    cmd = new SqlCommand("INSERT INTO WORKTIMES (UserId, Time, InvolvedName, ResourceId, CreatedDate)" +
-                                                                       "VALUES (@UID, @TI, @IN, @RID, @CD) SELECT @@IDENTITY ", con);
+                    cmd = new SqlCommand("INSERT INTO WORKTIMES (UserId, Time, InvolvedName, ResourceId, WDescription, CreatedDate)" +
+                                                                       "VALUES (@UID, @TI, @IN, @RID, @WD, @CD) SELECT @@IDENTITY ", con);
                     cmd.Parameters.Add("@UID", SqlDbType.Int).Value = w.UserId;
                     cmd.Parameters.Add("@CD", SqlDbType.DateTime2).Value = w.CreatedDate;
                     cmd.Parameters.Add("@TI", SqlDbType.Decimal).Value = w.Time;
                     cmd.Parameters.Add("@IN", SqlDbType.NVarChar).Value = w.InvolvedName;
+                    cmd.Parameters.Add("@WD", SqlDbType.NVarChar).Value = w.Description;
                     cmd.Parameters.Add("@RID", SqlDbType.Int).Value = w.RefId;
 
                     d = w;
@@ -313,13 +315,14 @@ namespace Civica.Models
                 }
                 else if (o is WorkTime w)
                 {
-                    cmd = new SqlCommand("UPDATE WORKTIMES SET Time = @Ti, InvolvedName = @IN" +
+                    cmd = new SqlCommand("UPDATE WORKTIMES SET Time = @Ti, InvolvedName = @IN, WDescription = @WD" +
                                         "WHERE WorkTimeId = @ID", con); // Opsætter parameterne der skal opdateres.
 
                     // Indsætter opdaterede værdier i parameterne 
                     cmd.Parameters.Add("@ID", SqlDbType.Int).Value = w.Id;
                     cmd.Parameters.Add("@Ti", SqlDbType.Decimal).Value = w.Time;
                     cmd.Parameters.Add("@In", SqlDbType.NVarChar).Value = w.InvolvedName;
+                    cmd.Parameters.Add("@WD", SqlDbType.NVarChar).Value = w.Description;
                 }
                 else if (o is User u) 
                 {
