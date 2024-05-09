@@ -63,7 +63,7 @@
                                FontSize="20"
                                Margin="5 5 0 0"/>
 
-                    <TextBox Text="Dette er en beskrivelse"
+                    <TextBox Text="{Binding AuditDescription}"
                               Height="45"
                               TextWrapping="Wrap"
                               AcceptsReturn="True"
