@@ -418,7 +418,7 @@ namespace Civica.ViewModels
                  //string temp = string.Format("{0:#,0}", double.Parse(avm.Amount));
                  //avm.Amount = temp;
 
-                 Audit a = new Audit(rvm.mvm.ipvm.GetCurrentUser().GetId(), rvm.SelectedResource.GetId(), rvm.AuditExpectedYearlyCost, rvm.AuditYear, DateTime.Now);
+                 Audit a = new Audit(rvm.mvm.ipvm.GetCurrentUser().GetId(), rvm.SelectedResource.GetId(), rvm.AuditExpectedYearlyCost, rvm.AuditYear, rvm.AuditDescription, DateTime.Now);
 
                  rvm.auditRepo.Add(a);
 
