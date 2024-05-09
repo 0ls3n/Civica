@@ -115,7 +115,7 @@ namespace Civica.Models
                             string desc = Convert.ToString(reader["ADescription"]);
                             int ResourceId = Convert.ToInt32(reader["ResourceId"]);
 
-                            Audit a = new Audit(userId, ResourceId, Amount, Year, createdDate);
+                            Audit a = new Audit(userId, ResourceId, Amount, Year, desc, createdDate);
 
                             a.Id = id;
                             list.Add(a);
