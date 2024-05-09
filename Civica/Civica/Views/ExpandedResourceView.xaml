@@ -398,7 +398,7 @@
                              CommandParameter="{Binding}"
                              ToolTipService.InitialShowDelay="0">
                             <Button.ToolTip>
-                                <ToolTip Content="Opdater resource" Style="{StaticResource ToolTipTheme}"/>
+                                <ToolTip Content="Opdater Startbeløb/Årlig omk." Style="{StaticResource ToolTipTheme}"/>
                             </Button.ToolTip>
 
                             <Button.Style>
