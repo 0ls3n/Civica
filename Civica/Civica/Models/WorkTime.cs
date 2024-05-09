@@ -10,14 +10,17 @@ namespace Civica.Models
     {
         public double Time { get; set; }
         public string InvolvedName { get; set; }
+
+        public string Description { get; set; }
         
-        public WorkTime(int userId, int resourceId, double time, string involvedName, DateTime createdDate)
+        public WorkTime(int userId, int resourceId, double time, string involvedName, string desc, DateTime createdDate)
         {
             Time = time;
             InvolvedName = involvedName;
             UserId = userId;
             RefId = resourceId;
             CreatedDate = createdDate;
+            Description = desc;
         }
 
     }

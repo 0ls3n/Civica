@@ -12,11 +12,13 @@ namespace Civica.ViewModels
         private Audit audit;
         public string Amount { get; set; }
         public int Year { get; set; }
+        public string Description { get; set; }
 
         public AuditViewModel(Audit a)
         {
             Amount = string.Format("{0:#,0}", a.Amount);
             Year = a.Year;
+            Description = a.Description;
             audit = a;
         }
 

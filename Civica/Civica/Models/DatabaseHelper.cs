@@ -102,7 +102,7 @@ namespace Civica.Models
                 }
                 else if (type == typeof(Audit))
                 {
-                    SqlCommand auditCmd = new SqlCommand("SELECT UserId, AuditId, Amount, Year, ResourceId, CreatedDate FROM AUDITS", con);
+                    SqlCommand auditCmd = new SqlCommand("SELECT UserId, AuditId, Amount, Year, ResourceId, ADescription, CreatedDate FROM AUDITS", con);
                     using (SqlDataReader reader = auditCmd.ExecuteReader())
                     {
                         while (reader.Read())
@@ -112,9 +112,10 @@ namespace Civica.Models
                             int id = Convert.ToInt32(reader["AuditId"]);
                             decimal Amount = Convert.ToDecimal(reader["Amount"]);
                             int Year = Convert.ToInt32(reader["Year"]);
+                            string desc = Convert.ToString(reader["ADescription"]);
                             int ResourceId = Convert.ToInt32(reader["ResourceId"]);
 
-                            Audit a = new Audit(userId, ResourceId, Amount, Year, createdDate);
+                            Audit a = new Audit(userId, ResourceId, Amount, Year, desc, createdDate);
 
                             a.Id = id;
                             list.Add(a);
@@ -123,7 +124,7 @@ namespace Civica.Models
                 }
                 else if (type == typeof(WorkTime))
                 {
-                    SqlCommand workTimeCmd = new SqlCommand("SELECT UserId, WorkTimeId, Time, InvolvedName, ResourceId, CreatedDate FROM WORKTIMES", con);
+                    SqlCommand workTimeCmd = new SqlCommand("SELECT UserId, WorkTimeId, Time, InvolvedName, ResourceId, WDescription, CreatedDate FROM WORKTIMES", con);
                     using (SqlDataReader reader = workTimeCmd.ExecuteReader())
                     {
                         while (reader.Read())
@@ -131,11 +132,12 @@ namespace Civica.Models
                             int userId = reader["UserId"] != DBNull.Value ? Convert.ToInt32(reader["UserId"]) : 0;
                             DateTime createdDate = reader["CreatedDate"] != DBNull.Value ? Convert.ToDateTime(reader["CreatedDate"]) : new DateTime(0, 0, 0);
                             int id = Convert.ToInt32(reader["WorkTimeId"]);
+                            string desc = Convert.ToString(reader["WDescription"]);
                             double Time = Convert.ToDouble(reader["Time"]);
                             string InvolvedName = Convert.ToString(reader["InvolvedName"]);
                             int resourceId = Convert.ToInt32(reader["ResourceId"]);
 
-                            WorkTime wt = new WorkTime(userId, resourceId, Time, InvolvedName, createdDate);
+                            WorkTime wt = new WorkTime(userId, resourceId, Time, InvolvedName, desc, createdDate);
 
                             wt.Id = id;
                             list.Add(wt);
@@ -218,11 +220,12 @@ namespace Civica.Models
                 }
                 else if (o is Audit a)
                 {
-                    cmd = new SqlCommand("INSERT INTO AUDITS (UserId, Amount, Year, ResourceId, CreatedDate)" +
-                                                                         "VALUES (@UID, @AM, @YE, @RID, @CD) SELECT @@IDENTITY ", con);
+                    cmd = new SqlCommand("INSERT INTO AUDITS (UserId, Amount, Year, ResourceId, ADescription, CreatedDate)" +
+                                                                         "VALUES (@UID, @AM, @YE, @RID, @AD, @CD) SELECT @@IDENTITY ", con);
                     cmd.Parameters.Add("@UID", SqlDbType.Int).Value = a.UserId;
                     cmd.Parameters.Add("@CD", SqlDbType.DateTime2).Value = a.CreatedDate;
                     cmd.Parameters.Add("@AM", SqlDbType.Decimal).Value = a.Amount;
+                    cmd.Parameters.Add("@AD", SqlDbType.NVarChar).Value = a.Description;
                     cmd.Parameters.Add("@YE", SqlDbType.Int).Value = a.Year;
                     cmd.Parameters.Add("@RID", SqlDbType.Int).Value = a.RefId;
 
@@ -230,12 +233,13 @@ namespace Civica.Models
                 }
                 else if(o is WorkTime w)
                     {
-                    cmd = new SqlCommand("INSERT INTO WORKTIMES (UserId, Time, InvolvedName, ResourceId, CreatedDate)" +
-                                                                       "VALUES (@UID, @TI, @IN, @RID, @CD) SELECT @@IDENTITY ", con);
+                    cmd = new SqlCommand("INSERT INTO WORKTIMES (UserId, Time, InvolvedName, ResourceId, WDescription, CreatedDate)" +
+                                                                       "VALUES (@UID, @TI, @IN, @RID, @WD, @CD) SELECT @@IDENTITY ", con);
                     cmd.Parameters.Add("@UID", SqlDbType.Int).Value = w.UserId;
                     cmd.Parameters.Add("@CD", SqlDbType.DateTime2).Value = w.CreatedDate;
                     cmd.Parameters.Add("@TI", SqlDbType.Decimal).Value = w.Time;
                     cmd.Parameters.Add("@IN", SqlDbType.NVarChar).Value = w.InvolvedName;
+                    cmd.Parameters.Add("@WD", SqlDbType.NVarChar).Value = w.Description;
                     cmd.Parameters.Add("@RID", SqlDbType.Int).Value = w.RefId;
 
                     d = w;
@@ -300,23 +304,25 @@ namespace Civica.Models
                 }
                 else if (o is Audit a)
                 {
-                    cmd = new SqlCommand("UPDATE AUDITS SET Amount = @Am, Year = @Ye " +
+                    cmd = new SqlCommand("UPDATE AUDITS SET Amount = @Am, Year = @Ye, ADescription = @AD " +
                                           "WHERE AuditId = @ID", con); // Opsætter parameterne der skal opdateres.
 
                     // Indsætter opdaterede værdier i parameterne 
                     cmd.Parameters.Add("@ID", SqlDbType.Int).Value = a.Id;
                     cmd.Parameters.Add("@Am", SqlDbType.Decimal).Value = a.Amount;
+                    cmd.Parameters.Add("@AD", SqlDbType.NVarChar).Value = a.Description;
                     cmd.Parameters.Add("@Ye", SqlDbType.Int).Value = a.Year;
                 }
                 else if (o is WorkTime w)
                 {
-                    cmd = new SqlCommand("UPDATE WORKTIMES SET Time = @Ti, InvolvedName = @IN" +
+                    cmd = new SqlCommand("UPDATE WORKTIMES SET Time = @Ti, InvolvedName = @IN, WDescription = @WD" +
                                         "WHERE WorkTimeId = @ID", con); // Opsætter parameterne der skal opdateres.
 
                     // Indsætter opdaterede værdier i parameterne 
                     cmd.Parameters.Add("@ID", SqlDbType.Int).Value = w.Id;
                     cmd.Parameters.Add("@Ti", SqlDbType.Decimal).Value = w.Time;
                     cmd.Parameters.Add("@In", SqlDbType.NVarChar).Value = w.InvolvedName;
+                    cmd.Parameters.Add("@WD", SqlDbType.NVarChar).Value = w.Description;
                 }
                 else if (o is User u) 
                 {

@@ -10,7 +10,7 @@ using System.Resources;
 using System.Runtime.Intrinsics.Arm;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Forms;
+using System.Windows;
 
 namespace Civica.ViewModels
 {
@@ -84,6 +84,17 @@ namespace Civica.ViewModels
             {
                 _auditExpectedYearlyCost = value;
                 OnPropertyChanged(nameof(AuditExpectedYearlyCost));
+            }
+        }
+
+        private string _auditDescription;
+        public string AuditDescription
+        {
+            get => _auditDescription;
+            set
+            {
+                _auditDescription = value;
+                OnPropertyChanged(nameof(AuditDescription));
             }
         }
 
@@ -280,6 +291,7 @@ namespace Civica.ViewModels
 
                  a.Amount = decimal.Parse(rvm.SelectedAudit.Amount);
                  a.Year = rvm.SelectedAudit.Year;
+                 a.Description = rvm.SelectedAudit.Description;
 
                  rvm.auditRepo.Update(a);
 
@@ -335,20 +347,29 @@ namespace Civica.ViewModels
           {
               if (parameter is ResourceProjectViewModel rvm)
               {
-                  AuditViewModel avm = rvm.SelectedAudit;
+                  MessageBoxButton button = MessageBoxButton.OKCancel;
+                  MessageBoxResult result = MessageBox.Show($"Er du sikker på du vil slette denne?", "Bekræft sletning", button);
 
-                  Audit a = rvm.auditRepo.GetByRefId(avm.GetRefId()).FirstOrDefault(x => x.Id == avm.GetId());
+                  if (result == MessageBoxResult.OK)
+                  {
+                      AuditViewModel avm = rvm.SelectedAudit;
 
-                  rvm.auditRepo.Remove(a);
+                      Audit a = rvm.auditRepo.GetByRefId(avm.GetRefId()).FirstOrDefault(x => x.Id == avm.GetId());
 
-                  rvm.Audits.Clear();
 
-                  rvm.EditAuditVisiblity = WindowVisibility.Hidden;
-                  rvm.ResourceDetailsVisibility = WindowVisibility.Hidden;
-                  rvm.InformationPlaceholderVisibility = WindowVisibility.Visible;
-                  rvm.CreateAuditVisibility = WindowVisibility.Hidden;
 
-                  rvm.UpdateList();
+
+                      rvm.auditRepo.Remove(a);
+
+                      rvm.Audits.Clear();
+
+                      rvm.EditAuditVisiblity = WindowVisibility.Hidden;
+                      rvm.ResourceDetailsVisibility = WindowVisibility.Hidden;
+                      rvm.InformationPlaceholderVisibility = WindowVisibility.Visible;
+                      rvm.CreateAuditVisibility = WindowVisibility.Hidden;
+
+                      rvm.UpdateList();
+                  }
               }
           },
           parameter =>
@@ -398,7 +419,7 @@ namespace Civica.ViewModels
                  //string temp = string.Format("{0:#,0}", double.Parse(avm.Amount));
                  //avm.Amount = temp;
 
-                 Audit a = new Audit(rvm.mvm.ipvm.GetCurrentUser().GetId(), rvm.SelectedResource.GetId(), rvm.AuditExpectedYearlyCost, rvm.AuditYear, DateTime.Now);
+                 Audit a = new Audit(rvm.mvm.ipvm.GetCurrentUser().GetId(), rvm.SelectedResource.GetId(), rvm.AuditExpectedYearlyCost, rvm.AuditYear, rvm.AuditDescription, DateTime.Now);
 
                  rvm.auditRepo.Add(a);
 

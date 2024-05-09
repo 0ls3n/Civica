@@ -59,6 +59,17 @@
 
                     </Grid>
 
+                    <TextBlock Text="Beskrivelse:" 
+                               FontSize="20"
+                               Margin="5 5 0 0"/>
+
+                    <TextBox Text="{Binding AuditDescription}"
+                               Height="45"
+                             AcceptsReturn="True"
+                             AcceptsTab="True"
+                               TextWrapping="Wrap"
+                               Margin="5 0 0 0"/>
+
                     <Border BorderBrush="Gray"
                         BorderThickness="0,0,0,1"
                         Margin="5, 25, 5, 0"
