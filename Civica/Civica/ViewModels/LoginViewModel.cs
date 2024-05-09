@@ -82,5 +82,24 @@ namespace Civica.ViewModels
                 return result;
             }
         );
+
+        public RelayCommand GuestCmd { get; set; } = new RelayCommand
+            (
+            parameter =>
+            {
+                if (parameter is LoginViewModel lvm)
+                {
+                    lvm.mvm.LoginView = WindowVisibility.Hidden;
+                    lvm.mvm.InProgressView = WindowVisibility.Visible;
+                    lvm.mvm.ipvm.InformationVisibility = WindowVisibility.Visible;
+                    lvm.mvm.ipvm.UpdateList();
+                    lvm.Password = string.Empty;
+                }
+            },
+            parameter =>
+            {
+                return true;
+            }
+        );
     }
 }

@@ -323,12 +323,12 @@ namespace Civica.ViewModels
             svm.Init(this);
             lvm.Init(this);
             rpvm.Init(this);
-            InProgressView = WindowVisibility.Visible;
+            InProgressView = WindowVisibility.Hidden;
             StatusDot = WindowVisibility.Hidden;
             ExpandedProjectView = WindowVisibility.Hidden;
             SettingsView = WindowVisibility.Hidden;
             ResourceView = WindowVisibility.Hidden;
-            LoginView = WindowVisibility.Hidden;
+            LoginView = WindowVisibility.Visible;
 
             ViewTitle = ipvm.WindowTitle;
         }
