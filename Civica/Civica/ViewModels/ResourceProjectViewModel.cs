@@ -87,6 +87,17 @@ namespace Civica.ViewModels
             }
         }
 
+        private string _auditDescription;
+        public string AuditDescription
+        {
+            get => _auditDescription;
+            set
+            {
+                _auditDescription = value;
+                OnPropertyChanged(nameof(AuditDescription));
+            }
+        }
+
         private ResourceViewModel _selectedResource;
         public ResourceViewModel SelectedResource
         {

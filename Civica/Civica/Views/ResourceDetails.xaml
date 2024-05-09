@@ -55,7 +55,7 @@
                                FontSize="20"
                                Margin="5 5 0 0"/>
 
-                    <TextBlock Text="Dette er en beskrivelse"
+                    <TextBlock Text="{Binding AuditDescription}"
                                Height="45"
                                TextWrapping="Wrap"
                                Margin="5 0 0 0"/>
