@@ -291,6 +291,7 @@ namespace Civica.ViewModels
 
                  a.Amount = decimal.Parse(rvm.SelectedAudit.Amount);
                  a.Year = rvm.SelectedAudit.Year;
+                 a.Description = rvm.SelectedAudit.Description;
 
                  rvm.auditRepo.Update(a);
 

@@ -63,7 +63,7 @@
                                FontSize="20"
                                Margin="5 5 0 0"/>
 
-                    <TextBox Text="{Binding AuditDescription}"
+                    <TextBox Text="{Binding SelectedAudit.Description}"
                               Height="45"
                               TextWrapping="Wrap"
                               AcceptsReturn="True"
