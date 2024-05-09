@@ -178,6 +178,48 @@
                 <RowDefinition/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
+
+            <Button BorderThickness="0"
+                    Grid.Column="0"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Top"
+                    Width="60"
+                    Grid.Row="1"
+                    Cursor="Hand"
+                    Height="60"
+                    Command="{Binding CreateAuditCmdView}"
+                    CommandParameter="{Binding}"
+                    ToolTipService.InitialShowDelay="0">
+                <Button.ToolTip>
+                    <ToolTip Content="Opret ny omkostning" Style="{StaticResource ToolTipTheme}"/>
+                </Button.ToolTip>
+
+                <Button.Style>
+                    <Style TargetType="{x:Type Button}">
+                        <Setter Property="Background" Value="Green"/>
+
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#FF039803"/>
+                            </Trigger>
+                        </Style.Triggers>
+
+                    </Style>
+                </Button.Style>
+
+                <Button.Template>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border Width="50" 
+                            Height="50"
+                            Background="{TemplateBinding Background}"
+                            CornerRadius="25">
+                            <Image Source="/Resources/Images/create_logo.png" 
+Width="25"/>
+                        </Border>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+
             <Border Background="White"
                 CornerRadius="10"
                 Grid.Row="0"
@@ -308,7 +350,7 @@
                     </Grid.RowDefinitions>
 
 
-                    <ScrollViewer Margin="0,11,0,9"
+                    <ScrollViewer Margin="0,11,0,0"
                                  VerticalScrollBarVisibility="Auto">
                         <StackPanel Orientation="Vertical">
                             <TextBlock Text="{Binding SelectedProject.Name}"
@@ -389,8 +431,9 @@
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
                         <Button BorderThickness="0"
-                                Grid.Column="1"
+                                Grid.Column="0"
                              HorizontalAlignment="Left"
+                                VerticalAlignment="Top"
                              Width="60"
                              Cursor="Hand"
                              Height="60"
@@ -424,44 +467,7 @@
                                 </ControlTemplate>
                             </Button.Template>
                         </Button>
-                        <Button BorderThickness="0"
-                                Grid.Column="0"
-                                HorizontalAlignment="Left"
-                                Width="60"
-                                Cursor="Hand"
-                                Height="60"
-                                Command="{Binding CreateAuditCmdView}"
-                                CommandParameter="{Binding}"
-                                ToolTipService.InitialShowDelay="0">
-                            <Button.ToolTip>
-                                <ToolTip Content="Opret ny omkostning" Style="{StaticResource ToolTipTheme}"/>
-                            </Button.ToolTip>
-
-                            <Button.Style>
-                                <Style TargetType="{x:Type Button}">
-                                    <Setter Property="Background" Value="Green"/>
-
-                                    <Style.Triggers>
-                                        <Trigger Property="IsMouseOver" Value="True">
-                                            <Setter Property="Background" Value="#FF039803"/>
-                                        </Trigger>
-                                    </Style.Triggers>
-
-                                </Style>
-                            </Button.Style>
-
-                            <Button.Template>
-                                <ControlTemplate TargetType="{x:Type Button}">
-                                    <Border Width="50" 
-                                             Height="50"
-                                             Background="{TemplateBinding Background}"
-                                             CornerRadius="25">
-                                        <Image Source="/Resources/Images/create_logo.png" 
-                 Width="25"/>
-                                    </Border>
-                                </ControlTemplate>
-                            </Button.Template>
-                        </Button>
+                        
                     </Grid>
                 </Grid>
             </Border>

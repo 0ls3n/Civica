@@ -10,7 +10,7 @@ using System.Resources;
 using System.Runtime.Intrinsics.Arm;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Forms;
+using System.Windows;
 
 namespace Civica.ViewModels
 {
@@ -335,20 +335,29 @@ namespace Civica.ViewModels
           {
               if (parameter is ResourceProjectViewModel rvm)
               {
-                  AuditViewModel avm = rvm.SelectedAudit;
+                  MessageBoxButton button = MessageBoxButton.OKCancel;
+                  MessageBoxResult result = MessageBox.Show($"Er du sikker på du vil slette denne?", "Bekræft sletning", button);
 
-                  Audit a = rvm.auditRepo.GetByRefId(avm.GetRefId()).FirstOrDefault(x => x.Id == avm.GetId());
+                  if (result == MessageBoxResult.OK)
+                  {
+                      AuditViewModel avm = rvm.SelectedAudit;
 
-                  rvm.auditRepo.Remove(a);
+                      Audit a = rvm.auditRepo.GetByRefId(avm.GetRefId()).FirstOrDefault(x => x.Id == avm.GetId());
 
-                  rvm.Audits.Clear();
 
-                  rvm.EditAuditVisiblity = WindowVisibility.Hidden;
-                  rvm.ResourceDetailsVisibility = WindowVisibility.Hidden;
-                  rvm.InformationPlaceholderVisibility = WindowVisibility.Visible;
-                  rvm.CreateAuditVisibility = WindowVisibility.Hidden;
 
-                  rvm.UpdateList();
+
+                      rvm.auditRepo.Remove(a);
+
+                      rvm.Audits.Clear();
+
+                      rvm.EditAuditVisiblity = WindowVisibility.Hidden;
+                      rvm.ResourceDetailsVisibility = WindowVisibility.Hidden;
+                      rvm.InformationPlaceholderVisibility = WindowVisibility.Visible;
+                      rvm.CreateAuditVisibility = WindowVisibility.Hidden;
+
+                      rvm.UpdateList();
+                  }
               }
           },
           parameter =>
