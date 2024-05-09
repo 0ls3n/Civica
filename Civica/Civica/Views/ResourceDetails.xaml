@@ -120,7 +120,7 @@
                             CommandParameter="{Binding}"
                             ToolTipService.InitialShowDelay="0">
                             <Button.ToolTip>
-                                <ToolTip Content="Opdater omkostninger" Style="{StaticResource ToolTipTheme}"/>
+                                <ToolTip Content="Slet omkostning" Style="{StaticResource ToolTipTheme}"/>
                             </Button.ToolTip>
 
                             <Button.Style>
