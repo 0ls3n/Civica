@@ -10,12 +10,14 @@ namespace Civica.Models
     {
         public decimal Amount { get; set; }
         public int Year { get; set; }
-        public Audit(int userId, int resourceId, decimal amount, int year, DateTime createdDate)
+        public string Description { get; set; } 
+        public Audit(int userId, int resourceId, decimal amount, int year, string desc, DateTime createdDate)
         {
             this.Amount = amount;
             RefId = resourceId;
             UserId = userId;
             Year = year;
+            Description = desc;
             CreatedDate = createdDate;
         }
     }
