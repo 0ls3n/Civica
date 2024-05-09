@@ -350,7 +350,7 @@ Width="25"/>
                     </Grid.RowDefinitions>
 
 
-                    <ScrollViewer Margin="0,11,0,9"
+                    <ScrollViewer Margin="0,11,0,0"
                                  VerticalScrollBarVisibility="Auto">
                         <StackPanel Orientation="Vertical">
                             <TextBlock Text="{Binding SelectedProject.Name}"
@@ -433,6 +433,7 @@ Width="25"/>
                         <Button BorderThickness="0"
                                 Grid.Column="0"
                              HorizontalAlignment="Left"
+                                VerticalAlignment="Top"
                              Width="60"
                              Cursor="Hand"
                              Height="60"

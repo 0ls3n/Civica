@@ -51,11 +51,21 @@
                                    Text=" kr"/>
                     </Grid>
 
+                    <TextBlock Text="Beskrivelse:" 
+                               FontSize="20"
+                               Margin="5 5 0 0"/>
+
+                    <TextBlock Text="Dette er en beskrivelse"
+                               Height="45"
+                               TextWrapping="Wrap"
+                               Margin="5 0 0 0"/>
+
                     <Border BorderBrush="Gray"
                         BorderThickness="0,0,0,1"
                         Margin="5, 25, 5, 0"
                         Opacity="0.2">
                     </Border>
+
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="60"/>
