@@ -284,8 +284,8 @@ namespace Civica.Models
                 }
                 else if (o is Progress prog)
                 {
-                    cmd = new SqlCommand("UPDATE PROGRESSES SET Phase = @PH, Status = @ST, CreatedDate = @DA, Description = @DESC" +
-                                                       "WHERE ProgressId = @ID");
+                    cmd = new SqlCommand("UPDATE PROGRESSES SET Phase = @PH, Status = @ST, CreatedDate = @DA, Description = @DESC " +
+                                                       "WHERE ProgressId = @ID", con);
                     cmd.Parameters.Add("@PH", SqlDbType.NVarChar).Value = prog.Phase;
                     cmd.Parameters.Add("@ST", SqlDbType.NVarChar).Value = prog.Status;
                     cmd.Parameters.Add("@DA", SqlDbType.DateTime2).Value = prog.CreatedDate;

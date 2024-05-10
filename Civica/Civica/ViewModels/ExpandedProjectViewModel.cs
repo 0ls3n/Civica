@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Runtime.Intrinsics.Arm;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -17,7 +18,14 @@ namespace Civica.ViewModels
         private MainViewModel mvm { get; set; }
 
         private IRepository<Progress> progressRepo;
-        public ObservableCollection<ProgressViewModel> Progresses { get; set; } = new ObservableCollection<ProgressViewModel>();
+        private ObservableCollection<ProgressViewModel> _progresses = new ObservableCollection<ProgressViewModel>();
+
+        public ObservableCollection<ProgressViewModel> Progresses
+        {
+            get { return _progresses; }
+            set { _progresses = value; OnPropertyChanged(nameof(Progresses)); }
+        }
+
 
         private ProgressViewModel _selectedProgress;
         public ProgressViewModel SelectedProgress
@@ -26,6 +34,8 @@ namespace Civica.ViewModels
             set
             {
                 InformationPlaceholderVisibility = WindowVisibility.Hidden;
+                ProgressVisibility = WindowVisibility.Visible;
+                EditProgressVisibility = WindowVisibility.Hidden;
                 _selectedProgress = value;
                 OnPropertyChanged(nameof(SelectedProgress));
             }
@@ -63,6 +73,14 @@ namespace Civica.ViewModels
                 OnPropertyChanged(nameof(SelectedStatus));
             }
         }
+        private string _selectedDescription;
+
+        public string SelectedDescription
+        {
+            get { return _selectedDescription; }
+            set { _selectedDescription = value; OnPropertyChanged(nameof(SelectedDescription)); }
+        }
+
         private WindowVisibility _informationPlaceholderVisibility;
         public WindowVisibility InformationPlaceholderVisibility
         {
@@ -87,6 +105,13 @@ namespace Civica.ViewModels
             get { return _editProgressVisibility; }
             set { _editProgressVisibility = value; OnPropertyChanged(nameof(EditProgressVisibility)); }
         }
+        private WindowVisibility _createProgressVisibility;
+
+        public WindowVisibility CreateProgressVisibility
+        {
+            get { return _createProgressVisibility; }
+            set { _createProgressVisibility = value; OnPropertyChanged(nameof(CreateProgressVisibility)); }
+        }
 
 
         public string Title { get; set; } = "Audits";
@@ -105,54 +130,81 @@ namespace Civica.ViewModels
         public void UpdateList()
         {
             Progresses.Clear();
-            foreach (Progress p in progressRepo.GetByRefId(SelectedProject.GetId()).OrderByDescending(x => x.CreatedDate))
-            {
-                Progresses.Add(new ProgressViewModel(p));
-            }
+            Progresses = new ObservableCollection<ProgressViewModel>(progressRepo.GetByRefId(SelectedProject.GetId()).OrderByDescending(x => x.CreatedDate).Select(x => new ProgressViewModel(x)));
+            SelectedProgress = null;
         }
-        public void UpdateProgress(ProgressViewModel pvm)
+        public void UpdateProgress()
         {
-            Progress p = progressRepo.GetById(pvm.GetId());
+            Progress p = progressRepo.GetById(SelectedProgress.GetId());
             p.Phase = SelectedPhase;
             p.Status = SelectedStatus;
-            p.Description = pvm.Description;
+            p.Description = SelectedDescription;
             progressRepo.Update(p);
+            
+
+            UpdateList();
         }
+       
         public RelayCommand EditProgressViewCmd { get; set; } = new RelayCommand
         (
             parameter =>
             {
-            if (parameter is ExpandedProjectViewModel epvm)
-            {
-                epvm.EditProgressVisibility = WindowVisibility.Visible;
-                epvm.ProgressVisibility = WindowVisibility.Hidden;
-                    ProgressViewModel pvm = epvm.SelectedProgress;
-                    int i = pvm.GetId();
-        Progress p = epvm.progressRepo.GetById(i);
-        epvm.SelectedPhase = p.Phase;
+                if (parameter is ExpandedProjectViewModel epvm)
+                {
+                    epvm.EditProgressVisibility = WindowVisibility.Visible;
+                    epvm.ProgressVisibility = WindowVisibility.Hidden;
+                    Progress p = epvm.progressRepo.GetById(epvm.SelectedProgress.GetId());
+                    epvm.SelectedPhase = p.Phase;
                     epvm.SelectedStatus = p.Status;
+                    epvm.SelectedDescription = p.Description;
                 }
-},
+            },
             parameter =>
             {
                 return true;
             }
         );
-public RelayCommand UpdateProgressCmd { get; set; } = new RelayCommand
-(
-    parameter =>
-    {
-        if (parameter is ExpandedProjectViewModel epvm)
-        {
-            epvm.UpdateProgress(epvm.SelectedProgress);
-            epvm.EditProgressVisibility = WindowVisibility.Hidden;
-            epvm.ProgressVisibility = WindowVisibility.Visible;
-        }
-    },
-    parameter =>
-    {
-        return true;
-    }
-);
+        public RelayCommand UpdateProgressCmd { get; set; } = new RelayCommand
+        (
+            parameter =>
+            {
+                if (parameter is ExpandedProjectViewModel epvm)
+                {
+                    epvm.UpdateProgress();
+                    epvm.EditProgressVisibility = WindowVisibility.Hidden;
+                    epvm.ProgressVisibility = WindowVisibility.Visible;
+                }
+            },
+            parameter =>
+            {
+                return true;
+            }
+        );
+        public RelayCommand RemoveProgressCmd { get; set; } = new RelayCommand
+        (
+            parameter =>
+            {
+                if (parameter is ExpandedProjectViewModel epvm)
+                {
+                    MessageBoxButton button = MessageBoxButton.OKCancel;
+                    MessageBoxResult result = MessageBox.Show($"Er du sikker på du vil slette denne?", "Bekræft sletning", button);
+
+                    if (result == MessageBoxResult.OK)
+                    {
+                        epvm.progressRepo.Remove(epvm.progressRepo.GetById(epvm.SelectedProgress.GetId()));
+                        epvm.UpdateList();
+
+                        epvm.EditProgressVisibility = WindowVisibility.Hidden;
+                        epvm.ProgressVisibility = WindowVisibility.Hidden;
+                        epvm.InformationPlaceholderVisibility = WindowVisibility.Visible;
+
+                    }
+                }
+            },
+            parameter =>
+            {
+                return true;
+            }
+        );
     }
 }

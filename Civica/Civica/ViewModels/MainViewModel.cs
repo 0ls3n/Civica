@@ -314,60 +314,60 @@ namespace Civica.ViewModels
             (
                 id =>
                 {
-                    return projectRepo.GetAll().FindAll(x => x.Id == id);
+                    return progressRepo.GetAll().FindAll(x => x.Id == id);
                 },
                 id =>
                 {
-                    return projectRepo.GetAll().FindAll(x => x.UserId == id);
+                    return progressRepo.GetAll().FindAll(x => x.UserId == id);
                 },
                 id =>
                 {
-                    return projectRepo.GetAll().FindAll(x => x.RefId == id);
+                    return progressRepo.GetAll().FindAll(x => x.RefId == id);
                 }
             );
             resourceRepo = new Repository<Resource>
             (
                 id =>
                 {
-                    return projectRepo.GetAll().FindAll(x => x.Id == id);
+                    return resourceRepo.GetAll().FindAll(x => x.Id == id);
                 },
                 id =>
                 {
-                    return projectRepo.GetAll().FindAll(x => x.UserId == id);
+                    return resourceRepo.GetAll().FindAll(x => x.UserId == id);
                 },
                 id =>
                 {
-                    return projectRepo.GetAll().FindAll(x => x.RefId == id);
+                    return resourceRepo.GetAll().FindAll(x => x.RefId == id);
                 }
             );
             auditRepo = new Repository<Audit>
             (
                 id =>
                 {
-                    return projectRepo.GetAll().FindAll(x => x.Id == id);
+                    return auditRepo.GetAll().FindAll(x => x.Id == id);
                 },
                 id =>
                 {
-                    return projectRepo.GetAll().FindAll(x => x.UserId == id);
+                    return auditRepo.GetAll().FindAll(x => x.UserId == id);
                 },
                 id =>
                 {
-                    return projectRepo.GetAll().FindAll(x => x.RefId == id);
+                    return auditRepo.GetAll().FindAll(x => x.RefId == id);
                 }
             );
             userRepo = new Repository<User>
             (
                 id =>
                 {
-                    return projectRepo.GetAll().FindAll(x => x.Id == id);
+                    return userRepo.GetAll().FindAll(x => x.Id == id);
                 },
                 id =>
                 {
-                    return projectRepo.GetAll().FindAll(x => x.UserId == id);
+                    return userRepo.GetAll().FindAll(x => x.UserId == id);
                 },
                 id =>
                 {
-                    return projectRepo.GetAll().FindAll(x => x.RefId == id);
+                    return userRepo.GetAll().FindAll(x => x.RefId == id);
                 }
             );
             ipvm.Init(this);

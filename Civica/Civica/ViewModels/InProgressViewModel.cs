@@ -93,8 +93,8 @@ namespace Civica.ViewModels
                     {
                         SelectedProgress = new ProgressViewModel(prog);
                     }
-
-                    Resource r = resourceRepo.GetByRefId(SelectedProject.GetId()).FirstOrDefault();
+                   Resource rList = resourceRepo.GetById(SelectedProject.GetId());
+                    Resource r = rList;
 
                     SelectedAudit = null;
                     SelectedResource = null;
