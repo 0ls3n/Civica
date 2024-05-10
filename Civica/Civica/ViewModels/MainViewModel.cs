@@ -268,21 +268,22 @@ namespace Civica.ViewModels
             {
                 if (parameter is MainViewModel mvm)
                 {
-                    if (mvm.LoginButtonText == "Login")
-                    {
-                        mvm.LoginView = WindowVisibility.Visible;
-                        mvm.SettingsView = WindowVisibility.Hidden;
-                        mvm.ExpandedProjectView = WindowVisibility.Hidden;
-                        mvm.InProgressView = WindowVisibility.Hidden;
-                        mvm.ResourceView = WindowVisibility.Hidden;
-                        mvm.ViewTitle = mvm.lvm.WindowTitle;
-                    }
-                    else
-                    {
-                        mvm.CurrentUser = null;
-                        mvm.LoginButtonText = "Login";
-                        mvm.UserIconPath = "/Resources/Images/login.png";
-                    }
+                    mvm.CurrentUser = new UserViewModel(mvm.userRepo.GetById(1));
+                    //if (mvm.LoginButtonText == "Login")
+                    //{
+                    //    mvm.LoginView = WindowVisibility.Visible;
+                    //    mvm.SettingsView = WindowVisibility.Hidden;
+                    //    mvm.ExpandedProjectView = WindowVisibility.Hidden;
+                    //    mvm.InProgressView = WindowVisibility.Hidden;
+                    //    mvm.ResourceView = WindowVisibility.Hidden;
+                    //    mvm.ViewTitle = mvm.lvm.WindowTitle;
+                    //}
+                    //else
+                    //{
+                    //    mvm.CurrentUser = null;
+                    //    mvm.LoginButtonText = "Login";
+                    //    mvm.UserIconPath = "/Resources/Images/login.png";
+                    //}
                 }
             },
             parameter =>
@@ -298,26 +299,77 @@ namespace Civica.ViewModels
 
         public MainViewModel()
         {
-            projectRepo = new Repository<Project>(id =>
-            {
-                return projectRepo.GetAll().FindAll(x => x.Id == id);
-            });
-            progressRepo = new Repository<Progress>(id =>
-            {
-                return progressRepo.GetAll().FindAll(x => x.RefId == id);
-            });
-            resourceRepo = new Repository<Resource>(id =>
-            {
-                return resourceRepo.GetAll().FindAll(x => x.RefId == id);
-            });
-            auditRepo = new Repository<Audit>(id =>
-            {
-                return auditRepo.GetAll().FindAll(x => x.RefId == id);
-            });
-            userRepo = new Repository<User>(id =>
-            {
-                return userRepo.GetAll().FindAll(x => x.Id == id);
-            });
+            projectRepo = new Repository<Project>
+            (
+                id =>
+                {
+                    return projectRepo.GetAll().FindAll(x => x.Id == id);
+                },
+                id =>
+                {
+                    return projectRepo.GetAll().FindAll(x => x.UserId == id);
+                }
+            );
+            progressRepo = new Repository<Progress>
+            (
+                id =>
+                {
+                    return projectRepo.GetAll().FindAll(x => x.Id == id);
+                },
+                id =>
+                {
+                    return projectRepo.GetAll().FindAll(x => x.UserId == id);
+                },
+                id =>
+                {
+                    return projectRepo.GetAll().FindAll(x => x.RefId == id);
+                }
+            );
+            resourceRepo = new Repository<Resource>
+            (
+                id =>
+                {
+                    return projectRepo.GetAll().FindAll(x => x.Id == id);
+                },
+                id =>
+                {
+                    return projectRepo.GetAll().FindAll(x => x.UserId == id);
+                },
+                id =>
+                {
+                    return projectRepo.GetAll().FindAll(x => x.RefId == id);
+                }
+            );
+            auditRepo = new Repository<Audit>
+            (
+                id =>
+                {
+                    return projectRepo.GetAll().FindAll(x => x.Id == id);
+                },
+                id =>
+                {
+                    return projectRepo.GetAll().FindAll(x => x.UserId == id);
+                },
+                id =>
+                {
+                    return projectRepo.GetAll().FindAll(x => x.RefId == id);
+                }
+            );
+            userRepo = new Repository<User>
+            (
+                id =>
+                {
+                    return projectRepo.GetAll().FindAll(x => x.Id == id);
+                },
+                id =>
+                {
+                    return projectRepo.GetAll().FindAll(x => x.UserId == id);
+                },
+                id =>
+                {
+                    return projectRepo.GetAll().FindAll(x => x.RefId == id);
+                }
+            );
             ipvm.Init(this);
             epvm.Init(this);
             svm.Init(this);

@@ -1,4 +1,5 @@
-﻿using Civica.Interfaces;
+﻿using Civica.Commands;
+using Civica.Interfaces;
 using Civica.Models;
 using Civica.Models.Enums;
 using System;
@@ -15,11 +16,11 @@ namespace Civica.ViewModels
     {
         private MainViewModel mvm { get; set; }
 
-        IRepository<Progress> progressRepo;
+        private IRepository<Progress> progressRepo;
         public ObservableCollection<ProgressViewModel> Progresses { get; set; } = new ObservableCollection<ProgressViewModel>();
 
         private ProgressViewModel _selectedProgress;
-        public ProgressViewModel SelectedProgress 
+        public ProgressViewModel SelectedProgress
         {
             get => _selectedProgress;
             set
@@ -40,7 +41,28 @@ namespace Civica.ViewModels
                 OnPropertyChanged(nameof(SelectedProject));
             }
         }
+        private Phase _selectedPhase;
+        public Phase SelectedPhase
+        {
+            get { return _selectedPhase; }
+            set
+            {
+                _selectedPhase = value;
+                OnPropertyChanged(nameof(SelectedPhase));
+            }
+        }
 
+        private Status _selectedStatus;
+
+        public Status SelectedStatus
+        {
+            get { return _selectedStatus; }
+            set
+            {
+                _selectedStatus = value;
+                OnPropertyChanged(nameof(SelectedStatus));
+            }
+        }
         private WindowVisibility _informationPlaceholderVisibility;
         public WindowVisibility InformationPlaceholderVisibility
         {
@@ -51,13 +73,28 @@ namespace Civica.ViewModels
                 OnPropertyChanged(nameof(InformationPlaceholderVisibility));
             }
         }
+        private WindowVisibility _progressVisibility;
+
+        public WindowVisibility ProgressVisibility
+        {
+            get { return _progressVisibility; }
+            set { _progressVisibility = value; OnPropertyChanged(nameof(ProgressVisibility)); }
+        }
+        private WindowVisibility _editProgressVisibility;
+
+        public WindowVisibility EditProgressVisibility
+        {
+            get { return _editProgressVisibility; }
+            set { _editProgressVisibility = value; OnPropertyChanged(nameof(EditProgressVisibility)); }
+        }
+
 
         public string Title { get; set; } = "Audits";
 
         public void Init(ObservableObject o)
         {
             mvm = (o as MainViewModel);
-            progressRepo = this.mvm.GetProgressRepo();
+            progressRepo = mvm.GetProgressRepo();
         }
 
         public void GetRepo(IRepository<Progress> progressRepo)
@@ -68,10 +105,54 @@ namespace Civica.ViewModels
         public void UpdateList()
         {
             Progresses.Clear();
-            foreach (Progress p in progressRepo.GetByRefId(SelectedProject.GetId()).OrderByDescending(x=> x.CreatedDate))
+            foreach (Progress p in progressRepo.GetByRefId(SelectedProject.GetId()).OrderByDescending(x => x.CreatedDate))
             {
                 Progresses.Add(new ProgressViewModel(p));
             }
         }
+        public void UpdateProgress(ProgressViewModel pvm)
+        {
+            Progress p = progressRepo.GetById(pvm.GetId());
+            p.Phase = SelectedPhase;
+            p.Status = SelectedStatus;
+            p.Description = pvm.Description;
+            progressRepo.Update(p);
+        }
+        public RelayCommand EditProgressViewCmd { get; set; } = new RelayCommand
+        (
+            parameter =>
+            {
+            if (parameter is ExpandedProjectViewModel epvm)
+            {
+                epvm.EditProgressVisibility = WindowVisibility.Visible;
+                epvm.ProgressVisibility = WindowVisibility.Hidden;
+                    ProgressViewModel pvm = epvm.SelectedProgress;
+                    int i = pvm.GetId();
+        Progress p = epvm.progressRepo.GetById(i);
+        epvm.SelectedPhase = p.Phase;
+                    epvm.SelectedStatus = p.Status;
+                }
+},
+            parameter =>
+            {
+                return true;
+            }
+        );
+public RelayCommand UpdateProgressCmd { get; set; } = new RelayCommand
+(
+    parameter =>
+    {
+        if (parameter is ExpandedProjectViewModel epvm)
+        {
+            epvm.UpdateProgress(epvm.SelectedProgress);
+            epvm.EditProgressVisibility = WindowVisibility.Hidden;
+            epvm.ProgressVisibility = WindowVisibility.Visible;
+        }
+    },
+    parameter =>
+    {
+        return true;
+    }
+);
     }
 }

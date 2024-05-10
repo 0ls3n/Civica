@@ -133,7 +133,6 @@
                              TextWrapping="Wrap"/>
                 </StackPanel>
             </ScrollViewer>
-
         </Border>
     </Grid>
 </UserControl>

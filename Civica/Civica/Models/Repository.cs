@@ -12,16 +12,23 @@ namespace Civica.Models
     {
         private List<DomainModel> _list;
 
-        private Func<int, List<DomainModel>> _execute { get; set; }
+        private Func<int, List<DomainModel>> _executeById { get; set; }
+        private Func<int, List<DomainModel>> _executeByUserId { get; set; }
+        private Func<int, List<DomainModel>> _executeByRefId { get; set; }
 
 
-        public Repository(Func<int, List<DomainModel>> execute)
+        public Repository(Func<int, List<DomainModel>> executeById, Func<int, List<DomainModel>> executeByUserId)
         {
             _list = DatabaseHelper<DomainModel>.Initialize(typeof(T));
-            _execute = execute;
+            _executeById = executeById;
+            _executeByUserId = executeByUserId;
+        }
+        public Repository(Func<int, List<DomainModel>> executeById, Func<int, List<DomainModel>> executeByUserId, Func<int, List<DomainModel>> executeByRefId) : this(executeById, executeByUserId)
+        {
+            _executeByRefId = executeByRefId;
         }
 
-        public void Add(T o)
+            public void Add(T o)
         {
             DatabaseHelper<T>.Add(o);
             if (o is DomainModel d)
@@ -31,15 +38,18 @@ namespace Civica.Models
         }
 
         public List<DomainModel> GetAll() => _list;
-
+        public List<T> GetByUserId(int id)
+        {
+            return _executeByUserId(id).OfType<T>().ToList();
+        }
         public List<T> GetByRefId(int id)
         {
-            return _execute(id).OfType<T>().ToList();
+            return _executeByRefId(id).OfType<T>().ToList();
         }
 
         public T GetById(int id)
         {
-            return _execute(id).OfType<T>().FirstOrDefault();
+            return _executeById(id).OfType<T>().FirstOrDefault();
         }
 
         public void Update(T o)

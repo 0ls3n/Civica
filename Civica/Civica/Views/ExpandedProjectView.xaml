@@ -130,11 +130,50 @@
                 <RowDefinition/>
             </Grid.RowDefinitions>
             <Border Background="White"
-                CornerRadius="10"
-                Grid.Row="0"
-                Margin="0 0 10 0">
+CornerRadius="10"
+Margin="0 0 10 0">
+                <view:EditProgressView/>
 
-                <ScrollViewer VerticalScrollBarVisibility="Auto">
+                <Border.Style>
+                    <Style TargetType="Border">
+                        <Setter Property="Visibility" Value="Collapsed"/>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding EditProgressVisiblity}" Value="Visible">
+                                <Setter Property="Visibility" Value="Visible"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Border.Style>
+
+            </Border>
+            <Border Background="White"
+        CornerRadius="10"
+        Margin="0 0 10 0">
+                
+                        <Border.Style>
+                            <Style TargetType="Border">
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding ProgressVisibility}" Value="Visible">
+                                        <Setter Property="Visibility" Value="Visible"/>
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding ProgressVisibility}" Value="Hidden">
+                                        <Setter Property="Visibility" Value="Hidden"/>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Border.Style>
+                
+                <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                            <ScrollViewer VerticalScrollBarVisibility="Auto" Grid.Row="0">
+                                
                     <StackPanel Orientation="Vertical"
                             Margin="0 5 0 5">
 
@@ -207,6 +246,104 @@
                     </StackPanel>
 
                 </ScrollViewer>
+                    <Grid Grid.Row="2">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+
+                        <Button Grid.Column="1"
+    BorderThickness="0"
+    HorizontalAlignment="Left"
+                        VerticalAlignment="Top"
+    Width="60"
+    Cursor="Hand"
+    Height="60"
+    Command="{Binding RemoveProgressCmd}"
+    CommandParameter="{Binding}"
+    ToolTipService.InitialShowDelay="0">
+                            <Button.ToolTip>
+                                <ToolTip Content="Slet Progress" Style="{StaticResource ToolTipTheme}"/>
+                            </Button.ToolTip>
+
+                            <Button.Style>
+                                <Style TargetType="Button">
+                                    <Setter Property="Background" Value="Red"/>
+
+                                    <Style.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter Property="Background" Value="#FFFC5B5B"/>
+                                        </Trigger>
+                                    </Style.Triggers>
+
+                                </Style>
+                            </Button.Style>
+
+                            <Button.Template>
+                                <ControlTemplate TargetType="Button">
+                                    <Border Width="50" 
+                Height="50"
+                Background="{TemplateBinding Background}"
+                CornerRadius="25">
+                                        <Image Source="/Resources/Images/remove_logo.png" 
+                   Width="25"/>
+                                    </Border>
+                                </ControlTemplate>
+                            </Button.Template>
+
+                        </Button>
+                        <Button
+                    Grid.Column="0"
+BorderThickness="0"
+HorizontalAlignment="Left"
+                    VerticalAlignment="Top"
+Width="60"
+Cursor="Hand"
+Height="60"
+Command="{Binding EditProgressViewCmd}"
+CommandParameter="{Binding}"
+ToolTipService.InitialShowDelay="0">
+                            <Button.ToolTip>
+                                <ToolTip Content="Opdater Fremdrift" Style="{StaticResource ToolTipTheme}"/>
+                            </Button.ToolTip>
+
+                            <Button.Style>
+                                <Style TargetType="{x:Type Button}">
+                                    <Setter Property="Background" Value="Green"/>
+
+                                    <Style.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter Property="Background" Value="#FF039803"/>
+                                        </Trigger>
+                                    </Style.Triggers>
+
+                                </Style>
+                            </Button.Style>
+
+                            <Button.Template>
+                                <ControlTemplate TargetType="{x:Type Button}">
+                                    <Border Width="50" 
+            Height="50"
+            Background="{TemplateBinding Background}"
+            CornerRadius="25">
+                                        <Image Source="/Resources/Images/create_logo.png" 
+                Width="25"/>
+                                    </Border>
+                                </ControlTemplate>
+                            </Button.Template>
+
+                        </Button>
+
+
+
+                    </Grid>
+                </Grid>
+
+
 
             </Border>
 

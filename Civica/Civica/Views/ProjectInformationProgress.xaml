@@ -10,56 +10,66 @@
         <Border Grid.Row="1"
                 Background="White"
                 CornerRadius="10">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width = "*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
 
-            <ScrollViewer Margin="0,11,0,9"
+                <ScrollViewer Grid.Row="1"
+                    Margin="0,11,0,9"
                           VerticalScrollBarVisibility="Auto">
-                <StackPanel Orientation="Vertical">
-                    <TextBlock Text="{Binding SelectedProject.Name}"
+                    <StackPanel Orientation="Vertical">
+                        <TextBlock Text="{Binding SelectedProject.Name}"
                                TextAlignment="Center"
                                FontSize="25"/>
-                    <Border BorderBrush="Gray"
+                        <Border BorderBrush="Gray"
                             BorderThickness="0,0,0,1"
                             Margin="5, 5, 5, 0"
                             Opacity="0.2">
-                    </Border>
-                    <Grid Margin="5 25 0 0">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="auto"/>
-                            <ColumnDefinition Width="*"/>
-                        </Grid.ColumnDefinitions>
+                        </Border>
+                        <Grid Margin="5 25 0 0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
 
-                        <TextBlock FontSize="20"
+                            <TextBlock FontSize="20"
                                    Text="Projektejer: "/>
 
-                        <TextBlock Grid.Column="1"
+                            <TextBlock Grid.Column="1"
                                    FontSize="20"
                                    Text="{Binding SelectedProject.Owner}"/>
-                    </Grid>
+                        </Grid>
 
-                    <Grid Margin="5 10 0 0">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="auto"/>
-                            <ColumnDefinition Width="*"/>
-                        </Grid.ColumnDefinitions>
+                        <Grid Margin="5 10 0 0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
 
-                        <TextBlock FontSize="20"
+                            <TextBlock FontSize="20"
                                    Text="Projektleder: "/>
 
-                        <TextBlock Grid.Column="1"
+                            <TextBlock Grid.Column="1"
                                    FontSize="20"
                                    Text="{Binding SelectedProject.Manager}"/>
-                    </Grid>
+                        </Grid>
 
-                    <Border BorderBrush="Gray"
+                        <Border BorderBrush="Gray"
                             BorderThickness="0,0,0,1"
                             Margin="5, 25, 5, 0"
                             Opacity="0.2">
-                    </Border>
-                    <TextBlock Text="Projektbeskrivelse: "
+                        </Border>
+                        <TextBlock Text="Projektbeskrivelse: "
                                Margin="5 25 0 0"
                                FontSize="20"/>
 
-                    <TextBox Text="{Binding SelectedProject.Description}"
+                        <TextBox Text="{Binding SelectedProject.Description}"
                              FontSize="15"
                              Background="Transparent"
                              BorderThickness="0"
@@ -69,10 +79,109 @@
                              Margin="5 10 20 0"
                              TextWrapping="Wrap"/>
 
+
+
+                    </StackPanel>
+
+                </ScrollViewer>
+                <Grid Grid.Row="2">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <Button Grid.Column="1"
+    BorderThickness="0"
+    HorizontalAlignment="Right"
+                        VerticalAlignment="Top"
+    Width="60"
+    Cursor="Hand"
+    Height="60"
+    Command="{Binding RemoveProjectCmd}"
+    CommandParameter="{Binding}"
+    ToolTipService.InitialShowDelay="0">
+                        <Button.ToolTip>
+                            <ToolTip Content="Slet projekt" Style="{StaticResource ToolTipTheme}"/>
+                        </Button.ToolTip>
+
+                        <Button.Style>
+                            <Style TargetType="Button">
+                                <Setter Property="Background" Value="Red"/>
+
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Background" Value="#FFFC5B5B"/>
+                                    </Trigger>
+                                </Style.Triggers>
+
+                            </Style>
+                        </Button.Style>
+
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <Border Width="50" 
+                Height="50"
+                Background="{TemplateBinding Background}"
+                CornerRadius="25">
+                                    <Image Source="/Resources/Images/remove_logo.png" 
+                   Width="25"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Button.Template>
+
+                    </Button>
+                    <Button
+                    Grid.Column="0"
+BorderThickness="0"
+HorizontalAlignment="Left"
+                    VerticalAlignment="Top"
+Width="60"
+Cursor="Hand"
+Height="60"
+Command="{Binding CreateProjectViewCmd}"
+CommandParameter="{Binding}"
+ToolTipService.InitialShowDelay="0">
+                        <Button.ToolTip>
+                            <ToolTip Content="Opret nyt projekt" Style="{StaticResource ToolTipTheme}"/>
+                        </Button.ToolTip>
+
+                        <Button.Style>
+                            <Style TargetType="{x:Type Button}">
+                                <Setter Property="Background" Value="Green"/>
+
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Background" Value="#FF039803"/>
+                                    </Trigger>
+                                </Style.Triggers>
+
+                            </Style>
+                        </Button.Style>
+
+                        <Button.Template>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border Width="50" 
+            Height="50"
+            Background="{TemplateBinding Background}"
+            CornerRadius="25">
+                                    <Image Source="/Resources/Images/create_logo.png" 
+                Width="25"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Button.Template>
+
+                    </Button>
+
                     
-                </StackPanel>
-            </ScrollViewer>
+                    
+                </Grid>
+            </Grid>
 
         </Border>
+        
     </Grid>
 </UserControl>
