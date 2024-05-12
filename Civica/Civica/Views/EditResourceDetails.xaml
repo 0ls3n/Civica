@@ -58,7 +58,7 @@
                             </Grid.ColumnDefinitions>
 
                             <TextBlock FontSize="20"
-            Text="Årlig omkostning: "/>
+            Text="Fast årlig omkostning: "/>
 
                             <TextBox Grid.Column="1"
             FontSize="20"
@@ -74,7 +74,7 @@
                             </Grid.ColumnDefinitions>
 
                             <TextBlock FontSize="20"
-                Text="Samlede omkostning: "/>
+                Text="Øvrige omkostninger i alt: "/>
 
                             <TextBlock Grid.Column="1"
                  FontSize="20"

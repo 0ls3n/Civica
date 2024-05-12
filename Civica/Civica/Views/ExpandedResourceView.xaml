@@ -388,7 +388,7 @@ Width="25"/>
                                 </Grid.ColumnDefinitions>
 
                                 <TextBlock FontSize="20"
-                                   Text="Årlig omkostning: "/>
+                                   Text="Fast årlig omkostning: "/>
 
                                 <TextBlock Grid.Column="1"
                                    FontSize="20"
@@ -407,7 +407,7 @@ Width="25"/>
                                 </Grid.ColumnDefinitions>
 
                                 <TextBlock FontSize="20"
-                                       Text="Samlede omkostning: "/>
+                                       Text="Øvrige omkostning i alt: "/>
 
                                 <TextBlock Grid.Column="1"
                                         FontSize="20"
