@@ -1,0 +1,354 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="15.1">
+  <zoom_level>3</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>660</x>
+      <y>69</y>
+      <w>102</w>
+      <h>507</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>684</x>
+      <y>126</y>
+      <w>54</w>
+      <h>27</h>
+    </coordinates>
+    <panel_attributes>Opstart et nyt projekt
+style=wordwrap</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>510</x>
+      <y>111</y>
+      <w>180</w>
+      <h>198</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;
+fg=#3c7a00</panel_attributes>
+    <additional_attributes>10.0;640.0;580.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>684</x>
+      <y>270</y>
+      <w>54</w>
+      <h>27</h>
+    </coordinates>
+    <panel_attributes>Vis seneste fremdriftsbeskrivelse
+style=wordwrap</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>684</x>
+      <y>90</y>
+      <w>54</w>
+      <h>27</h>
+    </coordinates>
+    <panel_attributes>Giv adgang til ny bruger
+style=wordwrap</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>684</x>
+      <y>195</y>
+      <w>54</w>
+      <h>27</h>
+    </coordinates>
+    <panel_attributes>Vis historik for et projekt
+style=wordwrap</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>684</x>
+      <y>234</y>
+      <w>54</w>
+      <h>27</h>
+    </coordinates>
+    <panel_attributes>Opstart ny fremdrift for projekt
+style=wordwrap</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>684</x>
+      <y>306</y>
+      <w>54</w>
+      <h>27</h>
+    </coordinates>
+    <panel_attributes>
+Vis overblik over alle fremdriftsbeskrivelser
+
+style=wordwrap</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>681</x>
+      <y>345</y>
+      <w>54</w>
+      <h>27</h>
+    </coordinates>
+    <panel_attributes>
+Fjern en fremdrift for et projekt
+
+style=wordwrap</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>684</x>
+      <y>414</y>
+      <w>54</w>
+      <h>33</h>
+    </coordinates>
+    <panel_attributes>
+Registrering af brugte timer for en afdeling og deres formål
+
+style=wordwrap</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>687</x>
+      <y>495</y>
+      <w>54</w>
+      <h>27</h>
+    </coordinates>
+    <panel_attributes>
+Tilpasning af opstartsbeløb
+
+style=wordwrap</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>687</x>
+      <y>456</y>
+      <w>54</w>
+      <h>27</h>
+    </coordinates>
+    <panel_attributes>
+Angiv en økonomi ressource for et projekt
+
+style=wordwrap</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>687</x>
+      <y>528</y>
+      <w>54</w>
+      <h>27</h>
+    </coordinates>
+    <panel_attributes>
+Vis ressourceforbrug for et projekt.
+
+style=wordwrap</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>684</x>
+      <y>162</y>
+      <w>54</w>
+      <h>27</h>
+    </coordinates>
+    <panel_attributes>Ophør et projekt
+style=wordwrap</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>513</x>
+      <y>147</y>
+      <w>174</w>
+      <h>165</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;
+fg=#3c7a00</panel_attributes>
+    <additional_attributes>10.0;530.0;560.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>519</x>
+      <y>180</y>
+      <w>168</w>
+      <h>135</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;
+fg=#3c7a00</panel_attributes>
+    <additional_attributes>10.0;430.0;540.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>522</x>
+      <y>210</y>
+      <w>162</w>
+      <h>108</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;
+fg=#3c7a00</panel_attributes>
+    <additional_attributes>10.0;340.0;520.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>525</x>
+      <y>252</y>
+      <w>156</w>
+      <h>69</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;
+fg=#3c7a00</panel_attributes>
+    <additional_attributes>10.0;210.0;500.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>528</x>
+      <y>288</y>
+      <w>153</w>
+      <h>39</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;
+fg=#3c7a00</panel_attributes>
+    <additional_attributes>10.0;110.0;490.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLActor</id>
+    <coordinates>
+      <x>498</x>
+      <y>318</y>
+      <w>27</w>
+      <h>33</h>
+    </coordinates>
+    <panel_attributes>ProjektLeder
+fg=#3c7a00
+bg=#3c7a00</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>531</x>
+      <y>321</y>
+      <w>153</w>
+      <h>9</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;
+fg=#3c7a00</panel_attributes>
+    <additional_attributes>10.0;10.0;490.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>531</x>
+      <y>327</y>
+      <w>147</w>
+      <h>36</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;
+fg=#3c7a00</panel_attributes>
+    <additional_attributes>10.0;10.0;470.0;100.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>531</x>
+      <y>333</y>
+      <w>150</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;
+fg=#3c7a00</panel_attributes>
+    <additional_attributes>10.0;10.0;480.0;180.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>531</x>
+      <y>339</y>
+      <w>153</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;
+fg=#3c7a00</panel_attributes>
+    <additional_attributes>10.0;10.0;490.0;280.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>528</x>
+      <y>348</y>
+      <w>159</w>
+      <h>117</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;
+fg=#3c7a00</panel_attributes>
+    <additional_attributes>10.0;10.0;510.0;370.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>528</x>
+      <y>354</y>
+      <w>162</w>
+      <h>150</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;
+fg=#3c7a00</panel_attributes>
+    <additional_attributes>10.0;10.0;520.0;480.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>684</x>
+      <y>381</y>
+      <w>54</w>
+      <h>27</h>
+    </coordinates>
+    <panel_attributes>
+Angiv en estimeret tidsressource for et projekt
+
+style=wordwrap</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>525</x>
+      <y>360</y>
+      <w>162</w>
+      <h>174</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;
+fg=#3c7a00</panel_attributes>
+    <additional_attributes>10.0;10.0;520.0;560.0</additional_attributes>
+  </element>
+</diagram>
