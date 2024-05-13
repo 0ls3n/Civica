@@ -13,6 +13,8 @@
                 CornerRadius="10">
 
             <StackPanel VerticalAlignment="Center"
+                       FocusManager.FocusedElement="{Binding ElementName=Tb1}"
+
                         Margin="0 -60 0 0"
                         Orientation="Vertical">
             <Image Source="/Resources/Images/Civica_Logo.png"
@@ -51,11 +53,12 @@
                     BorderBrush="LightGray"
                     BorderThickness="1"
                     CornerRadius="5">
-                    <TextBox FontSize="16"
+                    <TextBox x:Name="Tb1" FontSize="16"
                          Background="Transparent"
                          BorderThickness="0"
                          Margin="2 5 2 5"
                          TextAlignment="Center"
+                             
                          Text="{Binding Password, UpdateSourceTrigger=PropertyChanged}"/>
                 </Border>
 
