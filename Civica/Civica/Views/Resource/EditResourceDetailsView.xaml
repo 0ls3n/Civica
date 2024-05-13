@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="Civica.Views.EditResourceDetails"
+﻿<UserControl x:Class="Civica.Views.EditResourceDetailsView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -58,7 +58,7 @@
                             </Grid.ColumnDefinitions>
 
                             <TextBlock FontSize="20"
-            Text="Årlig omkostning: "/>
+            Text="Fast årlig omkostning: "/>
 
                             <TextBox Grid.Column="1"
             FontSize="20"
@@ -74,7 +74,7 @@
                             </Grid.ColumnDefinitions>
 
                             <TextBlock FontSize="20"
-                Text="Samlede omkostning: "/>
+                Text="Øvrige omkostninger i alt: "/>
 
                             <TextBlock Grid.Column="1"
                  FontSize="20"

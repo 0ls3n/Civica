@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace Civica.Views
 {
     /// <summary>
-    /// Interaction logic for ResourceView.xaml
+    /// Interaction logic for EditAuditDetails.xaml
     /// </summary>
-    public partial class ResourceView : UserControl
+    public partial class EditAuditView : UserControl
     {
-        public ResourceView()
+        public EditAuditView()
         {
             InitializeComponent();
         }

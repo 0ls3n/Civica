@@ -225,6 +225,10 @@ namespace Civica.Models
                     cmd.Parameters.Add("@UID", SqlDbType.Int).Value = a.UserId;
                     cmd.Parameters.Add("@CD", SqlDbType.DateTime2).Value = a.CreatedDate;
                     cmd.Parameters.Add("@AM", SqlDbType.Decimal).Value = a.Amount;
+                    if (string.IsNullOrEmpty(a.Description))
+                    {
+                        a.Description = "";
+                    }
                     cmd.Parameters.Add("@AD", SqlDbType.NVarChar).Value = a.Description;
                     cmd.Parameters.Add("@YE", SqlDbType.Int).Value = a.Year;
                     cmd.Parameters.Add("@RID", SqlDbType.Int).Value = a.RefId;
@@ -310,6 +314,10 @@ namespace Civica.Models
                     // Indsætter opdaterede værdier i parameterne 
                     cmd.Parameters.Add("@ID", SqlDbType.Int).Value = a.Id;
                     cmd.Parameters.Add("@Am", SqlDbType.Decimal).Value = a.Amount;
+                    if (string.IsNullOrEmpty(a.Description))
+                    {
+                        a.Description = "";
+                    }
                     cmd.Parameters.Add("@AD", SqlDbType.NVarChar).Value = a.Description;
                     cmd.Parameters.Add("@Ye", SqlDbType.Int).Value = a.Year;
                 }

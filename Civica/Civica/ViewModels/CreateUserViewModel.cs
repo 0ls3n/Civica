@@ -99,6 +99,7 @@ namespace Civica.ViewModels
                return succes;
            }
         );
+
         public void SetRepo(IRepository<User> userRepo)
         {
             this.userRepo = userRepo;

@@ -145,7 +145,7 @@ namespace Civica.ViewModels
         public InProgressViewModel ipvm { get; set; } = new InProgressViewModel();
         public ExpandedProjectViewModel epvm { get; set; } = new ExpandedProjectViewModel();
 
-        public ResourceProjectViewModel rpvm { get; set; } = new ResourceProjectViewModel();
+        public ExpandedResourceViewModel ervm { get; set; } = new ExpandedResourceViewModel();
 
         public SettingsViewModel svm { get; set; } = new SettingsViewModel();
         public LoginViewModel lvm { get; set; } = new LoginViewModel();
@@ -203,6 +203,7 @@ namespace Civica.ViewModels
                 }
                 return isEnabled;
             });
+
         public RelayCommand ResourceViewCmd { get; set; } = new RelayCommand
            (
            parameter =>
@@ -216,17 +217,18 @@ namespace Civica.ViewModels
                    mvm.SettingsView = WindowVisibility.Hidden;
                    mvm.LoginView = WindowVisibility.Hidden;
                    mvm.ViewTitle = mvm.ipvm.SelectedProject.Name;
-                   mvm.rpvm.SelectedProject = mvm.ipvm.SelectedProject;
-                   mvm.rpvm.SelectedResource = mvm.ipvm.SelectedResource;
-                   mvm.rpvm.Audits.Clear();
-                   mvm.rpvm.InformationPlaceholderVisibility = WindowVisibility.Visible;
-                   mvm.rpvm.ResourceDetailsVisibility = WindowVisibility.Hidden;
-                   mvm.rpvm.EditAuditVisiblity = WindowVisibility.Hidden;
-                   mvm.rpvm.CreateAuditVisibility = WindowVisibility.Hidden;
-                   mvm.rpvm.EditResourceVisibility = WindowVisibility.Hidden;
-                   mvm.rpvm.ResourceVisiblity = WindowVisibility.Visible;
+                   mvm.ervm.SelectedProject = mvm.ipvm.SelectedProject;
+                   mvm.ervm.SelectedResource = mvm.ipvm.SelectedResource;
+                   mvm.ervm.Audits.Clear();
+                   mvm.ervm.Title = "Omkostninger";
+                   mvm.ervm.InformationPlaceholderVisibility = WindowVisibility.Visible;
+                   mvm.ervm.ResourceDetailsVisibility = WindowVisibility.Hidden;
+                   mvm.ervm.EditAuditVisiblity = WindowVisibility.Hidden;
+                   mvm.ervm.CreateAuditVisibility = WindowVisibility.Hidden;
+                   mvm.ervm.EditResourceVisibility = WindowVisibility.Hidden;
+                   mvm.ervm.ResourceVisiblity = WindowVisibility.Visible;
 
-                   mvm.rpvm.UpdateList();
+                   mvm.ervm.UpdateList();
                }
            },
            parameter =>
@@ -241,6 +243,7 @@ namespace Civica.ViewModels
                }
                return isEnabled;
            });
+
         public RelayCommand SettingsViewCmd { get; set; } = new RelayCommand
             (
             parameter =>
@@ -263,6 +266,7 @@ namespace Civica.ViewModels
                 return true;
 
             });
+
         public RelayCommand LoginViewCmd { get; set; } = new RelayCommand
             (
             parameter =>
@@ -377,6 +381,8 @@ namespace Civica.ViewModels
             lvm.Init(this);
             rpvm.Init(this);
             cpvm.Init(this);
+            ervm.Init(this);
+
             InProgressView = WindowVisibility.Hidden;
             StatusDot = WindowVisibility.Hidden;
             ExpandedProjectView = WindowVisibility.Hidden;

@@ -18,9 +18,9 @@ namespace Civica.Views
     /// <summary>
     /// Interaction logic for ResourceView.xaml
     /// </summary>
-    public partial class ResourceDetails : UserControl
+    public partial class AuditListView : UserControl
     {
-        public ResourceDetails()
+        public AuditListView()
         {
             InitializeComponent();
         }
