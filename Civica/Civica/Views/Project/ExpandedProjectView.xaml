@@ -128,7 +128,7 @@
 
         <Grid Grid.Row="1">
             <Grid.RowDefinitions>
-                <RowDefinition/>
+                <RowDefinition Height="auto"/>
             </Grid.RowDefinitions>
             <Border Background="White"
 CornerRadius="10"
@@ -258,6 +258,7 @@ Margin="0 0 10 0">
                                  Margin="5 0 0 0"
                                  BorderThickness="0"
                                  IsReadOnly="True"
+                                 Height="150"
                                  TextWrapping="Wrap"
                                  AcceptsReturn="True"
                                  AcceptsTab="True"

@@ -6,7 +6,7 @@
              xmlns:viewModel="clr-namespace:Civica.ViewModels"
              mc:Ignorable="d" 
              xmlns:view="clr-namespace:Civica.Views"
-             d:DesignHeight="250" d:DesignWidth="400">
+             d:DesignHeight="355" d:DesignWidth="400">
 
     <Grid>
         <Border Grid.Row="1"
@@ -56,7 +56,7 @@
                                Margin="5 5 0 0"/>
 
                     <TextBlock Text="{Binding SelectedAudit.Description}"
-                               Height="45"
+                               Height="150"
                                TextWrapping="Wrap"
                                Margin="5 0 0 0"/>
 

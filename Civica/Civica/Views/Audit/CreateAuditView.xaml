@@ -6,7 +6,7 @@
              xmlns:viewModel="clr-namespace:Civica.ViewModels"
              mc:Ignorable="d" 
              xmlns:view="clr-namespace:Civica.Views"
-             d:DesignHeight="250" d:DesignWidth="400">
+             d:DesignHeight="310" d:DesignWidth="400">
 
     <Grid>
         <Border Grid.Row="1"
@@ -64,7 +64,7 @@
                                Margin="5 5 0 0"/>
 
                     <TextBox Text="{Binding Description}"
-                               Height="45"
+                               Height="100"
                              AcceptsReturn="True"
                              AcceptsTab="True"
                                TextWrapping="Wrap"
