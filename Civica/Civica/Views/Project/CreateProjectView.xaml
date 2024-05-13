@@ -15,7 +15,7 @@
                         Margin="0 20 0 0"
                         Orientation="Vertical">
 
-                    <TextBlock Text="Opret nyt projekt"
+                    <TextBlock Text="Nyt projekt"
                            TextAlignment="Center"
                            FontSize="30"/>
 

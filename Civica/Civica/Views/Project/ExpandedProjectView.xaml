@@ -540,7 +540,7 @@ ToolTipService.InitialShowDelay="0">
         CommandParameter="{Binding}"
         ToolTipService.InitialShowDelay="0">
                 <Button.ToolTip>
-                    <ToolTip Content="Opret ny fremdrift" Style="{StaticResource ToolTipTheme}"/>
+                    <ToolTip Content="Tilføj fremdrift" Style="{StaticResource ToolTipTheme}"/>
                 </Button.ToolTip>
 
                 <Button.Style>
