@@ -193,27 +193,33 @@ namespace Civica.ViewModels
             mvm = (o as MainViewModel);
             auditRepo = mvm.GetAuditRepo();
             resourceRepo = mvm.GetResourceRepo();
+
+            ResourceVisiblity = WindowVisibility.Visible;
+            ResourceDetailsVisibility = WindowVisibility.Hidden;
+            EditAuditVisiblity = WindowVisibility.Hidden;
+            EditResourceVisibility = WindowVisibility.Hidden;
+            CreateAuditVisibility = WindowVisibility.Hidden;
         }
 
-        public ResourceProjectViewModel()
-        {
-            ChangeViewCmd = new RelayCommand(
+        public RelayCommand ChangeViewCmd { get; set; } = new RelayCommand(
             parameter =>
             {
                 if (parameter is ResourceProjectViewModel rvm)
                 {
-                    switch (Title)
+                    switch (rvm.Title)
                     {
                         case "Omkostninger":
-                            Title = "Resourceforbrug";
+                            rvm.Title = "Resourceforbrug";
                             rvm.Audits.Clear();
                             rvm.InformationPlaceholderVisibility = WindowVisibility.Visible;
                             rvm.ResourceDetailsVisibility = WindowVisibility.Hidden;
                             rvm.EditAuditVisiblity = WindowVisibility.Hidden;
+                            rvm.CreateAuditVisibility = WindowVisibility.Hidden;
                             break;
                         case "Resourceforbrug":
                         default:
-                            Title = "Omkostninger";
+                            rvm.Title = "Omkostninger";
+                            rvm.Audits.Clear();
                             rvm.UpdateList();
                             break;
                     }
@@ -223,15 +229,6 @@ namespace Civica.ViewModels
             {
                 return true;
             });
-
-            ResourceVisiblity = WindowVisibility.Visible;
-            ResourceDetailsVisibility = WindowVisibility.Hidden;
-            EditAuditVisiblity = WindowVisibility.Hidden;
-            EditResourceVisibility = WindowVisibility.Hidden;
-            CreateAuditVisibility = WindowVisibility.Hidden;
-        }
-
-        public RelayCommand ChangeViewCmd { get; set; }
         public RelayCommand EditAuditViewCmd { get; set; } = new RelayCommand(
             parameter =>
             {

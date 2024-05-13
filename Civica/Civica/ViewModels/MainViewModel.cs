@@ -218,6 +218,7 @@ namespace Civica.ViewModels
                    mvm.rpvm.SelectedProject = mvm.ipvm.SelectedProject;
                    mvm.rpvm.SelectedResource = mvm.ipvm.SelectedResource;
                    mvm.rpvm.Audits.Clear();
+                   mvm.rpvm.Title = "Omkostninger";
                    mvm.rpvm.InformationPlaceholderVisibility = WindowVisibility.Visible;
                    mvm.rpvm.ResourceDetailsVisibility = WindowVisibility.Hidden;
                    mvm.rpvm.EditAuditVisiblity = WindowVisibility.Hidden;
