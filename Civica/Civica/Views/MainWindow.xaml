@@ -178,7 +178,7 @@
             BorderThickness="0 1 0 0"
             BorderBrush="#338A8A8A"
             Cursor="Hand"/>
-                <RadioButton Content="Resourcedetaljer"
+                <RadioButton Content="Ressourcedetaljer"
                  FontSize="14"
                  Height="20"
                  Cursor="Hand"
