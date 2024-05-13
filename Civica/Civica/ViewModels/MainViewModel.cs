@@ -149,7 +149,6 @@ namespace Civica.ViewModels
 
         public SettingsViewModel svm { get; set; } = new SettingsViewModel();
         public LoginViewModel lvm { get; set; } = new LoginViewModel();
-        public CreateProgressViewModel cpvm { get; set; } = new CreateProgressViewModel();
 
         public RelayCommand InProgressViewCmd { get; set; } = new RelayCommand
         (
@@ -274,21 +273,21 @@ namespace Civica.ViewModels
                 if (parameter is MainViewModel mvm)
                 {
                     mvm.CurrentUser = new UserViewModel(mvm.userRepo.GetById(1));
-                    //if (mvm.LoginButtonText == "Login")
-                    //{
-                    //    mvm.LoginView = WindowVisibility.Visible;
-                    //    mvm.SettingsView = WindowVisibility.Hidden;
-                    //    mvm.ExpandedProjectView = WindowVisibility.Hidden;
-                    //    mvm.InProgressView = WindowVisibility.Hidden;
-                    //    mvm.ResourceView = WindowVisibility.Hidden;
-                    //    mvm.ViewTitle = mvm.lvm.WindowTitle;
-                    //}
-                    //else
-                    //{
-                    //    mvm.CurrentUser = null;
-                    //    mvm.LoginButtonText = "Login";
-                    //    mvm.UserIconPath = "/Resources/Images/login.png";
-                    //}
+                    if (mvm.LoginButtonText == "Login")
+                    {
+                        mvm.LoginView = WindowVisibility.Visible;
+                        mvm.SettingsView = WindowVisibility.Hidden;
+                        mvm.ExpandedProjectView = WindowVisibility.Hidden;
+                        mvm.InProgressView = WindowVisibility.Hidden;
+                        mvm.ResourceView = WindowVisibility.Hidden;
+                        mvm.ViewTitle = mvm.lvm.WindowTitle;
+                    }
+                    else
+                    {
+                        mvm.CurrentUser = null;
+                        mvm.LoginButtonText = "Login";
+                        mvm.UserIconPath = "/Resources/Images/login.png";
+                    }
                 }
             },
             parameter =>
@@ -379,7 +378,6 @@ namespace Civica.ViewModels
             epvm.Init(this);
             svm.Init(this);
             lvm.Init(this);
-            cpvm.Init(this);
             ervm.Init(this);
 
             InProgressView = WindowVisibility.Hidden;

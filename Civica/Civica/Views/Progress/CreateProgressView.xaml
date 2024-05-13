@@ -93,7 +93,7 @@
                         Margin="0 20 0 0"
                         Content="Opret"
                         Cursor="Hand"
-                        Command="{Binding ProgressProjectCmd}"
+                        Command="{Binding CreateProgressCmd}"
                         CommandParameter="{Binding}">
 
                     <Button.Style>

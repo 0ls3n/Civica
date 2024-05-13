@@ -16,7 +16,7 @@ namespace Civica.ViewModels
     public class ExpandedProjectViewModel : ObservableObject, IViewModelChild
     {
         private MainViewModel mvm { get; set; }
-        private CreateProgressViewModel cpvm { get; set; }
+        public CreateProgressViewModel cpvm { get; set; } = new CreateProgressViewModel();
 
         private IRepository<Progress> progressRepo;
         private ObservableCollection<ProgressViewModel> _progresses = new ObservableCollection<ProgressViewModel>();
@@ -118,12 +118,20 @@ namespace Civica.ViewModels
 
 
         public string Title { get; set; } = "Audits";
-
+        public ExpandedProjectViewModel()
+        {
+            cpvm = new CreateProgressViewModel();
+            cpvm.Init(this);
+        }
+        public UserViewModel GetCurrentUser()
+        {
+            return mvm.CurrentUser;
+        }
         public void Init(ObservableObject o)
         {
             mvm = (o as MainViewModel);
-            cpvm = mvm.cpvm;
             progressRepo = mvm.GetProgressRepo();
+            cpvm.SetRepo(progressRepo);
         }
 
         public void GetRepo(IRepository<Progress> progressRepo)

@@ -14,7 +14,6 @@ namespace Civica.ViewModels
 {
     public class CreateProgressViewModel : ObservableObject, IViewModelChild
     {
-        private InProgressViewModel ipvm;
         private ExpandedProjectViewModel epvm;
 
         private IRepository<Progress> progressRepo;
@@ -59,10 +58,8 @@ namespace Civica.ViewModels
 
         public void Init(ObservableObject o)
         {
-            ipvm = (o as MainViewModel).ipvm;
-            epvm = (o as MainViewModel).epvm;
+            epvm = (o as ExpandedProjectViewModel);
         }
-
         public void SetRepo(IRepository<Progress> progressRepo)
         {
             this.progressRepo = progressRepo;
@@ -70,12 +67,12 @@ namespace Civica.ViewModels
 
         public void CreateProgress()
         {
-            Progress prog = new Progress(ipvm.GetCurrentUser().GetId(), ipvm.SelectedProject.GetId(), SelectedPhase, SelectedStatus, ProgressDescription, DateTime.Now);
+            Progress prog = new Progress(epvm.GetCurrentUser().GetId(), epvm.SelectedProject.GetId(), SelectedPhase, SelectedStatus, ProgressDescription, DateTime.Now);
 
             progressRepo.Add(prog);
         }
 
-        public RelayCommand ProgressProjectCmd { get; set; } = new RelayCommand
+        public RelayCommand CreateProgressCmd { get; set; } = new RelayCommand
         (
             parameter =>
             {
@@ -83,10 +80,12 @@ namespace Civica.ViewModels
                 {
                     cpvm.CreateProgress();
 
-                    cpvm.ipvm.UpdateList();
+                    cpvm.epvm.UpdateList();
 
-                    cpvm.ipvm.ProgressVisibility = WindowVisibility.Hidden;
-                    cpvm.ipvm.InformationVisibility = WindowVisibility.Visible;
+                    cpvm.epvm.ProgressVisibility = WindowVisibility.Hidden;
+                    cpvm.epvm.EditProgressVisibility = WindowVisibility.Hidden;
+                    cpvm.epvm.ProgressVisibility = WindowVisibility.Hidden;
+                    cpvm.epvm.InformationPlaceholderVisibility = WindowVisibility.Visible;
                 }
             },
             parameter =>
@@ -95,13 +94,7 @@ namespace Civica.ViewModels
 
                 if (parameter is CreateProgressViewModel cpvm)
                 {
-                    if (cpvm.ipvm.SelectedProject is not null)
-                    {
-                        if (!string.IsNullOrEmpty(cpvm.ProgressDescription))
-                        {
-                            succes = true;
-                        }
-                    }
+                    succes = true;
                 }
                 return succes;
             }
