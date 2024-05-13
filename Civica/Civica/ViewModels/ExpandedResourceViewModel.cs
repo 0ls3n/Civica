@@ -394,6 +394,10 @@ namespace Civica.ViewModels
                  {
                      WorktimeViewModel wvm = ervm.SelectedWorktime;
 
+                     ervm.EditWorktimeVisiblity = WindowVisibility.Hidden;
+                     ervm.WorktimeDetailsVisibility = WindowVisibility.Hidden;
+                     ervm.InformationPlaceholderVisibility = WindowVisibility.Visible;
+
                      Worktime w = ervm.worktimeRepo.GetById(wvm.GetId());
 
                      w.SpentHours = wvm.SpentHours;
