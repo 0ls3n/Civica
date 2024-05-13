@@ -14,7 +14,7 @@ using System.Windows;
 
 namespace Civica.ViewModels
 {
-    public class ResourceProjectViewModel : ObservableObject, IViewModelChild
+    public class ResourceViewViewModel : ObservableObject, IViewModelChild
     {
         private MainViewModel mvm { get; set; }
 
@@ -204,23 +204,23 @@ namespace Civica.ViewModels
         public RelayCommand ChangeViewCmd { get; set; } = new RelayCommand(
             parameter =>
             {
-                if (parameter is ResourceProjectViewModel rvm)
+                if (parameter is ResourceViewViewModel rvvm)
                 {
-                    switch (rvm.Title)
+                    switch (rvvm.Title)
                     {
                         case "Omkostninger":
-                            rvm.Title = "Resourceforbrug";
-                            rvm.Audits.Clear();
-                            rvm.InformationPlaceholderVisibility = WindowVisibility.Visible;
-                            rvm.ResourceDetailsVisibility = WindowVisibility.Hidden;
-                            rvm.EditAuditVisiblity = WindowVisibility.Hidden;
-                            rvm.CreateAuditVisibility = WindowVisibility.Hidden;
+                            rvvm.Title = "Resourceforbrug";
+                            rvvm.Audits.Clear();
+                            rvvm.InformationPlaceholderVisibility = WindowVisibility.Visible;
+                            rvvm.ResourceDetailsVisibility = WindowVisibility.Hidden;
+                            rvvm.EditAuditVisiblity = WindowVisibility.Hidden;
+                            rvvm.CreateAuditVisibility = WindowVisibility.Hidden;
                             break;
                         case "Resourceforbrug":
                         default:
-                            rvm.Title = "Omkostninger";
-                            rvm.Audits.Clear();
-                            rvm.UpdateList();
+                            rvvm.Title = "Omkostninger";
+                            rvvm.Audits.Clear();
+                            rvvm.UpdateList();
                             break;
                     }
                 }
@@ -232,18 +232,18 @@ namespace Civica.ViewModels
         public RelayCommand EditAuditViewCmd { get; set; } = new RelayCommand(
             parameter =>
             {
-                if (parameter is ResourceProjectViewModel rvm)
+                if (parameter is ResourceViewViewModel rvvm)
                 {
-                    rvm.EditAuditVisiblity = WindowVisibility.Visible;
-                    rvm.ResourceDetailsVisibility = WindowVisibility.Hidden;
-                    rvm.CreateAuditVisibility = WindowVisibility.Hidden;
+                    rvvm.EditAuditVisiblity = WindowVisibility.Visible;
+                    rvvm.ResourceDetailsVisibility = WindowVisibility.Hidden;
+                    rvvm.CreateAuditVisibility = WindowVisibility.Hidden;
                 }
             },
             parameter =>
             {
-                if (parameter is ResourceProjectViewModel rvm)
+                if (parameter is ResourceViewViewModel rvvm)
                 {
-                    if (rvm.SelectedProject != null && rvm.mvm.ipvm.GetCurrentUser() != null)
+                    if (rvvm.SelectedProject != null && rvvm.mvm.ipvm.GetCurrentUser() != null)
                     {
                         return true;
                     }
@@ -254,17 +254,17 @@ namespace Civica.ViewModels
         public RelayCommand EditResourceCmd { get; set; } = new RelayCommand(
             parameter =>
             {
-                if (parameter is ResourceProjectViewModel rvm)
+                if (parameter is ResourceViewViewModel rvvm)
                 {
-                    rvm.EditResourceVisibility = WindowVisibility.Visible;
-                    rvm.ResourceVisiblity = WindowVisibility.Hidden;
+                    rvvm.EditResourceVisibility = WindowVisibility.Visible;
+                    rvvm.ResourceVisiblity = WindowVisibility.Hidden;
                 }
             },
             parameter =>
             {
-                if (parameter is ResourceProjectViewModel rvm)
+                if (parameter is ResourceViewViewModel rvvm)
                 {
-                    if (rvm.SelectedProject != null && rvm.mvm.ipvm.GetCurrentUser() != null)
+                    if (rvvm.SelectedProject != null && rvvm.mvm.ipvm.GetCurrentUser() != null)
                     {
                         return true;
                     }
@@ -275,37 +275,37 @@ namespace Civica.ViewModels
         public RelayCommand SaveAuditCmd { get; set; } = new RelayCommand(
          parameter =>
          {
-             if (parameter is ResourceProjectViewModel rvm)
+             if (parameter is ResourceViewViewModel rvvm)
              {
-                 AuditViewModel avm = rvm.SelectedAudit;
+                 AuditViewModel avm = rvvm.SelectedAudit;
                  string temp = string.Format("{0:#,0}", double.Parse(avm.Amount));
                  avm.Amount = temp;
-                 rvm.EditAuditVisiblity = WindowVisibility.Hidden;
-                 rvm.ResourceDetailsVisibility = WindowVisibility.Hidden;
-                 rvm.InformationPlaceholderVisibility = WindowVisibility.Visible;
+                 rvvm.EditAuditVisiblity = WindowVisibility.Hidden;
+                 rvvm.ResourceDetailsVisibility = WindowVisibility.Hidden;
+                 rvvm.InformationPlaceholderVisibility = WindowVisibility.Visible;
 
-                 Audit a = rvm.auditRepo.GetByRefId(avm.GetRefId()).FirstOrDefault(x => x.Id == avm.GetId());
+                 Audit a = rvvm.auditRepo.GetByRefId(avm.GetRefId()).FirstOrDefault(x => x.Id == avm.GetId());
 
-                 a.Amount = decimal.Parse(rvm.SelectedAudit.Amount);
-                 a.Year = rvm.SelectedAudit.Year;
-                 a.Description = rvm.SelectedAudit.Description;
+                 a.Amount = decimal.Parse(rvvm.SelectedAudit.Amount);
+                 a.Year = rvvm.SelectedAudit.Year;
+                 a.Description = rvvm.SelectedAudit.Description;
 
-                 rvm.auditRepo.Update(a);
+                 rvvm.auditRepo.Update(a);
 
-                 rvm.Audits.Clear();
+                 rvvm.Audits.Clear();
 
 
 
-                 rvm.UpdateList();
+                 rvvm.UpdateList();
 
-                 rvm.SelectedAudit = avm;
+                 rvvm.SelectedAudit = avm;
              }
          },
          parameter =>
          {
-             if (parameter is ResourceProjectViewModel rvm)
+             if (parameter is ResourceViewViewModel rvvm)
              {
-                 if (rvm.SelectedProject != null && rvm.mvm.ipvm.GetCurrentUser() != null)
+                 if (rvvm.SelectedProject != null && rvvm.mvm.ipvm.GetCurrentUser() != null)
                  {
                      return true;
                  }
@@ -316,22 +316,22 @@ namespace Civica.ViewModels
         public RelayCommand CreateAuditCmdView { get; set; } = new RelayCommand(
             parameter =>
             {
-                if (parameter is ResourceProjectViewModel rvm)
+                if (parameter is ResourceViewViewModel rvvm)
                 {
-                    rvm.EditAuditVisiblity = WindowVisibility.Hidden;
-                    rvm.ResourceDetailsVisibility = WindowVisibility.Hidden;
-                    rvm.InformationPlaceholderVisibility = WindowVisibility.Hidden;
-                    rvm.CreateAuditVisibility = WindowVisibility.Visible;
+                    rvvm.EditAuditVisiblity = WindowVisibility.Hidden;
+                    rvvm.ResourceDetailsVisibility = WindowVisibility.Hidden;
+                    rvvm.InformationPlaceholderVisibility = WindowVisibility.Hidden;
+                    rvvm.CreateAuditVisibility = WindowVisibility.Visible;
 
-                    rvm.AuditExpectedYearlyCost = 0;
-                    rvm.AuditYear = DateTime.Now.Year;
+                    rvvm.AuditExpectedYearlyCost = 0;
+                    rvvm.AuditYear = DateTime.Now.Year;
                 }
             },
             parameter =>
             {
-                if (parameter is ResourceProjectViewModel rvm)
+                if (parameter is ResourceViewViewModel rvvm)
                 {
-                    if (rvm.SelectedProject != null && rvm.mvm.ipvm.GetCurrentUser() != null)
+                    if (rvvm.SelectedProject != null && rvvm.mvm.ipvm.GetCurrentUser() != null)
                     {
                         return true;
                     }
@@ -342,38 +342,38 @@ namespace Civica.ViewModels
         public RelayCommand RemoveAuditCmd { get; set; } = new RelayCommand(
           parameter =>
           {
-              if (parameter is ResourceProjectViewModel rvm)
+              if (parameter is ResourceViewViewModel rvvm)
               {
                   MessageBoxButton button = MessageBoxButton.OKCancel;
                   MessageBoxResult result = MessageBox.Show($"Er du sikker på du vil slette denne?", "Bekræft sletning", button);
 
                   if (result == MessageBoxResult.OK)
                   {
-                      AuditViewModel avm = rvm.SelectedAudit;
+                      AuditViewModel avm = rvvm.SelectedAudit;
 
-                      Audit a = rvm.auditRepo.GetByRefId(avm.GetRefId()).FirstOrDefault(x => x.Id == avm.GetId());
-
-
+                      Audit a = rvvm.auditRepo.GetByRefId(avm.GetRefId()).FirstOrDefault(x => x.Id == avm.GetId());
 
 
-                      rvm.auditRepo.Remove(a);
 
-                      rvm.Audits.Clear();
 
-                      rvm.EditAuditVisiblity = WindowVisibility.Hidden;
-                      rvm.ResourceDetailsVisibility = WindowVisibility.Hidden;
-                      rvm.InformationPlaceholderVisibility = WindowVisibility.Visible;
-                      rvm.CreateAuditVisibility = WindowVisibility.Hidden;
+                      rvvm.auditRepo.Remove(a);
 
-                      rvm.UpdateList();
+                      rvvm.Audits.Clear();
+
+                      rvvm.EditAuditVisiblity = WindowVisibility.Hidden;
+                      rvvm.ResourceDetailsVisibility = WindowVisibility.Hidden;
+                      rvvm.InformationPlaceholderVisibility = WindowVisibility.Visible;
+                      rvvm.CreateAuditVisibility = WindowVisibility.Hidden;
+
+                      rvvm.UpdateList();
                   }
               }
           },
           parameter =>
           {
-              if (parameter is ResourceProjectViewModel rvm)
+              if (parameter is ResourceViewViewModel rvvm)
               {
-                  if (rvm.SelectedProject != null && rvm.mvm.ipvm.GetCurrentUser() != null)
+                  if (rvvm.SelectedProject != null && rvvm.mvm.ipvm.GetCurrentUser() != null)
                   {
                       return true;
                   }
@@ -385,22 +385,22 @@ namespace Civica.ViewModels
         public RelayCommand CancelAuditCmd { get; set; } = new RelayCommand(
           parameter =>
           {
-              if (parameter is ResourceProjectViewModel rvm)
+              if (parameter is ResourceViewViewModel rvvm)
               {
-                  rvm.EditAuditVisiblity = WindowVisibility.Hidden;
-                  rvm.ResourceDetailsVisibility = WindowVisibility.Hidden;
-                  rvm.InformationPlaceholderVisibility = WindowVisibility.Visible;
-                  rvm.CreateAuditVisibility = WindowVisibility.Hidden;
+                  rvvm.EditAuditVisiblity = WindowVisibility.Hidden;
+                  rvvm.ResourceDetailsVisibility = WindowVisibility.Hidden;
+                  rvvm.InformationPlaceholderVisibility = WindowVisibility.Visible;
+                  rvvm.CreateAuditVisibility = WindowVisibility.Hidden;
 
-                  rvm.AuditExpectedYearlyCost = 0;
-                  rvm.AuditYear = DateTime.Now.Year;
+                  rvvm.AuditExpectedYearlyCost = 0;
+                  rvvm.AuditYear = DateTime.Now.Year;
               }
           },
           parameter =>
           {
-              if (parameter is ResourceProjectViewModel rvm)
+              if (parameter is ResourceViewViewModel rvvm)
               {
-                  if (rvm.SelectedProject != null && rvm.mvm.ipvm.GetCurrentUser() != null)
+                  if (rvvm.SelectedProject != null && rvvm.mvm.ipvm.GetCurrentUser() != null)
                   {
                       return true;
                   }
@@ -411,30 +411,27 @@ namespace Civica.ViewModels
         public RelayCommand CreateAuditCmd { get; set; } = new RelayCommand(
          parameter =>
          {
-             if (parameter is ResourceProjectViewModel rvm)
+             if (parameter is ResourceViewViewModel rvvm)
              {
-                 //string temp = string.Format("{0:#,0}", double.Parse(avm.Amount));
-                 //avm.Amount = temp;
+                 Audit a = new Audit(rvvm.mvm.ipvm.GetCurrentUser().GetId(), rvvm.SelectedResource.GetId(), rvvm.AuditExpectedYearlyCost, rvvm.AuditYear, rvvm.AuditDescription, DateTime.Now);
 
-                 Audit a = new Audit(rvm.mvm.ipvm.GetCurrentUser().GetId(), rvm.SelectedResource.GetId(), rvm.AuditExpectedYearlyCost, rvm.AuditYear, rvm.AuditDescription, DateTime.Now);
+                 rvvm.auditRepo.Add(a);
 
-                 rvm.auditRepo.Add(a);
+                 rvvm.Audits.Clear();
 
-                 rvm.Audits.Clear();
+                 rvvm.EditAuditVisiblity = WindowVisibility.Hidden;
+                 rvvm.ResourceDetailsVisibility = WindowVisibility.Hidden;
+                 rvvm.CreateAuditVisibility = WindowVisibility.Hidden;
+                 rvvm.InformationPlaceholderVisibility = WindowVisibility.Visible;
 
-                 rvm.EditAuditVisiblity = WindowVisibility.Hidden;
-                 rvm.ResourceDetailsVisibility = WindowVisibility.Hidden;
-                 rvm.CreateAuditVisibility = WindowVisibility.Hidden;
-                 rvm.InformationPlaceholderVisibility = WindowVisibility.Visible;
-
-                 rvm.UpdateList();
+                 rvvm.UpdateList();
              }
          },
          parameter =>
          {
-             if (parameter is ResourceProjectViewModel rvm)
+             if (parameter is ResourceViewViewModel rvvm)
              {
-                 if (rvm.SelectedProject != null && rvm.mvm.ipvm.GetCurrentUser() != null)
+                 if (rvvm.SelectedProject != null && rvvm.mvm.ipvm.GetCurrentUser() != null)
                  {
                      return true;
                  }
@@ -445,25 +442,25 @@ namespace Civica.ViewModels
         public RelayCommand SaveResourceCmd { get; set; } = new RelayCommand(
          parameter =>
          {
-             if (parameter is ResourceProjectViewModel rvm)
+             if (parameter is ResourceViewViewModel rvvm)
              {
-                 ResourceViewModel resourceVm = rvm.SelectedResource;
+                 ResourceViewModel resourceVm = rvvm.SelectedResource;
                  string temp = string.Format("{0:#,0}", double.Parse(resourceVm.StartAmount));
                  resourceVm.StartAmount = temp;
                  temp = string.Format("{0:#,0}", double.Parse(resourceVm.ExpectedYearlyCost));
                  resourceVm.ExpectedYearlyCost = temp;
 
-                 rvm.EditResourceVisibility = WindowVisibility.Hidden;
-                 rvm.ResourceVisiblity = WindowVisibility.Visible;
+                 rvvm.EditResourceVisibility = WindowVisibility.Hidden;
+                 rvvm.ResourceVisiblity = WindowVisibility.Visible;
 
-                 Resource r = rvm.resourceRepo.GetById(rvm.SelectedResource.GetId());
+                 Resource r = rvvm.resourceRepo.GetById(rvvm.SelectedResource.GetId());
 
-                 r.StartAmount = decimal.Parse(rvm.SelectedResource.StartAmount);
-                 r.ExpectedYearlyCost = decimal.Parse(rvm.SelectedResource.ExpectedYearlyCost);
+                 r.StartAmount = decimal.Parse(rvvm.SelectedResource.StartAmount);
+                 r.ExpectedYearlyCost = decimal.Parse(rvvm.SelectedResource.ExpectedYearlyCost);
 
-                 rvm.resourceRepo.Update(r);
+                 rvvm.resourceRepo.Update(r);
 
-                 rvm.SelectedResource = resourceVm;
+                 rvvm.SelectedResource = resourceVm;
              }
          },
          parameter =>
