@@ -18,7 +18,7 @@ namespace Civica.ViewModels
 {
     public class MainViewModel : ObservableObject
     {
-
+        
         private string _viewTitle;
         public string ViewTitle
         {
@@ -149,6 +149,7 @@ namespace Civica.ViewModels
 
         public SettingsViewModel svm { get; set; } = new SettingsViewModel();
         public LoginViewModel lvm { get; set; } = new LoginViewModel();
+        public CreateProgressViewModel cpvm { get; set; } = new CreateProgressViewModel();
 
         public RelayCommand InProgressViewCmd { get; set; } = new RelayCommand
         (

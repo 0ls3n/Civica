@@ -423,7 +423,20 @@ ToolTipService.InitialShowDelay="0">
 
         </Border >
         <Grid Grid.Column="3">
-            
+            <Border Grid.Row="1">
+                <view:CreateProgressView DataContext="{Binding Path=CreateProgressVM}"/>
+                <Border.Style>
+                    <Style TargetType="Border">
+                        <Setter Property="Visibility" Value="Collapsed"/>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding CreateProgressVisibility}" Value="Visible">
+                                <Setter Property="Visibility" Value="Visible"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Border.Style>
+            </Border>
+
         </Grid>
         <Border Grid.Column="3"
                 Grid.Row="1"
@@ -435,6 +448,7 @@ ToolTipService.InitialShowDelay="0">
 
 
         </Border>
+        
         <Grid Grid.Column="3" Grid.Row="1" VerticalAlignment="Bottom">
             
             <Grid.ColumnDefinitions>

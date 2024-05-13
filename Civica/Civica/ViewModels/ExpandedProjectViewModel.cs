@@ -16,6 +16,7 @@ namespace Civica.ViewModels
     public class ExpandedProjectViewModel : ObservableObject, IViewModelChild
     {
         private MainViewModel mvm { get; set; }
+        private CreateProgressViewModel cpvm { get; set; }
 
         private IRepository<Progress> progressRepo;
         private ObservableCollection<ProgressViewModel> _progresses = new ObservableCollection<ProgressViewModel>();
@@ -112,6 +113,7 @@ namespace Civica.ViewModels
             get { return _createProgressVisibility; }
             set { _createProgressVisibility = value; OnPropertyChanged(nameof(CreateProgressVisibility)); }
         }
+
 
 
         public string Title { get; set; } = "Audits";

@@ -165,7 +165,7 @@ namespace Civica.ViewModels
             CreateProjectVM = new CreateProjectViewModel();
             CreateProjectVM.Init(this);
 
-            CreateProgressVM = new CreateProgressViewModel();
+            CreateProgressVM = mvm.cpvm;
             CreateProgressVM.Init(this);
 
             WindowTitle = "Igangværende";
