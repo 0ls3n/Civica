@@ -63,8 +63,6 @@ namespace Civica.ViewModels
             }
         }
 
-
-
         private WindowVisibility _inProgressView;
         public WindowVisibility InProgressView
         {
@@ -209,23 +207,43 @@ namespace Civica.ViewModels
            {
                if (parameter is MainViewModel mvm)
                {
+                   #region MVM Visibility
                    mvm.ResourceView = WindowVisibility.Visible;
                    mvm.StatusDot = WindowVisibility.Visible;
                    mvm.ExpandedProjectView = WindowVisibility.Hidden;
                    mvm.InProgressView = WindowVisibility.Hidden;
                    mvm.SettingsView = WindowVisibility.Hidden;
                    mvm.LoginView = WindowVisibility.Hidden;
+                   #endregion
+
                    mvm.ViewTitle = mvm.ipvm.SelectedProject.Name;
+                   mvm.ervm.Title = "Omkostninger";
+
+                   mvm.ervm.Audits.Clear();
+                   mvm.ervm.Worktimes.Clear();
+
                    mvm.ervm.SelectedProject = mvm.ipvm.SelectedProject;
                    mvm.ervm.SelectedResource = mvm.ipvm.SelectedResource;
-                   mvm.ervm.Audits.Clear();
-                   mvm.ervm.Title = "Omkostninger";
+
                    mvm.ervm.InformationPlaceholderVisibility = WindowVisibility.Visible;
-                   mvm.ervm.ResourceDetailsVisibility = WindowVisibility.Hidden;
+
+                   #region Resource Visibility
+                   mvm.ervm.AuditDetailsVisibility = WindowVisibility.Hidden;
+                   #endregion
+
+                   #region Audit Visibility
                    mvm.ervm.EditAuditVisiblity = WindowVisibility.Hidden;
                    mvm.ervm.CreateAuditVisibility = WindowVisibility.Hidden;
                    mvm.ervm.EditResourceVisibility = WindowVisibility.Hidden;
                    mvm.ervm.ResourceVisiblity = WindowVisibility.Visible;
+                   mvm.ervm.AuditListVisibility = WindowVisibility.Visible;
+                   #endregion
+
+                   #region Worktime Visibility
+                   mvm.ervm.CreateWorktimeVisibility = WindowVisibility.Hidden;
+                   mvm.ervm.EditWorktimeVisiblity = WindowVisibility.Hidden;
+                   mvm.ervm.WorktimeDetailsVisibility = WindowVisibility.Hidden;
+                   #endregion
 
                    mvm.ervm.UpdateList();
                }
@@ -299,6 +317,7 @@ namespace Civica.ViewModels
         private IRepository<Resource> resourceRepo;
         private IRepository<Audit> auditRepo;
         private IRepository<User> userRepo;
+        private IRepository<Worktime> worktimeRepo;
 
         public MainViewModel()
         {
@@ -322,6 +341,10 @@ namespace Civica.ViewModels
             {
                 return userRepo.GetAll().FindAll(x => x.Id == id);
             });
+            worktimeRepo = new Repository<Worktime>(id =>
+            {
+                return worktimeRepo.GetAll().FindAll(x => x.RefId == id);
+            });
 
             ipvm.Init(this);
             epvm.Init(this);
@@ -344,5 +367,6 @@ namespace Civica.ViewModels
         public IRepository<Resource> GetResourceRepo() => resourceRepo;
         public IRepository<Audit> GetAuditRepo() => auditRepo;
         public IRepository<User> GetUserRepo() => userRepo;
+        public IRepository<Worktime> GetWorktimeRepo() => worktimeRepo;
     }
 }
