@@ -15,6 +15,7 @@ namespace Civica.ViewModels
     public class CreateProgressViewModel : ObservableObject, IViewModelChild
     {
         private InProgressViewModel ipvm;
+        private ExpandedProjectViewModel epvm;
 
         private IRepository<Progress> progressRepo;
 
@@ -58,7 +59,8 @@ namespace Civica.ViewModels
 
         public void Init(ObservableObject o)
         {
-            this.ipvm = (o as InProgressViewModel);
+            ipvm = (o as MainViewModel).ipvm;
+            epvm = (o as MainViewModel).epvm;
         }
 
         public void SetRepo(IRepository<Progress> progressRepo)

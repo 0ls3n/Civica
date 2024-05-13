@@ -94,8 +94,6 @@ SelectedValue="{Binding SelectedPhase, UpdateSourceTrigger=PropertyChanged}"/>
                                  FontSize="14"
                                  Margin="5 0 0 0"
                                  BorderThickness="1"
-                         BorderBrush="Gray"
-                         Background="LightGray"
                          
                                  TextWrapping="Wrap"
                                  AcceptsReturn="True"

@@ -165,8 +165,6 @@ namespace Civica.ViewModels
             CreateProjectVM = new CreateProjectViewModel();
             CreateProjectVM.Init(this);
 
-            CreateProgressVM = mvm.cpvm;
-            CreateProgressVM.Init(this);
 
             WindowTitle = "Igangværende";
 
@@ -216,6 +214,8 @@ namespace Civica.ViewModels
         public void Init(ObservableObject o)
         {
             this.mvm = (o as MainViewModel);
+
+            CreateProgressVM = mvm.cpvm;
             projectRepo = this.mvm.GetProjectRepo();
             progressRepo = this.mvm.GetProgressRepo();
             resourceRepo = this.mvm.GetResourceRepo();
