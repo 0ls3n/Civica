@@ -379,7 +379,6 @@ namespace Civica.ViewModels
             epvm.Init(this);
             svm.Init(this);
             lvm.Init(this);
-            rpvm.Init(this);
             cpvm.Init(this);
             ervm.Init(this);
 
