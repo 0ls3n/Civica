@@ -229,6 +229,7 @@ namespace Civica.ViewModels
             {
                 return true;
             });
+
         public RelayCommand EditAuditViewCmd { get; set; } = new RelayCommand(
             parameter =>
             {
