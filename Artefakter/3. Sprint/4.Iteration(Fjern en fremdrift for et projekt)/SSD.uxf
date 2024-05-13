@@ -4,8 +4,8 @@
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>549</x>
-      <y>45</y>
+      <x>747</x>
+      <y>153</y>
       <w>90</w>
       <h>27</h>
     </coordinates>
@@ -15,8 +15,8 @@
   <element>
     <id>UMLActor</id>
     <coordinates>
-      <x>144</x>
-      <y>0</y>
+      <x>342</x>
+      <y>108</y>
       <w>90</w>
       <h>99</h>
     </coordinates>
@@ -26,20 +26,20 @@
   <element>
     <id>Text</id>
     <coordinates>
-      <x>279</x>
-      <y>18</y>
+      <x>477</x>
+      <y>126</y>
       <w>387</w>
       <h>27</h>
     </coordinates>
-    <panel_attributes>Fjern en fremdrift for et projekt
+    <panel_attributes>Fjern en fremdrift fra et projekt
 style=wordwrap</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>171</x>
-      <y>81</y>
+      <x>369</x>
+      <y>189</y>
       <w>27</w>
       <h>369</h>
     </coordinates>
@@ -49,8 +49,8 @@ style=wordwrap</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>171</x>
-      <y>306</y>
+      <x>369</x>
+      <y>414</y>
       <w>441</w>
       <h>45</h>
     </coordinates>
@@ -62,8 +62,8 @@ FjernFremdrift(fremdrift)
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>171</x>
-      <y>351</y>
+      <x>369</x>
+      <y>459</y>
       <w>441</w>
       <h>36</h>
     </coordinates>
@@ -74,8 +74,8 @@ Fremdrift fjernet</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>585</x>
-      <y>63</y>
+      <x>783</x>
+      <y>171</y>
       <w>27</w>
       <h>396</h>
     </coordinates>
@@ -85,8 +85,8 @@ Fremdrift fjernet</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>171</x>
-      <y>108</y>
+      <x>369</x>
+      <y>216</y>
       <w>441</w>
       <h>36</h>
     </coordinates>
@@ -97,8 +97,8 @@ vælgProjekt</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>171</x>
-      <y>144</y>
+      <x>369</x>
+      <y>252</y>
       <w>441</w>
       <h>36</h>
     </coordinates>
@@ -109,8 +109,8 @@ Projekt vises</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>171</x>
-      <y>180</y>
+      <x>369</x>
+      <y>288</y>
       <w>441</w>
       <h>36</h>
     </coordinates>
@@ -121,8 +121,8 @@ VælgProjektdetaljer</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>171</x>
-      <y>252</y>
+      <x>369</x>
+      <y>360</y>
       <w>441</w>
       <h>36</h>
     </coordinates>
@@ -133,8 +133,8 @@ VælgFremdrift</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>171</x>
-      <y>216</y>
+      <x>369</x>
+      <y>324</y>
       <w>441</w>
       <h>36</h>
     </coordinates>
