@@ -283,11 +283,10 @@
                 CornerRadius="10"
                 Margin="10 0 0 0">
 
-            <view:ProjectInformationProgress/>
+            <view:ProgressInformationView/>
 
         </Border>
-
-
+        
     </Grid>
 
 </UserControl>

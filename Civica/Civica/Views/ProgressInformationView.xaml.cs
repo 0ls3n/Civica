@@ -10,17 +10,16 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace Civica.Views
 {
     /// <summary>
-    /// Interaction logic for ResourceView.xaml
+    /// Interaction logic for ProgressInformationView.xaml
     /// </summary>
-    public partial class ResourceDetails : UserControl
+    public partial class ProgressInformationView : UserControl
     {
-        public ResourceDetails()
+        public ProgressInformationView()
         {
             InitializeComponent();
         }

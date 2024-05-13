@@ -258,7 +258,7 @@ Width="25"/>
             </Border>
             <Border Grid.Row="0"
                     Margin="0 0 10 0">
-                <view:ResourceDetails/>
+                <view:AuditDetailsView/>
 
                 <Border.Style>
                     <Style TargetType="Border">
@@ -298,7 +298,7 @@ Width="25"/>
                 Background="White"
                 CornerRadius="10">
 
-            <view:ResourceView/>
+            <view:AuditListView/>
 
         </Border>
 
@@ -311,7 +311,7 @@ Width="25"/>
             </Grid.RowDefinitions>
 
             <Border Margin="10 0 0 0">
-                <view:EditResourceDetails/>
+                <view:EditResourceDetailsView/>
 
                 <Border.Style>
                     <Style TargetType="Border">
