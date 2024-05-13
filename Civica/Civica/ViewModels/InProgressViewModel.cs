@@ -46,16 +46,6 @@ namespace Civica.ViewModels
             }
         }
 
-        private WindowVisibility _progressVisibility;
-        public WindowVisibility ProgressVisibility
-        {
-            get => _progressVisibility;
-            set
-            {
-                _progressVisibility = value;
-                OnPropertyChanged(nameof(ProgressVisibility));
-            }
-        }
 
         private WindowVisibility _informationVisibility;
         public WindowVisibility InformationVisibility
@@ -83,7 +73,6 @@ namespace Civica.ViewModels
                     _selectedProject = value;
                     InformationVisibility = WindowVisibility.Hidden;
                     CreateVisibility = WindowVisibility.Hidden;
-                    ProgressVisibility = WindowVisibility.Hidden;
                     EditVisibility = WindowVisibility.Hidden;
 
                     Progress prog = progressRepo.GetByRefId(SelectedProject.GetId()).OrderByDescending(x => x.CreatedDate).FirstOrDefault();
@@ -158,7 +147,6 @@ namespace Civica.ViewModels
         private IRepository<Audit> auditRepo;
 
         public CreateProjectViewModel CreateProjectVM { get; set; }
-        public CreateProgressViewModel CreateProgressVM { get; set; }
 
         public InProgressViewModel()
         {
@@ -170,7 +158,6 @@ namespace Civica.ViewModels
 
             CreateVisibility = WindowVisibility.Hidden;
             EditVisibility = WindowVisibility.Hidden;
-            ProgressVisibility = WindowVisibility.Hidden;
             InformationVisibility = WindowVisibility.Visible;
         }
 
@@ -215,13 +202,11 @@ namespace Civica.ViewModels
         {
             this.mvm = (o as MainViewModel);
 
-            CreateProgressVM = mvm.cpvm;
             projectRepo = this.mvm.GetProjectRepo();
             progressRepo = this.mvm.GetProgressRepo();
             resourceRepo = this.mvm.GetResourceRepo();
             auditRepo = this.mvm.GetAuditRepo();
 
-            CreateProgressVM.SetRepo(progressRepo);
             CreateProjectVM.SetRepo(projectRepo);
             CreateProjectVM.SetRepo(resourceRepo);
             CreateProjectVM.SetRepo(auditRepo);
@@ -264,7 +249,6 @@ namespace Civica.ViewModels
                     ipvm.CreateVisibility = WindowVisibility.Visible;
                     ipvm.InformationVisibility = WindowVisibility.Hidden;
                     ipvm.EditVisibility = WindowVisibility.Hidden;
-                    ipvm.ProgressVisibility = WindowVisibility.Hidden;
                 }
             },
             parameter =>
@@ -289,7 +273,6 @@ namespace Civica.ViewModels
                     ipvm.EditVisibility = WindowVisibility.Visible;
                     ipvm.InformationVisibility = WindowVisibility.Hidden;
                     ipvm.CreateVisibility = WindowVisibility.Hidden;
-                    ipvm.ProgressVisibility = WindowVisibility.Hidden;
                 }
             },
             parameter =>
@@ -305,35 +288,7 @@ namespace Civica.ViewModels
             }
         );
 
-        public RelayCommand ProgressProjectViewCmd { get; set; } = new RelayCommand
-        (
-            parameter =>
-            {
-                if (parameter is InProgressViewModel ipvm)
-                {
-                    ipvm.CreateProgressVM.ProgressDescription = "";
-
-                    ipvm.CreateProgressVM.SelectedPhase = Phase.IDENTIFIED;
-                    ipvm.CreateProgressVM.SelectedStatus = Status.NONE;
-
-                    ipvm.ProgressVisibility = WindowVisibility.Visible;
-                    ipvm.EditVisibility = WindowVisibility.Hidden;
-                    ipvm.InformationVisibility = WindowVisibility.Hidden;
-                    ipvm.CreateVisibility = WindowVisibility.Hidden;
-                }
-            },
-            parameter =>
-            {
-                if (parameter is InProgressViewModel ipvm)
-                {
-                    if (ipvm.SelectedProject != null && ipvm.mvm.CurrentUser != null)
-                    {
-                        return true;
-                    }
-                }
-                return false;
-            }
-        );
+        
 
         #endregion
 
