@@ -275,7 +275,7 @@ Width="25"/>
 
             <Border Grid.Row="0"
                     Margin="0 0 10 0">
-                <view:EditAuditDetails/>
+                <view:EditAuditView/>
 
                 <Border.Style>
                     <Style TargetType="Border">
