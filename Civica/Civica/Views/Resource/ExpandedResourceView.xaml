@@ -187,7 +187,7 @@
                     Grid.Row="1"
                     Cursor="Hand"
                     Height="60"
-                    Command="{Binding CreateAuditCmdView}"
+                    Command="{Binding CreateCmdView}"
                     CommandParameter="{Binding}"
                     ToolTipService.InitialShowDelay="0">
                 <Button.ToolTip>
@@ -214,7 +214,7 @@
                             Background="{TemplateBinding Background}"
                             CornerRadius="25">
                             <Image Source="/Resources/Images/create_logo.png" 
-Width="25"/>
+                                   Width="25"/>
                         </Border>
                     </ControlTemplate>
                 </Button.Template>
@@ -256,6 +256,23 @@ Width="25"/>
                     </Style>
                 </Border.Style>
             </Border>
+
+            <Border Grid.Row="0"
+                    Margin="0 0 10 0">
+                <view:CreateWorktimeView/>
+
+                <Border.Style>
+                    <Style TargetType="Border">
+                        <Setter Property="Visibility" Value="Collapsed"/>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding CreateWorktimeVisibility}" Value="Visible">
+                                <Setter Property="Visibility" Value="Visible"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Border.Style>
+            </Border>
+
             <Border Grid.Row="0"
                     Margin="0 0 10 0">
                 <view:AuditDetailsView/>
@@ -264,7 +281,24 @@ Width="25"/>
                     <Style TargetType="Border">
                         <Setter Property="Visibility" Value="Collapsed"/>
                         <Style.Triggers>
-                            <DataTrigger Binding="{Binding ResourceDetailsVisibility}" Value="Visible">
+                            <DataTrigger Binding="{Binding AuditDetailsVisibility}" Value="Visible">
+                                <Setter Property="Visibility" Value="Visible"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Border.Style>
+
+            </Border>
+
+            <Border Grid.Row="0"
+                    Margin="0 0 10 0">
+                <view:WorktimeDetailsView/>
+
+                <Border.Style>
+                    <Style TargetType="Border">
+                        <Setter Property="Visibility" Value="Collapsed"/>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding WorktimeDetailsVisibility}" Value="Visible">
                                 <Setter Property="Visibility" Value="Visible"/>
                             </DataTrigger>
                         </Style.Triggers>
@@ -290,15 +324,60 @@ Width="25"/>
 
             </Border>
 
+            <Border Grid.Row="0"
+                    Margin="0 0 10 0">
+                <view:EditWorktimeView/>
+
+                <Border.Style>
+                    <Style TargetType="Border">
+                        <Setter Property="Visibility" Value="Collapsed"/>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding EditWorktimeVisiblity}" Value="Visible">
+                                <Setter Property="Visibility" Value="Visible"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Border.Style>
+
+            </Border>
+
         </Grid>
 
         <Border Grid.Column="1"
-
                 Grid.Row="1"
                 Background="White"
                 CornerRadius="10">
 
             <view:AuditListView/>
+            <Border.Style>
+                <Style TargetType="Border">
+                    <Setter Property="Visibility" Value="Collapsed"/>
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding AuditListVisibility}" Value="Visible">
+                            <Setter Property="Visibility" Value="Visible"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Border.Style>
+
+        </Border>
+
+        <Border Grid.Column="1"
+                Grid.Row="1"
+                Background="White"
+                CornerRadius="10">
+
+            <view:WorktimeListView/>
+            <Border.Style>
+                <Style TargetType="Border">
+                    <Setter Property="Visibility" Value="Collapsed"/>
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding AuditListVisibility}" Value="Hidden">
+                            <Setter Property="Visibility" Value="Visible"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Border.Style>
 
         </Border>
 

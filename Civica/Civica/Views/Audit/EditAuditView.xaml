@@ -86,7 +86,7 @@
                               Width="60"
                               Cursor="Hand"
                               Height="60"
-                              Command="{Binding SaveAuditCmd}"
+                              Command="{Binding SaveCmd}"
                               CommandParameter="{Binding}"
                               ToolTipService.InitialShowDelay="0">
                             <Button.ToolTip>

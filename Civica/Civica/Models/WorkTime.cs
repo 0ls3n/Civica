@@ -6,22 +6,21 @@ using System.Threading.Tasks;
 
 namespace Civica.Models
 {
-    public class WorkTime : DomainModel
+    public class Worktime : DomainModel
     {
-        public double Time { get; set; }
+        public double EstimatedHours { get; set; }
         public string InvolvedName { get; set; }
-
         public string Description { get; set; }
+        public double SpentHours { get; set; } = 0;
         
-        public WorkTime(int userId, int resourceId, double time, string involvedName, string desc, DateTime createdDate)
+        public Worktime(int userId, int resourceId, double estimatedHours, string involvedName, string desc, DateTime createdDate)
         {
-            Time = time;
+            EstimatedHours = estimatedHours;
             InvolvedName = involvedName;
             UserId = userId;
             RefId = resourceId;
             CreatedDate = createdDate;
             Description = desc;
         }
-
     }
 }
