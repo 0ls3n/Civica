@@ -323,7 +323,7 @@ namespace Civica.Models
                 }
                 else if (o is Worktime w)
                 {
-                    cmd = new SqlCommand("UPDATE WORKTIMES SET Time = @Ti, InvolvedName = @IN, WDescription = @WD" +
+                    cmd = new SqlCommand("UPDATE WORKTIMES SET EstimatedHours = @Ti, InvolvedName = @IN, WDescription = @WD " +
                                         "WHERE WorkTimeId = @ID", con); // Opsætter parameterne der skal opdateres.
 
                     // Indsætter opdaterede værdier i parameterne 

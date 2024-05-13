@@ -393,6 +393,21 @@ namespace Civica.ViewModels
                     return userRepo.GetAll().FindAll(x => x.RefId == id);
                 }
             );
+            worktimeRepo = new Repository<Worktime>
+            (
+                id =>
+                {
+                    return worktimeRepo.GetAll().FindAll(x => x.Id == id);
+                },
+                id =>
+                {
+                    return worktimeRepo.GetAll().FindAll(x => x.UserId == id);
+                },
+                id =>
+                {
+                    return worktimeRepo.GetAll().FindAll(x => x.RefId == id);
+                }
+            );
             ipvm.Init(this);
             epvm.Init(this);
             svm.Init(this);
