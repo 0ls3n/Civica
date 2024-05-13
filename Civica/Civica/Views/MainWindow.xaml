@@ -261,7 +261,7 @@
                 </Border>
                 
                 <Border Margin="30 10 30 10">
-                    <view:ExpandedResourceView DataContext="{Binding Path=rvvm}"/>
+                    <view:ExpandedResourceView DataContext="{Binding Path=ervm}"/>
                     <Border.Style>
                         <Style TargetType="Border">
                             <Setter Property="Visibility" Value="Collapsed"/>
