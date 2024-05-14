@@ -141,21 +141,14 @@
                         BorderThickness="0 1 0 0"
                         BorderBrush="#338A8A8A"
                         Cursor="Hand"/>
-                <RadioButton Content="Identificeret"
-                 FontSize="14"
-                 Height="20"
-                 Cursor="Hand"
-                 Style="{StaticResource MenuButtonTheme}"/>
-                <Border Grid.Column="1"
-            Margin="30, 5, 50, 15"
-            BorderThickness="0 1 0 0"
-            BorderBrush="#338A8A8A"
-            Cursor="Hand"/>
+                
                 <RadioButton Content="Arkiv"
-                 FontSize="14"
-                 Height="20"
-                 Cursor="Hand"
-                 Style="{StaticResource MenuButtonTheme}"/>
+                             FontSize="14"
+                             Height="20"
+                             Cursor="Hand"
+                             Command="{Binding ArchiveViewCmd}"
+                             CommandParameter="{Binding}"
+                             Style="{StaticResource MenuButtonTheme}"/>
                 <Border Grid.Column="1"
             Margin="30, 5, 50, 15"
             BorderThickness="0 1 0 0"
@@ -280,6 +273,20 @@
                             <Setter Property="Visibility" Value="Collapsed"/>
                             <Style.Triggers>
                                 <DataTrigger Binding="{Binding SettingsView}" Value="Visible">
+                                    <Setter Property="Visibility" Value="Visible"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Border.Style>
+                </Border>
+
+                <Border Margin="30 10 30 10">
+                    <view:ArchiveView DataContext="{Binding Path=avm}"/>
+                    <Border.Style>
+                        <Style TargetType="Border">
+                            <Setter Property="Visibility" Value="Collapsed"/>
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding ArchiveView}" Value="Visible">
                                     <Setter Property="Visibility" Value="Visible"/>
                                 </DataTrigger>
                             </Style.Triggers>

@@ -169,7 +169,18 @@ namespace Civica.ViewModels
             Projects.Clear();
             foreach (Project p in projectRepo.GetAll())
             {
-                Projects.Add(new ProjectViewModel(p));
+                ProjectViewModel pvm = new ProjectViewModel(p);
+
+                Projects.Add(pvm);
+
+                Progress latestProg = progressRepo.GetByRefId(p.Id).OrderByDescending(x => x.CreatedDate).FirstOrDefault();
+                if (latestProg != null)
+                {
+                    if (latestProg.Phase == Models.Enums.Phase.DONE)
+                    {
+                        Projects.Remove(pvm);
+                    }
+                }
             }
 
             foreach (ProjectViewModel p in Projects)

@@ -57,6 +57,7 @@
                          Background="Transparent"
                          BorderThickness="0"
                          Margin="2 5 2 5"
+                             KeyDown="Button_KeyDown"
                          TextAlignment="Center"
                              
                          Text="{Binding Password, UpdateSourceTrigger=PropertyChanged}"/>

@@ -13,6 +13,7 @@ using Civica.Commands;
 using Civica.Interfaces;
 using Civica.Models;
 using Civica.Models.Enums;
+using Civica.Views;
 
 namespace Civica.ViewModels
 {
@@ -129,6 +130,17 @@ namespace Civica.ViewModels
             }
         }
 
+        private WindowVisibility _archiveView;
+        public WindowVisibility ArchiveView
+        {
+            get => _archiveView;
+            set
+            {
+                _archiveView = value;
+                OnPropertyChanged(nameof(ArchiveView));
+            }
+        }
+
         private string _userIconPath = "/Resources/Images/login.png";
         public string UserIconPath
         {
@@ -142,11 +154,10 @@ namespace Civica.ViewModels
 
         public InProgressViewModel ipvm { get; set; } = new InProgressViewModel();
         public ExpandedProjectViewModel epvm { get; set; } = new ExpandedProjectViewModel();
-
         public ExpandedResourceViewModel ervm { get; set; } = new ExpandedResourceViewModel();
-
         public SettingsViewModel svm { get; set; } = new SettingsViewModel();
         public LoginViewModel lvm { get; set; } = new LoginViewModel();
+        public ArchiveViewModel avm { get; set; } = new ArchiveViewModel();
 
         public RelayCommand InProgressViewCmd { get; set; } = new RelayCommand
         (
@@ -159,6 +170,7 @@ namespace Civica.ViewModels
                     mvm.SettingsView = WindowVisibility.Hidden;
                     mvm.ResourceView = WindowVisibility.Hidden;
                     mvm.StatusDot = WindowVisibility.Hidden;
+                    mvm.ArchiveView = WindowVisibility.Hidden;
                     mvm.LoginView = WindowVisibility.Hidden;
                     mvm.ipvm.InformationVisibility = WindowVisibility.Visible;
                     mvm.ViewTitle = mvm.ipvm.WindowTitle;
@@ -182,6 +194,7 @@ namespace Civica.ViewModels
                     mvm.SettingsView = WindowVisibility.Hidden;
                     mvm.LoginView = WindowVisibility.Hidden;
                     mvm.ResourceView = WindowVisibility.Hidden;
+                    mvm.ArchiveView = WindowVisibility.Hidden;
                     mvm.ViewTitle = mvm.ipvm.SelectedProject.Name;
                     mvm.epvm.SelectedProject = mvm.ipvm.SelectedProject;
                     mvm.epvm.UpdateList();
@@ -215,6 +228,7 @@ namespace Civica.ViewModels
                    mvm.InProgressView = WindowVisibility.Hidden;
                    mvm.SettingsView = WindowVisibility.Hidden;
                    mvm.LoginView = WindowVisibility.Hidden;
+                   mvm.ArchiveView = WindowVisibility.Hidden;
                    #endregion
 
                    mvm.ViewTitle = mvm.ipvm.SelectedProject.Name;
@@ -275,8 +289,33 @@ namespace Civica.ViewModels
                     mvm.LoginView = WindowVisibility.Hidden;
                     mvm.ResourceView = WindowVisibility.Hidden;
                     mvm.ViewTitle = mvm.svm.WindowTitle;
+                    mvm.ArchiveView = WindowVisibility.Hidden;
                     mvm.svm.UpdateList();
                     mvm.svm.InformationVisibility = WindowVisibility.Visible;
+                }
+            },
+            parameter =>
+            {
+                return true;
+
+            });
+
+        public RelayCommand ArchiveViewCmd { get; set; } = new RelayCommand
+            (
+            parameter =>
+            {
+                if (parameter is MainViewModel mvm)
+                {
+                    mvm.ViewTitle = mvm.avm.WindowTitle;
+                    mvm.SettingsView = WindowVisibility.Hidden;
+                    mvm.StatusDot = WindowVisibility.Hidden;
+                    mvm.ExpandedProjectView = WindowVisibility.Hidden;
+                    mvm.InProgressView = WindowVisibility.Hidden;
+                    mvm.LoginView = WindowVisibility.Hidden;
+                    mvm.ResourceView = WindowVisibility.Hidden;
+                    mvm.svm.InformationVisibility = WindowVisibility.Hidden;
+                    mvm.ArchiveView = WindowVisibility.Visible;
+                    mvm.avm.UpdateList();
                 }
             },
             parameter =>
@@ -299,6 +338,7 @@ namespace Civica.ViewModels
                         mvm.ExpandedProjectView = WindowVisibility.Hidden;
                         mvm.InProgressView = WindowVisibility.Hidden;
                         mvm.ResourceView = WindowVisibility.Hidden;
+                        mvm.ArchiveView = WindowVisibility.Hidden;
                         mvm.ViewTitle = mvm.lvm.WindowTitle;
                     }
                     else
@@ -313,6 +353,8 @@ namespace Civica.ViewModels
             {
                 return true;
             });
+
+
 
         private IRepository<Project> projectRepo;
         private IRepository<Progress> progressRepo;
@@ -414,6 +456,7 @@ namespace Civica.ViewModels
             svm.Init(this);
             lvm.Init(this);
             ervm.Init(this);
+            avm.Init(this);
 
             InProgressView = WindowVisibility.Hidden;
             StatusDot = WindowVisibility.Hidden;
@@ -421,6 +464,7 @@ namespace Civica.ViewModels
             SettingsView = WindowVisibility.Hidden;
             ResourceView = WindowVisibility.Hidden;
             LoginView = WindowVisibility.Visible;
+            ArchiveView = WindowVisibility.Hidden;
 
             ViewTitle = ipvm.WindowTitle;
         }
@@ -431,5 +475,13 @@ namespace Civica.ViewModels
         public IRepository<Audit> GetAuditRepo() => auditRepo;
         public IRepository<User> GetUserRepo() => userRepo;
         public IRepository<Worktime> GetWorktimeRepo() => worktimeRepo;
+
+        public void ShowStatusDot(bool show)
+        {
+            if (show)
+                StatusDot = WindowVisibility.Visible;
+            else 
+                StatusDot = WindowVisibility.Hidden;
+        }
     }
 }

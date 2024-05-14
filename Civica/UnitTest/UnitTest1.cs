@@ -10,9 +10,14 @@ namespace UnitTest
         IRepository<Project> projectRepo;
         IRepository<User> userRepo;
         IRepository<Progress> progressRepo;
+        IRepository<Resource> resourceRepo;
+        IRepository<Audit> auditRepo;
+        IRepository<Worktime> worktimeRepo;
 
         Project p1;
         Progress prog;
+        Resource resource;
+        Audit audit;
         User u1;
 
         [TestInitialize]
@@ -62,29 +67,82 @@ namespace UnitTest
                 }
             );
 
+            resourceRepo = new Repository<Resource>
+            (
+                id =>
+                {
+                    return resourceRepo.GetAll().FindAll(x => x.Id == id);
+                },
+                id =>
+                {
+                    return resourceRepo.GetAll().FindAll(x => x.UserId == id);
+                },
+                id =>
+                {
+                    return resourceRepo.GetAll().FindAll(x => x.RefId == id);
+                }
+            );
+
+            auditRepo = new Repository<Audit>
+            (
+                id =>
+                {
+                    return auditRepo.GetAll().FindAll(x => x.Id == id);
+                },
+                id =>
+                {
+                    return auditRepo.GetAll().FindAll(x => x.UserId == id);
+                },
+                id =>
+                {
+                    return auditRepo.GetAll().FindAll(x => x.RefId == id);
+                }
+            );
+
+            worktimeRepo = new Repository<Worktime>
+            (
+                id =>
+                {
+                    return worktimeRepo.GetAll().FindAll(x => x.Id == id);
+                },
+                id =>
+                {
+                    return worktimeRepo.GetAll().FindAll(x => x.UserId == id);
+                },
+                id =>
+                {
+                    return worktimeRepo.GetAll().FindAll(x => x.RefId == id);
+                }
+            );
+
             p1 = new Project(1, "test1", string.Empty, string.Empty, string.Empty, DateTime.Now);
 
             u1 = new User("TestBruger", "Olsen", 1709);
         }
 
         [TestMethod]
-        public void TestCreateAndDeleteProjectFromDatabase()
+        public void Add_SingleProject_AddedToDatabase()
         {
             projectRepo.Add(p1); // Act
 
             Assert.IsNotNull(projectRepo.GetAll().Find(x => (x as Project).Name == "test1")); // Assert
 
+            projectRepo.Remove(p1);
+        }
+
+        [TestMethod]
+        public void Remove_SingleProject_RemoveFromDatabase()
+        {
+            projectRepo.Add(p1); // Act
             projectRepo.Remove(p1); // Act
 
             Assert.IsNull(projectRepo.GetAll().Find(x => (x as Project).Name == "test1")); // Assert
         }
 
         [TestMethod]
-        public void TestUpdateProjectFromDatabase()
+        public void Update_SingleProject_UpdatedToDatabase()
         {
             projectRepo.Add(p1); //Act
-
-            Assert.IsNotNull(projectRepo.GetAll().Find(x => (x as Project).Name == "test1")); // Assert
 
             p1.Name = "Hejsa!"; // Arrange
             projectRepo.Update(p1); // Act
@@ -96,7 +154,7 @@ namespace UnitTest
         }
 
         [TestMethod]
-        public void TestUpdateProjectFromDatabase2()
+        public void Update_SingleProject_UpdatedToDatabase_2()
         {
             projectRepo.Add(p1); // Act
 
@@ -114,11 +172,19 @@ namespace UnitTest
         }
 
         [TestMethod]
-        public void TestCreateAndDeleteUserFromDatabase()
+        public void Add_SingleUser_AddedToDatabase()
         {
             userRepo.Add(u1); // Act
 
             Assert.IsNotNull(userRepo.GetAll().Find(x => (x as User).FirstName == "TestBruger")); // Assert
+
+            userRepo.Remove(u1);
+        }
+
+        [TestMethod]
+        public void Remove_SingleUser_RemovedFromDatabase()
+        {
+            userRepo.Add(u1);
 
             userRepo.Remove(u1); // Act
 
@@ -126,7 +192,7 @@ namespace UnitTest
         }
 
         [TestMethod]
-        public void TestUpdateUserFromDatabase()
+        public void Update_SingleUser_UpdatedToDatabase()
         {
             userRepo.Add(u1); //Act
 
@@ -142,7 +208,7 @@ namespace UnitTest
         }
 
         [TestMethod]
-        public void TestUpdateUserFromDatabase2()
+        public void Update_SingleUser_UpdatedToDatabase_2()
         {
             userRepo.Add(u1); // Act
 
@@ -161,7 +227,7 @@ namespace UnitTest
         }
 
         [TestMethod]
-        public void TestAddProgressToProject()
+        public void GetByRefId_SingleProgress_ProgressFoundThroughProjectReference()
         {
             projectRepo.Add(p1); // Act
 
@@ -173,6 +239,32 @@ namespace UnitTest
 
             projectRepo.Remove(p1);
             progressRepo.Remove(prog);
+
+        }
+
+        [TestMethod]
+        public void Remove_ProjectAndAllDomainsWithReferenceToProject_RemovedFromDatabase()
+        {
+            projectRepo.Add(p1);
+
+            prog = new Progress(1, p1.Id, Civica.Models.Enums.Phase.IDENTIFIED, Civica.Models.Enums.Status.ON_TRACK, "jeg er en progress", DateTime.Now);
+            progressRepo.Add(prog);
+
+            resource = new Resource(1, p1.Id, DateTime.Now);
+            resourceRepo.Add(resource);
+
+            audit = new Audit(1, resource.Id, 0, 2003, "hej", DateTime.Now);
+            auditRepo.Add(audit);
+
+            projectRepo.Remove(p1);
+            progressRepo.Remove(prog);
+            resourceRepo.Remove(resource);
+            auditRepo.Remove(audit);
+
+            Assert.IsNull(projectRepo.GetAll().Find(x => (x as Project).Name == "test1"));
+            Assert.IsNull(progressRepo.GetByRefId(p1.Id).Find(x => x.Id == prog.Id));
+            Assert.IsNull(resourceRepo.GetByRefId(p1.Id).Find(x => x.Id == resource.Id));
+            Assert.IsNull(auditRepo.GetByRefId(resource.Id).Find(x => x.Id == audit.Id));
 
         }
     }
