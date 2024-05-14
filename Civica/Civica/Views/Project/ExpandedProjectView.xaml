@@ -6,7 +6,7 @@
              xmlns:viewModel="clr-namespace:Civica.ViewModels"
              mc:Ignorable="d" 
              xmlns:view="clr-namespace:Civica.Views"
-             d:DesignHeight="650" d:DesignWidth="1200">
+             d:DesignHeight="670" d:DesignWidth="1200">
 
     <UserControl.Resources>
         <ResourceDictionary>
@@ -91,14 +91,14 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="50"/>
             <RowDefinition/>
-            
+
         </Grid.RowDefinitions>
 
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="485*"/>
             <ColumnDefinition MinWidth="200"
                               MaxWidth="230" Width="114*"/>
-            <ColumnDefinition Width="116*"/>
+            <ColumnDefinition Width="auto"/>
             <ColumnDefinition Width="485*"/>
         </Grid.ColumnDefinitions>
 
@@ -110,6 +110,49 @@
                    Margin="0 0 0 10"
                    Foreground="#8A8A8A"/>
 
+        <Button
+BorderThickness="0"
+HorizontalAlignment="Right"
+            VerticalAlignment="Center"
+        Grid.Column="2"
+Width="20"
+                 Margin="10,8,4,0"
+Cursor="Hand"
+Height="20"
+Command="{Binding CreateProgressViewCmd}"
+CommandParameter="{Binding}"
+ToolTipService.InitialShowDelay="0">
+            <Button.ToolTip>
+                <ToolTip Content="Tilføj fremdrift" Style="{StaticResource ToolTipTheme}"/>
+            </Button.ToolTip>
+
+            <Button.Style>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="Background" Value="Transparent"/>
+
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="Transparent"/>
+                        </Trigger>
+                    </Style.Triggers>
+
+                </Style>
+            </Button.Style>
+
+
+            <Button.Template>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border Width="20" 
+            Height="20"
+            Background="{TemplateBinding Background}"
+            CornerRadius="25">
+                        <Image Source="/Resources/Images/progress_logo.png" 
+                Width="20"/>
+                    </Border>
+                </ControlTemplate>
+            </Button.Template>
+
+        </Button>
         <TextBlock Grid.Row="0"
                    Grid.Column="1"
                    Text="Fremdrifter"
@@ -117,6 +160,89 @@
                    VerticalAlignment="Bottom"
                    Margin="0 0 0 10"
                    Foreground="#8A8A8A"/>
+
+        <Button
+          Grid.Column="3"
+  BorderThickness="0"
+  HorizontalAlignment="Right"
+            VerticalAlignment="Center"
+  Width="20"
+  Margin="10,8,30,0"
+
+  Cursor="Hand"
+  Height="20"
+  Command="{Binding EditProjectViewCmd}"
+  CommandParameter="{Binding}" 
+  ToolTipService.InitialShowDelay="0">
+            <Button.ToolTip>
+                <ToolTip Content="Opdater projekt" Style="{StaticResource ToolTipTheme}"/>
+            </Button.ToolTip>
+
+            <Button.Style>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="Background" Value="Transparent"/>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="Transparent"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+
+            <Button.Template>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border Width="20" 
+              Height="20"
+              Background="{TemplateBinding Background}"
+              CornerRadius="25">
+                        <Image Source="/Resources/Images/edit_Logo2.png" 
+                  Width="20"/>
+                    </Border>
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
+
+        <Button Grid.Column="3"
+ BorderThickness="0"
+ HorizontalAlignment="Right"
+                VerticalAlignment="Center"
+  Margin="10,8,4,0"
+ Width="20"
+ Cursor="Hand"
+ Height="20"
+ Command="{Binding RemoveProjectCmd}"
+ CommandParameter="{Binding}"
+ ToolTipService.InitialShowDelay="0">
+            <Button.ToolTip>
+                <ToolTip Content="Slet projekt" Style="{StaticResource ToolTipTheme}"/>
+            </Button.ToolTip>
+
+            <Button.Style>
+                <Style TargetType="Button">
+                    <Setter Property="Background" Value="Transparent"/>
+
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="Transparent"/>
+                        </Trigger>
+                    </Style.Triggers>
+
+                </Style>
+            </Button.Style>
+
+            <Button.Template>
+                <ControlTemplate TargetType="Button">
+                    <Border Width="20" 
+             Height="20"
+             Background="{TemplateBinding Background}"
+             CornerRadius="25">
+                        <Image Source="/Resources/Images/remove_logo.png" 
+                Width="20"/>
+                    </Border>
+                </ControlTemplate>
+            </Button.Template>
+
+        </Button>
 
         <TextBlock Grid.Row="0"
                    Grid.Column="3"
@@ -164,6 +290,7 @@ Margin="0 0 10 0">
                 </Border.Style>
 
             </Border>
+
             <Border Background="White"
         CornerRadius="10"
         Margin="0 0 10 0">
@@ -187,10 +314,10 @@ Margin="0 0 10 0">
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="*"/>
-                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="60"/>
                     </Grid.RowDefinitions>
 
-                    
+
 
 
                     <ScrollViewer VerticalScrollBarVisibility="Auto" Grid.Row="0">
@@ -264,22 +391,29 @@ Margin="0 0 10 0">
                                  AcceptsTab="True"
                                  Text="{Binding SelectedProgress.Description}"/>
 
-
+                            <Border BorderBrush="Gray"
+       BorderThickness="0,0,0,1"
+       Margin="5, 0, 5, 0"
+       Opacity="0.2">
+                            </Border>
                         </StackPanel>
 
                     </ScrollViewer>
                     <Grid Grid.Row="2">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="60"/>
-                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="308*"/>
+                            <ColumnDefinition Width="69*"/>
                         </Grid.ColumnDefinitions>
                         <Button
 BorderThickness="0"
    Grid.Column="0"
+                            Margin="5, 0, 0, 0"
 HorizontalAlignment="Left"
-Width="60"
+                            VerticalAlignment="Top"
+Width="45"
 Cursor="Hand"
-Height="60"
+Height="45"
 Command="{Binding EditProgressViewCmd}"
 CommandParameter="{Binding}"
 ToolTipService.InitialShowDelay="0">
@@ -289,10 +423,10 @@ ToolTipService.InitialShowDelay="0">
 
                             <Button.Style>
                                 <Style TargetType="{x:Type Button}">
-                                    <Setter Property="Background" Value="Orange"/>
+                                    <Setter Property="Background" Value="Transparent"/>
                                     <Style.Triggers>
                                         <Trigger Property="IsMouseOver" Value="True">
-                                            <Setter Property="Background" Value="#FFF1B545"/>
+                                            <Setter Property="Background" Value="Transparent"/>
                                         </Trigger>
                                     </Style.Triggers>
                                 </Style>
@@ -300,12 +434,12 @@ ToolTipService.InitialShowDelay="0">
 
                             <Button.Template>
                                 <ControlTemplate TargetType="{x:Type Button}">
-                                    <Border Width="50" 
-               Height="50"
+                                    <Border Width="45" 
+               Height="45"
                Background="{TemplateBinding Background}"
                CornerRadius="25">
-                                        <Image Source="/Resources/Images/edit_Logo.png" 
-                       Width="25"/>
+                                        <Image Source="/Resources/Images/edit_Logo2.png" 
+                       Width="45"/>
                                     </Border>
                                 </ControlTemplate>
                             </Button.Template>
@@ -315,23 +449,24 @@ ToolTipService.InitialShowDelay="0">
          BorderThickness="0"
                                Grid.Column="1"
          HorizontalAlignment="Left"
-         Width="60"
+                            VerticalAlignment="Top"
+         Width="45"
          Cursor="Hand"
-         Height="60"
+         Height="45"
          Command="{Binding RemoveProgressCmd}"
          CommandParameter="{Binding}"
-         ToolTipService.InitialShowDelay="0">
+         ToolTipService.InitialShowDelay="0" Margin="0,2,0,2">
                             <Button.ToolTip>
                                 <ToolTip Content="Slet fremdrift" Style="{StaticResource ToolTipTheme}"/>
                             </Button.ToolTip>
 
                             <Button.Style>
                                 <Style TargetType="Button">
-                                    <Setter Property="Background" Value="Red"/>
+                                    <Setter Property="Background" Value="Transparent"/>
 
                                     <Style.Triggers>
                                         <Trigger Property="IsMouseOver" Value="True">
-                                            <Setter Property="Background" Value="#FFFC5B5B"/>
+                                            <Setter Property="Background" Value="Transparent"/>
                                         </Trigger>
                                     </Style.Triggers>
 
@@ -340,12 +475,12 @@ ToolTipService.InitialShowDelay="0">
 
                             <Button.Template>
                                 <ControlTemplate TargetType="Button">
-                                    <Border Width="50" 
-                        Height="50"
+                                    <Border Width="45" 
+                        Height="45"
                         Background="{TemplateBinding Background}"
                         CornerRadius="25">
                                         <Image Source="/Resources/Images/remove_logo.png" 
-                            Width="25"/>
+                            Width="45"/>
                                     </Border>
                                 </ControlTemplate>
                             </Button.Template>
@@ -358,8 +493,8 @@ ToolTipService.InitialShowDelay="0">
 
 
             </Border>
-            
-            
+
+
 
             <Border Grid.Row="0"
                     Margin="0 0 10 0">
@@ -377,10 +512,10 @@ ToolTipService.InitialShowDelay="0">
                     </Style>
                 </Border.Style>
             </Border>
-            
+
 
         </Grid>
-        
+
 
 
 
@@ -429,7 +564,7 @@ ToolTipService.InitialShowDelay="0">
             </ListBox>
 
         </Border >
-       
+
         <Border Grid.Column="3"
                 Grid.Row="1"
                 Background="White"
@@ -437,144 +572,37 @@ ToolTipService.InitialShowDelay="0">
                 Margin="10,0,0,0">
 
             <view:ProgressInformationView/>
+            <Border.Style>
+                <Style TargetType="Border">
+                    <Setter Property="Visibility" Value="Collapsed"/>
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding EditProjectVisibility}" Value="Hidden">
+                            <Setter Property="Visibility" Value="Visible"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Border.Style>
+        </Border>
 
+        <Border Background="White"
+                CornerRadius="10"
+                Margin="10 0 0 0"
+                Grid.Column="3"
+                Grid.Row="1">
+            <view:EditProjectViewModel/>
+
+            <Border.Style>
+                <Style TargetType="Border">
+                    <Setter Property="Visibility" Value="Collapsed"/>
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding EditProjectVisibility}" Value="Visible">
+                            <Setter Property="Visibility" Value="Visible"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Border.Style>
 
         </Border>
-        
-        <Grid Grid.Column="3" Grid.Row="1" VerticalAlignment="Bottom">
-            
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="auto"/>
-                <ColumnDefinition Width="auto"/>
-                <ColumnDefinition Width="auto"/>
-            </Grid.ColumnDefinitions>
-
-            <Button Grid.Column="3"
-            BorderThickness="0"
-            HorizontalAlignment="Right"
-            Margin="0 0 10 0"
-            Width="60"
-            Cursor="Hand"
-            Height="60"
-            Command="{Binding RemoveProjectCmd}"
-            CommandParameter="{Binding}"
-            ToolTipService.InitialShowDelay="0">
-                <Button.ToolTip>
-                    <ToolTip Content="Slet projekt" Style="{StaticResource ToolTipTheme}"/>
-                </Button.ToolTip>
-
-                <Button.Style>
-                    <Style TargetType="Button">
-                        <Setter Property="Background" Value="Red"/>
-
-                        <Style.Triggers>
-                            <Trigger Property="IsMouseOver" Value="True">
-                                <Setter Property="Background" Value="#FFFC5B5B"/>
-                            </Trigger>
-                        </Style.Triggers>
-
-                    </Style>
-                </Button.Style>
-
-                <Button.Template>
-                    <ControlTemplate TargetType="Button">
-                        <Border Width="50" 
-                        Height="50"
-                        Background="{TemplateBinding Background}"
-                        CornerRadius="25">
-                            <Image Source="/Resources/Images/remove_logo.png" 
-                           Width="25"/>
-                        </Border>
-                    </ControlTemplate>
-                </Button.Template>
-
-            </Button>
-            
-
-            <Button
-                Grid.Column="1"
-        BorderThickness="0"
-        HorizontalAlignment="Right"
-        Width="60"
-        Cursor="Hand"
-        Height="60"
-        Command="{Binding UpdateProjectViewCmd}"
-        CommandParameter="{Binding}" 
-        ToolTipService.InitialShowDelay="0">
-                <Button.ToolTip>
-                    <ToolTip Content="Opdater projekt" Style="{StaticResource ToolTipTheme}"/>
-                </Button.ToolTip>
-
-                <Button.Style>
-                    <Style TargetType="{x:Type Button}">
-                        <Setter Property="Background" Value="Orange"/>
-                        <Style.Triggers>
-                            <Trigger Property="IsMouseOver" Value="True">
-                                <Setter Property="Background" Value="#FFF1B545"/>
-                            </Trigger>
-                        </Style.Triggers>
-
-                    </Style>
-                </Button.Style>
-
-                <Button.Template>
-                    <ControlTemplate TargetType="{x:Type Button}">
-                        <Border Width="50" 
-                    Height="50"
-                    Background="{TemplateBinding Background}"
-                    CornerRadius="25">
-                            <Image Source="/Resources/Images/edit_Logo.png" 
-                        Width="25"/>
-                        </Border>
-                    </ControlTemplate>
-                </Button.Template>
-            </Button>
-            <Button
-        BorderThickness="0"
-        HorizontalAlignment="Right"
-                Grid.Column="2"
-        Width="60"
-        Cursor="Hand"
-        Height="60"
-        Command="{Binding CreateProgressViewCmd}"
-        CommandParameter="{Binding}"
-        ToolTipService.InitialShowDelay="0">
-                <Button.ToolTip>
-                    <ToolTip Content="Tilføj fremdrift" Style="{StaticResource ToolTipTheme}"/>
-                </Button.ToolTip>
-
-                <Button.Style>
-                    <Style TargetType="{x:Type Button}">
-                        <Setter Property="Background" Value="#FF4444F0"/>
-
-                        <Style.Triggers>
-                            <Trigger Property="IsMouseOver" Value="True">
-                                <Setter Property="Background" Value="#FF6B6BED"/>
-                            </Trigger>
-                        </Style.Triggers>
-
-                    </Style>
-                </Button.Style>
-
-
-                <Button.Template>
-                    <ControlTemplate TargetType="{x:Type Button}">
-                        <Border Width="50" 
-                    Height="50"
-                    Background="{TemplateBinding Background}"
-                    CornerRadius="25">
-                            <Image Source="/Resources/Images/progress_logo.png" 
-                        Width="25"/>
-                        </Border>
-                    </ControlTemplate>
-                </Button.Template>
-
-            </Button>
-        </Grid>
-
-
-
     </Grid>
 
 </UserControl>

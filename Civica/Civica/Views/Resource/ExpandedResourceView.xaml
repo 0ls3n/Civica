@@ -206,7 +206,45 @@
 
 
 
+        <Button BorderThickness="0"
+               Grid.Column="2"
+                Grid.Row="0"
+            HorizontalAlignment="Right"
+               VerticalAlignment="Bottom"
+            Width="15"
+                Margin="0, 0, 0, 8"
+            Cursor="Hand"
+            Height="15"
+            Command="{Binding EditResourceCmd}"
+            CommandParameter="{Binding}"
+            ToolTipService.InitialShowDelay="0">
+            <Button.ToolTip>
+                <ToolTip Content="Opdater Startbeløb/Årlig omk." Style="{StaticResource ToolTipTheme}"/>
+            </Button.ToolTip>
 
+            <Button.Style>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="Background" Value="Transparent"/>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="Transparent"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+
+            <Button.Template>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border Width="15" 
+Height="15"
+Background="{TemplateBinding Background}"
+CornerRadius="25">
+                        <Image Source="/Resources/Images/edit_Logo.png" 
+        Width="25"/>
+                    </Border>
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
         <TextBlock Grid.Row="0"
                    Grid.Column="2"
                    Text="Resourceoverblik"
@@ -500,57 +538,8 @@
                                         Text=" kr"/>
                             </Grid>
 
-                            <Border BorderBrush="Gray"
-                            BorderThickness="0,0,0,1"
-                            Margin="5, 25, 5, 0"
-                            Opacity="0.2">
-                            </Border>
                         </StackPanel>
                     </ScrollViewer>
-                    <Grid Grid.Row="1">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="60"/>
-                            <ColumnDefinition Width="*"/>
-                        </Grid.ColumnDefinitions>
-                        <Button BorderThickness="0"
-                                Grid.Column="0"
-                             HorizontalAlignment="Left"
-                                VerticalAlignment="Top"
-                             Width="60"
-                             Cursor="Hand"
-                             Height="60"
-                             Command="{Binding EditResourceCmd}"
-                             CommandParameter="{Binding}"
-                             ToolTipService.InitialShowDelay="0">
-                            <Button.ToolTip>
-                                <ToolTip Content="Opdater Startbeløb/Årlig omk." Style="{StaticResource ToolTipTheme}"/>
-                            </Button.ToolTip>
-
-                            <Button.Style>
-                                <Style TargetType="{x:Type Button}">
-                                    <Setter Property="Background" Value="Orange"/>
-                                    <Style.Triggers>
-                                        <Trigger Property="IsMouseOver" Value="True">
-                                            <Setter Property="Background" Value="#FFF1B545"/>
-                                        </Trigger>
-                                    </Style.Triggers>
-                                </Style>
-                            </Button.Style>
-
-                            <Button.Template>
-                                <ControlTemplate TargetType="{x:Type Button}">
-                                    <Border Width="50" 
-                 Height="50"
-                 Background="{TemplateBinding Background}"
-                 CornerRadius="25">
-                                        <Image Source="/Resources/Images/edit_Logo.png" 
-                         Width="25"/>
-                                    </Border>
-                                </ControlTemplate>
-                            </Button.Template>
-                        </Button>
-                        
-                    </Grid>
                 </Grid>
             </Border>
         </Grid>

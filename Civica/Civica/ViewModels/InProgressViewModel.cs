@@ -97,6 +97,10 @@ namespace Civica.ViewModels
                         }
                     }
                     OnPropertyChanged(nameof(SelectedProject));
+                } else
+                {
+                    _selectedProject = value;
+                    OnPropertyChanged(nameof(SelectedProject));
                 }
             }
         }
@@ -213,26 +217,6 @@ namespace Civica.ViewModels
             UpdateList();
         }
 
-        public void RemoveProject()
-        {
-            projectRepo.Remove(projectRepo.GetById(SelectedProject.GetId()));
-            UpdateList();
-            SelectedProject = null;
-        }
-
-        public void UpdateProject(ProjectViewModel projectVM)
-        {
-            Project p = projectRepo.GetById(projectVM.GetId());
-            p.Name = projectVM.Name;
-            p.Owner = projectVM.Owner;
-            p.Manager = projectVM.Manager;
-            p.Description = projectVM.Description;
-
-            projectRepo.Update(p);
-
-            Resource r = resourceRepo.GetByRefId(p.Id).FirstOrDefault();
-        }
-
         public UserViewModel GetCurrentUser()
         {
             return mvm.CurrentUser;
@@ -263,85 +247,6 @@ namespace Civica.ViewModels
             }
         );
 
-        public RelayCommand UpdateProjectViewCmd { get; set; } = new RelayCommand
-        (
-            parameter =>
-            {
-                if (parameter is InProgressViewModel ipvm)
-                {
-                    ipvm.EditVisibility = WindowVisibility.Visible;
-                    ipvm.InformationVisibility = WindowVisibility.Hidden;
-                    ipvm.CreateVisibility = WindowVisibility.Hidden;
-                }
-            },
-            parameter =>
-            {
-                if (parameter is InProgressViewModel ipvm)
-                {
-                    if (ipvm.SelectedProject != null && ipvm.mvm.CurrentUser != null)
-                    {
-                        return true;
-                    }
-                }
-                return false;
-            }
-        );
-
-
-
         #endregion
-
-        #region FunctionalityCommands
-
-        public RelayCommand UpdateProjectCmd { get; set; } = new RelayCommand
-        (
-            parameter =>
-            {
-                if (parameter is InProgressViewModel ipvm)
-                {
-                    ipvm.UpdateProject(ipvm.SelectedProject);
-
-                    ipvm.EditVisibility = WindowVisibility.Hidden;
-                    ipvm.InformationVisibility = WindowVisibility.Visible;
-                }
-            },
-            parameter =>
-            {
-                return true;
-            }
-        );
-
-        public RelayCommand RemoveProjectCmd { get; set; } = new RelayCommand
-        (
-            parameter =>
-            {
-                if (parameter is InProgressViewModel ipvm)
-                {
-                    MessageBoxButton button = MessageBoxButton.OKCancel;
-                    MessageBoxResult result = MessageBox.Show($"Er du sikker på du vil slette '{ipvm.SelectedProject.Name}'?", "Bekræft sletning", button);
-
-                    if (result == MessageBoxResult.OK)
-                    {
-                        ipvm.RemoveProject();
-                        ipvm.InformationVisibility = WindowVisibility.Visible;
-                    }
-                }
-            },
-            parameter =>
-            {
-                if (parameter is InProgressViewModel ipvm)
-                {
-                    if (ipvm.SelectedProject != null && ipvm.mvm.CurrentUser != null)
-                    {
-                        return true;
-                    }
-                }
-                return false;
-            }
-        );
-
-        #endregion
-
-
     }
 }

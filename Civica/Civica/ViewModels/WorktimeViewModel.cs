@@ -1,6 +1,7 @@
 ﻿using Civica.Models;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,6 +21,9 @@ namespace Civica.ViewModels
             {
                 _estimatedHours = value;
                 OnPropertyChanged(nameof(EstimatedHours));
+                OnPropertyChanged(nameof(RemainingHours));
+
+                ChangeColor();
             }
         }
 
@@ -53,6 +57,24 @@ namespace Civica.ViewModels
             {
                 _spentHours = value;
                 OnPropertyChanged(nameof(SpentHours));
+                OnPropertyChanged(nameof(RemainingHours));
+
+                ChangeColor();
+            }
+        }
+        public double RemainingHours => EstimatedHours - SpentHours;
+
+        private string _color;
+        public string Color
+        {
+            get
+            {
+                return _color;
+            }
+            set
+            {
+                _color = value;
+                OnPropertyChanged(nameof(Color));
             }
         }
 
@@ -66,5 +88,21 @@ namespace Civica.ViewModels
         }
 
         public int GetId() => worktime.Id;
+
+        public void ChangeColor()
+        {
+            if (RemainingHours > 0)
+            {
+                Color = "#FF000000";
+            }
+            else if (RemainingHours == 0)
+            {
+                Color = "#FF64DA21";
+            }
+            else if (RemainingHours < 0)
+            {
+                Color = "#E20F1A";
+            }
+        }
     }
 }

@@ -6,7 +6,7 @@
              xmlns:viewModel="clr-namespace:Civica.ViewModels"
              mc:Ignorable="d" 
              xmlns:view="clr-namespace:Civica.Views"
-             d:DesignHeight="355" d:DesignWidth="400">
+             d:DesignHeight="345" d:DesignWidth="400">
 
     <Grid>
         <Border Grid.Row="1"
@@ -62,7 +62,7 @@
 
                     <Border BorderBrush="Gray"
                         BorderThickness="0,0,0,1"
-                        Margin="5, 25, 5, 0"
+                        Margin="5, 25, 5, 5"
                         Opacity="0.2">
                     </Border>
 
@@ -75,9 +75,10 @@
                    BorderThickness="0"
                       Grid.Column="0"
                    HorizontalAlignment="Left"
-                   Width="60"
+                   Width="45"
                    Cursor="Hand"
-                   Height="60"
+                   Height="45"
+                            Margin="5, 0, 0, 0"
                    Command="{Binding EditViewCmd}"
                    CommandParameter="{Binding}"
                    ToolTipService.InitialShowDelay="0">
@@ -87,10 +88,10 @@
 
                             <Button.Style>
                                 <Style TargetType="{x:Type Button}">
-                                    <Setter Property="Background" Value="Orange"/>
+                                    <Setter Property="Background" Value="Transparent"/>
                                     <Style.Triggers>
                                         <Trigger Property="IsMouseOver" Value="True">
-                                            <Setter Property="Background" Value="#FFF1B545"/>
+                                            <Setter Property="Background" Value="Transparent"/>
                                         </Trigger>
                                     </Style.Triggers>
                                 </Style>
@@ -98,12 +99,12 @@
 
                             <Button.Template>
                                 <ControlTemplate TargetType="{x:Type Button}">
-                                    <Border Width="50" 
-                                  Height="50"
+                                    <Border Width="45" 
+                                  Height="45"
                                   Background="{TemplateBinding Background}"
                                   CornerRadius="25">
-                                        <Image Source="/Resources/Images/edit_Logo.png" 
-                                          Width="25"/>
+                                        <Image Source="/Resources/Images/edit_Logo2.png" 
+                                          Width="45"/>
                                     </Border>
                                 </ControlTemplate>
                             </Button.Template>
@@ -113,9 +114,9 @@
                             BorderThickness="0"
                                                   Grid.Column="1"
                             HorizontalAlignment="Left"
-                            Width="60"
+                            Width="45"
                             Cursor="Hand"
-                            Height="60"
+                            Height="45"
                             Command="{Binding RemoveCmd}"
                             CommandParameter="{Binding}"
                             ToolTipService.InitialShowDelay="0">
@@ -125,11 +126,11 @@
 
                             <Button.Style>
                                 <Style TargetType="Button">
-                                    <Setter Property="Background" Value="Red"/>
+                                    <Setter Property="Background" Value="Transparent"/>
 
                                     <Style.Triggers>
                                         <Trigger Property="IsMouseOver" Value="True">
-                                            <Setter Property="Background" Value="#FFFC5B5B"/>
+                                            <Setter Property="Background" Value="Transparent"/>
                                         </Trigger>
                                     </Style.Triggers>
 
@@ -138,12 +139,12 @@
 
                             <Button.Template>
                                 <ControlTemplate TargetType="Button">
-                                    <Border Width="50" 
-                                           Height="50"
+                                    <Border Width="45" 
+                                           Height="45"
                                            Background="{TemplateBinding Background}"
                                            CornerRadius="25">
                                         <Image Source="/Resources/Images/remove_logo.png" 
-                                               Width="25"/>
+                                               Width="45"/>
                                     </Border>
                                 </ControlTemplate>
                             </Button.Template>

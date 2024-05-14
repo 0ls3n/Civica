@@ -343,7 +343,8 @@ namespace Civica.ViewModels
                         ervm.EditAuditVisiblity = WindowVisibility.Visible;
                         ervm.AuditDetailsVisibility = WindowVisibility.Hidden;
                         ervm.CreateAuditVisibility = WindowVisibility.Hidden;
-                    } else
+                    }
+                    else
                     {
                         ervm.EditWorktimeVisiblity = WindowVisibility.Visible;
                         ervm.WorktimeDetailsVisibility = WindowVisibility.Hidden;
@@ -390,7 +391,8 @@ namespace Civica.ViewModels
                      ervm.UpdateList();
 
                      ervm.SelectedAudit = avm;
-                 } else
+                 }
+                 else
                  {
                      WorktimeViewModel wvm = ervm.SelectedWorktime;
 
@@ -491,7 +493,8 @@ namespace Civica.ViewModels
                           ervm.AuditDetailsVisibility = WindowVisibility.Hidden;
                           ervm.InformationPlaceholderVisibility = WindowVisibility.Visible;
                           ervm.CreateAuditVisibility = WindowVisibility.Hidden;
-                      } else
+                      }
+                      else
                       {
                           WorktimeViewModel wvm = ervm.SelectedWorktime;
 
@@ -655,12 +658,13 @@ namespace Civica.ViewModels
                  ervm.ResourceVisiblity = WindowVisibility.Visible;
 
                  Resource r = ervm.resourceRepo.GetById(ervm.SelectedResource.GetId());
-                 //Resource r = (Resource)ervm.resourceRepo.GetAll().Find(x => x.Id == ervm.SelectedResource.GetId());
 
                  r.StartAmount = decimal.Parse(ervm.SelectedResource.StartAmount);
                  r.ExpectedYearlyCost = decimal.Parse(ervm.SelectedResource.ExpectedYearlyCost);
 
                  ervm.resourceRepo.Update(r);
+
+                 ervm.UpdateList();
 
                  ervm.SelectedResource = resourceVm;
              }
