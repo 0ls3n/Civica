@@ -64,7 +64,7 @@ namespace UnitTest
 
             p1 = new Project(1, "test1", string.Empty, string.Empty, string.Empty, DateTime.Now);
 
-            u1 = new User("Rasmus", "Olsen", 1709);
+            u1 = new User("TestBruger", "Olsen", 1709);
         }
 
         [TestMethod]
@@ -118,11 +118,11 @@ namespace UnitTest
         {
             userRepo.Add(u1); // Act
 
-            Assert.IsNotNull(userRepo.GetAll().Find(x => (x as User).FirstName == "Rasmus")); // Assert
+            Assert.IsNotNull(userRepo.GetAll().Find(x => (x as User).FirstName == "TestBruger")); // Assert
 
             userRepo.Remove(u1); // Act
 
-            Assert.IsNull(userRepo.GetAll().Find(x => (x as User).FirstName == "Rasmus")); // Assert
+            Assert.IsNull(userRepo.GetAll().Find(x => (x as User).FirstName == "TestBruger")); // Assert
         }
 
         [TestMethod]
@@ -130,12 +130,12 @@ namespace UnitTest
         {
             userRepo.Add(u1); //Act
 
-            Assert.IsNotNull(userRepo.GetAll().Find(x => (x as User).FirstName == "Rasmus")); // Assert
+            Assert.IsNotNull(userRepo.GetAll().Find(x => (x as User).FirstName == "TestBruger")); // Assert
 
             u1.FirstName = "Hejsa!"; // Arrange
             userRepo.Update(u1); // Act
 
-            Assert.IsNull(userRepo.GetAll().Find(x => (x as User).FirstName == "Rasmus")); // Assert
+            Assert.IsNull(userRepo.GetAll().Find(x => (x as User).FirstName == "TestBruger")); // Assert
             Assert.IsNotNull(userRepo.GetAll().Find(x => (x as User).FirstName == "Hejsa!")); // Assert
 
             userRepo.Remove(u1);
