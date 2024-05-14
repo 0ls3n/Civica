@@ -13,7 +13,8 @@
                 CornerRadius="10">
 
             <StackPanel Orientation="Vertical"
-                        VerticalAlignment="Center">
+                        VerticalAlignment="Center"
+                        Margin="10, 10, 10, 10">
 
                 <TextBlock x:Name="placeholder_text"
                            HorizontalAlignment="Center"

@@ -6,7 +6,7 @@
              xmlns:viewModel="clr-namespace:Civica.ViewModels"
              mc:Ignorable="d" 
              xmlns:view="clr-namespace:Civica.Views"
-             d:DesignHeight="350" d:DesignWidth="400">
+             d:DesignHeight="370" d:DesignWidth="400">
 
     <Grid>
         <Border Grid.Row="1"
@@ -16,7 +16,6 @@
             <ScrollViewer Margin="0,11,0,9"
                       VerticalScrollBarVisibility="Auto">
                 <StackPanel Orientation="Vertical">
-                    
                     
                     <Grid Margin="5 0 0 0">
                         <Grid.ColumnDefinitions>
@@ -39,7 +38,7 @@
                         </Grid.ColumnDefinitions>
 
                         <TextBlock FontSize="20"
-                                   Text="Est. timer: "/>
+                                   Text="Estimerede timer: "/>
 
                         <TextBlock Grid.Column="1"
                                    FontSize="20"
@@ -61,6 +60,21 @@
                                    Text="{Binding SelectedWorktime.SpentHours}"/>
                     </Grid>
 
+                    <Grid Margin="5 10 0 0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock FontSize="20"
+               Text="Resterende timer: "/>
+
+                        <TextBlock Grid.Column="1"
+               FontSize="20"
+                                    Foreground="{Binding SelectedWorktime.Color, UpdateSourceTrigger=PropertyChanged}"
+               Text="{Binding SelectedWorktime.RemainingHours}"/>
+                    </Grid>
+
                     <TextBlock Text="Beskrivelse:" 
                                FontSize="20"
                                Margin="5 10 0 0"/>
@@ -72,7 +86,7 @@
 
                     <Border BorderBrush="Gray"
                         BorderThickness="0,0,0,1"
-                        Margin="5, 25, 5, 0"
+                        Margin="5, 25, 5, 5"
                         Opacity="0.2">
                     </Border>
 
@@ -85,9 +99,10 @@
                    BorderThickness="0"
                       Grid.Column="0"
                    HorizontalAlignment="Left"
-                   Width="60"
+                   Width="45"
                    Cursor="Hand"
-                   Height="60"
+                            Margin="5, 0, 0, 0"
+                   Height="45"
                    Command="{Binding EditViewCmd}"
                    CommandParameter="{Binding}"
                    ToolTipService.InitialShowDelay="0">
@@ -97,10 +112,10 @@
 
                             <Button.Style>
                                 <Style TargetType="{x:Type Button}">
-                                    <Setter Property="Background" Value="Orange"/>
+                                    <Setter Property="Background" Value="Transparent"/>
                                     <Style.Triggers>
                                         <Trigger Property="IsMouseOver" Value="True">
-                                            <Setter Property="Background" Value="#FFF1B545"/>
+                                            <Setter Property="Background" Value="Transparent"/>
                                         </Trigger>
                                     </Style.Triggers>
                                 </Style>
@@ -108,12 +123,12 @@
 
                             <Button.Template>
                                 <ControlTemplate TargetType="{x:Type Button}">
-                                    <Border Width="50" 
-                                  Height="50"
+                                    <Border Width="45" 
+                                  Height="45"
                                   Background="{TemplateBinding Background}"
                                   CornerRadius="25">
-                                        <Image Source="/Resources/Images/edit_Logo.png" 
-                                          Width="25"/>
+                                        <Image Source="/Resources/Images/edit_Logo2.png" 
+                                          Width="45"/>
                                     </Border>
                                 </ControlTemplate>
                             </Button.Template>
@@ -123,9 +138,9 @@
                             BorderThickness="0"
                                                   Grid.Column="1"
                             HorizontalAlignment="Left"
-                            Width="60"
+                            Width="45"
                             Cursor="Hand"
-                            Height="60"
+                            Height="45"
                             Command="{Binding RemoveAuditCmd}"
                             CommandParameter="{Binding}"
                             ToolTipService.InitialShowDelay="0">
@@ -135,11 +150,11 @@
 
                             <Button.Style>
                                 <Style TargetType="Button">
-                                    <Setter Property="Background" Value="Red"/>
+                                    <Setter Property="Background" Value="Transparent"/>
 
                                     <Style.Triggers>
                                         <Trigger Property="IsMouseOver" Value="True">
-                                            <Setter Property="Background" Value="#FFFC5B5B"/>
+                                            <Setter Property="Background" Value="Transparent"/>
                                         </Trigger>
                                     </Style.Triggers>
 
@@ -148,12 +163,12 @@
 
                             <Button.Template>
                                 <ControlTemplate TargetType="Button">
-                                    <Border Width="50" 
-                                           Height="50"
+                                    <Border Width="45" 
+                                           Height="45"
                                            Background="{TemplateBinding Background}"
                                            CornerRadius="25">
                                         <Image Source="/Resources/Images/remove_logo.png" 
-                                               Width="25"/>
+                                               Width="45"/>
                                     </Border>
                                 </ControlTemplate>
                             </Button.Template>

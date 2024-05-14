@@ -6,7 +6,7 @@
              xmlns:viewModel="clr-namespace:Civica.ViewModels"
              mc:Ignorable="d" 
              xmlns:view="clr-namespace:Civica.Views"
-             d:DesignHeight="355" d:DesignWidth="400">
+             d:DesignHeight="360" d:DesignWidth="400">
 
     <Grid>
         <Border Grid.Row="1"
@@ -28,19 +28,23 @@
                                Text="År: "/>
 
 
-                        <ComboBox FontSize="16"
+                        <Border Background="#FFF3F2F2"
+                                    BorderBrush="LightGray"
+                                    BorderThickness="1"
+                                    CornerRadius="2"
+                                    Grid.Column="1"
+                                    Margin="2 0 2 5">
+                            <ComboBox FontSize="16"
                                    Grid.Column="1"
                                    Grid.Row="0"
                                    Grid.RowSpan="2"
-                                   Margin="5, 0, 5, 0"
-                                   Background="#FFF3F2F2"
-                                   BorderThickness="1"
-                                   Opacity="0.6"
-                                   BorderBrush="LightGray"
+                                   Background="Transparent"
+                                   BorderThickness="0"
                                    SelectedIndex='0'
                                    SelectedValue="{Binding SelectedAudit.Year}"
                                    ItemsSource="{x:Static viewModel:Helper.Years}">
-                        </ComboBox>
+                            </ComboBox>
+                        </Border>
                     </Grid>
 
                     <Grid Margin="5 10 0 0">
@@ -53,22 +57,40 @@
                         <TextBlock FontSize="20"
                                    Text="Omkostning: "/>
 
-                        <TextBox Grid.Column="1"
-                                   FontSize="20"
-                                   Text="{Binding SelectedAudit.Amount}"/>
 
+                        <Border Background="#FFF3F2F2"
+                                    BorderBrush="LightGray"
+                                    BorderThickness="1"
+                                    CornerRadius="2"
+                                    Grid.Column="1"
+                                    Margin="2 0 2 5">
+                            <TextBox Grid.Column="1"
+                                   FontSize="20"
+                                     BorderThickness="0"
+                                     Background="Transparent"
+                                   Text="{Binding SelectedAudit.Amount}"/>
+                        </Border>
                     </Grid>
 
                     <TextBlock Text="Beskrivelse:" 
                                FontSize="20"
                                Margin="5 5 0 0"/>
 
-                    <TextBox Text="{Binding SelectedAudit.Description}"
+
+                    <Border Background="#FFF3F2F2"
+                                    BorderBrush="LightGray"
+                                    BorderThickness="1"
+                                    CornerRadius="2"
+                                    Grid.Column="1"
+                                    Margin="5 0 5 0">
+                        <TextBox Text="{Binding SelectedAudit.Description}"
                               Height="150"
                               TextWrapping="Wrap"
                               AcceptsReturn="True"
                               AcceptsTab="True"
-                              Margin="5 0 5 0"/>
+                                 BorderThickness="0"
+                            Background="Transparent"/>
+                    </Border>
 
                     <Border BorderBrush="Gray"
                         BorderThickness="0,0,0,1"
@@ -83,9 +105,10 @@
                         <Button BorderThickness="0"
                                  Grid.Column="0"
                               HorizontalAlignment="Left"
-                              Width="60"
+                              Width="45"
                               Cursor="Hand"
-                              Height="60"
+                                Margin="5, 5, 0, 0"
+                              Height="45"
                               Command="{Binding SaveCmd}"
                               CommandParameter="{Binding}"
                               ToolTipService.InitialShowDelay="0">
@@ -95,10 +118,10 @@
 
                             <Button.Style>
                                 <Style TargetType="{x:Type Button}">
-                                    <Setter Property="Background" Value="Green"/>
+                                    <Setter Property="Background" Value="Transparent"/>
                                     <Style.Triggers>
                                         <Trigger Property="IsMouseOver" Value="True">
-                                            <Setter Property="Background" Value="#FF4B894B"/>
+                                            <Setter Property="Background" Value="Transparent"/>
                                         </Trigger>
                                     </Style.Triggers>
                                 </Style>
@@ -106,12 +129,12 @@
 
                             <Button.Template>
                                 <ControlTemplate TargetType="{x:Type Button}">
-                                    <Border Width="50" 
-                                             Height="50"
+                                    <Border Width="45" 
+                                             Height="45"
                                              Background="{TemplateBinding Background}"
                                              CornerRadius="25">
                                         <Image Source="/Resources/Images/Done.png" 
-                                                Width="25"/>
+                                                Width="45"/>
                                     </Border>
                                 </ControlTemplate>
                             </Button.Template>
