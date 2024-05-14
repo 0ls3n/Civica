@@ -370,7 +370,7 @@ namespace Civica.Models
 
                     RemoveProgress.Parameters.Add("@ID", SqlDbType.Int).Value = p.Id;
                     RemoveAudit.Parameters.Add("@ID", SqlDbType.Int).Value = Convert.ToInt32(GetResourceId.ExecuteScalar());
-                    RemoveWorktime.Parameters.Add("@ID", SqlDbType.Int).Value = p.RefId;
+                    RemoveWorktime.Parameters.Add("@ID", SqlDbType.Int).Value = Convert.ToInt32(GetResourceId.ExecuteScalar());
                     RemoveResource.Parameters.Add("@ID", SqlDbType.Int).Value = p.Id;
                     RemoveProject.Parameters.Add("@ID", SqlDbType.Int).Value = p.Id;
 
@@ -379,6 +379,7 @@ namespace Civica.Models
                     RemoveWorktime.ExecuteNonQuery();
                     RemoveResource.ExecuteNonQuery();
                     RemoveProject.ExecuteNonQuery();
+                    
                 }
                 else if (o is Progress prog)
                 {

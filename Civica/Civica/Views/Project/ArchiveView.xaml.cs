@@ -1,5 +1,4 @@
-﻿using Civica.ViewModels;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,22 +16,13 @@ using System.Windows.Shapes;
 namespace Civica.Views
 {
     /// <summary>
-    /// Interaction logic for LoginView.xaml
+    /// Interaction logic for ArchiveView.xaml
     /// </summary>
-    public partial class LoginView : UserControl
+    public partial class ArchiveView : UserControl
     {
-        public LoginView()
+        public ArchiveView()
         {
             InitializeComponent();
-        }
-
-        private void Button_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.Key == Key.Enter)
-            {
-                if ((this.DataContext as LoginViewModel).Password != string.Empty)
-                    (this.DataContext as LoginViewModel).LoginCmd.Execute(this.DataContext);
-            }
         }
     }
 }
