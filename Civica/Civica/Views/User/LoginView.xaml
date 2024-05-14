@@ -19,7 +19,7 @@
                         Orientation="Vertical">
             <Image Source="/Resources/Images/Civica_Logo.png"
                Width="300"/>
-                <TextBlock Text="Projektoverblik"
+                <TextBlock Text="Projektstyring"
                            TextWrapping="Wrap"            
                            Width="auto"
                            FontSize="33"
@@ -62,7 +62,7 @@
                          Text="{Binding Password, UpdateSourceTrigger=PropertyChanged}"/>
                 </Border>
 
-                <Button Height="20"
+                <Button Height="25"
                         Width="70"
                         Margin="0 15 0 0"
                         Content="Opret"
