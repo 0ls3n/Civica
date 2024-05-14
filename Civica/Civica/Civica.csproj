@@ -16,6 +16,7 @@
     <None Remove="Resources\Images\Civica_Logo.png" />
     <None Remove="Resources\Images\Cog.png" />
     <None Remove="Resources\Images\create_logo.png" />
+    <None Remove="Resources\Images\create_logo2.png" />
     <None Remove="Resources\Images\Done.png" />
     <None Remove="Resources\Images\edit-user.png" />
     <None Remove="Resources\Images\edit_logo.png" />
@@ -44,6 +45,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Resources\Images\create_logo.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Images\create_logo2.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Resources\Images\Done.png">

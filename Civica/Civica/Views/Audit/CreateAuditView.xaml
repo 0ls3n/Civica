@@ -68,7 +68,7 @@
                              AcceptsReturn="True"
                              AcceptsTab="True"
                                TextWrapping="Wrap"
-                               Margin="5 0 0 0"/>
+                               Margin="5 0 5 0"/>
 
                     <Border BorderBrush="Gray"
                         BorderThickness="0,0,0,1"
