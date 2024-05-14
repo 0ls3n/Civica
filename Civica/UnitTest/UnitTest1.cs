@@ -1,5 +1,6 @@
 using Civica.Models;
 using Civica.Interfaces;
+using Microsoft.Identity.Client;
 
 namespace UnitTest
 {
@@ -8,16 +9,58 @@ namespace UnitTest
     {
         IRepository<Project> projectRepo;
         IRepository<User> userRepo;
+        IRepository<Progress> progressRepo;
 
         Project p1;
-
+        Progress prog;
         User u1;
 
         [TestInitialize]
         public void Initialize() // Arrange
         {
-            projectRepo = new Repository<Project>(id => { return projectRepo.GetAll().FindAll(x => x.Id == id); });
-            userRepo = new Repository<User>(id => { return userRepo.GetAll().FindAll(x => x.Id == id); });
+            projectRepo = new Repository<Project>
+            (
+                id =>
+                {
+                    return projectRepo.GetAll().FindAll(x => x.Id == id);
+                },
+                id =>
+                {
+                    return projectRepo.GetAll().FindAll(x => x.UserId == id);
+                }
+            );
+
+            userRepo = new Repository<User>
+            (
+                id =>
+                {
+                    return userRepo.GetAll().FindAll(x => x.Id == id);
+                },
+                id =>
+                {
+                    return userRepo.GetAll().FindAll(x => x.UserId == id);
+                },
+                id =>
+                {
+                    return userRepo.GetAll().FindAll(x => x.RefId == id);
+                }
+            );
+
+            progressRepo = new Repository<Progress>
+            (
+                id =>
+                {
+                    return progressRepo.GetAll().FindAll(x => x.Id == id);
+                },
+                id =>
+                {
+                    return progressRepo.GetAll().FindAll(x => x.UserId == id);
+                },
+                id =>
+                {
+                    return progressRepo.GetAll().FindAll(x => x.RefId == id);
+                }
+            );
 
             p1 = new Project(1, "test1", string.Empty, string.Empty, string.Empty, DateTime.Now);
 
@@ -29,7 +72,7 @@ namespace UnitTest
         {
             projectRepo.Add(p1); // Act
 
-            Assert.IsNotNull(projectRepo.GetAll().Find(x=> (x as Project).Name == "test1")); // Assert
+            Assert.IsNotNull(projectRepo.GetAll().Find(x => (x as Project).Name == "test1")); // Assert
 
             projectRepo.Remove(p1); // Act
 
@@ -115,6 +158,22 @@ namespace UnitTest
             Assert.AreEqual(0000, user.Password); // Assert
 
             userRepo.Remove(u1);
+        }
+
+        [TestMethod]
+        public void TestAddProgressToProject()
+        {
+            projectRepo.Add(p1); // Act
+
+            prog = new Progress(1, p1.Id, Civica.Models.Enums.Phase.IDENTIFIED, Civica.Models.Enums.Status.ON_TRACK, "jeg er en progress", DateTime.Now);
+
+            progressRepo.Add(prog); // Act
+
+            Assert.IsNotNull(progressRepo.GetByRefId(p1.Id).Find(x => x.Id == prog.Id)); // This finds a progress thru the project id
+
+            projectRepo.Remove(p1);
+            progressRepo.Remove(prog);
+
         }
     }
 }
