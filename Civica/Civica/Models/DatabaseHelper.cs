@@ -358,26 +358,8 @@ namespace Civica.Models
                 con.Open();
                 if (o is Project p)
                 {
-                    SqlCommand GetResourceId = new SqlCommand("SELECT ResourceId FROM RESOURCES WHERE ProjectId=@ID", con);
-
-                    SqlCommand RemoveProgress = new SqlCommand("DELETE FROM PROGRESSES WHERE ProjectId=@ID", con);
-                    SqlCommand RemoveAudit = new SqlCommand("DELETE FROM AUDITS WHERE ResourceId=@ID", con);
-                    SqlCommand RemoveWorktime = new SqlCommand("DELETE FROM WORKTIMES WHERE ResourceId=@ID", con);
-                    SqlCommand RemoveResource = new SqlCommand("DELETE FROM RESOURCES WHERE ProjectId=@ID", con);
                     SqlCommand RemoveProject = new SqlCommand("DELETE FROM PROJECTS WHERE ProjectId=@ID", con);
-
-                    GetResourceId.Parameters.Add("@ID", SqlDbType.Int).Value = p.Id;
-
-                    RemoveProgress.Parameters.Add("@ID", SqlDbType.Int).Value = p.Id;
-                    RemoveAudit.Parameters.Add("@ID", SqlDbType.Int).Value = Convert.ToInt32(GetResourceId.ExecuteScalar());
-                    RemoveWorktime.Parameters.Add("@ID", SqlDbType.Int).Value = Convert.ToInt32(GetResourceId.ExecuteScalar());
-                    RemoveResource.Parameters.Add("@ID", SqlDbType.Int).Value = p.Id;
                     RemoveProject.Parameters.Add("@ID", SqlDbType.Int).Value = p.Id;
-
-                    RemoveProgress.ExecuteNonQuery();
-                    RemoveAudit.ExecuteNonQuery();
-                    RemoveWorktime.ExecuteNonQuery();
-                    RemoveResource.ExecuteNonQuery();
                     RemoveProject.ExecuteNonQuery();
                     
                 }
@@ -386,18 +368,6 @@ namespace Civica.Models
                     SqlCommand RemoveProgress = new SqlCommand("DELETE FROM PROGRESSES WHERE ProgressId = @ID", con);
                     RemoveProgress.Parameters.Add("@ID", SqlDbType.Int).Value = prog.Id;
                     RemoveProgress.ExecuteNonQuery();
-                }
-                else if (o is Resource r)
-                {
-                    SqlCommand RemoveAudits = new SqlCommand("DELETE FROM AUDITS WHERE ResourceId=@ID", con);
-                    SqlCommand RemoveWorktimes = new SqlCommand("DELETE FROM WORKTIMES WHERE ResourceId=@ID", con);
-                    SqlCommand RemoveResource = new SqlCommand("DELETE FROM RESOURCES WHERE ResourceId=@ID", con);
-                    RemoveAudits.Parameters.Add("@ID", SqlDbType.Int).Value = r.Id;
-                    RemoveWorktimes.Parameters.Add("@ID", SqlDbType.Int).Value = r.Id;
-                    RemoveResource.Parameters.Add("@ID", SqlDbType.Int).Value = r.Id;
-                    RemoveAudits.ExecuteNonQuery();
-                    RemoveWorktimes.ExecuteNonQuery();
-                    RemoveResource.ExecuteNonQuery();
                 }
                 else if (o is Audit a)
                 {
@@ -410,6 +380,12 @@ namespace Civica.Models
                     SqlCommand cmd = new SqlCommand("DELETE FROM WORKTIMES WHERE WorkTimeId=@ID", con);
                     cmd.Parameters.Add("@ID", SqlDbType.Int).Value = w.Id;
                     cmd.ExecuteNonQuery();
+                }
+                else if (o is Resource r)
+                {
+                    SqlCommand RemoveResource = new SqlCommand("DELETE FROM RESOURCES WHERE ResourceId=@ID", con);
+                    RemoveResource.Parameters.Add("@ID", SqlDbType.Int).Value = r.Id;
+                    RemoveResource.ExecuteNonQuery();
                 }
                 else if (o is User u) 
                 {
