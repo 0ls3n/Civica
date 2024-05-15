@@ -82,8 +82,15 @@ namespace Civica.ViewModels
 
         public string SelectedDescription
         {
-            get { return _selectedDescription; }
-            set { _selectedDescription = value; OnPropertyChanged(nameof(SelectedDescription)); }
+            get
+            {
+                return _selectedDescription;
+            }
+            set
+            {
+                _selectedDescription = value;
+                OnPropertyChanged(nameof(SelectedDescription));
+            }
         }
 
         private WindowVisibility _informationPlaceholderVisibility;
@@ -100,7 +107,10 @@ namespace Civica.ViewModels
         private WindowVisibility _progressVisibility;
         public WindowVisibility ProgressVisibility
         {
-            get { return _progressVisibility; }
+            get
+            {
+                return _progressVisibility;
+            }
             set
             {
                 _progressVisibility = value;
@@ -111,7 +121,10 @@ namespace Civica.ViewModels
         private WindowVisibility _editProgressVisibility;
         public WindowVisibility EditProgressVisibility
         {
-            get { return _editProgressVisibility; }
+            get
+            {
+                return _editProgressVisibility;
+            }
             set
             {
                 _editProgressVisibility = value;
@@ -122,7 +135,10 @@ namespace Civica.ViewModels
         private WindowVisibility _createProgressVisibility;
         public WindowVisibility CreateProgressVisibility
         {
-            get { return _createProgressVisibility; }
+            get
+            {
+                return _createProgressVisibility;
+            }
             set
             {
                 _createProgressVisibility = value;
@@ -133,7 +149,10 @@ namespace Civica.ViewModels
         private WindowVisibility _editProjectVisibility;
         public WindowVisibility EditProjectVisibility
         {
-            get { return _editProjectVisibility; }
+            get
+            {
+                return _editProjectVisibility;
+            }
             set
             {
                 _editProjectVisibility = value;
@@ -209,7 +228,6 @@ namespace Civica.ViewModels
             projectRepo.Update(p);
 
             Resource r = resourceRepo.GetById(x => x.RefId == p.Id);
-            //Resource r = resourceRepo.GetListById(x => x.RefId == p.Id).FirstOrDefault();
         }
 
         public RelayCommand EditProjectViewCmd { get; set; } = new RelayCommand(

@@ -104,7 +104,6 @@ namespace Civica.ViewModels
         #endregion
 
         #region Worktime Properties
-        //WorktimeInvolvedNameWorktimeEstimatedHours
         private string _worktimeInvolvedName;
         public string WorktimeInvolvedName
         {
@@ -379,7 +378,6 @@ namespace Civica.ViewModels
                      ervm.AuditDetailsVisibility = WindowVisibility.Hidden;
                      ervm.InformationPlaceholderVisibility = WindowVisibility.Visible;
 
-                     //Audit a = ervm.auditRepo.GetListById(x => x.RefId == avm.GetRefId()).FirstOrDefault(x => x.Id == avm.GetId());
                      Audit a = ervm.auditRepo.GetById(x => x.Id == avm.GetId());
 
                      a.Amount = decimal.Parse(ervm.SelectedAudit.Amount);
@@ -485,10 +483,7 @@ namespace Civica.ViewModels
                       {
                           AuditViewModel avm = ervm.SelectedAudit;
 
-                          //Audit a = ervm.auditRepo.GetByRefId(avm.GetRefId()).FirstOrDefault(x => x.Id == avm.GetId());
-                          //Audit a = ervm.auditRepo.GetByRefId(x => x.RefId == avm.GetRefId()).FirstOrDefault(x => x.Id == avm.GetId());
                           Audit a = ervm.auditRepo.GetById(x => x.Id == avm.GetId());
-
 
                           ervm.auditRepo.Remove(a);
 
@@ -699,7 +694,6 @@ namespace Civica.ViewModels
             }
             else
             {
-                //List<Worktime> worktimes = worktimeRepo.GetByRefId(SelectedResource.GetId()).OrderBy(x => x.CreatedDate).ToList<Worktime>();
                 List<Worktime> worktimes = worktimeRepo.GetListById(x => x.RefId == SelectedResource.GetId()).OrderBy(x => x.CreatedDate).ToList<Worktime>();
 
                 foreach (Worktime a in worktimes)

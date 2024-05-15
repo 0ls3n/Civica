@@ -22,15 +22,6 @@ namespace Civica.Models
         }
 
         public List<DomainModel> GetAll() => _list;
-        //public List<T> GetByUserId(int id)
-        //{
-        //    return _executeByUserId(id).OfType<T>().ToList();
-        //}
-
-        //public T GetById(int id)
-        //{
-        //    return _executeById(id).OfType<T>().FirstOrDefault();
-        //}
 
         public List<T> GetListById(Predicate<DomainModel> predicate) => _list.Where(item => predicate(item)).OfType<T>().ToList();
         public T GetById(Predicate<DomainModel> predicate) => _list.Where(item => predicate(item)).OfType<T>().FirstOrDefault();
