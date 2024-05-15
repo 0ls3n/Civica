@@ -8,6 +8,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Resources;
 using System.Runtime.Intrinsics.Arm;
+using System.Runtime.Intrinsics.X86;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -378,7 +379,8 @@ namespace Civica.ViewModels
                      ervm.AuditDetailsVisibility = WindowVisibility.Hidden;
                      ervm.InformationPlaceholderVisibility = WindowVisibility.Visible;
 
-                     Audit a = ervm.auditRepo.GetByRefId(avm.GetRefId()).FirstOrDefault(x => x.Id == avm.GetId());
+                     //Audit a = ervm.auditRepo.GetListById(x => x.RefId == avm.GetRefId()).FirstOrDefault(x => x.Id == avm.GetId());
+                     Audit a = ervm.auditRepo.GetById(x => x.Id == avm.GetId());
 
                      a.Amount = decimal.Parse(ervm.SelectedAudit.Amount);
                      a.Year = ervm.SelectedAudit.Year;
@@ -400,7 +402,7 @@ namespace Civica.ViewModels
                      ervm.WorktimeDetailsVisibility = WindowVisibility.Hidden;
                      ervm.InformationPlaceholderVisibility = WindowVisibility.Visible;
 
-                     Worktime w = ervm.worktimeRepo.GetById(wvm.GetId());
+                     Worktime w = ervm.worktimeRepo.GetById(x => x.Id == wvm.GetId());
 
                      w.SpentHours = wvm.SpentHours;
                      w.EstimatedHours = wvm.EstimatedHours;
@@ -483,7 +485,10 @@ namespace Civica.ViewModels
                       {
                           AuditViewModel avm = ervm.SelectedAudit;
 
-                          Audit a = ervm.auditRepo.GetByRefId(avm.GetRefId()).FirstOrDefault(x => x.Id == avm.GetId());
+                          //Audit a = ervm.auditRepo.GetByRefId(avm.GetRefId()).FirstOrDefault(x => x.Id == avm.GetId());
+                          //Audit a = ervm.auditRepo.GetByRefId(x => x.RefId == avm.GetRefId()).FirstOrDefault(x => x.Id == avm.GetId());
+                          Audit a = ervm.auditRepo.GetById(x => x.Id == avm.GetId());
+
 
                           ervm.auditRepo.Remove(a);
 
@@ -498,7 +503,7 @@ namespace Civica.ViewModels
                       {
                           WorktimeViewModel wvm = ervm.SelectedWorktime;
 
-                          Worktime w = ervm.worktimeRepo.GetById(wvm.GetId());
+                          Worktime w = ervm.worktimeRepo.GetById(x => x.Id == wvm.GetId());
 
                           ervm.worktimeRepo.Remove(w);
 
@@ -657,7 +662,7 @@ namespace Civica.ViewModels
                  ervm.EditResourceVisibility = WindowVisibility.Hidden;
                  ervm.ResourceVisiblity = WindowVisibility.Visible;
 
-                 Resource r = ervm.resourceRepo.GetById(ervm.SelectedResource.GetId());
+                 Resource r = ervm.resourceRepo.GetById(x => x.Id == ervm.SelectedResource.GetId());
 
                  r.StartAmount = decimal.Parse(ervm.SelectedResource.StartAmount);
                  r.ExpectedYearlyCost = decimal.Parse(ervm.SelectedResource.ExpectedYearlyCost);
@@ -683,7 +688,8 @@ namespace Civica.ViewModels
             if (AuditListVisibility == WindowVisibility.Visible)
             {
                 double temp = double.Parse(SelectedResource.StartAmount);
-                List<Audit> audits = auditRepo.GetByRefId(SelectedResource.GetId()).OrderBy(x => x.Year).ToList<Audit>();
+                List<Audit> audits = auditRepo.GetListById(x => x.RefId == SelectedResource.GetId()).OrderBy(x => x.Year).ToList<Audit>();
+
                 foreach (Audit a in audits)
                 {
                     Audits.Add(new AuditViewModel(a));
@@ -693,7 +699,9 @@ namespace Civica.ViewModels
             }
             else
             {
-                List<Worktime> worktimes = worktimeRepo.GetByRefId(SelectedResource.GetId()).OrderBy(x => x.CreatedDate).ToList<Worktime>();
+                //List<Worktime> worktimes = worktimeRepo.GetByRefId(SelectedResource.GetId()).OrderBy(x => x.CreatedDate).ToList<Worktime>();
+                List<Worktime> worktimes = worktimeRepo.GetListById(x => x.RefId == SelectedResource.GetId()).OrderBy(x => x.CreatedDate).ToList<Worktime>();
+
                 foreach (Worktime a in worktimes)
                 {
                     Worktimes.Add(new WorktimeViewModel(a));

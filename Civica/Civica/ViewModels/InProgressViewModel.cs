@@ -75,14 +75,20 @@ namespace Civica.ViewModels
                     CreateVisibility = WindowVisibility.Hidden;
                     EditVisibility = WindowVisibility.Hidden;
 
-                    Progress prog = progressRepo.GetByRefId(SelectedProject.GetId()).OrderByDescending(x => x.CreatedDate).FirstOrDefault();
+                    //Progress prog = progressRepo.GetByRefId(SelectedProject.GetId()).OrderByDescending(x => x.CreatedDate).FirstOrDefault();
+                    //Progress prog = progressRepo.GetListById(x => x.RefId == SelectedProject.GetId()).OrderByDescending(x => x.CreatedDate).FirstOrDefault();
+                    Progress prog = progressRepo.GetById(x => x.RefId == SelectedProject.GetId());
+
 
                     SelectedProgress = null;
                     if (prog is not null)
                     {
                         SelectedProgress = new ProgressViewModel(prog);
                     }
-                    Resource r = resourceRepo.GetByRefId(SelectedProject.GetId()).FirstOrDefault();
+                    //Resource r = resourceRepo.GetByRefId(SelectedProject.GetId()).FirstOrDefault();
+                    //Resource r = resourceRepo.GetByRefId<Resource>(x => x.RefId == SelectedProject.GetId()).FirstOrDefault();
+                    Resource r = resourceRepo.GetById(x => x.RefId == SelectedProject.GetId());
+
 
                     SelectedAudit = null;
                     SelectedResource = null;
@@ -90,14 +96,16 @@ namespace Civica.ViewModels
                     {
                         SelectedResource = new ResourceViewModel(r);
 
-                        Audit aud = auditRepo.GetByRefId(r.Id).OrderByDescending(x => x.Year).FirstOrDefault();
+                        //Audit aud = auditRepo.GetByRefId<Audit>(x => x.RefId == r.Id).OrderByDescending(x => x.Year).FirstOrDefault();
+                        Audit aud = auditRepo.GetById(x => x.RefId == r.Id);
                         if (aud is not null)
                         {
                             SelectedAudit = new AuditViewModel(aud);
                         }
                     }
                     OnPropertyChanged(nameof(SelectedProject));
-                } else
+                }
+                else
                 {
                     _selectedProject = value;
                     OnPropertyChanged(nameof(SelectedProject));
@@ -173,7 +181,7 @@ namespace Civica.ViewModels
 
                 Projects.Add(pvm);
 
-                Progress latestProg = progressRepo.GetByRefId(p.Id).OrderByDescending(x => x.CreatedDate).FirstOrDefault();
+                Progress latestProg = progressRepo.GetListById(x => x.RefId == p.Id).OrderByDescending(x => x.CreatedDate).FirstOrDefault();
                 if (latestProg != null)
                 {
                     if (latestProg.Phase == Models.Enums.Phase.DONE)
@@ -185,7 +193,7 @@ namespace Civica.ViewModels
 
             foreach (ProjectViewModel p in Projects)
             {
-                Progress prog = progressRepo.GetByRefId(p.GetId()).OrderByDescending(x => x.CreatedDate).FirstOrDefault();
+                Progress prog = progressRepo.GetById(x => x.RefId == p.GetId());
 
                 if (prog != null)
                 {

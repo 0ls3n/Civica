@@ -11,9 +11,8 @@ namespace Civica.Interfaces
     {
         public void Add(T o);
         public List<DomainModel> GetAll();
-        public List<T> GetByUserId(int id);
-        public List<T> GetByRefId(int id);
-        public T GetById(int id);
+        public T GetById(Predicate<DomainModel> predicate);
+        public List<T> GetListById(Predicate<DomainModel> predicate);
         public void Update(T o);
         public void Remove(T o);
     }

@@ -170,12 +170,12 @@ namespace Civica.ViewModels
         public void UpdateList()
         {
             Progresses.Clear();
-            Progresses = new ObservableCollection<ProgressViewModel>(progressRepo.GetByRefId(SelectedProject.GetId()).OrderByDescending(x => x.CreatedDate).Select(x => new ProgressViewModel(x)));
+            Progresses = new ObservableCollection<ProgressViewModel>(progressRepo.GetListById(x => x.RefId == SelectedProject.GetId()).OrderByDescending(x => x.CreatedDate).Select(x => new ProgressViewModel(x)));
             SelectedProgress = null;
         }
         public void UpdateProgress()
         {
-            Progress p = progressRepo.GetById(SelectedProgress.GetId());
+            Progress p = progressRepo.GetById(x => x.Id == SelectedProgress.GetId());
             p.Phase = SelectedPhase;
             p.Status = SelectedStatus;
             p.Description = SelectedDescription;
@@ -187,20 +187,20 @@ namespace Civica.ViewModels
 
         public void RemoveProgress()
         {
-            progressRepo.Remove(progressRepo.GetById(SelectedProgress.GetId()));
+            progressRepo.Remove(progressRepo.GetById(x => x.Id == SelectedProgress.GetId()));
             UpdateList();
         }
 
         public void RemoveProject()
         {
-            projectRepo.Remove(projectRepo.GetById(SelectedProject.GetId()));
+            projectRepo.Remove(projectRepo.GetById(x => x.Id == SelectedProject.GetId()));
             UpdateList();
             SelectedProject = null;
         }
 
         public void UpdateProject(ProjectViewModel projectVM)
         {
-            Project p = projectRepo.GetById(projectVM.GetId());
+            Project p = projectRepo.GetById(x => x.Id == projectVM.GetId());
             p.Name = projectVM.Name;
             p.Owner = projectVM.Owner;
             p.Manager = projectVM.Manager;
@@ -208,7 +208,8 @@ namespace Civica.ViewModels
 
             projectRepo.Update(p);
 
-            Resource r = resourceRepo.GetByRefId(p.Id).FirstOrDefault();
+            Resource r = resourceRepo.GetById(x => x.RefId == p.Id);
+            //Resource r = resourceRepo.GetListById(x => x.RefId == p.Id).FirstOrDefault();
         }
 
         public RelayCommand EditProjectViewCmd { get; set; } = new RelayCommand(
@@ -243,7 +244,7 @@ namespace Civica.ViewModels
                     epvm.ProgressVisibility = WindowVisibility.Hidden;
                     epvm.InformationPlaceholderVisibility = WindowVisibility.Hidden;
                     epvm.CreateProgressVisibility = WindowVisibility.Hidden;
-                    Progress p = epvm.progressRepo.GetById(epvm.SelectedProgress.GetId());
+                    Progress p = epvm.progressRepo.GetById(x => x.Id == epvm.SelectedProgress.GetId());
                     epvm.SelectedPhase = p.Phase;
                     epvm.SelectedStatus = p.Status;
                     epvm.SelectedDescription = p.Description;
