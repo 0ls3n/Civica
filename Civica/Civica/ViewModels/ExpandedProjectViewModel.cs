@@ -84,8 +84,15 @@ namespace Civica.ViewModels
 
         public string SelectedDescription
         {
-            get { return _selectedDescription; }
-            set { _selectedDescription = value; OnPropertyChanged(nameof(SelectedDescription)); }
+            get
+            {
+                return _selectedDescription;
+            }
+            set
+            {
+                _selectedDescription = value;
+                OnPropertyChanged(nameof(SelectedDescription));
+            }
         }
 
         private WindowVisibility _informationPlaceholderVisibility;
@@ -102,7 +109,10 @@ namespace Civica.ViewModels
         private WindowVisibility _progressVisibility;
         public WindowVisibility ProgressVisibility
         {
-            get { return _progressVisibility; }
+            get
+            {
+                return _progressVisibility;
+            }
             set
             {
                 _progressVisibility = value;
@@ -113,7 +123,10 @@ namespace Civica.ViewModels
         private WindowVisibility _editProgressVisibility;
         public WindowVisibility EditProgressVisibility
         {
-            get { return _editProgressVisibility; }
+            get
+            {
+                return _editProgressVisibility;
+            }
             set
             {
                 _editProgressVisibility = value;
@@ -124,7 +137,10 @@ namespace Civica.ViewModels
         private WindowVisibility _createProgressVisibility;
         public WindowVisibility CreateProgressVisibility
         {
-            get { return _createProgressVisibility; }
+            get
+            {
+                return _createProgressVisibility;
+            }
             set
             {
                 _createProgressVisibility = value;
@@ -135,7 +151,10 @@ namespace Civica.ViewModels
         private WindowVisibility _editProjectVisibility;
         public WindowVisibility EditProjectVisibility
         {
-            get { return _editProjectVisibility; }
+            get
+            {
+                return _editProjectVisibility;
+            }
             set
             {
                 _editProjectVisibility = value;
@@ -175,12 +194,12 @@ namespace Civica.ViewModels
         public void UpdateList()
         {
             Progresses.Clear();
-            Progresses = new ObservableCollection<ProgressViewModel>(progressRepo.GetByRefId(SelectedProject.GetId()).OrderByDescending(x => x.CreatedDate).Select(x => new ProgressViewModel(x)));
+            Progresses = new ObservableCollection<ProgressViewModel>(progressRepo.GetListById(x => x.RefId == SelectedProject.GetId()).OrderByDescending(x => x.CreatedDate).Select(x => new ProgressViewModel(x)));
             SelectedProgress = null;
         }
         public void UpdateProgress()
         {
-            Progress p = progressRepo.GetById(SelectedProgress.GetId());
+            Progress p = progressRepo.GetById(x => x.Id == SelectedProgress.GetId());
             p.Phase = SelectedPhase;
             p.Status = SelectedStatus;
             p.Description = SelectedDescription;
@@ -192,7 +211,7 @@ namespace Civica.ViewModels
 
         public void RemoveProgress()
         {
-            progressRepo.Remove(progressRepo.GetById(SelectedProgress.GetId()));
+            progressRepo.Remove(progressRepo.GetById(x => x.Id == SelectedProgress.GetId()));
             UpdateList();
         }
 
@@ -205,13 +224,14 @@ namespace Civica.ViewModels
             progressRepo.RemoveByRefId(pID);
             resourceRepo.RemoveByRefId(pID);
             projectRepo.Remove(projectRepo.GetById(pID));
+            projectRepo.Remove(projectRepo.GetById(x => x.Id == SelectedProject.GetId()));
             UpdateList();
             SelectedProject = null;
         }
 
         public void UpdateProject(ProjectViewModel projectVM)
         {
-            Project p = projectRepo.GetById(projectVM.GetId());
+            Project p = projectRepo.GetById(x => x.Id == projectVM.GetId());
             p.Name = projectVM.Name;
             p.Owner = projectVM.Owner;
             p.Manager = projectVM.Manager;
@@ -219,7 +239,7 @@ namespace Civica.ViewModels
 
             projectRepo.Update(p);
 
-            Resource r = resourceRepo.GetByRefId(p.Id).FirstOrDefault();
+            Resource r = resourceRepo.GetById(x => x.RefId == p.Id);
         }
 
         public RelayCommand EditProjectViewCmd { get; set; } = new RelayCommand(
@@ -254,7 +274,7 @@ namespace Civica.ViewModels
                     epvm.ProgressVisibility = WindowVisibility.Hidden;
                     epvm.InformationPlaceholderVisibility = WindowVisibility.Hidden;
                     epvm.CreateProgressVisibility = WindowVisibility.Hidden;
-                    Progress p = epvm.progressRepo.GetById(epvm.SelectedProgress.GetId());
+                    Progress p = epvm.progressRepo.GetById(x => x.Id == epvm.SelectedProgress.GetId());
                     epvm.SelectedPhase = p.Phase;
                     epvm.SelectedStatus = p.Status;
                     epvm.SelectedDescription = p.Description;

@@ -45,7 +45,7 @@ namespace Civica.ViewModels
             this.Projects.Clear();
             foreach (Project project in projectRepo.GetAll())
             {
-                Progress latestProg = progressRepo.GetByRefId(project.Id).OrderByDescending(x => x.CreatedDate).FirstOrDefault();
+                Progress latestProg = progressRepo.GetById(x => x.RefId == project.Id);
                 if (latestProg != null)
                 {
                     if (latestProg.Phase == Models.Enums.Phase.DONE)

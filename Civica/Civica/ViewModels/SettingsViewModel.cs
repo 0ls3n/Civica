@@ -115,7 +115,7 @@ namespace Civica.ViewModels
         }
         public void UpdateUser(UserViewModel userVM)
         {
-            User u = userRepo.GetById(userVM.GetId());
+            User u = userRepo.GetById(x => x.Id == userVM.GetId());
             u.FirstName = userVM.FirstName;
             u.LastName = userVM.LastName;
             u.Password = int.Parse(userVM.Password);
@@ -124,7 +124,7 @@ namespace Civica.ViewModels
         }
         public void RemoveUser()
         {
-            userRepo.Remove(userRepo.GetById(SelectedUser.GetId()));
+            userRepo.Remove(userRepo.GetById(x => x.Id == SelectedUser.GetId()));
             UpdateList();
         }
         public void UpdateList()
