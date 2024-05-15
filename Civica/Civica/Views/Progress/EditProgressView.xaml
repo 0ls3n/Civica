@@ -29,7 +29,7 @@
                     </Grid.ColumnDefinitions>
                     <TextBlock Grid.Column="0"
                                        Text="Status: "
-                                       FontSize="20"/>
+                                       FontSize="16"/>
                     <Border Background="#FFF3F2F2"
                   BorderBrush="LightGray"
                   BorderThickness="1"
@@ -57,7 +57,7 @@ SelectedValue="{Binding SelectedStatus, UpdateSourceTrigger=PropertyChanged}"/>
                     </Grid.ColumnDefinitions>
                     <TextBlock Grid.Column="0"
                                    Text="Fase: "
-                                   FontSize="20"/>
+                                   FontSize="16"/>
 
                     <Border Background="#FFF3F2F2"
                                     BorderBrush="LightGray"

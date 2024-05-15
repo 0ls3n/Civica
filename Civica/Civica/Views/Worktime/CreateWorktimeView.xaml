@@ -24,7 +24,7 @@
                             <ColumnDefinition Width="150"/>
                         </Grid.ColumnDefinitions>
 
-                        <TextBlock FontSize="20"
+                        <TextBlock FontSize="16"
                                    Text="Afdeling/navn: "/>
 
                         <Border Background="#FFF3F2F2"
@@ -34,7 +34,7 @@
                                     Grid.Column="1"
                                     Margin="2 0 2 0">
                             <TextBox Grid.Column="1"
-                                 FontSize="20"
+                                 FontSize="16"
                                      Background="Transparent"
                                      BorderThickness="0"
                                  Text="{Binding WorktimeInvolvedName}"/>
@@ -48,8 +48,8 @@
                             <ColumnDefinition Width="127*"/>
                         </Grid.ColumnDefinitions>
 
-                        <TextBlock FontSize="20"
-                                   Text="Est. timer: "/>
+                        <TextBlock FontSize="16"
+                                   Text="Estimerede timer: "/>
 
 
                         <Border Background="#FFF3F2F2"
@@ -59,7 +59,7 @@
                                     Grid.Column="1"
                                     Margin="2 0 2 0">
                             <TextBox Grid.Column="1"
-                                   FontSize="20"
+                                   FontSize="16"
                                      Background="Transparent"
                                      BorderThickness="0"
                                    Text="{Binding WorktimeEstimatedHours}"/>
@@ -67,7 +67,7 @@
                     </Grid>
 
                     <TextBlock Text="Beskrivelse:" 
-                               FontSize="20"
+                               FontSize="16"
                                Margin="5 5 0 0"/>
 
                     <Border Background="#FFF3F2F2"

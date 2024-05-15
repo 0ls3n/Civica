@@ -24,11 +24,11 @@
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
 
-                        <TextBlock FontSize="20"
-                               Text="År: "/>
+                        <TextBlock FontSize="16"
+                               Text="Budget år: "/>
 
                         <TextBlock Grid.Column="1"
-                               FontSize="20"
+                               FontSize="16"
                                Text="{Binding SelectedAudit.Year}"/>
                     </Grid>
 
@@ -39,20 +39,20 @@
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
 
-                        <TextBlock FontSize="20"
+                        <TextBlock FontSize="16"
                                    Text="Omkostning: "/>
 
                         <TextBlock Grid.Column="1"
-                                   FontSize="20"
+                                   FontSize="16"
                                    Text="{Binding SelectedAudit.Amount}"/>
 
                         <TextBlock Grid.Column="2"
-                                   FontSize="20"
+                                   FontSize="16"
                                    Text=" kr"/>
                     </Grid>
 
                     <TextBlock Text="Beskrivelse:" 
-                               FontSize="20"
+                               FontSize="16"
                                Margin="5 5 0 0"/>
 
                     <TextBlock Text="{Binding SelectedAudit.Description}"
