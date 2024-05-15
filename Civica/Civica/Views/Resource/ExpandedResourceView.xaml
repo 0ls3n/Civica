@@ -100,6 +100,282 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
+        <Button
+    BorderThickness="0"
+                          Grid.Column="0"
+    HorizontalAlignment="Right"
+            VerticalAlignment="Bottom"
+    Width="20"
+            Margin="0, 0, 35, 4"
+    Cursor="Hand"
+    Height="20"
+    Command="{Binding RemoveCmd}"
+    CommandParameter="{Binding}"
+    ToolTipService.InitialShowDelay="0">
+            <Button.ToolTip>
+                <ToolTip Content="Slet" Style="{StaticResource ToolTipTheme}"/>
+            </Button.ToolTip>
+
+            <Button.Style>
+                <Style TargetType="Button">
+                    <Setter Property="Background" Value="Transparent"/>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="Transparent"/>
+                        </Trigger>
+                        <MultiDataTrigger>
+                            <MultiDataTrigger.Conditions>
+                                <Condition Binding="{Binding Path=AuditDetailsVisibility}" Value="Visible"/>
+                                <Condition Binding="{Binding Path=WorktimeDetailsVisibility}" Value="Visible"/>
+                            </MultiDataTrigger.Conditions>
+                            <Setter Property="Visibility" Value="Visible"/>
+                        </MultiDataTrigger>
+                        <MultiDataTrigger>
+                            <MultiDataTrigger.Conditions>
+                                <Condition Binding="{Binding Path=AuditDetailsVisibility}" Value="Hidden"/>
+                                <Condition Binding="{Binding Path=WorktimeDetailsVisibility}" Value="Hidden"/>
+                            </MultiDataTrigger.Conditions>
+                            <Setter Property="Visibility" Value="Hidden"/>
+                        </MultiDataTrigger>
+                    </Style.Triggers>
+
+                </Style>
+            </Button.Style>
+
+            <Button.Template>
+                <ControlTemplate TargetType="Button">
+                    <Border Width="20" 
+                   Height="20"
+                   Background="{TemplateBinding Background}"
+                   CornerRadius="25">
+                        <Image Source="/Resources/Images/remove_logo.png" 
+                       Width="20"/>
+                    </Border>
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
+
+        <Button
+BorderThickness="0"
+   Grid.Column="0"
+HorizontalAlignment="Right"
+            VerticalAlignment="Bottom"
+Width="20"
+Cursor="Hand"
+Height="20"
+         Margin="0, 0, 57, 4"
+Command="{Binding EditViewCmd}"
+CommandParameter="{Binding}"
+ToolTipService.InitialShowDelay="0">
+            <Button.ToolTip>
+                <ToolTip Content="Rediger" Style="{StaticResource ToolTipTheme}"/>
+            </Button.ToolTip>
+
+            <Button.Style>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="Background" Value="Transparent"/>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="Transparent"/>
+                        </Trigger>
+                        <MultiDataTrigger>
+                            <MultiDataTrigger.Conditions>
+                                <Condition Binding="{Binding Path=AuditDetailsVisibility}" Value="Visible"/>
+                                <Condition Binding="{Binding Path=WorktimeDetailsVisibility}" Value="Visible"/>
+                            </MultiDataTrigger.Conditions>
+                            <Setter Property="Visibility" Value="Visible"/>
+                        </MultiDataTrigger>
+                        <MultiDataTrigger>
+                            <MultiDataTrigger.Conditions>
+                                <Condition Binding="{Binding Path=AuditDetailsVisibility}" Value="Hidden"/>
+                                <Condition Binding="{Binding Path=WorktimeDetailsVisibility}" Value="Hidden"/>
+                            </MultiDataTrigger.Conditions>
+                            <Setter Property="Visibility" Value="Hidden"/>
+                        </MultiDataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+
+            <Button.Template>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border Width="20" 
+               Height="20"
+               Background="{TemplateBinding Background}"
+               CornerRadius="25">
+                        <Image Source="/Resources/Images/edit_Logo2.png" 
+                       Width="20"/>
+                    </Border>
+                </ControlTemplate>
+            </Button.Template>
+
+        </Button>
+
+
+
+        <Button BorderThickness="0"
+          Grid.Column="0"
+       HorizontalAlignment="Right"
+                VerticalAlignment="Bottom"
+                Margin="0, 0, 35, 4"
+       Width="20"
+       Cursor="Hand"
+       Height="20"
+       Command="{Binding CreateCmd}"
+       CommandParameter="{Binding}"
+       ToolTipService.InitialShowDelay="0">
+            <Button.ToolTip>
+                <ToolTip Content="Opret ny" Style="{StaticResource ToolTipTheme}"/>
+            </Button.ToolTip>
+
+            <Button.Style>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="Background" Value="Transparent"/>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="Transparent"/>
+                        </Trigger>
+                        <MultiDataTrigger>
+                            <MultiDataTrigger.Conditions>
+                                <Condition Binding="{Binding Path=CreateAuditVisibility}" Value="Visible"/>
+                                <Condition Binding="{Binding Path=CreateWorktimeVisibility}" Value="Visible"/>
+                            </MultiDataTrigger.Conditions>
+                            <Setter Property="Visibility" Value="Visible"/>
+                        </MultiDataTrigger>
+                        <MultiDataTrigger>
+                            <MultiDataTrigger.Conditions>
+                                <Condition Binding="{Binding Path=CreateAuditVisibility}" Value="Hidden"/>
+                                <Condition Binding="{Binding Path=CreateWorktimeVisibility}" Value="Hidden"/>
+                            </MultiDataTrigger.Conditions>
+                            <Setter Property="Visibility" Value="Hidden"/>
+                        </MultiDataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+
+            <Button.Template>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border Width="20" 
+                      Height="20"
+                      Background="{TemplateBinding Background}"
+                      CornerRadius="25">
+                        <Image Source="/Resources/Images/Done.png" 
+                         Width="20"/>
+                    </Border>
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
+
+
+        <Button BorderThickness="0"
+            Grid.Column="0"
+         HorizontalAlignment="Right"
+                VerticalAlignment="Bottom"
+         Width="20"
+          Margin="0, 0, 57, 4"
+         Cursor="Hand"
+         Height="20"
+         Command="{Binding CancelCmd}"
+         CommandParameter="{Binding}"
+         ToolTipService.InitialShowDelay="0">
+            <Button.ToolTip>
+                <ToolTip Content="Annuller" Style="{StaticResource ToolTipTheme}"/>
+            </Button.ToolTip>
+
+            <Button.Style>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="Background" Value="Transparent"/>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="Transparent"/>
+                        </Trigger>
+                        <MultiDataTrigger>
+                            <MultiDataTrigger.Conditions>
+                                <Condition Binding="{Binding Path=CreateAuditVisibility}" Value="Visible"/>
+                                <Condition Binding="{Binding Path=CreateWorktimeVisibility}" Value="Visible"/>
+                            </MultiDataTrigger.Conditions>
+                            <Setter Property="Visibility" Value="Visible"/>
+                        </MultiDataTrigger>
+                        <MultiDataTrigger>
+                            <MultiDataTrigger.Conditions>
+                                <Condition Binding="{Binding Path=CreateAuditVisibility}" Value="Hidden"/>
+                                <Condition Binding="{Binding Path=CreateWorktimeVisibility}" Value="Hidden"/>
+                            </MultiDataTrigger.Conditions>
+                            <Setter Property="Visibility" Value="Hidden"/>
+                        </MultiDataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+
+            <Button.Template>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border Width="20" 
+Height="20"
+Background="{TemplateBinding Background}"
+CornerRadius="25">
+                        <Image Source="/Resources/Images/back.png" 
+   Width="20"/>
+                    </Border>
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
+
+
+
+        <Button BorderThickness="0"
+         Grid.Column="0"
+      HorizontalAlignment="Right"
+                VerticalAlignment="Bottom"
+      Width="20"
+      Cursor="Hand"
+      Height="20"
+        Margin="0, 0, 35, 4"
+      Command="{Binding SaveCmd}"
+      CommandParameter="{Binding}"
+      ToolTipService.InitialShowDelay="0">
+            <Button.ToolTip>
+                <ToolTip Content="Gem ændringer" Style="{StaticResource ToolTipTheme}"/>
+            </Button.ToolTip>
+
+            <Button.Style>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="Background" Value="Transparent"/>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="Transparent"/>
+                        </Trigger>
+                        <MultiDataTrigger>
+                            <MultiDataTrigger.Conditions>
+                                <Condition Binding="{Binding Path=EditAuditVisibility}" Value="Visible"/>
+                                <Condition Binding="{Binding Path=EditWorktimeVisibility}" Value="Visible"/>
+                            </MultiDataTrigger.Conditions>
+                            <Setter Property="Visibility" Value="Visible"/>
+                        </MultiDataTrigger>
+                        <MultiDataTrigger>
+                            <MultiDataTrigger.Conditions>
+                                <Condition Binding="{Binding Path=EditAuditVisibility}" Value="Hidden"/>
+                                <Condition Binding="{Binding Path=EditWorktimeVisibility}" Value="Hidden"/>
+                            </MultiDataTrigger.Conditions>
+                            <Setter Property="Visibility" Value="Hidden"/>
+                        </MultiDataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+
+            <Button.Template>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border Width="20" 
+                     Height="20"
+                     Background="{TemplateBinding Background}"
+                     CornerRadius="25">
+                        <Image Source="/Resources/Images/Done.png" 
+                        Width="20"/>
+                    </Border>
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
+
+
+
         <TextBlock Grid.Row="0"
                    Grid.Column="0"
                    Text="Information"
@@ -120,11 +396,11 @@
          Grid.Column="0"
          HorizontalAlignment="Right"
          VerticalAlignment="Bottom"
-         Margin="0 0 15 7"
-         Width="15"
+         Margin="0 0 15 4"
+         Width="20"
          Grid.Row="0"
          Cursor="Hand"
-         Height="15"
+         Height="20"
          Command="{Binding CreateCmdView}"
          CommandParameter="{Binding}"
          ToolTipService.InitialShowDelay="0">
@@ -140,8 +416,21 @@
                         <Trigger Property="IsMouseOver" Value="True">
                             <Setter Property="Background" Value="Transparent"/>
                         </Trigger>
+                        <!--<MultiDataTrigger>
+                            <MultiDataTrigger.Conditions>
+                                <Condition Binding="{Binding Path=EditAuditVisibility}" Value="Visible"/>
+                                <Condition Binding="{Binding Path=EditWorktimeVisibility}" Value="Visible"/>
+                            </MultiDataTrigger.Conditions>
+                            <Setter Property="Visibility" Value="Hidden"/>
+                        </MultiDataTrigger>
+                        <MultiDataTrigger>
+                            <MultiDataTrigger.Conditions>
+                                <Condition Binding="{Binding Path=EditAuditVisibility}" Value="Hidden"/>
+                                <Condition Binding="{Binding Path=EditWorktimeVisibility}" Value="Hidden"/>
+                            </MultiDataTrigger.Conditions>
+                            <Setter Property="Visibility" Value="Visible"/>
+                        </MultiDataTrigger>-->
                     </Style.Triggers>
-
                 </Style>
             </Button.Style>
 
@@ -162,12 +451,12 @@
         <RadioButton BorderThickness="0"
                      Grid.Row="0"
                      Grid.Column="1"
-                     Margin="0 0 0 4"
+                     Margin="0 0 3 4"
                      HorizontalAlignment="Right"
                      VerticalAlignment="Bottom"
-                     Width="25"
+                     Width="20"
                      Cursor="Hand"
-                     Height="25"
+                     Height="20"
                      Command="{Binding ChangeViewCmd}"
                      CommandParameter="{Binding}"
                      ToolTipService.InitialShowDelay="0">
@@ -187,12 +476,12 @@
             </RadioButton.Style>
             <RadioButton.Template>
                 <ControlTemplate TargetType="{x:Type RadioButton}">
-                    <Border Width="25" 
-            Height="25"
+                    <Border Width="20" 
+            Height="20"
             Background="{TemplateBinding Background}"
             CornerRadius="25">
                         <Image Source="/Resources/Images/swap.png" 
-                Width="15" OpacityMask="Black"/>
+                Width="20" OpacityMask="Black"/>
                     </Border>
                 </ControlTemplate>
             </RadioButton.Template>
@@ -211,10 +500,10 @@
                 Grid.Row="0"
             HorizontalAlignment="Right"
                VerticalAlignment="Bottom"
-            Width="15"
-                Margin="0, 0, 0, 8"
+            Width="20"
+                Margin="0, 0, 2, 5"
             Cursor="Hand"
-            Height="15"
+            Height="20"
             Command="{Binding EditResourceCmd}"
             CommandParameter="{Binding}"
             ToolTipService.InitialShowDelay="0">
@@ -235,12 +524,56 @@
 
             <Button.Template>
                 <ControlTemplate TargetType="{x:Type Button}">
-                    <Border Width="15" 
-Height="15"
+                    <Border Width="20" 
+Height="20"
 Background="{TemplateBinding Background}"
 CornerRadius="25">
                         <Image Source="/Resources/Images/edit_Logo.png" 
-        Width="25"/>
+        Width="20"/>
+                    </Border>
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
+        <Button BorderThickness="0"
+            Grid.Column="3"
+         HorizontalAlignment="Right"
+             VerticalAlignment="Bottom"
+         Width="20"
+         Cursor="Hand"
+         Height="20"
+             Margin="0, 0, 25, 4"
+         Command="{Binding SaveResourceCmd}"
+         CommandParameter="{Binding}"
+         ToolTipService.InitialShowDelay="0">
+            <Button.ToolTip>
+                <ToolTip Content="Gem ændringer" Style="{StaticResource ToolTipTheme}"/>
+            </Button.ToolTip>
+
+            <Button.Style>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="Background" Value="Transparent"/>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="Transparent"/>
+                        </Trigger>
+                        <DataTrigger Binding="{Binding Path=EditResourceVisibility}" Value="Hidden">
+                            <Setter Property="Visibility" Value="Hidden"/>
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding Path=EditResourceVisibility}" Value="Visible">
+                            <Setter Property="Visibility" Value="Visible"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+
+            <Button.Template>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border Width="20" 
+Height="20"
+Background="{TemplateBinding Background}"
+CornerRadius="25">
+                        <Image Source="/Resources/Images/Done.png" 
+   Width="20"/>
                     </Border>
                 </ControlTemplate>
             </Button.Template>
@@ -255,6 +588,10 @@ CornerRadius="25">
 
 
         <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="220*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto"/>
                 <RowDefinition/>
@@ -264,10 +601,10 @@ CornerRadius="25">
             <Border Background="White"
                 CornerRadius="10"
                 Grid.Row="0"
-                Margin="0 0 10 0"/>
+                Margin="0,0,10,0"/>
 
             <Border Grid.Row="0"
-         Margin="0 0 10 0">
+         Margin="0,0,10,0">
                 <view:InformationPlaceholderView ImageWidth="150"
               PlaceholderText="Vælg fra listen"/>
 
@@ -283,7 +620,7 @@ CornerRadius="25">
                 </Border.Style>
             </Border>
             <Border Grid.Row="0"
-         Margin="0 0 10 0">
+         Margin="0,0,10,0">
                 <view:CreateAuditView/>
 
                 <Border.Style>
@@ -299,7 +636,7 @@ CornerRadius="25">
             </Border>
 
             <Border Grid.Row="0"
-                    Margin="0 0 10 0">
+                    Margin="0,0,10,0">
                 <view:CreateWorktimeView/>
 
                 <Border.Style>
@@ -315,7 +652,7 @@ CornerRadius="25">
             </Border>
 
             <Border Grid.Row="0"
-                    Margin="0 0 10 0">
+                    Margin="0,0,10,0">
                 <view:AuditDetailsView/>
 
                 <Border.Style>
@@ -332,7 +669,7 @@ CornerRadius="25">
             </Border>
 
             <Border Grid.Row="0"
-                    Margin="0 0 10 0">
+                    Margin="0,0,10,0">
                 <view:WorktimeDetailsView/>
 
                 <Border.Style>
@@ -349,14 +686,14 @@ CornerRadius="25">
             </Border>
 
             <Border Grid.Row="0"
-                    Margin="0 0 10 0">
+                    Margin="0,0,10,0">
                 <view:EditAuditView/>
 
                 <Border.Style>
                     <Style TargetType="Border">
                         <Setter Property="Visibility" Value="Collapsed"/>
                         <Style.Triggers>
-                            <DataTrigger Binding="{Binding EditAuditVisiblity}" Value="Visible">
+                            <DataTrigger Binding="{Binding EditAuditVisibility}" Value="Visible">
                                 <Setter Property="Visibility" Value="Visible"/>
                             </DataTrigger>
                         </Style.Triggers>
@@ -366,14 +703,14 @@ CornerRadius="25">
             </Border>
 
             <Border Grid.Row="0"
-                    Margin="0 0 10 0">
+                    Margin="0,0,10,0">
                 <view:EditWorktimeView/>
 
                 <Border.Style>
                     <Style TargetType="Border">
                         <Setter Property="Visibility" Value="Collapsed"/>
                         <Style.Triggers>
-                            <DataTrigger Binding="{Binding EditWorktimeVisiblity}" Value="Visible">
+                            <DataTrigger Binding="{Binding EditWorktimeVisibility}" Value="Visible">
                                 <Setter Property="Visibility" Value="Visible"/>
                             </DataTrigger>
                         </Style.Triggers>
