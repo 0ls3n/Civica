@@ -8,12 +8,12 @@ namespace Civica.Models
 {
     public class Worktime : DomainModel
     {
-        public double EstimatedHours { get; set; }
+        public int EstimatedHours { get; set; }
         public string InvolvedName { get; set; }
         public string Description { get; set; }
-        public double SpentHours { get; set; } = 0;
-        
-        public Worktime(int userId, int resourceId, double estimatedHours, string involvedName, string desc, DateTime createdDate)
+        public int SpentHours { get; set; } = 0;
+
+        public Worktime(int userId, int resourceId, int estimatedHours, string involvedName, string desc, DateTime createdDate)
         {
             EstimatedHours = estimatedHours;
             InvolvedName = involvedName;
@@ -21,6 +21,10 @@ namespace Civica.Models
             RefId = resourceId;
             CreatedDate = createdDate;
             Description = desc;
+        }
+        public Worktime(int userId, int resourceId, int estimatedHours, int spent, string involvedName, string desc, DateTime createdDate) : this(userId, resourceId, estimatedHours, involvedName, desc, createdDate)
+        {
+            SpentHours = spent;
         }
     }
 }

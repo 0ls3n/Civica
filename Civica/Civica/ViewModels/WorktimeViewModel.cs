@@ -12,8 +12,8 @@ namespace Civica.ViewModels
     {
         private Worktime worktime;
 
-        private double _estimatedHours;
-        public double EstimatedHours
+        private int _estimatedHours;
+        public int EstimatedHours
         {
             get =>
                 _estimatedHours;
@@ -49,8 +49,8 @@ namespace Civica.ViewModels
             }
         }
 
-        private double _spentHours = 0;
-        public double SpentHours
+        private int _spentHours;
+        public int SpentHours
         {
             get
                 => _spentHours; set

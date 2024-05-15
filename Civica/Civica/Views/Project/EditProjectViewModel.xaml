@@ -24,10 +24,19 @@
                     <StackPanel VerticalAlignment="Top"
                         Margin="0 10 0 0"
                         Orientation="Vertical">
-
-                        <TextBlock Text="{Binding SelectedProject.Name}"
+                        <Border Background="#FFF3F2F2"
+    BorderBrush="LightGray"
+    BorderThickness="1"
+    CornerRadius="2"
+    Grid.Column="1"
+                                Width="250"
+    Margin="2 0 0 0">
+                            <TextBox Text="{Binding SelectedProject.Name}"
        TextAlignment="Center"
+                                 Background="Transparent"
+                                     BorderThickness="0"
        FontSize="25"/>
+                        </Border>
                         <Border BorderBrush="Gray"
     BorderThickness="0,0,0,1"
     Margin="5, 5, 5, 0"
@@ -99,9 +108,7 @@
      BorderThickness="0"
                                  Height="150"
      AcceptsReturn="True"
-     IsReadOnly="True"
      AcceptsTab="True"
-     Margin="5 10 20 0"
      TextWrapping="Wrap"/>
                         </Border>
 
