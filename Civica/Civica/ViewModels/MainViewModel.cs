@@ -19,7 +19,7 @@ namespace Civica.ViewModels
 {
     public class MainViewModel : ObservableObject
     {
-        
+
         private string _viewTitle;
         public string ViewTitle
         {
@@ -330,7 +330,7 @@ namespace Civica.ViewModels
             {
                 if (parameter is MainViewModel mvm)
                 {
-                    mvm.CurrentUser = new UserViewModel(mvm.userRepo.GetById(1));
+                    mvm.CurrentUser = new UserViewModel(mvm.userRepo.GetById(x => x.Id == 1));
                     if (mvm.LoginButtonText == "Login")
                     {
                         mvm.LoginView = WindowVisibility.Visible;
@@ -354,8 +354,6 @@ namespace Civica.ViewModels
                 return true;
             });
 
-
-
         private IRepository<Project> projectRepo;
         private IRepository<Progress> progressRepo;
         private IRepository<Resource> resourceRepo;
@@ -365,92 +363,13 @@ namespace Civica.ViewModels
 
         public MainViewModel()
         {
-            projectRepo = new Repository<Project>
-            (
-                id =>
-                {
-                    return projectRepo.GetAll().FindAll(x => x.Id == id);
-                },
-                id =>
-                {
-                    return projectRepo.GetAll().FindAll(x => x.UserId == id);
-                }
-            );
-            progressRepo = new Repository<Progress>
-            (
-                id =>
-                {
-                    return progressRepo.GetAll().FindAll(x => x.Id == id);
-                },
-                id =>
-                {
-                    return progressRepo.GetAll().FindAll(x => x.UserId == id);
-                },
-                id =>
-                {
-                    return progressRepo.GetAll().FindAll(x => x.RefId == id);
-                }
-            );
-            resourceRepo = new Repository<Resource>
-            (
-                id =>
-                {
-                    return resourceRepo.GetAll().FindAll(x => x.Id == id);
-                },
-                id =>
-                {
-                    return resourceRepo.GetAll().FindAll(x => x.UserId == id);
-                },
-                id =>
-                {
-                    return resourceRepo.GetAll().FindAll(x => x.RefId == id);
-                }
-            );
-            auditRepo = new Repository<Audit>
-            (
-                id =>
-                {
-                    return auditRepo.GetAll().FindAll(x => x.Id == id);
-                },
-                id =>
-                {
-                    return auditRepo.GetAll().FindAll(x => x.UserId == id);
-                },
-                id =>
-                {
-                    return auditRepo.GetAll().FindAll(x => x.RefId == id);
-                }
-            );
-            userRepo = new Repository<User>
-            (
-                id =>
-                {
-                    return userRepo.GetAll().FindAll(x => x.Id == id);
-                },
-                id =>
-                {
-                    return userRepo.GetAll().FindAll(x => x.UserId == id);
-                },
-                id =>
-                {
-                    return userRepo.GetAll().FindAll(x => x.RefId == id);
-                }
-            );
-            worktimeRepo = new Repository<Worktime>
-            (
-                id =>
-                {
-                    return worktimeRepo.GetAll().FindAll(x => x.Id == id);
-                },
-                id =>
-                {
-                    return worktimeRepo.GetAll().FindAll(x => x.UserId == id);
-                },
-                id =>
-                {
-                    return worktimeRepo.GetAll().FindAll(x => x.RefId == id);
-                }
-            );
+            projectRepo = new Repository<Project>();
+            progressRepo = new Repository<Progress>();
+            resourceRepo = new Repository<Resource>();
+            auditRepo = new Repository<Audit>();
+            userRepo = new Repository<User>();
+            worktimeRepo = new Repository<Worktime>();
+
             ipvm.Init(this);
             epvm.Init(this);
             svm.Init(this);
@@ -480,7 +399,7 @@ namespace Civica.ViewModels
         {
             if (show)
                 StatusDot = WindowVisibility.Visible;
-            else 
+            else
                 StatusDot = WindowVisibility.Hidden;
         }
     }

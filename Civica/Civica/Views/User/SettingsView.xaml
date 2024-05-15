@@ -205,7 +205,7 @@
      Grid.ColumnSpan="2"
      ToolTipService.InitialShowDelay="0">
             <Button.ToolTip>
-                <ToolTip Content="Opdater bruger" Style="{StaticResource ToolTipTheme}"/>
+                <ToolTip Content="Rediger bruger" Style="{StaticResource ToolTipTheme}"/>
             </Button.ToolTip>
 
             <Button.Style>
