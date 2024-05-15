@@ -158,7 +158,7 @@ Command="{Binding RemoveProgressCmd}"
 CommandParameter="{Binding}"
 ToolTipService.InitialShowDelay="0">
             <Button.ToolTip>
-                <ToolTip Content="Slet" Style="{StaticResource ToolTipTheme}"/>
+                <ToolTip Content="Slet fremdrift" Style="{StaticResource ToolTipTheme}"/>
             </Button.ToolTip>
 
             <Button.Style>
@@ -169,6 +169,12 @@ ToolTipService.InitialShowDelay="0">
                         <Trigger Property="IsMouseOver" Value="True">
                             <Setter Property="Background" Value="Transparent"/>
                         </Trigger>
+                        <DataTrigger Binding="{Binding Path=InformationPlaceholderVisibility}" Value="Hidden">
+                            <Setter Property="Visibility" Value="Visible"/>
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding Path=InformationPlaceholderVisibility}" Value="Visible">
+                            <Setter Property="Visibility" Value="Hidden"/>
+                        </DataTrigger>
                     </Style.Triggers>
 
                 </Style>
@@ -212,6 +218,12 @@ ToolTipService.InitialShowDelay="0">
                         <Trigger Property="IsMouseOver" Value="True">
                             <Setter Property="Background" Value="Transparent"/>
                         </Trigger>
+                        <DataTrigger Binding="{Binding Path=InformationPlaceholderVisibility}" Value="Hidden">
+                            <Setter Property="Visibility" Value="Visible"/>
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding Path=InformationPlaceholderVisibility}" Value="Visible">
+                            <Setter Property="Visibility" Value="Hidden"/>
+                        </DataTrigger>
                     </Style.Triggers>
                 </Style>
             </Button.Style>
@@ -487,7 +499,7 @@ Margin="0 0 10 0">
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="*"/>
-                        <RowDefinition Height="60"/>
+                        <RowDefinition Height="15"/>
                     </Grid.RowDefinitions>
 
 
@@ -563,25 +575,9 @@ Margin="0 0 10 0">
                                  AcceptsReturn="True"
                                  AcceptsTab="True"
                                  Text="{Binding SelectedProgress.Description}"/>
-
-                            <Border BorderBrush="Gray"
-       BorderThickness="0,0,0,1"
-       Margin="5, 0, 5, 0"
-       Opacity="0.2">
-                            </Border>
                         </StackPanel>
 
                     </ScrollViewer>
-
-                    <Grid Grid.Row="2">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="60"/>
-                            <ColumnDefinition Width="308*"/>
-                            <ColumnDefinition Width="69*"/>
-                        </Grid.ColumnDefinitions>
-                        
-                       
-                    </Grid>
                 </Grid>
 
 

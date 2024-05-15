@@ -360,7 +360,6 @@ namespace Civica.ViewModels
                     epvm.ProgressVisibility = WindowVisibility.Visible;
                     epvm.InformationPlaceholderVisibility = WindowVisibility.Hidden;
                     epvm.CreateProgressVisibility = WindowVisibility.Hidden;
-                    epvm.EditProjectVisibility = WindowVisibility.Hidden;
                 }
             },
             parameter =>

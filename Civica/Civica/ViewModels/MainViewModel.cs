@@ -247,7 +247,7 @@ namespace Civica.ViewModels
                    #endregion
 
                    #region Audit Visibility
-                   mvm.ervm.EditAuditVisiblity = WindowVisibility.Hidden;
+                   mvm.ervm.EditAuditVisibility = WindowVisibility.Hidden;
                    mvm.ervm.CreateAuditVisibility = WindowVisibility.Hidden;
                    mvm.ervm.EditResourceVisibility = WindowVisibility.Hidden;
                    mvm.ervm.ResourceVisiblity = WindowVisibility.Visible;
@@ -256,7 +256,7 @@ namespace Civica.ViewModels
 
                    #region Worktime Visibility
                    mvm.ervm.CreateWorktimeVisibility = WindowVisibility.Hidden;
-                   mvm.ervm.EditWorktimeVisiblity = WindowVisibility.Hidden;
+                   mvm.ervm.EditWorktimeVisibility = WindowVisibility.Hidden;
                    mvm.ervm.WorktimeDetailsVisibility = WindowVisibility.Hidden;
                    #endregion
 
