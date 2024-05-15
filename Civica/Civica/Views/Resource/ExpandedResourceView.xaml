@@ -172,7 +172,7 @@
                      CommandParameter="{Binding}"
                      ToolTipService.InitialShowDelay="0">
             <RadioButton.ToolTip>
-                <ToolTip Content="Skift mellem Omkostninger/Resourceforbrug" Style="{StaticResource ToolTipTheme}"/>
+                <ToolTip Content="Skift mellem Omkostninger/Ressourceforbrug" Style="{StaticResource ToolTipTheme}"/>
             </RadioButton.ToolTip>
             <RadioButton.Style>
                 <Style TargetType="{x:Type RadioButton}">

@@ -173,7 +173,7 @@ ToolTipService.InitialShowDelay="0">
   CommandParameter="{Binding}" 
   ToolTipService.InitialShowDelay="0">
             <Button.ToolTip>
-                <ToolTip Content="Opdater projekt" Style="{StaticResource ToolTipTheme}"/>
+                <ToolTip Content="Rediger projekt" Style="{StaticResource ToolTipTheme}"/>
             </Button.ToolTip>
 
             <Button.Style>
@@ -416,7 +416,7 @@ Command="{Binding EditProgressViewCmd}"
 CommandParameter="{Binding}"
 ToolTipService.InitialShowDelay="0">
                             <Button.ToolTip>
-                                <ToolTip Content="Opdater fremdrift" Style="{StaticResource ToolTipTheme}"/>
+                                <ToolTip Content="Rediger fremdrift" Style="{StaticResource ToolTipTheme}"/>
                             </Button.ToolTip>
 
                             <Button.Style>
@@ -455,7 +455,7 @@ ToolTipService.InitialShowDelay="0">
          CommandParameter="{Binding}"
          ToolTipService.InitialShowDelay="0" Margin="0,2,0,2">
                             <Button.ToolTip>
-                                <ToolTip Content="Slet fremdrift" Style="{StaticResource ToolTipTheme}"/>
+                                <ToolTip Content="Slet" Style="{StaticResource ToolTipTheme}"/>
                             </Button.ToolTip>
 
                             <Button.Style>
