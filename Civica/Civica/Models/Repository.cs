@@ -44,7 +44,8 @@ namespace Civica.Models
         }
         public List<T> GetByRefId(int id)
         {
-            return _executeByRefId(id).OfType<T>().ToList();
+            List<T> list = _executeByRefId(id).OfType<T>().ToList();
+            return list;
         }
 
         public T GetById(int id)
