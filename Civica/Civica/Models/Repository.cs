@@ -41,11 +41,7 @@ namespace Civica.Models
         }
         public void RemoveByRefId(int id)
         {
-            List<T> tempList = GetByRefId(id);
-            foreach (T o in tempList)
-            {
-                DatabaseHelper<T>.Remove(o);
-            }
+            GetListById(x => x.RefId == id).ForEach(DatabaseHelper<T>.Remove);
             _list.RemoveAll(x => x.RefId == id);
         }
     }

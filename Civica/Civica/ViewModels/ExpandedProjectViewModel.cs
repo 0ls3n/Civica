@@ -218,13 +218,12 @@ namespace Civica.ViewModels
         public void RemoveProject()
         {
             int pID = SelectedProject.GetId();
-            int rID = resourceRepo.GetByRefId(pID).FirstOrDefault().Id;
+            int rID = resourceRepo.GetById(x => x.RefId == pID).Id;
             auditRepo.RemoveByRefId(rID);
             worktimeRepo.RemoveByRefId(rID);
             progressRepo.RemoveByRefId(pID);
             resourceRepo.RemoveByRefId(pID);
-            projectRepo.Remove(projectRepo.GetById(pID));
-            projectRepo.Remove(projectRepo.GetById(x => x.Id == SelectedProject.GetId()));
+            projectRepo.Remove(projectRepo.GetById(x => x.Id == pID));
             UpdateList();
             SelectedProject = null;
         }
