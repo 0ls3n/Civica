@@ -141,7 +141,7 @@
                             Width="45"
                             Cursor="Hand"
                             Height="45"
-                            Command="{Binding RemoveAuditCmd}"
+                            Command="{Binding RemoveCmd}"
                             CommandParameter="{Binding}"
                             ToolTipService.InitialShowDelay="0">
                             <Button.ToolTip>
