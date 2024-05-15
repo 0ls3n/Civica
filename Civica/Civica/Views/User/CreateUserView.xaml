@@ -18,12 +18,14 @@
 
                 <TextBlock Text="Opret bruger"
                            TextAlignment="Center"
-                           FontSize="30"/>
+                           FontSize="20" FontWeight="Bold"/>
 
                 <Grid>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="250*"/>
-                        <ColumnDefinition Width="250*"/>
+                        <ColumnDefinition Width="47*"/>
+                        <ColumnDefinition Width="13*"/>
+                        <ColumnDefinition Width="5*"/>
+                        <ColumnDefinition Width="55*"/>
                     </Grid.ColumnDefinitions>
 
                     <Grid.RowDefinitions>
@@ -32,14 +34,14 @@
                     </Grid.RowDefinitions>
 
                     <Label Content="Fornavn:"
-                        FontSize="16"/>
+                        FontSize="16" FontWeight="Bold" Grid.ColumnSpan="2" Margin="0,0,0,16" Grid.RowSpan="2"/>
 
-                    <Border Grid.Row="1"
-                        Margin="5 0 5 0"
+                    <Border
+                        Margin="5,31,5,0"
                         Background="#FFF3F2F2"
                         BorderBrush="LightGray"
                         BorderThickness="1"
-                        CornerRadius="2">
+                        CornerRadius="2" Grid.RowSpan="2" Grid.ColumnSpan="2">
 
                         <TextBox FontSize="16"
                             Margin="2 5 2 5"
@@ -49,16 +51,16 @@
                     </Border>
 
                     <Label Content="Efternavn:" 
-                       Grid.Column="1"
-                       FontSize="16"/>
+                       Grid.Column="2"
+                       FontSize="16" FontWeight="Bold" Grid.ColumnSpan="2" Margin="0,0,0,16" Grid.RowSpan="2"/>
 
-                    <Border Grid.Row="1"
-                        Margin="5 0 5 0"
-                        Grid.Column="1"
+                    <Border
+                        Margin="5,31,5,0"
+                        Grid.Column="2"
                         Background="#FFF3F2F2"
                         BorderBrush="LightGray"
                         BorderThickness="1"
-                        CornerRadius="2">
+                        CornerRadius="2" Grid.ColumnSpan="2" Grid.RowSpan="2">
 
                         <TextBox FontSize="16"
                              Margin="2 5 2 5"
@@ -72,7 +74,7 @@
                 <Label Content="Adgangskode:"
                        Margin="0 0 10 0"
                        FontSize="16"
-                       HorizontalAlignment="Left"/>
+                       HorizontalAlignment="Left" FontWeight="Bold"/>
 
                 <Border Margin="5 0 5 0"
                     Background="#FFF3F2F2"

@@ -28,8 +28,7 @@
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
 
-                        <TextBlock FontSize="20"
-                                   Text="Darkmode: "/>
+                        
 
                     </Grid>
 
@@ -39,8 +38,7 @@
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
 
-                        <TextBlock FontSize="20"
-                                   Text="Print: "/>
+                        
 
                     </Grid>
                    

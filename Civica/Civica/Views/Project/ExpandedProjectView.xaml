@@ -330,12 +330,12 @@ Margin="0 0 10 0">
                                 </Grid.ColumnDefinitions>
                                 <TextBlock Grid.Column="0"
                                        Text="Status: "
-                                       FontSize="20"/>
+                                       FontSize="16"/>
 
                                 <TextBlock Text="{Binding SelectedProgress.Status}"
                                    Grid.Column="1"
                                    Foreground="{Binding SelectedProgress.StatusColor}"
-                                   FontSize="20"/>
+                                   FontSize="16"/>
                             </Grid>
 
                             <Grid Margin="5 0 0 10">
@@ -345,20 +345,20 @@ Margin="0 0 10 0">
                                 </Grid.ColumnDefinitions>
                                 <TextBlock Grid.Column="0"
                                    Text="Fase: "
-                                   FontSize="20"/>
+                                   FontSize="16"/>
 
                                 <TextBlock Text="{Binding SelectedProgress.Phase}"
                                        Grid.Column="1"
-                                       FontSize="20"/>
+                                       FontSize="16"/>
                             </Grid>
 
                             <Grid Margin="5 0 0 10">
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="60"/>
+                                    <ColumnDefinition Width="auto"/>
                                     <ColumnDefinition/>
                                 </Grid.ColumnDefinitions>
                                 <TextBlock Grid.Column="0"
-                                       Text="Oprettet"
+                                       Text="Oprettet "
                                        FontStyle="Italic"
                                        FontSize="14"/>
 

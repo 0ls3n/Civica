@@ -23,11 +23,11 @@
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
 
-                        <TextBlock FontSize="20"
+                        <TextBlock FontSize="16"
                                Text="Afdeling/navn: "/>
 
                         <TextBlock Grid.Column="1"
-                               FontSize="20"
+                               FontSize="16"
                                Text="{Binding SelectedWorktime.InvolvedName}"/>
                     </Grid>
 
@@ -37,11 +37,11 @@
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
 
-                        <TextBlock FontSize="20"
+                        <TextBlock FontSize="16"
                                    Text="Estimerede timer: "/>
 
                         <TextBlock Grid.Column="1"
-                                   FontSize="20"
+                                   FontSize="16"
                                    Text="{Binding SelectedWorktime.EstimatedHours}"/>
 
                     </Grid>
@@ -52,11 +52,11 @@
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
 
-                        <TextBlock FontSize="20"
+                        <TextBlock FontSize="16"
                                    Text="Brugte timer: "/>
 
                         <TextBlock Grid.Column="1"
-                                   FontSize="20"
+                                   FontSize="16"
                                    Text="{Binding SelectedWorktime.SpentHours}"/>
                     </Grid>
 
@@ -66,17 +66,17 @@
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
 
-                        <TextBlock FontSize="20"
+                        <TextBlock FontSize="16"
                Text="Resterende timer: "/>
 
                         <TextBlock Grid.Column="1"
-               FontSize="20"
+               FontSize="16"
                                     Foreground="{Binding SelectedWorktime.Color, UpdateSourceTrigger=PropertyChanged}"
                Text="{Binding SelectedWorktime.RemainingHours}"/>
                     </Grid>
 
                     <TextBlock Text="Beskrivelse:" 
-                               FontSize="20"
+                               FontSize="16"
                                Margin="5 10 0 0"/>
 
                     <TextBlock Text="{Binding SelectedWorktime.Description}"

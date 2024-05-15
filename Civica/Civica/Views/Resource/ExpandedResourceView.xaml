@@ -260,7 +260,7 @@ CornerRadius="25">
                 <RowDefinition/>
             </Grid.RowDefinitions>
 
-           
+
             <Border Background="White"
                 CornerRadius="10"
                 Grid.Row="0"
@@ -450,15 +450,15 @@ CornerRadius="25">
                     Margin="10 0 0 0">
                 <Border.Style>
                     <Style TargetType="Border">
-                    <Style.Triggers>
-                        <DataTrigger Binding="{Binding ResourceVisiblity}" Value="Visible">
-                            <Setter Property="Visibility" Value="Visible"/>
-                        </DataTrigger>
-                        <DataTrigger Binding="{Binding ResourceVisiblity}" Value="Hidden">
-                            <Setter Property="Visibility" Value="Hidden"/>
-                        </DataTrigger>
-                    </Style.Triggers>
-                </Style>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding ResourceVisiblity}" Value="Visible">
+                                <Setter Property="Visibility" Value="Visible"/>
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding ResourceVisiblity}" Value="Hidden">
+                                <Setter Property="Visibility" Value="Hidden"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
                 </Border.Style>
                 <Grid>
                     <Grid.ColumnDefinitions>
@@ -475,7 +475,7 @@ CornerRadius="25">
                         <StackPanel Orientation="Vertical">
                             <TextBlock Text="{Binding SelectedProject.Name}"
                                     TextAlignment="Center"
-                                    FontSize="25"/>
+                                    FontSize="25" FontWeight="Bold"/>
                             <Border BorderBrush="Gray"
                             BorderThickness="0,0,0,1"
                             Margin="5, 0, 5, 0"
@@ -488,15 +488,15 @@ CornerRadius="25">
                                     <ColumnDefinition Width="*"/>
                                 </Grid.ColumnDefinitions>
 
-                                <TextBlock FontSize="20"
+                                <TextBlock FontSize="16"
                         Text="Startbeløb: "/>
 
                                 <TextBlock Grid.Column="1"
-                        FontSize="20"
+                        FontSize="16"
                         Text="{Binding SelectedResource.StartAmount}"/>
 
                                 <TextBlock Grid.Column="2"
-                                   FontSize="20"
+                                   FontSize="16"
                                    Text=" kr"/>
                             </Grid>
 
@@ -507,34 +507,35 @@ CornerRadius="25">
                                     <ColumnDefinition Width="*"/>
                                 </Grid.ColumnDefinitions>
 
-                                <TextBlock FontSize="20"
-                                   Text="Fast årlig omkostning: "/>
+                                <TextBlock FontSize="16"
+                                   Text="Årlig omkostning: "/>
 
                                 <TextBlock Grid.Column="1"
-                                   FontSize="20"
+                                   FontSize="16"
                                    Text="{Binding SelectedResource.ExpectedYearlyCost}"/>
 
-                                <TextBlock Grid.Column="2"
-                                   FontSize="20"
-                                   Text=" kr"/>
+                                <TextBlock
+                                          Grid.Column="2"
+                                          FontSize="16"
+                                          Text=" kr"/>
                             </Grid>
 
                             <Grid Margin="5 10 0 0">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="auto"/>
-                                    <ColumnDefinition Width="auto"/>
+                                    <ColumnDefinition Width="auto" MinWidth="5"/>
                                     <ColumnDefinition Width="*"/>
                                 </Grid.ColumnDefinitions>
 
-                                <TextBlock FontSize="20"
-                                       Text="Øvrige omkostning i alt: "/>
+                                <TextBlock FontSize="16"
+                                       Text="Omkostning i alt: "/>
 
                                 <TextBlock Grid.Column="1"
-                                        FontSize="20"
+                                        FontSize="16"
                                         Text="{Binding CombinedCost}"/>
 
                                 <TextBlock Grid.Column="2"
-                                        FontSize="20"
+                                        FontSize="16"
                                         Text=" kr"/>
                             </Grid>
 
