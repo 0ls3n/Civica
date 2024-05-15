@@ -23,97 +23,12 @@ namespace UnitTest
         [TestInitialize]
         public void Initialize() // Arrange
         {
-            projectRepo = new Repository<Project>
-            (
-                id =>
-                {
-                    return projectRepo.GetAll().FindAll(x => x.Id == id);
-                },
-                id =>
-                {
-                    return projectRepo.GetAll().FindAll(x => x.UserId == id);
-                }
-            );
-
-            userRepo = new Repository<User>
-            (
-                id =>
-                {
-                    return userRepo.GetAll().FindAll(x => x.Id == id);
-                },
-                id =>
-                {
-                    return userRepo.GetAll().FindAll(x => x.UserId == id);
-                },
-                id =>
-                {
-                    return userRepo.GetAll().FindAll(x => x.RefId == id);
-                }
-            );
-
-            progressRepo = new Repository<Progress>
-            (
-                id =>
-                {
-                    return progressRepo.GetAll().FindAll(x => x.Id == id);
-                },
-                id =>
-                {
-                    return progressRepo.GetAll().FindAll(x => x.UserId == id);
-                },
-                id =>
-                {
-                    return progressRepo.GetAll().FindAll(x => x.RefId == id);
-                }
-            );
-
-            resourceRepo = new Repository<Resource>
-            (
-                id =>
-                {
-                    return resourceRepo.GetAll().FindAll(x => x.Id == id);
-                },
-                id =>
-                {
-                    return resourceRepo.GetAll().FindAll(x => x.UserId == id);
-                },
-                id =>
-                {
-                    return resourceRepo.GetAll().FindAll(x => x.RefId == id);
-                }
-            );
-
-            auditRepo = new Repository<Audit>
-            (
-                id =>
-                {
-                    return auditRepo.GetAll().FindAll(x => x.Id == id);
-                },
-                id =>
-                {
-                    return auditRepo.GetAll().FindAll(x => x.UserId == id);
-                },
-                id =>
-                {
-                    return auditRepo.GetAll().FindAll(x => x.RefId == id);
-                }
-            );
-
-            worktimeRepo = new Repository<Worktime>
-            (
-                id =>
-                {
-                    return worktimeRepo.GetAll().FindAll(x => x.Id == id);
-                },
-                id =>
-                {
-                    return worktimeRepo.GetAll().FindAll(x => x.UserId == id);
-                },
-                id =>
-                {
-                    return worktimeRepo.GetAll().FindAll(x => x.RefId == id);
-                }
-            );
+            projectRepo = new Repository<Project>();
+            progressRepo = new Repository<Progress>();
+            resourceRepo = new Repository<Resource>();
+            auditRepo = new Repository<Audit>();
+            userRepo = new Repository<User>();
+            worktimeRepo = new Repository<Worktime>();
 
             p1 = new Project(1, "test1", string.Empty, string.Empty, string.Empty, DateTime.Now);
 
@@ -235,7 +150,7 @@ namespace UnitTest
 
             progressRepo.Add(prog); // Act
 
-            Assert.IsNotNull(progressRepo.GetByRefId(p1.Id).Find(x => x.Id == prog.Id)); // This finds a progress thru the project id
+            Assert.IsNotNull(progressRepo.GetListById(x => x.RefId == p1.Id).Find(x => x.Id == prog.Id)); // This finds a progress thru the project id
 
             projectRepo.Remove(p1);
             progressRepo.Remove(prog);
@@ -262,9 +177,9 @@ namespace UnitTest
             auditRepo.Remove(audit);
 
             Assert.IsNull(projectRepo.GetAll().Find(x => (x as Project).Name == "test1"));
-            Assert.IsNull(progressRepo.GetByRefId(p1.Id).Find(x => x.Id == prog.Id));
-            Assert.IsNull(resourceRepo.GetByRefId(p1.Id).Find(x => x.Id == resource.Id));
-            Assert.IsNull(auditRepo.GetByRefId(resource.Id).Find(x => x.Id == audit.Id));
+            Assert.IsNull(progressRepo.GetListById(x => x.RefId == p1.Id).Find(x => x.Id == prog.Id));
+            Assert.IsNull(resourceRepo.GetListById(x => x.RefId == p1.Id).Find(x => x.Id == resource.Id));
+            Assert.IsNull(auditRepo.GetListById(x => x.RefId == resource.Id).Find(x => x.Id == audit.Id));
 
         }
     }
