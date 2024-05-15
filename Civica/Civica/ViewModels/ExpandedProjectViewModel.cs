@@ -22,6 +22,8 @@ namespace Civica.ViewModels
         private IRepository<Progress> progressRepo;
         private IRepository<Project> projectRepo;
         private IRepository<Resource> resourceRepo;
+        private IRepository<Audit> auditRepo;
+        private IRepository<Worktime> worktimeRepo;
         private ObservableCollection<ProgressViewModel> _progresses = new ObservableCollection<ProgressViewModel>();
 
         public ObservableCollection<ProgressViewModel> Progresses
@@ -157,8 +159,11 @@ namespace Civica.ViewModels
         {
             mvm = (o as MainViewModel);
             progressRepo = mvm.GetProgressRepo();
-            projectRepo = mvm.GetProjectRepo();
+            auditRepo = mvm.GetAuditRepo();
+            worktimeRepo = mvm.GetWorktimeRepo();
             resourceRepo = mvm.GetResourceRepo();
+            projectRepo = mvm.GetProjectRepo();
+
             cpvm.SetRepo(progressRepo);
         }
 
@@ -193,7 +198,13 @@ namespace Civica.ViewModels
 
         public void RemoveProject()
         {
-            projectRepo.Remove(projectRepo.GetById(SelectedProject.GetId()));
+            int pID = SelectedProject.GetId();
+            int rID = resourceRepo.GetByRefId(pID).FirstOrDefault().Id;
+            auditRepo.RemoveByRefId(rID);
+            worktimeRepo.RemoveByRefId(rID);
+            progressRepo.RemoveByRefId(pID);
+            resourceRepo.RemoveByRefId(pID);
+            projectRepo.Remove(projectRepo.GetById(pID));
             UpdateList();
             SelectedProject = null;
         }

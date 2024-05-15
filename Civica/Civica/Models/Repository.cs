@@ -65,5 +65,14 @@ namespace Civica.Models
                 _list.Remove(d);
             }
         }
+        public void RemoveByRefId(int id)
+        {
+            List<T> tempList = GetByRefId(id);
+            foreach (T o in tempList)
+            {
+                DatabaseHelper<T>.Remove(o);
+            }
+            _list.RemoveAll(x => x.RefId == id);
+        }
     }
 }
