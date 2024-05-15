@@ -664,7 +664,7 @@ namespace Civica.ViewModels
 
                  ervm.resourceRepo.Update(r);
 
-                 ervm.UpdateList();
+                 //ervm.UpdateList();
 
                  ervm.SelectedResource = resourceVm;
              }
