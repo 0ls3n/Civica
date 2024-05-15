@@ -281,6 +281,13 @@ namespace Civica.ViewModels
             },
             parameter =>
             {
+                if (parameter is ExpandedProjectViewModel epvm)
+                {
+                    if (epvm.SelectedProgress == null)
+                    {
+                        return false;
+                    }
+                }
                 return true;
             }
         );
@@ -383,6 +390,13 @@ namespace Civica.ViewModels
             },
             parameter =>
             {
+                if (parameter is ExpandedProjectViewModel epvm)
+                {
+                    if (epvm.SelectedProgress == null)
+                    {
+                        return false;
+                    }
+                }
                 return true;
             }
         );
