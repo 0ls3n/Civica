@@ -91,7 +91,6 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="50"/>
             <RowDefinition/>
-
         </Grid.RowDefinitions>
 
         <Grid.ColumnDefinitions>
@@ -104,12 +103,11 @@
 
         <TextBlock Grid.Row="0"
                    Grid.Column="0"
-                   Text="Info"
+                   Text="Information"
                    HorizontalAlignment="Left"
                    VerticalAlignment="Bottom"
                    Margin="0 0 0 10"
                    Foreground="#8A8A8A"/>
-
         <Button
 BorderThickness="0"
 HorizontalAlignment="Right"

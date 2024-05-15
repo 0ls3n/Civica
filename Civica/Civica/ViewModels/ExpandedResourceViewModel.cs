@@ -114,8 +114,8 @@ namespace Civica.ViewModels
                 OnPropertyChanged(nameof(WorktimeInvolvedName));
             }
         }
-        private double _worktimeEstimatedHours;
-        public double WorktimeEstimatedHours
+        private int _worktimeEstimatedHours;
+        public int WorktimeEstimatedHours
         {
             get => _worktimeEstimatedHours;
             set
