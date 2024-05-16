@@ -1,5 +1,6 @@
 ﻿using Civica.Models;
 using Civica.Models.Enums;
+using Civica.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
