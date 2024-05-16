@@ -46,7 +46,7 @@ SelectedValuePath="Key"
                             BorderThickness="0"
 HorizontalContentAlignment="Left"
 VerticalContentAlignment="Center"
-SelectedValue="{Binding SelectedStatus, UpdateSourceTrigger=PropertyChanged}"/>
+SelectedValue="{Binding cpvm.SelectedStatus, UpdateSourceTrigger=PropertyChanged}"/>
                     </Border>
                 </Grid>
 
@@ -75,7 +75,7 @@ DisplayMemberPath="Value"
 SelectedValuePath="Key"
 HorizontalContentAlignment="Left"
 VerticalContentAlignment="Center"
-SelectedValue="{Binding SelectedPhase, UpdateSourceTrigger=PropertyChanged}"/>
+SelectedValue="{Binding cpvm.SelectedPhase, UpdateSourceTrigger=PropertyChanged}"/>
                     </Border>
                 </Grid>
 
@@ -119,7 +119,7 @@ SelectedValue="{Binding SelectedPhase, UpdateSourceTrigger=PropertyChanged}"/>
                                  TextWrapping="Wrap"
                                  AcceptsReturn="True"
                                  AcceptsTab="True"
-                                 Text="{Binding SelectedDescription}"/>
+                                 Text="{Binding SelectedProgress.Description}"/>
                 </Border>
             </StackPanel>
 

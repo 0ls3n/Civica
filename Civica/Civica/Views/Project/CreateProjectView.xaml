@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:viewModel="clr-namespace:Civica.ViewModels"
              mc:Ignorable="d" 
-             d:DesignHeight="600" d:DesignWidth="600">
+             d:DesignHeight="545" d:DesignWidth="600">
     <Grid>
         <Border Grid.Row="1"
                 Background="White"
@@ -156,46 +156,6 @@
                              Text="{Binding ProjectDescription}"/>
 
                     </Border>
-
-                    <Button Content="Opret"
-                        Width="150"
-                        Height="40"
-                        Cursor="Hand"
-                        Margin="0 10 0 0"
-                        Command="{Binding CreateProjectCmd}"
-                        CommandParameter="{Binding}">
-
-                        <Button.Style>
-                            <Style TargetType="Button">
-                                <Setter Property="Background" Value="#FFF3F2F2"/>
-                                <Style.Triggers>
-                                    <Trigger Property="IsMouseOver" Value="True">
-                                        <Setter Property="Background" Value="#FFE1E1E1"/>
-                                    </Trigger>
-                                </Style.Triggers>
-                            </Style>
-                        </Button.Style>
-
-                        <Button.Template>
-                            <ControlTemplate TargetType="Button">
-                                <Border Width="{TemplateBinding Width}"
-                                    Height="{TemplateBinding Height}"
-                                    Background="{TemplateBinding Background}"
-                                    CornerRadius="5"
-                                    BorderBrush="LightGray"
-                                    BorderThickness="1">
-
-                                    <TextBlock Text="Opret"
-                                           FontSize="16"
-                                           HorizontalAlignment="Center"
-                                           VerticalAlignment="Center"/>
-
-                                </Border>
-                            </ControlTemplate>
-                        </Button.Template>
-
-                    </Button>
-
                 </StackPanel>
             </ScrollViewer>
         </Border>

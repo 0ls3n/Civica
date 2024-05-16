@@ -98,9 +98,54 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
 
+        <Button BorderThickness="0"
+            Grid.Column="0"
+         HorizontalAlignment="Right"
+             VerticalAlignment="Bottom"
+         Width="20"
+         Cursor="Hand"
+         Height="20"
+             Margin="0, 0, 2, 4"
+         Command="{Binding CreateProjectVM.CreateProjectCmd}"
+         CommandParameter="{Binding CreateProjectVM}"
+         ToolTipService.InitialShowDelay="0">
+            <Button.ToolTip>
+                <ToolTip Content="Opret nyt projekt" Style="{StaticResource ToolTipTheme}"/>
+            </Button.ToolTip>
+
+            <Button.Style>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="Background" Value="Transparent"/>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="Transparent"/>
+                        </Trigger>
+                        <DataTrigger Binding="{Binding Path=CreateVisibility}" Value="Hidden">
+                            <Setter Property="Visibility" Value="Hidden"/>
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding Path=CreateVisibility}" Value="Visible">
+                            <Setter Property="Visibility" Value="Visible"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+
+            <Button.Template>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border Width="20" 
+Height="20"
+Background="{TemplateBinding Background}"
+CornerRadius="25">
+                        <Image Source="/Resources/Images/Done.png" 
+   Width="20"/>
+                    </Border>
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
+
         <TextBlock Grid.Row="0"
                    Grid.Column="0"
-                   Text="Info"
+                   Text="Information"
                    HorizontalAlignment="Left"
                    VerticalAlignment="Bottom"
                    Margin="0 0 0 10"
@@ -131,22 +176,6 @@
                     <Setter Property="Visibility" Value="Collapsed"/>
                     <Style.Triggers>
                         <DataTrigger Binding="{Binding CreateVisibility}" Value="Visible">
-                            <Setter Property="Visibility" Value="Visible"/>
-                        </DataTrigger>
-                    </Style.Triggers>
-                </Style>
-            </Border.Style>
-        </Border>
-
-        
-
-        <Border Grid.Row="1">
-            <view:EditProjectViewModel/>
-            <Border.Style>
-                <Style TargetType="Border">
-                    <Setter Property="Visibility" Value="Collapsed"/>
-                    <Style.Triggers>
-                        <DataTrigger Binding="{Binding EditVisibility}" Value="Visible">
                             <Setter Property="Visibility" Value="Visible"/>
                         </DataTrigger>
                     </Style.Triggers>

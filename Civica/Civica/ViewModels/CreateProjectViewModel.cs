@@ -131,7 +131,6 @@ namespace Civica.ViewModels
             ResourceExpectedYearlyCost = "";
         }
         
-
         public RelayCommand CreateProjectCmd { get; set; } = new RelayCommand
         (
             parameter =>
