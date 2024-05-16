@@ -2,6 +2,7 @@
 using Civica.Interfaces;
 using Civica.Models;
 using Civica.Models.Enums;
+using Microsoft.IdentityModel.Tokens;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -80,14 +81,21 @@ namespace Civica.ViewModels
                 OnPropertyChanged(nameof(AuditYear));
             }
         }
-        private decimal _auditExpectedYearlyCost;
-        public decimal AuditExpectedYearlyCost
+        private string _auditAmount;
+        public string AuditAmount
         {
-            get => _auditExpectedYearlyCost;
+            get => _auditAmount;
             set
             {
-                _auditExpectedYearlyCost = value;
-                OnPropertyChanged(nameof(AuditExpectedYearlyCost));
+                if (decimal.TryParse(value, out _) || value == "")
+                {
+                    _auditAmount = value;
+                }
+                else
+                {
+                    MessageBox.Show("'Omkostning' må kun være tal.");
+                }
+                OnPropertyChanged(nameof(AuditAmount));
             }
         }
 
@@ -114,13 +122,20 @@ namespace Civica.ViewModels
                 OnPropertyChanged(nameof(WorktimeInvolvedName));
             }
         }
-        private int _worktimeEstimatedHours;
-        public int WorktimeEstimatedHours
+        private string _worktimeEstimatedHours = "";
+        public string WorktimeEstimatedHours
         {
             get => _worktimeEstimatedHours;
             set
             {
-                _worktimeEstimatedHours = value;
+                if (double.TryParse(value, out _) || value == "")
+                {
+                    _worktimeEstimatedHours = value;
+                }
+                else
+                {
+                    MessageBox.Show("'Est. timer' må kun være i tal.");
+                }
                 OnPropertyChanged(nameof(WorktimeEstimatedHours));
             }
         }
@@ -402,8 +417,8 @@ namespace Civica.ViewModels
 
                      Worktime w = ervm.worktimeRepo.GetById(x => x.Id == wvm.GetId());
 
-                     w.SpentHours = wvm.SpentHours;
-                     w.EstimatedHours = wvm.EstimatedHours;
+                     w.SpentHours = int.Parse(wvm.SpentHours);
+                     w.EstimatedHours = int.Parse(wvm.EstimatedHours);
                      w.Description = wvm.Description;
                      w.InvolvedName = wvm.InvolvedName;
 
@@ -441,7 +456,7 @@ namespace Civica.ViewModels
                         ervm.InformationPlaceholderVisibility = WindowVisibility.Hidden;
                         ervm.CreateAuditVisibility = WindowVisibility.Visible;
 
-                        ervm.AuditExpectedYearlyCost = 0;
+                        ervm.AuditAmount = "";
                         ervm.AuditYear = DateTime.Now.Year;
                     }
                     else
@@ -452,7 +467,7 @@ namespace Civica.ViewModels
                         ervm.CreateWorktimeVisibility = WindowVisibility.Visible;
 
                         ervm.Description = "";
-                        ervm.WorktimeEstimatedHours = 0;
+                        ervm.WorktimeEstimatedHours = "";
                         ervm.WorktimeInvolvedName = "";
                     }
                 }
@@ -537,7 +552,7 @@ namespace Civica.ViewModels
                       ervm.InformationPlaceholderVisibility = WindowVisibility.Visible;
                       ervm.CreateAuditVisibility = WindowVisibility.Hidden;
 
-                      ervm.AuditExpectedYearlyCost = 0;
+                      ervm.AuditAmount = "";
                       ervm.AuditYear = DateTime.Now.Year;
                   }
                   else
@@ -548,7 +563,7 @@ namespace Civica.ViewModels
                       ervm.InformationPlaceholderVisibility = WindowVisibility.Visible;
 
                       ervm.Description = "";
-                      ervm.WorktimeEstimatedHours = 0;
+                      ervm.WorktimeEstimatedHours = "";
                       ervm.WorktimeInvolvedName = "";
                   }
               }
@@ -572,7 +587,7 @@ namespace Civica.ViewModels
              {
                  if (ervm.AuditListVisibility == WindowVisibility.Visible)
                  {
-                     Audit a = new Audit(ervm.mvm.CurrentUser.GetId(), ervm.SelectedResource.GetId(), ervm.AuditExpectedYearlyCost, ervm.AuditYear, ervm.Description, DateTime.Now);
+                     Audit a = new Audit(ervm.mvm.CurrentUser.GetId(), ervm.SelectedResource.GetId(), ervm.AuditAmount.IsNullOrEmpty() ? 0 : decimal.Parse(ervm.AuditAmount), ervm.AuditYear, ervm.Description, DateTime.Now);
 
                      ervm.auditRepo.Add(a);
 
@@ -592,7 +607,7 @@ namespace Civica.ViewModels
                          MessageBox.Show("Der skal indtastes en afdeling eller et navn.");
                          return;
                      }
-                     Worktime w = new Worktime(ervm.mvm.CurrentUser.GetId(), ervm.SelectedResource.GetId(), ervm.WorktimeEstimatedHours, ervm.WorktimeInvolvedName, ervm.Description, DateTime.Now);
+                     Worktime w = new Worktime(ervm.mvm.CurrentUser.GetId(), ervm.SelectedResource.GetId(), ervm.WorktimeEstimatedHours.IsNullOrEmpty() ? 0 : int.Parse(ervm.WorktimeEstimatedHours), ervm.WorktimeInvolvedName, ervm.Description, DateTime.Now);
 
                      ervm.worktimeRepo.Add(w);
 
@@ -682,7 +697,7 @@ namespace Civica.ViewModels
             Worktimes.Clear();
             if (AuditListVisibility == WindowVisibility.Visible)
             {
-                double temp = double.Parse(SelectedResource.StartAmount);
+                double temp = SelectedResource.StartAmount.IsNullOrEmpty() ? 0 : double.Parse(SelectedResource.StartAmount);
                 List<Audit> audits = auditRepo.GetListById(x => x.RefId == SelectedResource.GetId()).OrderBy(x => x.Year).ToList<Audit>();
 
                 foreach (Audit a in audits)

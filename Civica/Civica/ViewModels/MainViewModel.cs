@@ -238,7 +238,7 @@ namespace Civica.ViewModels
                    mvm.ervm.Worktimes.Clear();
 
                    mvm.ervm.SelectedProject = mvm.ipvm.SelectedProject;
-                   mvm.ervm.SelectedResource = mvm.ipvm.SelectedResource;
+                   mvm.ervm.SelectedResource = new ResourceViewModel(mvm.resourceRepo.GetById(x => x.RefId == mvm.ipvm.SelectedProject.GetId()));
 
                    mvm.ervm.InformationPlaceholderVisibility = WindowVisibility.Visible;
 

@@ -112,7 +112,7 @@
                                  Margin="2 5 2 5"
                                  BorderThickness="0"
                                  Background="Transparent"
-                                 Text="{Binding ResourceStartAmount }"/>
+                                 Text="{Binding ResourceStartAmount, UpdateSourceTrigger=PropertyChanged}"/>
                         </Border>
                         <Label Content="Forventet årlig omkostning:"
    FontSize="16" Grid.Column="1" Grid.Row="0"/>
@@ -128,7 +128,7 @@
              Margin="2 5 2 5"
              Background="Transparent"
              BorderThickness="0"
-             Text="{Binding ResourceExpectedYearlyCost }"/>
+             Text="{Binding ResourceExpectedYearlyCost, UpdateSourceTrigger=PropertyChanged}"/>
 
                         </Border>
                         

@@ -75,7 +75,7 @@
                      FontSize="20"
                                      Background="Transparent"
                                      BorderThickness="0"
-                     Text="{Binding SelectedWorktime.SpentHours}"/>
+                     Text="{Binding SelectedWorktime.SpentHours, UpdateSourceTrigger=PropertyChanged}"/>
                         </Border>
                     </Grid>
 

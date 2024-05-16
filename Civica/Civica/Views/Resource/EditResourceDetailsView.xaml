@@ -55,7 +55,7 @@
                                  FontSize="20"
                                     BorderThickness="0"
                                  Background="Transparent"
-                                 Text="{Binding SelectedResource.StartAmount}"/>
+                                 Text="{Binding SelectedResource.StartAmount, UpdateSourceTrigger=PropertyChanged}"/>
                             </Border>
                         </Grid>
 
@@ -80,7 +80,7 @@
             FontSize="20"
                                          Background="Transparent"
                                          BorderThickness="0"
-            Text="{Binding SelectedResource.ExpectedYearlyCost}"/>
+            Text="{Binding SelectedResource.ExpectedYearlyCost, UpdateSourceTrigger=PropertyChanged}"/>
                             </Border>
                         </Grid>
 

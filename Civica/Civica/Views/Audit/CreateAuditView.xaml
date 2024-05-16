@@ -67,7 +67,7 @@
                                    FontSize="20"
                                      BorderThickness="0"
                                      Background="Transparent"
-                                   Text="{Binding AuditExpectedYearlyCost}"/>
+                                   Text="{Binding AuditAmount, UpdateSourceTrigger=PropertyChanged}"/>
                         </Border>
                     </Grid>
 

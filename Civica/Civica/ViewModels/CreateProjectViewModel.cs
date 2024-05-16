@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace Civica.ViewModels
 {
@@ -57,23 +58,37 @@ namespace Civica.ViewModels
                 OnPropertyChanged(nameof(ProjectDescription));
             }
         }
-        private decimal _resourceStartAmount;
-        public decimal ResourceStartAmount   
+        private string _resourceStartAmount = "";
+        public string ResourceStartAmount   
         {
             get => _resourceStartAmount;
             set
             {
-                _resourceStartAmount = value;
+                if (double.TryParse(value, out _) || value == "")
+                {
+                    _resourceStartAmount = value;
+                }
+                else
+                {
+                    MessageBox.Show("'Forventet start beløb' må kun være i tal");
+                }
                 OnPropertyChanged(nameof(ResourceStartAmount));
             }
         }
-        private decimal _resourceExpectedYearlyCost;
-        public decimal ResourceExpectedYearlyCost
+        private string _resourceExpectedYearlyCost = "";
+        public string ResourceExpectedYearlyCost
         {
             get => _resourceExpectedYearlyCost;
             set
             {
-                _resourceExpectedYearlyCost = value;
+                if (double.TryParse(value, out _) || value == "")
+                {
+                    _resourceExpectedYearlyCost = value;
+                }
+                else
+                {
+                    MessageBox.Show("'Forventet årlig omkostning' må kun være i tal");
+                }
                 OnPropertyChanged(nameof(ResourceExpectedYearlyCost));
             }
         }
@@ -81,7 +96,6 @@ namespace Civica.ViewModels
         private InProgressViewModel ipvm;
         private IRepository<Project> projectRepo;
         private IRepository<Resource> resourceRepo;
-        private IRepository<Audit> auditRepo;
 
         public void Init(ObservableObject o)
         {
@@ -96,22 +110,15 @@ namespace Civica.ViewModels
         {
             this.resourceRepo = resourceRepo;
         }
-        public void SetRepo(IRepository<Audit> auditRepo)
-        {
-            this.auditRepo = auditRepo;
-        }
 
         public void CreateProject()
         {
             Project p = new Project(ipvm.GetCurrentUser().GetId(), ProjectName, ProjectOwner, ProjectManager, ProjectDescription, DateTime.Now);
             
             projectRepo.Add(p);
-
-            Resource r = new Resource(ipvm.GetCurrentUser().GetId(), p.Id, ResourceStartAmount, ResourceExpectedYearlyCost, DateTime.Now);
+           
+            Resource r = new Resource(ipvm.GetCurrentUser().GetId(), p.Id, string.IsNullOrEmpty(ResourceExpectedYearlyCost) ? 0 : decimal.Parse(ResourceStartAmount), string.IsNullOrEmpty(ResourceExpectedYearlyCost) ? 0 : decimal.Parse(ResourceExpectedYearlyCost), DateTime.Now);
             resourceRepo.Add(r);
-
-            Audit a = new Audit(ipvm.GetCurrentUser().GetId(), r.Id, ResourceExpectedYearlyCost, DateTime.Now.Year, string.Empty, DateTime.Now);
-            auditRepo.Add(a);
 
             ipvm.UpdateList();
 
@@ -119,6 +126,8 @@ namespace Civica.ViewModels
             ProjectManager = "";
             ProjectOwner = "";
             ProjectDescription = "";
+            ResourceStartAmount = "";
+            ResourceExpectedYearlyCost = "";
         }
         
 
@@ -131,8 +140,6 @@ namespace Civica.ViewModels
                     cpvm.CreateProject();
                     cpvm.ipvm.CreateVisibility = WindowVisibility.Hidden;
                     cpvm.ipvm.InformationVisibility = WindowVisibility.Visible;
-                    cpvm.ResourceStartAmount = 0;
-                    cpvm.ResourceExpectedYearlyCost = 0;
                 }
             },
             parameter =>

@@ -5,6 +5,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace Civica.ViewModels
 {
@@ -12,18 +13,22 @@ namespace Civica.ViewModels
     {
         private Worktime worktime;
 
-        private int _estimatedHours;
-        public int EstimatedHours
+        private string _estimatedHours = "";
+        public string EstimatedHours
         {
-            get =>
-                _estimatedHours;
+            get => _estimatedHours;
             set
             {
-                _estimatedHours = value;
+                if (double.TryParse(value, out _) || value == "")
+                {
+                    _estimatedHours = value;
+                }
+                else
+                {
+                    MessageBox.Show("'Estimeret arbejds timer' må kun være i tal");
+                }
                 OnPropertyChanged(nameof(EstimatedHours));
                 OnPropertyChanged(nameof(RemainingHours));
-
-                ChangeColor();
             }
         }
 
@@ -49,20 +54,28 @@ namespace Civica.ViewModels
             }
         }
 
-        private int _spentHours;
-        public int SpentHours
+        private string _spentHours = "";
+        public string SpentHours
         {
             get
-                => _spentHours; set
+                => _spentHours; 
+            set
             {
-                _spentHours = value;
+                if (int.TryParse(value, out _) || value == "")
+                {
+                    _spentHours = value;
+                }
+                else
+                {
+                    MessageBox.Show("'Brugte timer' må kun være i tal");
+                }
                 OnPropertyChanged(nameof(SpentHours));
                 OnPropertyChanged(nameof(RemainingHours));
-
                 ChangeColor();
             }
+           
         }
-        public double RemainingHours => EstimatedHours - SpentHours;
+        public double RemainingHours => int.Parse(EstimatedHours) - int.Parse(SpentHours);
 
         private string _color;
         public string Color
@@ -81,10 +94,10 @@ namespace Civica.ViewModels
         public WorktimeViewModel(Worktime worktime)
         {
             this.worktime = worktime;
-            EstimatedHours = worktime.EstimatedHours;
+            EstimatedHours = worktime.EstimatedHours.ToString();
             InvolvedName = worktime.InvolvedName;
             Description = worktime.Description;
-            SpentHours = worktime.SpentHours;
+            SpentHours = worktime.SpentHours.ToString();
         }
 
         public int GetId() => worktime.Id;

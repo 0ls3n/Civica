@@ -316,8 +316,6 @@ namespace Civica.ViewModels
                        epvm.RemoveProject();
 
                        epvm.mvm.ipvm.SelectedProject = null;
-                       epvm.mvm.ipvm.SelectedAudit = null;
-                       epvm.mvm.ipvm.SelectedResource = null;
                        epvm.mvm.ipvm.SelectedProgress = null;
 
                        epvm.SelectedProject = null;

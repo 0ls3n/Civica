@@ -83,21 +83,21 @@ namespace Civica.ViewModels
                     {
                         SelectedProgress = new ProgressViewModel(prog);
                     }
-                    Resource r = resourceRepo.GetById(x => x.RefId == SelectedProject.GetId());
+                    //Resource r = resourceRepo.GetById(x => x.RefId == SelectedProject.GetId());
 
 
-                    SelectedAudit = null;
-                    SelectedResource = null;
-                    if (r is not null)
-                    {
-                        SelectedResource = new ResourceViewModel(r);
+                    //SelectedAudit = null;
+                    //SelectedResource = null;
+                    //if (r is not null)
+                    //{
+                    //    SelectedResource = new ResourceViewModel(r);
 
-                        Audit aud = auditRepo.GetById(x => x.RefId == r.Id);
-                        if (aud is not null)
-                        {
-                            SelectedAudit = new AuditViewModel(aud);
-                        }
-                    }
+                    //    Audit aud = auditRepo.GetById(x => x.RefId == r.Id);
+                    //    if (aud is not null)
+                    //    {
+                    //        SelectedAudit = new AuditViewModel(aud);
+                    //    }
+                    //}
                     OnPropertyChanged(nameof(SelectedProject));
                 }
                 else
@@ -111,27 +111,27 @@ namespace Civica.ViewModels
         public string Title { get; set; } = "Audits";
 
 
-        private AuditViewModel _selectedAudit = null;
-        public AuditViewModel SelectedAudit
-        {
-            get => _selectedAudit;
-            set
-            {
-                _selectedAudit = value;
-                OnPropertyChanged(nameof(SelectedAudit));
-            }
-        }
+        //private AuditViewModel _selectedAudit = null;
+        //public AuditViewModel SelectedAudit
+        //{
+        //    get => _selectedAudit;
+        //    set
+        //    {
+        //        _selectedAudit = value;
+        //        OnPropertyChanged(nameof(SelectedAudit));
+        //    }
+        //}
 
-        private ResourceViewModel _selectedResource;
-        public ResourceViewModel SelectedResource
-        {
-            get => _selectedResource;
-            set
-            {
-                _selectedResource = value;
-                OnPropertyChanged(nameof(SelectedResource));
-            }
-        }
+        //private ResourceViewModel _selectedResource;
+        //public ResourceViewModel SelectedResource
+        //{
+        //    get => _selectedResource;
+        //    set
+        //    {
+        //        _selectedResource = value;
+        //        OnPropertyChanged(nameof(SelectedResource));
+        //    }
+        //}
 
         private ProgressViewModel _selectedProgress = null;
         public ProgressViewModel SelectedProgress
@@ -226,7 +226,6 @@ namespace Civica.ViewModels
 
             CreateProjectVM.SetRepo(projectRepo);
             CreateProjectVM.SetRepo(resourceRepo);
-            CreateProjectVM.SetRepo(auditRepo);
 
             UpdateList();
         }

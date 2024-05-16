@@ -62,7 +62,7 @@
                                    FontSize="20"
                                      Background="Transparent"
                                      BorderThickness="0"
-                                   Text="{Binding WorktimeEstimatedHours}"/>
+                                   Text="{Binding WorktimeEstimatedHours, UpdateSourceTrigger=PropertyChanged}"/>
                         </Border>
                     </Grid>
 
