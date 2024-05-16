@@ -89,6 +89,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\GVMR\GVMR.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Update="appsettings.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

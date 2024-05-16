@@ -9,6 +9,7 @@ using System.Collections.ObjectModel;
 using Civica.Commands;
 using Civica.Models.Enums;
 using System.Windows;
+using GVMR;
 
 namespace Civica.ViewModels
 {

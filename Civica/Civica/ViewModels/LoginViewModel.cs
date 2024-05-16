@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using Civica.Models;
 using Civica.Models.Enums;
 using System.Windows;
+using GVMR;
 
 namespace Civica.ViewModels
 {

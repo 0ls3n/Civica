@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Civica.ViewModels
+namespace GVMR
 {
     public class ObservableObject : INotifyPropertyChanged
     {

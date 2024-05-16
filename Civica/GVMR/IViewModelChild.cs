@@ -1,11 +1,10 @@
-﻿using Civica.ViewModels;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Civica.Interfaces
+namespace GVMR
 {
     public interface IViewModelChild
     {
