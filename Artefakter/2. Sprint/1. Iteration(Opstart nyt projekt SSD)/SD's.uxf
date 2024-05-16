@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<diagram program="umlet" version="15.0.0">
+<diagram program="umlet" version="15.1">
   <zoom_level>10</zoom_level>
   <element>
     <id>Text</id>
@@ -362,7 +362,7 @@ CreateProject()</panel_attributes>
       <w>210</w>
       <h>30</h>
     </coordinates>
-    <panel_attributes>projectRepo: ProjectRepository</panel_attributes>
+    <panel_attributes>projectRepo : Repository&lt;T&gt;</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -1238,7 +1238,7 @@ CreateAudit</panel_attributes>
   <element>
     <id>Text</id>
     <coordinates>
-      <x>500</x>
+      <x>550</x>
       <y>140</y>
       <w>300</w>
       <h>60</h>
@@ -2031,7 +2031,7 @@ UpdateWorkTime</panel_attributes>
       <w>240</w>
       <h>30</h>
     </coordinates>
-    <panel_attributes>resourceRepo: ResourceRepository</panel_attributes>
+    <panel_attributes>resourceRepo: Repository &lt;T&gt;</panel_attributes>
     <additional_attributes/>
   </element>
   <element>

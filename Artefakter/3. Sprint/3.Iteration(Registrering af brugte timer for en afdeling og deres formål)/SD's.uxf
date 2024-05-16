@@ -1780,7 +1780,7 @@ AddWorkTime(time, involvedName, description) </panel_attributes>
       <w>230</w>
       <h>30</h>
     </coordinates>
-    <panel_attributes>workTimeRepo: ProjectRepository</panel_attributes>
+    <panel_attributes>workTimeRepo : Repository&lt;T&gt;</panel_attributes>
     <additional_attributes/>
   </element>
   <element>

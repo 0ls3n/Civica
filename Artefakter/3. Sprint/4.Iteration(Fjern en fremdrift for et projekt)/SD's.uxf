@@ -2113,7 +2113,7 @@ style=wordwrap</panel_attributes>
       <w>225</w>
       <h>27</h>
     </coordinates>
-    <panel_attributes>progressRepo: ProgressRepository</panel_attributes>
+    <panel_attributes>progressRepo : Repository&lt;T&gt;</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
