@@ -6,7 +6,7 @@
              xmlns:viewModel="clr-namespace:Civica.ViewModels"
              mc:Ignorable="d" 
              xmlns:view="clr-namespace:Civica.Views"
-             d:DesignHeight="350" d:DesignWidth="400">
+             d:DesignHeight="255" d:DesignWidth="400">
 
     <Grid>
         <Border Grid.Row="1"
@@ -24,7 +24,7 @@
                             <ColumnDefinition Width="150"/>
                         </Grid.ColumnDefinitions>
 
-                        <TextBlock FontSize="20"
+                        <TextBlock FontSize="16"
                                    Text="Afdeling/navn: "/>
 
                         <Border Background="#FFF3F2F2"
@@ -34,7 +34,7 @@
                                     Grid.Column="1"
                                     Margin="2 0 2 0">
                             <TextBox Grid.Column="1"
-                                 FontSize="20"
+                                 FontSize="16"
                                      Background="Transparent"
                                      BorderThickness="0"
                                  Text="{Binding WorktimeInvolvedName}"/>
@@ -48,8 +48,8 @@
                             <ColumnDefinition Width="127*"/>
                         </Grid.ColumnDefinitions>
 
-                        <TextBlock FontSize="20"
-                                   Text="Est. timer: "/>
+                        <TextBlock FontSize="16"
+                                   Text="Estimerede timer: "/>
 
 
                         <Border Background="#FFF3F2F2"
@@ -59,7 +59,7 @@
                                     Grid.Column="1"
                                     Margin="2 0 2 0">
                             <TextBox Grid.Column="1"
-                                   FontSize="20"
+                                   FontSize="16"
                                      Background="Transparent"
                                      BorderThickness="0"
                                    Text="{Binding WorktimeEstimatedHours, UpdateSourceTrigger=PropertyChanged}"/>
@@ -67,7 +67,7 @@
                     </Grid>
 
                     <TextBlock Text="Beskrivelse:" 
-                               FontSize="20"
+                               FontSize="16"
                                Margin="5 5 0 0"/>
 
                     <Border Background="#FFF3F2F2"
@@ -84,90 +84,6 @@
                              AcceptsTab="True"
                                TextWrapping="Wrap"/>
                     </Border>
-                    <Border BorderBrush="Gray"
-                        BorderThickness="0,0,0,1"
-                        Margin="5, 25, 5, 5"
-                        Opacity="0.2">
-                    </Border>
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="60"/>
-                            <ColumnDefinition Width="*"/>
-                        </Grid.ColumnDefinitions>
-                        <Button BorderThickness="0"
-                                 Grid.Column="1"
-                              HorizontalAlignment="Left"
-                              Width="45"
-                              Cursor="Hand"
-                              Height="45"
-                              Command="{Binding CreateCmd}"
-                              CommandParameter="{Binding}"
-                              ToolTipService.InitialShowDelay="0">
-                            <Button.ToolTip>
-                                <ToolTip Content="Gem ændringer" Style="{StaticResource ToolTipTheme}"/>
-                            </Button.ToolTip>
-
-                            <Button.Style>
-                                <Style TargetType="{x:Type Button}">
-                                    <Setter Property="Background" Value="Transparent"/>
-                                    <Style.Triggers>
-                                        <Trigger Property="IsMouseOver" Value="True">
-                                            <Setter Property="Background" Value="Transparent"/>
-                                        </Trigger>
-                                    </Style.Triggers>
-                                </Style>
-                            </Button.Style>
-
-                            <Button.Template>
-                                <ControlTemplate TargetType="{x:Type Button}">
-                                    <Border Width="45" 
-                                             Height="45"
-                                             Background="{TemplateBinding Background}"
-                                             CornerRadius="25">
-                                        <Image Source="/Resources/Images/Done.png" 
-                                                Width="45"/>
-                                    </Border>
-                                </ControlTemplate>
-                            </Button.Template>
-                        </Button>
-                        <Button BorderThickness="0"
-                                  Grid.Column="0"
-                               HorizontalAlignment="Left"
-                               Width="45"
-                                Margin="5, 0, 0, 0"
-                               Cursor="Hand"
-                               Height="45"
-                               Command="{Binding CancelCmd}"
-                               CommandParameter="{Binding}"
-                               ToolTipService.InitialShowDelay="0">
-                            <Button.ToolTip>
-                                <ToolTip Content="Annuller" Style="{StaticResource ToolTipTheme}"/>
-                            </Button.ToolTip>
-
-                            <Button.Style>
-                                <Style TargetType="{x:Type Button}">
-                                    <Setter Property="Background" Value="Transparent"/>
-                                    <Style.Triggers>
-                                        <Trigger Property="IsMouseOver" Value="True">
-                                            <Setter Property="Background" Value="Transparent"/>
-                                        </Trigger>
-                                    </Style.Triggers>
-                                </Style>
-                            </Button.Style>
-
-                            <Button.Template>
-                                <ControlTemplate TargetType="{x:Type Button}">
-                                    <Border Width="45" 
-                      Height="45"
-                      Background="{TemplateBinding Background}"
-                      CornerRadius="25">
-                                        <Image Source="/Resources/Images/back.png" 
-                         Width="45"/>
-                                    </Border>
-                                </ControlTemplate>
-                            </Button.Template>
-                        </Button>
-                    </Grid>
                 </StackPanel>
             </ScrollViewer>
 

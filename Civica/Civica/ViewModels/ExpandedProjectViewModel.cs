@@ -281,6 +281,13 @@ namespace Civica.ViewModels
             },
             parameter =>
             {
+                if (parameter is ExpandedProjectViewModel epvm)
+                {
+                    if (epvm.SelectedProgress == null)
+                    {
+                        return false;
+                    }
+                }
                 return true;
             }
         );
@@ -351,7 +358,6 @@ namespace Civica.ViewModels
                     epvm.ProgressVisibility = WindowVisibility.Visible;
                     epvm.InformationPlaceholderVisibility = WindowVisibility.Hidden;
                     epvm.CreateProgressVisibility = WindowVisibility.Hidden;
-                    epvm.EditProjectVisibility = WindowVisibility.Hidden;
                 }
             },
             parameter =>
@@ -381,6 +387,13 @@ namespace Civica.ViewModels
             },
             parameter =>
             {
+                if (parameter is ExpandedProjectViewModel epvm)
+                {
+                    if (epvm.SelectedProgress == null)
+                    {
+                        return false;
+                    }
+                }
                 return true;
             }
         );

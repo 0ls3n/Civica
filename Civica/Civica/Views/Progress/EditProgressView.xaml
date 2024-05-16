@@ -6,7 +6,7 @@
              xmlns:viewModel="clr-namespace:Civica.ViewModels"
              mc:Ignorable="d" 
              xmlns:view="clr-namespace:Civica.Views"
-             d:DesignHeight="350" d:DesignWidth="400">
+             d:DesignHeight="300" d:DesignWidth="400">
 
     <Grid Background="White">
         <Grid.ColumnDefinitions>
@@ -29,7 +29,7 @@
                     </Grid.ColumnDefinitions>
                     <TextBlock Grid.Column="0"
                                        Text="Status: "
-                                       FontSize="20"/>
+                                       FontSize="16"/>
                     <Border Background="#FFF3F2F2"
                   BorderBrush="LightGray"
                   BorderThickness="1"
@@ -57,7 +57,7 @@ SelectedValue="{Binding SelectedStatus, UpdateSourceTrigger=PropertyChanged}"/>
                     </Grid.ColumnDefinitions>
                     <TextBlock Grid.Column="0"
                                    Text="Fase: "
-                                   FontSize="20"/>
+                                   FontSize="16"/>
 
                     <Border Background="#FFF3F2F2"
                                     BorderBrush="LightGray"
@@ -121,57 +121,8 @@ SelectedValue="{Binding SelectedPhase, UpdateSourceTrigger=PropertyChanged}"/>
                                  AcceptsTab="True"
                                  Text="{Binding SelectedDescription}"/>
                 </Border>
-                <Border BorderBrush="Gray"
-       BorderThickness="0,0,0,1"
-       Margin="5, 10, 5, 0"
-       Opacity="0.2">
-                </Border>
             </StackPanel>
 
         </ScrollViewer>
-        <Grid Grid.Row="1">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
-            <Button BorderThickness="0"
-            Grid.Column="0"
-         HorizontalAlignment="Left"
-                    VerticalAlignment="Top"
-         Width="45"
-         Cursor="Hand"
-         Height="45"
-                    Margin="5, 0, 0, 5"
-         Command="{Binding UpdateProgressCmd}"
-         CommandParameter="{Binding}"
-         ToolTipService.InitialShowDelay="0">
-                <Button.ToolTip>
-                    <ToolTip Content="Gem ændringer" Style="{StaticResource ToolTipTheme}"/>
-                </Button.ToolTip>
-
-                <Button.Style>
-                    <Style TargetType="{x:Type Button}">
-                        <Setter Property="Background" Value="Transparent"/>
-                        <Style.Triggers>
-                            <Trigger Property="IsMouseOver" Value="True">
-                                <Setter Property="Background" Value="Transparent"/>
-                            </Trigger>
-                        </Style.Triggers>
-                    </Style>
-                </Button.Style>
-
-                <Button.Template>
-                    <ControlTemplate TargetType="{x:Type Button}">
-                        <Border Width="45" 
-Height="45"
-Background="{TemplateBinding Background}"
-CornerRadius="25">
-                            <Image Source="/Resources/Images/Done.png" 
-   Width="45"/>
-                        </Border>
-                    </ControlTemplate>
-                </Button.Template>
-            </Button>
-        </Grid>
     </Grid>
 </UserControl>

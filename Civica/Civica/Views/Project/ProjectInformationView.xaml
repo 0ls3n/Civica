@@ -16,7 +16,7 @@
                 <StackPanel Orientation="Vertical">
                     <TextBlock Text="{Binding SelectedProject.Name}"
                                TextAlignment="Center"
-                               FontSize="30"/>
+                               FontSize="30" FontWeight="Bold"/>
                     <Border BorderBrush="Gray"
                             BorderThickness="0,0,0,1"
                             Margin="5, 5, 5, 0"
@@ -29,11 +29,11 @@
                         </Grid.ColumnDefinitions>
 
                         <TextBlock FontSize="20"
-                                   Text="Projektejer: "/>
+                                   Text="Projektejer: " FontWeight="Bold"/>
 
                         <TextBlock Grid.Column="1"
                                    FontSize="20"
-                                   Text="{Binding SelectedProject.Owner}"/>
+                                   Text="{Binding SelectedProject.Owner}" FontStyle="Italic"/>
                     </Grid>
 
                     <Grid Margin="5 10 0 0">
@@ -43,11 +43,11 @@
                         </Grid.ColumnDefinitions>
 
                         <TextBlock FontSize="20"
-                                   Text="Projektleder: "/>
+                                   Text="Projektleder: " FontWeight="Bold"/>
 
                         <TextBlock Grid.Column="1"
                                    FontSize="20"
-                                   Text="{Binding SelectedProject.Manager}"/>
+                                   Text="{Binding SelectedProject.Manager}" FontStyle="Italic"/>
                     </Grid>
                     <Border BorderBrush="Gray"
                             BorderThickness="0,0,0,1"
@@ -56,7 +56,7 @@
                     </Border>
                     <TextBlock Text="Fremdriftsoversigt:"
                                Margin="5 25 0 0"
-                               FontSize="20"/>
+                               FontSize="20" FontWeight="Bold"/>
                     <Grid Margin="5 0 0 0">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="auto"/>
@@ -120,7 +120,7 @@
                     </Border>
                     <TextBlock Text="Projektbeskrivelse: "
                                Margin="5 25 0 0"
-                               FontSize="20"/>
+                               FontSize="20" FontWeight="Bold"/>
 
                     <TextBox Text="{Binding SelectedProject.Description}"
                              FontSize="15"
