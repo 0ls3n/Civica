@@ -108,7 +108,7 @@
                     Width="20"
                     Cursor="Hand"
                     Height="20"
-                    Margin="0, 0, 70, 10"
+                    Margin="0, 0, 20, 10"
                     Command="{Binding UpdateProgressCmd}"
                     CommandParameter="{Binding}"
                     ToolTipService.InitialShowDelay="0">
@@ -145,6 +145,48 @@
             </Button>
 
 
+        <Button BorderThickness="0"
+             Grid.Column="0"
+             HorizontalAlignment="Right"
+             VerticalAlignment="Bottom"
+             Width="20"
+             Cursor="Hand"
+             Height="20"
+             Margin="0, 0, 20, 10"
+             Command="{Binding cpvm.CreateProgressCmd}"
+             CommandParameter="{Binding cpvm}"
+             ToolTipService.InitialShowDelay="0">
+            <Button.ToolTip>
+                <ToolTip Content="Opret ny fremdrift" Style="{StaticResource ToolTipTheme}"/>
+            </Button.ToolTip>
+
+            <Button.Style>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="Background" Value="Transparent"/>
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding Path=CreateProgressVisibility}" Value="Hidden">
+                            <Setter Property="Visibility" Value="Hidden"/>
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding Path=CreateProgressVisibility}" Value="Visible">
+                            <Setter Property="Visibility" Value="Visible"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+
+            <Button.Template>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border Width="20" 
+     Height="20"
+     Background="{TemplateBinding Background}"
+     CornerRadius="25">
+                        <Image Source="/Resources/Images/Done.png" 
+        Width="20"/>
+                    </Border>
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
+
         <Button
 BorderThickness="0"
                       Grid.Column="0"
@@ -164,16 +206,27 @@ ToolTipService.InitialShowDelay="0">
             <Button.Style>
                 <Style TargetType="Button">
                     <Setter Property="Background" Value="Transparent"/>
-
                     <Style.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
                             <Setter Property="Background" Value="Transparent"/>
                         </Trigger>
-                        <DataTrigger Binding="{Binding Path=InformationPlaceholderVisibility}" Value="Hidden">
+                        <!--<MultiDataTrigger>
+                            <MultiDataTrigger.Conditions>
+                                <Condition Binding="{Binding Path=InformationVisibility}" Value="Visible"/>
+                            </MultiDataTrigger.Conditions>
                             <Setter Property="Visibility" Value="Visible"/>
-                        </DataTrigger>
-                        <DataTrigger Binding="{Binding Path=InformationPlaceholderVisibility}" Value="Visible">
+                        </MultiDataTrigger>
+                        <MultiDataTrigger>
+                            <MultiDataTrigger.Conditions>
+                                <Condition Binding="{Binding Path=InformationVisibility}" Value="Hidden"/>
+                            </MultiDataTrigger.Conditions>
                             <Setter Property="Visibility" Value="Hidden"/>
+                        </MultiDataTrigger>-->
+                        <DataTrigger Binding="{Binding Path=InformationVisibility}" Value="Hidden">
+                            <Setter Property="Visibility" Value="Hidden"/>
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding Path=InformationVisibility}" Value="Visible">
+                            <Setter Property="Visibility" Value="Visible"/>
                         </DataTrigger>
                     </Style.Triggers>
 
@@ -193,6 +246,64 @@ ToolTipService.InitialShowDelay="0">
             </Button.Template>
 
 
+        </Button>
+
+
+        <Button BorderThickness="0"
+            Grid.Column="0"
+         HorizontalAlignment="Right"
+                VerticalAlignment="Bottom"
+         Width="20"
+          Margin="0, 0, 45, 10"
+         Cursor="Hand"
+         Height="20"
+         Command="{Binding CancelCmd}"
+         CommandParameter="{Binding}"
+         ToolTipService.InitialShowDelay="0">
+            <Button.ToolTip>
+                <ToolTip Content="Annuller" Style="{StaticResource ToolTipTheme}"/>
+            </Button.ToolTip>
+
+            <Button.Style>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="Background" Value="Transparent"/>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="Transparent"/>
+                        </Trigger>
+                        <!--<MultiDataTrigger>
+                            <MultiDataTrigger.Conditions>
+                                <Condition Binding="{Binding Path=InformationVisibility}" Value="Visible"/>
+                            </MultiDataTrigger.Conditions>
+                            <Setter Property="Visibility" Value="Visible"/>
+                        </MultiDataTrigger>
+                        <MultiDataTrigger>
+                            <MultiDataTrigger.Conditions>
+                                <Condition Binding="{Binding Path=InformationVisibility}" Value="Hidden"/>
+                            </MultiDataTrigger.Conditions>
+                            <Setter Property="Visibility" Value="Hidden"/>
+                        </MultiDataTrigger>-->
+                        <DataTrigger Binding="{Binding Path=CreateProgressVisibility}" Value="Hidden">
+                            <Setter Property="Visibility" Value="Hidden"/>
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding Path=CreateProgressVisibility}" Value="Visible">
+                            <Setter Property="Visibility" Value="Visible"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+
+            <Button.Template>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border Width="20" 
+Height="20"
+Background="{TemplateBinding Background}"
+CornerRadius="25">
+                        <Image Source="/Resources/Images/back.png" 
+   Width="20"/>
+                    </Border>
+                </ControlTemplate>
+            </Button.Template>
         </Button>
 
         <Button
@@ -218,11 +329,23 @@ ToolTipService.InitialShowDelay="0">
                         <Trigger Property="IsMouseOver" Value="True">
                             <Setter Property="Background" Value="Transparent"/>
                         </Trigger>
-                        <DataTrigger Binding="{Binding Path=InformationPlaceholderVisibility}" Value="Hidden">
+                        <!--<MultiDataTrigger>
+                            <MultiDataTrigger.Conditions>
+                                <Condition Binding="{Binding Path=InformationVisibility}" Value="Visible"/>
+                            </MultiDataTrigger.Conditions>
                             <Setter Property="Visibility" Value="Visible"/>
-                        </DataTrigger>
-                        <DataTrigger Binding="{Binding Path=InformationPlaceholderVisibility}" Value="Visible">
+                        </MultiDataTrigger>
+                        <MultiDataTrigger>
+                            <MultiDataTrigger.Conditions>
+                                <Condition Binding="{Binding Path=InformationVisibility}" Value="Hidden"/>
+                            </MultiDataTrigger.Conditions>
                             <Setter Property="Visibility" Value="Hidden"/>
+                        </MultiDataTrigger>-->
+                        <DataTrigger Binding="{Binding Path=InformationVisibility}" Value="Hidden">
+                            <Setter Property="Visibility" Value="Hidden"/>
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding Path=InformationVisibility}" Value="Visible">
+                            <Setter Property="Visibility" Value="Visible"/>
                         </DataTrigger>
                     </Style.Triggers>
                 </Style>
@@ -324,6 +447,12 @@ ToolTipService.InitialShowDelay="0">
                         <Trigger Property="IsMouseOver" Value="True">
                             <Setter Property="Background" Value="Transparent"/>
                         </Trigger>
+                        <DataTrigger Binding="{Binding Path=EditProjectVisibility}" Value="Visible">
+                            <Setter Property="Visibility" Value="Hidden"/>
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding Path=EditProjectVisibility}" Value="Hidden">
+                            <Setter Property="Visibility" Value="Visible"/>
+                        </DataTrigger>
                     </Style.Triggers>
                 </Style>
             </Button.Style>
@@ -364,6 +493,12 @@ ToolTipService.InitialShowDelay="0">
                         <Trigger Property="IsMouseOver" Value="True">
                             <Setter Property="Background" Value="Transparent"/>
                         </Trigger>
+                        <DataTrigger Binding="{Binding Path=EditProjectVisibility}" Value="Visible">
+                            <Setter Property="Visibility" Value="Hidden"/>
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding Path=EditProjectVisibility}" Value="Hidden">
+                            <Setter Property="Visibility" Value="Visible"/>
+                        </DataTrigger>
                     </Style.Triggers>
 
                 </Style>
@@ -391,7 +526,7 @@ ToolTipService.InitialShowDelay="0">
          Width="20"
          Cursor="Hand"
          Height="20"
-             Margin="0, 0, 53, 10"
+             Margin="0, 0, 5, 10"
          Command="{Binding EditProjectCmd}"
          CommandParameter="{Binding}"
          ToolTipService.InitialShowDelay="0">
@@ -504,68 +639,68 @@ Margin="0 0 10 0">
 
 
 
-
+                    <!--InformationVisibility-->
                     <ScrollViewer VerticalScrollBarVisibility="Auto" Grid.Row="0">
-
-                        <StackPanel Orientation="Vertical"
+                        <Border>
+                            <StackPanel Orientation="Vertical"
                             Margin="0 5 0 5">
 
-                            <Grid Margin="5 0 0 10">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="100"/>
-                                    <ColumnDefinition/>
-                                </Grid.ColumnDefinitions>
-                                <TextBlock Grid.Column="0"
+                                <Grid Margin="5 0 0 10">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="100"/>
+                                        <ColumnDefinition/>
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock Grid.Column="0"
                                        Text="Status: "
                                        FontSize="16"/>
 
-                                <TextBlock Text="{Binding SelectedProgress.Status}"
+                                    <TextBlock Text="{Binding SelectedProgress.Status}"
                                    Grid.Column="1"
                                    Foreground="{Binding SelectedProgress.StatusColor}"
                                    FontSize="16"/>
-                            </Grid>
+                                </Grid>
 
-                            <Grid Margin="5 0 0 10">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="100"/>
-                                    <ColumnDefinition/>
-                                </Grid.ColumnDefinitions>
-                                <TextBlock Grid.Column="0"
+                                <Grid Margin="5 0 0 10">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="100"/>
+                                        <ColumnDefinition/>
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock Grid.Column="0"
                                    Text="Fase: "
                                    FontSize="16"/>
 
-                                <TextBlock Text="{Binding SelectedProgress.Phase}"
+                                    <TextBlock Text="{Binding SelectedProgress.Phase}"
                                        Grid.Column="1"
                                        FontSize="16"/>
-                            </Grid>
+                                </Grid>
 
-                            <Grid Margin="5 0 0 10">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="auto"/>
-                                    <ColumnDefinition/>
-                                </Grid.ColumnDefinitions>
-                                <TextBlock Grid.Column="0"
+                                <Grid Margin="5 0 0 10">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="auto"/>
+                                        <ColumnDefinition/>
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock Grid.Column="0"
                                        Text="Oprettet "
                                        FontStyle="Italic"
                                        FontSize="14"/>
 
-                                <TextBlock Text="{Binding SelectedProgress.Date}"
+                                    <TextBlock Text="{Binding SelectedProgress.Date}"
                                        Grid.Column="1"
                                        FontStyle="Italic"
                                        FontSize="14"/>
-                            </Grid>
+                                </Grid>
 
-                            <Border BorderBrush="Gray"
+                                <Border BorderBrush="Gray"
                                 BorderThickness="0,0,0,1"
                                 Margin="5, 0, 5, 5"
                                 Opacity="0.2">
-                            </Border>
+                                </Border>
 
-                            <TextBlock Text="Fremdriftbeskrivelse: "
+                                <TextBlock Text="Fremdriftbeskrivelse: "
                                    FontSize="16"
                                    Margin="5 0 0 10"/>
 
-                            <TextBox Background="Transparent"
+                                <TextBox Background="Transparent"
                                  FontSize="14"
                                  Margin="5 0 0 0"
                                  BorderThickness="0"
@@ -575,8 +710,22 @@ Margin="0 0 10 0">
                                  AcceptsReturn="True"
                                  AcceptsTab="True"
                                  Text="{Binding SelectedProgress.Description}"/>
-                        </StackPanel>
+                            </StackPanel>
 
+                            <Border.Style>
+                                <Style TargetType="Border">
+                                    <Setter Property="Visibility" Value="Collapsed"/>
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding InformationVisibility}" Value="Visible">
+                                            <Setter Property="Visibility" Value="Visible"/>
+                                        </DataTrigger>
+                                        <DataTrigger Binding="{Binding InformationVisibility}" Value="Hidden">
+                                            <Setter Property="Visibility" Value="Hidden"/>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Border.Style>
+                        </Border>
                     </ScrollViewer>
                 </Grid>
 

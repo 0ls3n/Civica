@@ -121,7 +121,6 @@ namespace Civica.ViewModels
             ProjectDescription = "";
         }
         
-
         public RelayCommand CreateProjectCmd { get; set; } = new RelayCommand
         (
             parameter =>

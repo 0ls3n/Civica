@@ -106,7 +106,7 @@
     HorizontalAlignment="Right"
             VerticalAlignment="Bottom"
     Width="20"
-            Margin="0, 0, 35, 4"
+            Margin="0, 0, 14, 4"
     Cursor="Hand"
     Height="20"
     Command="{Binding RemoveCmd}"
@@ -163,7 +163,7 @@ HorizontalAlignment="Right"
 Width="20"
 Cursor="Hand"
 Height="20"
-         Margin="0, 0, 57, 4"
+         Margin="0, 0, 37, 4"
 Command="{Binding EditViewCmd}"
 CommandParameter="{Binding}"
 ToolTipService.InitialShowDelay="0">
@@ -216,7 +216,7 @@ ToolTipService.InitialShowDelay="0">
           Grid.Column="0"
        HorizontalAlignment="Right"
                 VerticalAlignment="Bottom"
-                Margin="0, 0, 35, 4"
+                Margin="0, 0, 14, 4"
        Width="20"
        Cursor="Hand"
        Height="20"
@@ -271,7 +271,7 @@ ToolTipService.InitialShowDelay="0">
          HorizontalAlignment="Right"
                 VerticalAlignment="Bottom"
          Width="20"
-          Margin="0, 0, 57, 4"
+          Margin="0, 0, 37, 4"
          Cursor="Hand"
          Height="20"
          Command="{Binding CancelCmd}"
@@ -328,7 +328,7 @@ CornerRadius="25">
       Width="20"
       Cursor="Hand"
       Height="20"
-        Margin="0, 0, 35, 4"
+        Margin="0, 0, 14, 4"
       Command="{Binding SaveCmd}"
       CommandParameter="{Binding}"
       ToolTipService.InitialShowDelay="0">
@@ -393,10 +393,10 @@ CornerRadius="25">
                    Foreground="#8A8A8A"/>
 
         <Button BorderThickness="0"
-         Grid.Column="0"
+         Grid.Column="1"
          HorizontalAlignment="Right"
          VerticalAlignment="Bottom"
-         Margin="0 0 15 4"
+         Margin="0 0 25 4"
          Width="20"
          Grid.Row="0"
          Cursor="Hand"
@@ -518,6 +518,12 @@ CornerRadius="25">
                         <Trigger Property="IsMouseOver" Value="True">
                             <Setter Property="Background" Value="Transparent"/>
                         </Trigger>
+                        <DataTrigger Binding="{Binding Path=EditResourceVisibility}" Value="Visible">
+                            <Setter Property="Visibility" Value="Hidden"/>
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding Path=EditResourceVisibility}" Value="Hidden">
+                            <Setter Property="Visibility" Value="Visible"/>
+                        </DataTrigger>
                     </Style.Triggers>
                 </Style>
             </Button.Style>
@@ -541,7 +547,7 @@ CornerRadius="25">
          Width="20"
          Cursor="Hand"
          Height="20"
-             Margin="0, 0, 25, 4"
+             Margin="0, 0, 2, 4"
          Command="{Binding SaveResourceCmd}"
          CommandParameter="{Binding}"
          ToolTipService.InitialShowDelay="0">

@@ -655,6 +655,8 @@ namespace Civica.ViewModels
              if (parameter is ExpandedResourceViewModel ervm)
              {
                  ResourceViewModel resourceVm = ervm.SelectedResource;
+                 AuditViewModel auditVm = ervm.SelectedAudit;
+                 WorktimeViewModel worktimeVm = ervm.SelectedWorktime;
                  string temp = string.Format("{0:#,0}", double.Parse(resourceVm.StartAmount));
                  resourceVm.StartAmount = temp;
                  temp = string.Format("{0:#,0}", double.Parse(resourceVm.ExpectedYearlyCost));
@@ -670,9 +672,15 @@ namespace Civica.ViewModels
 
                  ervm.resourceRepo.Update(r);
 
-                 //ervm.UpdateList();
+                 ervm.UpdateList();
 
                  ervm.SelectedResource = resourceVm;
+                 ervm.SelectedAudit = auditVm;
+                 if (ervm.WorktimeDetailsVisibility == WindowVisibility.Visible)
+                 {
+                     ervm.SelectedWorktime = worktimeVm;
+                 }
+
              }
          },
          parameter =>

@@ -18,17 +18,17 @@ namespace Civica.ViewModels
 
         private IRepository<Progress> progressRepo;
 
-        private string _progressDescription = "";
-        public string ProgressDescription
+        private string _description = "";
+        public string Description
         {
             get
             {
-                return _progressDescription;
+                return _description;
             }
             set
             {
-                _progressDescription = value;
-                OnPropertyChanged(nameof(ProgressDescription));
+                _description = value;
+                OnPropertyChanged(nameof(Description));
             }
         }
 
@@ -55,7 +55,6 @@ namespace Civica.ViewModels
             }
         }
 
-
         public void Init(ObservableObject o)
         {
             epvm = (o as ExpandedProjectViewModel);
@@ -67,7 +66,7 @@ namespace Civica.ViewModels
 
         public void CreateProgress()
         {
-            Progress prog = new Progress(epvm.GetCurrentUser().GetId(), epvm.SelectedProject.GetId(), SelectedPhase, SelectedStatus, ProgressDescription, DateTime.Now);
+            Progress prog = new Progress(epvm.GetCurrentUser().GetId(), epvm.SelectedProject.GetId(), SelectedPhase, SelectedStatus, Description, DateTime.Now);
 
             progressRepo.Add(prog);
         }
@@ -85,6 +84,7 @@ namespace Civica.ViewModels
                     cpvm.epvm.ProgressVisibility = WindowVisibility.Hidden;
                     cpvm.epvm.EditProgressVisibility = WindowVisibility.Hidden;
                     cpvm.epvm.ProgressVisibility = WindowVisibility.Hidden;
+                    cpvm.epvm.InformationVisibility = WindowVisibility.Hidden;
                     cpvm.epvm.InformationPlaceholderVisibility = WindowVisibility.Visible;
                 }
             },

@@ -200,6 +200,7 @@ namespace Civica.ViewModels
                     mvm.epvm.UpdateList();
                     mvm.epvm.InformationPlaceholderVisibility = WindowVisibility.Visible;
                     mvm.epvm.EditProjectVisibility = WindowVisibility.Hidden;
+                    mvm.epvm.InformationVisibility = WindowVisibility.Hidden;
                 }
             },
             parameter =>
