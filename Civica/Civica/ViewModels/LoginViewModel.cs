@@ -62,6 +62,7 @@ namespace Civica.ViewModels
                         lvm.mvm.ipvm.UpdateList();
                         lvm.Password = string.Empty;
                         lvm.mvm.UserIconPath = "/Resources/Images/logout.png";
+                        lvm.mvm.ViewTitle = lvm.mvm.ipvm.WindowTitle;
                     }
                     else
                     {

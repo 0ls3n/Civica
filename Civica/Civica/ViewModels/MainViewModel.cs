@@ -330,7 +330,6 @@ namespace Civica.ViewModels
             {
                 if (parameter is MainViewModel mvm)
                 {
-                    mvm.CurrentUser = new UserViewModel(mvm.userRepo.GetById(x => x.Id == 1));
                     if (mvm.LoginButtonText == "Login")
                     {
                         mvm.LoginView = WindowVisibility.Visible;
@@ -346,6 +345,7 @@ namespace Civica.ViewModels
                         mvm.CurrentUser = null;
                         mvm.LoginButtonText = "Login";
                         mvm.UserIconPath = "/Resources/Images/login.png";
+                        mvm.ViewTitle = mvm.ipvm.WindowTitle;
                     }
                 }
             },
@@ -385,7 +385,7 @@ namespace Civica.ViewModels
             LoginView = WindowVisibility.Visible;
             ArchiveView = WindowVisibility.Hidden;
 
-            ViewTitle = ipvm.WindowTitle;
+            ViewTitle = lvm.WindowTitle;
         }
 
         public IRepository<Project> GetProjectRepo() => projectRepo;
