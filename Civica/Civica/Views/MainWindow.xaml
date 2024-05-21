@@ -94,7 +94,7 @@
                     Width="8"
                     Height="8"
                     HorizontalAlignment="Left"
-                    Background="{Binding Path=ipvm.SelectedProject.StatusColor}"
+                    Background="{Binding Path=epvm.SelectedProject.StatusColor, UpdateSourceTrigger=PropertyChanged}"
                     CornerRadius="7.5">
 
                 <Border.Style>

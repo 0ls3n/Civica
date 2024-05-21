@@ -33,26 +33,26 @@ namespace Civica.ViewModels
             }
         }
 
-        private Phase _selectedPhase;
-        public Phase SelectedPhase
+        private Phase _phase;
+        public Phase Phase
         {
-            get { return _selectedPhase; }
+            get { return _phase; }
             set
             {
-                _selectedPhase = value;
-                OnPropertyChanged(nameof(SelectedPhase));
+                _phase = value;
+                OnPropertyChanged(nameof(Phase));
             }
         }
 
-        private Status _selectedStatus;
+        private Status _status;
 
-        public Status SelectedStatus
+        public Status Status
         {
-            get { return _selectedStatus; }
+            get { return _status; }
             set
             {
-                _selectedStatus = value;
-                OnPropertyChanged(nameof(SelectedStatus));
+                _status = value;
+                OnPropertyChanged(nameof(Status));
             }
         }
 
@@ -67,9 +67,10 @@ namespace Civica.ViewModels
 
         public void CreateProgress()
         {
-            Progress prog = new Progress(epvm.GetCurrentUser().GetId(), epvm.SelectedProject.GetId(), SelectedPhase, SelectedStatus, Description, DateTime.Now);
+            Progress prog = new Progress(epvm.GetCurrentUser().GetId(), epvm.SelectedProject.GetId(), Phase, Status, Description, DateTime.Now);
 
             progressRepo.Add(prog);
+            epvm.SelectedProject.SetColor(prog.Status);
         }
 
         public RelayCommand CreateProgressCmd { get; set; } = new RelayCommand

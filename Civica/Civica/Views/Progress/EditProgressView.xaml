@@ -41,12 +41,12 @@ Height="30"
 Grid.Column="1"
 ItemsSource="{x:Static viewModel:Helper.Statuses}" 
 DisplayMemberPath="Value"
-SelectedValuePath="Key"
+SelectedValuePath="Value"
                             Background="Transparent"
                             BorderThickness="0"
 HorizontalContentAlignment="Left"
 VerticalContentAlignment="Center"
-SelectedValue="{Binding cpvm.SelectedStatus, UpdateSourceTrigger=PropertyChanged}"/>
+SelectedValue="{Binding SelectedProgress.Status, UpdateSourceTrigger=PropertyChanged}"/>
                     </Border>
                 </Grid>
 
@@ -72,10 +72,10 @@ ItemsSource="{x:Static viewModel:Helper.Phases}"
 DisplayMemberPath="Value"
                             Background="Transparent"
                             BorderThickness="0"
-SelectedValuePath="Key"
+SelectedValuePath="Value"
 HorizontalContentAlignment="Left"
 VerticalContentAlignment="Center"
-SelectedValue="{Binding cpvm.SelectedPhase, UpdateSourceTrigger=PropertyChanged}"/>
+SelectedValue="{Binding SelectedProgress.Phase, UpdateSourceTrigger=PropertyChanged}"/>
                     </Border>
                 </Grid>
 
@@ -119,10 +119,9 @@ SelectedValue="{Binding cpvm.SelectedPhase, UpdateSourceTrigger=PropertyChanged}
                                  TextWrapping="Wrap"
                                  AcceptsReturn="True"
                                  AcceptsTab="True"
-                                 Text="{Binding SelectedProgress.Description}"/>
+                                 Text="{Binding cpvm.Description}"/>
                 </Border>
             </StackPanel>
-
         </ScrollViewer>
     </Grid>
 </UserControl>

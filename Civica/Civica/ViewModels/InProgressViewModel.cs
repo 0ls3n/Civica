@@ -76,7 +76,7 @@ namespace Civica.ViewModels
                     CreateVisibility = WindowVisibility.Hidden;
                     EditVisibility = WindowVisibility.Hidden;
 
-                    Progress prog = progressRepo.GetById(x => x.RefId == SelectedProject.GetId());
+                    Progress prog = progressRepo.GetListById(x => x.RefId == SelectedProject.GetId()).OrderByDescending(x => x.CreatedDate).FirstOrDefault();
 
 
                     SelectedProgress = null;
@@ -189,25 +189,11 @@ namespace Civica.ViewModels
 
             foreach (ProjectViewModel p in Projects)
             {
-                Progress prog = progressRepo.GetById(x => x.RefId == p.GetId());
+                Progress prog = progressRepo.GetListById(x => x.RefId == p.GetId()).OrderByDescending(x => x.CreatedDate).FirstOrDefault();
 
                 if (prog != null)
                 {
-                    switch (prog.Status)
-                    {
-                        case Models.Enums.Status.ON_TRACK:
-                            p.StatusColor = "#008000";
-                            break;
-                        case Models.Enums.Status.DELAYED:
-                            p.StatusColor = "#FDC300";
-                            break;
-                        case Models.Enums.Status.CRITICAL:
-                            p.StatusColor = "#E20F1A";
-                            break;
-                        default:
-                            p.StatusColor = "#E8E8E8";
-                            break;
-                    }
+                    p.SetColor(prog.Status);
                 }
                 else
                 {

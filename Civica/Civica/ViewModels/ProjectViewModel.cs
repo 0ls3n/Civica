@@ -4,10 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Civica.Models;
+using Civica.Models.Enums;
+using GVMR;
 
 namespace Civica.ViewModels
 {
-    public class ProjectViewModel
+    public class ProjectViewModel : ObservableObject
     {
 
         private Project project;
@@ -47,8 +49,8 @@ namespace Civica.ViewModels
         private string _statusColor;
         public string StatusColor
         {
-            get => _statusColor;
-            set => _statusColor = value;
+            get { return _statusColor; }
+            set { _statusColor = value; OnPropertyChanged(nameof(StatusColor)); }
         }
 
         public ProjectViewModel(Project p)
@@ -63,6 +65,25 @@ namespace Civica.ViewModels
         public int GetId()
         {
             return project.Id;
+        }
+
+        public void SetColor(Status s)
+        {
+            switch (s)
+            {
+                case Models.Enums.Status.ON_TRACK:
+                    StatusColor = "#008000";
+                    break;
+                case Models.Enums.Status.DELAYED:
+                    StatusColor = "#FDC300";
+                    break;
+                case Models.Enums.Status.CRITICAL:
+                    StatusColor = "#E20F1A";
+                    break;
+                default:
+                    StatusColor = "#E8E8E8";
+                    break;
+            }
         }
     }
 }

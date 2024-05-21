@@ -178,13 +178,15 @@ namespace Civica.ViewModels
         public void UpdateProgress()
         {
             Progress p = progressRepo.GetById(x => x.Id == SelectedProgress.GetId());
-            p.Phase = cpvm.SelectedPhase;
-            p.Status = cpvm.SelectedStatus;
-            p.Description = cpvm.Description;
+            p.Phase = Helper.Phases.FirstOrDefault(x => x.Value == SelectedProgress.Phase).Key;
+            p.Status = Helper.Statuses.FirstOrDefault(x => x.Value == SelectedProgress.Status).Key;
+            p.Description = SelectedProgress.Description;
             progressRepo.Update(p);
 
             UpdateList();
+    
             SelectedProgress = Progresses.FirstOrDefault(x => x.GetId() == p.Id);
+            SelectedProject.SetColor(p.Status);
         }
 
         public void RemoveProgress()
@@ -279,8 +281,8 @@ namespace Civica.ViewModels
                     epvm.CreateProgressVisibility = WindowVisibility.Hidden;
                     epvm.InformationVisibility = WindowVisibility.Hidden;
                     Progress p = epvm.progressRepo.GetById(x => x.Id == epvm.SelectedProgress.GetId());
-                    epvm.cpvm.SelectedPhase = p.Phase;
-                    epvm.cpvm.SelectedStatus = p.Status;
+                    epvm.cpvm.Phase = p.Phase;
+                    epvm.cpvm.Status = p.Status;
                     epvm.cpvm.Description = p.Description;
                 }
             },
@@ -413,8 +415,8 @@ namespace Civica.ViewModels
                     epvm.cpvm.Description = "";
                     epvm.SelectedProgress = null;
 
-                    epvm.cpvm.SelectedPhase = Phase.IDENTIFIED;
-                    epvm.cpvm.SelectedStatus = Status.NONE;
+                    epvm.cpvm.Phase = Phase.IDENTIFIED;
+                    epvm.cpvm.Status = Status.NONE;
 
                     epvm.EditProgressVisibility = WindowVisibility.Hidden;
                     epvm.CreateProgressVisibility = WindowVisibility.Visible;

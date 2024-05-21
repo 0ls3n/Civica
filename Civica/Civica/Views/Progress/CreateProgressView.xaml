@@ -51,7 +51,7 @@
                               SelectedValuePath="Key"
                               HorizontalContentAlignment="Left"
                               VerticalContentAlignment="Center"
-                              SelectedValue="{Binding SelectedPhase, UpdateSourceTrigger=PropertyChanged}"/>
+                              SelectedValue="{Binding Phase, UpdateSourceTrigger=PropertyChanged}"/>
                     </Border>
 
                     <Label Content="Status"
@@ -78,7 +78,7 @@
                               ItemsSource="{x:Static viewModel:Helper.Statuses}" 
                               DisplayMemberPath="Value"
                               SelectedValuePath="Key"
-                              SelectedValue="{Binding SelectedStatus, UpdateSourceTrigger=PropertyChanged}"/>
+                              SelectedValue="{Binding Status, UpdateSourceTrigger=PropertyChanged}"/>
                     </Border>
                 </Grid>
 
