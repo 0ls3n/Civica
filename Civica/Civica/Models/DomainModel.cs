@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Civica.Models
 {
-    public class DomainModel
+    public abstract class DomainModel
     {
         public int Id { get; set; }
 

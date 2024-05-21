@@ -10,9 +10,7 @@ namespace Civica.Models
     public class Project : DomainModel
     {
         public string Name { get; set; }
-
         public string Owner { get; set; }
-
         public string Manager { get; set; }
         public string Description { get; set; }
 
