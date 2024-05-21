@@ -290,12 +290,12 @@ namespace Civica.ViewModels
             {
                 if (parameter is ExpandedProjectViewModel epvm)
                 {
-                    if (epvm.SelectedProgress == null)
+                    if (epvm.SelectedProgress != null && epvm.mvm.CurrentUser != null)
                     {
-                        return false;
+                        return true;
                     }
                 }
-                return true;
+                return false;
             }
         );
 
@@ -396,14 +396,14 @@ namespace Civica.ViewModels
             },
             parameter =>
             {
-                if (parameter is ExpandedProjectViewModel epvm)
+                if (parameter is ExpandedProjectViewModel ipvm)
                 {
-                    if (epvm.SelectedProgress == null)
+                    if (ipvm.SelectedProject != null && ipvm.mvm.CurrentUser != null)
                     {
-                        return false;
+                        return true;
                     }
                 }
-                return true;
+                return false;
             }
         );
         public RelayCommand CreateProgressViewCmd { get; set; } = new RelayCommand
@@ -431,7 +431,10 @@ namespace Civica.ViewModels
                 if (parameter is ExpandedProjectViewModel epvm)
                 {
 
-                    return true;
+                    if (epvm.mvm.CurrentUser != null)
+                    {
+                        return true;
+                    }
 
                 }
                 return false;
