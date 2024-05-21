@@ -17,7 +17,7 @@ namespace Civica.ViewModels
 {
     public class ExpandedProjectViewModel : ObservableObject, IViewModelChild
     {
-        private MainViewModel mvm { get; set; }
+        private MainViewModel mvm;
         public CreateProgressViewModel cpvm { get; set; } = new CreateProgressViewModel();
 
         private IRepository<Progress> progressRepo;
