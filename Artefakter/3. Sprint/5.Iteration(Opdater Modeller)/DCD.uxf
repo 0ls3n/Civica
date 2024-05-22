@@ -28,8 +28,8 @@ fontsize=10
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>200</x>
-      <y>160</y>
+      <x>300</x>
+      <y>260</y>
       <w>120</w>
       <h>40</h>
     </coordinates>
@@ -41,42 +41,59 @@ fontsize=10
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>190</x>
-      <y>390</y>
-      <w>100</w>
-      <h>40</h>
-    </coordinates>
-    <panel_attributes>InProgressView
--
-+ InProgressView()
-</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>UMLClass</id>
-    <coordinates>
-      <x>1550</x>
+      <x>1240</x>
       <y>260</y>
       <w>220</w>
-      <h>100</h>
+      <h>490</h>
     </coordinates>
     <panel_attributes>MainViewModel
 -
+- projectRepo : IRepository&lt;Project&gt;
+- progressRepo : IRepository&lt;Progress&gt;
+- resourceRepo : IRepository&lt;Resource&gt;
+- auditRepo : IRepository&lt;Audit&gt;
+- userRepo : IRepository&lt;User&gt;
+- worktimeRepo : IRepository&lt;Worktime&gt;
 + ViewTitle : string
 + CurrentView : object
++ CurrentUser : UserViewModel
++ InProgressView : WindowVisibility
++ ExpandedProjectView : WindowVisibilty
++ ResourceView : WindowVisibilty
++ SettingsView : WindowVisibilty
++ LoginView : WindowVisibilty
++ StatusDot : WindowVisibilty
++ ArchiveView : WindowVisibilty
++ UserIconPath : string
 + ipvm : InProgressViewModel
++ epvm : ExpandedProgressViewModel
++ ervm : ExpandedResourceViewModel
++ svm : SettingsViewModel
++ lvm : LoginViewModel
++ avm : ArchiveViewModel
 + InProgressViewCmd : RelayCommand
-
--
++ ExpandedProjectViewCmd : RelayCommand
++ ResourceViewCmd : RelayCommand
++ SettingsViewCmd : RelayCommand
++ ArchiveViewCmd : RelayCommand
++ LoginViewCmd : RelayCommand
+--
 + MainViewModel()
++ GetProjectRepo() : IRepository&lt;Project&gt;
++ GetProgressRepo() : IRepository&lt;Progress&gt;
++ GetResourceRepo() : IRepository&lt;Resource&gt;
++ GetAuditRepo() : IRepository&lt;Audit&gt;
++ GetUserRepo() : IRepository&lt;User&gt;
++ GetWorktimeRepo() : IRepository&lt;Worktime&gt;
++ ShowStatusDot(show : bool)
 </panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>770</x>
-      <y>70</y>
+      <x>600</x>
+      <y>100</y>
       <w>220</w>
       <h>90</h>
     </coordinates>
@@ -94,29 +111,32 @@ fontsize=10
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1490</x>
-      <y>1120</y>
+      <x>1250</x>
+      <y>990</y>
       <w>180</w>
-      <h>130</h>
+      <h>160</h>
     </coordinates>
     <panel_attributes>ProgressViewModel
 --
 - progress : Progress
-+ Fase : string
++ Phase : string
 + Status : string
 + Date : DateTime
 + Description : string
++ StatusColor : string
++ DateDetail : string
 --
 + ProjectViewModel(p : Progress)
 + GetId() : int
-+ GetProjectId() : int</panel_attributes>
++ GetProjectId() : int
+group=group-5</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1490</x>
-      <y>1520</y>
+      <x>1250</x>
+      <y>1630</y>
       <w>180</w>
       <h>110</h>
     </coordinates>
@@ -128,16 +148,17 @@ fontsize=10
 + Password : int
 --
 + UserViewModel(u : User)
-+ GetId() : int</panel_attributes>
++ GetId() : int
+group=group-5</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1490</x>
-      <y>840</y>
+      <x>1250</x>
+      <y>1480</y>
       <w>180</w>
-      <h>90</h>
+      <h>120</h>
     </coordinates>
     <panel_attributes>AuditViewModel
 --
@@ -148,16 +169,17 @@ fontsize=10
 --
 + AuditViewModel(a : Audit)
 + GetId() : int
-+ GetRefId() : int</panel_attributes>
++ GetRefId() : int
+group=group-5</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1490</x>
-      <y>960</y>
+      <x>1250</x>
+      <y>820</y>
       <w>180</w>
-      <h>130</h>
+      <h>140</h>
     </coordinates>
     <panel_attributes>ProjectViewModel
 --
@@ -169,14 +191,16 @@ fontsize=10
 + StatusColor : string
 --
 + ProjectViewModel(p : Project)
-+ GetId() : int</panel_attributes>
++ GetId() : int
++ SetColor(s : Status)
+group=group-5</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1480</x>
-      <y>120</y>
+      <x>1170</x>
+      <y>110</y>
       <w>290</w>
       <h>60</h>
     </coordinates>
@@ -190,8 +214,8 @@ ObservableObject
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1650</x>
-      <y>50</y>
+      <x>1340</x>
+      <y>40</y>
       <w>120</w>
       <h>40</h>
     </coordinates>
@@ -202,8 +226,8 @@ INotifyPropertyChanged</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>2770</x>
-      <y>320</y>
+      <x>2060</x>
+      <y>580</y>
       <w>200</w>
       <h>190</h>
     </coordinates>
@@ -228,8 +252,8 @@ INotifyPropertyChanged</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>2150</x>
-      <y>310</y>
+      <x>1600</x>
+      <y>450</y>
       <w>370</w>
       <h>130</h>
     </coordinates>
@@ -249,8 +273,8 @@ INotifyPropertyChanged</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>2150</x>
-      <y>480</y>
+      <x>1600</x>
+      <y>620</y>
       <w>250</w>
       <h>120</h>
     </coordinates>
@@ -269,8 +293,8 @@ DatabaseHelper&lt;T&gt;
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>3090</x>
-      <y>600</y>
+      <x>1870</x>
+      <y>830</y>
       <w>100</w>
       <h>110</h>
     </coordinates>
@@ -289,8 +313,8 @@ DONE
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>3090</x>
-      <y>740</y>
+      <x>1870</x>
+      <y>970</y>
       <w>100</w>
       <h>90</h>
     </coordinates>
@@ -307,8 +331,8 @@ ON_TRACK
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>2860</x>
-      <y>500</y>
+      <x>2150</x>
+      <y>760</y>
       <w>30</w>
       <h>80</h>
     </coordinates>
@@ -320,8 +344,8 @@ m2=1</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>2770</x>
-      <y>750</y>
+      <x>2060</x>
+      <y>1010</y>
       <w>200</w>
       <h>120</h>
     </coordinates>
@@ -340,8 +364,8 @@ m2=1</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>2770</x>
-      <y>960</y>
+      <x>2060</x>
+      <y>1220</y>
       <w>200</w>
       <h>150</h>
     </coordinates>
@@ -363,8 +387,8 @@ m2=1</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>2860</x>
-      <y>860</y>
+      <x>2150</x>
+      <y>1120</y>
       <w>30</w>
       <h>120</h>
     </coordinates>
@@ -376,22 +400,22 @@ m2=1</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>2720</x>
-      <y>430</y>
-      <w>70</w>
+      <x>2250</x>
+      <y>690</y>
+      <w>60</w>
       <h>370</h>
     </coordinates>
     <panel_attributes>lt=-
 m1=1
 m2=1
 </panel_attributes>
-    <additional_attributes>50.0;10.0;10.0;10.0;10.0;350.0;50.0;350.0</additional_attributes>
+    <additional_attributes>10.0;10.0;40.0;10.0;40.0;350.0;10.0;350.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>2150</x>
-      <y>160</y>
+      <x>1600</x>
+      <y>300</y>
       <w>290</w>
       <h>120</h>
     </coordinates>
@@ -410,8 +434,8 @@ IRepository&lt;T&gt;
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>2770</x>
-      <y>560</y>
+      <x>2060</x>
+      <y>820</y>
       <w>200</w>
       <h>140</h>
     </coordinates>
@@ -433,8 +457,8 @@ IRepository&lt;T&gt;
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>920</x>
-      <y>0</y>
+      <x>600</x>
+      <y>30</y>
       <w>70</w>
       <h>40</h>
     </coordinates>
@@ -445,8 +469,8 @@ ICommand</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>950</x>
-      <y>30</y>
+      <x>630</x>
+      <y>60</y>
       <w>30</w>
       <h>60</h>
     </coordinates>
@@ -456,8 +480,8 @@ ICommand</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1040</x>
-      <y>730</y>
+      <x>920</x>
+      <y>580</y>
       <w>240</w>
       <h>200</h>
     </coordinates>
@@ -478,52 +502,48 @@ ICommand</panel_attributes>
 + SetRepo(projectRepo : IRepository&lt;Project&gt;)
 + SetRepo(resourceRepo : IRepository&lt;Resource&gt;)
 + CreateProject()
-</panel_attributes>
+
+group=group-6</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1040</x>
-      <y>310</y>
+      <x>920</x>
+      <y>300</y>
       <w>240</w>
-      <h>330</h>
+      <h>250</h>
     </coordinates>
     <panel_attributes>InProgressViewModel
 -
 - mvm : MainViewModel
 - projectRepo : IRepository&lt;Project&gt;
 - progressRepo : IRepository&lt;Progress&gt;
+- resourceRepo : IRepository&lt;Resource&gt;
 + WindowTitle : string
 + CreateVisibility : WindowVisibility
 + EditVisibility : WindowVisibility
-+ ProgressVisibility : WindowVisibility
 + InformationVisibility : WindowVisibility
 + Projects : ProjectViewModel[0.*]
 + SelectedProject : ProjectViewModel
 + SelectedProgress : ProgressViewModel
-+ OldName : string
++ Title : string
 + CreateProjectVM : CreateProjectViewModel
-+ CreateProgressVM : CreateProgressViewModel
 + CreateProjectViewCmd : RelayCommand
-+ UpdateProjectViewCmd : RelayCommand
-+ ProgressProjectViewCmd : RelayCommand
-+ UpdateProjectCmd : RelayCommand
-+ RemoveProjectCmd : RelayCommand
--
+--
 + InProgressViewModel()
 + UpdateList()
 + Init(o : ObservableObject)
-+ RemoveProject()	
-+ UpdateProject(projectVM : ProjectViewModel)
-</panel_attributes>
++ GetCurrentUser : UserViewModel	
+
+group=group-6</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1040</x>
-      <y>960</y>
+      <x>920</x>
+      <y>810</y>
       <w>240</w>
       <h>140</h>
     </coordinates>
@@ -539,13 +559,14 @@ ICommand</panel_attributes>
 + Init(o : ObservableObject)
 + SetRepo(progressRepo : IRepository&lt;Progress&gt;)
 + CreateProgress()
-</panel_attributes>
+
+group=group-6</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1320</x>
+      <x>1010</x>
       <y>120</y>
       <w>130</w>
       <h>50</h>
@@ -559,8 +580,8 @@ Init(o : ObservableObject);</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>140</x>
-      <y>320</y>
+      <x>360</x>
+      <y>330</y>
       <w>150</w>
       <h>40</h>
     </coordinates>
@@ -570,96 +591,72 @@ Init(o : ObservableObject);</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>220</x>
-      <y>190</y>
-      <w>30</w>
-      <h>150</h>
-    </coordinates>
-    <panel_attributes>lt=-
-m1=
-m2=
-</panel_attributes>
-    <additional_attributes>10.0;130.0;10.0;10.0</additional_attributes>
-  </element>
-  <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>180</x>
-      <y>780</y>
-      <w>110</w>
+      <x>320</x>
+      <y>620</y>
+      <w>130</w>
       <h>40</h>
     </coordinates>
     <panel_attributes>CreateProjectView
 -
 + CreateProjectView()
-</panel_attributes>
+
+group=group-2</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>170</x>
-      <y>970</y>
-      <w>120</w>
+      <x>120</x>
+      <y>1010</y>
+      <w>140</w>
       <h>40</h>
     </coordinates>
     <panel_attributes>CreateProgressView 
 -
 + CreateProgressView()
-</panel_attributes>
+
+group=group-1</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>170</x>
-      <y>460</y>
-      <w>120</w>
+      <x>320</x>
+      <y>550</y>
+      <w>130</w>
       <h>40</h>
     </coordinates>
-    <panel_attributes>EditProjectViewModel
+    <panel_attributes>EditProjectView
 -
-+ EditProjectViewModel()
-</panel_attributes>
++ EditProjectView()
+
+group=group-2</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>30</x>
-      <y>390</y>
+      <x>320</x>
+      <y>760</y>
       <w>130</w>
       <h>40</h>
     </coordinates>
     <panel_attributes>ProjectInformationView
 -
 + ProjectInformationView()
-</panel_attributes>
+
+group=group-2</panel_attributes>
     <additional_attributes/>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>150</x>
-      <y>400</y>
-      <w>60</w>
-      <h>40</h>
-    </coordinates>
-    <panel_attributes>lt=-
-m1=
-m2=
-</panel_attributes>
-    <additional_attributes>10.0;20.0;40.0;20.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>2750</x>
-      <y>1160</y>
-      <w>250</w>
-      <h>270</h>
+      <x>2060</x>
+      <y>1400</y>
+      <w>200</w>
+      <h>280</h>
     </coordinates>
     <panel_attributes>Worktime
 --
@@ -682,47 +679,54 @@ m2=
                     description : string,
                     spent : int) :
                     this(userId, resourceId, time, 
-                    involvedName, createdDate, description)
+                    involvedName, createdDate, 
+                    description)
 </panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>2720</x>
-      <y>820</y>
-      <w>70</w>
-      <h>390</h>
+      <x>2250</x>
+      <y>1090</y>
+      <w>60</w>
+      <h>370</h>
     </coordinates>
     <panel_attributes>lt=-
 m1=1
 m2=*
 </panel_attributes>
-    <additional_attributes>50.0;10.0;10.0;10.0;10.0;370.0;30.0;370.0</additional_attributes>
+    <additional_attributes>10.0;10.0;40.0;10.0;40.0;350.0;10.0;350.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1490</x>
-      <y>1280</y>
+      <x>1250</x>
+      <y>1300</y>
       <w>180</w>
-      <h>90</h>
+      <h>150</h>
     </coordinates>
     <panel_attributes>WorktimeViewModel
 --
 - worktime : Worktime
-+ EstimatedWorktime : double 
++ EstimatedWorktime : string
 + InvolvedName : string
++ Description : string
++ SpentHours : string
++ RemainingHours : double
++ Color : string
 --
 + WorktimeViewModel(w : Worktime)
-+ GetId() : int</panel_attributes>
++ GetId() : int
++ ChangeColor()
+group=group-5</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>2260</x>
-      <y>270</y>
+      <x>1710</x>
+      <y>410</y>
       <w>30</w>
       <h>60</h>
     </coordinates>
@@ -732,10 +736,10 @@ m2=*
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>2710</x>
-      <y>120</y>
-      <w>320</w>
-      <h>1330</h>
+      <x>2030</x>
+      <y>380</y>
+      <w>290</w>
+      <h>1320</h>
     </coordinates>
     <panel_attributes>Model (Domain)
 -</panel_attributes>
@@ -744,8 +748,8 @@ m2=*
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>2260</x>
-      <y>430</y>
+      <x>1710</x>
+      <y>570</y>
       <w>30</w>
       <h>70</h>
     </coordinates>
@@ -758,48 +762,50 @@ m2=
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>2540</x>
-      <y>340</y>
-      <w>190</w>
+      <x>1990</x>
+      <y>480</y>
+      <w>60</w>
       <h>40</h>
     </coordinates>
     <panel_attributes>lt=-
 m1=
 m2=
 </panel_attributes>
-    <additional_attributes>170.0;20.0;10.0;20.0</additional_attributes>
+    <additional_attributes>40.0;20.0;10.0;20.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1460</x>
-      <y>800</y>
+      <x>1220</x>
+      <y>780</y>
       <w>240</w>
-      <h>850</h>
+      <h>980</h>
     </coordinates>
     <panel_attributes>ViewModel (Models)
--</panel_attributes>
+-
+group=group-5</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>460</x>
-      <y>410</y>
-      <w>940</w>
-      <h>1380</h>
+      <x>620</x>
+      <y>260</y>
+      <w>570</w>
+      <h>1350</h>
     </coordinates>
     <panel_attributes>ViewModel (Child)
--</panel_attributes>
+-
+group=group-6</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>0</x>
-      <y>280</y>
-      <w>320</w>
-      <h>1380</h>
+      <x>30</x>
+      <y>400</y>
+      <w>480</w>
+      <h>900</h>
     </coordinates>
     <panel_attributes>View (UserControl)
 -</panel_attributes>
@@ -808,8 +814,8 @@ m2=
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>260</x>
-      <y>110</y>
+      <x>450</x>
+      <y>280</y>
       <w>60</w>
       <h>20</h>
     </coordinates>
@@ -819,19 +825,19 @@ m2=
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>280</x>
-      <y>120</y>
-      <w>30</w>
-      <h>60</h>
+      <x>410</x>
+      <y>280</y>
+      <w>60</w>
+      <h>30</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;.</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;40.0</additional_attributes>
+    <additional_attributes>40.0;10.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>260</x>
-      <y>230</y>
+      <x>250</x>
+      <y>350</y>
       <w>60</w>
       <h>20</h>
     </coordinates>
@@ -841,8 +847,8 @@ m2=
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>280</x>
-      <y>240</y>
+      <x>270</x>
+      <y>360</y>
       <w>30</w>
       <h>60</h>
     </coordinates>
@@ -852,8 +858,8 @@ m2=
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>2120</x>
-      <y>120</y>
+      <x>1570</x>
+      <y>260</y>
       <w>430</w>
       <h>500</h>
     </coordinates>
@@ -864,8 +870,8 @@ m2=
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>3060</x>
-      <y>560</y>
+      <x>1840</x>
+      <y>790</y>
       <w>160</w>
       <h>300</h>
     </coordinates>
@@ -876,19 +882,19 @@ m2=
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>2960</x>
-      <y>580</y>
-      <w>120</w>
+      <x>1990</x>
+      <y>850</y>
+      <w>90</w>
       <h>30</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>10.0;10.0;100.0;10.0</additional_attributes>
+    <additional_attributes>70.0;10.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>2720</x>
-      <y>10</y>
+      <x>2030</x>
+      <y>260</y>
       <w>130</w>
       <h>90</h>
     </coordinates>
@@ -904,19 +910,19 @@ DomainModel
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>2750</x>
-      <y>90</y>
+      <x>2080</x>
+      <y>340</y>
       <w>30</w>
-      <h>50</h>
+      <h>60</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;.</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;30.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;40.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1110</x>
-      <y>50</y>
+      <x>850</x>
+      <y>130</y>
       <w>100</w>
       <h>60</h>
     </coordinates>
@@ -930,8 +936,8 @@ Hidden</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>2770</x>
-      <y>190</y>
+      <x>2060</x>
+      <y>450</y>
       <w>200</w>
       <h>120</h>
     </coordinates>
@@ -951,39 +957,40 @@ Hidden</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1490</x>
-      <y>1400</y>
+      <x>1250</x>
+      <y>1180</y>
       <w>180</w>
       <h>90</h>
     </coordinates>
     <panel_attributes>ResourceViewModel
 --
 - resource : Resource
-+ StartAmount : decimal
-+ EstimatedWorktime : double 
++ StartAmount : string
++ EstimatedWorktime : string
 --
 + ResourceViewModel(r : Resource)
-+ GetId() : int</panel_attributes>
++ GetId() : int
+group=group-5</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>2820</x>
-      <y>90</y>
+      <x>2110</x>
+      <y>340</y>
       <w>30</w>
-      <h>120</h>
+      <h>130</h>
     </coordinates>
     <panel_attributes>lt=-
 m1=1
 m2=*</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;100.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;110.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1040</x>
-      <y>1400</y>
+      <x>920</x>
+      <y>1310</y>
       <w>240</w>
       <h>140</h>
     </coordinates>
@@ -999,70 +1006,83 @@ m2=*</panel_attributes>
 + Init(o : ObservableObject)
 + SetRepo(userRepo : IRepository&lt;User&gt;)
 + CreateUser()
-</panel_attributes>
+
+group=group-6</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>170</x>
-      <y>1420</y>
-      <w>120</w>
+      <x>350</x>
+      <y>1100</y>
+      <w>100</w>
       <h>40</h>
     </coordinates>
     <panel_attributes>CreateUserView 
 -
 + CreateUserView()
-</panel_attributes>
+
+group=group-4</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1040</x>
-      <y>1180</y>
+      <x>920</x>
+      <y>980</y>
       <w>240</w>
-      <h>190</h>
+      <h>300</h>
     </coordinates>
     <panel_attributes>SettingsViewModel
 -
 - mvm : MainViewModel
 - userRepo : IRepository&lt;User&gt;
++ WindowTitle : string
++ CreateVisibility : WindowVisibility
++ EditVisibility : WindowVisibility
++ InformationVisibility : WindowVisibility
 + Users : UserViewModel[0.*]
 + SelectedUser : UserViewModel
++ OldName : string
++ OldPasword : int
++ CreateUserVM : CreateUserViewModel
 + CreateUserViewCmd : RelayCommand
 + UpdateUserViewCmd : RelayCommand
 + CreateUserCmd : RelayCommand
 + UpdateUserCmd : RelayCommand
 + RemoveUserCmd : RelayCommand
 -
++ SettingsViewModel()
 + Init(o : ObservableObject)
 + SetRepo(userRepo : IRepository&lt;User&gt;)
 + UpdateUser(userVM : UserViewModel)
-+ DeleteUser()</panel_attributes>
++ RemoveUser()
++ UpdateList()
+group=group-6</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>170</x>
-      <y>1200</y>
-      <w>120</w>
+      <x>350</x>
+      <y>1170</y>
+      <w>100</w>
       <h>40</h>
     </coordinates>
     <panel_attributes>SettingsView 
 -
 + SettingsView()
-</panel_attributes>
+
+group=group-4</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>390</x>
+      <x>590</x>
       <y>220</y>
-      <w>1410</w>
-      <h>1580</h>
+      <w>900</w>
+      <h>1560</h>
     </coordinates>
     <panel_attributes>ViewModel
 -</panel_attributes>
@@ -1071,10 +1091,10 @@ m2=*</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1290</x>
-      <y>10</y>
+      <x>980</x>
+      <y>0</y>
       <w>510</w>
-      <h>180</h>
+      <h>190</h>
     </coordinates>
     <panel_attributes>GVMR
 -</panel_attributes>
@@ -1083,8 +1103,8 @@ m2=*</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1700</x>
-      <y>80</y>
+      <x>1390</x>
+      <y>70</y>
       <w>30</w>
       <h>60</h>
     </coordinates>
@@ -1094,7 +1114,7 @@ m2=*</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1440</x>
+      <x>1130</x>
       <y>130</y>
       <w>60</w>
       <h>40</h>
@@ -1108,8 +1128,8 @@ m2=
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>500</x>
-      <y>80</y>
+      <x>730</x>
+      <y>0</y>
       <w>220</w>
       <h>70</h>
     </coordinates>
@@ -1123,8 +1143,8 @@ m2=
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>710</x>
-      <y>310</y>
+      <x>650</x>
+      <y>1460</y>
       <w>240</w>
       <h>130</h>
     </coordinates>
@@ -1138,14 +1158,15 @@ m2=
 + SelectedProject : ProjectViewModel
 --
 + Init(o : ObservableObject)
-+ UpdateList()</panel_attributes>
++ UpdateList()
+group=group-6</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>710</x>
-      <y>500</y>
+      <x>650</x>
+      <y>300</y>
       <w>240</w>
       <h>450</h>
     </coordinates>
@@ -1187,16 +1208,17 @@ m2=
 + RemoveProject()
 + RemoveProgress()
 
-</panel_attributes>
+
+group=group-6</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>710</x>
-      <y>970</y>
+      <x>650</x>
+      <y>780</y>
       <w>240</w>
-      <h>450</h>
+      <h>500</h>
     </coordinates>
     <panel_attributes>ExpandedResourceViewModel
 --
@@ -1206,8 +1228,515 @@ m2=
 - worktimeRepo : IRepository&lt;Worktime&gt;
 + Audits : AuditViewModel[0.*]
 + Worktimes : WorktimeViewModel[0.*]
-+ SelectedProgress : ProgressViewModel
-+ </panel_attributes>
++ SelectedProject : ProjectViewModel
++ Title : string
++ CombinedCost : string
++ AuditYear : int
++ AuditAmount : string
++ Description : string
++ WorktimeInvolvedName : string
++ WorktimeEstimatedHours : string
++ SelectedResource : ResourceViewModel
++ SelectedAudit : AuditViewModel
++ SelectedWorktime : WorktimeViewModel
++ InformationPlaceholderVisibility : WindowVisibility
++ ResourceVisibility : WindowVisibility
++ EditResourceVisibility : WindowVisibility
++ AuditDetailsVisibility : WindowVisibility
++ EditAuditVisibility : WindowVisibility
++ AuditListVisibility : WindowVisibility
++ CreateAuditVisibility : WindowVisibility
++ WorktimeDetailsVisibility : WindowVisibility
++ EditWorktimeVisibility : WindowVisibility
++ CreateWorktimeVisibility : WindowVisibility
++ ChangeViewCmd : RelayCommand
++ EditViewCmd : RelayCommand
++ SaveCmd : RelayCommand
++ CreateCmdView : RelayCommand
++ RemoveCmd : RelayCommand
++ CancelCmd : RelayCommand
++ CreateCmd : RelayCommand
++ EditResourceCmd : RelayCommand
++ SaveResourceCmd : RelayCommand
+--
++ Init(o : ObservableObject)
++ UpdateList()
+group=group-6</panel_attributes>
     <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>650</x>
+      <y>1310</y>
+      <w>240</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>LoginViewModel
+--
+- mvm : MainViewModel
+- userRepo : IRepository&lt;User&gt;
++ WindowTitle : string
++ Password : string
++ LoginCmd : RelayCommand
++ GuestCmd : RelayCommand
+--
++ Init(o : ObservableObject)
+
+group=group-6</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>0</x>
+      <y>220</y>
+      <w>540</w>
+      <h>1100</h>
+    </coordinates>
+    <panel_attributes>View
+-</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>80</x>
+      <y>630</y>
+      <w>170</w>
+      <h>310</h>
+    </coordinates>
+    <panel_attributes>View (Audit)
+-
+group=group-0</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>110</x>
+      <y>670</y>
+      <w>110</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>CreateAuditView
+-
++ CreateAuditView()
+
+group=group-0</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>110</x>
+      <y>740</y>
+      <w>110</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>EditAuditView
+-
++ EditAuditView()
+
+group=group-0</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>110</x>
+      <y>810</y>
+      <w>110</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>AuditDetailsView
+-
++ AuditDetailsView()
+
+group=group-0</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>110</x>
+      <y>880</y>
+      <w>110</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>AuditListView
+-
++ AuditListView()
+
+group=group-0</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>90</x>
+      <y>970</y>
+      <w>200</w>
+      <h>310</h>
+    </coordinates>
+    <panel_attributes>View (Progress)
+-
+group=group-1</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>120</x>
+      <y>1080</y>
+      <w>140</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>EditProgressView 
+-
++ EditProgressView()
+
+group=group-1</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>120</x>
+      <y>1150</y>
+      <w>140</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>InProgressView 
+-
++ InProgressView()
+
+group=group-1</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>120</x>
+      <y>1220</y>
+      <w>140</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>ProgressInformationView 
+-
++ ProgressInformationView()
+
+group=group-1</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>290</x>
+      <y>440</y>
+      <w>190</w>
+      <h>380</h>
+    </coordinates>
+    <panel_attributes>View (Project)
+-
+group=group-2</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>320</x>
+      <y>480</y>
+      <w>130</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>ArchiveView
+-
++ ArchiveView()
+
+group=group-2</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>320</x>
+      <y>690</y>
+      <w>130</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>ExpandedProjectView
+-
++ ExpandedProjectView()
+
+group=group-2</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>60</x>
+      <y>440</y>
+      <w>200</w>
+      <h>170</h>
+    </coordinates>
+    <panel_attributes>View (Resource)
+-
+group=group-3</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>90</x>
+      <y>480</y>
+      <w>140</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>EditResourceDetailsView
+-
++ EditResourceDetailsView()
+
+group=group-3</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>90</x>
+      <y>550</y>
+      <w>140</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>ExpandedResourceView
+-
++ ExpandedResourceView()
+
+group=group-3</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>320</x>
+      <y>850</y>
+      <w>160</w>
+      <h>380</h>
+    </coordinates>
+    <panel_attributes>View (User)
+-
+group=group-4</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>350</x>
+      <y>890</y>
+      <w>100</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>EditUserView
+-
++ EditUserView()
+
+group=group-4</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>350</x>
+      <y>960</y>
+      <w>100</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>LoginView
+-
++ LoginView()
+
+group=group-4</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>350</x>
+      <y>1030</y>
+      <w>100</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>OptionsView
+-
++ OptionsView()
+
+group=group-4</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>890</x>
+      <y>180</y>
+      <w>30</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=
+m2=
+</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;40.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>700</x>
+      <y>180</y>
+      <w>30</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=
+m2=
+</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;40.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>830</x>
+      <y>60</y>
+      <w>30</w>
+      <h>180</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=
+m2=
+</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;160.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1100</x>
+      <y>180</y>
+      <w>30</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=
+m2=
+</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;80.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1340</x>
+      <y>160</y>
+      <w>30</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=
+m2=
+</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;100.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1220</x>
+      <y>160</y>
+      <w>30</w>
+      <h>640</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=
+m2=
+</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;620.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1540</x>
+      <y>220</y>
+      <w>810</w>
+      <h>1500</h>
+    </coordinates>
+    <panel_attributes>Model
+-</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1480</x>
+      <y>300</y>
+      <w>80</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=
+m2=
+</panel_attributes>
+    <additional_attributes>10.0;20.0;60.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>530</x>
+      <y>300</y>
+      <w>80</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=
+m2=
+</panel_attributes>
+    <additional_attributes>10.0;20.0;60.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1180</x>
+      <y>300</y>
+      <w>80</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=
+m2=
+</panel_attributes>
+    <additional_attributes>10.0;20.0;60.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1320</x>
+      <y>740</y>
+      <w>30</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=
+m2=
+</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;40.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1180</x>
+      <y>840</y>
+      <w>60</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=
+m2=
+</panel_attributes>
+    <additional_attributes>10.0;20.0;40.0;20.0</additional_attributes>
   </element>
 </diagram>
