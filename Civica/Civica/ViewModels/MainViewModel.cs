@@ -53,18 +53,6 @@ namespace Civica.ViewModels
                 OnPropertyChanged(nameof(CurrentUser));
             }
         }
-        private string loginButtonText = "Login";
-
-        public string LoginButtonText
-        {
-            get { return loginButtonText; }
-            set
-            {
-                loginButtonText = value;
-                OnPropertyChanged(nameof(LoginButtonText));
-            }
-        }
-
         private WindowVisibility _inProgressView;
         public WindowVisibility InProgressView
         {
@@ -332,7 +320,7 @@ namespace Civica.ViewModels
             {
                 if (parameter is MainViewModel mvm)
                 {
-                    if (mvm.LoginButtonText == "Login")
+                    if (mvm.CurrentUser == null)
                     {
                         mvm.LoginView = WindowVisibility.Visible;
                         mvm.SettingsView = WindowVisibility.Hidden;
@@ -345,7 +333,6 @@ namespace Civica.ViewModels
                     else
                     {
                         mvm.CurrentUser = null;
-                        mvm.LoginButtonText = "Login";
                         mvm.UserIconPath = "/Resources/Images/login.png";
                         mvm.ViewTitle = mvm.ipvm.WindowTitle;
                     }

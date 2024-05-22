@@ -27,17 +27,6 @@ namespace Civica.ViewModels
         public ObservableCollection<AuditViewModel> Audits { get; set; } = new ObservableCollection<AuditViewModel>();
         public ObservableCollection<WorktimeViewModel> Worktimes { get; set; } = new ObservableCollection<WorktimeViewModel>();
 
-        private ProgressViewModel _selectedProgress;
-        public ProgressViewModel SelectedProgress
-        {
-            get => _selectedProgress;
-            set
-            {
-                _selectedProgress = value;
-                OnPropertyChanged(nameof(SelectedProgress));
-            }
-        }
-
         private ProjectViewModel _selectedProject;
         public ProjectViewModel SelectedProject
         {

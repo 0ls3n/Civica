@@ -92,7 +92,7 @@ namespace Civica.ViewModels
 
                if (parameter is CreateUserViewModel cuvm)
                {
-                   if (!string.IsNullOrEmpty(cuvm.FirstName) && !string.IsNullOrEmpty(cuvm.LastName) && cuvm.Password.Length == 4) ;
+                   if (!string.IsNullOrEmpty(cuvm.FirstName) && !string.IsNullOrEmpty(cuvm.LastName) && cuvm.Password.Length == 4);
                    {
                        succes = true;
                    }

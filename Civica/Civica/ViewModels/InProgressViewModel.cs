@@ -69,9 +69,10 @@ namespace Civica.ViewModels
             get => _selectedProject;
             set
             {
+                _selectedProject = value;
+                OnPropertyChanged(nameof(SelectedProject));
                 if (value is not null)
                 {
-                    _selectedProject = value;
                     InformationVisibility = WindowVisibility.Hidden;
                     CreateVisibility = WindowVisibility.Hidden;
                     EditVisibility = WindowVisibility.Hidden;
@@ -84,56 +85,11 @@ namespace Civica.ViewModels
                     {
                         SelectedProgress = new ProgressViewModel(prog);
                     }
-                    //Resource r = resourceRepo.GetById(x => x.RefId == SelectedProject.GetId());
-
-
-                    //SelectedAudit = null;
-                    //SelectedResource = null;
-                    //if (r is not null)
-                    //{
-                    //    SelectedResource = new ResourceViewModel(r);
-
-                    //    Audit aud = auditRepo.GetById(x => x.RefId == r.Id);
-                    //    if (aud is not null)
-                    //    {
-                    //        SelectedAudit = new AuditViewModel(aud);
-                    //    }
-                    //}
-                    OnPropertyChanged(nameof(SelectedProject));
-                }
-                else
-                {
-                    _selectedProject = value;
-                    OnPropertyChanged(nameof(SelectedProject));
                 }
             }
         }
 
         public string Title { get; set; } = "Audits";
-
-
-        //private AuditViewModel _selectedAudit = null;
-        //public AuditViewModel SelectedAudit
-        //{
-        //    get => _selectedAudit;
-        //    set
-        //    {
-        //        _selectedAudit = value;
-        //        OnPropertyChanged(nameof(SelectedAudit));
-        //    }
-        //}
-
-        //private ResourceViewModel _selectedResource;
-        //public ResourceViewModel SelectedResource
-        //{
-        //    get => _selectedResource;
-        //    set
-        //    {
-        //        _selectedResource = value;
-        //        OnPropertyChanged(nameof(SelectedResource));
-        //    }
-        //}
-
         private ProgressViewModel _selectedProgress = null;
         public ProgressViewModel SelectedProgress
         {
@@ -151,7 +107,6 @@ namespace Civica.ViewModels
         private IRepository<Project> projectRepo;
         private IRepository<Progress> progressRepo;
         private IRepository<Resource> resourceRepo;
-        private IRepository<Audit> auditRepo;
 
         public CreateProjectViewModel CreateProjectVM { get; set; }
 
@@ -209,7 +164,6 @@ namespace Civica.ViewModels
             projectRepo = this.mvm.GetProjectRepo();
             progressRepo = this.mvm.GetProgressRepo();
             resourceRepo = this.mvm.GetResourceRepo();
-            auditRepo = this.mvm.GetAuditRepo();
 
             CreateProjectVM.SetRepo(projectRepo);
             CreateProjectVM.SetRepo(resourceRepo);

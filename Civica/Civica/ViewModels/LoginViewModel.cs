@@ -51,12 +51,10 @@ namespace Civica.ViewModels
                 if (parameter is LoginViewModel lvm)
                 {
                     User u = lvm.userRepo.GetAll().OfType<User>().FirstOrDefault(x => x.Password == int.Parse(lvm.Password));
-                    
                     if (u is not null)
                     {
                         UserViewModel uvm = new UserViewModel(u);
                         lvm.mvm.CurrentUser = uvm;
-                        lvm.mvm.LoginButtonText = "Logud";
                         lvm.mvm.LoginView = WindowVisibility.Hidden;
                         lvm.mvm.InProgressView = WindowVisibility.Visible;
                         lvm.mvm.ipvm.InformationVisibility = WindowVisibility.Visible;

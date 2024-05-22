@@ -26,7 +26,7 @@ namespace Civica.ViewModels
                 }
                 else
                 {
-                    MessageBox.Show("'Estimeret arbejds timer' må kun være i tal");
+                    MessageBox.Show("'Estimeret timer' må kun være i tal");
                 }
                 OnPropertyChanged(nameof(EstimatedHours));
                 OnPropertyChanged(nameof(RemainingHours));
