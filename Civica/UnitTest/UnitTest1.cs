@@ -42,7 +42,7 @@ namespace UnitTest
 
             Assert.IsNotNull(projectRepo.GetById(x => x.Id == p1.Id)); // Assert
 
-            projectRepo.Remove(p1);
+            projectRepo.Delete(p1);
         }
 
         [TestMethod]
@@ -50,7 +50,7 @@ namespace UnitTest
         {
             projectRepo.Add(p1); // Act
 
-            projectRepo.Remove(p1);
+            projectRepo.Delete(p1);
 
             Assert.IsNull(projectRepo.GetById(x => x.Id == p1.Id)); // Assert
         }
@@ -66,7 +66,7 @@ namespace UnitTest
             Assert.IsNull(projectRepo.GetAll().Find(x => (x as Project).Name == "test1")); // Assert
             Assert.IsNotNull(projectRepo.GetAll().Find(x => (x as Project).Name == "Hejsa!")); // Assert
 
-            projectRepo.Remove(p1);
+            projectRepo.Delete(p1);
         }
 
         [TestMethod]
@@ -83,7 +83,7 @@ namespace UnitTest
             Assert.AreEqual("What!", project.Name); // Assert
             Assert.AreEqual("Simon Hansen", project.Owner); // Assert
 
-            projectRepo.Remove(p1);
+            projectRepo.Delete(p1);
         }
 
         [TestMethod]
@@ -93,7 +93,7 @@ namespace UnitTest
 
             Assert.IsNotNull(userRepo.GetAll().Find(x => (x as User).FirstName == "TestBruger")); // Assert
 
-            userRepo.Remove(u1);
+            userRepo.Delete(u1);
         }
 
         [TestMethod]
@@ -101,7 +101,7 @@ namespace UnitTest
         {
             userRepo.Add(u1);
 
-            userRepo.Remove(u1); // Act
+            userRepo.Delete(u1); // Act
 
             Assert.IsNull(userRepo.GetAll().Find(x => (x as User).FirstName == "TestBruger")); // Assert
         }
@@ -119,7 +119,7 @@ namespace UnitTest
             Assert.IsNull(userRepo.GetAll().Find(x => (x as User).FirstName == "TestBruger")); // Assert
             Assert.IsNotNull(userRepo.GetAll().Find(x => (x as User).FirstName == "Hejsa!")); // Assert
 
-            userRepo.Remove(u1);
+            userRepo.Delete(u1);
         }
 
         [TestMethod]
@@ -138,7 +138,7 @@ namespace UnitTest
             Assert.AreEqual("Is", user.LastName); // Assert
             Assert.AreEqual(0000, user.Password); // Assert
 
-            userRepo.Remove(u1);
+            userRepo.Delete(u1);
         }
 
         [TestMethod]
@@ -152,8 +152,8 @@ namespace UnitTest
 
             Assert.IsNotNull(progressRepo.GetById(x => x.RefId == p1.Id)); // This finds a progress thru the project id
 
-            progressRepo.RemoveByRefId(p1.Id);
-            projectRepo.Remove(p1);
+            progressRepo.DeleteByRefId(p1.Id);
+            projectRepo.Delete(p1);
         }
 
         [TestMethod]
@@ -172,11 +172,11 @@ namespace UnitTest
 
             int pID = p1.Id;
             int rID = resourceRepo.GetById(x => x.RefId == pID).Id;
-            auditRepo.RemoveByRefId(rID);
-            worktimeRepo.RemoveByRefId(rID);
-            progressRepo.RemoveByRefId(pID);
-            resourceRepo.RemoveByRefId(pID);
-            projectRepo.Remove(p1);
+            auditRepo.DeleteByRefId(rID);
+            worktimeRepo.DeleteByRefId(rID);
+            progressRepo.DeleteByRefId(pID);
+            resourceRepo.DeleteByRefId(pID);
+            projectRepo.Delete(p1);
 
             Assert.IsNull(projectRepo.GetAll().Find(x => (x as Project).Name == "test1"));
             Assert.IsNull(progressRepo.GetListById(x => x.RefId == p1.Id).Find(x => x.Id == prog.Id));

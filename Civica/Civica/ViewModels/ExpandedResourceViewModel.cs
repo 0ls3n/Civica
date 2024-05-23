@@ -151,7 +151,7 @@ namespace Civica.ViewModels
             {
                 InformationPlaceholderVisibility = WindowVisibility.Hidden;
                 AuditDetailsVisibility = WindowVisibility.Visible;
-                EditAuditVisibility = WindowVisibility.Hidden;
+                UpdateAuditVisibility = WindowVisibility.Hidden;
                 CreateAuditVisibility = WindowVisibility.Hidden;
                 _selectedAudit = value;
                 OnPropertyChanged(nameof(SelectedAudit));
@@ -166,7 +166,7 @@ namespace Civica.ViewModels
             {
                 InformationPlaceholderVisibility = WindowVisibility.Hidden;
                 WorktimeDetailsVisibility = WindowVisibility.Visible;
-                EditWorktimeVisibility = WindowVisibility.Hidden;
+                UpdateWorktimeVisibility = WindowVisibility.Hidden;
                 CreateWorktimeVisibility = WindowVisibility.Hidden;
                 _selectedWorktime = value;
                 OnPropertyChanged(nameof(SelectedWorktime));
@@ -196,14 +196,14 @@ namespace Civica.ViewModels
                 OnPropertyChanged(nameof(ResourceVisiblity));
             }
         }
-        private WindowVisibility _editResourceVisibility;
-        public WindowVisibility EditResourceVisibility
+        private WindowVisibility _updateResourceVisibility;
+        public WindowVisibility UpdateResourceVisibility
         {
-            get => _editResourceVisibility;
+            get => _updateResourceVisibility;
             set
             {
-                _editResourceVisibility = value;
-                OnPropertyChanged(nameof(EditResourceVisibility));
+                _updateResourceVisibility = value;
+                OnPropertyChanged(nameof(UpdateResourceVisibility));
             }
         }
         #endregion
@@ -220,13 +220,13 @@ namespace Civica.ViewModels
             }
         }
         private WindowVisibility _editAuditVisibility;
-        public WindowVisibility EditAuditVisibility
+        public WindowVisibility UpdateAuditVisibility
         {
             get => _editAuditVisibility;
             set
             {
                 _editAuditVisibility = value;
-                OnPropertyChanged(nameof(EditAuditVisibility));
+                OnPropertyChanged(nameof(UpdateAuditVisibility));
             }
         }
 
@@ -265,13 +265,13 @@ namespace Civica.ViewModels
             }
         }
         private WindowVisibility _editWorktimeVisibility;
-        public WindowVisibility EditWorktimeVisibility
+        public WindowVisibility UpdateWorktimeVisibility
         {
             get => _editWorktimeVisibility;
             set
             {
                 _editWorktimeVisibility = value;
-                OnPropertyChanged(nameof(EditWorktimeVisibility));
+                OnPropertyChanged(nameof(UpdateWorktimeVisibility));
             }
         }
 
@@ -298,8 +298,8 @@ namespace Civica.ViewModels
 
             ResourceVisiblity = WindowVisibility.Visible;
             AuditDetailsVisibility = WindowVisibility.Hidden;
-            EditAuditVisibility = WindowVisibility.Hidden;
-            EditResourceVisibility = WindowVisibility.Hidden;
+            UpdateAuditVisibility = WindowVisibility.Hidden;
+            UpdateResourceVisibility = WindowVisibility.Hidden;
             CreateAuditVisibility = WindowVisibility.Hidden;
         }
 
@@ -316,8 +316,8 @@ namespace Civica.ViewModels
                             ervm.Worktimes.Clear();
                             ervm.InformationPlaceholderVisibility = WindowVisibility.Visible;
                             ervm.AuditDetailsVisibility = WindowVisibility.Hidden;
-                            ervm.EditAuditVisibility = WindowVisibility.Hidden;
-                            ervm.EditWorktimeVisibility = WindowVisibility.Hidden;
+                            ervm.UpdateAuditVisibility = WindowVisibility.Hidden;
+                            ervm.UpdateWorktimeVisibility = WindowVisibility.Hidden;
                             ervm.CreateAuditVisibility = WindowVisibility.Hidden;
                             ervm.AuditListVisibility = WindowVisibility.Hidden;
                             ervm.WorktimeDetailsVisibility = WindowVisibility.Hidden;
@@ -331,7 +331,7 @@ namespace Civica.ViewModels
                             ervm.Audits.Clear();
                             ervm.AuditListVisibility = WindowVisibility.Visible;
                             ervm.CreateWorktimeVisibility = WindowVisibility.Hidden;
-                            ervm.EditWorktimeVisibility = WindowVisibility.Hidden;
+                            ervm.UpdateWorktimeVisibility = WindowVisibility.Hidden;
                             ervm.InformationPlaceholderVisibility = WindowVisibility.Visible;
                             ervm.WorktimeDetailsVisibility = WindowVisibility.Hidden;
                             ervm.UpdateList();
@@ -345,20 +345,20 @@ namespace Civica.ViewModels
             });
 
         #region Audit/Worktime Commands
-        public RelayCommand EditViewCmd { get; set; } = new RelayCommand(
+        public RelayCommand UpdateViewCmd { get; set; } = new RelayCommand(
             parameter =>
             {
                 if (parameter is ExpandedResourceViewModel ervm)
                 {
                     if (ervm.AuditListVisibility == WindowVisibility.Visible)
                     {
-                        ervm.EditAuditVisibility = WindowVisibility.Visible;
+                        ervm.UpdateAuditVisibility = WindowVisibility.Visible;
                         ervm.AuditDetailsVisibility = WindowVisibility.Hidden;
                         ervm.CreateAuditVisibility = WindowVisibility.Hidden;
                     }
                     else
                     {
-                        ervm.EditWorktimeVisibility = WindowVisibility.Visible;
+                        ervm.UpdateWorktimeVisibility = WindowVisibility.Visible;
                         ervm.WorktimeDetailsVisibility = WindowVisibility.Hidden;
                         ervm.CreateWorktimeVisibility = WindowVisibility.Hidden;
                     }
@@ -383,7 +383,7 @@ namespace Civica.ViewModels
              {
                  if (ervm.AuditListVisibility == WindowVisibility.Visible)
                  {
-                     ervm.EditAuditVisibility = WindowVisibility.Hidden;
+                     ervm.UpdateAuditVisibility = WindowVisibility.Hidden;
                      ervm.AuditDetailsVisibility = WindowVisibility.Hidden;
                      ervm.InformationPlaceholderVisibility = WindowVisibility.Visible;
 
@@ -393,7 +393,7 @@ namespace Civica.ViewModels
                  }
                  else
                  {
-                     ervm.EditWorktimeVisibility = WindowVisibility.Hidden;
+                     ervm.UpdateWorktimeVisibility = WindowVisibility.Hidden;
                      ervm.WorktimeDetailsVisibility = WindowVisibility.Hidden;
                      ervm.InformationPlaceholderVisibility = WindowVisibility.Visible;
 
@@ -420,7 +420,7 @@ namespace Civica.ViewModels
                 {
                     if (ervm.AuditListVisibility == WindowVisibility.Visible)
                     {
-                        ervm.EditAuditVisibility = WindowVisibility.Hidden;
+                        ervm.UpdateAuditVisibility = WindowVisibility.Hidden;
                         ervm.AuditDetailsVisibility = WindowVisibility.Hidden;
                         ervm.InformationPlaceholderVisibility = WindowVisibility.Hidden;
                         ervm.CreateAuditVisibility = WindowVisibility.Visible;
@@ -431,7 +431,7 @@ namespace Civica.ViewModels
                     else
                     {
                         ervm.WorktimeDetailsVisibility = WindowVisibility.Hidden;
-                        ervm.EditWorktimeVisibility = WindowVisibility.Hidden;
+                        ervm.UpdateWorktimeVisibility = WindowVisibility.Hidden;
                         ervm.InformationPlaceholderVisibility = WindowVisibility.Hidden;
                         ervm.CreateWorktimeVisibility = WindowVisibility.Visible;
 
@@ -453,7 +453,7 @@ namespace Civica.ViewModels
                 return false;
             });
 
-        public RelayCommand RemoveCmd { get; set; } = new RelayCommand(
+        public RelayCommand DeleteCmd { get; set; } = new RelayCommand(
           parameter =>
           {
               if (parameter is ExpandedResourceViewModel ervm)
@@ -467,7 +467,7 @@ namespace Civica.ViewModels
                       {
                           ervm.DeleteAudit();
 
-                          ervm.EditAuditVisibility = WindowVisibility.Hidden;
+                          ervm.UpdateAuditVisibility = WindowVisibility.Hidden;
                           ervm.AuditDetailsVisibility = WindowVisibility.Hidden;
                           ervm.InformationPlaceholderVisibility = WindowVisibility.Visible;
                           ervm.CreateAuditVisibility = WindowVisibility.Hidden;
@@ -476,7 +476,7 @@ namespace Civica.ViewModels
                       {
                           ervm.DeleteWorktime();
 
-                          ervm.EditWorktimeVisibility = WindowVisibility.Hidden;
+                          ervm.UpdateWorktimeVisibility = WindowVisibility.Hidden;
                           ervm.WorktimeDetailsVisibility = WindowVisibility.Hidden;
                           ervm.InformationPlaceholderVisibility = WindowVisibility.Visible;
                           ervm.CreateWorktimeVisibility = WindowVisibility.Hidden;
@@ -504,7 +504,7 @@ namespace Civica.ViewModels
               {
                   if (ervm.AuditListVisibility == WindowVisibility.Visible)
                   {
-                      ervm.EditAuditVisibility = WindowVisibility.Hidden;
+                      ervm.UpdateAuditVisibility = WindowVisibility.Hidden;
                       ervm.AuditDetailsVisibility = WindowVisibility.Hidden;
                       ervm.InformationPlaceholderVisibility = WindowVisibility.Visible;
                       ervm.CreateAuditVisibility = WindowVisibility.Hidden;
@@ -514,7 +514,7 @@ namespace Civica.ViewModels
                   }
                   else
                   {
-                      ervm.EditWorktimeVisibility = WindowVisibility.Hidden;
+                      ervm.UpdateWorktimeVisibility = WindowVisibility.Hidden;
                       ervm.WorktimeDetailsVisibility = WindowVisibility.Hidden;
                       ervm.CreateWorktimeVisibility = WindowVisibility.Hidden;
                       ervm.InformationPlaceholderVisibility = WindowVisibility.Visible;
@@ -546,7 +546,7 @@ namespace Civica.ViewModels
                  {
                      ervm.CreateAudit();
 
-                     ervm.EditAuditVisibility = WindowVisibility.Hidden;
+                     ervm.UpdateAuditVisibility = WindowVisibility.Hidden;
                      ervm.AuditDetailsVisibility = WindowVisibility.Hidden;
                      ervm.CreateAuditVisibility = WindowVisibility.Hidden;
                      ervm.InformationPlaceholderVisibility = WindowVisibility.Visible;
@@ -560,7 +560,7 @@ namespace Civica.ViewModels
                      }
                      ervm.CreateWorktime();
 
-                     ervm.EditWorktimeVisibility = WindowVisibility.Hidden;
+                     ervm.UpdateWorktimeVisibility = WindowVisibility.Hidden;
                      ervm.WorktimeDetailsVisibility = WindowVisibility.Hidden;
                      ervm.CreateWorktimeVisibility = WindowVisibility.Hidden;
                      ervm.InformationPlaceholderVisibility = WindowVisibility.Visible;
@@ -618,7 +618,7 @@ namespace Civica.ViewModels
 
             Worktime w = worktimeRepo.GetById(x => x.Id == wvm.GetId());
 
-            worktimeRepo.Remove(w);
+            worktimeRepo.Delete(w);
 
             Worktimes.Clear();
 
@@ -663,7 +663,7 @@ namespace Civica.ViewModels
 
             Audit a = auditRepo.GetById(x => x.Id == avm.GetId());
 
-            auditRepo.Remove(a);
+            auditRepo.Delete(a);
 
             Audits.Clear();
 
@@ -708,12 +708,12 @@ namespace Civica.ViewModels
 
         #region Resource Commands
 
-        public RelayCommand EditResourceCmd { get; set; } = new RelayCommand(
+        public RelayCommand UpdateResourceCmd { get; set; } = new RelayCommand(
            parameter =>
            {
                if (parameter is ExpandedResourceViewModel ervm)
                {
-                   ervm.EditResourceVisibility = WindowVisibility.Visible;
+                   ervm.UpdateResourceVisibility = WindowVisibility.Visible;
                    ervm.ResourceVisiblity = WindowVisibility.Hidden;
                }
            },
@@ -737,7 +737,7 @@ namespace Civica.ViewModels
 
                  ervm.UpdateResource();
 
-                 ervm.EditResourceVisibility = WindowVisibility.Hidden;
+                 ervm.UpdateResourceVisibility = WindowVisibility.Hidden;
                  ervm.ResourceVisiblity = WindowVisibility.Visible;
              }
          },

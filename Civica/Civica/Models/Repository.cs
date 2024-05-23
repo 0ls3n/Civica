@@ -31,17 +31,17 @@ namespace Civica.Models
             DatabaseHelper<T>.Update(o);
         }
 
-        public void Remove(T o)
+        public void Delete(T o)
         {
-            DatabaseHelper<T>.Remove(o);
+            DatabaseHelper<T>.Delete(o);
             if (o is DomainModel d)
             {
                 _list.Remove(d);
             }
         }
-        public void RemoveByRefId(int id)
+        public void DeleteByRefId(int id)
         {
-            GetListById(x => x.RefId == id).ForEach(DatabaseHelper<T>.Remove);
+            GetListById(x => x.RefId == id).ForEach(DatabaseHelper<T>.Delete);
             _list.RemoveAll(x => x.RefId == id);
         }
     }

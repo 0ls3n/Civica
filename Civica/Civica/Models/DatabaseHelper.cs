@@ -264,7 +264,6 @@ namespace Civica.Models
                 {
                     throw new ArgumentNullException($"{o} er ikke implementeret i DatabaseHelper!");
                 }
-
                 d.Id = Convert.ToInt32(cmd.ExecuteScalar());
             }
         }
@@ -353,53 +352,44 @@ namespace Civica.Models
             }
         }
         #endregion
-        #region Remove
-        public static void Remove(T o)
+        #region Delete
+        public static void Delete(T o)
         {
             using (SqlConnection con = new SqlConnection(connectionString))
             {
                 con.Open();
-                if (o is Project p)
+                SqlCommand cmd = null;
+                if (o is Project)
                 {
-                    SqlCommand RemoveProject = new SqlCommand("DELETE FROM PROJECTS WHERE ProjectId=@ID", con);
-                    RemoveProject.Parameters.Add("@ID", SqlDbType.Int).Value = p.Id;
-                    RemoveProject.ExecuteNonQuery();
+                    cmd = new SqlCommand("DELETE FROM PROJECTS WHERE ProjectId=@ID", con);
                     
                 }
-                else if (o is Progress prog)
+                else if (o is Progress)
                 {
-                    SqlCommand RemoveProgress = new SqlCommand("DELETE FROM PROGRESSES WHERE ProgressId = @ID", con);
-                    RemoveProgress.Parameters.Add("@ID", SqlDbType.Int).Value = prog.Id;
-                    RemoveProgress.ExecuteNonQuery();
+                    cmd = new SqlCommand("DELETE FROM PROGRESSES WHERE ProgressId = @ID", con);
                 }
-                else if (o is Audit a)
+                else if (o is Audit)
                 {
-                    SqlCommand cmd = new SqlCommand("DELETE FROM AUDITS WHERE AuditId=@ID", con);
-                    cmd.Parameters.Add("@ID", SqlDbType.Int).Value = a.Id;
-                    cmd.ExecuteNonQuery();
+                    cmd = new SqlCommand("DELETE FROM AUDITS WHERE AuditId=@ID", con);
                 }
-                else if (o is Worktime w)
+                else if (o is Worktime)
                 {
-                    SqlCommand cmd = new SqlCommand("DELETE FROM WORKTIMES WHERE WorkTimeId=@ID", con);
-                    cmd.Parameters.Add("@ID", SqlDbType.Int).Value = w.Id;
-                    cmd.ExecuteNonQuery();
+                    cmd = new SqlCommand("DELETE FROM WORKTIMES WHERE WorkTimeId=@ID", con);
                 }
-                else if (o is Resource r)
+                else if (o is Resource)
                 {
-                    SqlCommand RemoveResource = new SqlCommand("DELETE FROM RESOURCES WHERE ResourceId=@ID", con);
-                    RemoveResource.Parameters.Add("@ID", SqlDbType.Int).Value = r.Id;
-                    RemoveResource.ExecuteNonQuery();
+                    cmd = new SqlCommand("DELETE FROM RESOURCES WHERE ResourceId=@ID", con);
                 }
-                else if (o is User u) 
+                else if (o is User) 
                 {
-                    SqlCommand cmd = new SqlCommand("DELETE FROM USERS WHERE UserId=@ID", con);
-                    cmd.Parameters.Add("@ID", SqlDbType.Int).Value = u.Id;
-                    cmd.ExecuteNonQuery();
+                    cmd = new SqlCommand("DELETE FROM USERS WHERE UserId=@ID", con);
                 }
                 else
                 {
                     throw new ArgumentNullException($"{o} er ikke implementeret i DatabaseHelper!");
                 }
+                cmd.Parameters.Add("@ID", SqlDbType.Int).Value = (o as DomainModel).Id;
+                cmd.ExecuteNonQuery();
             }
         }
         #endregion

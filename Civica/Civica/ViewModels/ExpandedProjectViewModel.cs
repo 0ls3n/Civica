@@ -42,7 +42,7 @@ namespace Civica.ViewModels
             {
                 InformationPlaceholderVisibility = WindowVisibility.Hidden;
                 ProgressVisibility = WindowVisibility.Visible;
-                EditProgressVisibility = WindowVisibility.Hidden;
+                UpdateProgressVisibility = WindowVisibility.Hidden;
                 CreateProgressVisibility = WindowVisibility.Hidden;
                 InformationVisibility = WindowVisibility.Visible;
                 _selectedProgress = value;
@@ -86,17 +86,17 @@ namespace Civica.ViewModels
             }
         }
 
-        private WindowVisibility _editProgressVisibility;
-        public WindowVisibility EditProgressVisibility
+        private WindowVisibility _updateProgressVisibility;
+        public WindowVisibility UpdateProgressVisibility
         {
             get
             {
-                return _editProgressVisibility;
+                return _updateProgressVisibility;
             }
             set
             {
-                _editProgressVisibility = value;
-                OnPropertyChanged(nameof(EditProgressVisibility));
+                _updateProgressVisibility = value;
+                OnPropertyChanged(nameof(UpdateProgressVisibility));
             }
         }
 
@@ -114,17 +114,17 @@ namespace Civica.ViewModels
             }
         }
 
-        private WindowVisibility _editProjectVisibility;
-        public WindowVisibility EditProjectVisibility
+        private WindowVisibility _updateProjectVisibility;
+        public WindowVisibility UpdateProjectVisibility
         {
             get
             {
-                return _editProjectVisibility;
+                return _updateProjectVisibility;
             }
             set
             {
-                _editProjectVisibility = value;
-                OnPropertyChanged(nameof(EditProjectVisibility));
+                _updateProjectVisibility = value;
+                OnPropertyChanged(nameof(UpdateProjectVisibility));
             }
         }
 
@@ -184,7 +184,7 @@ namespace Civica.ViewModels
                  epvm.UpdateList();
 
                  epvm.ProgressVisibility = WindowVisibility.Hidden;
-                 epvm.EditProgressVisibility = WindowVisibility.Hidden;
+                 epvm.UpdateProgressVisibility = WindowVisibility.Hidden;
                  epvm.ProgressVisibility = WindowVisibility.Hidden;
                  epvm.InformationVisibility = WindowVisibility.Hidden;
                  epvm.InformationPlaceholderVisibility = WindowVisibility.Visible;
@@ -202,12 +202,12 @@ namespace Civica.ViewModels
              return false;
          });
 
-        public RelayCommand EditProjectViewCmd { get; set; } = new RelayCommand(
+        public RelayCommand UpdateProjectViewCmd { get; set; } = new RelayCommand(
              parameter =>
              {
                  if (parameter is ExpandedProjectViewModel epvm)
                  {
-                     epvm.EditProjectVisibility = WindowVisibility.Visible;
+                     epvm.UpdateProjectVisibility = WindowVisibility.Visible;
                  }
              },
              parameter =>
@@ -223,13 +223,14 @@ namespace Civica.ViewModels
              }
           );
 
-        public RelayCommand EditProgressViewCmd { get; set; } = new RelayCommand
+        public RelayCommand UpdateProgressViewCmd { get; set; } = new RelayCommand
         (
             parameter =>
             {
                 if (parameter is ExpandedProjectViewModel epvm)
                 {
-                    epvm.EditProgressVisibility = WindowVisibility.Visible;
+
+                    epvm.UpdateProgressVisibility = WindowVisibility.Visible;
                     epvm.ProgressVisibility = WindowVisibility.Hidden;
                     epvm.InformationPlaceholderVisibility = WindowVisibility.Hidden;
                     epvm.CreateProgressVisibility = WindowVisibility.Hidden;
@@ -249,7 +250,7 @@ namespace Civica.ViewModels
             }
         );
 
-        public RelayCommand EditProjectCmd { get; set; } = new RelayCommand
+        public RelayCommand UpdateProjectCmd { get; set; } = new RelayCommand
         (
             parameter =>
             {
@@ -257,7 +258,7 @@ namespace Civica.ViewModels
                 {
                     epvm.mvm.cpvm.UpdateProject();
 
-                    epvm.EditProjectVisibility = WindowVisibility.Hidden;
+                    epvm.UpdateProjectVisibility = WindowVisibility.Hidden;
                 }
             },
             parameter =>
@@ -266,7 +267,7 @@ namespace Civica.ViewModels
             }
         );
 
-        public RelayCommand RemoveProjectCmd { get; set; } = new RelayCommand
+        public RelayCommand DeleteProjectCmd { get; set; } = new RelayCommand
        (
            parameter =>
            {
@@ -311,7 +312,7 @@ namespace Civica.ViewModels
                 {
                     epvm.cpvm.UpdateProgress();
 
-                    epvm.EditProgressVisibility = WindowVisibility.Hidden;
+                    epvm.UpdateProgressVisibility = WindowVisibility.Hidden;
                     epvm.ProgressVisibility = WindowVisibility.Visible;
                     epvm.InformationPlaceholderVisibility = WindowVisibility.Hidden;
                     epvm.CreateProgressVisibility = WindowVisibility.Hidden;
@@ -323,7 +324,7 @@ namespace Civica.ViewModels
                 return true;
             }
         );
-        public RelayCommand RemoveProgressCmd { get; set; } = new RelayCommand
+        public RelayCommand DeleteProgressCmd { get; set; } = new RelayCommand
         (
             parameter =>
             {
@@ -336,9 +337,9 @@ namespace Civica.ViewModels
                     {
                         epvm.cpvm.DeleteProgress();
                         epvm.CreateProgressVisibility = WindowVisibility.Hidden;
-                        epvm.EditProgressVisibility = WindowVisibility.Hidden;
+                        epvm.UpdateProgressVisibility = WindowVisibility.Hidden;
                         epvm.ProgressVisibility = WindowVisibility.Hidden;
-                        epvm.EditProjectVisibility = WindowVisibility.Hidden;
+                        epvm.UpdateProjectVisibility = WindowVisibility.Hidden;
                         epvm.InformationVisibility = WindowVisibility.Hidden;
                         epvm.InformationPlaceholderVisibility = WindowVisibility.Visible;
                     }
@@ -368,11 +369,11 @@ namespace Civica.ViewModels
                     epvm.cpvm.Phase = Phase.IDENTIFIED;
                     epvm.cpvm.Status = Status.NONE;
 
-                    epvm.EditProgressVisibility = WindowVisibility.Hidden;
+                    epvm.UpdateProgressVisibility = WindowVisibility.Hidden;
                     epvm.CreateProgressVisibility = WindowVisibility.Visible;
                     epvm.ProgressVisibility = WindowVisibility.Hidden;
                     epvm.InformationPlaceholderVisibility = WindowVisibility.Hidden;
-                    epvm.EditProjectVisibility = WindowVisibility.Hidden;
+                    epvm.UpdateProjectVisibility = WindowVisibility.Hidden;
                     epvm.InformationVisibility = WindowVisibility.Hidden;
                 }
             },

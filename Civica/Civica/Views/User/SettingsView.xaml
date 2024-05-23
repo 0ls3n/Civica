@@ -134,12 +134,12 @@
         </Border>
 
         <Border Grid.Row="1">
-            <view:EditUserView/>
+            <view:UpdateUserView/>
             <Border.Style>
                 <Style TargetType="Border">
                     <Setter Property="Visibility" Value="Collapsed"/>
                     <Style.Triggers>
-                        <DataTrigger Binding="{Binding EditVisibility}" Value="Visible">
+                        <DataTrigger Binding="{Binding UpdateVisibility}" Value="Visible">
                             <Setter Property="Visibility" Value="Visible"/>
                         </DataTrigger>
                     </Style.Triggers>
@@ -242,7 +242,7 @@
          Width="22"
          Cursor="Hand"
          Height="22"
-         Command="{Binding RemoveUserCmd}"
+         Command="{Binding DeleteUserCmd}"
          CommandParameter="{Binding}"
          ToolTipService.InitialShowDelay="0">
             <Button.ToolTip>

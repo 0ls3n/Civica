@@ -89,7 +89,7 @@ namespace Civica.ViewModels
 
         public void DeleteProgress()
         {
-            progressRepo.Remove(progressRepo.GetById(x => x.Id == epvm.SelectedProgress.GetId()));
+            progressRepo.Delete(progressRepo.GetById(x => x.Id == epvm.SelectedProgress.GetId()));
             epvm.UpdateList();
         }
 
@@ -104,7 +104,7 @@ namespace Civica.ViewModels
                     cpvm.epvm.UpdateList();
 
                     cpvm.epvm.ProgressVisibility = WindowVisibility.Hidden;
-                    cpvm.epvm.EditProgressVisibility = WindowVisibility.Hidden;
+                    cpvm.epvm.UpdateProgressVisibility = WindowVisibility.Hidden;
                     cpvm.epvm.ProgressVisibility = WindowVisibility.Hidden;
                     cpvm.epvm.InformationVisibility = WindowVisibility.Hidden;
                     cpvm.epvm.InformationPlaceholderVisibility = WindowVisibility.Visible;

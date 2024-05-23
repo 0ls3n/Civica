@@ -38,14 +38,14 @@ namespace Civica.ViewModels
             }
         }
 
-        private WindowVisibility _editVisibility;
-        public WindowVisibility EditVisibility
+        private WindowVisibility _updateVisibility;
+        public WindowVisibility UpdateVisibility
         {
-            get => _editVisibility;
+            get => _updateVisibility;
             set
             {
-                _editVisibility = value;
-                OnPropertyChanged(nameof(EditVisibility));
+                _updateVisibility = value;
+                OnPropertyChanged(nameof(UpdateVisibility));
             }
         }
         private WindowVisibility _informationVisibility;
@@ -83,7 +83,7 @@ namespace Civica.ViewModels
                     _selectedUser = value;
                     InformationVisibility = WindowVisibility.Visible;
                     CreateVisibility = WindowVisibility.Hidden;
-                    EditVisibility = WindowVisibility.Hidden;
+                    UpdateVisibility = WindowVisibility.Hidden;
                     OnPropertyChanged(nameof(SelectedUser));
                 }
             }
@@ -101,7 +101,7 @@ namespace Civica.ViewModels
             WindowTitle = "Indstillinger";
 
             CreateVisibility = WindowVisibility.Hidden;
-            EditVisibility = WindowVisibility.Hidden;
+            UpdateVisibility = WindowVisibility.Hidden;
             InformationVisibility = WindowVisibility.Visible;
         }
 
@@ -123,9 +123,9 @@ namespace Civica.ViewModels
 
             userRepo.Update(u);
         }
-        public void RemoveUser()
+        public void DeleteUser()
         {
-            userRepo.Remove(userRepo.GetById(x => x.Id == SelectedUser.GetId()));
+            userRepo.Delete(userRepo.GetById(x => x.Id == SelectedUser.GetId()));
             UpdateList();
         }
         public void UpdateList()
@@ -144,7 +144,7 @@ namespace Civica.ViewModels
                 if (parameter is SettingsViewModel svm)
                 {
                     svm.CreateVisibility = WindowVisibility.Visible;
-                    svm.EditVisibility = WindowVisibility.Hidden;
+                    svm.UpdateVisibility = WindowVisibility.Hidden;
                     svm.InformationVisibility = WindowVisibility.Hidden;
                 }
             },
@@ -167,7 +167,7 @@ namespace Civica.ViewModels
             {
                 if (parameter is SettingsViewModel svm)
                 {
-                    svm.EditVisibility = WindowVisibility.Visible;
+                    svm.UpdateVisibility = WindowVisibility.Visible;
                     svm.InformationVisibility = WindowVisibility.Hidden;
                     svm.CreateVisibility = WindowVisibility.Hidden;
                     svm.OldName = svm.SelectedUser.FullName;
@@ -204,7 +204,7 @@ namespace Civica.ViewModels
                         {
                             svm.UpdateUser(svm.SelectedUser);
 
-                            svm.EditVisibility = WindowVisibility.Hidden;
+                            svm.UpdateVisibility = WindowVisibility.Hidden;
                             svm.InformationVisibility = WindowVisibility.Visible;
                             svm.UpdateList();
                         }
@@ -239,7 +239,7 @@ namespace Civica.ViewModels
             }
         );
 
-        public RelayCommand RemoveUserCmd { get; set; } = new RelayCommand
+        public RelayCommand DeleteUserCmd { get; set; } = new RelayCommand
         (
             parameter =>
             {
@@ -250,7 +250,7 @@ namespace Civica.ViewModels
 
                     if (result == MessageBoxResult.OK)
                     {
-                        svm.RemoveUser();
+                        svm.DeleteUser();
                         svm.InformationVisibility = WindowVisibility.Visible;
                     }
                 }

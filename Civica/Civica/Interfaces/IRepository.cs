@@ -14,7 +14,7 @@ namespace Civica.Interfaces
         public T GetById(Predicate<DomainModel> predicate);
         public List<T> GetListById(Predicate<DomainModel> predicate);
         public void Update(T o);
-        public void Remove(T o);
-        public void RemoveByRefId(int id);
+        public void Delete(T o);
+        public void DeleteByRefId(int id);
     }
 }

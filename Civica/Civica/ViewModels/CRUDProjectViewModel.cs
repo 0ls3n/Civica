@@ -151,11 +151,11 @@ namespace Civica.ViewModels
         {
             int pID = mvm.epvm.SelectedProject.GetId();
             int rID = resourceRepo.GetById(x => x.RefId == pID).Id;
-            auditRepo.RemoveByRefId(rID);
-            worktimeRepo.RemoveByRefId(rID);
-            progressRepo.RemoveByRefId(pID);
-            resourceRepo.RemoveByRefId(pID);
-            projectRepo.Remove(projectRepo.GetById(x => x.Id == pID));
+            auditRepo.DeleteByRefId(rID);
+            worktimeRepo.DeleteByRefId(rID);
+            progressRepo.DeleteByRefId(pID);
+            resourceRepo.DeleteByRefId(pID);
+            projectRepo.Delete(projectRepo.GetById(x => x.Id == pID));
             mvm.epvm.UpdateList();
             mvm.epvm.SelectedProject = null;
         }

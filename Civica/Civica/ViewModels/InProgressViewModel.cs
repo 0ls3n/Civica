@@ -37,13 +37,13 @@ namespace Civica.ViewModels
         }
 
         private WindowVisibility _editVisibility;
-        public WindowVisibility EditVisibility
+        public WindowVisibility UpdateVisibility
         {
             get => _editVisibility;
             set
             {
                 _editVisibility = value;
-                OnPropertyChanged(nameof(EditVisibility));
+                OnPropertyChanged(nameof(UpdateVisibility));
             }
         }
 
@@ -75,7 +75,7 @@ namespace Civica.ViewModels
                 {
                     InformationVisibility = WindowVisibility.Hidden;
                     CreateVisibility = WindowVisibility.Hidden;
-                    EditVisibility = WindowVisibility.Hidden;
+                    UpdateVisibility = WindowVisibility.Hidden;
 
                     Progress prog = progressRepo.GetListById(x => x.RefId == SelectedProject.GetId()).OrderByDescending(x => x.CreatedDate).FirstOrDefault();
 
@@ -113,7 +113,7 @@ namespace Civica.ViewModels
             WindowTitle = "Igangværende";
 
             CreateVisibility = WindowVisibility.Hidden;
-            EditVisibility = WindowVisibility.Hidden;
+            UpdateVisibility = WindowVisibility.Hidden;
             InformationVisibility = WindowVisibility.Visible;
         }
 
@@ -182,7 +182,7 @@ namespace Civica.ViewModels
                 {
                     ipvm.CreateVisibility = WindowVisibility.Visible;
                     ipvm.InformationVisibility = WindowVisibility.Hidden;
-                    ipvm.EditVisibility = WindowVisibility.Hidden;
+                    ipvm.UpdateVisibility = WindowVisibility.Hidden;
                 }
             },
             parameter =>

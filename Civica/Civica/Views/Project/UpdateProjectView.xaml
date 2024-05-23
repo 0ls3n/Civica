@@ -10,7 +10,7 @@
         <Border Grid.Row="1"
                 Background="White"
                 CornerRadius="10"
-                Visibility="{Binding EditVisibility}">
+                Visibility="{Binding UpdateVisibility}">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
