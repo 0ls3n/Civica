@@ -71,6 +71,9 @@ namespace Civica.ViewModels
 
             progressRepo.Add(prog);
             epvm.SelectedProject.SetColor(prog.Status);
+            Phase = Phase.IDENTIFIED;
+            Status = Status.NONE;
+            Description = "";
         }
 
         public void UpdateProgress()

@@ -54,7 +54,7 @@ CreateWorktime() </panel_attributes>
       <w>299</w>
       <h>39</h>
     </coordinates>
-    <panel_attributes>workTimeRepo: ProjectRepository</panel_attributes>
+    <panel_attributes>worktimeRepo: ProjectRepository</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -122,7 +122,7 @@ CreateWorktime() </panel_attributes>
       <h>52</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;-
-workTimeRepo.Add(w)</panel_attributes>
+worktimeRepo.Add(w)</panel_attributes>
     <additional_attributes>220.0;20.0;10.0;20.0</additional_attributes>
   </element>
   <element>
@@ -189,7 +189,7 @@ w.Id = DatabaseHelper.Add(p)</panel_attributes>
       <w>286</w>
       <h>39</h>
     </coordinates>
-    <panel_attributes>wvm : WorkTimeViewModel</panel_attributes>
+    <panel_attributes>wvm : WorktimeViewModel</panel_attributes>
     <additional_attributes/>
   </element>
   <element>

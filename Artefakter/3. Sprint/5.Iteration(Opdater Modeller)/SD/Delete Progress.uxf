@@ -22,7 +22,7 @@ DeleteProgress</panel_attributes>
       <w>228</w>
       <h>36</h>
     </coordinates>
-    <panel_attributes>: ExpandedProjectViewModel</panel_attributes>
+    <panel_attributes>: CRUDProgressViewModel</panel_attributes>
     <additional_attributes/>
   </element>
   <element>

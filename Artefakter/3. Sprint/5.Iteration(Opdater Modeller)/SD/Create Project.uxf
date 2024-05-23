@@ -9,7 +9,7 @@
       <w>180</w>
       <h>30</h>
     </coordinates>
-    <panel_attributes>: CreateProjectViewModel</panel_attributes>
+    <panel_attributes>: CRUDProjectViewModel</panel_attributes>
     <additional_attributes/>
   </element>
   <element>

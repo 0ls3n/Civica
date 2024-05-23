@@ -590,6 +590,9 @@ namespace Civica.ViewModels
             Worktimes.Clear();
 
             UpdateList();
+            WorktimeEstimatedHours = "";
+            WorktimeInvolvedName = "";
+            Description = "";
         }
 
         public void UpdateWorktime()
@@ -634,6 +637,9 @@ namespace Civica.ViewModels
             Audits.Clear();
 
             UpdateList();
+            AuditAmount = "";
+            AuditYear = int.MinValue;
+            Description = "";
         }
 
         public void UpdateAudit()
