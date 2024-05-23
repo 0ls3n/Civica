@@ -68,8 +68,8 @@ fontsize=10
 + GetListById(predicate : Predicate&lt;DomainModel&gt;) : &lt;T&gt;[0.*]
 + GetById(predicate : Predicate&lt;DomainModel&gt;) : T
 + Update(o : T)
-+ Remove(o : T)
-+ RemoveByRefId(id : int)</panel_attributes>
++ Delete(o : T)
++ DeleteByRefId(id : int)</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -89,7 +89,7 @@ DatabaseHelper&lt;T&gt;
 + &lt;&lt;static&gt;&gt; Initialize(type : Type) : DomainModel[0.*]
 + &lt;&lt;static&gt;&gt; Add(o : T)
 + &lt;&lt;static&gt;&gt; Update(o : T)
-+ &lt;&lt;static&gt;&gt; Remove(o : T)</panel_attributes>
++ &lt;&lt;static&gt;&gt; Delete(o : T)</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -215,8 +215,8 @@ IRepository&lt;T&gt;
 + GetListById(predicate : Predicate&lt;DomainModel&gt;) : &lt;T&gt;[0.*]
 + GetById(predicate : Predicate&lt;DomainModel&gt;) : T
 + Update(o : T)
-+ Remove(o : T)
-+ RemoveByRefId(id : int)</panel_attributes>
++ Delete(o : T)
++ DeleteByRefId(id : int)</panel_attributes>
     <additional_attributes/>
   </element>
   <element>

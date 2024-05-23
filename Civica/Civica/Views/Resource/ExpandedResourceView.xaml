@@ -109,7 +109,7 @@
             Margin="0, 0, 14, 4"
     Cursor="Hand"
     Height="20"
-    Command="{Binding RemoveCmd}"
+    Command="{Binding DeleteCmd}"
     CommandParameter="{Binding}"
     ToolTipService.InitialShowDelay="0">
             <Button.ToolTip>
@@ -164,7 +164,7 @@ Width="20"
 Cursor="Hand"
 Height="20"
          Margin="0, 0, 37, 4"
-Command="{Binding EditViewCmd}"
+Command="{Binding UpdateViewCmd}"
 CommandParameter="{Binding}"
 ToolTipService.InitialShowDelay="0">
             <Button.ToolTip>
@@ -345,15 +345,15 @@ CornerRadius="25">
                         </Trigger>
                         <MultiDataTrigger>
                             <MultiDataTrigger.Conditions>
-                                <Condition Binding="{Binding Path=EditAuditVisibility}" Value="Visible"/>
-                                <Condition Binding="{Binding Path=EditWorktimeVisibility}" Value="Visible"/>
+                                <Condition Binding="{Binding Path=UpdateAuditVisibility}" Value="Visible"/>
+                                <Condition Binding="{Binding Path=UpdateWorktimeVisibility}" Value="Visible"/>
                             </MultiDataTrigger.Conditions>
                             <Setter Property="Visibility" Value="Visible"/>
                         </MultiDataTrigger>
                         <MultiDataTrigger>
                             <MultiDataTrigger.Conditions>
-                                <Condition Binding="{Binding Path=EditAuditVisibility}" Value="Hidden"/>
-                                <Condition Binding="{Binding Path=EditWorktimeVisibility}" Value="Hidden"/>
+                                <Condition Binding="{Binding Path=UpdateAuditVisibility}" Value="Hidden"/>
+                                <Condition Binding="{Binding Path=UpdateWorktimeVisibility}" Value="Hidden"/>
                             </MultiDataTrigger.Conditions>
                             <Setter Property="Visibility" Value="Hidden"/>
                         </MultiDataTrigger>
@@ -416,20 +416,6 @@ CornerRadius="25">
                         <Trigger Property="IsMouseOver" Value="True">
                             <Setter Property="Background" Value="Transparent"/>
                         </Trigger>
-                        <!--<MultiDataTrigger>
-                            <MultiDataTrigger.Conditions>
-                                <Condition Binding="{Binding Path=EditAuditVisibility}" Value="Visible"/>
-                                <Condition Binding="{Binding Path=EditWorktimeVisibility}" Value="Visible"/>
-                            </MultiDataTrigger.Conditions>
-                            <Setter Property="Visibility" Value="Hidden"/>
-                        </MultiDataTrigger>
-                        <MultiDataTrigger>
-                            <MultiDataTrigger.Conditions>
-                                <Condition Binding="{Binding Path=EditAuditVisibility}" Value="Hidden"/>
-                                <Condition Binding="{Binding Path=EditWorktimeVisibility}" Value="Hidden"/>
-                            </MultiDataTrigger.Conditions>
-                            <Setter Property="Visibility" Value="Visible"/>
-                        </MultiDataTrigger>-->
                     </Style.Triggers>
                 </Style>
             </Button.Style>
@@ -504,7 +490,7 @@ CornerRadius="25">
                 Margin="0, 0, 2, 5"
             Cursor="Hand"
             Height="20"
-            Command="{Binding EditResourceCmd}"
+            Command="{Binding UpdateResourceCmd}"
             CommandParameter="{Binding}"
             ToolTipService.InitialShowDelay="0">
             <Button.ToolTip>
@@ -518,10 +504,10 @@ CornerRadius="25">
                         <Trigger Property="IsMouseOver" Value="True">
                             <Setter Property="Background" Value="Transparent"/>
                         </Trigger>
-                        <DataTrigger Binding="{Binding Path=EditResourceVisibility}" Value="Visible">
+                        <DataTrigger Binding="{Binding Path=UpdateResourceVisibility}" Value="Visible">
                             <Setter Property="Visibility" Value="Hidden"/>
                         </DataTrigger>
-                        <DataTrigger Binding="{Binding Path=EditResourceVisibility}" Value="Hidden">
+                        <DataTrigger Binding="{Binding Path=UpdateResourceVisibility}" Value="Hidden">
                             <Setter Property="Visibility" Value="Visible"/>
                         </DataTrigger>
                     </Style.Triggers>
@@ -562,10 +548,10 @@ CornerRadius="25">
                         <Trigger Property="IsMouseOver" Value="True">
                             <Setter Property="Background" Value="Transparent"/>
                         </Trigger>
-                        <DataTrigger Binding="{Binding Path=EditResourceVisibility}" Value="Hidden">
+                        <DataTrigger Binding="{Binding Path=UpdateResourceVisibility}" Value="Hidden">
                             <Setter Property="Visibility" Value="Hidden"/>
                         </DataTrigger>
-                        <DataTrigger Binding="{Binding Path=EditResourceVisibility}" Value="Visible">
+                        <DataTrigger Binding="{Binding Path=UpdateResourceVisibility}" Value="Visible">
                             <Setter Property="Visibility" Value="Visible"/>
                         </DataTrigger>
                     </Style.Triggers>
@@ -693,13 +679,13 @@ CornerRadius="25">
 
             <Border Grid.Row="0"
                     Margin="0,0,10,0">
-                <view:EditAuditView/>
+                <view:UpdateAuditView/>
 
                 <Border.Style>
                     <Style TargetType="Border">
                         <Setter Property="Visibility" Value="Collapsed"/>
                         <Style.Triggers>
-                            <DataTrigger Binding="{Binding EditAuditVisibility}" Value="Visible">
+                            <DataTrigger Binding="{Binding UpdateAuditVisibility}" Value="Visible">
                                 <Setter Property="Visibility" Value="Visible"/>
                             </DataTrigger>
                         </Style.Triggers>
@@ -710,13 +696,13 @@ CornerRadius="25">
 
             <Border Grid.Row="0"
                     Margin="0,0,10,0">
-                <view:EditWorktimeView/>
+                <view:UpdateWorktimeView/>
 
                 <Border.Style>
                     <Style TargetType="Border">
                         <Setter Property="Visibility" Value="Collapsed"/>
                         <Style.Triggers>
-                            <DataTrigger Binding="{Binding EditWorktimeVisibility}" Value="Visible">
+                            <DataTrigger Binding="{Binding UpdateWorktimeVisibility}" Value="Visible">
                                 <Setter Property="Visibility" Value="Visible"/>
                             </DataTrigger>
                         </Style.Triggers>
@@ -774,13 +760,13 @@ CornerRadius="25">
             </Grid.RowDefinitions>
 
             <Border Margin="10 0 0 0">
-                <view:EditResourceDetailsView/>
+                <view:UpdateResourceDetailsView/>
 
                 <Border.Style>
                     <Style TargetType="Border">
                         <Setter Property="Visibility" Value="Collapsed"/>
                         <Style.Triggers>
-                            <DataTrigger Binding="{Binding EditResourceVisibility}" Value="Visible">
+                            <DataTrigger Binding="{Binding UpdateResourceVisibility}" Value="Visible">
                                 <Setter Property="Visibility" Value="Visible"/>
                             </DataTrigger>
                         </Style.Triggers>

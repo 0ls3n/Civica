@@ -121,10 +121,10 @@
                         <Setter Property="Background" Value="Transparent"/>
 
                         <Style.Triggers>
-                            <DataTrigger Binding="{Binding Path=EditProgressVisibility}" Value="Hidden">
+                            <DataTrigger Binding="{Binding Path=UpdateProgressVisibility}" Value="Hidden">
                                 <Setter Property="Visibility" Value="Hidden"/>
                             </DataTrigger>
-                            <DataTrigger Binding="{Binding Path=EditProgressVisibility}" Value="Visible">
+                            <DataTrigger Binding="{Binding Path=UpdateProgressVisibility}" Value="Visible">
                                 <Setter Property="Visibility" Value="Visible"/>
                             </DataTrigger>
                     </Style.Triggers>
@@ -196,7 +196,7 @@ HorizontalAlignment="Right"
 Width="20"
 Cursor="Hand"
 Height="20"
-Command="{Binding RemoveProgressCmd}"
+Command="{Binding DeleteProgressCmd}"
 CommandParameter="{Binding}"
 ToolTipService.InitialShowDelay="0">
             <Button.ToolTip>
@@ -315,7 +315,7 @@ HorizontalAlignment="Right"
 Width="20"
 Cursor="Hand"
 Height="20"
-Command="{Binding EditProgressViewCmd}"
+Command="{Binding UpdateProgressViewCmd}"
 CommandParameter="{Binding}"
 ToolTipService.InitialShowDelay="0">
             <Button.ToolTip>
@@ -433,7 +433,7 @@ ToolTipService.InitialShowDelay="0">
 
   Cursor="Hand"
   Height="20"
-  Command="{Binding EditProjectViewCmd}"
+  Command="{Binding UpdateProjectViewCmd}"
   CommandParameter="{Binding}" 
   ToolTipService.InitialShowDelay="0">
             <Button.ToolTip>
@@ -447,10 +447,10 @@ ToolTipService.InitialShowDelay="0">
                         <Trigger Property="IsMouseOver" Value="True">
                             <Setter Property="Background" Value="Transparent"/>
                         </Trigger>
-                        <DataTrigger Binding="{Binding Path=EditProjectVisibility}" Value="Visible">
+                        <DataTrigger Binding="{Binding Path=UpdateProjectVisibility}" Value="Visible">
                             <Setter Property="Visibility" Value="Hidden"/>
                         </DataTrigger>
-                        <DataTrigger Binding="{Binding Path=EditProjectVisibility}" Value="Hidden">
+                        <DataTrigger Binding="{Binding Path=UpdateProjectVisibility}" Value="Hidden">
                             <Setter Property="Visibility" Value="Visible"/>
                         </DataTrigger>
                     </Style.Triggers>
@@ -478,7 +478,7 @@ ToolTipService.InitialShowDelay="0">
  Width="20"
  Cursor="Hand"
  Height="20"
- Command="{Binding RemoveProjectCmd}"
+ Command="{Binding DeleteProjectCmd}"
  CommandParameter="{Binding}"
  ToolTipService.InitialShowDelay="0">
             <Button.ToolTip>
@@ -493,10 +493,10 @@ ToolTipService.InitialShowDelay="0">
                         <Trigger Property="IsMouseOver" Value="True">
                             <Setter Property="Background" Value="Transparent"/>
                         </Trigger>
-                        <DataTrigger Binding="{Binding Path=EditProjectVisibility}" Value="Visible">
+                        <DataTrigger Binding="{Binding Path=UpdateProjectVisibility}" Value="Visible">
                             <Setter Property="Visibility" Value="Hidden"/>
                         </DataTrigger>
-                        <DataTrigger Binding="{Binding Path=EditProjectVisibility}" Value="Hidden">
+                        <DataTrigger Binding="{Binding Path=UpdateProjectVisibility}" Value="Hidden">
                             <Setter Property="Visibility" Value="Visible"/>
                         </DataTrigger>
                     </Style.Triggers>
@@ -527,7 +527,7 @@ ToolTipService.InitialShowDelay="0">
          Cursor="Hand"
          Height="20"
              Margin="0, 0, 5, 10"
-         Command="{Binding EditProjectCmd}"
+         Command="{Binding UpdateProjectCmd}"
          CommandParameter="{Binding}"
          ToolTipService.InitialShowDelay="0">
             <Button.ToolTip>
@@ -541,10 +541,10 @@ ToolTipService.InitialShowDelay="0">
                         <Trigger Property="IsMouseOver" Value="True">
                             <Setter Property="Background" Value="Transparent"/>
                         </Trigger>
-                        <DataTrigger Binding="{Binding Path=EditProjectVisibility}" Value="Hidden">
+                        <DataTrigger Binding="{Binding Path=UpdateProjectVisibility}" Value="Hidden">
                             <Setter Property="Visibility" Value="Hidden"/>
                         </DataTrigger>
-                        <DataTrigger Binding="{Binding Path=EditProjectVisibility}" Value="Visible">
+                        <DataTrigger Binding="{Binding Path=UpdateProjectVisibility}" Value="Visible">
                             <Setter Property="Visibility" Value="Visible"/>
                         </DataTrigger>
                     </Style.Triggers>
@@ -596,13 +596,13 @@ Margin="0 0 10 0">
             <Border Background="White"
 CornerRadius="10"
 Margin="0 0 10 0">
-                <view:EditProgressView/>
+                <view:UpdateProgressView/>
 
                 <Border.Style>
                     <Style TargetType="Border">
                         <Setter Property="Visibility" Value="Collapsed"/>
                         <Style.Triggers>
-                            <DataTrigger Binding="{Binding EditProgressVisibility}" Value="Visible">
+                            <DataTrigger Binding="{Binding UpdateProgressVisibility}" Value="Visible">
                                 <Setter Property="Visibility" Value="Visible"/>
                             </DataTrigger>
                         </Style.Triggers>
@@ -815,7 +815,7 @@ Margin="0 0 10 0">
                 <Style TargetType="Border">
                     <Setter Property="Visibility" Value="Collapsed"/>
                     <Style.Triggers>
-                        <DataTrigger Binding="{Binding EditProjectVisibility}" Value="Hidden">
+                        <DataTrigger Binding="{Binding UpdateProjectVisibility}" Value="Hidden">
                             <Setter Property="Visibility" Value="Visible"/>
                         </DataTrigger>
                     </Style.Triggers>
@@ -828,13 +828,13 @@ Margin="0 0 10 0">
                 Margin="10 0 0 0"
                 Grid.Column="3"
                 Grid.Row="1">
-            <view:EditProjectView/>
+            <view:UpdateProjectView/>
 
             <Border.Style>
                 <Style TargetType="Border">
                     <Setter Property="Visibility" Value="Collapsed"/>
                     <Style.Triggers>
-                        <DataTrigger Binding="{Binding EditProjectVisibility}" Value="Visible">
+                        <DataTrigger Binding="{Binding UpdateProjectVisibility}" Value="Visible">
                             <Setter Property="Visibility" Value="Visible"/>
                         </DataTrigger>
                     </Style.Triggers>

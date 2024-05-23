@@ -18,9 +18,9 @@ namespace Civica.Views
     /// <summary>
     /// Interaction logic for EditAuditDetails.xaml
     /// </summary>
-    public partial class EditAuditView : UserControl
+    public partial class UpdateWorktimeView : UserControl
     {
-        public EditAuditView()
+        public UpdateWorktimeView()
         {
             InitializeComponent();
         }

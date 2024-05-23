@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace Civica.Views
 {
     /// <summary>
-    /// Interaction logic for EditProgressView.xaml
+    /// Interaction logic for EditUserView.xaml
     /// </summary>
-    public partial class EditProgressView : UserControl
+    public partial class UpdateUserView : UserControl
     {
-        public EditProgressView()
+        public UpdateUserView()
         {
             InitializeComponent();
         }

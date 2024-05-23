@@ -18,9 +18,9 @@ namespace Civica.Views
     /// <summary>
     /// Interaction logic for EditProjectViewModel.xaml
     /// </summary>
-    public partial class EditProjectView : UserControl
+    public partial class UpdateProjectView : UserControl
     {
-        public EditProjectView()
+        public UpdateProjectView()
         {
             InitializeComponent();
         }
