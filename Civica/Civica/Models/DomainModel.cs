@@ -10,8 +10,9 @@ namespace Civica.Models
     {
         public int Id { get; set; }
 
-        public int RefId { get; set; }
-        public int UserId { get; set; }
-        public DateTime CreatedDate { get; set; }
+        public int RefId { get; protected set; }
+
+        public int UserId { get; protected set; }
+        public DateTime CreatedDate { get; protected set; }
     }
 }

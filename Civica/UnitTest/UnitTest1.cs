@@ -76,7 +76,6 @@ namespace UnitTest
 
             p1.Name = "What!"; // Arrange
             p1.Owner = "Simon Hansen"; // Arrange
-            p1.CreatedDate = new DateTime(2003, 05, 20); // Arrange
             projectRepo.Update(p1); // Act
 
             Project project = (Project)projectRepo.GetAll().Find(x => (x as Project).Name == "What!"); // Arrange

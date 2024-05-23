@@ -4,8 +4,8 @@
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>370</x>
-      <y>110</y>
+      <x>530</x>
+      <y>310</y>
       <w>180</w>
       <h>30</h>
     </coordinates>
@@ -15,8 +15,8 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>450</x>
-      <y>130</y>
+      <x>610</x>
+      <y>330</y>
       <w>30</w>
       <h>50</h>
     </coordinates>
@@ -26,10 +26,10 @@
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>450</x>
-      <y>160</y>
+      <x>610</x>
+      <y>360</y>
       <w>20</w>
-      <h>550</h>
+      <h>300</h>
     </coordinates>
     <panel_attributes/>
     <additional_attributes/>
@@ -37,8 +37,8 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>300</x>
-      <y>150</y>
+      <x>460</x>
+      <y>350</y>
       <w>170</w>
       <h>40</h>
     </coordinates>
@@ -49,8 +49,8 @@ CreateProject()</panel_attributes>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>590</x>
-      <y>200</y>
+      <x>750</x>
+      <y>400</y>
       <w>210</w>
       <h>30</h>
     </coordinates>
@@ -60,8 +60,8 @@ CreateProject()</panel_attributes>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>970</x>
-      <y>160</y>
+      <x>1130</x>
+      <y>360</y>
       <w>80</w>
       <h>30</h>
     </coordinates>
@@ -71,8 +71,8 @@ CreateProject()</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>680</x>
-      <y>220</y>
+      <x>840</x>
+      <y>420</y>
       <w>30</w>
       <h>50</h>
     </coordinates>
@@ -82,10 +82,10 @@ CreateProject()</panel_attributes>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>680</x>
-      <y>250</y>
+      <x>840</x>
+      <y>450</y>
       <w>20</w>
-      <h>90</h>
+      <h>40</h>
     </coordinates>
     <panel_attributes/>
     <additional_attributes/>
@@ -93,8 +93,8 @@ CreateProject()</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>680</x>
-      <y>330</y>
+      <x>840</x>
+      <y>480</y>
       <w>30</w>
       <h>50</h>
     </coordinates>
@@ -104,8 +104,8 @@ CreateProject()</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>460</x>
-      <y>160</y>
+      <x>620</x>
+      <y>360</y>
       <w>530</w>
       <h>40</h>
     </coordinates>
@@ -116,8 +116,8 @@ CreateProject()</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>460</x>
-      <y>240</y>
+      <x>620</x>
+      <y>440</y>
       <w>240</w>
       <h>40</h>
     </coordinates>
@@ -128,8 +128,8 @@ projectRepo.Add(p)</panel_attributes>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>1050</x>
-      <y>210</y>
+      <x>1210</x>
+      <y>410</y>
       <w>140</w>
       <h>30</h>
     </coordinates>
@@ -139,8 +139,8 @@ projectRepo.Add(p)</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1110</x>
-      <y>230</y>
+      <x>1270</x>
+      <y>430</y>
       <w>30</w>
       <h>50</h>
     </coordinates>
@@ -150,10 +150,10 @@ projectRepo.Add(p)</panel_attributes>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>1110</x>
-      <y>260</y>
+      <x>1270</x>
+      <y>460</y>
       <w>20</w>
-      <h>210</h>
+      <h>30</h>
     </coordinates>
     <panel_attributes/>
     <additional_attributes/>
@@ -161,8 +161,8 @@ projectRepo.Add(p)</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>690</x>
-      <y>250</y>
+      <x>850</x>
+      <y>450</y>
       <w>440</w>
       <h>40</h>
     </coordinates>
@@ -171,22 +171,10 @@ DatabaseHelper.Add(p)</panel_attributes>
     <additional_attributes>420.0;20.0;10.0;20.0</additional_attributes>
   </element>
   <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>690</x>
-      <y>290</y>
-      <w>170</w>
-      <h>60</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;&lt;&lt;-
-projects.Add(p)</panel_attributes>
-    <additional_attributes>10.0;40.0;60.0;40.0;60.0;10.0;10.0;10.0</additional_attributes>
-  </element>
-  <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>1210</x>
-      <y>170</y>
+      <x>1370</x>
+      <y>370</y>
       <w>140</w>
       <h>70</h>
     </coordinates>
@@ -196,8 +184,8 @@ projects.Add(p)</panel_attributes>
   <element>
     <id>Text</id>
     <coordinates>
-      <x>570</x>
-      <y>80</y>
+      <x>760</x>
+      <y>290</y>
       <w>300</w>
       <h>60</h>
     </coordinates>
@@ -209,37 +197,19 @@ CreateProject</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>460</x>
-      <y>560</y>
-      <w>300</w>
-      <h>150</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;&lt;&lt;-
-UpdateList();
-ProjectName = "";
-ProjectManager = "";
-ProjectOwner = "";
-ProjectDescription = "";
-ResourceStartAmount = "";
-ResourceExpectedYearlyCost = "";</panel_attributes>
-    <additional_attributes>10.0;130.0;60.0;130.0;60.0;10.0;10.0;10.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>450</x>
-      <y>700</y>
+      <x>610</x>
+      <y>650</y>
       <w>30</w>
-      <h>110</h>
+      <h>60</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;90.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;40.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1180</x>
-      <y>220</y>
+      <x>1340</x>
+      <y>420</y>
       <w>50</w>
       <h>30</h>
     </coordinates>
@@ -249,8 +219,8 @@ ResourceExpectedYearlyCost = "";</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>460</x>
-      <y>390</y>
+      <x>620</x>
+      <y>520</y>
       <w>430</w>
       <h>40</h>
     </coordinates>
@@ -261,8 +231,8 @@ ResourceExpectedYearlyCost = "";</panel_attributes>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>870</x>
-      <y>390</y>
+      <x>1030</x>
+      <y>520</y>
       <w>90</w>
       <h>30</h>
     </coordinates>
@@ -272,8 +242,8 @@ ResourceExpectedYearlyCost = "";</panel_attributes>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>560</x>
-      <y>440</y>
+      <x>720</x>
+      <y>570</y>
       <w>240</w>
       <h>30</h>
     </coordinates>
@@ -283,8 +253,8 @@ ResourceExpectedYearlyCost = "";</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>680</x>
-      <y>460</y>
+      <x>840</x>
+      <y>590</y>
       <w>30</w>
       <h>50</h>
     </coordinates>
@@ -294,10 +264,10 @@ ResourceExpectedYearlyCost = "";</panel_attributes>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>680</x>
-      <y>490</y>
+      <x>840</x>
+      <y>620</y>
       <w>20</w>
-      <h>90</h>
+      <h>40</h>
     </coordinates>
     <panel_attributes/>
     <additional_attributes/>
@@ -305,8 +275,8 @@ ResourceExpectedYearlyCost = "";</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>680</x>
-      <y>570</y>
+      <x>840</x>
+      <y>650</y>
       <w>30</w>
       <h>50</h>
     </coordinates>
@@ -316,8 +286,8 @@ ResourceExpectedYearlyCost = "";</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>690</x>
-      <y>490</y>
+      <x>850</x>
+      <y>620</y>
       <w>440</w>
       <h>40</h>
     </coordinates>
@@ -328,20 +298,8 @@ DatabaseHelper.Add(r)</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>690</x>
-      <y>530</y>
-      <w>170</w>
-      <h>60</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;&lt;&lt;-
-projects.Add(r)</panel_attributes>
-    <additional_attributes>10.0;40.0;60.0;40.0;60.0;10.0;10.0;10.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>460</x>
-      <y>480</y>
+      <x>620</x>
+      <y>610</y>
       <w>240</w>
       <h>40</h>
     </coordinates>
@@ -352,10 +310,10 @@ resourceRepo.Add(r)</panel_attributes>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>1110</x>
-      <y>500</y>
+      <x>1270</x>
+      <y>630</y>
       <w>20</w>
-      <h>220</h>
+      <h>30</h>
     </coordinates>
     <panel_attributes/>
     <additional_attributes/>
@@ -363,8 +321,8 @@ resourceRepo.Add(r)</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1110</x>
-      <y>710</y>
+      <x>1270</x>
+      <y>650</y>
       <w>30</w>
       <h>60</h>
     </coordinates>
@@ -374,54 +332,12 @@ resourceRepo.Add(r)</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1120</x>
-      <y>270</y>
-      <w>950</w>
-      <h>210</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;&lt;&lt;-
-SqlConnection con = new SqlConnection(connectionString)
-con.Open();
-cmd = new SqlCommand("INSERT INTO PROJECTS (UserId, ProjectName, OwnerName, ManagerName, Description, CreatedDate)" +
-                                          "VALUES (@UID, @PN, @ON, @MN, @DESC, @CD) SELECT @@IDENTITY ", con)
-cmd.Parameters.Add("@CD", SqlDbType.DateTime2).Value = p.CreatedDate
-cmd.Parameters.Add("@PN", SqlDbType.NVarChar).Value = p.Name
-cmd.Parameters.Add("@ON", SqlDbType.NVarChar).Value = p.Owner
-cmd.Parameters.Add("@MN", SqlDbType.NVarChar).Value = p.Manager
-cmd.Parameters.Add("@DESC", SqlDbType.Text).Value = p.Description
-p.Id = Convert.ToInt32(cmd.ExecuteScalar())</panel_attributes>
-    <additional_attributes>10.0;190.0;90.0;190.0;90.0;10.0;10.0;10.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>1110</x>
-      <y>460</y>
+      <x>1270</x>
+      <y>480</y>
       <w>30</w>
-      <h>60</h>
+      <h>170</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;40.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>1120</x>
-      <y>510</y>
-      <w>900</w>
-      <h>210</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;&lt;&lt;-
-SqlConnection con = new SqlConnection(connectionString)
-con.Open();
-cmd = new SqlCommand("INSERT INTO RESOURCES (UserId, StartAmount, ExpectedYearlyCost, ProjectId, CreatedDate)" +
-                                                      "VALUES (@UID, @SA, @EYC, @PID, @CD) SELECT @@IDENTITY ", con);
-cmd.Parameters.Add("@UID", SqlDbType.Int).Value = r.UserId;
-cmd.Parameters.Add("@CD", SqlDbType.DateTime2).Value = r.CreatedDate;
-cmd.Parameters.Add("@SA", SqlDbType.Decimal).Value = r.StartAmount;
-cmd.Parameters.Add("@EYC", SqlDbType.Decimal).Value = r.ExpectedYearlyCost;
-cmd.Parameters.Add("@PID", SqlDbType.Int).Value = r.RefId;
-r.Id = Convert.ToInt32(cmd.ExecuteScalar())</panel_attributes>
-    <additional_attributes>10.0;190.0;90.0;190.0;90.0;10.0;10.0;10.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;150.0</additional_attributes>
   </element>
 </diagram>
