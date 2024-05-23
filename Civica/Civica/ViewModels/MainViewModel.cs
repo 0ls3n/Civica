@@ -161,6 +161,7 @@ namespace Civica.ViewModels
                     mvm.StatusDot = WindowVisibility.Hidden;
                     mvm.ArchiveView = WindowVisibility.Hidden;
                     mvm.LoginView = WindowVisibility.Hidden;
+                    mvm.ipvm.CreateVisibility = WindowVisibility.Hidden;
                     mvm.ipvm.InformationVisibility = WindowVisibility.Visible;
                     mvm.ViewTitle = mvm.ipvm.WindowTitle;
                     mvm.ipvm.UpdateList();
