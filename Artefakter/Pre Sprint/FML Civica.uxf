@@ -4,10 +4,10 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>312</x>
-      <y>296</y>
+      <x>336</x>
+      <y>280</y>
       <w>192</w>
-      <h>216</h>
+      <h>256</h>
     </coordinates>
     <panel_attributes>halign=left
 valign=top
@@ -15,17 +15,17 @@ style=wordwrap
 
 
 Hos Civica er der tale om primære menneskelige ressourcer der sørger for at der ikke er problemer hos lejerne. Civica består både af forskellige former for arbejdskraft, ledelse og bestyrelse, som alle er en del af Civica. En anden stor ressource hos Civica er de fysiske ressourcer, som er lejeboligerne. 
-Projekts styringssystem som både giver et bedre overblik over Civicas projekter og som også giver muligheden for at tilgå projekter på samme tid.
+
 </panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>504</x>
-      <y>80</y>
+      <x>528</x>
+      <y>64</y>
       <w>192</w>
-      <h>432</h>
+      <h>472</h>
     </coordinates>
     <panel_attributes>halign=left
 valign=top
@@ -38,10 +38,10 @@ Udlejning af boliger til alle på tværs af samfundslag. Derudover er de en Non-
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>696</x>
-      <y>296</y>
+      <x>720</x>
+      <y>280</y>
       <w>192</w>
-      <h>216</h>
+      <h>256</h>
     </coordinates>
     <panel_attributes>halign=left
 valign=top
@@ -57,8 +57,8 @@ Civica har en Instagram, YouTube og Facebook Profil hvor kunder kan lære om Civ
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>696</x>
-      <y>80</y>
+      <x>720</x>
+      <y>64</y>
       <w>192</w>
       <h>216</h>
     </coordinates>
@@ -76,10 +76,10 @@ Selvbetjening gennem Boligøen.dk og Studiebolig-Odense.dk for at komme på vent
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>888</x>
-      <y>80</y>
+      <x>912</x>
+      <y>64</y>
       <w>192</w>
-      <h>432</h>
+      <h>472</h>
     </coordinates>
     <panel_attributes>halign=left
 valign=top
@@ -92,8 +92,8 @@ Kundesegmentet for Civica er meget bredt. En af Civicas værdier er at de udleje
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>120</x>
-      <y>512</y>
+      <x>144</x>
+      <y>536</y>
       <w>480</w>
       <h>192</h>
     </coordinates>
@@ -112,8 +112,8 @@ Civicas omkostninger består af byggeprojekter og renoveringer af udlejningsboli
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>600</x>
-      <y>512</y>
+      <x>624</x>
+      <y>536</y>
       <w>480</w>
       <h>192</h>
     </coordinates>
@@ -128,8 +128,8 @@ Kunderne betaler deres bolig gennem en lejekontrakt, hvor kunderne hver måned b
   <element>
     <id>Text</id>
     <coordinates>
-      <x>312</x>
-      <y>80</y>
+      <x>336</x>
+      <y>64</y>
       <w>192</w>
       <h>32</h>
     </coordinates>
@@ -143,8 +143,8 @@ Nøgleaktiviteter
   <element>
     <id>Text</id>
     <coordinates>
-      <x>312</x>
-      <y>296</y>
+      <x>336</x>
+      <y>280</y>
       <w>192</w>
       <h>32</h>
     </coordinates>
@@ -158,8 +158,8 @@ Nøgleressourcer
   <element>
     <id>Text</id>
     <coordinates>
-      <x>120</x>
-      <y>80</y>
+      <x>144</x>
+      <y>64</y>
       <w>192</w>
       <h>32</h>
     </coordinates>
@@ -173,8 +173,8 @@ Nøglepartnere
   <element>
     <id>Text</id>
     <coordinates>
-      <x>504</x>
-      <y>80</y>
+      <x>528</x>
+      <y>64</y>
       <w>192</w>
       <h>32</h>
     </coordinates>
@@ -188,8 +188,8 @@ Værditilbud
   <element>
     <id>Text</id>
     <coordinates>
-      <x>696</x>
-      <y>80</y>
+      <x>720</x>
+      <y>64</y>
       <w>192</w>
       <h>32</h>
     </coordinates>
@@ -203,8 +203,8 @@ Kunderelationer
   <element>
     <id>Text</id>
     <coordinates>
-      <x>888</x>
-      <y>80</y>
+      <x>912</x>
+      <y>64</y>
       <w>192</w>
       <h>32</h>
     </coordinates>
@@ -218,8 +218,8 @@ Kundesegmenter
   <element>
     <id>Text</id>
     <coordinates>
-      <x>600</x>
-      <y>512</y>
+      <x>624</x>
+      <y>536</y>
       <w>480</w>
       <h>40</h>
     </coordinates>
@@ -233,8 +233,8 @@ Indtægtsstrømme
   <element>
     <id>Text</id>
     <coordinates>
-      <x>120</x>
-      <y>512</y>
+      <x>144</x>
+      <y>536</y>
       <w>480</w>
       <h>32</h>
     </coordinates>
@@ -248,8 +248,8 @@ Omkostningsstruktur
   <element>
     <id>Text</id>
     <coordinates>
-      <x>696</x>
-      <y>296</y>
+      <x>720</x>
+      <y>280</y>
       <w>192</w>
       <h>32</h>
     </coordinates>
@@ -263,8 +263,8 @@ Kanaler
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>440</x>
-      <y>32</y>
+      <x>464</x>
+      <y>16</y>
       <w>320</w>
       <h>48</h>
     </coordinates>
@@ -277,10 +277,10 @@ valign=center</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>120</x>
-      <y>80</y>
+      <x>144</x>
+      <y>64</y>
       <w>192</w>
-      <h>432</h>
+      <h>472</h>
     </coordinates>
     <panel_attributes>halign=left
 valign=top
@@ -298,8 +298,8 @@ Derudover samarbejder Civica med Recover, som er specialister inden for brand, i
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>312</x>
-      <y>80</y>
+      <x>336</x>
+      <y>64</y>
       <w>192</w>
       <h>216</h>
     </coordinates>
@@ -311,6 +311,19 @@ style=wordwrap
 Udlejning af boligere, hvor borgerne selv har inflydelse på hvordan fællesmidlerne benyttes.
 
 De har lange ventelister og prioritere derfor service af nuværende kunder for at fremme fastholdelse.</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Text</id>
+    <coordinates>
+      <x>336</x>
+      <y>440</y>
+      <w>192</w>
+      <h>96</h>
+    </coordinates>
+    <panel_attributes>En ny ressource vi skaber for Civica er et projekts styringssystem som både giver et bedre overblik over Civicas projekter og som også giver muligheden for at tilgå projekter på samme tid.
+fg=blue
+style=wordwrap</panel_attributes>
     <additional_attributes/>
   </element>
 </diagram>
