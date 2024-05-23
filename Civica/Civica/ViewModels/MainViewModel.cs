@@ -190,7 +190,7 @@ namespace Civica.ViewModels
                     mvm.epvm.SelectedProject = mvm.ipvm.SelectedProject;
                     mvm.epvm.UpdateList();
                     mvm.epvm.InformationPlaceholderVisibility = WindowVisibility.Visible;
-                    mvm.epvm.EditProjectVisibility = WindowVisibility.Hidden;
+                    mvm.epvm.UpdateProjectVisibility = WindowVisibility.Hidden;
                     mvm.epvm.InformationVisibility = WindowVisibility.Hidden;
                 }
             },
@@ -239,16 +239,16 @@ namespace Civica.ViewModels
                    #endregion
 
                    #region Audit Visibility
-                   mvm.ervm.EditAuditVisibility = WindowVisibility.Hidden;
+                   mvm.ervm.UpdateAuditVisibility = WindowVisibility.Hidden;
                    mvm.ervm.CreateAuditVisibility = WindowVisibility.Hidden;
-                   mvm.ervm.EditResourceVisibility = WindowVisibility.Hidden;
+                   mvm.ervm.UpdateResourceVisibility = WindowVisibility.Hidden;
                    mvm.ervm.ResourceVisiblity = WindowVisibility.Visible;
                    mvm.ervm.AuditListVisibility = WindowVisibility.Visible;
                    #endregion
 
                    #region Worktime Visibility
                    mvm.ervm.CreateWorktimeVisibility = WindowVisibility.Hidden;
-                   mvm.ervm.EditWorktimeVisibility = WindowVisibility.Hidden;
+                   mvm.ervm.UpdateWorktimeVisibility = WindowVisibility.Hidden;
                    mvm.ervm.WorktimeDetailsVisibility = WindowVisibility.Hidden;
                    #endregion
 
