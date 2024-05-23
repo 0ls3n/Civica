@@ -188,7 +188,7 @@ namespace Civica.ViewModels
             },
             parameter =>
             {
-                bool succes = true;
+                bool succes = false;
 
                 if (parameter is CRUDProjectViewModel cpvm)
                 {

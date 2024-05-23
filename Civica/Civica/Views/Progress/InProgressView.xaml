@@ -170,7 +170,7 @@ CornerRadius="25">
         </Border>
 
         <Border Grid.Row="1">
-            <view:CreateProjectView/>
+            <view:CreateProjectView DataContext="{Binding Path=mvm.cpvm}"/>
             <Border.Style>
                 <Style TargetType="Border">
                     <Setter Property="Visibility" Value="Collapsed"/>
