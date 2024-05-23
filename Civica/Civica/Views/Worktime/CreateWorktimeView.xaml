@@ -37,7 +37,7 @@
                                  FontSize="16"
                                      Background="Transparent"
                                      BorderThickness="0"
-                                 Text="{Binding WorktimeInvolvedName}"/>
+                                 Text="{Binding cwvm.InvolvedName}"/>
                         </Border>
                     </Grid>
 
@@ -62,7 +62,7 @@
                                    FontSize="16"
                                      Background="Transparent"
                                      BorderThickness="0"
-                                   Text="{Binding WorktimeEstimatedHours, UpdateSourceTrigger=PropertyChanged}"/>
+                                   Text="{Binding cwvm.EstimatedHours, UpdateSourceTrigger=PropertyChanged}"/>
                         </Border>
                     </Grid>
 
@@ -76,7 +76,7 @@
                                     CornerRadius="2"
                                     Grid.Column="1"
                                     Margin="5 0 5 0">
-                        <TextBox Text="{Binding Description}"
+                        <TextBox Text="{Binding cwvm.Description}"
                                Height="150"
                              AcceptsReturn="True"
                                  Background="Transparent"
