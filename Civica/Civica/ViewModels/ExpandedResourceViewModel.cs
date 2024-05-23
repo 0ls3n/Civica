@@ -680,10 +680,16 @@ namespace Civica.ViewModels
                  ervm.UpdateList();
 
                  ervm.SelectedResource = resourceVm;
-                 ervm.SelectedAudit = auditVm;
+                 if (auditVm is not null)
+                 {
+                     ervm.SelectedAudit = auditVm;
+                 }
                  if (ervm.WorktimeDetailsVisibility == WindowVisibility.Visible)
                  {
-                     ervm.SelectedWorktime = worktimeVm;
+                     if (worktimeVm is not null)
+                     {
+                         ervm.SelectedWorktime = worktimeVm;
+                     }
                  }
 
              }
