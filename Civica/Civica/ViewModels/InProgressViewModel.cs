@@ -10,7 +10,7 @@ namespace Civica.ViewModels
 {
     public class InProgressViewModel : ObservableObject, IViewModelChild
     {
-        private MainViewModel mvm;
+        public MainViewModel mvm { get; set; }
 
         private string _windowTitle;
         public string WindowTitle
@@ -108,14 +108,8 @@ namespace Civica.ViewModels
         private IRepository<Progress> progressRepo;
         private IRepository<Resource> resourceRepo;
 
-        public CreateProjectViewModel CreateProjectVM { get; set; }
-
         public InProgressViewModel()
         {
-            CreateProjectVM = new CreateProjectViewModel();
-            CreateProjectVM.Init(this);
-
-
             WindowTitle = "Igangværende";
 
             CreateVisibility = WindowVisibility.Hidden;
@@ -165,8 +159,11 @@ namespace Civica.ViewModels
             progressRepo = this.mvm.GetProgressRepo();
             resourceRepo = this.mvm.GetResourceRepo();
 
-            CreateProjectVM.SetRepo(projectRepo);
-            CreateProjectVM.SetRepo(resourceRepo);
+            mvm.cpvm.SetRepo(projectRepo);
+            mvm.cpvm.SetRepo(resourceRepo);
+            mvm.cpvm.SetRepo(this.mvm.GetWorktimeRepo());
+            mvm.cpvm.SetRepo(this.mvm.GetAuditRepo());
+            mvm.cpvm.SetRepo(progressRepo);
 
             UpdateList();
         }

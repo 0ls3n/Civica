@@ -119,7 +119,7 @@ SelectedValue="{Binding SelectedProgress.Phase, UpdateSourceTrigger=PropertyChan
                                  TextWrapping="Wrap"
                                  AcceptsReturn="True"
                                  AcceptsTab="True"
-                                 Text="{Binding cpvm.Description}"/>
+                                 Text="{Binding SelectedProgress.Description}"/>
                 </Border>
             </StackPanel>
         </ScrollViewer>

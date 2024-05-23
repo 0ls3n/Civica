@@ -12,7 +12,7 @@ using System.Windows;
 
 namespace Civica.ViewModels
 {
-    public class CreateProjectViewModel : ObservableObject, IViewModelChild
+    public class CRUDProjectViewModel : ObservableObject, IViewModelChild
     {
         private string _projectName = "";
         public string ProjectName
@@ -94,13 +94,17 @@ namespace Civica.ViewModels
             }
         }
 
-        private InProgressViewModel ipvm;
+        private MainViewModel mvm;
         private IRepository<Project> projectRepo;
         private IRepository<Resource> resourceRepo;
+        private IRepository<Worktime> worktimeRepo;
+        private IRepository<Audit> auditRepo;
+        private IRepository<Progress> progressRepo;
+
 
         public void Init(ObservableObject o)
         {
-            ipvm = (o as InProgressViewModel);
+            mvm = (o as MainViewModel);
         }
 
         public void SetRepo(IRepository<Project> projectRepo)
@@ -111,17 +115,29 @@ namespace Civica.ViewModels
         {
             this.resourceRepo = resourceRepo;
         }
+        public void SetRepo(IRepository<Worktime> worktimeRepo)
+        {
+            this.worktimeRepo = worktimeRepo;
+        }
+        public void SetRepo(IRepository<Audit> auditRepo)
+        {
+            this.auditRepo = auditRepo;
+        }
+        public void SetRepo(IRepository<Progress> progressRepo)
+        {
+            this.progressRepo = progressRepo;
+        }
 
         public void CreateProject()
         {
-            Project p = new Project(ipvm.GetCurrentUser().GetId(), ProjectName, ProjectOwner, ProjectManager, ProjectDescription, DateTime.Now);
+            Project p = new Project(mvm.CurrentUser.GetId(), ProjectName, ProjectOwner, ProjectManager, ProjectDescription, DateTime.Now);
             
             projectRepo.Add(p);
            
-            Resource r = new Resource(ipvm.GetCurrentUser().GetId(), p.Id, string.IsNullOrEmpty(ResourceExpectedYearlyCost) ? 0 : decimal.Parse(ResourceStartAmount), string.IsNullOrEmpty(ResourceExpectedYearlyCost) ? 0 : decimal.Parse(ResourceExpectedYearlyCost), DateTime.Now);
+            Resource r = new Resource(mvm.CurrentUser.GetId(), p.Id, string.IsNullOrEmpty(ResourceExpectedYearlyCost) ? 0 : decimal.Parse(ResourceStartAmount), string.IsNullOrEmpty(ResourceExpectedYearlyCost) ? 0 : decimal.Parse(ResourceExpectedYearlyCost), DateTime.Now);
             resourceRepo.Add(r);
 
-            ipvm.UpdateList();
+            mvm.ipvm.UpdateList();
 
             ProjectName = "";
             ProjectManager = "";
@@ -130,23 +146,51 @@ namespace Civica.ViewModels
             ResourceStartAmount = "";
             ResourceExpectedYearlyCost = "";
         }
-        
+
+        public void DeleteProject()
+        {
+            int pID = mvm.epvm.SelectedProject.GetId();
+            int rID = resourceRepo.GetById(x => x.RefId == pID).Id;
+            auditRepo.RemoveByRefId(rID);
+            worktimeRepo.RemoveByRefId(rID);
+            progressRepo.RemoveByRefId(pID);
+            resourceRepo.RemoveByRefId(pID);
+            projectRepo.Remove(projectRepo.GetById(x => x.Id == pID));
+            mvm.epvm.UpdateList();
+            mvm.epvm.SelectedProject = null;
+        }
+
+        public void UpdateProject()
+        {
+            ProjectViewModel pvm = mvm.epvm.SelectedProject;
+
+            Project p = projectRepo.GetById(x => x.Id == pvm.GetId());
+            p.Name = pvm.Name;
+            p.Owner = pvm.Owner;
+            p.Manager = pvm.Manager;
+            p.Description = pvm.Description;
+
+            projectRepo.Update(p);
+
+            mvm.epvm.SelectedProject = pvm;
+        }
+
         public RelayCommand CreateProjectCmd { get; set; } = new RelayCommand
         (
             parameter =>
             {
-                if (parameter is CreateProjectViewModel cpvm)
+                if (parameter is CRUDProjectViewModel cpvm)
                 {
                     cpvm.CreateProject();
-                    cpvm.ipvm.CreateVisibility = WindowVisibility.Hidden;
-                    cpvm.ipvm.InformationVisibility = WindowVisibility.Visible;
+                    cpvm.mvm.ipvm.CreateVisibility = WindowVisibility.Hidden;
+                    cpvm.mvm.ipvm.InformationVisibility = WindowVisibility.Visible;
                 }
             },
             parameter =>
             {
-                bool succes = false;
+                bool succes = true;
 
-                if (parameter is CreateProjectViewModel cpvm)
+                if (parameter is CRUDProjectViewModel cpvm)
                 {
                     if (!string.IsNullOrEmpty(cpvm.ProjectName))
                     {

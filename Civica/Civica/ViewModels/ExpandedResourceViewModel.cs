@@ -2,6 +2,7 @@
 using Civica.Interfaces;
 using Civica.Models;
 using Civica.Models.Enums;
+using Civica.Views;
 using GVMR;
 using Microsoft.IdentityModel.Tokens;
 using System;
@@ -382,49 +383,21 @@ namespace Civica.ViewModels
              {
                  if (ervm.AuditListVisibility == WindowVisibility.Visible)
                  {
-                     AuditViewModel avm = ervm.SelectedAudit;
-                     string temp = string.Format("{0:#,0}", double.Parse(avm.Amount));
-                     avm.Amount = temp;
                      ervm.EditAuditVisibility = WindowVisibility.Hidden;
                      ervm.AuditDetailsVisibility = WindowVisibility.Hidden;
                      ervm.InformationPlaceholderVisibility = WindowVisibility.Visible;
 
-                     Audit a = ervm.auditRepo.GetById(x => x.Id == avm.GetId());
+                     ervm.UpdateAudit();
 
-                     a.Amount = decimal.Parse(ervm.SelectedAudit.Amount);
-                     a.Year = ervm.SelectedAudit.Year;
-                     a.Description = ervm.SelectedAudit.Description;
 
-                     ervm.auditRepo.Update(a);
-
-                     ervm.Audits.Clear();
-
-                     ervm.UpdateList();
-
-                     ervm.SelectedAudit = avm;
                  }
                  else
                  {
-                     WorktimeViewModel wvm = ervm.SelectedWorktime;
-
                      ervm.EditWorktimeVisibility = WindowVisibility.Hidden;
                      ervm.WorktimeDetailsVisibility = WindowVisibility.Hidden;
                      ervm.InformationPlaceholderVisibility = WindowVisibility.Visible;
 
-                     Worktime w = ervm.worktimeRepo.GetById(x => x.Id == wvm.GetId());
-
-                     w.SpentHours = int.Parse(wvm.SpentHours);
-                     w.EstimatedHours = int.Parse(wvm.EstimatedHours);
-                     w.Description = wvm.Description;
-                     w.InvolvedName = wvm.InvolvedName;
-
-                     ervm.worktimeRepo.Update(w);
-
-                     ervm.Worktimes.Clear();
-
-                     ervm.UpdateList();
-
-                     ervm.SelectedWorktime = wvm;
+                     ervm.UpdateWorktime();
                  }
              }
          },
@@ -492,13 +465,7 @@ namespace Civica.ViewModels
                   {
                       if (ervm.AuditListVisibility == WindowVisibility.Visible)
                       {
-                          AuditViewModel avm = ervm.SelectedAudit;
-
-                          Audit a = ervm.auditRepo.GetById(x => x.Id == avm.GetId());
-
-                          ervm.auditRepo.Remove(a);
-
-                          ervm.Audits.Clear();
+                          ervm.DeleteAudit();
 
                           ervm.EditAuditVisibility = WindowVisibility.Hidden;
                           ervm.AuditDetailsVisibility = WindowVisibility.Hidden;
@@ -507,19 +474,13 @@ namespace Civica.ViewModels
                       }
                       else
                       {
-                          WorktimeViewModel wvm = ervm.SelectedWorktime;
+                          ervm.DeleteWorktime();
 
-                          Worktime w = ervm.worktimeRepo.GetById(x => x.Id == wvm.GetId());
-
-                          ervm.worktimeRepo.Remove(w);
-
-                          ervm.Worktimes.Clear();
                           ervm.EditWorktimeVisibility = WindowVisibility.Hidden;
                           ervm.WorktimeDetailsVisibility = WindowVisibility.Hidden;
                           ervm.InformationPlaceholderVisibility = WindowVisibility.Visible;
                           ervm.CreateWorktimeVisibility = WindowVisibility.Hidden;
                       }
-                      ervm.UpdateList();
                   }
               }
           },
@@ -583,18 +544,12 @@ namespace Civica.ViewModels
              {
                  if (ervm.AuditListVisibility == WindowVisibility.Visible)
                  {
-                     Audit a = new Audit(ervm.mvm.CurrentUser.GetId(), ervm.SelectedResource.GetId(), ervm.AuditAmount.IsNullOrEmpty() ? 0 : decimal.Parse(ervm.AuditAmount), ervm.AuditYear, ervm.Description, DateTime.Now);
-
-                     ervm.auditRepo.Add(a);
-
-                     ervm.Audits.Clear();
+                     ervm.CreateAudit();
 
                      ervm.EditAuditVisibility = WindowVisibility.Hidden;
                      ervm.AuditDetailsVisibility = WindowVisibility.Hidden;
                      ervm.CreateAuditVisibility = WindowVisibility.Hidden;
                      ervm.InformationPlaceholderVisibility = WindowVisibility.Visible;
-
-                     ervm.UpdateList();
                  }
                  else
                  {
@@ -603,18 +558,12 @@ namespace Civica.ViewModels
                          MessageBox.Show("Der skal indtastes en afdeling eller et navn.");
                          return;
                      }
-                     Worktime w = new Worktime(ervm.mvm.CurrentUser.GetId(), ervm.SelectedResource.GetId(), ervm.WorktimeEstimatedHours.IsNullOrEmpty() ? 0 : int.Parse(ervm.WorktimeEstimatedHours), ervm.WorktimeInvolvedName, ervm.Description, DateTime.Now);
-
-                     ervm.worktimeRepo.Add(w);
-
-                     ervm.Worktimes.Clear();
+                     ervm.CreateWorktime();
 
                      ervm.EditWorktimeVisibility = WindowVisibility.Hidden;
                      ervm.WorktimeDetailsVisibility = WindowVisibility.Hidden;
                      ervm.CreateWorktimeVisibility = WindowVisibility.Hidden;
                      ervm.InformationPlaceholderVisibility = WindowVisibility.Visible;
-
-                     ervm.UpdateList();
                  }
              }
          },
@@ -629,6 +578,132 @@ namespace Civica.ViewModels
              }
              return false;
          });
+        #endregion
+
+        #region Methods
+        public void CreateWorktime()
+        {
+            Worktime w = new Worktime(mvm.CurrentUser.GetId(), SelectedResource.GetId(), WorktimeEstimatedHours.IsNullOrEmpty() ? 0 : int.Parse(WorktimeEstimatedHours), WorktimeInvolvedName, Description, DateTime.Now);
+
+            worktimeRepo.Add(w);
+
+            Worktimes.Clear();
+
+            UpdateList();
+        }
+
+        public void UpdateWorktime()
+        {
+            WorktimeViewModel wvm = SelectedWorktime;
+
+            Worktime w = worktimeRepo.GetById(x => x.Id == wvm.GetId());
+
+            w.SpentHours = int.Parse(wvm.SpentHours);
+            w.EstimatedHours = int.Parse(wvm.EstimatedHours);
+            w.Description = wvm.Description;
+            w.InvolvedName = wvm.InvolvedName;
+
+            worktimeRepo.Update(w);
+
+            Worktimes.Clear();
+
+            UpdateList();
+
+            SelectedWorktime = wvm;
+        }
+
+        public void DeleteWorktime()
+        {
+            WorktimeViewModel wvm = SelectedWorktime;
+
+            Worktime w = worktimeRepo.GetById(x => x.Id == wvm.GetId());
+
+            worktimeRepo.Remove(w);
+
+            Worktimes.Clear();
+
+            UpdateList();
+        }
+
+        public void CreateAudit()
+        {
+            Audit a = new Audit(mvm.CurrentUser.GetId(), SelectedResource.GetId(), AuditAmount.IsNullOrEmpty() ? 0 : decimal.Parse(AuditAmount), AuditYear, Description, DateTime.Now);
+
+            auditRepo.Add(a);
+
+            Audits.Clear();
+
+            UpdateList();
+        }
+
+        public void UpdateAudit()
+        {
+            AuditViewModel avm = SelectedAudit;
+            string temp = string.Format("{0:#,0}", double.Parse(avm.Amount));
+            avm.Amount = temp;
+
+            Audit a = auditRepo.GetById(x => x.Id == avm.GetId());
+
+            a.Amount = decimal.Parse(SelectedAudit.Amount);
+            a.Year = SelectedAudit.Year;
+            a.Description = SelectedAudit.Description;
+
+            auditRepo.Update(a);
+
+            Audits.Clear();
+
+            UpdateList();
+
+            SelectedAudit = avm;
+        }
+
+        public void DeleteAudit()
+        {
+            AuditViewModel avm = SelectedAudit;
+
+            Audit a = auditRepo.GetById(x => x.Id == avm.GetId());
+
+            auditRepo.Remove(a);
+
+            Audits.Clear();
+
+            UpdateList();
+        }
+
+        public void UpdateResource()
+        {
+            ResourceViewModel resourceVm = SelectedResource;
+            AuditViewModel auditVm = SelectedAudit;
+            WorktimeViewModel worktimeVm = SelectedWorktime;
+
+            string temp = string.Format("{0:#,0}", double.Parse(resourceVm.StartAmount));
+            resourceVm.StartAmount = temp;
+            temp = string.Format("{0:#,0}", double.Parse(resourceVm.ExpectedYearlyCost));
+            resourceVm.ExpectedYearlyCost = temp;
+
+
+            Resource r = resourceRepo.GetById(x => x.Id == SelectedResource.GetId());
+
+            r.StartAmount = decimal.Parse(SelectedResource.StartAmount);
+            r.ExpectedYearlyCost = decimal.Parse(SelectedResource.ExpectedYearlyCost);
+
+            resourceRepo.Update(r);
+
+            UpdateList();
+
+            SelectedResource = resourceVm;
+            if (auditVm is not null)
+            {
+                SelectedAudit = auditVm;
+            }
+            if (WorktimeDetailsVisibility == WindowVisibility.Visible)
+            {
+                if (worktimeVm is not null)
+                {
+                    SelectedWorktime = worktimeVm;
+                }
+            }
+        }
         #endregion
 
         #region Resource Commands
@@ -659,39 +734,11 @@ namespace Civica.ViewModels
          {
              if (parameter is ExpandedResourceViewModel ervm)
              {
-                 ResourceViewModel resourceVm = ervm.SelectedResource;
-                 AuditViewModel auditVm = ervm.SelectedAudit;
-                 WorktimeViewModel worktimeVm = ervm.SelectedWorktime;
-                 string temp = string.Format("{0:#,0}", double.Parse(resourceVm.StartAmount));
-                 resourceVm.StartAmount = temp;
-                 temp = string.Format("{0:#,0}", double.Parse(resourceVm.ExpectedYearlyCost));
-                 resourceVm.ExpectedYearlyCost = temp;
+
+                 ervm.UpdateResource();
 
                  ervm.EditResourceVisibility = WindowVisibility.Hidden;
                  ervm.ResourceVisiblity = WindowVisibility.Visible;
-
-                 Resource r = ervm.resourceRepo.GetById(x => x.Id == ervm.SelectedResource.GetId());
-
-                 r.StartAmount = decimal.Parse(ervm.SelectedResource.StartAmount);
-                 r.ExpectedYearlyCost = decimal.Parse(ervm.SelectedResource.ExpectedYearlyCost);
-
-                 ervm.resourceRepo.Update(r);
-
-                 ervm.UpdateList();
-
-                 ervm.SelectedResource = resourceVm;
-                 if (auditVm is not null)
-                 {
-                     ervm.SelectedAudit = auditVm;
-                 }
-                 if (ervm.WorktimeDetailsVisibility == WindowVisibility.Visible)
-                 {
-                     if (worktimeVm is not null)
-                     {
-                         ervm.SelectedWorktime = worktimeVm;
-                     }
-                 }
-
              }
          },
          parameter =>
