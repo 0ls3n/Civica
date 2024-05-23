@@ -115,7 +115,7 @@ HorizontalAlignment="Left" FontWeight="Bold"/>
                                  BorderBrush="LightGray"
                                  BorderThickness="1">
 
-                                <TextBlock Text="Opret bruger"
+                                <TextBlock Text="Opdater bruger"
                                         FontSize="16"
                                         HorizontalAlignment="Center"
                                         VerticalAlignment="Center"/>

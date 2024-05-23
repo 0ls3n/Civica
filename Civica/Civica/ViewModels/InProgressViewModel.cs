@@ -89,7 +89,6 @@ namespace Civica.ViewModels
             }
         }
 
-        public string Title { get; set; } = "Audits";
         private ProgressViewModel _selectedProgress = null;
         public ProgressViewModel SelectedProgress
         {
@@ -107,15 +106,6 @@ namespace Civica.ViewModels
         private IRepository<Project> projectRepo;
         private IRepository<Progress> progressRepo;
         private IRepository<Resource> resourceRepo;
-
-        public InProgressViewModel()
-        {
-            WindowTitle = "Igangværende";
-
-            CreateVisibility = WindowVisibility.Hidden;
-            UpdateVisibility = WindowVisibility.Hidden;
-            InformationVisibility = WindowVisibility.Visible;
-        }
 
         public void UpdateList()
         {
@@ -155,22 +145,17 @@ namespace Civica.ViewModels
         {
             this.mvm = (o as MainViewModel);
 
+            WindowTitle = "Igangværende";
+
+            CreateVisibility = WindowVisibility.Hidden;
+            UpdateVisibility = WindowVisibility.Hidden;
+            InformationVisibility = WindowVisibility.Visible;
+
             projectRepo = this.mvm.GetProjectRepo();
             progressRepo = this.mvm.GetProgressRepo();
             resourceRepo = this.mvm.GetResourceRepo();
 
-            mvm.cpvm.SetRepo(projectRepo);
-            mvm.cpvm.SetRepo(resourceRepo);
-            mvm.cpvm.SetRepo(this.mvm.GetWorktimeRepo());
-            mvm.cpvm.SetRepo(this.mvm.GetAuditRepo());
-            mvm.cpvm.SetRepo(progressRepo);
-
             UpdateList();
-        }
-
-        public UserViewModel GetCurrentUser()
-        {
-            return mvm.CurrentUser;
         }
         #region ViewCommands
 

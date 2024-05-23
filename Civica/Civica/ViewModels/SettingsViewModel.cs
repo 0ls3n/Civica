@@ -88,15 +88,19 @@ namespace Civica.ViewModels
                 }
             }
         }
-        public string OldName;
-        public int OldPassword;
-        public CreateUserViewModel CreateUserVM { get; set; }
+        private string oldName;
+        private int oldPassword;
+        public CRUDUserViewModel cuvm { get; set; }
 
-        public SettingsViewModel()
+        public void Init(ObservableObject o)
         {
-            CreateUserVM = new CreateUserViewModel();
-            CreateUserVM.Init(this);
-            CreateUserVM.SetRepo(userRepo);
+            this.mvm = (o as MainViewModel);
+            userRepo = mvm.GetUserRepo();
+
+            cuvm = new CRUDUserViewModel();
+            cuvm.Init(this);
+            cuvm.SetRepo(userRepo);
+            UpdateList();
 
             WindowTitle = "Indstillinger";
 
@@ -105,29 +109,6 @@ namespace Civica.ViewModels
             InformationVisibility = WindowVisibility.Visible;
         }
 
-        public void Init(ObservableObject o)
-        {
-            this.mvm = (o as MainViewModel);
-            userRepo = mvm.GetUserRepo();
-
-            CreateUserVM.SetRepo(userRepo);
-            UpdateList();
-
-        }
-        public void UpdateUser(UserViewModel userVM)
-        {
-            User u = userRepo.GetById(x => x.Id == userVM.GetId());
-            u.FirstName = userVM.FirstName;
-            u.LastName = userVM.LastName;
-            u.Password = int.Parse(userVM.Password);
-
-            userRepo.Update(u);
-        }
-        public void DeleteUser()
-        {
-            userRepo.Delete(userRepo.GetById(x => x.Id == SelectedUser.GetId()));
-            UpdateList();
-        }
         public void UpdateList()
         {
             Users = new ObservableCollection<UserViewModel>
@@ -170,8 +151,8 @@ namespace Civica.ViewModels
                     svm.UpdateVisibility = WindowVisibility.Visible;
                     svm.InformationVisibility = WindowVisibility.Hidden;
                     svm.CreateVisibility = WindowVisibility.Hidden;
-                    svm.OldName = svm.SelectedUser.FullName;
-                    svm.OldPassword = int.Parse(svm.SelectedUser.Password);
+                    svm.oldName = svm.SelectedUser.FullName;
+                    svm.oldPassword = int.Parse(svm.SelectedUser.Password);
                 }
             },
             parameter =>
@@ -197,12 +178,12 @@ namespace Civica.ViewModels
                 if (parameter is SettingsViewModel svm)
                 {
                     if (svm.userRepo.GetAll().OfType<User>().FirstOrDefault(x => x.Password == int.Parse(svm.SelectedUser.Password)) is null ||
-                        int.Parse(svm.SelectedUser.Password) == svm.OldPassword)
+                        int.Parse(svm.SelectedUser.Password) == svm.oldPassword)
                     {
                         if (svm.userRepo.GetAll().OfType<User>().FirstOrDefault(x => x.FullName.ToLower() == svm.SelectedUser.FullName.ToLower()) is null ||
-                        svm.SelectedUser.FullName.ToLower() == svm.OldName.ToLower())
+                        svm.SelectedUser.FullName.ToLower() == svm.oldName.ToLower())
                         {
-                            svm.UpdateUser(svm.SelectedUser);
+                            svm.cuvm.Update();
 
                             svm.UpdateVisibility = WindowVisibility.Hidden;
                             svm.InformationVisibility = WindowVisibility.Visible;
@@ -212,7 +193,6 @@ namespace Civica.ViewModels
                         {
                             MessageBox.Show("Navnet " + svm.SelectedUser.FullName + " findes allerede.");
                         }
-
                     }
                     else
                     {
@@ -250,7 +230,7 @@ namespace Civica.ViewModels
 
                     if (result == MessageBoxResult.OK)
                     {
-                        svm.DeleteUser();
+                        svm.cuvm.Delete();
                         svm.InformationVisibility = WindowVisibility.Visible;
                     }
                 }

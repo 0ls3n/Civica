@@ -20,7 +20,7 @@ namespace Civica.ViewModels
 {
     public class ExpandedResourceViewModel : ObservableObject, IViewModelChild
     {
-        private MainViewModel mvm { get; set; }
+        private MainViewModel mvm;
 
         IRepository<Audit> auditRepo;
         IRepository<Resource> resourceRepo;
@@ -368,7 +368,7 @@ namespace Civica.ViewModels
             {
                 if (parameter is ExpandedResourceViewModel ervm)
                 {
-                    if (ervm.SelectedProject != null && ervm.mvm.ipvm.GetCurrentUser() != null)
+                    if (ervm.SelectedProject != null && ervm.mvm.CurrentUser != null)
                     {
                         return true;
                     }
@@ -405,7 +405,7 @@ namespace Civica.ViewModels
          {
              if (parameter is ExpandedResourceViewModel ervm)
              {
-                 if (ervm.SelectedProject != null && ervm.mvm.ipvm.GetCurrentUser() != null)
+                 if (ervm.SelectedProject != null && ervm.mvm.CurrentUser != null)
                  {
                      return true;
                  }
@@ -445,7 +445,7 @@ namespace Civica.ViewModels
             {
                 if (parameter is ExpandedResourceViewModel ervm)
                 {
-                    if (ervm.SelectedProject != null && ervm.mvm.ipvm.GetCurrentUser() != null)
+                    if (ervm.SelectedProject != null && ervm.mvm.CurrentUser != null)
                     {
                         return true;
                     }
@@ -488,7 +488,7 @@ namespace Civica.ViewModels
           {
               if (parameter is ExpandedResourceViewModel ervm)
               {
-                  if (ervm.SelectedProject != null && ervm.mvm.ipvm.GetCurrentUser() != null)
+                  if (ervm.SelectedProject != null && ervm.mvm.CurrentUser != null)
                   {
                       return true;
                   }
@@ -529,7 +529,7 @@ namespace Civica.ViewModels
           {
               if (parameter is ExpandedResourceViewModel ervm)
               {
-                  if (ervm.SelectedProject != null && ervm.mvm.ipvm.GetCurrentUser() != null)
+                  if (ervm.SelectedProject != null && ervm.mvm.CurrentUser != null)
                   {
                       return true;
                   }
@@ -571,7 +571,7 @@ namespace Civica.ViewModels
          {
              if (parameter is ExpandedResourceViewModel ervm)
              {
-                 if (ervm.SelectedProject != null && ervm.mvm.ipvm.GetCurrentUser() != null)
+                 if (ervm.SelectedProject != null && ervm.mvm.CurrentUser != null)
                  {
                      return true;
                  }
@@ -727,7 +727,7 @@ namespace Civica.ViewModels
            {
                if (parameter is ExpandedResourceViewModel ervm)
                {
-                   if (ervm.SelectedProject != null && ervm.mvm.ipvm.GetCurrentUser() != null)
+                   if (ervm.SelectedProject != null && ervm.mvm.CurrentUser != null)
                    {
                        return true;
                    }

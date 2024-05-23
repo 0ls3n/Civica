@@ -12,7 +12,7 @@ using GVMR;
 
 namespace Civica.ViewModels
 {
-    public class CreateUserViewModel : ObservableObject, IViewModelChild
+    public class CRUDUserViewModel : ObservableObject, IViewModelChild
     {
         private SettingsViewModel svm;
         private IRepository<User> userRepo;
@@ -63,13 +63,13 @@ namespace Civica.ViewModels
         (
            parameter =>
            {
-               if (parameter is CreateUserViewModel cuvm)
+               if (parameter is CRUDUserViewModel cuvm)
                {
                    if (cuvm.userRepo.GetAll().OfType<User>().FirstOrDefault(x => x.Password == int.Parse(cuvm.Password)) is null)
                    {
                        if (cuvm.userRepo.GetAll().OfType<User>().FirstOrDefault(x => x.FullName.ToLower() == cuvm.FirstName.ToLower() + " " + cuvm.LastName.ToLower()) is null)
                        {
-                           cuvm.CreateUser();
+                           cuvm.Create();
                            cuvm.svm.CreateVisibility = WindowVisibility.Hidden;
                            cuvm.svm.InformationVisibility = WindowVisibility.Visible;
                            cuvm.svm.UpdateList();
@@ -90,7 +90,7 @@ namespace Civica.ViewModels
            {
                bool succes = false;
 
-               if (parameter is CreateUserViewModel cuvm)
+               if (parameter is CRUDUserViewModel cuvm)
                {
                    if (!string.IsNullOrEmpty(cuvm.FirstName) && !string.IsNullOrEmpty(cuvm.LastName) && cuvm.Password.Length == 4);
                    {
@@ -109,9 +109,8 @@ namespace Civica.ViewModels
         public void Init(ObservableObject o)
         {
             svm = (o as SettingsViewModel);
-
         }
-        public void CreateUser()
+        public void Create()
         {
             User u = new User(FirstName, LastName, int.Parse(Password));
             userRepo.Add(u);
@@ -119,6 +118,23 @@ namespace Civica.ViewModels
             FirstName = "";
             LastName = "";
             Password = "";
+        }
+        public void Update()
+        {
+            UserViewModel user = svm.SelectedUser;
+
+            User u = userRepo.GetById(x => x.Id == user.GetId());
+            u.FirstName = user.FirstName;
+            u.LastName = user.LastName;
+            u.Password = int.Parse(user.Password);
+
+            userRepo.Update(u);
+        }
+
+        public void Delete()
+        {
+            userRepo.Delete(userRepo.GetById(x => x.Id == svm.SelectedUser.GetId()));
+            svm.UpdateList();
         }
     }
 }

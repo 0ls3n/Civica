@@ -120,7 +120,7 @@
         </Border>
         
         <Border Grid.Row="1">
-            <view:CreateUserView DataContext="{Binding Path=CreateUserVM}"/>
+            <view:CreateUserView DataContext="{Binding Path=cuvm}"/>
             <Border.Style>
                 <Style TargetType="Border">
                     <Setter Property="Visibility" Value="Collapsed"/>

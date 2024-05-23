@@ -101,34 +101,18 @@ namespace Civica.ViewModels
         private IRepository<Audit> auditRepo;
         private IRepository<Progress> progressRepo;
 
-
         public void Init(ObservableObject o)
         {
             mvm = (o as MainViewModel);
+
+            projectRepo = mvm.GetProjectRepo();
+            resourceRepo = mvm.GetResourceRepo();
+            worktimeRepo = mvm.GetWorktimeRepo();
+            auditRepo = mvm.GetAuditRepo();
+            progressRepo = mvm.GetProgressRepo();
         }
 
-        public void SetRepo(IRepository<Project> projectRepo)
-        {
-            this.projectRepo = projectRepo;
-        }
-        public void SetRepo(IRepository<Resource> resourceRepo)
-        {
-            this.resourceRepo = resourceRepo;
-        }
-        public void SetRepo(IRepository<Worktime> worktimeRepo)
-        {
-            this.worktimeRepo = worktimeRepo;
-        }
-        public void SetRepo(IRepository<Audit> auditRepo)
-        {
-            this.auditRepo = auditRepo;
-        }
-        public void SetRepo(IRepository<Progress> progressRepo)
-        {
-            this.progressRepo = progressRepo;
-        }
-
-        public void CreateProject()
+        public void Create()
         {
             Project p = new Project(mvm.CurrentUser.GetId(), ProjectName, ProjectOwner, ProjectManager, ProjectDescription, DateTime.Now);
             
@@ -147,7 +131,7 @@ namespace Civica.ViewModels
             ResourceExpectedYearlyCost = "";
         }
 
-        public void DeleteProject()
+        public void Delete()
         {
             int pID = mvm.epvm.SelectedProject.GetId();
             int rID = resourceRepo.GetById(x => x.RefId == pID).Id;
@@ -160,7 +144,7 @@ namespace Civica.ViewModels
             mvm.epvm.SelectedProject = null;
         }
 
-        public void UpdateProject()
+        public void Update()
         {
             ProjectViewModel pvm = mvm.epvm.SelectedProject;
 
@@ -181,7 +165,7 @@ namespace Civica.ViewModels
             {
                 if (parameter is CRUDProjectViewModel cpvm)
                 {
-                    cpvm.CreateProject();
+                    cpvm.Create();
                     cpvm.mvm.ipvm.CreateVisibility = WindowVisibility.Hidden;
                     cpvm.mvm.ipvm.InformationVisibility = WindowVisibility.Visible;
                 }
