@@ -147,6 +147,7 @@ namespace Civica.ViewModels
         public SettingsViewModel svm { get; set; } = new SettingsViewModel();
         public LoginViewModel lvm { get; set; } = new LoginViewModel();
         public ArchiveViewModel avm { get; set; } = new ArchiveViewModel();
+        public CRUDProjectViewModel cpvm { get; set; } = new CRUDProjectViewModel();
 
         public RelayCommand InProgressViewCmd { get; set; } = new RelayCommand
         (
@@ -366,6 +367,7 @@ namespace Civica.ViewModels
             lvm.Init(this);
             ervm.Init(this);
             avm.Init(this);
+            cpvm.Init(this);
 
             InProgressView = WindowVisibility.Hidden;
             StatusDot = WindowVisibility.Hidden;

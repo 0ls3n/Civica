@@ -24,14 +24,14 @@ fontsize=10
 
 
 // This text will be stored with each diagram;  use it for notes.</help_text>
-  <zoom_level>16</zoom_level>
+  <zoom_level>9</zoom_level>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>864</x>
-      <y>336</y>
-      <w>192</w>
-      <h>64</h>
+      <x>486</x>
+      <y>189</y>
+      <w>108</w>
+      <h>36</h>
     </coordinates>
     <panel_attributes>MainWindow
 -
@@ -42,10 +42,10 @@ group=group-10</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>3696</x>
-      <y>336</y>
-      <w>352</w>
-      <h>784</h>
+      <x>2079</x>
+      <y>189</y>
+      <w>198</w>
+      <h>441</h>
     </coordinates>
     <panel_attributes>MainViewModel
 -
@@ -93,10 +93,10 @@ group=group-10</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1856</x>
-      <y>112</y>
-      <w>352</w>
-      <h>144</h>
+      <x>1044</x>
+      <y>63</y>
+      <w>198</w>
+      <h>81</h>
     </coordinates>
     <panel_attributes>RelayCommand
 -
@@ -112,10 +112,10 @@ group=group-10</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>3040</x>
-      <y>400</y>
-      <w>288</w>
-      <h>256</h>
+      <x>1710</x>
+      <y>225</y>
+      <w>162</w>
+      <h>144</h>
     </coordinates>
     <panel_attributes>ProgressViewModel
 --
@@ -136,10 +136,10 @@ group=group-13</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>3040</x>
-      <y>880</y>
-      <w>288</w>
-      <h>176</h>
+      <x>1710</x>
+      <y>495</y>
+      <w>162</w>
+      <h>99</h>
     </coordinates>
     <panel_attributes>UserViewModel
 --
@@ -156,10 +156,10 @@ group=group-13</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>3040</x>
-      <y>672</y>
-      <w>288</w>
-      <h>192</h>
+      <x>1710</x>
+      <y>378</y>
+      <w>162</w>
+      <h>108</h>
     </coordinates>
     <panel_attributes>AuditViewModel
 --
@@ -177,10 +177,10 @@ group=group-13</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>3344</x>
-      <y>400</y>
-      <w>288</w>
-      <h>240</h>
+      <x>1881</x>
+      <y>225</y>
+      <w>162</w>
+      <h>135</h>
     </coordinates>
     <panel_attributes>ProjectViewModel
 --
@@ -200,10 +200,10 @@ group=group-13</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>3136</x>
-      <y>160</y>
-      <w>464</w>
-      <h>96</h>
+      <x>1764</x>
+      <y>90</y>
+      <w>261</w>
+      <h>54</h>
     </coordinates>
     <panel_attributes>&lt;&lt;abstract&gt;&gt;
 ObservableObject
@@ -216,10 +216,10 @@ group=group-15</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>3408</x>
-      <y>64</y>
-      <w>192</w>
-      <h>64</h>
+      <x>1917</x>
+      <y>36</y>
+      <w>108</w>
+      <h>36</h>
     </coordinates>
     <panel_attributes>&lt;&lt;interface&gt;&gt;
 INotifyPropertyChanged
@@ -229,10 +229,10 @@ group=group-15</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>4176</x>
-      <y>928</y>
-      <w>320</w>
-      <h>304</h>
+      <x>2349</x>
+      <y>522</y>
+      <w>180</w>
+      <h>171</h>
     </coordinates>
     <panel_attributes>Project
 --
@@ -256,10 +256,10 @@ group=group-20</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>4176</x>
-      <y>608</y>
-      <w>592</w>
-      <h>208</h>
+      <x>2349</x>
+      <y>342</y>
+      <w>333</w>
+      <h>117</h>
     </coordinates>
     <panel_attributes>Repository&lt;T&gt;
 --
@@ -278,10 +278,10 @@ group=group-0</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>5232</x>
-      <y>976</y>
-      <w>160</w>
-      <h>176</h>
+      <x>2943</x>
+      <y>549</y>
+      <w>90</w>
+      <h>99</h>
     </coordinates>
     <panel_attributes>&lt;&lt;enumeration&gt;&gt;
 Phase
@@ -299,10 +299,10 @@ group=group-20</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>5056</x>
-      <y>976</y>
-      <w>160</w>
-      <h>144</h>
+      <x>2844</x>
+      <y>549</y>
+      <w>90</w>
+      <h>81</h>
     </coordinates>
     <panel_attributes>&lt;&lt;enumeration&gt;&gt;
 Status
@@ -318,10 +318,10 @@ group=group-20</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>4480</x>
-      <y>1024</y>
-      <w>160</w>
-      <h>48</h>
+      <x>2520</x>
+      <y>576</y>
+      <w>90</w>
+      <h>27</h>
     </coordinates>
     <panel_attributes>lt=-
 m1=*
@@ -332,10 +332,10 @@ group=group-20</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>4608</x>
-      <y>1232</y>
-      <w>320</w>
-      <h>192</h>
+      <x>2592</x>
+      <y>693</y>
+      <w>180</w>
+      <h>108</h>
     </coordinates>
     <panel_attributes>Resource
 --
@@ -353,10 +353,10 @@ group=group-20</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>4176</x>
-      <y>1248</y>
-      <w>320</w>
-      <h>240</h>
+      <x>2349</x>
+      <y>702</y>
+      <w>180</w>
+      <h>135</h>
     </coordinates>
     <panel_attributes>Audit
 --
@@ -377,10 +377,10 @@ group=group-20</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>4480</x>
-      <y>1296</y>
-      <w>160</w>
-      <h>48</h>
+      <x>2520</x>
+      <y>729</y>
+      <w>90</w>
+      <h>27</h>
     </coordinates>
     <panel_attributes>lt=-
 m1=*
@@ -391,10 +391,10 @@ group=group-20</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>4480</x>
-      <y>1152</y>
-      <w>320</w>
-      <h>112</h>
+      <x>2520</x>
+      <y>648</y>
+      <w>180</w>
+      <h>63</h>
     </coordinates>
     <panel_attributes>lt=-
 m1=1
@@ -406,10 +406,10 @@ group=group-20</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>4176</x>
-      <y>384</y>
-      <w>464</w>
-      <h>192</h>
+      <x>2349</x>
+      <y>216</y>
+      <w>261</w>
+      <h>108</h>
     </coordinates>
     <panel_attributes>&lt;&lt;interface&gt;&gt;
 IRepository&lt;T&gt;
@@ -427,10 +427,10 @@ group=group-0</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>4608</x>
-      <y>928</y>
-      <w>320</w>
-      <h>224</h>
+      <x>2592</x>
+      <y>522</y>
+      <w>180</w>
+      <h>126</h>
     </coordinates>
     <panel_attributes>Progress
 --
@@ -451,10 +451,10 @@ group=group-20</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1984</x>
+      <x>1116</x>
       <y>0</y>
-      <w>112</w>
-      <h>64</h>
+      <w>63</w>
+      <h>36</h>
     </coordinates>
     <panel_attributes>&lt;&lt;interface&gt;&gt;
 ICommand</panel_attributes>
@@ -463,10 +463,10 @@ ICommand</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>2016</x>
-      <y>48</y>
-      <w>48</w>
-      <h>96</h>
+      <x>1134</x>
+      <y>27</y>
+      <w>27</w>
+      <h>54</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;.</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;40.0</additional_attributes>
@@ -474,10 +474,10 @@ ICommand</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1360</x>
-      <y>896</y>
-      <w>384</w>
-      <h>320</h>
+      <x>765</x>
+      <y>504</y>
+      <w>216</w>
+      <h>180</h>
     </coordinates>
     <panel_attributes>CreateProjectViewModel
 -
@@ -503,10 +503,10 @@ group=group-11</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>2560</x>
-      <y>400</y>
-      <w>384</w>
-      <h>400</h>
+      <x>1440</x>
+      <y>225</y>
+      <w>216</w>
+      <h>225</h>
     </coordinates>
     <panel_attributes>InProgressViewModel
 -
@@ -536,10 +536,10 @@ group=group-11</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>2560</x>
-      <y>816</y>
-      <w>384</w>
-      <h>224</h>
+      <x>1440</x>
+      <y>459</y>
+      <w>216</w>
+      <h>126</h>
     </coordinates>
     <panel_attributes>CreateProgresViewModel
 -
@@ -560,10 +560,10 @@ group=group-11</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>3152</x>
-      <y>64</y>
-      <w>208</w>
-      <h>80</h>
+      <x>1773</x>
+      <y>36</y>
+      <w>117</w>
+      <h>45</h>
     </coordinates>
     <panel_attributes>&lt;&lt;interface&gt;&gt;
 IViewModelChild
@@ -575,10 +575,10 @@ group=group-15</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>592</x>
-      <y>336</y>
-      <w>256</w>
-      <h>64</h>
+      <x>333</x>
+      <y>189</y>
+      <w>144</w>
+      <h>36</h>
     </coordinates>
     <panel_attributes>InformationPlaceholderView
 -
@@ -589,10 +589,10 @@ group=group-10</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>736</x>
-      <y>656</y>
-      <w>208</w>
-      <h>64</h>
+      <x>414</x>
+      <y>369</y>
+      <w>117</w>
+      <h>36</h>
     </coordinates>
     <panel_attributes>CreateProjectView
 -
@@ -604,10 +604,10 @@ group=group-10</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>464</x>
-      <y>800</y>
-      <w>224</w>
-      <h>64</h>
+      <x>261</x>
+      <y>450</y>
+      <w>126</w>
+      <h>36</h>
     </coordinates>
     <panel_attributes>CreateProgressView 
 -
@@ -619,10 +619,10 @@ group=group-10</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>736</x>
-      <y>576</y>
-      <w>208</w>
-      <h>64</h>
+      <x>414</x>
+      <y>324</y>
+      <w>117</w>
+      <h>36</h>
     </coordinates>
     <panel_attributes>EditProjectView
 -
@@ -634,10 +634,10 @@ group=group-10</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>848</x>
-      <y>736</y>
-      <w>208</w>
-      <h>64</h>
+      <x>477</x>
+      <y>414</y>
+      <w>117</w>
+      <h>36</h>
     </coordinates>
     <panel_attributes>ProjectInformationView
 -
@@ -649,10 +649,10 @@ group=group-10</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>4960</x>
-      <y>1184</y>
-      <w>336</w>
-      <h>448</h>
+      <x>2790</x>
+      <y>666</y>
+      <w>189</w>
+      <h>252</h>
     </coordinates>
     <panel_attributes>Worktime
 --
@@ -684,10 +684,10 @@ group=group-20</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>4752</x>
-      <y>1408</y>
-      <w>240</w>
-      <h>112</h>
+      <x>2673</x>
+      <y>792</y>
+      <w>135</w>
+      <h>63</h>
     </coordinates>
     <panel_attributes>lt=-
 m1=1
@@ -699,10 +699,10 @@ group=group-20</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>3344</x>
-      <y>816</y>
-      <w>288</w>
-      <h>240</h>
+      <x>1881</x>
+      <y>459</y>
+      <w>162</w>
+      <h>135</h>
     </coordinates>
     <panel_attributes>WorktimeViewModel
 --
@@ -723,10 +723,10 @@ group=group-13</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>4352</x>
-      <y>560</y>
-      <w>48</w>
-      <h>80</h>
+      <x>2448</x>
+      <y>315</y>
+      <w>27</w>
+      <h>45</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;.
 group=group-0</panel_attributes>
@@ -735,10 +735,10 @@ group=group-0</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>4160</x>
-      <y>864</y>
-      <w>1488</w>
-      <h>784</h>
+      <x>2340</x>
+      <y>486</y>
+      <w>837</w>
+      <h>441</h>
     </coordinates>
     <panel_attributes>Model (Domain)
 -
@@ -748,10 +748,10 @@ group=group-20</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>4592</x>
-      <y>816</y>
-      <w>48</w>
-      <h>80</h>
+      <x>2583</x>
+      <y>459</y>
+      <w>27</w>
+      <h>45</h>
     </coordinates>
     <panel_attributes>lt=-
 m1=
@@ -762,10 +762,10 @@ m2=
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>3008</x>
-      <y>336</y>
-      <w>656</w>
-      <h>736</h>
+      <x>1692</x>
+      <y>189</y>
+      <w>369</w>
+      <h>414</h>
     </coordinates>
     <panel_attributes>ViewModel (Models)
 -
@@ -775,10 +775,10 @@ group=group-13</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1328</x>
-      <y>336</y>
-      <w>1648</w>
-      <h>1104</h>
+      <x>747</x>
+      <y>189</y>
+      <w>927</w>
+      <h>621</h>
     </coordinates>
     <panel_attributes>ViewModel (Child)
 -
@@ -788,10 +788,10 @@ group=group-11</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>80</x>
-      <y>480</y>
-      <w>1136</w>
-      <h>656</h>
+      <x>45</x>
+      <y>270</y>
+      <w>639</w>
+      <h>369</h>
     </coordinates>
     <panel_attributes>View (UserControl)
 -
@@ -801,10 +801,10 @@ group=group-10</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1120</x>
-      <y>368</y>
-      <w>112</w>
-      <h>32</h>
+      <x>630</x>
+      <y>207</y>
+      <w>63</w>
+      <h>18</h>
     </coordinates>
     <panel_attributes>Window
 group=group-10</panel_attributes>
@@ -813,10 +813,10 @@ group=group-10</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1040</x>
-      <y>368</y>
-      <w>112</w>
-      <h>48</h>
+      <x>585</x>
+      <y>207</y>
+      <w>63</w>
+      <h>27</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;.
 group=group-10</panel_attributes>
@@ -825,10 +825,10 @@ group=group-10</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>784</x>
-      <y>416</y>
-      <w>128</w>
-      <h>32</h>
+      <x>441</x>
+      <y>234</y>
+      <w>72</w>
+      <h>18</h>
     </coordinates>
     <panel_attributes>UserControl
 group=group-10</panel_attributes>
@@ -837,10 +837,10 @@ group=group-10</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>832</x>
-      <y>432</y>
-      <w>48</w>
-      <h>80</h>
+      <x>468</x>
+      <y>243</y>
+      <w>27</w>
+      <h>45</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;.
 group=group-10</panel_attributes>
@@ -849,10 +849,10 @@ group=group-10</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>4160</x>
-      <y>336</y>
-      <w>912</w>
-      <h>496</h>
+      <x>2340</x>
+      <y>189</y>
+      <w>513</w>
+      <h>279</h>
     </coordinates>
     <panel_attributes>Model (Persistance)
 -
@@ -862,10 +862,10 @@ group=group-0</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>5040</x>
-      <y>928</y>
-      <w>368</w>
-      <h>240</h>
+      <x>2835</x>
+      <y>522</y>
+      <w>207</w>
+      <h>135</h>
     </coordinates>
     <panel_attributes>Enum (Progress)
 -
@@ -875,10 +875,10 @@ group=group-20</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>4912</x>
-      <y>1024</y>
-      <w>160</w>
-      <h>48</h>
+      <x>2763</x>
+      <y>576</y>
+      <w>90</w>
+      <h>27</h>
     </coordinates>
     <panel_attributes>lt=.
 group=group-20</panel_attributes>
@@ -887,10 +887,10 @@ group=group-20</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>5296</x>
-      <y>640</y>
-      <w>320</w>
-      <h>176</h>
+      <x>2979</x>
+      <y>360</y>
+      <w>180</w>
+      <h>99</h>
     </coordinates>
     <panel_attributes>&lt;&lt;abstract&gt;&gt;
 DomainModel
@@ -904,10 +904,10 @@ DomainModel
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>5440</x>
-      <y>800</y>
-      <w>48</w>
-      <h>96</h>
+      <x>3060</x>
+      <y>450</y>
+      <w>27</w>
+      <h>54</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;.</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;40.0</additional_attributes>
@@ -915,10 +915,10 @@ DomainModel
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>2624</x>
-      <y>112</y>
-      <w>160</w>
-      <h>96</h>
+      <x>1476</x>
+      <y>63</y>
+      <w>90</w>
+      <h>54</h>
     </coordinates>
     <panel_attributes>&lt;&lt;enumeration&gt;&gt;
 WindowVisibility
@@ -930,10 +930,10 @@ Hidden</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>5312</x>
-      <y>1184</y>
-      <w>320</w>
-      <h>192</h>
+      <x>2988</x>
+      <y>666</y>
+      <w>180</w>
+      <h>108</h>
     </coordinates>
     <panel_attributes>User
 -
@@ -952,10 +952,10 @@ group=group-20</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>3344</x>
-      <y>656</y>
-      <w>288</w>
-      <h>144</h>
+      <x>1881</x>
+      <y>369</y>
+      <w>162</w>
+      <h>81</h>
     </coordinates>
     <panel_attributes>ResourceViewModel
 --
@@ -971,10 +971,10 @@ group=group-13</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>5504</x>
-      <y>800</y>
-      <w>48</w>
-      <h>416</h>
+      <x>3096</x>
+      <y>450</y>
+      <w>27</w>
+      <h>234</h>
     </coordinates>
     <panel_attributes>lt=-
 m1=1
@@ -984,10 +984,10 @@ m2=*</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>2160</x>
-      <y>1136</y>
-      <w>384</w>
-      <h>224</h>
+      <x>1215</x>
+      <y>639</y>
+      <w>216</w>
+      <h>126</h>
     </coordinates>
     <panel_attributes>CreateUserViewModel
 -
@@ -1008,10 +1008,10 @@ group=group-11</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>976</x>
-      <y>960</y>
-      <w>160</w>
-      <h>64</h>
+      <x>549</x>
+      <y>540</y>
+      <w>90</w>
+      <h>36</h>
     </coordinates>
     <panel_attributes>CreateUserView 
 -
@@ -1023,10 +1023,10 @@ group=group-10</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1360</x>
-      <y>400</y>
-      <w>384</w>
-      <h>480</h>
+      <x>765</x>
+      <y>225</y>
+      <w>216</w>
+      <h>270</h>
     </coordinates>
     <panel_attributes>SettingsViewModel
 -
@@ -1059,10 +1059,10 @@ group=group-11</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>880</x>
-      <y>1040</y>
-      <w>160</w>
-      <h>64</h>
+      <x>495</x>
+      <y>585</y>
+      <w>90</w>
+      <h>36</h>
     </coordinates>
     <panel_attributes>SettingsView 
 -
@@ -1074,10 +1074,10 @@ group=group-10</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1312</x>
-      <y>288</y>
-      <w>2784</w>
-      <h>1168</h>
+      <x>738</x>
+      <y>162</y>
+      <w>1566</w>
+      <h>657</h>
     </coordinates>
     <panel_attributes>ViewModel
 -</panel_attributes>
@@ -1086,10 +1086,10 @@ group=group-10</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>3120</x>
-      <y>16</y>
-      <w>528</w>
-      <h>256</h>
+      <x>1755</x>
+      <y>9</y>
+      <w>297</w>
+      <h>144</h>
     </coordinates>
     <panel_attributes>GVMR
 -
@@ -1099,10 +1099,10 @@ group=group-15</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>3488</x>
-      <y>112</y>
-      <w>48</w>
-      <h>80</h>
+      <x>1962</x>
+      <y>63</y>
+      <w>27</w>
+      <h>45</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;.</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;30.0</additional_attributes>
@@ -1110,10 +1110,10 @@ group=group-15</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>3232</x>
-      <y>128</y>
-      <w>48</w>
-      <h>64</h>
+      <x>1818</x>
+      <y>72</y>
+      <w>27</w>
+      <h>36</h>
     </coordinates>
     <panel_attributes>lt=-
 m1=
@@ -1124,10 +1124,10 @@ m2=
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>2240</x>
-      <y>112</y>
-      <w>352</w>
-      <h>112</h>
+      <x>1260</x>
+      <y>63</y>
+      <w>198</w>
+      <h>63</h>
     </coordinates>
     <panel_attributes>Helper
 --
@@ -1139,10 +1139,10 @@ m2=
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1760</x>
-      <y>1216</y>
-      <w>384</w>
-      <h>208</h>
+      <x>990</x>
+      <y>684</y>
+      <w>216</w>
+      <h>117</h>
     </coordinates>
     <panel_attributes>ArchiveViewModel
 --
@@ -1161,10 +1161,10 @@ group=group-11</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>2160</x>
-      <y>400</y>
-      <w>384</w>
-      <h>720</h>
+      <x>1215</x>
+      <y>225</y>
+      <w>216</w>
+      <h>405</h>
     </coordinates>
     <panel_attributes>ExpandedProjectViewModel
 --
@@ -1211,10 +1211,10 @@ group=group-11</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1760</x>
-      <y>400</y>
-      <w>384</w>
-      <h>800</h>
+      <x>990</x>
+      <y>225</y>
+      <w>216</w>
+      <h>450</h>
     </coordinates>
     <panel_attributes>ExpandedResourceViewModel
 --
@@ -1263,10 +1263,10 @@ group=group-11</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>2560</x>
-      <y>1056</y>
-      <w>384</w>
-      <h>192</h>
+      <x>1440</x>
+      <y>594</y>
+      <w>216</w>
+      <h>108</h>
     </coordinates>
     <panel_attributes>LoginViewModel
 --
@@ -1286,9 +1286,9 @@ group=group-11</panel_attributes>
     <id>UMLClass</id>
     <coordinates>
       <x>0</x>
-      <y>288</y>
-      <w>1264</w>
-      <h>864</h>
+      <y>162</y>
+      <w>711</w>
+      <h>486</h>
     </coordinates>
     <panel_attributes>View
 -
@@ -1298,10 +1298,10 @@ group=group-10</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>160</x>
-      <y>528</y>
-      <w>272</w>
-      <h>496</h>
+      <x>90</x>
+      <y>297</y>
+      <w>153</w>
+      <h>279</h>
     </coordinates>
     <panel_attributes>View (Audit)
 -
@@ -1311,10 +1311,10 @@ group=group-10</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>208</x>
-      <y>592</y>
-      <w>176</w>
-      <h>64</h>
+      <x>117</x>
+      <y>333</y>
+      <w>99</w>
+      <h>36</h>
     </coordinates>
     <panel_attributes>CreateAuditView
 -
@@ -1326,10 +1326,10 @@ group=group-10</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>208</x>
-      <y>704</y>
-      <w>176</w>
-      <h>64</h>
+      <x>117</x>
+      <y>396</y>
+      <w>99</w>
+      <h>36</h>
     </coordinates>
     <panel_attributes>EditAuditView
 -
@@ -1341,10 +1341,10 @@ group=group-10</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>208</x>
-      <y>816</y>
-      <w>176</w>
-      <h>64</h>
+      <x>117</x>
+      <y>459</y>
+      <w>99</w>
+      <h>36</h>
     </coordinates>
     <panel_attributes>AuditDetailsView
 -
@@ -1356,10 +1356,10 @@ group=group-10</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>208</x>
-      <y>928</y>
-      <w>176</w>
-      <h>64</h>
+      <x>117</x>
+      <y>522</y>
+      <w>99</w>
+      <h>36</h>
     </coordinates>
     <panel_attributes>AuditListView
 -
@@ -1371,10 +1371,10 @@ group=group-10</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>448</x>
-      <y>752</y>
-      <w>256</w>
-      <h>368</h>
+      <x>252</x>
+      <y>423</y>
+      <w>144</w>
+      <h>207</h>
     </coordinates>
     <panel_attributes>View (Progress)
 -
@@ -1384,10 +1384,10 @@ group=group-10</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>464</x>
-      <y>880</y>
-      <w>224</w>
-      <h>64</h>
+      <x>261</x>
+      <y>495</y>
+      <w>126</w>
+      <h>36</h>
     </coordinates>
     <panel_attributes>EditProgressView 
 -
@@ -1399,10 +1399,10 @@ group=group-10</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>464</x>
-      <y>960</y>
-      <w>224</w>
-      <h>64</h>
+      <x>261</x>
+      <y>540</y>
+      <w>126</w>
+      <h>36</h>
     </coordinates>
     <panel_attributes>InProgressView 
 -
@@ -1414,10 +1414,10 @@ group=group-10</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>464</x>
-      <y>1040</y>
-      <w>224</w>
-      <h>64</h>
+      <x>261</x>
+      <y>585</y>
+      <w>126</w>
+      <h>36</h>
     </coordinates>
     <panel_attributes>ProgressInformationView 
 -
@@ -1429,10 +1429,10 @@ group=group-10</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>720</x>
-      <y>528</y>
-      <w>464</w>
-      <h>288</h>
+      <x>405</x>
+      <y>297</y>
+      <w>261</w>
+      <h>162</h>
     </coordinates>
     <panel_attributes>View (Project)
 -
@@ -1442,10 +1442,10 @@ group=group-10</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>960</x>
-      <y>576</y>
-      <w>208</w>
-      <h>64</h>
+      <x>540</x>
+      <y>324</y>
+      <w>117</w>
+      <h>36</h>
     </coordinates>
     <panel_attributes>ArchiveView
 -
@@ -1457,10 +1457,10 @@ group=group-10</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>960</x>
-      <y>656</y>
-      <w>208</w>
-      <h>64</h>
+      <x>540</x>
+      <y>369</y>
+      <w>117</w>
+      <h>36</h>
     </coordinates>
     <panel_attributes>ExpandedProjectView
 -
@@ -1472,10 +1472,10 @@ group=group-10</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>448</x>
-      <y>528</y>
-      <w>256</w>
-      <h>208</h>
+      <x>252</x>
+      <y>297</y>
+      <w>144</w>
+      <h>117</h>
     </coordinates>
     <panel_attributes>View (Resource)
 -
@@ -1485,10 +1485,10 @@ group=group-10</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>464</x>
-      <y>576</y>
-      <w>224</w>
-      <h>64</h>
+      <x>261</x>
+      <y>324</y>
+      <w>126</w>
+      <h>36</h>
     </coordinates>
     <panel_attributes>EditResourceDetailsView
 -
@@ -1500,10 +1500,10 @@ group=group-10</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>464</x>
-      <y>656</y>
-      <w>224</w>
-      <h>64</h>
+      <x>261</x>
+      <y>369</y>
+      <w>126</w>
+      <h>36</h>
     </coordinates>
     <panel_attributes>ExpandedResourceView
 -
@@ -1515,10 +1515,10 @@ group=group-10</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>720</x>
-      <y>832</y>
-      <w>480</w>
-      <h>288</h>
+      <x>405</x>
+      <y>468</y>
+      <w>270</w>
+      <h>162</h>
     </coordinates>
     <panel_attributes>View (User)
 -
@@ -1528,10 +1528,10 @@ group=group-10</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>976</x>
-      <y>880</y>
-      <w>160</w>
-      <h>64</h>
+      <x>549</x>
+      <y>495</y>
+      <w>90</w>
+      <h>36</h>
     </coordinates>
     <panel_attributes>EditUserView
 -
@@ -1543,10 +1543,10 @@ group=group-10</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>784</x>
-      <y>880</y>
-      <w>160</w>
-      <h>64</h>
+      <x>441</x>
+      <y>495</y>
+      <w>90</w>
+      <h>36</h>
     </coordinates>
     <panel_attributes>LoginView
 -
@@ -1558,10 +1558,10 @@ group=group-10</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>784</x>
-      <y>960</y>
-      <w>160</w>
-      <h>64</h>
+      <x>441</x>
+      <y>540</y>
+      <w>90</w>
+      <h>36</h>
     </coordinates>
     <panel_attributes>OptionsView
 -
@@ -1573,10 +1573,10 @@ group=group-10</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>2688</x>
-      <y>192</y>
-      <w>48</w>
-      <h>128</h>
+      <x>1512</x>
+      <y>108</y>
+      <w>27</w>
+      <h>72</h>
     </coordinates>
     <panel_attributes>lt=-
 m1=
@@ -1587,10 +1587,10 @@ m2=
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>2016</x>
-      <y>240</y>
-      <w>48</w>
-      <h>80</h>
+      <x>1134</x>
+      <y>135</y>
+      <w>27</w>
+      <h>45</h>
     </coordinates>
     <panel_attributes>lt=-
 m1=
@@ -1601,10 +1601,10 @@ m2=
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>2400</x>
-      <y>208</y>
-      <w>48</w>
-      <h>112</h>
+      <x>1350</x>
+      <y>117</y>
+      <w>27</w>
+      <h>63</h>
     </coordinates>
     <panel_attributes>lt=-
 m1=
@@ -1615,10 +1615,10 @@ m2=
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>2832</x>
-      <y>128</y>
-      <w>320</w>
-      <h>240</h>
+      <x>1593</x>
+      <y>72</y>
+      <w>180</w>
+      <h>135</h>
     </coordinates>
     <panel_attributes>lt=-
 m1=
@@ -1629,10 +1629,10 @@ m2=
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>3584</x>
-      <y>144</y>
-      <w>320</w>
-      <h>224</h>
+      <x>2016</x>
+      <y>81</y>
+      <w>180</w>
+      <h>126</h>
     </coordinates>
     <panel_attributes>lt=-
 m1=
@@ -1643,10 +1643,10 @@ m2=
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>3296</x>
-      <y>240</y>
-      <w>48</w>
-      <h>128</h>
+      <x>1854</x>
+      <y>135</y>
+      <w>27</w>
+      <h>72</h>
     </coordinates>
     <panel_attributes>lt=-
 m1=
@@ -1657,10 +1657,10 @@ m2=
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>4128</x>
-      <y>288</y>
-      <w>1552</w>
-      <h>1376</h>
+      <x>2322</x>
+      <y>162</y>
+      <w>873</w>
+      <h>774</h>
     </coordinates>
     <panel_attributes>Model
 -</panel_attributes>
@@ -1669,10 +1669,10 @@ m2=
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>4080</x>
-      <y>416</y>
-      <w>80</w>
-      <h>64</h>
+      <x>2295</x>
+      <y>234</y>
+      <w>45</w>
+      <h>36</h>
     </coordinates>
     <panel_attributes>lt=-
 m1=
@@ -1683,10 +1683,10 @@ m2=
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1248</x>
-      <y>816</y>
-      <w>112</w>
-      <h>64</h>
+      <x>702</x>
+      <y>459</y>
+      <w>63</w>
+      <h>36</h>
     </coordinates>
     <panel_attributes>lt=-
 m1=
@@ -1697,10 +1697,10 @@ m2=
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>2960</x>
-      <y>400</y>
-      <w>80</w>
-      <h>64</h>
+      <x>1665</x>
+      <y>225</y>
+      <w>45</w>
+      <h>36</h>
     </coordinates>
     <panel_attributes>lt=-
 m1=
@@ -1711,10 +1711,10 @@ m2=
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>3616</x>
-      <y>928</y>
-      <w>112</w>
-      <h>64</h>
+      <x>2034</x>
+      <y>522</y>
+      <w>63</w>
+      <h>36</h>
     </coordinates>
     <panel_attributes>lt=-
 m1=
@@ -1725,10 +1725,10 @@ m2=
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>2960</x>
-      <y>1072</y>
-      <w>768</w>
-      <h>64</h>
+      <x>1665</x>
+      <y>603</y>
+      <w>432</w>
+      <h>36</h>
     </coordinates>
     <panel_attributes>lt=-
 m1=
@@ -1739,10 +1739,10 @@ m2=
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>4752</x>
-      <y>560</y>
-      <w>144</w>
-      <h>192</h>
+      <x>2673</x>
+      <y>315</y>
+      <w>81</w>
+      <h>108</h>
     </coordinates>
     <panel_attributes>lt=-
 m1=
@@ -1754,10 +1754,10 @@ group=group-0</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>4656</x>
-      <y>384</y>
-      <w>400</w>
-      <h>192</h>
+      <x>2619</x>
+      <y>216</y>
+      <w>225</w>
+      <h>108</h>
     </coordinates>
     <panel_attributes>&lt;&lt;static&gt;&gt;
 DatabaseHelper&lt;T&gt;

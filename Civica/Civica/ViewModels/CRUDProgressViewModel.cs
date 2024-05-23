@@ -13,7 +13,7 @@ using System.Windows;
 
 namespace Civica.ViewModels
 {
-    public class CreateProgressViewModel : ObservableObject, IViewModelChild
+    public class CRUDProgressViewModel : ObservableObject, IViewModelChild
     {
         private ExpandedProjectViewModel epvm;
 
@@ -73,11 +73,31 @@ namespace Civica.ViewModels
             epvm.SelectedProject.SetColor(prog.Status);
         }
 
+        public void UpdateProgress()
+        {
+            Progress p = progressRepo.GetById(x => x.Id == epvm.SelectedProgress.GetId());
+            p.Phase = Helper.Phases.FirstOrDefault(x => x.Value == epvm.SelectedProgress.Phase).Key;
+            p.Status = Helper.Statuses.FirstOrDefault(x => x.Value == epvm.SelectedProgress.Status).Key;
+            p.Description = epvm.SelectedProgress.Description;
+            progressRepo.Update(p);
+
+            epvm.UpdateList();
+
+            epvm.SelectedProgress = epvm.Progresses.FirstOrDefault(x => x.GetId() == p.Id);
+            epvm.SelectedProject.SetColor(p.Status);
+        }
+
+        public void DeleteProgress()
+        {
+            progressRepo.Remove(progressRepo.GetById(x => x.Id == epvm.SelectedProgress.GetId()));
+            epvm.UpdateList();
+        }
+
         public RelayCommand CreateProgressCmd { get; set; } = new RelayCommand
         (
             parameter =>
             {
-                if (parameter is CreateProgressViewModel cpvm)
+                if (parameter is CRUDProgressViewModel cpvm)
                 {
                     cpvm.CreateProgress();
 
@@ -94,7 +114,7 @@ namespace Civica.ViewModels
             {
                 bool succes = false;
 
-                if (parameter is CreateProgressViewModel cpvm)
+                if (parameter is CRUDProgressViewModel cpvm)
                 {
                     succes = true;
                 }
