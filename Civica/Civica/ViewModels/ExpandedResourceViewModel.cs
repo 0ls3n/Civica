@@ -313,7 +313,7 @@ namespace Civica.ViewModels
                 return false;
             });
 
-        public RelayCommand SaveCmd { get; set; } = new RelayCommand(
+        public RelayCommand UpdateCmd { get; set; } = new RelayCommand(
          parameter =>
          {
              if (parameter is ExpandedResourceViewModel ervm)
@@ -554,7 +554,7 @@ namespace Civica.ViewModels
 
         #region Resource Commands
 
-        public RelayCommand UpdateResourceCmd { get; set; } = new RelayCommand(
+        public RelayCommand UpdateResourceViewCmd { get; set; } = new RelayCommand(
            parameter =>
            {
                if (parameter is ExpandedResourceViewModel ervm)
@@ -575,7 +575,7 @@ namespace Civica.ViewModels
                return false;
            });
 
-        public RelayCommand SaveResourceCmd { get; set; } = new RelayCommand(
+        public RelayCommand UpdateResourceCmd { get; set; } = new RelayCommand(
          parameter =>
          {
              if (parameter is ExpandedResourceViewModel ervm)

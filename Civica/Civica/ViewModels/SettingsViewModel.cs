@@ -17,16 +17,7 @@ namespace Civica.ViewModels
     {
         private MainViewModel mvm;
         private IRepository<User> userRepo;
-        private string _windowTitle;
-        public string WindowTitle
-        {
-            get => _windowTitle;
-            set
-            {
-                _windowTitle = value;
-                OnPropertyChanged(nameof(WindowTitle));
-            }
-        }
+        public string WindowTitle { get; } = "Indstillinger";
         private WindowVisibility _createVisibility;
         public WindowVisibility CreateVisibility
         {
@@ -101,8 +92,6 @@ namespace Civica.ViewModels
             cuvm.Init(this);
             cuvm.SetRepo(userRepo);
             UpdateList();
-
-            WindowTitle = "Indstillinger";
 
             CreateVisibility = WindowVisibility.Hidden;
             UpdateVisibility = WindowVisibility.Hidden;

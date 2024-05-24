@@ -21,10 +21,6 @@ namespace Civica.ViewModels
         public CRUDProgressViewModel cpvm { get; set; } = new CRUDProgressViewModel();
 
         private IRepository<Progress> progressRepo;
-        private IRepository<Project> projectRepo;
-        private IRepository<Resource> resourceRepo;
-        private IRepository<Audit> auditRepo;
-        private IRepository<Worktime> worktimeRepo;
         private ObservableCollection<ProgressViewModel> _progresses = new ObservableCollection<ProgressViewModel>();
 
         public ObservableCollection<ProgressViewModel> Progresses
@@ -146,10 +142,6 @@ namespace Civica.ViewModels
         {
             mvm = (o as MainViewModel);
             progressRepo = mvm.GetProgressRepo();
-            auditRepo = mvm.GetAuditRepo();
-            worktimeRepo = mvm.GetWorktimeRepo();
-            resourceRepo = mvm.GetResourceRepo();
-            projectRepo = mvm.GetProjectRepo();
 
             cpvm = new CRUDProgressViewModel();
             cpvm.Init(this);

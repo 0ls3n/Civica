@@ -12,16 +12,7 @@ namespace Civica.ViewModels
     {
         public MainViewModel mvm { get; set; }
 
-        private string _windowTitle;
-        public string WindowTitle
-        {
-            get => _windowTitle;
-            set
-            {
-                _windowTitle = value;
-                OnPropertyChanged(nameof(WindowTitle));
-            }
-        }
+        public string WindowTitle { get; } = "Igangværende";
 
         #region VisibilityProperties
 
@@ -105,7 +96,6 @@ namespace Civica.ViewModels
 
         private IRepository<Project> projectRepo;
         private IRepository<Progress> progressRepo;
-        private IRepository<Resource> resourceRepo;
 
         public void UpdateList()
         {
@@ -145,15 +135,12 @@ namespace Civica.ViewModels
         {
             this.mvm = (o as MainViewModel);
 
-            WindowTitle = "Igangværende";
-
             CreateVisibility = WindowVisibility.Hidden;
             UpdateVisibility = WindowVisibility.Hidden;
             InformationVisibility = WindowVisibility.Visible;
 
             projectRepo = this.mvm.GetProjectRepo();
             progressRepo = this.mvm.GetProgressRepo();
-            resourceRepo = this.mvm.GetResourceRepo();
 
             UpdateList();
         }

@@ -329,7 +329,7 @@ CornerRadius="25">
       Cursor="Hand"
       Height="20"
         Margin="0, 0, 14, 4"
-      Command="{Binding SaveCmd}"
+      Command="{Binding UpdateCmd}"
       CommandParameter="{Binding}"
       ToolTipService.InitialShowDelay="0">
             <Button.ToolTip>
@@ -490,7 +490,7 @@ CornerRadius="25">
                 Margin="0, 0, 2, 5"
             Cursor="Hand"
             Height="20"
-            Command="{Binding UpdateResourceCmd}"
+            Command="{Binding UpdateResourceViewCmd}"
             CommandParameter="{Binding}"
             ToolTipService.InitialShowDelay="0">
             <Button.ToolTip>
@@ -534,7 +534,7 @@ CornerRadius="25">
          Cursor="Hand"
          Height="20"
              Margin="0, 0, 2, 4"
-         Command="{Binding SaveResourceCmd}"
+         Command="{Binding UpdateResourceCmd}"
          CommandParameter="{Binding}"
          ToolTipService.InitialShowDelay="0">
             <Button.ToolTip>
