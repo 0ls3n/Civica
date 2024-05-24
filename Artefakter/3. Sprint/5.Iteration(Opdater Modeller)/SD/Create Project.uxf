@@ -4,8 +4,8 @@
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>530</x>
-      <y>310</y>
+      <x>440</x>
+      <y>290</y>
       <w>180</w>
       <h>30</h>
     </coordinates>
@@ -15,8 +15,8 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>610</x>
-      <y>330</y>
+      <x>520</x>
+      <y>310</y>
       <w>30</w>
       <h>50</h>
     </coordinates>
@@ -26,8 +26,8 @@
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>610</x>
-      <y>360</y>
+      <x>520</x>
+      <y>340</y>
       <w>20</w>
       <h>300</h>
     </coordinates>
@@ -37,31 +37,31 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>460</x>
-      <y>350</y>
-      <w>170</w>
+      <x>440</x>
+      <y>330</y>
+      <w>100</w>
       <h>40</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;-
-CreateProject()</panel_attributes>
-    <additional_attributes>150.0;20.0;10.0;20.0</additional_attributes>
+Create()</panel_attributes>
+    <additional_attributes>80.0;20.0;10.0;20.0</additional_attributes>
   </element>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>750</x>
-      <y>400</y>
-      <w>210</w>
+      <x>640</x>
+      <y>380</y>
+      <w>240</w>
       <h>30</h>
     </coordinates>
-    <panel_attributes>projectRepo: IRepository&lt;T&gt;</panel_attributes>
+    <panel_attributes>projectRepo: IRepository&lt;Project&gt;</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>1390</x>
-      <y>360</y>
+      <x>1300</x>
+      <y>340</y>
       <w>80</w>
       <h>30</h>
     </coordinates>
@@ -71,8 +71,8 @@ CreateProject()</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>840</x>
-      <y>420</y>
+      <x>750</x>
+      <y>400</y>
       <w>30</w>
       <h>50</h>
     </coordinates>
@@ -82,8 +82,8 @@ CreateProject()</panel_attributes>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>840</x>
-      <y>450</y>
+      <x>750</x>
+      <y>430</y>
       <w>20</w>
       <h>40</h>
     </coordinates>
@@ -93,8 +93,8 @@ CreateProject()</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>840</x>
-      <y>480</y>
+      <x>750</x>
+      <y>460</y>
       <w>30</w>
       <h>50</h>
     </coordinates>
@@ -104,8 +104,8 @@ CreateProject()</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>620</x>
-      <y>360</y>
+      <x>530</x>
+      <y>340</y>
       <w>790</w>
       <h>40</h>
     </coordinates>
@@ -116,8 +116,8 @@ CreateProject()</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>620</x>
-      <y>440</y>
+      <x>530</x>
+      <y>420</y>
       <w>240</w>
       <h>40</h>
     </coordinates>
@@ -128,8 +128,8 @@ projectRepo.Add(p)</panel_attributes>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>1210</x>
-      <y>410</y>
+      <x>1010</x>
+      <y>390</y>
       <w>140</w>
       <h>30</h>
     </coordinates>
@@ -139,8 +139,8 @@ projectRepo.Add(p)</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1270</x>
-      <y>430</y>
+      <x>1070</x>
+      <y>410</y>
       <w>30</w>
       <h>50</h>
     </coordinates>
@@ -150,8 +150,8 @@ projectRepo.Add(p)</panel_attributes>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>1270</x>
-      <y>460</y>
+      <x>1070</x>
+      <y>440</y>
       <w>20</w>
       <h>30</h>
     </coordinates>
@@ -161,20 +161,20 @@ projectRepo.Add(p)</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>850</x>
-      <y>450</y>
-      <w>440</w>
+      <x>760</x>
+      <y>430</y>
+      <w>330</w>
       <h>40</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;-
 DatabaseHelper.Add(p)</panel_attributes>
-    <additional_attributes>420.0;20.0;10.0;20.0</additional_attributes>
+    <additional_attributes>310.0;20.0;10.0;20.0</additional_attributes>
   </element>
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>1370</x>
-      <y>410</y>
+      <x>1170</x>
+      <y>390</y>
       <w>140</w>
       <h>70</h>
     </coordinates>
@@ -184,8 +184,8 @@ DatabaseHelper.Add(p)</panel_attributes>
   <element>
     <id>Text</id>
     <coordinates>
-      <x>760</x>
-      <y>290</y>
+      <x>670</x>
+      <y>270</y>
       <w>300</w>
       <h>60</h>
     </coordinates>
@@ -197,8 +197,8 @@ CreateProject</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>610</x>
-      <y>650</y>
+      <x>520</x>
+      <y>630</y>
       <w>30</w>
       <h>60</h>
     </coordinates>
@@ -208,8 +208,8 @@ CreateProject</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1340</x>
-      <y>420</y>
+      <x>1140</x>
+      <y>400</y>
       <w>50</w>
       <h>30</h>
     </coordinates>
@@ -219,8 +219,8 @@ CreateProject</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>620</x>
-      <y>520</y>
+      <x>530</x>
+      <y>500</y>
       <w>450</w>
       <h>50</h>
     </coordinates>
@@ -232,8 +232,8 @@ ResourceExpectedYearlyCost, DateTime.Now)</panel_attributes>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>1050</x>
-      <y>520</y>
+      <x>960</x>
+      <y>500</y>
       <w>90</w>
       <h>30</h>
     </coordinates>
@@ -243,19 +243,19 @@ ResourceExpectedYearlyCost, DateTime.Now)</panel_attributes>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>720</x>
-      <y>570</y>
-      <w>240</w>
+      <x>630</x>
+      <y>550</y>
+      <w>260</w>
       <h>30</h>
     </coordinates>
-    <panel_attributes>resourceRepo: ResourceRepository</panel_attributes>
+    <panel_attributes>resourceRepo: IRepository&lt;Resource&gt;</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>840</x>
-      <y>590</y>
+      <x>750</x>
+      <y>570</y>
       <w>30</w>
       <h>50</h>
     </coordinates>
@@ -265,8 +265,8 @@ ResourceExpectedYearlyCost, DateTime.Now)</panel_attributes>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>840</x>
-      <y>620</y>
+      <x>750</x>
+      <y>600</y>
       <w>20</w>
       <h>40</h>
     </coordinates>
@@ -276,8 +276,8 @@ ResourceExpectedYearlyCost, DateTime.Now)</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>840</x>
-      <y>650</y>
+      <x>750</x>
+      <y>630</y>
       <w>30</w>
       <h>50</h>
     </coordinates>
@@ -287,20 +287,20 @@ ResourceExpectedYearlyCost, DateTime.Now)</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>850</x>
-      <y>620</y>
-      <w>440</w>
+      <x>760</x>
+      <y>600</y>
+      <w>330</w>
       <h>40</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;-
 DatabaseHelper.Add(r)</panel_attributes>
-    <additional_attributes>420.0;20.0;10.0;20.0</additional_attributes>
+    <additional_attributes>310.0;20.0;10.0;20.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>620</x>
-      <y>610</y>
+      <x>530</x>
+      <y>590</y>
       <w>240</w>
       <h>40</h>
     </coordinates>
@@ -311,8 +311,8 @@ resourceRepo.Add(r)</panel_attributes>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>1270</x>
-      <y>630</y>
+      <x>1070</x>
+      <y>610</y>
       <w>20</w>
       <h>30</h>
     </coordinates>
@@ -322,8 +322,8 @@ resourceRepo.Add(r)</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1270</x>
-      <y>650</y>
+      <x>1070</x>
+      <y>630</y>
       <w>30</w>
       <h>60</h>
     </coordinates>
@@ -333,8 +333,8 @@ resourceRepo.Add(r)</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1270</x>
-      <y>480</y>
+      <x>1070</x>
+      <y>460</y>
       <w>30</w>
       <h>170</h>
     </coordinates>

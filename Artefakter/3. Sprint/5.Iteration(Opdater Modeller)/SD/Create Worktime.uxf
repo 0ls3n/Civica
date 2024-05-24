@@ -9,7 +9,7 @@
       <w>273</w>
       <h>39</h>
     </coordinates>
-    <panel_attributes>: ExpandedResourceViewModel</panel_attributes>
+    <panel_attributes>: CRUDResourceViewModel</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -37,24 +37,24 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>234</x>
+      <x>325</x>
       <y>468</y>
-      <w>247</w>
+      <w>156</w>
       <h>52</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;-
-CreateWorktime() </panel_attributes>
-    <additional_attributes>170.0;20.0;10.0;20.0</additional_attributes>
+Create() </panel_attributes>
+    <additional_attributes>100.0;20.0;10.0;20.0</additional_attributes>
   </element>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>611</x>
+      <x>533</x>
       <y>546</y>
-      <w>299</w>
+      <w>338</w>
       <h>39</h>
     </coordinates>
-    <panel_attributes>worktimeRepo: ProjectRepository</panel_attributes>
+    <panel_attributes>worktimeRepo: IRepository&lt;Worktime&gt;</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -71,7 +71,7 @@ CreateWorktime() </panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>754</x>
+      <x>689</x>
       <y>572</y>
       <w>39</w>
       <h>65</h>
@@ -82,7 +82,7 @@ CreateWorktime() </panel_attributes>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>754</x>
+      <x>689</x>
       <y>611</y>
       <w>26</w>
       <h>39</h>
@@ -93,7 +93,7 @@ CreateWorktime() </panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>754</x>
+      <x>689</x>
       <y>637</y>
       <w>39</w>
       <h>65</h>
@@ -119,17 +119,17 @@ WorktimeEstimatedHours, WorktimeInvolvedName, Description, DateTime.Now)</panel_
     <coordinates>
       <x>468</x>
       <y>598</y>
-      <w>312</w>
+      <w>247</w>
       <h>52</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;-
 worktimeRepo.Add(w)</panel_attributes>
-    <additional_attributes>220.0;20.0;10.0;20.0</additional_attributes>
+    <additional_attributes>170.0;20.0;10.0;20.0</additional_attributes>
   </element>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>1053</x>
+      <x>897</x>
       <y>559</y>
       <w>156</w>
       <h>39</h>
@@ -140,7 +140,7 @@ worktimeRepo.Add(w)</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1118</x>
+      <x>962</x>
       <y>585</y>
       <w>39</w>
       <h>65</h>
@@ -151,7 +151,7 @@ worktimeRepo.Add(w)</panel_attributes>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>1118</x>
+      <x>962</x>
       <y>624</y>
       <w>26</w>
       <h>39</h>
@@ -162,19 +162,19 @@ worktimeRepo.Add(w)</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>767</x>
+      <x>702</x>
       <y>611</y>
-      <w>377</w>
+      <w>286</w>
       <h>52</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;-
-w.Id = DatabaseHelper.Add(p)</panel_attributes>
-    <additional_attributes>270.0;20.0;10.0;20.0</additional_attributes>
+DatabaseHelper.Add(w)</panel_attributes>
+    <additional_attributes>200.0;20.0;10.0;20.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1118</x>
+      <x>962</x>
       <y>650</y>
       <w>39</w>
       <h>78</h>
@@ -185,7 +185,7 @@ w.Id = DatabaseHelper.Add(p)</panel_attributes>
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>1235</x>
+      <x>1079</x>
       <y>559</y>
       <w>182</w>
       <h>91</h>
@@ -196,7 +196,7 @@ w.Id = DatabaseHelper.Add(p)</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1196</x>
+      <x>1040</x>
       <y>559</y>
       <w>65</w>
       <h>39</h>

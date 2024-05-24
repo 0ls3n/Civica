@@ -4,8 +4,8 @@
   <element>
     <id>Text</id>
     <coordinates>
-      <x>612</x>
-      <y>360</y>
+      <x>684</x>
+      <y>372</y>
       <w>360</w>
       <h>60</h>
     </coordinates>
@@ -17,8 +17,8 @@ DeleteProgress</panel_attributes>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>252</x>
-      <y>420</y>
+      <x>324</x>
+      <y>432</y>
       <w>228</w>
       <h>36</h>
     </coordinates>
@@ -28,51 +28,7 @@ DeleteProgress</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>360</x>
-      <y>444</y>
-      <w>36</w>
-      <h>60</h>
-    </coordinates>
-    <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;30.0</additional_attributes>
-  </element>
-  <element>
-    <id>UMLGeneric</id>
-    <coordinates>
-      <x>360</x>
-      <y>480</y>
-      <w>24</w>
-      <h>132</h>
-    </coordinates>
-    <panel_attributes/>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>360</x>
-      <y>600</y>
-      <w>36</w>
-      <h>60</h>
-    </coordinates>
-    <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;30.0</additional_attributes>
-  </element>
-  <element>
-    <id>UMLGeneric</id>
-    <coordinates>
-      <x>768</x>
-      <y>432</y>
-      <w>300</w>
-      <h>36</h>
-    </coordinates>
-    <panel_attributes>progressRepo: ProgressRepository</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>912</x>
+      <x>432</x>
       <y>456</y>
       <w>36</w>
       <h>60</h>
@@ -83,8 +39,52 @@ DeleteProgress</panel_attributes>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>912</x>
-      <y>576</y>
+      <x>432</x>
+      <y>492</y>
+      <w>24</w>
+      <h>132</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>432</x>
+      <y>612</y>
+      <w>36</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;30.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>720</x>
+      <y>444</y>
+      <w>300</w>
+      <h>36</h>
+    </coordinates>
+    <panel_attributes>progressRepo: IRepository&lt;Progress&gt;</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>864</x>
+      <y>468</y>
+      <w>36</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;30.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>864</x>
+      <y>588</y>
       <w>24</w>
       <h>36</h>
     </coordinates>
@@ -94,8 +94,8 @@ DeleteProgress</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>912</x>
-      <y>516</y>
+      <x>864</x>
+      <y>528</y>
       <w>36</w>
       <h>84</h>
     </coordinates>
@@ -105,8 +105,8 @@ DeleteProgress</panel_attributes>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>1188</x>
-      <y>492</y>
+      <x>1092</x>
+      <y>504</y>
       <w>156</w>
       <h>36</h>
     </coordinates>
@@ -116,8 +116,8 @@ DeleteProgress</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1248</x>
-      <y>516</y>
+      <x>1152</x>
+      <y>528</y>
       <w>36</w>
       <h>60</h>
     </coordinates>
@@ -127,8 +127,8 @@ DeleteProgress</panel_attributes>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>1248</x>
-      <y>552</y>
+      <x>1152</x>
+      <y>564</y>
       <w>24</w>
       <h>84</h>
     </coordinates>
@@ -138,21 +138,21 @@ DeleteProgress</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>924</x>
-      <y>576</y>
-      <w>348</w>
+      <x>876</x>
+      <y>588</y>
+      <w>300</w>
       <h>60</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;-
-DatabaseHelper.Remove(prog)
+DatabaseHelper.Delete(prog)
 </panel_attributes>
-    <additional_attributes>270.0;20.0;10.0;20.0</additional_attributes>
+    <additional_attributes>230.0;20.0;10.0;20.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1248</x>
-      <y>624</y>
+      <x>1152</x>
+      <y>636</y>
       <w>36</w>
       <h>60</h>
     </coordinates>
@@ -162,8 +162,8 @@ DatabaseHelper.Remove(prog)
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>1368</x>
-      <y>492</y>
+      <x>1272</x>
+      <y>504</y>
       <w>168</w>
       <h>84</h>
     </coordinates>
@@ -173,32 +173,33 @@ DatabaseHelper.Remove(prog)
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>96</x>
-      <y>468</y>
-      <w>288</w>
+      <x>312</x>
+      <y>480</y>
+      <w>144</w>
       <h>48</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;-
-DeleteProgress()</panel_attributes>
-    <additional_attributes>220.0;20.0;10.0;20.0</additional_attributes>
+Delete()</panel_attributes>
+    <additional_attributes>100.0;20.0;10.0;20.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>372</x>
-      <y>480</y>
-      <w>564</w>
-      <h>48</h>
+      <x>444</x>
+      <y>492</y>
+      <w>444</w>
+      <h>60</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;-
-Progress prog = progressRepo.GetById(SelectedProgress.GetId())</panel_attributes>
-    <additional_attributes>450.0;20.0;10.0;20.0</additional_attributes>
+Progress prog = progressRepo.
+GetById(x =&gt; x.Id = epvm.SelectedProgress.GetId())</panel_attributes>
+    <additional_attributes>350.0;20.0;10.0;20.0</additional_attributes>
   </element>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>912</x>
-      <y>492</y>
+      <x>864</x>
+      <y>504</y>
       <w>24</w>
       <h>36</h>
     </coordinates>
@@ -208,8 +209,8 @@ Progress prog = progressRepo.GetById(SelectedProgress.GetId())</panel_attributes
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>912</x>
-      <y>600</y>
+      <x>864</x>
+      <y>612</y>
       <w>36</w>
       <h>60</h>
     </coordinates>
@@ -219,20 +220,20 @@ Progress prog = progressRepo.GetById(SelectedProgress.GetId())</panel_attributes
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>372</x>
-      <y>564</y>
-      <w>564</w>
+      <x>444</x>
+      <y>576</y>
+      <w>444</w>
       <h>48</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;-
 progressRepo.Delete(prog)</panel_attributes>
-    <additional_attributes>450.0;20.0;10.0;20.0</additional_attributes>
+    <additional_attributes>350.0;20.0;10.0;20.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1332</x>
-      <y>492</y>
+      <x>1236</x>
+      <y>504</y>
       <w>60</w>
       <h>36</h>
     </coordinates>
