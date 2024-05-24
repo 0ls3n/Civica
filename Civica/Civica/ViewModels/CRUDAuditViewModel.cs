@@ -45,7 +45,7 @@ namespace Civica.ViewModels
             }
         }
 
-        private string _description;
+        private string _description = "";
         public string Description
         {
             get => _description;

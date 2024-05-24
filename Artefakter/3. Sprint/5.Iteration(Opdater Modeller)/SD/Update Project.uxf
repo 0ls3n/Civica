@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <diagram program="umlet" version="15.1">
-  <zoom_level>10</zoom_level>
+  <zoom_level>9</zoom_level>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>170</x>
-      <y>90</y>
-      <w>160</w>
-      <h>30</h>
+      <x>792</x>
+      <y>1098</y>
+      <w>144</w>
+      <h>27</h>
     </coordinates>
     <panel_attributes>: InProgressViewModel</panel_attributes>
     <additional_attributes/>
@@ -15,10 +15,10 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>240</x>
-      <y>110</y>
-      <w>30</w>
-      <h>60</h>
+      <x>855</x>
+      <y>1116</y>
+      <w>27</w>
+      <h>54</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;40.0</additional_attributes>
@@ -26,10 +26,10 @@
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>240</x>
-      <y>150</y>
-      <w>20</w>
-      <h>40</h>
+      <x>855</x>
+      <y>1152</y>
+      <w>18</w>
+      <h>36</h>
     </coordinates>
     <panel_attributes/>
     <additional_attributes/>
@@ -37,10 +37,10 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>240</x>
-      <y>180</y>
-      <w>30</w>
-      <h>60</h>
+      <x>855</x>
+      <y>1179</y>
+      <w>27</w>
+      <h>54</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;40.0</additional_attributes>
@@ -48,10 +48,10 @@
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>560</x>
-      <y>90</y>
-      <w>210</w>
-      <h>30</h>
+      <x>1143</x>
+      <y>1098</y>
+      <w>189</w>
+      <h>27</h>
     </coordinates>
     <panel_attributes>projectRepo: ProjectRepository</panel_attributes>
     <additional_attributes/>
@@ -59,10 +59,10 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>650</x>
-      <y>110</y>
-      <w>30</w>
-      <h>70</h>
+      <x>1224</x>
+      <y>1116</y>
+      <w>27</w>
+      <h>63</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;50.0</additional_attributes>
@@ -70,10 +70,10 @@
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>650</x>
-      <y>160</y>
-      <w>20</w>
-      <h>120</h>
+      <x>1224</x>
+      <y>1161</y>
+      <w>18</w>
+      <h>108</h>
     </coordinates>
     <panel_attributes/>
     <additional_attributes/>
@@ -81,24 +81,24 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>250</x>
-      <y>150</y>
-      <w>420</w>
-      <h>60</h>
+      <x>864</x>
+      <y>1152</y>
+      <w>378</w>
+      <h>54</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;-
 projectRepo.Update(projectRepo.Get(projectVM.GetId()), 
 projectVM.Name, projectVM.Owner, 
-projectVM.Manager, projectVM.Description);</panel_attributes>
+projectVM.Manager, projectVM.Description)</panel_attributes>
     <additional_attributes>400.0;20.0;10.0;20.0</additional_attributes>
   </element>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>1000</x>
-      <y>180</y>
-      <w>120</w>
-      <h>30</h>
+      <x>1539</x>
+      <y>1179</y>
+      <w>108</w>
+      <h>27</h>
     </coordinates>
     <panel_attributes>_DatabaseHelper_</panel_attributes>
     <additional_attributes/>
@@ -106,10 +106,10 @@ projectVM.Manager, projectVM.Description);</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1050</x>
-      <y>200</y>
-      <w>30</w>
-      <h>70</h>
+      <x>1584</x>
+      <y>1197</y>
+      <w>27</w>
+      <h>63</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;50.0</additional_attributes>
@@ -117,10 +117,10 @@ projectVM.Manager, projectVM.Description);</panel_attributes>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>1050</x>
-      <y>250</y>
-      <w>20</w>
-      <h>40</h>
+      <x>1584</x>
+      <y>1242</y>
+      <w>18</w>
+      <h>36</h>
     </coordinates>
     <panel_attributes/>
     <additional_attributes/>
@@ -128,10 +128,10 @@ projectVM.Manager, projectVM.Description);</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>660</x>
-      <y>250</y>
-      <w>410</w>
-      <h>50</h>
+      <x>1233</x>
+      <y>1242</y>
+      <w>369</w>
+      <h>45</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;-
 DatabaseHelper.Update(p)
@@ -141,10 +141,10 @@ DatabaseHelper.Update(p)
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1050</x>
-      <y>280</y>
-      <w>30</w>
-      <h>60</h>
+      <x>1584</x>
+      <y>1269</y>
+      <w>27</w>
+      <h>54</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;40.0</additional_attributes>
@@ -152,10 +152,10 @@ DatabaseHelper.Update(p)
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>1140</x>
-      <y>170</y>
-      <w>140</w>
-      <h>70</h>
+      <x>1665</x>
+      <y>1170</y>
+      <w>126</w>
+      <h>63</h>
     </coordinates>
     <panel_attributes>Static class</panel_attributes>
     <additional_attributes/>
@@ -163,10 +163,10 @@ DatabaseHelper.Update(p)
   <element>
     <id>Text</id>
     <coordinates>
-      <x>500</x>
-      <y>20</y>
-      <w>220</w>
-      <h>60</h>
+      <x>1089</x>
+      <y>1035</y>
+      <w>198</w>
+      <h>54</h>
     </coordinates>
     <panel_attributes>style=wordwrap
 fontsize=30
@@ -176,27 +176,27 @@ UpdateProject</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>660</x>
-      <y>160</y>
-      <w>320</w>
-      <h>110</h>
+      <x>1233</x>
+      <y>1161</y>
+      <w>288</w>
+      <h>99</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;-
 
-p.Name = name;
-p.Owner = owner;
-p.Manager = manager;
-p.Description = description;
+p.Name = name
+p.Owner = owner
+p.Manager = manager
+p.Description = description
 </panel_attributes>
     <additional_attributes>300.0;20.0;10.0;20.0</additional_attributes>
   </element>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>930</x>
-      <y>110</y>
-      <w>80</w>
-      <h>30</h>
+      <x>1476</x>
+      <y>1116</y>
+      <w>72</w>
+      <h>27</h>
     </coordinates>
     <panel_attributes>p : Project</panel_attributes>
     <additional_attributes/>
@@ -204,10 +204,10 @@ p.Description = description;
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>960</x>
-      <y>130</y>
-      <w>30</w>
-      <h>60</h>
+      <x>1503</x>
+      <y>1134</y>
+      <w>27</w>
+      <h>54</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;40.0</additional_attributes>
@@ -215,10 +215,10 @@ p.Description = description;
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>960</x>
-      <y>170</y>
-      <w>20</w>
-      <h>40</h>
+      <x>1503</x>
+      <y>1170</y>
+      <w>18</w>
+      <h>36</h>
     </coordinates>
     <panel_attributes/>
     <additional_attributes/>
@@ -226,10 +226,10 @@ p.Description = description;
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>650</x>
-      <y>270</y>
-      <w>30</w>
-      <h>60</h>
+      <x>1224</x>
+      <y>1260</y>
+      <w>27</w>
+      <h>54</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;40.0</additional_attributes>
@@ -237,10 +237,10 @@ p.Description = description;
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>960</x>
-      <y>200</y>
-      <w>30</w>
-      <h>60</h>
+      <x>1503</x>
+      <y>1197</y>
+      <w>27</w>
+      <h>54</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;40.0</additional_attributes>
@@ -248,10 +248,10 @@ p.Description = description;
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1110</x>
-      <y>190</y>
-      <w>50</w>
-      <h>30</h>
+      <x>1638</x>
+      <y>1188</y>
+      <w>45</w>
+      <h>27</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
     <additional_attributes>10.0;10.0;30.0;10.0</additional_attributes>
@@ -259,13 +259,321 @@ p.Description = description;
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>20</x>
-      <y>140</y>
-      <w>240</w>
-      <h>40</h>
+      <x>657</x>
+      <y>1143</y>
+      <w>216</w>
+      <h>36</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;-
 UpdateProject(projectVM)</panel_attributes>
     <additional_attributes>220.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>387</x>
+      <y>288</y>
+      <w>189</w>
+      <h>27</h>
+    </coordinates>
+    <panel_attributes>: CRUDProjectViewModel</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>477</x>
+      <y>306</y>
+      <w>27</w>
+      <h>45</h>
+    </coordinates>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;30.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>477</x>
+      <y>333</y>
+      <w>18</w>
+      <h>261</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>315</x>
+      <y>324</y>
+      <w>180</w>
+      <h>36</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;-
+UpdateProject()</panel_attributes>
+    <additional_attributes>180.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>486</x>
+      <y>342</y>
+      <w>369</w>
+      <h>54</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;-
+ProjectViewModel pvm = mvm.epvm.SelectedProject</panel_attributes>
+    <additional_attributes>10.0;40.0;60.0;40.0;60.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Text</id>
+    <coordinates>
+      <x>639</x>
+      <y>234</y>
+      <w>270</w>
+      <h>54</h>
+    </coordinates>
+    <panel_attributes>style=wordwrap
+fontsize=30
+UpdateWorktime</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>486</x>
+      <y>414</y>
+      <w>423</w>
+      <h>36</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;-
+Project p = projectRepo.GetById(x =&gt; x.Id == pvm.GetId());</panel_attributes>
+    <additional_attributes>450.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>792</x>
+      <y>378</y>
+      <w>234</w>
+      <h>27</h>
+    </coordinates>
+    <panel_attributes>projectRepo : IRepository&lt;Project&gt;</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>891</x>
+      <y>396</y>
+      <w>27</w>
+      <h>45</h>
+    </coordinates>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;30.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>891</x>
+      <y>423</y>
+      <w>18</w>
+      <h>27</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>486</x>
+      <y>486</y>
+      <w>315</w>
+      <h>72</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;-
+p.Name = pvm.Name
+p.Owner = pvm.Owner
+p.Manager = pvm.Manager
+p.Description = pvm.Description</panel_attributes>
+    <additional_attributes>330.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>891</x>
+      <y>441</y>
+      <w>27</w>
+      <h>135</h>
+    </coordinates>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;130.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>891</x>
+      <y>558</y>
+      <w>18</w>
+      <h>36</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>486</x>
+      <y>558</y>
+      <w>423</w>
+      <h>36</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;-
+projectRepo.Update(w)</panel_attributes>
+    <additional_attributes>450.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>477</x>
+      <y>585</y>
+      <w>27</w>
+      <h>63</h>
+    </coordinates>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;50.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>900</x>
+      <y>567</y>
+      <w>261</w>
+      <h>36</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;-
+DatabaseHelper&lt;T&gt;.Update(o);</panel_attributes>
+    <additional_attributes>270.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>1098</x>
+      <y>513</y>
+      <w>108</w>
+      <h>27</h>
+    </coordinates>
+    <panel_attributes>_DatabaseHelper_</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1143</x>
+      <y>531</y>
+      <w>27</w>
+      <h>63</h>
+    </coordinates>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;50.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>1143</x>
+      <y>576</y>
+      <w>18</w>
+      <h>36</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1143</x>
+      <y>603</y>
+      <w>27</w>
+      <h>54</h>
+    </coordinates>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;40.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>1224</x>
+      <y>504</y>
+      <w>126</w>
+      <h>63</h>
+    </coordinates>
+    <panel_attributes>Static class</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1197</x>
+      <y>522</y>
+      <w>45</w>
+      <h>27</h>
+    </coordinates>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>10.0;10.0;30.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>756</x>
+      <y>450</y>
+      <w>72</w>
+      <h>27</h>
+    </coordinates>
+    <panel_attributes>p : Project</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>783</x>
+      <y>468</y>
+      <w>27</w>
+      <h>45</h>
+    </coordinates>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;30.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>783</x>
+      <y>495</y>
+      <w>18</w>
+      <h>27</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>783</x>
+      <y>513</y>
+      <w>27</w>
+      <h>45</h>
+    </coordinates>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;30.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>891</x>
+      <y>585</y>
+      <w>27</w>
+      <h>63</h>
+    </coordinates>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;50.0</additional_attributes>
   </element>
 </diagram>

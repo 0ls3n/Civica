@@ -60,7 +60,7 @@ CreateProject()</panel_attributes>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>1130</x>
+      <x>1390</x>
       <y>360</y>
       <w>80</w>
       <h>30</h>
@@ -106,12 +106,12 @@ CreateProject()</panel_attributes>
     <coordinates>
       <x>620</x>
       <y>360</y>
-      <w>530</w>
+      <w>790</w>
       <h>40</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;-
-&lt;&lt;create&gt;&gt;(ProjectName, ProjectOwner, ProjectManager, ProjectDescription)</panel_attributes>
-    <additional_attributes>510.0;20.0;10.0;20.0</additional_attributes>
+&lt;&lt;create&gt;&gt;(mvm.CurrentUser.GetId(), ProjectName, ProjectOwner, ProjectManager, ProjectDescription, DateTime.Now)</panel_attributes>
+    <additional_attributes>770.0;20.0;10.0;20.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
@@ -174,7 +174,7 @@ DatabaseHelper.Add(p)</panel_attributes>
     <id>UMLNote</id>
     <coordinates>
       <x>1370</x>
-      <y>370</y>
+      <y>410</y>
       <w>140</w>
       <h>70</h>
     </coordinates>
@@ -221,17 +221,18 @@ CreateProject</panel_attributes>
     <coordinates>
       <x>620</x>
       <y>520</y>
-      <w>430</w>
-      <h>40</h>
+      <w>450</w>
+      <h>50</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;-
-&lt;&lt;create&gt;&gt;(StartAmount, ExpectedYearlyCost, ProjectId)</panel_attributes>
-    <additional_attributes>410.0;20.0;10.0;20.0</additional_attributes>
+&lt;&lt;create&gt;&gt;(mvm.CurrentUser.GetId(), p.Id, ResourceStartAmount,
+ResourceExpectedYearlyCost, DateTime.Now)</panel_attributes>
+    <additional_attributes>430.0;20.0;10.0;20.0</additional_attributes>
   </element>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>1030</x>
+      <x>1050</x>
       <y>520</y>
       <w>90</w>
       <h>30</h>
