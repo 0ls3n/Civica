@@ -69,7 +69,7 @@ namespace Civica.ViewModels
                    {
                        if (cuvm.userRepo.GetAll().OfType<User>().FirstOrDefault(x => x.FullName.ToLower() == cuvm.FirstName.ToLower() + " " + cuvm.LastName.ToLower()) is null)
                        {
-                           cuvm.Create();
+                           cuvm.CreateUser();
                            cuvm.svm.CreateVisibility = WindowVisibility.Hidden;
                            cuvm.svm.InformationVisibility = WindowVisibility.Visible;
                            cuvm.svm.UpdateList();
@@ -110,7 +110,7 @@ namespace Civica.ViewModels
         {
             svm = (o as SettingsViewModel);
         }
-        public void Create()
+        public void CreateUser()
         {
             User u = new User(FirstName, LastName, int.Parse(Password));
             userRepo.Add(u);
@@ -119,7 +119,7 @@ namespace Civica.ViewModels
             LastName = "";
             Password = "";
         }
-        public void Update()
+        public void UpdateUser()
         {
             UserViewModel user = svm.SelectedUser;
 
@@ -131,7 +131,7 @@ namespace Civica.ViewModels
             userRepo.Update(u);
         }
 
-        public void Delete()
+        public void DeleteUser()
         {
             userRepo.Delete(userRepo.GetById(x => x.Id == svm.SelectedUser.GetId()));
             svm.UpdateList();

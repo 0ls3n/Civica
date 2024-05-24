@@ -324,7 +324,7 @@ namespace Civica.ViewModels
                      ervm.AuditDetailsVisibility = WindowVisibility.Hidden;
                      ervm.InformationPlaceholderVisibility = WindowVisibility.Visible;
 
-                     ervm.cavm.Update();
+                     ervm.cavm.UpdateAudit();
                  }
                  else
                  {
@@ -332,7 +332,7 @@ namespace Civica.ViewModels
                      ervm.WorktimeDetailsVisibility = WindowVisibility.Hidden;
                      ervm.InformationPlaceholderVisibility = WindowVisibility.Visible;
 
-                     ervm.cwvm.Update();
+                     ervm.cwvm.UpdateWorktime();
                  }
              }
          },
@@ -401,7 +401,7 @@ namespace Civica.ViewModels
                   {
                       if (ervm.AuditListVisibility == WindowVisibility.Visible)
                       {
-                          ervm.cavm.Delete();
+                          ervm.cavm.DeleteAudit();
 
                           ervm.UpdateAuditVisibility = WindowVisibility.Hidden;
                           ervm.AuditDetailsVisibility = WindowVisibility.Hidden;
@@ -410,7 +410,7 @@ namespace Civica.ViewModels
                       }
                       else
                       {
-                          ervm.cwvm.Delete();
+                          ervm.cwvm.DeleteWorktime();
 
                           ervm.UpdateWorktimeVisibility = WindowVisibility.Hidden;
                           ervm.WorktimeDetailsVisibility = WindowVisibility.Hidden;
@@ -481,7 +481,7 @@ namespace Civica.ViewModels
              {
                  if (ervm.AuditListVisibility == WindowVisibility.Visible)
                  {
-                     ervm.cavm.Create();
+                     ervm.cavm.CreateAudit();
 
                      ervm.UpdateAuditVisibility = WindowVisibility.Hidden;
                      ervm.AuditDetailsVisibility = WindowVisibility.Hidden;
@@ -495,7 +495,7 @@ namespace Civica.ViewModels
                          MessageBox.Show("Der skal indtastes en afdeling eller et navn.");
                          return;
                      }
-                     ervm.cwvm.Create();
+                     ervm.cwvm.CreateWorktime();
 
                      ervm.UpdateWorktimeVisibility = WindowVisibility.Hidden;
                      ervm.WorktimeDetailsVisibility = WindowVisibility.Hidden;

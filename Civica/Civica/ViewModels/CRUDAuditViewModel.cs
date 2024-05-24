@@ -63,7 +63,7 @@ namespace Civica.ViewModels
             auditRepo = ervm.mvm.GetAuditRepo();
         }
 
-        public void Create()
+        public void CreateAudit()
         {
             Audit a = new Audit(ervm.mvm.CurrentUser.GetId(), ervm.SelectedResource.GetId(), Amount.IsNullOrEmpty() ? 0 : decimal.Parse(Amount), Year, Description, DateTime.Now);
 
@@ -77,7 +77,7 @@ namespace Civica.ViewModels
             Description = "";
         }
 
-        public void Update()
+        public void UpdateAudit()
         {
             AuditViewModel avm = ervm.SelectedAudit;
             string temp = string.Format("{0:#,0}", double.Parse(avm.Amount));
@@ -98,7 +98,7 @@ namespace Civica.ViewModels
             ervm.SelectedAudit = avm;
         }
 
-        public void Delete()
+        public void DeleteAudit()
         {
             AuditViewModel avm = ervm.SelectedAudit;
 
