@@ -63,7 +63,7 @@ namespace Civica.ViewModels
             progressRepo = epvm.mvm.GetProgressRepo();
         }
 
-        public void Create()
+        public void CreateProgress()
         {
             Progress prog = new Progress(epvm.mvm.CurrentUser.GetId(), epvm.SelectedProject.GetId(), Phase, Status, Description, DateTime.Now);
 
@@ -74,7 +74,7 @@ namespace Civica.ViewModels
             Description = "";
         }
 
-        public void Update()
+        public void UpdateProgress()
         {
             Progress p = progressRepo.GetById(x => x.Id == epvm.SelectedProgress.GetId());
             p.Phase = Helper.Phases.FirstOrDefault(x => x.Value == epvm.SelectedProgress.Phase).Key;
@@ -88,7 +88,7 @@ namespace Civica.ViewModels
             epvm.SelectedProject.SetColor(p.Status);
         }
 
-        public void Delete()
+        public void DeleteProgress()
         {
             progressRepo.Delete(progressRepo.GetById(x => x.Id == epvm.SelectedProgress.GetId()));
             epvm.UpdateList();
@@ -100,7 +100,7 @@ namespace Civica.ViewModels
             {
                 if (parameter is CRUDProgressViewModel cpvm)
                 {
-                    cpvm.Create();
+                    cpvm.CreateProgress();
 
                     cpvm.epvm.UpdateList();
 

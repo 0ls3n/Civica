@@ -62,7 +62,7 @@ namespace Civica.ViewModels
             worktimeRepo = ervm.mvm.GetWorktimeRepo();
         }
 
-        public void Create()
+        public void CreateWorktime()
         {
             Worktime w = new Worktime(ervm.mvm.CurrentUser.GetId(), ervm.SelectedResource.GetId(), EstimatedHours.IsNullOrEmpty() ? 0 : int.Parse(EstimatedHours), InvolvedName, Description, DateTime.Now);
 
@@ -76,7 +76,7 @@ namespace Civica.ViewModels
             Description = "";
         }
 
-        public void Update()
+        public void UpdateWorktime()
         {
             WorktimeViewModel wvm = ervm.SelectedWorktime;
 
@@ -96,7 +96,7 @@ namespace Civica.ViewModels
             ervm.SelectedWorktime = wvm;
         }
 
-        public void Delete()
+        public void DeleteWorktime()
         {
             WorktimeViewModel wvm = ervm.SelectedWorktime;
 

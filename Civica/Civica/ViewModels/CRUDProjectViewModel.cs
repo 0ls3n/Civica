@@ -112,7 +112,7 @@ namespace Civica.ViewModels
             progressRepo = mvm.GetProgressRepo();
         }
 
-        public void Create()
+        public void CreateProject()
         {
             Project p = new Project(mvm.CurrentUser.GetId(), ProjectName, ProjectOwner, ProjectManager, ProjectDescription, DateTime.Now);
             
@@ -131,7 +131,7 @@ namespace Civica.ViewModels
             ResourceExpectedYearlyCost = "";
         }
 
-        public void Delete()
+        public void DeleteProject()
         {
             int pID = mvm.epvm.SelectedProject.GetId();
             int rID = resourceRepo.GetById(x => x.RefId == pID).Id;
@@ -144,7 +144,7 @@ namespace Civica.ViewModels
             mvm.epvm.SelectedProject = null;
         }
 
-        public void Update()
+        public void UpdateProject()
         {
             ProjectViewModel pvm = mvm.epvm.SelectedProject;
 
@@ -165,7 +165,7 @@ namespace Civica.ViewModels
             {
                 if (parameter is CRUDProjectViewModel cpvm)
                 {
-                    cpvm.Create();
+                    cpvm.CreateProject();
                     cpvm.mvm.ipvm.CreateVisibility = WindowVisibility.Hidden;
                     cpvm.mvm.ipvm.InformationVisibility = WindowVisibility.Visible;
                 }
