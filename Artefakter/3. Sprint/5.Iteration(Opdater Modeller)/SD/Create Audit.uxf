@@ -48,14 +48,14 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>570</x>
+      <x>550</x>
       <y>370</y>
-      <w>150</w>
+      <w>170</w>
       <h>40</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;-
-Create() </panel_attributes>
-    <additional_attributes>130.0;20.0;10.0;20.0</additional_attributes>
+CreateAudit() </panel_attributes>
+    <additional_attributes>150.0;20.0;10.0;20.0</additional_attributes>
   </element>
   <element>
     <id>UMLGeneric</id>

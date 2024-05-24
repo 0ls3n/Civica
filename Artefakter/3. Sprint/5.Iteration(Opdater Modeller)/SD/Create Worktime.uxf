@@ -37,14 +37,14 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>325</x>
+      <x>234</x>
       <y>468</y>
-      <w>156</w>
+      <w>247</w>
       <h>52</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;-
-Create() </panel_attributes>
-    <additional_attributes>100.0;20.0;10.0;20.0</additional_attributes>
+CreateWorktime() </panel_attributes>
+    <additional_attributes>170.0;20.0;10.0;20.0</additional_attributes>
   </element>
   <element>
     <id>UMLGeneric</id>

@@ -255,9 +255,9 @@ ICommand</panel_attributes>
 + CreateProjectCmd : RelayCommand
 -
 + Init(o : ObservableObject)
-+ Create()
-+ Delete()
-+ Update()
++ CreateProject()
++ DeleteProject()
++ UpdateProject()
 </panel_attributes>
     <additional_attributes/>
   </element>
@@ -306,9 +306,9 @@ ICommand</panel_attributes>
 + CreateProgressCmd : RelayCommand
 -
 + Init(o : ObservableObject)
-+ Create()
-+ Update()
-+ Delete()
++ CreateProgress()
++ UpdateProgress()
++ DeleteProgress()
 </panel_attributes>
     <additional_attributes/>
   </element>
@@ -427,9 +427,9 @@ Hidden</panel_attributes>
 -
 + Init(o : ObservableObject)
 + SetRepo(userRepo : IRepository&lt;User&gt;)
-+ Create()
-+ Update()
-+ Delete()
++ CreateWorktime()
++ UpdateWorktime()
++ DeleteWorktime()
 </panel_attributes>
     <additional_attributes/>
   </element>
@@ -955,9 +955,9 @@ m2=
 + Description : string
 -
 + Init(o : ObservableObject)
-+ Create()
-+ Update()
-+ Delete()
++ CreateWorktime()
++ UpdateWorktime()
++ DeleteWorktime()
 </panel_attributes>
     <additional_attributes/>
   </element>
@@ -978,9 +978,9 @@ m2=
 + Description : string
 -
 + Init(o : ObservableObject)
-+ Create()
-+ Update()
-+ Delete()
++ CreateWorktime()
++ UpdateWorktime()
++ DeleteWorktime()
 </panel_attributes>
     <additional_attributes/>
   </element>
