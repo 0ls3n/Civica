@@ -34,13 +34,16 @@ namespace Civica.Models
 
                 if (type == typeof(Project))
                 {
-                    SqlCommand projectCmd = new SqlCommand("SELECT UserId, ProjectId, ProjectName, OwnerName, ManagerName, Description, CreatedDate FROM PROJECTS", con);
+                    SqlCommand projectCmd = new SqlCommand("SELECT UserId, ProjectId, ProjectName, " +
+                        "OwnerName, ManagerName, Description, CreatedDate FROM PROJECTS", con);
                     using (SqlDataReader reader = projectCmd.ExecuteReader())
                     {
                         while (reader.Read())
                         {
-                            int userId = reader["UserId"] != DBNull.Value ? Convert.ToInt32(reader["UserId"]) : 0;
-                            DateTime createdDate = reader["CreatedDate"] != DBNull.Value ? Convert.ToDateTime(reader["CreatedDate"]) : new DateTime(default);
+                            int userId = reader["UserId"] != DBNull.Value 
+                                ? Convert.ToInt32(reader["UserId"]) : 0;
+                            DateTime createdDate = reader["CreatedDate"] != DBNull.Value 
+                                ? Convert.ToDateTime(reader["CreatedDate"]) : new DateTime(default);
                             int id = Convert.ToInt32(reader["ProjectId"]);
                             string name = Convert.ToString(reader["ProjectName"]);
                             string owner = Convert.ToString(reader["OwnerName"]);
@@ -173,79 +176,81 @@ namespace Civica.Models
         #endregion
         #region Add
 
-        public static void Add(T o)
+public static void Add(T o)
+{
+    using (SqlConnection con = new SqlConnection(connectionString))
+    {
+        con.Open();
+        DomainModel d = (o as DomainModel);
+        SqlCommand cmd = null;
+        if (d is Project p)
         {
-            using (SqlConnection con = new SqlConnection(connectionString))
+            cmd = new SqlCommand("INSERT INTO PROJECTS " +
+                "(UserId, ProjectName, OwnerName, ManagerName, Description, CreatedDate)" +
+                "VALUES (@UID, @PN, @ON, @MN, @DESC, @CD) SELECT @@IDENTITY ", con);
+            cmd.Parameters.Add("@PN", SqlDbType.NVarChar).Value = p.Name;
+            cmd.Parameters.Add("@ON", SqlDbType.NVarChar).Value = p.Owner;
+            cmd.Parameters.Add("@MN", SqlDbType.NVarChar).Value = p.Manager;
+            cmd.Parameters.Add("@DESC", SqlDbType.Text).Value = p.Description;
+        }
+        else if (d is Progress prog)
+        {
+            cmd = new SqlCommand("INSERT INTO PROGRESSES (UserId, Phase, Status, Description, ProjectId, CreatedDate)" +
+                                                                    "VALUES (@UID, @PH, @ST, @DESC, @RID, @CD) SELECT @@IDENTITY ", con);
+            cmd.Parameters.Add("@PH", SqlDbType.NVarChar).Value = prog.Phase;
+            cmd.Parameters.Add("@ST", SqlDbType.NVarChar).Value = prog.Status;
+            cmd.Parameters.Add("@DESC", SqlDbType.Text).Value = prog.Description;
+        }
+        else if (d is Resource r)
+        {
+            cmd = new SqlCommand("INSERT INTO RESOURCES (UserId, StartAmount, ExpectedYearlyCost, ProjectId, CreatedDate)" +
+                                                                    "VALUES (@UID, @SA, @EYC, @RID, @CD) SELECT @@IDENTITY ", con);
+            cmd.Parameters.Add("@SA", SqlDbType.Decimal).Value = r.StartAmount;
+            cmd.Parameters.Add("@EYC", SqlDbType.Decimal).Value = r.ExpectedYearlyCost;
+        }
+        else if (d is Audit a)
+        {
+            cmd = new SqlCommand("INSERT INTO AUDITS (UserId, Amount, Year, ResourceId, Description, CreatedDate)" +
+                                                                    "VALUES (@UID, @AM, @YE, @RID, @DESC, @CD) SELECT @@IDENTITY ", con);
+            cmd.Parameters.Add("@AM", SqlDbType.Decimal).Value = a.Amount;
+            cmd.Parameters.Add("@DESC", SqlDbType.Text).Value = a.Description;
+            cmd.Parameters.Add("@YE", SqlDbType.Int).Value = a.Year;
+        }
+        else if(d is Worktime w)
             {
-                con.Open();
-                DomainModel d = (o as DomainModel);
-                SqlCommand cmd = null;
-                if (d is Project p)
-                {
-                    cmd = new SqlCommand("INSERT INTO PROJECTS (UserId, ProjectName, OwnerName, ManagerName, Description, CreatedDate)" +
-                                                                         "VALUES (@UID, @PN, @ON, @MN, @DESC, @CD) SELECT @@IDENTITY ", con);
-                    cmd.Parameters.Add("@PN", SqlDbType.NVarChar).Value = p.Name;
-                    cmd.Parameters.Add("@ON", SqlDbType.NVarChar).Value = p.Owner;
-                    cmd.Parameters.Add("@MN", SqlDbType.NVarChar).Value = p.Manager;
-                    cmd.Parameters.Add("@DESC", SqlDbType.Text).Value = p.Description;
-                }
-                else if (d is Progress prog)
-                {
-                    cmd = new SqlCommand("INSERT INTO PROGRESSES (UserId, Phase, Status, Description, ProjectId, CreatedDate)" +
-                                                                         "VALUES (@UID, @PH, @ST, @DESC, @RID, @CD) SELECT @@IDENTITY ", con);
-                    cmd.Parameters.Add("@PH", SqlDbType.NVarChar).Value = prog.Phase;
-                    cmd.Parameters.Add("@ST", SqlDbType.NVarChar).Value = prog.Status;
-                    cmd.Parameters.Add("@DESC", SqlDbType.Text).Value = prog.Description;
-                }
-                else if (d is Resource r)
-                {
-                    cmd = new SqlCommand("INSERT INTO RESOURCES (UserId, StartAmount, ExpectedYearlyCost, ProjectId, CreatedDate)" +
-                                                                         "VALUES (@UID, @SA, @EYC, @RID, @CD) SELECT @@IDENTITY ", con);
-                    cmd.Parameters.Add("@SA", SqlDbType.Decimal).Value = r.StartAmount;
-                    cmd.Parameters.Add("@EYC", SqlDbType.Decimal).Value = r.ExpectedYearlyCost;
-                }
-                else if (d is Audit a)
-                {
-                    cmd = new SqlCommand("INSERT INTO AUDITS (UserId, Amount, Year, ResourceId, Description, CreatedDate)" +
-                                                                         "VALUES (@UID, @AM, @YE, @RID, @DESC, @CD) SELECT @@IDENTITY ", con);
-                    cmd.Parameters.Add("@AM", SqlDbType.Decimal).Value = a.Amount;
-                    cmd.Parameters.Add("@DESC", SqlDbType.Text).Value = a.Description;
-                    cmd.Parameters.Add("@YE", SqlDbType.Int).Value = a.Year;
-                }
-                else if(d is Worktime w)
-                    {
-                    cmd = new SqlCommand("INSERT INTO WORKTIMES (UserId, EstimatedHours, SpentHours, InvolvedName, ResourceId, Description, CreatedDate)" +
-                                                                       "VALUES (@UID, @TI, @SH, @IN, @RID, @DESC, @CD) SELECT @@IDENTITY ", con);
-                    cmd.Parameters.Add("@TI", SqlDbType.Int).Value = w.EstimatedHours;
-                    cmd.Parameters.Add("@SH", SqlDbType.Int).Value = w.SpentHours;
-                    cmd.Parameters.Add("@IN", SqlDbType.NVarChar).Value = w.InvolvedName;
-                    cmd.Parameters.Add("@DESC", SqlDbType.Text).Value = w.Description;
-                }
-                else if (d is User u)
-                {
-                    cmd = new SqlCommand("INSERT INTO USERS (FirstName, LastName, Password)" + 
-                                         "VALUES (@FN, @LN, @PW) SELECT @@IDENTITY", con);
-                    cmd.Parameters.Add("@FN", SqlDbType.NVarChar).Value = u.FirstName;
-                    cmd.Parameters.Add("@LN", SqlDbType.NVarChar).Value = u.LastName;
-                    cmd.Parameters.Add("@PW", SqlDbType.Int).Value = u.Password;
+            cmd = new SqlCommand("INSERT INTO WORKTIMES (UserId, EstimatedHours, SpentHours, InvolvedName, ResourceId, Description, CreatedDate)" +
+                                                                "VALUES (@UID, @TI, @SH, @IN, @RID, @DESC, @CD) SELECT @@IDENTITY ", con);
+            cmd.Parameters.Add("@TI", SqlDbType.Int).Value = w.EstimatedHours;
+            cmd.Parameters.Add("@SH", SqlDbType.Int).Value = w.SpentHours;
+            cmd.Parameters.Add("@IN", SqlDbType.NVarChar).Value = w.InvolvedName;
+            cmd.Parameters.Add("@DESC", SqlDbType.Text).Value = w.Description;
+        }
+        else if (d is User u)
+        {
+            cmd = new SqlCommand("INSERT INTO USERS (FirstName, LastName, Password)" + 
+                                    "VALUES (@FN, @LN, @PW) SELECT @@IDENTITY", con);
+            cmd.Parameters.Add("@FN", SqlDbType.NVarChar).Value = u.FirstName;
+            cmd.Parameters.Add("@LN", SqlDbType.NVarChar).Value = u.LastName;
+            cmd.Parameters.Add("@PW", SqlDbType.Int).Value = u.Password;
 
-                }
-                else
-                {
-                    throw new ArgumentNullException($"{o} er ikke implementeret i DatabaseHelper!");
-                }
-                if (d is not User)
-                {
-                    cmd.Parameters.Add("@UID", SqlDbType.Int).Value = d.UserId;
-                    cmd.Parameters.Add("@CD", SqlDbType.DateTime2).Value = d.CreatedDate;
-                    if (d is not Project)
-                    {
-                        cmd.Parameters.Add("@RID", SqlDbType.Int).Value = d.RefId;
-                    }
-                }
-                d.Id = Convert.ToInt32(cmd.ExecuteScalar());
+        }
+        else
+        {
+            throw new NotImplementedException(
+                $"{o.ToString()} er ikke implementeret i DatabaseHelper!");
+        }
+        if (d is not User)
+        {
+            cmd.Parameters.Add("@UID", SqlDbType.Int).Value = d.UserId;
+            cmd.Parameters.Add("@CD", SqlDbType.DateTime2).Value = d.CreatedDate;
+            if (d is not Project)
+            {
+                cmd.Parameters.Add("@RID", SqlDbType.Int).Value = d.RefId;
             }
         }
+        d.Id = Convert.ToInt32(cmd.ExecuteScalar());
+    }
+}
         #endregion
         #region Update
         public static void Update(T o)

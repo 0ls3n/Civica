@@ -10,7 +10,8 @@ namespace Civica.Models
 {
     public class Repository<T> : IRepository<T>
     {
-        private List<DomainModel> _list = DatabaseHelper<DomainModel>.Initialize(typeof(T));
+        private List<DomainModel> _list = DatabaseHelper<DomainModel>
+                                          .Initialize(typeof(T));
 
         public void Add(T o)
         {
@@ -20,17 +21,15 @@ namespace Civica.Models
                 _list.Add(d);
             }
         }
-
         public List<DomainModel> GetAll() => _list;
-
-        public List<T> GetListById(Predicate<DomainModel> predicate) => _list.Where(item => predicate(item)).OfType<T>().ToList();
-        public T GetById(Predicate<DomainModel> predicate) => _list.Where(item => predicate(item)).OfType<T>().FirstOrDefault();
-
+        public List<T> GetListById(Predicate<DomainModel> predicate) => 
+               _list.Where(item => predicate(item)).OfType<T>().ToList();
+        public T GetById(Predicate<DomainModel> predicate) => 
+               _list.Where(item => predicate(item)).OfType<T>().FirstOrDefault();
         public void Update(T o)
         {
             DatabaseHelper<T>.Update(o);
         }
-
         public void Delete(T o)
         {
             DatabaseHelper<T>.Delete(o);

@@ -46,7 +46,7 @@ namespace UnitTest
         }
 
         [TestMethod]
-        public void Remove_SingleProject_RemoveFromDatabase()
+        public void Delete_SingleProject_DeleteFromDatabase()
         {
             projectRepo.Add(p1); // Act
 
@@ -97,7 +97,7 @@ namespace UnitTest
         }
 
         [TestMethod]
-        public void Remove_SingleUser_RemovedFromDatabase()
+        public void Delete_SingleUser_DeletedFromDatabase()
         {
             userRepo.Add(u1);
 
