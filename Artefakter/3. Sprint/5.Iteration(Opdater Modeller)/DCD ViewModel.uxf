@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<diagram program="umlet" version="15.1">
+<diagram program="umlet" version="15.0.0">
   <help_text>// Uncomment the following line to change the fontsize and font:
 fontsize=10
 // fontfamily=SansSerif //possible: SansSerif,Serif,Monospaced
@@ -24,14 +24,14 @@ fontsize=10
 
 
 // This text will be stored with each diagram;  use it for notes.</help_text>
-  <zoom_level>6</zoom_level>
+  <zoom_level>10</zoom_level>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>774</x>
-      <y>126</y>
-      <w>132</w>
-      <h>306</h>
+      <x>550</x>
+      <y>40</y>
+      <w>220</w>
+      <h>510</h>
     </coordinates>
     <panel_attributes>
 -
@@ -77,10 +77,10 @@ layer=-1</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>924</x>
-      <y>444</y>
-      <w>84</w>
-      <h>96</h>
+      <x>800</x>
+      <y>570</y>
+      <w>140</w>
+      <h>160</h>
     </coordinates>
     <panel_attributes>RelayCommand
 -
@@ -97,10 +97,10 @@ style=wordwrap
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>894</x>
-      <y>654</y>
-      <w>96</w>
-      <h>96</h>
+      <x>750</x>
+      <y>920</y>
+      <w>160</w>
+      <h>160</h>
     </coordinates>
     <panel_attributes>ProgressViewModel
 --
@@ -120,10 +120,10 @@ style=wordwrap
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>810</x>
-      <y>696</y>
-      <w>78</w>
-      <h>66</h>
+      <x>610</x>
+      <y>990</y>
+      <w>130</w>
+      <h>110</h>
     </coordinates>
     <panel_attributes>UserViewModel
 --
@@ -139,10 +139,10 @@ style=wordwrap
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>810</x>
-      <y>618</y>
-      <w>78</w>
-      <h>72</h>
+      <x>610</x>
+      <y>860</y>
+      <w>130</w>
+      <h>120</h>
     </coordinates>
     <panel_attributes>AuditViewModel
 --
@@ -159,10 +159,10 @@ style=wordwrap
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>900</x>
-      <y>564</y>
-      <w>90</w>
-      <h>84</h>
+      <x>760</x>
+      <y>770</y>
+      <w>150</w>
+      <h>140</h>
     </coordinates>
     <panel_attributes>ProjectViewModel
 --
@@ -181,10 +181,10 @@ style=wordwrap
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>930</x>
-      <y>162</y>
-      <w>72</w>
-      <h>78</h>
+      <x>810</x>
+      <y>100</y>
+      <w>120</w>
+      <h>130</h>
     </coordinates>
     <panel_attributes>&lt;&lt;abstract&gt;&gt;
 ObservableObject
@@ -198,10 +198,10 @@ style=wordwrap
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>930</x>
-      <y>126</y>
-      <w>72</w>
-      <h>24</h>
+      <x>810</x>
+      <y>40</y>
+      <w>120</w>
+      <h>40</h>
     </coordinates>
     <panel_attributes>&lt;&lt;interface&gt;&gt;
 INotifyPropertyChanged</panel_attributes>
@@ -210,10 +210,10 @@ INotifyPropertyChanged</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>924</x>
-      <y>408</y>
-      <w>42</w>
-      <h>24</h>
+      <x>800</x>
+      <y>510</y>
+      <w>70</w>
+      <h>40</h>
     </coordinates>
     <panel_attributes>&lt;&lt;interface&gt;&gt;
 ICommand</panel_attributes>
@@ -222,10 +222,10 @@ ICommand</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>942</x>
-      <y>426</y>
-      <w>18</w>
-      <h>30</h>
+      <x>830</x>
+      <y>540</y>
+      <w>30</w>
+      <h>50</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;.</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;30.0</additional_attributes>
@@ -233,10 +233,10 @@ ICommand</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>612</x>
-      <y>264</y>
-      <w>144</w>
-      <h>144</h>
+      <x>280</x>
+      <y>270</y>
+      <w>240</w>
+      <h>240</h>
     </coordinates>
     <panel_attributes>CRUDProjectViewModel
 -
@@ -264,10 +264,10 @@ ICommand</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>612</x>
-      <y>144</y>
-      <w>144</w>
-      <h>114</h>
+      <x>280</x>
+      <y>70</y>
+      <w>240</w>
+      <h>190</h>
     </coordinates>
     <panel_attributes>InProgressViewModel
 -
@@ -291,10 +291,10 @@ ICommand</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>612</x>
-      <y>414</y>
-      <w>144</w>
-      <h>90</h>
+      <x>280</x>
+      <y>520</y>
+      <w>240</w>
+      <h>150</h>
     </coordinates>
     <panel_attributes>CRUDProgresViewModel
 -
@@ -315,10 +315,10 @@ ICommand</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>930</x>
-      <y>252</y>
-      <w>72</w>
-      <h>30</h>
+      <x>810</x>
+      <y>250</y>
+      <w>120</w>
+      <h>50</h>
     </coordinates>
     <panel_attributes>&lt;&lt;interface&gt;&gt;
 IViewModelChild
@@ -329,15 +329,15 @@ Init(o : ObservableObject)</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>786</x>
-      <y>462</y>
-      <w>108</w>
-      <h>90</h>
+      <x>570</x>
+      <y>600</y>
+      <w>180</w>
+      <h>150</h>
     </coordinates>
     <panel_attributes>WorktimeViewModel
 --
 - worktime : Worktime
-+ EstimatedWorktime : string
++ EstimatedHours : string
 + InvolvedName : string
 + Description : string
 + SpentHours : string
@@ -352,10 +352,10 @@ Init(o : ObservableObject)</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>780</x>
-      <y>444</y>
-      <w>120</w>
-      <h>12</h>
+      <x>560</x>
+      <y>570</y>
+      <w>200</w>
+      <h>20</h>
     </coordinates>
     <panel_attributes>
 lw=2.5
@@ -365,10 +365,10 @@ fg=Orange</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>456</x>
-      <y>126</y>
-      <w>306</w>
-      <h>12</h>
+      <x>20</x>
+      <y>40</y>
+      <w>510</w>
+      <h>20</h>
     </coordinates>
     <panel_attributes>
 lw=2.5
@@ -378,10 +378,10 @@ fg=blue</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>924</x>
-      <y>360</y>
-      <w>60</w>
-      <h>36</h>
+      <x>800</x>
+      <y>430</y>
+      <w>100</w>
+      <h>60</h>
     </coordinates>
     <panel_attributes>&lt;&lt;enumeration&gt;&gt;
 WindowVisibility
@@ -393,10 +393,10 @@ Hidden</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>786</x>
-      <y>558</y>
-      <w>108</w>
-      <h>54</h>
+      <x>570</x>
+      <y>760</y>
+      <w>180</w>
+      <h>90</h>
     </coordinates>
     <panel_attributes>ResourceViewModel
 --
@@ -411,10 +411,10 @@ Hidden</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>612</x>
-      <y>762</y>
-      <w>144</w>
-      <h>102</h>
+      <x>280</x>
+      <y>1100</y>
+      <w>240</w>
+      <h>170</h>
     </coordinates>
     <panel_attributes>CRUDUserViewModel
 -
@@ -436,10 +436,10 @@ Hidden</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>612</x>
-      <y>510</y>
-      <w>144</w>
-      <h>156</h>
+      <x>280</x>
+      <y>680</y>
+      <w>240</w>
+      <h>260</h>
     </coordinates>
     <panel_attributes>SettingsViewModel
 -
@@ -468,10 +468,10 @@ Hidden</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>450</x>
-      <y>108</y>
-      <w>462</w>
-      <h>12</h>
+      <x>10</x>
+      <y>10</y>
+      <w>770</w>
+      <h>20</h>
     </coordinates>
     <panel_attributes>
 layer=-1
@@ -482,10 +482,10 @@ fg=cyan</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>924</x>
-      <y>108</y>
-      <w>84</w>
-      <h>180</h>
+      <x>800</x>
+      <y>10</y>
+      <w>140</w>
+      <h>300</h>
     </coordinates>
     <panel_attributes>GVMR
 --</panel_attributes>
@@ -494,10 +494,10 @@ fg=cyan</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>960</x>
-      <y>144</y>
-      <w>18</w>
-      <h>30</h>
+      <x>860</x>
+      <y>70</y>
+      <w>30</w>
+      <h>50</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;.</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;30.0</additional_attributes>
@@ -505,10 +505,10 @@ fg=cyan</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>960</x>
-      <y>234</y>
-      <w>18</w>
-      <h>30</h>
+      <x>860</x>
+      <y>220</y>
+      <w>30</w>
+      <h>50</h>
     </coordinates>
     <panel_attributes>lt=-
 m1=
@@ -519,10 +519,10 @@ m2=
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>924</x>
-      <y>294</y>
-      <w>84</w>
-      <h>54</h>
+      <x>800</x>
+      <y>320</y>
+      <w>140</w>
+      <h>90</h>
     </coordinates>
     <panel_attributes>Helper
 --
@@ -535,10 +535,10 @@ style=wordwrap
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>462</x>
-      <y>708</y>
-      <w>144</w>
-      <h>78</h>
+      <x>30</x>
+      <y>1010</y>
+      <w>240</w>
+      <h>130</h>
     </coordinates>
     <panel_attributes>ArchiveViewModel
 --
@@ -556,10 +556,10 @@ style=wordwrap
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>462</x>
-      <y>144</y>
-      <w>144</w>
-      <h>180</h>
+      <x>30</x>
+      <y>70</y>
+      <w>240</w>
+      <h>300</h>
     </coordinates>
     <panel_attributes>ExpandedProjectViewModel
 --
@@ -593,10 +593,10 @@ style=wordwrap
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>462</x>
-      <y>330</y>
-      <w>144</w>
-      <h>282</h>
+      <x>30</x>
+      <y>380</y>
+      <w>240</w>
+      <h>470</h>
     </coordinates>
     <panel_attributes>ExpandedResourceViewModel
 --
@@ -642,10 +642,10 @@ style=wordwrap
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>462</x>
-      <y>792</y>
-      <w>144</w>
-      <h>72</h>
+      <x>30</x>
+      <y>1150</y>
+      <w>240</w>
+      <h>120</h>
     </coordinates>
     <panel_attributes>LoginViewModel
 --
@@ -663,10 +663,10 @@ style=wordwrap
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>756</x>
-      <y>156</y>
-      <w>30</w>
-      <h>18</h>
+      <x>520</x>
+      <y>90</y>
+      <w>50</w>
+      <h>30</h>
     </coordinates>
     <panel_attributes>lt=-
 m1=
@@ -678,10 +678,10 @@ fg=#3c7a00</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>828</x>
-      <y>426</y>
-      <w>18</w>
-      <h>30</h>
+      <x>640</x>
+      <y>540</y>
+      <w>30</w>
+      <h>50</h>
     </coordinates>
     <panel_attributes>lt=-
 m1=
@@ -694,10 +694,10 @@ lw=2.5</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>756</x>
-      <y>468</y>
-      <w>36</w>
-      <h>24</h>
+      <x>520</x>
+      <y>610</y>
+      <w>60</w>
+      <h>40</h>
     </coordinates>
     <panel_attributes>lt=-
 m1=
@@ -710,10 +710,10 @@ fg=blue
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>756</x>
-      <y>120</y>
-      <w>18</w>
-      <h>762</h>
+      <x>520</x>
+      <y>30</y>
+      <w>30</w>
+      <h>1270</h>
     </coordinates>
     <panel_attributes>lt=-
 lw=2.5
@@ -723,10 +723,10 @@ fg=blue</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>450</x>
-      <y>864</y>
-      <w>324</w>
-      <h>18</h>
+      <x>10</x>
+      <y>1270</y>
+      <w>540</w>
+      <h>30</h>
     </coordinates>
     <panel_attributes>lt=-
 lw=2.5
@@ -736,10 +736,10 @@ fg=blue</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>774</x>
-      <y>438</y>
-      <w>18</w>
-      <h>342</h>
+      <x>550</x>
+      <y>560</y>
+      <w>30</w>
+      <h>570</h>
     </coordinates>
     <panel_attributes>lt=-
 m1=
@@ -751,10 +751,10 @@ fg=Orange</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>894</x>
-      <y>438</y>
-      <w>18</w>
-      <h>132</h>
+      <x>750</x>
+      <y>560</y>
+      <w>30</w>
+      <h>220</h>
     </coordinates>
     <panel_attributes>lt=-
 m1=
@@ -766,10 +766,10 @@ fg=Orange</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>774</x>
-      <y>762</y>
-      <w>234</w>
-      <h>18</h>
+      <x>550</x>
+      <y>1100</y>
+      <w>390</w>
+      <h>30</h>
     </coordinates>
     <panel_attributes>lt=-
 m1=
@@ -781,10 +781,10 @@ fg=Orange</panel_attributes>
   <element>
     <id>Text</id>
     <coordinates>
-      <x>774</x>
-      <y>126</y>
-      <w>132</w>
-      <h>306</h>
+      <x>550</x>
+      <y>40</y>
+      <w>220</w>
+      <h>510</h>
     </coordinates>
     <panel_attributes>                       MainViewModel
 
@@ -833,10 +833,10 @@ layer=-1</panel_attributes>
   <element>
     <id>Text</id>
     <coordinates>
-      <x>570</x>
-      <y>126</y>
-      <w>66</w>
-      <h>12</h>
+      <x>210</x>
+      <y>40</y>
+      <w>110</w>
+      <h>20</h>
     </coordinates>
     <panel_attributes>ViewModel (Child)
 style=wordwrap</panel_attributes>
@@ -845,10 +845,10 @@ style=wordwrap</panel_attributes>
   <element>
     <id>Text</id>
     <coordinates>
-      <x>816</x>
-      <y>444</y>
-      <w>66</w>
-      <h>12</h>
+      <x>620</x>
+      <y>570</y>
+      <w>110</w>
+      <h>20</h>
     </coordinates>
     <panel_attributes>ViewModel (Models)
 style=wordwrap</panel_attributes>
@@ -857,10 +857,10 @@ style=wordwrap</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>906</x>
-      <y>156</y>
-      <w>30</w>
-      <h>24</h>
+      <x>770</x>
+      <y>90</y>
+      <w>50</w>
+      <h>40</h>
     </coordinates>
     <panel_attributes>lt=-
 m1=
@@ -872,10 +872,10 @@ m2=
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>906</x>
-      <y>300</y>
-      <w>30</w>
-      <h>24</h>
+      <x>770</x>
+      <y>330</y>
+      <w>50</w>
+      <h>40</h>
     </coordinates>
     <panel_attributes>lt=-
 m1=
@@ -886,10 +886,10 @@ m2=
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>906</x>
-      <y>360</y>
-      <w>30</w>
-      <h>24</h>
+      <x>770</x>
+      <y>430</y>
+      <w>50</w>
+      <h>40</h>
     </coordinates>
     <panel_attributes>lt=-
 m1=
@@ -900,10 +900,10 @@ m2=
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>906</x>
-      <y>456</y>
-      <w>30</w>
-      <h>24</h>
+      <x>770</x>
+      <y>590</y>
+      <w>50</w>
+      <h>40</h>
     </coordinates>
     <panel_attributes>lt=-
 m1=
@@ -914,10 +914,10 @@ m2=
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>612</x>
-      <y>672</y>
-      <w>144</w>
-      <h>84</h>
+      <x>280</x>
+      <y>950</y>
+      <w>240</w>
+      <h>140</h>
     </coordinates>
     <panel_attributes>CRUDAuditViewModel
 -
@@ -937,10 +937,10 @@ m2=
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>462</x>
-      <y>618</y>
-      <w>144</w>
-      <h>84</h>
+      <x>30</x>
+      <y>860</y>
+      <w>240</w>
+      <h>140</h>
     </coordinates>
     <panel_attributes>CRUDWorktimeViewModel
 -
@@ -960,10 +960,10 @@ m2=
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>450</x>
-      <y>120</y>
-      <w>18</w>
-      <h>762</h>
+      <x>10</x>
+      <y>30</y>
+      <w>30</w>
+      <h>1270</h>
     </coordinates>
     <panel_attributes>lt=-
 lw=2.5
@@ -973,10 +973,10 @@ fg=blue</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>906</x>
-      <y>102</y>
-      <w>18</w>
-      <h>456</h>
+      <x>770</x>
+      <y>0</y>
+      <w>30</w>
+      <h>760</h>
     </coordinates>
     <panel_attributes>lt=-
 lw=2.5
@@ -987,10 +987,10 @@ fg=cyan
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>906</x>
-      <y>540</y>
-      <w>114</w>
-      <h>18</h>
+      <x>770</x>
+      <y>730</y>
+      <w>190</w>
+      <h>30</h>
     </coordinates>
     <panel_attributes>lt=-
 lw=2.5
@@ -1000,10 +1000,10 @@ fg=cyan</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1002</x>
-      <y>540</y>
-      <w>18</w>
-      <h>348</h>
+      <x>930</x>
+      <y>730</y>
+      <w>30</w>
+      <h>580</h>
     </coordinates>
     <panel_attributes>lt=-
 lw=2.5
@@ -1013,10 +1013,10 @@ fg=cyan</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>894</x>
-      <y>552</y>
-      <w>114</w>
-      <h>18</h>
+      <x>750</x>
+      <y>750</y>
+      <w>190</w>
+      <h>30</h>
     </coordinates>
     <panel_attributes>lt=-
 m1=
@@ -1028,10 +1028,10 @@ fg=Orange</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>990</x>
-      <y>552</y>
-      <w>18</w>
-      <h>228</h>
+      <x>910</x>
+      <y>750</y>
+      <w>30</w>
+      <h>380</h>
     </coordinates>
     <panel_attributes>lt=-
 m1=
@@ -1043,10 +1043,10 @@ fg=Orange</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>444</x>
-      <y>870</y>
-      <w>576</w>
-      <h>18</h>
+      <x>0</x>
+      <y>1280</y>
+      <w>960</w>
+      <h>30</h>
     </coordinates>
     <panel_attributes>lt=-
 lw=2.5
@@ -1056,10 +1056,10 @@ fg=cyan</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>444</x>
-      <y>102</y>
-      <w>18</w>
-      <h>786</h>
+      <x>0</x>
+      <y>0</y>
+      <w>30</w>
+      <h>1310</h>
     </coordinates>
     <panel_attributes>lt=-
 lw=2.5
@@ -1069,10 +1069,10 @@ fg=cyan</panel_attributes>
   <element>
     <id>Text</id>
     <coordinates>
-      <x>660</x>
-      <y>108</y>
-      <w>66</w>
-      <h>12</h>
+      <x>360</x>
+      <y>10</y>
+      <w>110</w>
+      <h>20</h>
     </coordinates>
     <panel_attributes>ViewModel
 style=wordwrap</panel_attributes>
