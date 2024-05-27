@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <diagram program="umlet" version="15.1">
-  <zoom_level>10</zoom_level>
+  <zoom_level>13</zoom_level>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>800</x>
-      <y>280</y>
-      <w>30</w>
-      <h>310</h>
+      <x>884</x>
+      <y>494</y>
+      <w>39</w>
+      <h>273</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;290.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;190.0</additional_attributes>
   </element>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>760</x>
-      <y>260</y>
-      <w>100</w>
-      <h>30</h>
+      <x>832</x>
+      <y>468</y>
+      <w>130</w>
+      <h>39</h>
     </coordinates>
     <panel_attributes>:System</panel_attributes>
     <additional_attributes/>
@@ -26,10 +26,10 @@
   <element>
     <id>UMLActor</id>
     <coordinates>
-      <x>430</x>
-      <y>210</y>
-      <w>100</w>
-      <h>110</h>
+      <x>429</x>
+      <y>377</y>
+      <w>130</w>
+      <h>143</h>
     </coordinates>
     <panel_attributes>:Projektleder</panel_attributes>
     <additional_attributes/>
@@ -37,21 +37,21 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>490</x>
-      <y>300</y>
-      <w>30</w>
-      <h>290</h>
+      <x>481</x>
+      <y>494</y>
+      <w>39</w>
+      <h>273</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;270.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;190.0</additional_attributes>
   </element>
   <element>
     <id>Text</id>
     <coordinates>
-      <x>580</x>
-      <y>240</y>
-      <w>150</w>
-      <h>30</h>
+      <x>611</x>
+      <y>416</y>
+      <w>195</w>
+      <h>39</h>
     </coordinates>
     <panel_attributes>Ophør et projekt
 style=wordwrap</panel_attributes>
@@ -60,10 +60,10 @@ style=wordwrap</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>490</x>
-      <y>330</y>
-      <w>340</w>
-      <h>40</h>
+      <x>481</x>
+      <y>637</y>
+      <w>442</w>
+      <h>52</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;-
 OphørProjekt(projekt)</panel_attributes>
@@ -72,13 +72,37 @@ OphørProjekt(projekt)</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>490</x>
-      <y>400</y>
-      <w>340</w>
-      <h>40</h>
+      <x>481</x>
+      <y>689</y>
+      <w>442</w>
+      <h>52</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;.
 Projekt ophørt</panel_attributes>
     <additional_attributes>10.0;20.0;320.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>481</x>
+      <y>533</y>
+      <w>442</w>
+      <h>52</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;-
+VælgProjekt</panel_attributes>
+    <additional_attributes>320.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>481</x>
+      <y>585</y>
+      <w>442</w>
+      <h>52</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;-
+SeProjektdetaljer</panel_attributes>
+    <additional_attributes>320.0;20.0;10.0;20.0</additional_attributes>
   </element>
 </diagram>

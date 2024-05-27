@@ -4,8 +4,8 @@
   <element>
     <id>UMLActor</id>
     <coordinates>
-      <x>306</x>
-      <y>252</y>
+      <x>441</x>
+      <y>279</y>
       <w>90</w>
       <h>99</h>
     </coordinates>
@@ -15,19 +15,19 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>684</x>
-      <y>333</y>
+      <x>720</x>
+      <y>369</y>
       <w>27</w>
-      <h>216</h>
+      <h>180</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;220.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;180.0</additional_attributes>
   </element>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>648</x>
-      <y>306</y>
+      <x>684</x>
+      <y>342</y>
       <w>90</w>
       <h>27</h>
     </coordinates>
@@ -37,56 +37,56 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>342</x>
-      <y>342</y>
+      <x>477</x>
+      <y>369</y>
       <w>27</w>
-      <h>198</h>
+      <h>180</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;200.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;180.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>342</x>
-      <y>351</y>
-      <w>369</w>
+      <x>477</x>
+      <y>378</y>
+      <w>270</w>
       <h>36</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-
 Vælg Projekt </panel_attributes>
-    <additional_attributes>390.0;20.0;10.0;20.0</additional_attributes>
+    <additional_attributes>280.0;20.0;10.0;20.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>342</x>
-      <y>477</y>
-      <w>360</w>
+      <x>477</x>
+      <y>486</y>
+      <w>270</w>
       <h>36</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;.
 Historik vises </panel_attributes>
-    <additional_attributes>10.0;20.0;380.0;20.0</additional_attributes>
+    <additional_attributes>10.0;20.0;280.0;20.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>342</x>
-      <y>432</y>
-      <w>369</w>
+      <x>477</x>
+      <y>450</y>
+      <w>270</w>
       <h>36</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-
 Vælg Historik</panel_attributes>
-    <additional_attributes>390.0;20.0;10.0;20.0</additional_attributes>
+    <additional_attributes>280.0;20.0;10.0;20.0</additional_attributes>
   </element>
   <element>
     <id>Text</id>
     <coordinates>
-      <x>441</x>
-      <y>297</y>
-      <w>171</w>
+      <x>531</x>
+      <y>324</y>
+      <w>153</w>
       <h>45</h>
     </coordinates>
     <panel_attributes>Vis historik for et projekt 
@@ -96,13 +96,13 @@ style=wordwrap</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>342</x>
-      <y>396</y>
-      <w>360</w>
+      <x>477</x>
+      <y>414</y>
+      <w>270</w>
       <h>36</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;.
 Projekt vises</panel_attributes>
-    <additional_attributes>10.0;20.0;380.0;20.0</additional_attributes>
+    <additional_attributes>10.0;20.0;280.0;20.0</additional_attributes>
   </element>
 </diagram>

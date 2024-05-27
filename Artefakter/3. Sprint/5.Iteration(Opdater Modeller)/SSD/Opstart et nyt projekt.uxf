@@ -4,19 +4,19 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>729</x>
-      <y>252</y>
+      <x>1026</x>
+      <y>405</y>
       <w>27</w>
-      <h>297</h>
+      <h>198</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;310.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;200.0</additional_attributes>
   </element>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>693</x>
-      <y>234</y>
+      <x>990</x>
+      <y>387</y>
       <w>90</w>
       <h>27</h>
     </coordinates>
@@ -26,8 +26,8 @@
   <element>
     <id>UMLActor</id>
     <coordinates>
-      <x>108</x>
-      <y>198</y>
+      <x>450</x>
+      <y>333</y>
       <w>90</w>
       <h>99</h>
     </coordinates>
@@ -37,19 +37,19 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>144</x>
-      <y>279</y>
+      <x>486</x>
+      <y>414</y>
       <w>27</w>
-      <h>261</h>
+      <h>189</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;270.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;190.0</additional_attributes>
   </element>
   <element>
     <id>Text</id>
     <coordinates>
-      <x>423</x>
-      <y>243</y>
+      <x>702</x>
+      <y>387</y>
       <w>135</w>
       <h>27</h>
     </coordinates>
@@ -60,25 +60,49 @@ style=wordwrap</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>144</x>
-      <y>306</y>
-      <w>612</w>
+      <x>486</x>
+      <y>441</y>
+      <w>567</w>
       <h>36</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;-
-OpretNytProjekt(navn, ejer, leder, beskrivelse, opstartsbeløb, forventet årlige omkostning )</panel_attributes>
-    <additional_attributes>660.0;20.0;10.0;20.0</additional_attributes>
+OpretProjekt</panel_attributes>
+    <additional_attributes>610.0;20.0;10.0;20.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>144</x>
-      <y>369</y>
-      <w>612</w>
+      <x>486</x>
+      <y>477</y>
+      <w>567</w>
+      <h>36</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.
+Projekt formular</panel_attributes>
+    <additional_attributes>10.0;20.0;610.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>486</x>
+      <y>513</y>
+      <w>567</w>
+      <h>36</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;-
+Indtast information(navn, ejer, leder, beskrivelse, opstartsbeløb, forventet årlige omkostning )</panel_attributes>
+    <additional_attributes>610.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>486</x>
+      <y>549</y>
+      <w>567</w>
       <h>36</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;.
 Projekt oprettet</panel_attributes>
-    <additional_attributes>10.0;20.0;660.0;20.0</additional_attributes>
+    <additional_attributes>10.0;20.0;610.0;20.0</additional_attributes>
   </element>
 </diagram>
