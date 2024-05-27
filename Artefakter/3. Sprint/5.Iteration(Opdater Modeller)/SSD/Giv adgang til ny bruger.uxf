@@ -6,16 +6,16 @@
     <coordinates>
       <x>234</x>
       <y>156</y>
-      <w>156</w>
+      <w>130</w>
       <h>143</h>
     </coordinates>
-    <panel_attributes>Projektansvarlig</panel_attributes>
+    <panel_attributes>Projektleder</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>767</x>
+      <x>754</x>
       <y>273</y>
       <w>39</w>
       <h>377</h>
@@ -26,7 +26,7 @@
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>715</x>
+      <x>702</x>
       <y>247</y>
       <w>130</w>
       <h>39</h>
@@ -37,7 +37,7 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>299</x>
+      <x>286</x>
       <y>273</y>
       <w>39</w>
       <h>377</h>
@@ -48,7 +48,7 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>299</x>
+      <x>286</x>
       <y>299</y>
       <w>507</w>
       <h>52</h>
@@ -60,7 +60,7 @@ Tryk på tandhjul</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>299</x>
+      <x>286</x>
       <y>351</y>
       <w>507</w>
       <h>52</h>
@@ -72,7 +72,7 @@ Indstillinger</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>299</x>
+      <x>286</x>
       <y>403</y>
       <w>507</w>
       <h>52</h>
@@ -84,7 +84,7 @@ Tryk på "Opret ny bruger"</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>299</x>
+      <x>286</x>
       <y>455</y>
       <w>507</w>
       <h>52</h>
@@ -96,7 +96,7 @@ Bruger oprettelses formular</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>299</x>
+      <x>286</x>
       <y>507</y>
       <w>507</w>
       <h>52</h>
@@ -108,7 +108,7 @@ OpretBruger(fornavn, efternavn, initialer, kodeord)</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>299</x>
+      <x>286</x>
       <y>559</y>
       <w>507</w>
       <h>52</h>

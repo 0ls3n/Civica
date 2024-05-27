@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <diagram program="umlet" version="15.1">
-  <zoom_level>8</zoom_level>
+  <zoom_level>13</zoom_level>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>600</x>
-      <y>176</y>
-      <w>80</w>
-      <h>24</h>
+      <x>832</x>
+      <y>260</y>
+      <w>130</w>
+      <h>39</h>
     </coordinates>
     <panel_attributes>:System</panel_attributes>
     <additional_attributes/>
@@ -15,10 +15,10 @@
   <element>
     <id>UMLActor</id>
     <coordinates>
-      <x>256</x>
-      <y>136</y>
-      <w>80</w>
-      <h>88</h>
+      <x>273</x>
+      <y>169</y>
+      <w>130</w>
+      <h>143</h>
     </coordinates>
     <panel_attributes>:Projektleder</panel_attributes>
     <additional_attributes/>
@@ -26,10 +26,10 @@
   <element>
     <id>Text</id>
     <coordinates>
-      <x>360</x>
-      <y>176</y>
-      <w>224</w>
-      <h>24</h>
+      <x>442</x>
+      <y>234</y>
+      <w>364</w>
+      <h>39</h>
     </coordinates>
     <panel_attributes>Angiv en økonomi ressource for et projekt 
 style=wordwrap</panel_attributes>
@@ -38,21 +38,21 @@ style=wordwrap</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>288</x>
-      <y>208</y>
-      <w>24</w>
-      <h>264</h>
+      <x>325</x>
+      <y>286</y>
+      <w>39</w>
+      <h>338</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;310.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;240.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>288</x>
-      <y>304</y>
-      <w>368</w>
-      <h>32</h>
+      <x>325</x>
+      <y>481</y>
+      <w>598</w>
+      <h>52</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;-
 TilføjRevision(beløb, årstal)</panel_attributes>
@@ -61,10 +61,10 @@ TilføjRevision(beløb, årstal)</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>288</x>
-      <y>352</y>
-      <w>368</w>
-      <h>32</h>
+      <x>325</x>
+      <y>533</y>
+      <w>598</w>
+      <h>52</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;.
 Revision tilføjet</panel_attributes>
@@ -73,47 +73,48 @@ Revision tilføjet</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>632</x>
-      <y>192</y>
-      <w>24</w>
-      <h>296</h>
+      <x>884</x>
+      <y>286</y>
+      <w>39</w>
+      <h>338</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;350.0</additional_attributes>
-  </element>
-  <element>
-    <id>UMLFrame</id>
-    <coordinates>
-      <x>224</x>
-      <y>288</y>
-      <w>480</w>
-      <h>104</h>
-    </coordinates>
-    <panel_attributes>Loop</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>Text</id>
-    <coordinates>
-      <x>224</x>
-      <y>312</y>
-      <w>64</w>
-      <h>56</h>
-    </coordinates>
-    <panel_attributes>For hver revision
-style=wordwrap</panel_attributes>
-    <additional_attributes/>
+    <additional_attributes>10.0;10.0;10.0;240.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>288</x>
-      <y>232</y>
-      <w>368</w>
-      <h>32</h>
+      <x>325</x>
+      <y>325</y>
+      <w>598</w>
+      <h>52</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;-
 vælgProjekt</panel_attributes>
     <additional_attributes>440.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>325</x>
+      <y>377</y>
+      <w>598</w>
+      <h>52</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;-
+Se Projektressourcer</panel_attributes>
+    <additional_attributes>440.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>325</x>
+      <y>429</y>
+      <w>598</w>
+      <h>52</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.
+returner Projektressourcer</panel_attributes>
+    <additional_attributes>10.0;20.0;440.0;20.0</additional_attributes>
   </element>
 </diagram>
