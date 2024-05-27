@@ -2,6 +2,7 @@
 using Civica.Models;
 using GVMR;
 using Microsoft.IdentityModel.Tokens;
+using Microsoft.VisualBasic;
 using Microsoft.VisualBasic.Devices;
 using System;
 using System.Collections.Generic;
@@ -63,9 +64,9 @@ namespace Civica.ViewModels
             auditRepo = ervm.mvm.GetAuditRepo();
         }
 
-        public void CreateAudit()
+        public void CreateAudit(int userId, int resourceId, string amount, int year, string description)
         {
-            Audit a = new Audit(ervm.mvm.CurrentUser.GetId(), ervm.SelectedResource.GetId(), Amount.IsNullOrEmpty() ? 0 : decimal.Parse(Amount), Year, Description, DateTime.Now);
+            Audit a = new Audit(ervm.mvm.CurrentUser.GetId(), ervm.SelectedResource.GetId(), decimal.TryParse(amount, out decimal r) ? r : 0, year, description, DateTime.Now);
 
             auditRepo.Add(a);
 
@@ -77,9 +78,8 @@ namespace Civica.ViewModels
             Description = "";
         }
 
-        public void UpdateAudit()
+        public void UpdateAudit(AuditViewModel avm)
         {
-            AuditViewModel avm = ervm.SelectedAudit;
             string temp = string.Format("{0:#,0}", double.Parse(avm.Amount));
             avm.Amount = temp;
 
@@ -98,10 +98,8 @@ namespace Civica.ViewModels
             ervm.SelectedAudit = avm;
         }
 
-        public void DeleteAudit()
+        public void DeleteAudit(AuditViewModel avm)
         {
-            AuditViewModel avm = ervm.SelectedAudit;
-
             Audit a = auditRepo.GetById(x => x.Id == avm.GetId());
 
             auditRepo.Delete(a);

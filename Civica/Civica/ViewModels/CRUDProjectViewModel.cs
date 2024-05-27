@@ -14,83 +14,83 @@ namespace Civica.ViewModels
 {
     public class CRUDProjectViewModel : ObservableObject, IViewModelChild
     {
-        private string _projectName = "";
-        public string ProjectName
+        private string _name = "";
+        public string Name
         {
-            get => _projectName;
+            get => _name;
             set
             {
-                _projectName = value;
-                OnPropertyChanged(nameof(ProjectName));
+                _name = value;
+                OnPropertyChanged(nameof(Name));
             }
         }
 
-        private string _projectOwner = "";
-        public string ProjectOwner
+        private string _owner = "";
+        public string Owner
         {
-            get => _projectOwner;
+            get => _owner;
             set
             {
-                _projectOwner = value;
-                OnPropertyChanged(nameof(ProjectOwner));
+                _owner = value;
+                OnPropertyChanged(nameof(Owner));
             }
         }
 
-        private string _projectManager = "";
+        private string _manager = "";
 
-        public string ProjectManager
+        public string Manager
         {
-            get => _projectManager;
+            get => _manager;
             set
             {
-                _projectManager = value;
-                OnPropertyChanged(nameof(ProjectManager));
+                _manager = value;
+                OnPropertyChanged(nameof(Manager));
             }
         }
 
-        private string _projectDescription = "";
+        private string _description = "";
 
-        public string ProjectDescription
+        public string Description
         {
-            get => _projectDescription;
+            get => _description;
             set
             {
-                _projectDescription = value;
-                OnPropertyChanged(nameof(ProjectDescription));
+                _description = value;
+                OnPropertyChanged(nameof(Description));
             }
         }
-        private string _resourceStartAmount = "";
-        public string ResourceStartAmount   
+        private string _startAmount = "";
+        public string StartAmount
         {
-            get => _resourceStartAmount;
+            get => _startAmount;
             set
             {
                 if (double.TryParse(value, out _) || value == "")
                 {
-                    _resourceStartAmount = value;
+                    _startAmount = value;
                 }
                 else
                 {
                     MessageBox.Show("'Forventet start beløb' må kun være i tal");
                 }
-                OnPropertyChanged(nameof(ResourceStartAmount));
+                OnPropertyChanged(nameof(StartAmount));
             }
         }
-        private string _resourceExpectedYearlyCost = "";
-        public string ResourceExpectedYearlyCost
+        private string _expectedYearlyCost = "";
+        public string ExpectedYearlyCost
         {
-            get => _resourceExpectedYearlyCost;
+            get => _expectedYearlyCost;
             set
             {
                 if (double.TryParse(value, out _) || value == "")
                 {
-                    _resourceExpectedYearlyCost = value;
+                    _expectedYearlyCost = value;
                 }
                 else
                 {
                     MessageBox.Show("'Forventet årlig omkostning' må kun være i tal");
                 }
-                OnPropertyChanged(nameof(ResourceExpectedYearlyCost));
+                OnPropertyChanged(nameof(ExpectedYearlyCost));
             }
         }
 
@@ -112,28 +112,28 @@ namespace Civica.ViewModels
             progressRepo = mvm.GetProgressRepo();
         }
 
-        public void CreateProject()
+        public void CreateProject(int userId, string name, string owner, string manager, string description, int startAmount, decimal expectedYearlyCost)
         {
-            Project p = new Project(mvm.CurrentUser.GetId(), ProjectName, ProjectOwner, ProjectManager, ProjectDescription, DateTime.Now);
+            Project p = new Project(userId, name, owner, manager, description, DateTime.Now);
             
             projectRepo.Add(p);
            
-            Resource r = new Resource(mvm.CurrentUser.GetId(), p.Id, string.IsNullOrEmpty(ResourceExpectedYearlyCost) ? 0 : decimal.Parse(ResourceStartAmount), string.IsNullOrEmpty(ResourceExpectedYearlyCost) ? 0 : decimal.Parse(ResourceExpectedYearlyCost), DateTime.Now);
+            Resource r = new Resource(userId, p.Id, startAmount, expectedYearlyCost, DateTime.Now);
             resourceRepo.Add(r);
 
             mvm.ipvm.UpdateList();
 
-            ProjectName = "";
-            ProjectManager = "";
-            ProjectOwner = "";
-            ProjectDescription = "";
-            ResourceStartAmount = "";
-            ResourceExpectedYearlyCost = "";
+            Name = "";
+            Manager = "";
+            Owner = "";
+            Description = "";
+            this.StartAmount = "";
+            ExpectedYearlyCost = "";
         }
 
-        public void DeleteProject()
+        public void DeleteProject(ProjectViewModel pvm)
         {
-            int pID = mvm.epvm.SelectedProject.GetId();
+            int pID = pvm.GetId();
             int rID = resourceRepo.GetById(x => x.RefId == pID).Id;
             auditRepo.DeleteByRefId(rID);
             worktimeRepo.DeleteByRefId(rID);
@@ -144,10 +144,8 @@ namespace Civica.ViewModels
             mvm.epvm.SelectedProject = null;
         }
 
-        public void UpdateProject()
+        public void UpdateProject(ProjectViewModel pvm)
         {
-            ProjectViewModel pvm = mvm.epvm.SelectedProject;
-
             Project p = projectRepo.GetById(x => x.Id == pvm.GetId());
             p.Name = pvm.Name;
             p.Owner = pvm.Owner;
@@ -165,7 +163,7 @@ namespace Civica.ViewModels
             {
                 if (parameter is CRUDProjectViewModel cpvm)
                 {
-                    cpvm.CreateProject();
+                    cpvm.CreateProject(cpvm.mvm.CurrentUser.GetId(), cpvm.Name, cpvm.Owner, cpvm.Manager, cpvm.Description, int.TryParse(cpvm.StartAmount, out int r) ? r : 0, decimal.TryParse(cpvm.ExpectedYearlyCost, out decimal r2) ? r2 : 0);
                     cpvm.mvm.ipvm.CreateVisibility = WindowVisibility.Hidden;
                     cpvm.mvm.ipvm.InformationVisibility = WindowVisibility.Visible;
                 }
@@ -176,7 +174,7 @@ namespace Civica.ViewModels
 
                 if (parameter is CRUDProjectViewModel cpvm)
                 {
-                    if (!string.IsNullOrEmpty(cpvm.ProjectName))
+                    if (!string.IsNullOrEmpty(cpvm.Name))
                     {
                         succes = true;
                     }

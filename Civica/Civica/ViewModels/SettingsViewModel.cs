@@ -172,7 +172,7 @@ namespace Civica.ViewModels
                         if (svm.userRepo.GetAll().OfType<User>().FirstOrDefault(x => x.FullName.ToLower() == svm.SelectedUser.FullName.ToLower()) is null ||
                         svm.SelectedUser.FullName.ToLower() == svm.oldName.ToLower())
                         {
-                            svm.cuvm.UpdateUser();
+                            svm.cuvm.UpdateUser(svm.SelectedUser);
 
                             svm.UpdateVisibility = WindowVisibility.Hidden;
                             svm.InformationVisibility = WindowVisibility.Visible;
@@ -219,7 +219,7 @@ namespace Civica.ViewModels
 
                     if (result == MessageBoxResult.OK)
                     {
-                        svm.cuvm.DeleteUser();
+                        svm.cuvm.DeleteUser(svm.SelectedUser);
                         svm.InformationVisibility = WindowVisibility.Visible;
                     }
                 }

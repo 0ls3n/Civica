@@ -10,6 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Forms;
 
 namespace Civica.ViewModels
 {
@@ -63,9 +64,9 @@ namespace Civica.ViewModels
             progressRepo = epvm.mvm.GetProgressRepo();
         }
 
-        public void CreateProgress()
+        public void CreateProgress(int userId, int projectId, Phase phase, Status status, string description)
         {
-            Progress prog = new Progress(epvm.mvm.CurrentUser.GetId(), epvm.SelectedProject.GetId(), Phase, Status, Description, DateTime.Now);
+            Progress prog = new Progress(userId, projectId, phase, status, description, DateTime.Now);
 
             progressRepo.Add(prog);
             epvm.SelectedProject.SetColor(prog.Status);
@@ -74,12 +75,12 @@ namespace Civica.ViewModels
             Description = "";
         }
 
-        public void UpdateProgress()
+        public void UpdateProgress(ProgressViewModel pvm)
         {
-            Progress p = progressRepo.GetById(x => x.Id == epvm.SelectedProgress.GetId());
-            p.Phase = Helper.Phases.FirstOrDefault(x => x.Value == epvm.SelectedProgress.Phase).Key;
-            p.Status = Helper.Statuses.FirstOrDefault(x => x.Value == epvm.SelectedProgress.Status).Key;
-            p.Description = epvm.SelectedProgress.Description;
+            Progress p = progressRepo.GetById(x => x.Id == pvm.GetId());
+            p.Phase = Helper.Phases.FirstOrDefault(x => x.Value == pvm.Phase).Key;
+            p.Status = Helper.Statuses.FirstOrDefault(x => x.Value == pvm.Status).Key;
+            p.Description = pvm.Description;
             progressRepo.Update(p);
 
             epvm.UpdateList();
@@ -88,9 +89,9 @@ namespace Civica.ViewModels
             epvm.SelectedProject.SetColor(p.Status);
         }
 
-        public void DeleteProgress()
+        public void DeleteProgress(ProgressViewModel pvm)
         {
-            progressRepo.Delete(progressRepo.GetById(x => x.Id == epvm.SelectedProgress.GetId()));
+            progressRepo.Delete(progressRepo.GetById(x => x.Id == pvm.GetId()));
             epvm.UpdateList();
         }
 
@@ -100,7 +101,7 @@ namespace Civica.ViewModels
             {
                 if (parameter is CRUDProgressViewModel cpvm)
                 {
-                    cpvm.CreateProgress();
+                    cpvm.CreateProgress(cpvm.epvm.mvm.CurrentUser.GetId(), cpvm.epvm.SelectedProject.GetId(), cpvm.Phase, cpvm.Status, cpvm.Description);
 
                     cpvm.epvm.UpdateList();
 
