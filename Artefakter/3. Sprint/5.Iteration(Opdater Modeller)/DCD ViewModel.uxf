@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<diagram program="umlet" version="15.0.0">
+<diagram program="umlet" version="15.1">
   <help_text>// Uncomment the following line to change the fontsize and font:
 fontsize=10
 // fontfamily=SansSerif //possible: SansSerif,Serif,Monospaced
@@ -236,7 +236,7 @@ ICommand</panel_attributes>
       <x>448</x>
       <y>432</y>
       <w>384</w>
-      <h>384</h>
+      <h>400</h>
     </coordinates>
     <panel_attributes>CRUDProjectViewModel
 -
@@ -255,9 +255,10 @@ ICommand</panel_attributes>
 + CreateProjectCmd : RelayCommand
 -
 + Init(o : ObservableObject)
-+ CreateProject( name : string, owner : string OSV.
-+ DeleteProject()
-+ UpdateProject()
++ CreateProject(name : string, owner : string,
+                          manager : string, description : string)
++ DeleteProject(SelectedProject)
++ UpdateProject(SelectedProject)
 </panel_attributes>
     <additional_attributes/>
   </element>
@@ -292,9 +293,9 @@ ICommand</panel_attributes>
     <id>UMLClass</id>
     <coordinates>
       <x>448</x>
-      <y>832</y>
+      <y>848</y>
       <w>384</w>
-      <h>240</h>
+      <h>224</h>
     </coordinates>
     <panel_attributes>CRUDProgressViewModel
 -
