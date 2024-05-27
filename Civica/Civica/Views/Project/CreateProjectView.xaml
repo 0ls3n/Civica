@@ -33,7 +33,7 @@
                              Background="Transparent"
                              BorderThickness="0"
                              Margin="2 5 2 5"
-                             Text="{Binding ProjectName, UpdateSourceTrigger=PropertyChanged}"/>
+                             Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}"/>
                     </Border>
 
                     <Grid>
@@ -61,7 +61,7 @@
                                  Margin="2 5 2 5"
                                  BorderThickness="0"
                                  Background="Transparent"
-                                 Text="{Binding ProjectOwner}"/>
+                                 Text="{Binding Owner}"/>
                         </Border>
 
                         <Label Content="Projektleder:" 
@@ -80,7 +80,7 @@
                                  Margin="2 5 2 5"
                                  Background="Transparent"
                                  BorderThickness="0"
-                                 Text="{Binding ProjectManager}"/>
+                                 Text="{Binding Manager}"/>
 
                         </Border>
 
@@ -112,7 +112,7 @@
                                  Margin="2 5 2 5"
                                  BorderThickness="0"
                                  Background="Transparent"
-                                 Text="{Binding ResourceStartAmount, UpdateSourceTrigger=PropertyChanged}"/>
+                                 Text="{Binding StartAmount, UpdateSourceTrigger=PropertyChanged}"/>
                         </Border>
                         <Label Content="Forventet årlig omkostning:"
    FontSize="16" Grid.Column="1" Grid.Row="0" FontWeight="Bold"/>
@@ -128,7 +128,7 @@
              Margin="2 5 2 5"
              Background="Transparent"
              BorderThickness="0"
-             Text="{Binding ResourceExpectedYearlyCost, UpdateSourceTrigger=PropertyChanged}"/>
+             Text="{Binding ExpectedYearlyCost, UpdateSourceTrigger=PropertyChanged}"/>
 
                         </Border>
                         
@@ -153,7 +153,7 @@
                              AcceptsTab="True"
                              Background="Transparent"
                              BorderThickness="0"
-                             Text="{Binding ProjectDescription}"/>
+                             Text="{Binding Description}"/>
 
                     </Border>
                 </StackPanel>

@@ -234,7 +234,7 @@ namespace Civica.ViewModels
             {
                 if (parameter is ExpandedProjectViewModel epvm)
                 {
-                    epvm.mvm.cpvm.UpdateProject();
+                    epvm.mvm.cpvm.UpdateProject(epvm.SelectedProject);
 
                     epvm.UpdateProjectVisibility = WindowVisibility.Hidden;
                 }
@@ -256,7 +256,7 @@ namespace Civica.ViewModels
 
                    if (result == MessageBoxResult.OK)
                    {
-                       epvm.mvm.cpvm.DeleteProject();
+                       epvm.mvm.cpvm.DeleteProject(epvm.SelectedProject);
 
                        epvm.mvm.ipvm.SelectedProject = null;
                        epvm.mvm.ipvm.SelectedProgress = null;
@@ -288,7 +288,7 @@ namespace Civica.ViewModels
             {
                 if (parameter is ExpandedProjectViewModel epvm)
                 {
-                    epvm.cpvm.UpdateProgress();
+                    epvm.cpvm.UpdateProgress(epvm.SelectedProgress);
 
                     epvm.UpdateProgressVisibility = WindowVisibility.Hidden;
                     epvm.ProgressVisibility = WindowVisibility.Visible;
@@ -313,7 +313,7 @@ namespace Civica.ViewModels
 
                     if (result == MessageBoxResult.OK)
                     {
-                        epvm.cpvm.DeleteProgress();
+                        epvm.cpvm.DeleteProgress(epvm.SelectedProgress);
                         epvm.CreateProgressVisibility = WindowVisibility.Hidden;
                         epvm.UpdateProgressVisibility = WindowVisibility.Hidden;
                         epvm.ProgressVisibility = WindowVisibility.Hidden;

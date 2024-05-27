@@ -324,7 +324,7 @@ namespace Civica.ViewModels
                      ervm.AuditDetailsVisibility = WindowVisibility.Hidden;
                      ervm.InformationPlaceholderVisibility = WindowVisibility.Visible;
 
-                     ervm.cavm.UpdateAudit();
+                     ervm.cavm.UpdateAudit(ervm.SelectedAudit);
                  }
                  else
                  {
@@ -332,7 +332,7 @@ namespace Civica.ViewModels
                      ervm.WorktimeDetailsVisibility = WindowVisibility.Hidden;
                      ervm.InformationPlaceholderVisibility = WindowVisibility.Visible;
 
-                     ervm.cwvm.UpdateWorktime();
+                     ervm.cwvm.UpdateWorktime(ervm.SelectedWorktime);
                  }
              }
          },
@@ -401,7 +401,7 @@ namespace Civica.ViewModels
                   {
                       if (ervm.AuditListVisibility == WindowVisibility.Visible)
                       {
-                          ervm.cavm.DeleteAudit();
+                          ervm.cavm.DeleteAudit(ervm.SelectedAudit);
 
                           ervm.UpdateAuditVisibility = WindowVisibility.Hidden;
                           ervm.AuditDetailsVisibility = WindowVisibility.Hidden;
@@ -410,7 +410,7 @@ namespace Civica.ViewModels
                       }
                       else
                       {
-                          ervm.cwvm.DeleteWorktime();
+                          ervm.cwvm.DeleteWorktime(ervm.SelectedWorktime);
 
                           ervm.UpdateWorktimeVisibility = WindowVisibility.Hidden;
                           ervm.WorktimeDetailsVisibility = WindowVisibility.Hidden;
@@ -481,7 +481,7 @@ namespace Civica.ViewModels
              {
                  if (ervm.AuditListVisibility == WindowVisibility.Visible)
                  {
-                     ervm.cavm.CreateAudit();
+                     ervm.cavm.CreateAudit(ervm.mvm.CurrentUser.GetId(), ervm.SelectedResource.GetId(), ervm.cavm.Amount, ervm.cavm.Year, ervm.cavm.Description);
 
                      ervm.UpdateAuditVisibility = WindowVisibility.Hidden;
                      ervm.AuditDetailsVisibility = WindowVisibility.Hidden;
@@ -495,7 +495,7 @@ namespace Civica.ViewModels
                          MessageBox.Show("Der skal indtastes en afdeling eller et navn.");
                          return;
                      }
-                     ervm.cwvm.CreateWorktime();
+                     ervm.cwvm.CreateWorktime(ervm.mvm.CurrentUser.GetId(), ervm.SelectedResource.GetId(), ervm.cwvm.EstimatedHours, ervm.cwvm.InvolvedName, ervm.cwvm.Description, DateTime.Now);
 
                      ervm.UpdateWorktimeVisibility = WindowVisibility.Hidden;
                      ervm.WorktimeDetailsVisibility = WindowVisibility.Hidden;
