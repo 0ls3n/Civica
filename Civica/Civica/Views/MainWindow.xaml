@@ -3,18 +3,22 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:viewModel="clr-namespace:Civica.ViewModels"
         xmlns:view="clr-namespace:Civica.Views"
         mc:Ignorable="d"
         MinHeight="800"
         MinWidth="1200"
         Icon="/Resources/Images/Civica_Logo.ico"
         Title="Civica Projektstyring" Height="800" Width="1200"
+                xmlns:local="clr-namespace:Civica.ViewModels"
+
         WindowStartupLocation="CenterScreen">
 
-    <Window.DataContext>
+    <!--<Window.DataContext>
         <viewModel:MainViewModel/>
-    </Window.DataContext>
+    </Window.DataContext>-->
+    <!--<Window.DataContext>
+        <Binding Source="{x:Static local:MainViewModel.Instance}" />
+    </Window.DataContext>-->
 
     <Grid>
         <Grid.ColumnDefinitions>
@@ -226,7 +230,7 @@
                             Content="{Binding CurrentView, UpdateSourceTrigger=PropertyChanged}"/>-->
             <Grid>
                 <Border Margin="30 10 30 10">
-                    <view:InProgressView DataContext="{Binding Path=ipvm}"/>
+                    <view:InProgressView DataContext="{Binding Path=InProgressViewModel.Instance}"/>
                     <Border.Style>
                         <Style TargetType="Border">
                             <Setter Property="Visibility" Value="Collapsed"/>
@@ -240,7 +244,7 @@
                 </Border>
 
                 <Border Margin="30 10 30 10">
-                    <view:ExpandedProjectView DataContext="{Binding Path=epvm}"/>
+                    <view:ExpandedProjectView DataContext="{Binding Path=ExpandedProjectViewModel.Instance}"/>
                     <Border.Style>
                         <Style TargetType="Border">
                             <Setter Property="Visibility" Value="Collapsed"/>
@@ -254,7 +258,7 @@
                 </Border>
                 
                 <Border Margin="30 10 30 10">
-                    <view:ExpandedResourceView DataContext="{Binding Path=ervm}"/>
+                    <view:ExpandedResourceView DataContext="{Binding Path=ExpandedResourceViewModel.Instance}"/>
                     <Border.Style>
                         <Style TargetType="Border">
                             <Setter Property="Visibility" Value="Collapsed"/>
@@ -267,7 +271,7 @@
                     </Border.Style>
                 </Border>
                 <Border Margin="30 10 30 10">
-                    <view:SettingsView DataContext="{Binding Path=svm}"/>
+                    <view:SettingsView DataContext="{Binding Path=SettingsViewModel.Instance}"/>
                     <Border.Style>
                         <Style TargetType="Border">
                             <Setter Property="Visibility" Value="Collapsed"/>
@@ -281,7 +285,7 @@
                 </Border>
 
                 <Border Margin="30 10 30 10">
-                    <view:ArchiveView DataContext="{Binding Path=avm}"/>
+                    <view:ArchiveView DataContext="{Binding Path=AuditViewModel.Instance}"/>
                     <Border.Style>
                         <Style TargetType="Border">
                             <Setter Property="Visibility" Value="Collapsed"/>
@@ -295,7 +299,7 @@
                 </Border>
 
                 <Border Margin="30 10 30 10">
-                    <view:LoginView DataContext="{Binding Path=lvm}"/>
+                    <view:LoginView DataContext="{Binding Path=LoginViewModel.Instance}"/>
                     <Border.Style>
                         <Style TargetType="Border">
                             <Setter Property="Visibility" Value="Collapsed"/>

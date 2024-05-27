@@ -8,10 +8,8 @@ using System.Windows;
 
 namespace Civica.ViewModels
 {
-    public class InProgressViewModel : ObservableObject, IViewModelChild
+    public class InProgressViewModel : ObservableObject
     {
-        public MainViewModel mvm { get; set; }
-
         public string WindowTitle { get; } = "Igangværende";
 
         #region VisibilityProperties
@@ -130,20 +128,6 @@ namespace Civica.ViewModels
                 }
             }
         }
-
-        public void Init(ObservableObject o)
-        {
-            this.mvm = (o as MainViewModel);
-
-            CreateVisibility = WindowVisibility.Hidden;
-            UpdateVisibility = WindowVisibility.Hidden;
-            InformationVisibility = WindowVisibility.Visible;
-
-            projectRepo = this.mvm.GetProjectRepo();
-            progressRepo = this.mvm.GetProgressRepo();
-
-            UpdateList();
-        }
         #region ViewCommands
 
         public RelayCommand CreateProjectViewCmd { get; set; } = new RelayCommand
@@ -161,7 +145,7 @@ namespace Civica.ViewModels
             {
                 if (parameter is InProgressViewModel ipvm)
                 {
-                    if (ipvm.mvm.CurrentUser != null)
+                    if (MainViewModel.Instance.CurrentUser != null)
                     {
                         return true;
                     }
@@ -171,5 +155,21 @@ namespace Civica.ViewModels
         );
 
         #endregion
+
+        //Singleton
+        private InProgressViewModel() {
+            CreateVisibility = WindowVisibility.Hidden;
+            UpdateVisibility = WindowVisibility.Hidden;
+            InformationVisibility = WindowVisibility.Visible;
+
+            projectRepo = MainViewModel.Instance.GetProjectRepo();
+            progressRepo = MainViewModel.Instance.GetProgressRepo();
+
+            UpdateList();
+        }
+
+        private static readonly Lazy<InProgressViewModel> lazy = new Lazy<InProgressViewModel>(() => new InProgressViewModel());
+
+        public static InProgressViewModel Instance => lazy.Value;
     }
 }

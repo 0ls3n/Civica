@@ -13,9 +13,8 @@ using GVMR;
 
 namespace Civica.ViewModels
 {
-    public class SettingsViewModel : ObservableObject, IViewModelChild
+    public class SettingsViewModel : ObservableObject
     {
-        private MainViewModel mvm;
         private IRepository<User> userRepo;
         public string WindowTitle { get; } = "Indstillinger";
         private WindowVisibility _createVisibility;
@@ -83,21 +82,6 @@ namespace Civica.ViewModels
         private int oldPassword;
         public CRUDUserViewModel cuvm { get; set; }
 
-        public void Init(ObservableObject o)
-        {
-            this.mvm = (o as MainViewModel);
-            userRepo = mvm.GetUserRepo();
-
-            cuvm = new CRUDUserViewModel();
-            cuvm.Init(this);
-            cuvm.SetRepo(userRepo);
-            UpdateList();
-
-            CreateVisibility = WindowVisibility.Hidden;
-            UpdateVisibility = WindowVisibility.Hidden;
-            InformationVisibility = WindowVisibility.Visible;
-        }
-
         public void UpdateList()
         {
             Users = new ObservableCollection<UserViewModel>
@@ -122,7 +106,7 @@ namespace Civica.ViewModels
             {
                 if (parameter is SettingsViewModel svm)
                 {
-                    if (svm.mvm.CurrentUser != null)
+                    if (MainViewModel.Instance.CurrentUser != null)
                     {
                         return true;
                     }
@@ -148,7 +132,7 @@ namespace Civica.ViewModels
             {
                 if (parameter is SettingsViewModel svm)
                 {
-                    if (svm.SelectedUser != null && svm.mvm.CurrentUser != null)
+                    if (svm.SelectedUser != null && MainViewModel.Instance.CurrentUser != null)
                     {
                         return true;
                     }
@@ -230,7 +214,7 @@ namespace Civica.ViewModels
 
                 if (parameter is SettingsViewModel svm)
                 {
-                    if (svm.SelectedUser != null && svm.mvm.CurrentUser != null)
+                    if (svm.SelectedUser != null && MainViewModel.Instance.CurrentUser != null)
                     {
                         succes = true;
                     }
@@ -241,5 +225,20 @@ namespace Civica.ViewModels
 
         #endregion
 
+        //Singleton
+        private SettingsViewModel()
+        {
+            userRepo = MainViewModel.Instance.GetUserRepo();
+
+            UpdateList();
+
+            CreateVisibility = WindowVisibility.Hidden;
+            UpdateVisibility = WindowVisibility.Hidden;
+            InformationVisibility = WindowVisibility.Visible;
+        }
+
+        private static readonly Lazy<SettingsViewModel> lazy = new Lazy<SettingsViewModel>(() => new SettingsViewModel());
+
+        public static SettingsViewModel Instance => lazy.Value;
     }
 }

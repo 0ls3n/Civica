@@ -14,10 +14,8 @@ using System.Windows.Forms;
 
 namespace Civica.ViewModels
 {
-    public class CRUDProgressViewModel : ObservableObject, IViewModelChild
+    public class CRUDProgressViewModel : ObservableObject
     {
-        private ExpandedProjectViewModel epvm;
-
         private IRepository<Progress> progressRepo;
 
         private string _description = "";
@@ -57,19 +55,12 @@ namespace Civica.ViewModels
             }
         }
 
-        public void Init(ObservableObject o)
-        {
-            epvm = (o as ExpandedProjectViewModel);
-
-            progressRepo = epvm.mvm.GetProgressRepo();
-        }
-
         public void CreateProgress(int userId, int projectId, Phase phase, Status status, string description)
         {
             Progress prog = new Progress(userId, projectId, phase, status, description, DateTime.Now);
 
             progressRepo.Add(prog);
-            epvm.SelectedProject.SetColor(prog.Status);
+            ExpandedProjectViewModel.Instance.SelectedProject.SetColor(prog.Status);
             Phase = Phase.IDENTIFIED;
             Status = Status.NONE;
             Description = "";
@@ -83,16 +74,16 @@ namespace Civica.ViewModels
             p.Description = pvm.Description;
             progressRepo.Update(p);
 
-            epvm.UpdateList();
+            ExpandedProjectViewModel.Instance.UpdateList();
 
-            epvm.SelectedProgress = epvm.Progresses.FirstOrDefault(x => x.GetId() == p.Id);
-            epvm.SelectedProject.SetColor(p.Status);
+            ExpandedProjectViewModel.Instance.SelectedProgress = ExpandedProjectViewModel.Instance.Progresses.FirstOrDefault(x => x.GetId() == p.Id);
+            ExpandedProjectViewModel.Instance.SelectedProject.SetColor(p.Status);
         }
 
         public void DeleteProgress(ProgressViewModel pvm)
         {
             progressRepo.Delete(progressRepo.GetById(x => x.Id == pvm.GetId()));
-            epvm.UpdateList();
+            ExpandedProjectViewModel.Instance.UpdateList();
         }
 
         public RelayCommand CreateProgressCmd { get; set; } = new RelayCommand
@@ -101,15 +92,15 @@ namespace Civica.ViewModels
             {
                 if (parameter is CRUDProgressViewModel cpvm)
                 {
-                    cpvm.CreateProgress(cpvm.epvm.mvm.CurrentUser.GetId(), cpvm.epvm.SelectedProject.GetId(), cpvm.Phase, cpvm.Status, cpvm.Description);
+                    cpvm.CreateProgress(MainViewModel.Instance.CurrentUser.GetId(), ExpandedProjectViewModel.Instance.SelectedProject.GetId(), cpvm.Phase, cpvm.Status, cpvm.Description);
 
-                    cpvm.epvm.UpdateList();
+                    ExpandedProjectViewModel.Instance.UpdateList();
 
-                    cpvm.epvm.ProgressVisibility = WindowVisibility.Hidden;
-                    cpvm.epvm.UpdateProgressVisibility = WindowVisibility.Hidden;
-                    cpvm.epvm.ProgressVisibility = WindowVisibility.Hidden;
-                    cpvm.epvm.InformationVisibility = WindowVisibility.Hidden;
-                    cpvm.epvm.InformationPlaceholderVisibility = WindowVisibility.Visible;
+                    ExpandedProjectViewModel.Instance.ProgressVisibility = WindowVisibility.Hidden;
+                    ExpandedProjectViewModel.Instance.UpdateProgressVisibility = WindowVisibility.Hidden;
+                    ExpandedProjectViewModel.Instance.ProgressVisibility = WindowVisibility.Hidden;
+                    ExpandedProjectViewModel.Instance.InformationVisibility = WindowVisibility.Hidden;
+                    ExpandedProjectViewModel.Instance.InformationPlaceholderVisibility = WindowVisibility.Visible;
                 }
             },
             parameter =>
@@ -123,5 +114,14 @@ namespace Civica.ViewModels
                 return succes;
             }
         );
+
+        //Singleton
+        private CRUDProgressViewModel() {
+            progressRepo = MainViewModel.Instance.GetProgressRepo();
+        }
+
+        private static readonly Lazy<CRUDProgressViewModel> lazy = new Lazy<CRUDProgressViewModel>(() => new CRUDProgressViewModel());
+
+        public static CRUDProgressViewModel Instance => lazy.Value;
     }
 }

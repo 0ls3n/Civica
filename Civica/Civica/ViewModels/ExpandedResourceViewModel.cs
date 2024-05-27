@@ -18,12 +18,8 @@ using System.Windows;
 
 namespace Civica.ViewModels
 {
-    public class ExpandedResourceViewModel : ObservableObject, IViewModelChild
+    public class ExpandedResourceViewModel : ObservableObject
     {
-        public MainViewModel mvm;
-        public CRUDWorktimeViewModel cwvm { get; set; }
-        public CRUDAuditViewModel cavm { get; set; }
-
         IRepository<Audit> auditRepo;
         IRepository<Resource> resourceRepo;
         IRepository<Worktime> worktimeRepo;
@@ -220,26 +216,6 @@ namespace Civica.ViewModels
 
         #endregion
 
-        public void Init(ObservableObject o)
-        {
-            mvm = (o as MainViewModel);
-            auditRepo = mvm.GetAuditRepo();
-            resourceRepo = mvm.GetResourceRepo();
-            worktimeRepo = mvm.GetWorktimeRepo();
-
-            cwvm = new CRUDWorktimeViewModel();
-            cwvm.Init(this);
-
-            cavm = new CRUDAuditViewModel();
-            cavm.Init(this);
-
-            ResourceVisiblity = WindowVisibility.Visible;
-            AuditDetailsVisibility = WindowVisibility.Hidden;
-            UpdateAuditVisibility = WindowVisibility.Hidden;
-            UpdateResourceVisibility = WindowVisibility.Hidden;
-            CreateAuditVisibility = WindowVisibility.Hidden;
-        }
-
         public RelayCommand ChangeViewCmd { get; set; } = new RelayCommand(
             parameter =>
             {
@@ -305,7 +281,7 @@ namespace Civica.ViewModels
             {
                 if (parameter is ExpandedResourceViewModel ervm)
                 {
-                    if (ervm.SelectedProject != null && ervm.mvm.CurrentUser != null)
+                    if (ervm.SelectedProject != null && MainViewModel.Instance.CurrentUser != null)
                     {
                         return true;
                     }
@@ -324,7 +300,7 @@ namespace Civica.ViewModels
                      ervm.AuditDetailsVisibility = WindowVisibility.Hidden;
                      ervm.InformationPlaceholderVisibility = WindowVisibility.Visible;
 
-                     ervm.cavm.UpdateAudit(ervm.SelectedAudit);
+                     CRUDAuditViewModel.Instance.UpdateAudit(ervm.SelectedAudit);
                  }
                  else
                  {
@@ -332,7 +308,7 @@ namespace Civica.ViewModels
                      ervm.WorktimeDetailsVisibility = WindowVisibility.Hidden;
                      ervm.InformationPlaceholderVisibility = WindowVisibility.Visible;
 
-                     ervm.cwvm.UpdateWorktime(ervm.SelectedWorktime);
+                     CRUDWorktimeViewModel.Instance.UpdateWorktime(ervm.SelectedWorktime);
                  }
              }
          },
@@ -340,7 +316,7 @@ namespace Civica.ViewModels
          {
              if (parameter is ExpandedResourceViewModel ervm)
              {
-                 if (ervm.SelectedProject != null && ervm.mvm.CurrentUser != null)
+                 if (ervm.SelectedProject != null && MainViewModel.Instance.CurrentUser != null)
                  {
                      return true;
                  }
@@ -360,8 +336,8 @@ namespace Civica.ViewModels
                         ervm.InformationPlaceholderVisibility = WindowVisibility.Hidden;
                         ervm.CreateAuditVisibility = WindowVisibility.Visible;
 
-                        ervm.cavm.Amount = "";
-                        ervm.cavm.Year = DateTime.Now.Year;
+                        CRUDAuditViewModel.Instance.Amount = "";
+                        CRUDAuditViewModel.Instance.Year = DateTime.Now.Year;
                     }
                     else
                     {
@@ -370,10 +346,10 @@ namespace Civica.ViewModels
                         ervm.InformationPlaceholderVisibility = WindowVisibility.Hidden;
                         ervm.CreateWorktimeVisibility = WindowVisibility.Visible;
 
-                        ervm.cavm.Description = "";
-                        ervm.cwvm.Description = "";
-                        ervm.cwvm.EstimatedHours = "";
-                        ervm.cwvm.InvolvedName = "";
+                        CRUDWorktimeViewModel.Instance.Description = "";
+                        CRUDWorktimeViewModel.Instance.Description = "";
+                        CRUDWorktimeViewModel.Instance.EstimatedHours = "";
+                        CRUDWorktimeViewModel.Instance.InvolvedName = "";
                     }
                 }
             },
@@ -381,7 +357,7 @@ namespace Civica.ViewModels
             {
                 if (parameter is ExpandedResourceViewModel ervm)
                 {
-                    if (ervm.SelectedProject != null && ervm.mvm.CurrentUser != null)
+                    if (ervm.SelectedProject != null && MainViewModel.Instance.CurrentUser != null)
                     {
                         return true;
                     }
@@ -401,7 +377,7 @@ namespace Civica.ViewModels
                   {
                       if (ervm.AuditListVisibility == WindowVisibility.Visible)
                       {
-                          ervm.cavm.DeleteAudit(ervm.SelectedAudit);
+                          CRUDAuditViewModel.Instance.DeleteAudit(ervm.SelectedAudit);
 
                           ervm.UpdateAuditVisibility = WindowVisibility.Hidden;
                           ervm.AuditDetailsVisibility = WindowVisibility.Hidden;
@@ -410,7 +386,7 @@ namespace Civica.ViewModels
                       }
                       else
                       {
-                          ervm.cwvm.DeleteWorktime(ervm.SelectedWorktime);
+                          CRUDWorktimeViewModel.Instance.DeleteWorktime(ervm.SelectedWorktime);
 
                           ervm.UpdateWorktimeVisibility = WindowVisibility.Hidden;
                           ervm.WorktimeDetailsVisibility = WindowVisibility.Hidden;
@@ -424,7 +400,7 @@ namespace Civica.ViewModels
           {
               if (parameter is ExpandedResourceViewModel ervm)
               {
-                  if (ervm.SelectedProject != null && ervm.mvm.CurrentUser != null)
+                  if (ervm.SelectedProject != null && MainViewModel.Instance.CurrentUser != null)
                   {
                       return true;
                   }
@@ -445,8 +421,8 @@ namespace Civica.ViewModels
                       ervm.InformationPlaceholderVisibility = WindowVisibility.Visible;
                       ervm.CreateAuditVisibility = WindowVisibility.Hidden;
 
-                      ervm.cavm.Amount = "";
-                      ervm.cavm.Year = DateTime.Now.Year;
+                      CRUDAuditViewModel.Instance.Amount = "";
+                      CRUDAuditViewModel.Instance.Year = DateTime.Now.Year;
                   }
                   else
                   {
@@ -455,10 +431,10 @@ namespace Civica.ViewModels
                       ervm.CreateWorktimeVisibility = WindowVisibility.Hidden;
                       ervm.InformationPlaceholderVisibility = WindowVisibility.Visible;
 
-                      ervm.cavm.Description = "";
-                      ervm.cwvm.Description = "";
-                      ervm.cwvm.EstimatedHours = "";
-                      ervm.cwvm.InvolvedName = "";
+                      CRUDWorktimeViewModel.Instance.Description = "";
+                      CRUDWorktimeViewModel.Instance.Description = "";
+                      CRUDWorktimeViewModel.Instance.EstimatedHours = "";
+                      CRUDWorktimeViewModel.Instance.InvolvedName = "";
                   }
               }
           },
@@ -466,7 +442,7 @@ namespace Civica.ViewModels
           {
               if (parameter is ExpandedResourceViewModel ervm)
               {
-                  if (ervm.SelectedProject != null && ervm.mvm.CurrentUser != null)
+                  if (ervm.SelectedProject != null && MainViewModel.Instance.CurrentUser != null)
                   {
                       return true;
                   }
@@ -481,7 +457,7 @@ namespace Civica.ViewModels
              {
                  if (ervm.AuditListVisibility == WindowVisibility.Visible)
                  {
-                     ervm.cavm.CreateAudit(ervm.mvm.CurrentUser.GetId(), ervm.SelectedResource.GetId(), ervm.cavm.Amount, ervm.cavm.Year, ervm.cavm.Description);
+                     CRUDAuditViewModel.Instance.CreateAudit(MainViewModel.Instance.CurrentUser.GetId(), ervm.SelectedResource.GetId(), CRUDAuditViewModel.Instance.Amount, CRUDAuditViewModel.Instance.Year, CRUDAuditViewModel.Instance.Description);
 
                      ervm.UpdateAuditVisibility = WindowVisibility.Hidden;
                      ervm.AuditDetailsVisibility = WindowVisibility.Hidden;
@@ -490,12 +466,12 @@ namespace Civica.ViewModels
                  }
                  else
                  {
-                     if (string.IsNullOrEmpty(ervm.cwvm.InvolvedName))
+                     if (string.IsNullOrEmpty(CRUDWorktimeViewModel.Instance.InvolvedName))
                      {
                          MessageBox.Show("Der skal indtastes en afdeling eller et navn.");
                          return;
                      }
-                     ervm.cwvm.CreateWorktime(ervm.mvm.CurrentUser.GetId(), ervm.SelectedResource.GetId(), ervm.cwvm.EstimatedHours, ervm.cwvm.InvolvedName, ervm.cwvm.Description, DateTime.Now);
+                     CRUDWorktimeViewModel.Instance.CreateWorktime(MainViewModel.Instance.CurrentUser.GetId(), ervm.SelectedResource.GetId(), CRUDWorktimeViewModel.Instance.EstimatedHours, CRUDWorktimeViewModel.Instance.InvolvedName, CRUDWorktimeViewModel.Instance.Description, DateTime.Now);
 
                      ervm.UpdateWorktimeVisibility = WindowVisibility.Hidden;
                      ervm.WorktimeDetailsVisibility = WindowVisibility.Hidden;
@@ -508,7 +484,7 @@ namespace Civica.ViewModels
          {
              if (parameter is ExpandedResourceViewModel ervm)
              {
-                 if (ervm.SelectedProject != null && ervm.mvm.CurrentUser != null)
+                 if (ervm.SelectedProject != null && MainViewModel.Instance.CurrentUser != null)
                  {
                      return true;
                  }
@@ -567,7 +543,7 @@ namespace Civica.ViewModels
            {
                if (parameter is ExpandedResourceViewModel ervm)
                {
-                   if (ervm.SelectedProject != null && ervm.mvm.CurrentUser != null)
+                   if (ervm.SelectedProject != null && MainViewModel.Instance.CurrentUser != null)
                    {
                        return true;
                    }
@@ -620,5 +596,22 @@ namespace Civica.ViewModels
                 }
             }
         }
+
+        //Singleton
+        private ExpandedResourceViewModel() {
+            auditRepo = MainViewModel.Instance.GetAuditRepo();
+            resourceRepo = MainViewModel.Instance.GetResourceRepo();
+            worktimeRepo = MainViewModel.Instance.GetWorktimeRepo();
+
+            ResourceVisiblity = WindowVisibility.Visible;
+            AuditDetailsVisibility = WindowVisibility.Hidden;
+            UpdateAuditVisibility = WindowVisibility.Hidden;
+            UpdateResourceVisibility = WindowVisibility.Hidden;
+            CreateAuditVisibility = WindowVisibility.Hidden;
+        }
+
+        private static readonly Lazy<ExpandedResourceViewModel> lazy = new Lazy<ExpandedResourceViewModel>(() => new ExpandedResourceViewModel());
+
+        public static ExpandedResourceViewModel Instance => lazy.Value;
     }
 }

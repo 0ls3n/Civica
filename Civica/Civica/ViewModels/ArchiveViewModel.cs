@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Civica.ViewModels
 {
-    public class ArchiveViewModel : ObservableObject, IViewModelChild
+    public class ArchiveViewModel : ObservableObject
     {
         public string WindowTitle { get; } = "Arkiv";
 
@@ -27,19 +27,8 @@ namespace Civica.ViewModels
             }
         }
 
-        private MainViewModel mvm;
-
         IRepository<Project> projectRepo;
         IRepository<Progress> progressRepo;
-        
-        public void Init(ObservableObject o)
-        {
-            this.mvm = (o as MainViewModel);
-            projectRepo = this.mvm.GetProjectRepo();
-            progressRepo = this.mvm.GetProgressRepo();
-
-            UpdateList();
-        }
 
         public void UpdateList()
         {
@@ -56,5 +45,18 @@ namespace Civica.ViewModels
                 }
             }
         }
+
+        //Singleton
+        private ArchiveViewModel()
+        {
+            projectRepo = MainViewModel.Instance.GetProjectRepo();
+            progressRepo = MainViewModel.Instance.GetProgressRepo();
+
+            UpdateList();
+        }
+
+        private static readonly Lazy<ArchiveViewModel> lazy = new Lazy<ArchiveViewModel>(() => new ArchiveViewModel());
+
+        public static ArchiveViewModel Instance => lazy.Value;
     }
 }

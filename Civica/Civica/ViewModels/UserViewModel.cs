@@ -18,17 +18,17 @@ namespace Civica.ViewModels
         public string FirstName
         {
             get { return firstName; }
-            set 
-            { 
-                firstName = value; 
+            set
+            {
+                firstName = value;
                 FullName = value + " " + LastName;
             }
         }
 
         private string lastName;
-        public string LastName 
+        public string LastName
         {
-            get {  return lastName; }
+            get { return lastName; }
             set
             {
                 lastName = value;
@@ -40,11 +40,11 @@ namespace Civica.ViewModels
         public string Password
         {
             get { return password; }
-            set 
-            { 
+            set
+            {
                 if (value.Length < 5)
                 {
-                    password = value; 
+                    password = value;
                 }
                 else
                 {
@@ -58,13 +58,11 @@ namespace Civica.ViewModels
             this.user = user;
             FirstName = user.FirstName;
             LastName = user.LastName;
-            Password = user.Password.ToString();  
+            Password = user.Password.ToString();
         }
-        public int GetId () 
-        { 
-         return user.Id;
+        public int GetId()
+        {
+            return user.Id;
         }
-
-
     }
 }
