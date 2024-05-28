@@ -140,5 +140,10 @@ namespace Civica.ViewModels
                 return _instance;
             }
         }
+
+        //Singleton - Lazy
+        //private static readonly Lazy<CRUDProgressViewModel> lazy = new Lazy<CRUDProgressViewModel>(() => new CRUDProgressViewModel());
+
+        //public static CRUDProgressViewModel Instance => lazy.Value;
     }
 }

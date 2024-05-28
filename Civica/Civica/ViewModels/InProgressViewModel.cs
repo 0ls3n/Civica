@@ -188,5 +188,10 @@ namespace Civica.ViewModels
                 return _instance;
             }
         }
+
+        //Singleton - Lazy
+        //private static readonly Lazy<InProgressViewModel> lazy = new Lazy<InProgressViewModel>(() => new InProgressViewModel());
+
+        //public static InProgressViewModel Instance => lazy.Value;
     }
 }

@@ -256,5 +256,10 @@ namespace Civica.ViewModels
                 return _instance;
             }
         }
+
+        //Singleton - Lazy
+        //private static readonly Lazy<SettingsViewModel> lazy = new Lazy<SettingsViewModel>(() => new SettingsViewModel());
+
+        //public static SettingsViewModel Instance => lazy.Value;
     }
 }

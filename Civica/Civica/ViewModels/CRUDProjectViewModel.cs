@@ -201,5 +201,10 @@ namespace Civica.ViewModels
                 return _instance;
             }
         }
+
+        //Singleton - Lazy
+        //private static readonly Lazy<CRUDProjectViewModel> lazy = new Lazy<CRUDProjectViewModel>(() => new CRUDProjectViewModel());
+
+        //public static CRUDProjectViewModel Instance => lazy.Value;
     }
 }

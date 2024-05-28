@@ -75,5 +75,10 @@ namespace Civica.ViewModels
                 return _instance;
             }
         }
+
+        //Singleton - Lazy
+        //private static readonly Lazy<ArchiveViewModel> lazy = new Lazy<ArchiveViewModel>(() => new ArchiveViewModel());
+
+        //public static ArchiveViewModel Instance => lazy.Value;
     }
 }

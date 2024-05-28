@@ -630,5 +630,10 @@ namespace Civica.ViewModels
                 return _instance;
             }
         }
+
+        //Singleton - Lazy
+        //private static readonly Lazy<ExpandedResourceViewModel> lazy = new Lazy<ExpandedResourceViewModel>(() => new ExpandedResourceViewModel());
+
+        //public static ExpandedResourceViewModel Instance => lazy.Value;
     }
 }

@@ -120,5 +120,10 @@ namespace Civica.ViewModels
                 return _instance;
             }
         }
+
+        //Singleton - Lazy
+        //private static readonly Lazy<LoginViewModel> lazy = new Lazy<LoginViewModel>(() => new LoginViewModel());
+
+        //public static LoginViewModel Instance => lazy.Value;
     }
 }
