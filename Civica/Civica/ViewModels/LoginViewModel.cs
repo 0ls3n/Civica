@@ -100,10 +100,25 @@ namespace Civica.ViewModels
             userRepo = MainViewModel.Instance.GetUserRepo();
         }
 
-        private static Lazy<LoginViewModel> lazy = new Lazy<LoginViewModel>(
-               () => new LoginViewModel(),
-               LazyThreadSafetyMode.PublicationOnly
-           );
-        public static LoginViewModel Instance => lazy.Value;
+        private static readonly object _lock = new object();
+        private static LoginViewModel _instance;
+
+        public static LoginViewModel Instance
+        {
+            get
+            {
+                if (_instance is null)
+                {
+                    lock (_lock)
+                    {
+                        if (_instance is null)
+                        {
+                            _instance = new LoginViewModel();
+                        }
+                    }
+                }
+                return _instance;
+            }
+        }
     }
 }

@@ -94,7 +94,6 @@ namespace Civica.ViewModels
             }
         }
 
-        private MainViewModel mvm;
         private IRepository<Project> projectRepo;
         private IRepository<Resource> resourceRepo;
         private IRepository<Worktime> worktimeRepo;
@@ -152,7 +151,7 @@ namespace Civica.ViewModels
             {
                 if (parameter is CRUDProjectViewModel cpvm)
                 {
-                    cpvm.CreateProject(cpvm.mvm.CurrentUser.GetId(), cpvm.Name, cpvm.Owner, cpvm.Manager, cpvm.Description, int.TryParse(cpvm.StartAmount, out int r) ? r : 0, decimal.TryParse(cpvm.ExpectedYearlyCost, out decimal r2) ? r2 : 0);
+                    cpvm.CreateProject(MainViewModel.Instance.CurrentUser.GetId(), cpvm.Name, cpvm.Owner, cpvm.Manager, cpvm.Description, int.TryParse(cpvm.StartAmount, out int r) ? r : 0, decimal.TryParse(cpvm.ExpectedYearlyCost, out decimal r2) ? r2 : 0);
                     InProgressViewModel.Instance.CreateVisibility = WindowVisibility.Hidden;
                     InProgressViewModel.Instance.InformationVisibility = WindowVisibility.Visible;
                 }
@@ -175,15 +174,32 @@ namespace Civica.ViewModels
         //Singleton
         private CRUDProjectViewModel()
         {
-            projectRepo = mvm.GetProjectRepo();
-            resourceRepo = mvm.GetResourceRepo();
-            worktimeRepo = mvm.GetWorktimeRepo();
-            auditRepo = mvm.GetAuditRepo();
-            progressRepo = mvm.GetProgressRepo();
+            projectRepo = MainViewModel.Instance.GetProjectRepo();
+            resourceRepo = MainViewModel.Instance.GetResourceRepo();
+            worktimeRepo = MainViewModel.Instance.GetWorktimeRepo();
+            auditRepo = MainViewModel.Instance.GetAuditRepo();
+            progressRepo = MainViewModel.Instance.GetProgressRepo();
         }
 
-        private static readonly Lazy<CRUDProjectViewModel> lazy = new Lazy<CRUDProjectViewModel>(() => new CRUDProjectViewModel());
+        private static readonly object _lock = new object();
+        private static CRUDProjectViewModel _instance;
 
-        public static CRUDProjectViewModel Instance => lazy.Value;
+        public static CRUDProjectViewModel Instance
+        {
+            get
+            {
+                if (_instance is null)
+                {
+                    lock (_lock)
+                    {
+                        if (_instance is null)
+                        {
+                            _instance = new CRUDProjectViewModel();
+                        }
+                    }
+                }
+                return _instance;
+            }
+        }
     }
 }

@@ -80,7 +80,6 @@ namespace Civica.ViewModels
         }
         private string oldName;
         private int oldPassword;
-        public CRUDUserViewModel cuvm { get; set; }
 
         public void UpdateList()
         {
@@ -156,7 +155,7 @@ namespace Civica.ViewModels
                         if (svm.userRepo.GetAll().OfType<User>().FirstOrDefault(x => x.FullName.ToLower() == svm.SelectedUser.FullName.ToLower()) is null ||
                         svm.SelectedUser.FullName.ToLower() == svm.oldName.ToLower())
                         {
-                            svm.cuvm.UpdateUser(svm.SelectedUser);
+                            CRUDUserViewModel.Instance.UpdateUser(svm.SelectedUser);
 
                             svm.UpdateVisibility = WindowVisibility.Hidden;
                             svm.InformationVisibility = WindowVisibility.Visible;
@@ -203,7 +202,7 @@ namespace Civica.ViewModels
 
                     if (result == MessageBoxResult.OK)
                     {
-                        svm.cuvm.DeleteUser(svm.SelectedUser);
+                        CRUDUserViewModel.Instance.DeleteUser(svm.SelectedUser);
                         svm.InformationVisibility = WindowVisibility.Visible;
                     }
                 }
@@ -237,8 +236,25 @@ namespace Civica.ViewModels
             InformationVisibility = WindowVisibility.Visible;
         }
 
-        private static readonly Lazy<SettingsViewModel> lazy = new Lazy<SettingsViewModel>(() => new SettingsViewModel());
+        private static readonly object _lock = new object();
+        private static SettingsViewModel _instance;
 
-        public static SettingsViewModel Instance => lazy.Value;
+        public static SettingsViewModel Instance
+        {
+            get
+            {
+                if (_instance is null)
+                {
+                    lock (_lock)
+                    {
+                        if (_instance is null)
+                        {
+                            _instance = new SettingsViewModel();
+                        }
+                    }
+                }
+                return _instance;
+            }
+        }
     }
 }

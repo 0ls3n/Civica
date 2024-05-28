@@ -363,8 +363,25 @@ namespace Civica.ViewModels
             progressRepo = MainViewModel.Instance.GetProgressRepo();
         }
 
-        private static readonly Lazy<ExpandedProjectViewModel> lazy = new Lazy<ExpandedProjectViewModel>(() => new ExpandedProjectViewModel());
+        private static readonly object _lock = new object();
+        private static ExpandedProjectViewModel _instance;
 
-        public static ExpandedProjectViewModel Instance => lazy.Value;
+        public static ExpandedProjectViewModel Instance
+        {
+            get
+            {
+                if (_instance is null)
+                {
+                    lock (_lock)
+                    {
+                        if (_instance is null)
+                        {
+                            _instance = new ExpandedProjectViewModel();
+                        }
+                    }
+                }
+                return _instance;
+            }
+        }
     }
 }

@@ -55,8 +55,25 @@ namespace Civica.ViewModels
             UpdateList();
         }
 
-        private static readonly Lazy<ArchiveViewModel> lazy = new Lazy<ArchiveViewModel>(() => new ArchiveViewModel());
+        private static readonly object _lock = new object();
+        private static ArchiveViewModel _instance;
 
-        public static ArchiveViewModel Instance => lazy.Value;
+        public static ArchiveViewModel Instance
+        {
+            get
+            {
+                if (_instance is null)
+                {
+                    lock (_lock)
+                    {
+                        if (_instance is null)
+                        {
+                            _instance = new ArchiveViewModel();
+                        }
+                    }
+                }
+                return _instance;
+            }
+        }
     }
 }

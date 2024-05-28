@@ -5,7 +5,6 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:view="clr-namespace:Civica.Views"
              xmlns:viewModel="clr-namespace:Civica.ViewModels"
-             xmlns:local="clr-namespace:Civica.Views"
              mc:Ignorable="d" 
              d:DesignHeight="650" d:DesignWidth="1200">
     <UserControl.Resources>
@@ -105,7 +104,7 @@
                    Margin="0 0 0 10"
                    Foreground="#8A8A8A"/>
 
-        <Border Grid.Row="1">
+        <!--<Border Grid.Row="1">
             <view:OptionsView/>
             <Border.Style>
                 <Style TargetType="Border">
@@ -117,10 +116,10 @@
                     </Style.Triggers>
                 </Style>
             </Border.Style>
-        </Border>
+        </Border>-->
         
         <Border Grid.Row="1">
-            <view:CreateUserView DataContext="{Binding Path=cuvm}"/>
+            <view:CreateUserView DataContext="{x:Static viewModel:CRUDUserViewModel.Instance}"/>
             <Border.Style>
                 <Style TargetType="Border">
                     <Setter Property="Visibility" Value="Collapsed"/>
@@ -134,7 +133,7 @@
         </Border>
 
         <Border Grid.Row="1">
-            <view:UpdateUserView/>
+            <view:UpdateUserView DataContext="{x:Static viewModel:SettingsViewModel.Instance}"/>
             <Border.Style>
                 <Style TargetType="Border">
                     <Setter Property="Visibility" Value="Collapsed"/>

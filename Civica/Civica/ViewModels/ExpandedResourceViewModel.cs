@@ -610,8 +610,25 @@ namespace Civica.ViewModels
             CreateAuditVisibility = WindowVisibility.Hidden;
         }
 
-        private static readonly Lazy<ExpandedResourceViewModel> lazy = new Lazy<ExpandedResourceViewModel>(() => new ExpandedResourceViewModel());
+        private static readonly object _lock = new object();
+        private static ExpandedResourceViewModel _instance;
 
-        public static ExpandedResourceViewModel Instance => lazy.Value;
+        public static ExpandedResourceViewModel Instance
+        {
+            get
+            {
+                if (_instance is null)
+                {
+                    lock (_lock)
+                    {
+                        if (_instance is null)
+                        {
+                            _instance = new ExpandedResourceViewModel();
+                        }
+                    }
+                }
+                return _instance;
+            }
+        }
     }
 }

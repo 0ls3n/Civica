@@ -23,7 +23,7 @@ namespace Civica.Views
         public MainWindow()
         {
             InitializeComponent();
-            this.DataContext = MainViewModel.Instance;
+            DataContext = MainViewModel.Instance;
         }
     }
 }

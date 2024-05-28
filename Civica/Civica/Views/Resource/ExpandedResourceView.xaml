@@ -613,7 +613,7 @@ CornerRadius="25">
             </Border>
             <Border Grid.Row="0"
          Margin="0,0,10,0">
-                <view:CreateAuditView/>
+                <view:CreateAuditView DataContext="{x:Static viewModel:CRUDAuditViewModel.Instance}"/>
 
                 <Border.Style>
                     <Style TargetType="Border">
@@ -629,7 +629,7 @@ CornerRadius="25">
 
             <Border Grid.Row="0"
                     Margin="0,0,10,0">
-                <view:CreateWorktimeView/>
+                <view:CreateWorktimeView DataContext="{x:Static viewModel:CRUDWorktimeViewModel.Instance}"/>
 
                 <Border.Style>
                     <Style TargetType="Border">

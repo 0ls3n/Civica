@@ -106,8 +106,25 @@ namespace Civica.ViewModels
             auditRepo = MainViewModel.Instance.GetAuditRepo();
         }
 
-        private static readonly Lazy<CRUDAuditViewModel> lazy = new Lazy<CRUDAuditViewModel>(() => new CRUDAuditViewModel());
+        private static readonly object _lock = new object();
+        private static CRUDAuditViewModel _instance;
 
-        public static CRUDAuditViewModel Instance => lazy.Value;
+        public static CRUDAuditViewModel Instance
+        {
+            get
+            {
+                if (_instance is null)
+                {
+                    lock (_lock)
+                    {
+                        if (_instance is null)
+                        {
+                            _instance = new CRUDAuditViewModel();
+                        }
+                    }
+                }
+                return _instance;
+            }
+        }
     }
 }

@@ -4,13 +4,12 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:view="clr-namespace:Civica.Views"
+        xmlns:viewModel="clr-namespace:Civica.ViewModels"
         mc:Ignorable="d"
         MinHeight="800"
         MinWidth="1200"
         Icon="/Resources/Images/Civica_Logo.ico"
         Title="Civica Projektstyring" Height="800" Width="1200"
-                xmlns:local="clr-namespace:Civica.ViewModels"
-
         WindowStartupLocation="CenterScreen">
 
     <!--<Window.DataContext>
@@ -145,7 +144,7 @@
                         BorderThickness="0 1 0 0"
                         BorderBrush="#338A8A8A"
                         Cursor="Hand"/>
-                
+
                 <RadioButton Content="Arkiv"
                              FontSize="14"
                              Height="20"
@@ -220,7 +219,7 @@
 
         </Grid>
 
-        
+
 
         <Border Grid.Column="1"
                 Grid.Row="1"
@@ -230,7 +229,7 @@
                             Content="{Binding CurrentView, UpdateSourceTrigger=PropertyChanged}"/>-->
             <Grid>
                 <Border Margin="30 10 30 10">
-                    <view:InProgressView DataContext="{Binding Path=InProgressViewModel.Instance}"/>
+                    <view:InProgressView DataContext="{x:Static viewModel:InProgressViewModel.Instance}"/>
                     <Border.Style>
                         <Style TargetType="Border">
                             <Setter Property="Visibility" Value="Collapsed"/>
@@ -244,7 +243,7 @@
                 </Border>
 
                 <Border Margin="30 10 30 10">
-                    <view:ExpandedProjectView DataContext="{Binding Path=ExpandedProjectViewModel.Instance}"/>
+                    <view:ExpandedProjectView DataContext="{x:Static viewModel:ExpandedProjectViewModel.Instance}"/>
                     <Border.Style>
                         <Style TargetType="Border">
                             <Setter Property="Visibility" Value="Collapsed"/>
@@ -256,9 +255,9 @@
                         </Style>
                     </Border.Style>
                 </Border>
-                
+
                 <Border Margin="30 10 30 10">
-                    <view:ExpandedResourceView DataContext="{Binding Path=ExpandedResourceViewModel.Instance}"/>
+                    <view:ExpandedResourceView DataContext="{x:Static viewModel:ExpandedResourceViewModel.Instance}"/>
                     <Border.Style>
                         <Style TargetType="Border">
                             <Setter Property="Visibility" Value="Collapsed"/>
@@ -271,7 +270,7 @@
                     </Border.Style>
                 </Border>
                 <Border Margin="30 10 30 10">
-                    <view:SettingsView DataContext="{Binding Path=SettingsViewModel.Instance}"/>
+                    <view:SettingsView DataContext="{x:Static viewModel:SettingsViewModel.Instance}"/>
                     <Border.Style>
                         <Style TargetType="Border">
                             <Setter Property="Visibility" Value="Collapsed"/>
@@ -285,7 +284,7 @@
                 </Border>
 
                 <Border Margin="30 10 30 10">
-                    <view:ArchiveView DataContext="{Binding Path=AuditViewModel.Instance}"/>
+                    <view:ArchiveView DataContext="{x:Static viewModel:ArchiveViewModel.Instance}"/>
                     <Border.Style>
                         <Style TargetType="Border">
                             <Setter Property="Visibility" Value="Collapsed"/>
@@ -299,7 +298,7 @@
                 </Border>
 
                 <Border Margin="30 10 30 10">
-                    <view:LoginView DataContext="{Binding Path=LoginViewModel.Instance}"/>
+                    <view:LoginView DataContext="{x:Static viewModel:LoginViewModel.Instance}"/>
                     <Border.Style>
                         <Style TargetType="Border">
                             <Setter Property="Visibility" Value="Collapsed"/>

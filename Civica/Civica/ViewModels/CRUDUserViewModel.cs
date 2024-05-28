@@ -129,8 +129,25 @@ namespace Civica.ViewModels
             userRepo = MainViewModel.Instance.GetUserRepo();
         }
 
-        private static readonly Lazy<CRUDUserViewModel> lazy = new Lazy<CRUDUserViewModel>(() => new CRUDUserViewModel());
+        private static readonly object _lock = new object();
+        private static CRUDUserViewModel _instance;
 
-        public static CRUDUserViewModel Instance => lazy.Value;
+        public static CRUDUserViewModel Instance
+        {
+            get
+            {
+                if (_instance is null)
+                {
+                    lock (_lock)
+                    {
+                        if (_instance is null)
+                        {
+                            _instance = new CRUDUserViewModel();
+                        }
+                    }
+                }
+                return _instance;
+            }
+        }
     }
 }

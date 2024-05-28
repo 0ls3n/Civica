@@ -377,13 +377,28 @@ namespace Civica.ViewModels
             LoginView = WindowVisibility.Visible;
             ArchiveView = WindowVisibility.Hidden;
 
-            ViewTitle = LoginViewModel.Instance.WindowTitle;
-
-            
+            //ViewTitle = LoginViewModel.Instance.WindowTitle;
         }
 
-        private static readonly Lazy<MainViewModel> lazy = new Lazy<MainViewModel>(() => new MainViewModel());
+        private static readonly object _lock = new object();
+        private static MainViewModel _instance;
 
-        public static MainViewModel Instance => lazy.Value;
+        public static MainViewModel Instance
+        {
+            get
+            {
+                if (_instance is null)
+                {
+                    lock (_lock)
+                    {
+                        if (_instance is null)
+                        {
+                            _instance = new MainViewModel();
+                        }
+                    }
+                }
+                return _instance;
+            }
+        }
     }
 }

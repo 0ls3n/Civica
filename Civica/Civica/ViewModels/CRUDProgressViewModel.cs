@@ -120,8 +120,25 @@ namespace Civica.ViewModels
             progressRepo = MainViewModel.Instance.GetProgressRepo();
         }
 
-        private static readonly Lazy<CRUDProgressViewModel> lazy = new Lazy<CRUDProgressViewModel>(() => new CRUDProgressViewModel());
+        private static readonly object _lock = new object();
+        private static CRUDProgressViewModel _instance;
 
-        public static CRUDProgressViewModel Instance => lazy.Value;
+        public static CRUDProgressViewModel Instance
+        {
+            get
+            {
+                if (_instance is null)
+                {
+                    lock (_lock)
+                    {
+                        if (_instance is null)
+                        {
+                            _instance = new CRUDProgressViewModel();
+                        }
+                    }
+                }
+                return _instance;
+            }
+        }
     }
 }

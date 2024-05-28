@@ -168,8 +168,25 @@ namespace Civica.ViewModels
             UpdateList();
         }
 
-        private static readonly Lazy<InProgressViewModel> lazy = new Lazy<InProgressViewModel>(() => new InProgressViewModel());
+        private static readonly object _lock = new object();
+        private static InProgressViewModel _instance;
 
-        public static InProgressViewModel Instance => lazy.Value;
+        public static InProgressViewModel Instance
+        {
+            get
+            {
+                if (_instance is null)
+                {
+                    lock (_lock)
+                    {
+                        if (_instance is null)
+                        {
+                            _instance = new InProgressViewModel();
+                        }
+                    }
+                }
+                return _instance;
+            }
+        }
     }
 }

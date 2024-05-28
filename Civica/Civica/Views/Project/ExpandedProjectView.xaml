@@ -153,8 +153,9 @@
              Cursor="Hand"
              Height="20"
              Margin="0, 0, 20, 10"
-             Command="{Binding cpvm.CreateProgressCmd}"
-             CommandParameter="{Binding cpvm}"
+             DataContext="{Binding Source={x:Static viewModel:CRUDProgressViewModel.Instance}}"
+             Command="{Binding CreateProgressCmd}"
+             CommandParameter="{Binding}"
              ToolTipService.InitialShowDelay="0">
             <Button.ToolTip>
                 <ToolTip Content="Opret ny fremdrift" Style="{StaticResource ToolTipTheme}"/>
@@ -164,10 +165,10 @@
                 <Style TargetType="{x:Type Button}">
                     <Setter Property="Background" Value="Transparent"/>
                     <Style.Triggers>
-                        <DataTrigger Binding="{Binding Path=CreateProgressVisibility}" Value="Hidden">
+                        <DataTrigger Binding="{Binding Source={x:Static viewModel:ExpandedProjectViewModel.Instance},Path=CreateProgressVisibility}" Value="Hidden">
                             <Setter Property="Visibility" Value="Hidden"/>
                         </DataTrigger>
-                        <DataTrigger Binding="{Binding Path=CreateProgressVisibility}" Value="Visible">
+                        <DataTrigger Binding="{Binding Source={x:Static viewModel:ExpandedProjectViewModel.Instance},Path=CreateProgressVisibility}" Value="Visible">
                             <Setter Property="Visibility" Value="Visible"/>
                         </DataTrigger>
                     </Style.Triggers>
@@ -381,6 +382,7 @@ Width="20"
                  Margin="10,8,4,0"
 Cursor="Hand"
 Height="20"
+            DataContext="{Binding Source={x:Static viewModel:ExpandedProjectViewModel.Instance}}"
 Command="{Binding CreateProgressViewCmd}"
 CommandParameter="{Binding}"
 ToolTipService.InitialShowDelay="0">
@@ -579,7 +581,7 @@ CornerRadius="25">
             <Border Background="White"
 CornerRadius="10"
 Margin="0 0 10 0">
-                <view:CreateProgressView DataContext="{Binding Path=cpvm}"/>
+                <view:CreateProgressView DataContext="{x:Static viewModel:CRUDProgressViewModel.Instance}"/>
 
                 <Border.Style>
                     <Style TargetType="Border">

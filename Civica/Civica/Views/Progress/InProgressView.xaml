@@ -5,7 +5,6 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:view="clr-namespace:Civica.Views"
              xmlns:viewModel="clr-namespace:Civica.ViewModels"
-             xmlns:local="clr-namespace:Civica.Views"
              mc:Ignorable="d" 
              d:DesignHeight="650" d:DesignWidth="1200">
 
@@ -106,8 +105,9 @@
          Cursor="Hand"
          Height="20"
              Margin="0, 0, 2, 4"
-         Command="{Binding mvm.cpvm.CreateProjectCmd}"
-         CommandParameter="{Binding mvm.cpvm}"
+                DataContext="{Binding Source={x:Static viewModel:CRUDProjectViewModel.Instance}}"
+         Command="{Binding CreateProjectCmd}"
+         CommandParameter="{Binding}"
          ToolTipService.InitialShowDelay="0">
             <Button.ToolTip>
                 <ToolTip Content="Opret nyt projekt" Style="{StaticResource ToolTipTheme}"/>
@@ -120,10 +120,10 @@
                         <Trigger Property="IsMouseOver" Value="True">
                             <Setter Property="Background" Value="Transparent"/>
                         </Trigger>
-                        <DataTrigger Binding="{Binding Path=CreateVisibility}" Value="Hidden">
+                        <DataTrigger Binding="{Binding Source={x:Static viewModel:InProgressViewModel.Instance},Path=CreateVisibility}" Value="Hidden">
                             <Setter Property="Visibility" Value="Hidden"/>
                         </DataTrigger>
-                        <DataTrigger Binding="{Binding Path=CreateVisibility}" Value="Visible">
+                        <DataTrigger Binding="{Binding Source={x:Static viewModel:InProgressViewModel.Instance}, Path=CreateVisibility}" Value="Visible">
                             <Setter Property="Visibility" Value="Visible"/>
                         </DataTrigger>
                     </Style.Triggers>
@@ -170,7 +170,7 @@ CornerRadius="25">
         </Border>
 
         <Border Grid.Row="1">
-            <view:CreateProjectView DataContext="{Binding Path=mvm.cpvm}"/>
+            <view:CreateProjectView DataContext="{x:Static viewModel:CRUDProjectViewModel.Instance}"/>
             <Border.Style>
                 <Style TargetType="Border">
                     <Setter Property="Visibility" Value="Collapsed"/>

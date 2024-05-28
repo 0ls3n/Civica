@@ -102,8 +102,25 @@ namespace Civica.ViewModels
             worktimeRepo = MainViewModel.Instance.GetWorktimeRepo();
         }
 
-        private static readonly Lazy<CRUDWorktimeViewModel> lazy = new Lazy<CRUDWorktimeViewModel>(() => new CRUDWorktimeViewModel());
+        private static readonly object _lock = new object();
+        private static CRUDWorktimeViewModel _instance;
 
-        public static CRUDWorktimeViewModel Instance => lazy.Value;
+        public static CRUDWorktimeViewModel Instance
+        {
+            get
+            {
+                if (_instance is null)
+                {
+                    lock (_lock)
+                    {
+                        if (_instance is null)
+                        {
+                            _instance = new CRUDWorktimeViewModel();
+                        }
+                    }
+                }
+                return _instance;
+            }
+        }
     }
 }

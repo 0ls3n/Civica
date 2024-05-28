@@ -41,7 +41,7 @@
                                    BorderThickness="0"
                                 Background="Transparent"
                                    SelectedIndex='0'
-                                   SelectedValue="{Binding cavm.Year}"
+                                   SelectedValue="{Binding Year}"
                                    ItemsSource="{x:Static viewModel:Helper.Years}">
                             </ComboBox>
                         </Border>
