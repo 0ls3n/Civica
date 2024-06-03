@@ -4,6 +4,7 @@ using Civica.Models;
 using Civica.Models.Enums;
 using GVMR;
 using System.Collections.ObjectModel;
+using System.Globalization;
 using System.Windows;
 
 namespace Civica.ViewModels
@@ -92,6 +93,29 @@ namespace Civica.ViewModels
             }
         }
 
+        private string _itemSearch = "Alle";
+        public string ItemSearch
+        {
+            get
+            {
+                return _itemSearch;
+            }
+            set
+            {
+                if (value.Contains(":"))
+                {
+                    _itemSearch = value.Substring(value.IndexOf(':') + 1).TrimStart();
+                }
+                else
+                {
+                    _itemSearch = value;
+                }
+                OnPropertyChanged(nameof(ItemSearch));
+
+                Search();
+            }
+        }
+
         private IRepository<Project> projectRepo;
         private IRepository<Progress> progressRepo;
 
@@ -128,6 +152,44 @@ namespace Civica.ViewModels
                 }
             }
         }
+
+        public void Search()
+        {
+            UpdateList();
+
+            ObservableCollection<ProjectViewModel> temp = new ObservableCollection<ProjectViewModel>();
+
+            if (!string.IsNullOrEmpty(ItemSearch))
+            {
+                foreach (ProjectViewModel p in Projects)
+                {
+                    Progress prog = progressRepo.GetListById(x => x.RefId == p.GetId()).OrderByDescending(x => x.CreatedDate).FirstOrDefault();
+
+                    string owner = p.Owner.ToLower();
+                    string manager = p.Manager.ToLower();
+                    string status = prog != null ? Helper.Statuses.GetValueOrDefault(prog.Status)?.ToLower() : null;
+                    string phase = prog != null ? Helper.Phases.GetValueOrDefault(prog.Phase)?.ToLower() : null;
+
+                    if (owner.ToLower() == ItemSearch.ToLower() ||
+                        manager.ToLower() == ItemSearch.ToLower() ||
+                        (status != null && status == ItemSearch.ToLower()) ||
+                        (phase != null && phase == ItemSearch.ToLower()) ||
+                        (prog == null && ItemSearch.ToLower() == "ingen vurdering"))
+                    {
+                        temp.Add(p);
+                    }
+                }
+
+                if (ItemSearch.ToLower() != "alle")
+                {
+                    Projects.Clear();
+                    foreach (ProjectViewModel pvm in temp)
+                    {
+                        Projects.Add(pvm);
+                    }
+                }
+            }
+        }
         #region ViewCommands
 
         public RelayCommand CreateProjectViewCmd { get; set; } = new RelayCommand
@@ -157,7 +219,8 @@ namespace Civica.ViewModels
         #endregion
 
         //Singleton
-        private InProgressViewModel() {
+        private InProgressViewModel()
+        {
             CreateVisibility = WindowVisibility.Hidden;
             UpdateVisibility = WindowVisibility.Hidden;
             InformationVisibility = WindowVisibility.Visible;
