@@ -97,14 +97,15 @@
                     Width="8"
                     Height="8"
                     HorizontalAlignment="Left"
-                    Background="{Binding Path=epvm.SelectedProject.StatusColor, UpdateSourceTrigger=PropertyChanged}"
+                    DataContext="{Binding Source={x:Static viewModel:ExpandedProjectViewModel.Instance}}"
+                    Background="{Binding Path=SelectedProject.StatusColor, UpdateSourceTrigger=PropertyChanged}"
                     CornerRadius="7.5">
 
                 <Border.Style>
                     <Style TargetType="Border">
                         <Setter Property="Visibility" Value="Collapsed"/>
                         <Style.Triggers>
-                            <DataTrigger Binding="{Binding StatusDot}" Value="Visible">
+                            <DataTrigger Binding="{Binding Source={x:Static viewModel:MainViewModel.Instance},Path=StatusDot}" Value="Visible">
                                 <Setter Property="Visibility" Value="Visible"/>
                             </DataTrigger>
                         </Style.Triggers>
