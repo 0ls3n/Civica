@@ -102,17 +102,20 @@ namespace Civica.ViewModels
             }
             set
             {
-                if (value.Contains(":"))
+                if (!value.Contains("System.Windows.Controls.StackPanel"))
                 {
-                    _itemSearch = value.Substring(value.IndexOf(':') + 1).TrimStart();
-                }
-                else
-                {
-                    _itemSearch = value;
-                }
-                OnPropertyChanged(nameof(ItemSearch));
+                    if (value.Contains(":"))
+                    {
+                        _itemSearch = value.Substring(value.IndexOf(':') + 1).TrimStart();
+                    }
+                    else
+                    {
+                        _itemSearch = value;
+                    }
+                    OnPropertyChanged(nameof(ItemSearch));
 
-                Search();
+                    Search();
+                }
             }
         }
 

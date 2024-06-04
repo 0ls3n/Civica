@@ -272,7 +272,7 @@ CornerRadius="25">
                 <Separator Style="{StaticResource ComboBoxSeparatorStyle}"/>
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Text="Søg: " VerticalAlignment="Center"/>
-                    <TextBox MinWidth="20" Text="{Binding ItemSearch, UpdateSourceTrigger=PropertyChanged}"/>
+                    <TextBox x:Name="Text" MinWidth="20" Text="{Binding ItemSearch, UpdateSourceTrigger=PropertyChanged}"/>
                 </StackPanel>
             </ComboBox>
         </Border>
