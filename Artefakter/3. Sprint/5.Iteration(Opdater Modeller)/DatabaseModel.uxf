@@ -45,7 +45,7 @@ CreatedDate : DateTime2
 &lt;&lt;FK&gt;&gt; UserId : Int
 -
 &lt;&lt;PK&gt;&gt; PK_ProjectId()
-&lt;&lt;FK&gt;&gt; FK_Projects_Users(UserId)</panel_attributes>
+&lt;&lt;FK&gt;&gt; FK_Project_User(UserId)</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -67,8 +67,8 @@ CreatedDate : DateTime2
 &lt;&lt;FK&gt;&gt; UserId : Int
 -
 &lt;&lt;PK&gt;&gt; PK_ResourceId()
-&lt;&lt;FK&gt;&gt; FK_Resources_Projects(ProjectId)
-&lt;&lt;FK&gt;&gt; FK_Resources_Users(UserId)</panel_attributes>
+&lt;&lt;FK&gt;&gt; FK_Resource_Project(ProjectId)
+&lt;&lt;FK&gt;&gt; FK_Resource_User(UserId)</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -91,8 +91,8 @@ Description : TEXT
 &lt;&lt;FK&gt;&gt; UserId : Int
 -
 &lt;&lt;PK&gt;&gt; PK_AuditId()
-&lt;&lt;FK&gt;&gt; FK_Audits_Resources(ResourceId)
-&lt;&lt;FK&gt;&gt; FK_Audits_Users(UserId)</panel_attributes>
+&lt;&lt;FK&gt;&gt; FK_Audit_Resource(ResourceId)
+&lt;&lt;FK&gt;&gt; FK_Audit_User(UserId)</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -155,8 +155,8 @@ Description : TEXT
 &lt;&lt;FK&gt;&gt; UserId : Int
 -
 &lt;&lt;PK&gt;&gt; PK_WorkTimeId()
-&lt;&lt;FK&gt;&gt; FK_WorkTimes_Resources(ResourceId)
-&lt;&lt;FK&gt;&gt; FK_WorkTimes_Users(UserId)</panel_attributes>
+&lt;&lt;FK&gt;&gt; FK_WorkTime_Resource(ResourceId)
+&lt;&lt;FK&gt;&gt; FK_WorkTime_User(UserId)</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -181,7 +181,7 @@ m2=*</panel_attributes>
       <h>120</h>
     </coordinates>
     <panel_attributes>&lt;&lt;table&gt;&gt;
-USERS
+USER
 -
 &lt;&lt;PK&gt;&gt; &lt;&lt;surrogate&gt;&gt; UserId : Int
 FirstName : NVarChar(69)
@@ -201,7 +201,7 @@ Password : Int
       <h>180</h>
     </coordinates>
     <panel_attributes>&lt;&lt;table&gt;&gt;
-PROGRESSES
+PROGRESS
 -
 &lt;&lt;PK&gt;&gt; &lt;&lt;surogate&gt;&gt; ProgressId : Int
 ProgressId : Int
@@ -213,8 +213,8 @@ Description : TEXT
 &lt;&lt;FK&gt;&gt; UserId : Int
 -
 &lt;&lt;PK&gt;&gt; PK_ProgressId()
-&lt;&lt;FK&gt;&gt; FK_Progresses_Projects(ProjectId)
-&lt;&lt;FK&gt;&gt; FK_Progresses_Users(UserId)
+&lt;&lt;FK&gt;&gt; FK_Progress_Project(ProjectId)
+&lt;&lt;FK&gt;&gt; FK_Progress_User(UserId)
 </panel_attributes>
     <additional_attributes/>
   </element>

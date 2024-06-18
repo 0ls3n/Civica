@@ -24,14 +24,14 @@ fontsize=10
 
 
 // This text will be stored with each diagram;  use it for notes.</help_text>
-  <zoom_level>9</zoom_level>
+  <zoom_level>13</zoom_level>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>891</x>
-      <y>450</y>
-      <w>180</w>
-      <h>171</h>
+      <x>650</x>
+      <y>572</y>
+      <w>260</w>
+      <h>247</h>
     </coordinates>
     <panel_attributes>Project
 --
@@ -54,10 +54,10 @@ fontsize=10
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>963</x>
-      <y>117</y>
-      <w>333</w>
-      <h>117</h>
+      <x>754</x>
+      <y>91</y>
+      <w>481</w>
+      <h>169</h>
     </coordinates>
     <panel_attributes>Repository&lt;T&gt;
 --
@@ -75,10 +75,10 @@ fontsize=10
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>909</x>
-      <y>243</y>
-      <w>216</w>
-      <h>108</h>
+      <x>676</x>
+      <y>273</y>
+      <w>312</w>
+      <h>156</h>
     </coordinates>
     <panel_attributes>&lt;&lt;static&gt;&gt;
 DatabaseHelper&lt;T&gt;
@@ -95,10 +95,10 @@ DatabaseHelper&lt;T&gt;
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>675</x>
-      <y>288</y>
-      <w>90</w>
-      <h>99</h>
+      <x>338</x>
+      <y>338</y>
+      <w>130</w>
+      <h>143</h>
     </coordinates>
     <panel_attributes>&lt;&lt;enumeration&gt;&gt;
 Phase
@@ -115,10 +115,10 @@ DONE
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>783</x>
-      <y>288</y>
-      <w>90</w>
-      <h>81</h>
+      <x>494</x>
+      <y>338</y>
+      <w>130</w>
+      <h>117</h>
     </coordinates>
     <panel_attributes>&lt;&lt;enumeration&gt;&gt;
 Status
@@ -133,10 +133,10 @@ ON_TRACK
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>855</x>
-      <y>477</y>
-      <w>54</w>
-      <h>27</h>
+      <x>598</x>
+      <y>611</y>
+      <w>78</w>
+      <h>39</h>
     </coordinates>
     <panel_attributes>lt=-
 m1=*
@@ -146,10 +146,10 @@ m2=1</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>891</x>
-      <y>648</y>
-      <w>180</w>
-      <h>108</h>
+      <x>650</x>
+      <y>858</y>
+      <w>260</w>
+      <h>156</h>
     </coordinates>
     <panel_attributes>Resource
 --
@@ -166,10 +166,10 @@ m2=1</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>684</x>
-      <y>648</y>
-      <w>180</w>
-      <h>135</h>
+      <x>351</x>
+      <y>858</y>
+      <w>260</w>
+      <h>195</h>
     </coordinates>
     <panel_attributes>Audit
 --
@@ -189,10 +189,10 @@ m2=1</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>855</x>
-      <y>675</y>
-      <w>54</w>
-      <h>27</h>
+      <x>598</x>
+      <y>897</y>
+      <w>78</w>
+      <h>39</h>
     </coordinates>
     <panel_attributes>lt=-
 m1=*
@@ -202,10 +202,10 @@ m2=1</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>675</x>
-      <y>117</y>
-      <w>261</w>
-      <h>117</h>
+      <x>338</x>
+      <y>91</y>
+      <w>377</w>
+      <h>169</h>
     </coordinates>
     <panel_attributes>&lt;&lt;interface&gt;&gt;
 IRepository&lt;T&gt;
@@ -222,10 +222,10 @@ IRepository&lt;T&gt;
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>684</x>
-      <y>450</y>
-      <w>180</w>
-      <h>126</h>
+      <x>351</x>
+      <y>572</y>
+      <w>260</w>
+      <h>182</h>
     </coordinates>
     <panel_attributes>Progress
 --
@@ -245,10 +245,10 @@ IRepository&lt;T&gt;
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1098</x>
-      <y>585</y>
-      <w>180</w>
-      <h>252</h>
+      <x>949</x>
+      <y>767</y>
+      <w>260</w>
+      <h>364</h>
     </coordinates>
     <panel_attributes>Worktime
 --
@@ -279,10 +279,10 @@ IRepository&lt;T&gt;
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>927</x>
-      <y>189</y>
-      <w>54</w>
-      <h>27</h>
+      <x>702</x>
+      <y>195</y>
+      <w>78</w>
+      <h>39</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;.</panel_attributes>
     <additional_attributes>10.0;10.0;40.0;10.0</additional_attributes>
@@ -290,10 +290,10 @@ IRepository&lt;T&gt;
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>657</x>
-      <y>414</y>
-      <w>432</w>
-      <h>18</h>
+      <x>312</x>
+      <y>520</y>
+      <w>936</w>
+      <h>26</h>
     </coordinates>
     <panel_attributes>fg=blue
 lw=2.5
@@ -304,10 +304,10 @@ lw=2.5
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>999</x>
-      <y>225</y>
-      <w>27</w>
-      <h>36</h>
+      <x>806</x>
+      <y>247</y>
+      <w>39</w>
+      <h>52</h>
     </coordinates>
     <panel_attributes>lt=-
 m1=
@@ -318,10 +318,10 @@ m2=
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>657</x>
-      <y>90</y>
-      <w>648</w>
-      <h>18</h>
+      <x>312</x>
+      <y>52</y>
+      <w>936</w>
+      <h>26</h>
     </coordinates>
     <panel_attributes>fg=#3c7a00
 lw=2.5
@@ -331,10 +331,10 @@ lw=2.5
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>657</x>
-      <y>261</y>
-      <w>234</w>
-      <h>135</h>
+      <x>312</x>
+      <y>299</y>
+      <w>338</w>
+      <h>195</h>
     </coordinates>
     <panel_attributes>
 -
@@ -346,10 +346,10 @@ lw=2.5
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1143</x>
-      <y>342</y>
-      <w>153</w>
-      <h>81</h>
+      <x>1014</x>
+      <y>364</y>
+      <w>221</w>
+      <h>117</h>
     </coordinates>
     <panel_attributes>&lt;&lt;abstract&gt;&gt;
 DomainModel
@@ -363,10 +363,10 @@ DomainModel
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1116</x>
-      <y>450</y>
-      <w>180</w>
-      <h>108</h>
+      <x>949</x>
+      <y>585</y>
+      <w>260</w>
+      <h>156</h>
     </coordinates>
     <panel_attributes>User
 -
@@ -384,10 +384,10 @@ DomainModel
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>639</x>
-      <y>54</y>
-      <w>684</w>
-      <h>819</h>
+      <x>286</x>
+      <y>0</y>
+      <w>988</w>
+      <h>1183</h>
     </coordinates>
     <panel_attributes>Model
 -</panel_attributes>
@@ -396,10 +396,10 @@ DomainModel
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1062</x>
-      <y>675</y>
-      <w>54</w>
-      <h>27</h>
+      <x>897</x>
+      <y>897</y>
+      <w>78</w>
+      <h>39</h>
     </coordinates>
     <panel_attributes>lt=-
 m1=*
@@ -409,10 +409,10 @@ m2=1</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1296</x>
-      <y>81</y>
-      <w>27</w>
-      <h>180</h>
+      <x>1235</x>
+      <y>39</y>
+      <w>39</w>
+      <h>260</h>
     </coordinates>
     <panel_attributes>lt=-
 fg=#3c7a00
@@ -423,10 +423,10 @@ lw=2.5
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>648</x>
-      <y>225</y>
-      <w>270</w>
-      <h>36</h>
+      <x>299</x>
+      <y>247</y>
+      <w>390</w>
+      <h>52</h>
     </coordinates>
     <panel_attributes>lt=-
 fg=#3c7a00
@@ -437,10 +437,10 @@ lw=2.5
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>648</x>
-      <y>99</y>
-      <w>27</w>
-      <h>162</h>
+      <x>299</x>
+      <y>65</y>
+      <w>39</w>
+      <h>234</h>
     </coordinates>
     <panel_attributes>lt=-
 fg=#3c7a00
@@ -451,10 +451,10 @@ lw=2.5
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>891</x>
-      <y>234</y>
-      <w>27</w>
-      <h>144</h>
+      <x>650</x>
+      <y>260</y>
+      <w>39</w>
+      <h>208</h>
     </coordinates>
     <panel_attributes>lt=-
 fg=#3c7a00
@@ -465,10 +465,10 @@ lw=2.5
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>891</x>
-      <y>342</y>
-      <w>261</w>
-      <h>36</h>
+      <x>650</x>
+      <y>416</y>
+      <w>377</w>
+      <h>52</h>
     </coordinates>
     <panel_attributes>lt=-
 fg=#3c7a00
@@ -479,24 +479,24 @@ lw=2.5
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1215</x>
-      <y>414</y>
-      <w>27</w>
-      <h>54</h>
+      <x>1118</x>
+      <y>468</y>
+      <w>39</w>
+      <h>143</h>
     </coordinates>
     <panel_attributes>lt=-
 m1=1
 m2=*
 </panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;40.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;90.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>765</x>
-      <y>387</y>
-      <w>27</w>
-      <h>81</h>
+      <x>468</x>
+      <y>481</y>
+      <w>39</w>
+      <h>117</h>
     </coordinates>
     <panel_attributes>lt=.
 m1=
@@ -509,10 +509,10 @@ lw=2.5
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1125</x>
-      <y>234</y>
-      <w>27</w>
-      <h>144</h>
+      <x>988</x>
+      <y>260</y>
+      <w>39</w>
+      <h>208</h>
     </coordinates>
     <panel_attributes>lt=-
 fg=#3c7a00
@@ -523,10 +523,10 @@ lw=2.5
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1125</x>
-      <y>225</y>
-      <w>198</w>
-      <h>36</h>
+      <x>988</x>
+      <y>247</y>
+      <w>286</w>
+      <h>52</h>
     </coordinates>
     <panel_attributes>lt=-
 fg=#3c7a00
@@ -537,10 +537,10 @@ lw=2.5
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>648</x>
-      <y>423</y>
-      <w>27</w>
-      <h>450</h>
+      <x>299</x>
+      <y>533</y>
+      <w>39</w>
+      <h>650</h>
     </coordinates>
     <panel_attributes>lt=-
 fg=blue
@@ -550,10 +550,10 @@ lw=2.5</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>648</x>
-      <y>846</y>
-      <w>675</w>
-      <h>27</h>
+      <x>299</x>
+      <y>1144</y>
+      <w>975</w>
+      <h>39</h>
     </coordinates>
     <panel_attributes>lt=-
 fg=blue
@@ -563,62 +563,36 @@ lw=2.5</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1296</x>
-      <y>558</y>
-      <w>27</w>
-      <h>315</h>
+      <x>1235</x>
+      <y>507</y>
+      <w>39</w>
+      <h>676</h>
     </coordinates>
     <panel_attributes>lt=-
 fg=blue
 lw=2.5</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;330.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;500.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1080</x>
-      <y>558</y>
-      <w>243</w>
-      <h>27</h>
-    </coordinates>
-    <panel_attributes>lt=-
-fg=blue
-lw=2.5</panel_attributes>
-    <additional_attributes>250.0;10.0;10.0;10.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>1080</x>
-      <y>405</y>
-      <w>27</w>
-      <h>180</h>
-    </coordinates>
-    <panel_attributes>lt=-
-fg=blue
-lw=2.5</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;180.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>1053</x>
-      <y>378</y>
-      <w>108</w>
-      <h>54</h>
+      <x>884</x>
+      <y>455</y>
+      <w>156</w>
+      <h>91</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;.
 fg=blue
 lw=2.5</panel_attributes>
-    <additional_attributes>100.0;10.0;10.0;10.0;10.0;40.0</additional_attributes>
+    <additional_attributes>100.0;10.0;10.0;10.0;10.0;50.0</additional_attributes>
   </element>
   <element>
     <id>Text</id>
     <coordinates>
-      <x>828</x>
-      <y>414</y>
-      <w>90</w>
-      <h>18</h>
+      <x>559</x>
+      <y>520</y>
+      <w>130</w>
+      <h>26</h>
     </coordinates>
     <panel_attributes>Model (Domain)
 style=wordwrap</panel_attributes>
@@ -627,10 +601,10 @@ style=wordwrap</panel_attributes>
   <element>
     <id>Text</id>
     <coordinates>
-      <x>927</x>
-      <y>90</y>
-      <w>99</w>
-      <h>18</h>
+      <x>702</x>
+      <y>52</y>
+      <w>143</w>
+      <h>26</h>
     </coordinates>
     <panel_attributes>Model (Persistance)
 style=wordwrap</panel_attributes>
@@ -639,10 +613,10 @@ style=wordwrap</panel_attributes>
   <element>
     <id>Text</id>
     <coordinates>
-      <x>729</x>
-      <y>261</y>
-      <w>99</w>
-      <h>18</h>
+      <x>416</x>
+      <y>299</y>
+      <w>143</w>
+      <h>26</h>
     </coordinates>
     <panel_attributes>Enum (Progress)
 style=wordwrap</panel_attributes>
@@ -651,10 +625,10 @@ style=wordwrap</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>990</x>
-      <y>351</y>
-      <w>27</w>
-      <h>81</h>
+      <x>793</x>
+      <y>429</y>
+      <w>39</w>
+      <h>117</h>
     </coordinates>
     <panel_attributes>lt=-
 m1=
@@ -667,10 +641,10 @@ lw=2.5
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>972</x>
-      <y>612</y>
-      <w>27</w>
-      <h>54</h>
+      <x>767</x>
+      <y>806</y>
+      <w>39</w>
+      <h>78</h>
     </coordinates>
     <panel_attributes>lt=-
 m1=1
