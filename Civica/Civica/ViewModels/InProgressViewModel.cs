@@ -173,10 +173,10 @@ namespace Civica.ViewModels
                     string status = prog != null ? Helper.Statuses.GetValueOrDefault(prog.Status)?.ToLower() : null;
                     string phase = prog != null ? Helper.Phases.GetValueOrDefault(prog.Phase)?.ToLower() : null;
 
-                    if (owner.ToLower() == ItemSearch.ToLower() ||
-                        manager.ToLower() == ItemSearch.ToLower() ||
-                        (status != null && status == ItemSearch.ToLower()) ||
-                        (phase != null && phase == ItemSearch.ToLower()) ||
+                    if (owner.ToLower().Contains(ItemSearch.ToLower()) ||
+                        manager.ToLower().Contains(ItemSearch.ToLower()) ||
+                        (status != null && status.Contains(ItemSearch.ToLower())) ||
+                        (phase != null && phase.Contains(ItemSearch.ToLower())) ||
                         (prog == null && ItemSearch.ToLower() == "ingen vurdering"))
                     {
                         temp.Add(p);
