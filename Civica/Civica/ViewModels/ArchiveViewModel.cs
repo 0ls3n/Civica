@@ -1,5 +1,6 @@
 ﻿using Civica.Interfaces;
 using Civica.Models;
+using Civica.Models.Enums;
 using GVMR;
 using System;
 using System.Collections.Generic;
@@ -32,13 +33,13 @@ namespace Civica.ViewModels
 
         public void UpdateList()
         {
-            this.Projects.Clear();
+            Projects.Clear();
             foreach (Project project in projectRepo.GetAll())
             {
-                Progress latestProg = progressRepo.GetById(x => x.RefId == project.Id);
+                Progress latestProg = progressRepo.GetListById(x => x.RefId == project.Id).OrderByDescending(x => x.CreatedDate).FirstOrDefault();
                 if (latestProg != null)
                 {
-                    if (latestProg.Phase == Models.Enums.Phase.DONE)
+                    if (latestProg.Phase == Phase.DONE)
                     {
                         Projects.Add(new ProjectViewModel(project));
                     }
