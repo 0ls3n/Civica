@@ -16,5 +16,6 @@ namespace Civica.Interfaces
         public void Update(T o);
         public void Delete(T o);
         public void DeleteByRefId(int id);
+        public Task Refresh();
     }
 }

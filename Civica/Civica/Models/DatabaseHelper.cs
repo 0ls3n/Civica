@@ -367,5 +367,159 @@ public static void Add(T o)
             }
         }
         #endregion
+
+        #region InitializeAsync
+        public static async Task<List<DomainModel>> InitializeAsync(Type type)
+        {
+            List<DomainModel> list = new List<DomainModel>();
+
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+                await con.OpenAsync();
+
+                if (type == typeof(Project))
+                {
+                    SqlCommand projectCmd = new SqlCommand("SELECT UserId, ProjectId, ProjectName, " +
+                        "OwnerName, ManagerName, Description, CreatedDate FROM PROJECTS", con);
+                    using (SqlDataReader reader = await projectCmd.ExecuteReaderAsync())
+                    {
+                        while (await reader.ReadAsync())
+                        {
+                            int userId = reader["UserId"] != DBNull.Value
+                                ? Convert.ToInt32(reader["UserId"]) : 0;
+                            DateTime createdDate = reader["CreatedDate"] != DBNull.Value
+                                ? Convert.ToDateTime(reader["CreatedDate"]) : new DateTime(default);
+                            int id = Convert.ToInt32(reader["ProjectId"]);
+                            string name = Convert.ToString(reader["ProjectName"]);
+                            string owner = Convert.ToString(reader["OwnerName"]);
+                            string manager = Convert.ToString(reader["ManagerName"]);
+                            string desc = Convert.ToString(reader["Description"]);
+
+                            Project p = new Project(userId, name, owner, manager, desc, createdDate);
+
+                            p.Id = id;
+
+                            list.Add(p);
+                        }
+                    }
+                }
+                else if (type == typeof(Progress))
+                {
+                    SqlCommand progressCmd = new SqlCommand("SELECT UserId, ProgressId, Phase, Status, CreatedDate, Description, ProjectId FROM PROGRESSES", con);
+                    using (SqlDataReader reader = await progressCmd.ExecuteReaderAsync())
+                    {
+                        while (await reader.ReadAsync())
+                        {
+                            int userId = reader["UserId"] != DBNull.Value ? Convert.ToInt32(reader["UserId"]) : 0;
+                            DateTime createdDate = reader["CreatedDate"] != DBNull.Value ? Convert.ToDateTime(reader["CreatedDate"]) : new DateTime(0, 0, 0);
+                            int id = Convert.ToInt32(reader["ProgressId"]);
+                            Phase phase = Enum.Parse<Phase>(Convert.ToString(reader["Phase"]));
+                            Status status = Enum.Parse<Status>(Convert.ToString(reader["Status"]));
+                            string desc = Convert.ToString(reader["Description"]);
+                            int projectId = Convert.ToInt32(reader["ProjectId"]);
+
+                            Progress prog = new Progress(userId, projectId, phase, status, desc, createdDate);
+
+                            prog.Id = id;
+
+                            list.Add(prog);
+                        }
+                    }
+                }
+                else if (type == typeof(Resource))
+                {
+                    SqlCommand resourceCmd = new SqlCommand("SELECT UserId, ResourceId, StartAmount, ExpectedYearlyCost, ProjectId, CreatedDate FROM RESOURCES", con);
+                    using (SqlDataReader reader = await resourceCmd.ExecuteReaderAsync())
+                    {
+                        while (await reader.ReadAsync())
+                        {
+                            int userId = reader["UserId"] != DBNull.Value ? Convert.ToInt32(reader["UserId"]) : 0;
+                            DateTime createdDate = reader["CreatedDate"] != DBNull.Value ? Convert.ToDateTime(reader["CreatedDate"]) : new DateTime();
+                            int id = Convert.ToInt32(reader["ResourceId"]);
+                            decimal startAmount = Convert.ToDecimal(reader["StartAmount"]);
+                            decimal expectedYearlyCost = Convert.ToDecimal(reader["ExpectedYearlyCost"]);
+                            int projectId = Convert.ToInt32(reader["ProjectId"]);
+
+                            Resource r = new Resource(userId, projectId, startAmount, expectedYearlyCost, createdDate);
+
+                            r.Id = id;
+
+                            list.Add(r);
+                        }
+                    }
+                }
+                else if (type == typeof(Audit))
+                {
+                    SqlCommand auditCmd = new SqlCommand("SELECT UserId, AuditId, Amount, Year, ResourceId, Description, CreatedDate FROM AUDITS", con);
+                    using (SqlDataReader reader = await auditCmd.ExecuteReaderAsync())
+                    {
+                        while (await reader.ReadAsync())
+                        {
+                            int userId = reader["UserId"] != DBNull.Value ? Convert.ToInt32(reader["UserId"]) : 0;
+                            DateTime createdDate = reader["CreatedDate"] != DBNull.Value ? Convert.ToDateTime(reader["CreatedDate"]) : DateTime.MinValue;
+                            int id = Convert.ToInt32(reader["AuditId"]);
+                            decimal Amount = Convert.ToDecimal(reader["Amount"]);
+                            int Year = Convert.ToInt32(reader["Year"]);
+                            string desc = Convert.ToString(reader["Description"]);
+                            int ResourceId = Convert.ToInt32(reader["ResourceId"]);
+
+                            Audit a = new Audit(userId, ResourceId, Amount, Year, desc, createdDate);
+
+                            a.Id = id;
+                            list.Add(a);
+                        }
+                    }
+                }
+                else if (type == typeof(Worktime))
+                {
+                    SqlCommand workTimeCmd = new SqlCommand("SELECT UserId, WorkTimeId, EstimatedHours, SpentHours, InvolvedName, ResourceId, Description, CreatedDate FROM WORKTIMES", con);
+                    using (SqlDataReader reader = await workTimeCmd.ExecuteReaderAsync())
+                    {
+                        while (await reader.ReadAsync())
+                        {
+                            int userId = reader["UserId"] != DBNull.Value ? Convert.ToInt32(reader["UserId"]) : 0;
+                            DateTime createdDate = reader["CreatedDate"] != DBNull.Value ? Convert.ToDateTime(reader["CreatedDate"]) : new DateTime(0, 0, 0);
+                            int id = Convert.ToInt32(reader["WorkTimeId"]);
+                            string desc = Convert.ToString(reader["Description"]);
+                            int time = Convert.ToInt32(reader["EstimatedHours"]);
+                            int spent = Convert.ToInt32(reader["SpentHours"]);
+                            string InvolvedName = Convert.ToString(reader["InvolvedName"]);
+                            int resourceId = Convert.ToInt32(reader["ResourceId"]);
+
+                            Worktime wt = new Worktime(userId, resourceId, time, spent, InvolvedName, desc, createdDate);
+
+                            wt.Id = id;
+                            list.Add(wt);
+                        }
+                    }
+                }
+                else if (type == typeof(User))
+                {
+                    SqlCommand userCmd = new SqlCommand("SELECT UserId, FirstName, LastName, Password FROM USERS", con);
+                    using (SqlDataReader reader = await userCmd.ExecuteReaderAsync())
+                    {
+                        while (await reader.ReadAsync())
+                        {
+                            int id = Convert.ToInt32(reader["UserId"]);
+                            string firstName = Convert.ToString(reader["FirstName"]);
+                            string lastName = Convert.ToString(reader["LastName"]);
+                            int password = Convert.ToInt32(reader["Password"]);
+                            User u = new User(firstName, lastName, password);
+
+                            u.Id = id;
+                            list.Add(u);
+                        }
+                    }
+                }
+                else
+                {
+                    throw new ArgumentNullException($"{type} er ikke implementeret i DatabaseHelper!");
+                }
+            }
+            return list;
+        }
+
+        #endregion
+
     }
 }

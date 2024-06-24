@@ -46,5 +46,11 @@ namespace Civica.Models
             GetListById(x => x.RefId == id).ForEach(DatabaseHelper<T>.Delete);
             _list.RemoveAll(x => x.RefId == id);
         }
+
+        public async Task Refresh()
+        {
+            _list.Clear();
+            _list = await DatabaseHelper<DomainModel>.InitializeAsync(typeof(T));
+        }
     }
 }
