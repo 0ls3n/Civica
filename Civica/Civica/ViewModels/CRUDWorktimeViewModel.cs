@@ -11,9 +11,8 @@ using System.Windows;
 
 namespace Civica.ViewModels
 {
-    public class CRUDWorktimeViewModel : ObservableObject, IViewModelChild
+    public class CRUDWorktimeViewModel : ObservableObject
     {
-        private ExpandedResourceViewModel ervm;
         private IRepository<Worktime> worktimeRepo;
 
         private string _involvedName;
@@ -55,22 +54,15 @@ namespace Civica.ViewModels
             }
         }
 
-        public void Init(ObservableObject o)
-        {
-            ervm = (o as ExpandedResourceViewModel);
-
-            worktimeRepo = ervm.mvm.GetWorktimeRepo();
-        }
-
         public void CreateWorktime(int userId, int resourceId, string estimatedHours, string involvedName, string description, DateTime dateTime)
         {
             Worktime w = new Worktime(userId, resourceId, int.TryParse(EstimatedHours, out int r) ? r : 0, involvedName, description, dateTime);
 
             worktimeRepo.Add(w);
 
-            ervm.Worktimes.Clear();
+            ExpandedResourceViewModel.Instance.Worktimes.Clear();
 
-            ervm.UpdateList();
+            ExpandedResourceViewModel.Instance.UpdateList();
             EstimatedHours = "";
             InvolvedName = "";
             Description = "";
@@ -87,11 +79,11 @@ namespace Civica.ViewModels
 
             worktimeRepo.Update(w);
 
-            ervm.Worktimes.Clear();
+            ExpandedResourceViewModel.Instance.Worktimes.Clear();
 
-            ervm.UpdateList();
+            ExpandedResourceViewModel.Instance.UpdateList();
 
-            ervm.SelectedWorktime = wvm;
+            ExpandedResourceViewModel.Instance.SelectedWorktime = wvm;
         }
 
         public void DeleteWorktime(WorktimeViewModel wvm)
@@ -100,9 +92,40 @@ namespace Civica.ViewModels
 
             worktimeRepo.Delete(w);
 
-            ervm.Worktimes.Clear();
+            ExpandedResourceViewModel.Instance.Worktimes.Clear();
 
-            ervm.UpdateList();
+            ExpandedResourceViewModel.Instance.UpdateList();
         }
+
+        //Singleton
+        private CRUDWorktimeViewModel() {
+            worktimeRepo = MainViewModel.Instance.GetWorktimeRepo();
+        }
+
+        private static readonly object _lock = new object();
+        private static CRUDWorktimeViewModel _instance;
+
+        public static CRUDWorktimeViewModel Instance
+        {
+            get
+            {
+                if (_instance is null)
+                {
+                    lock (_lock)
+                    {
+                        if (_instance is null)
+                        {
+                            _instance = new CRUDWorktimeViewModel();
+                        }
+                    }
+                }
+                return _instance;
+            }
+        }
+
+        //Singleton - Lazy
+        //private static readonly Lazy<CRUDWorktimeViewModel> lazy = new Lazy<CRUDWorktimeViewModel>(() => new CRUDWorktimeViewModel());
+
+        //public static CRUDWorktimeViewModel Instance => lazy.Value;
     }
 }

@@ -13,9 +13,8 @@ using GVMR;
 
 namespace Civica.ViewModels
 {
-    public class SettingsViewModel : ObservableObject, IViewModelChild
+    public class SettingsViewModel : ObservableObject
     {
-        private MainViewModel mvm;
         private IRepository<User> userRepo;
         public string WindowTitle { get; } = "Indstillinger";
         private WindowVisibility _createVisibility;
@@ -81,22 +80,6 @@ namespace Civica.ViewModels
         }
         private string oldName;
         private int oldPassword;
-        public CRUDUserViewModel cuvm { get; set; }
-
-        public void Init(ObservableObject o)
-        {
-            this.mvm = (o as MainViewModel);
-            userRepo = mvm.GetUserRepo();
-
-            cuvm = new CRUDUserViewModel();
-            cuvm.Init(this);
-            cuvm.SetRepo(userRepo);
-            UpdateList();
-
-            CreateVisibility = WindowVisibility.Hidden;
-            UpdateVisibility = WindowVisibility.Hidden;
-            InformationVisibility = WindowVisibility.Visible;
-        }
 
         public void UpdateList()
         {
@@ -122,7 +105,7 @@ namespace Civica.ViewModels
             {
                 if (parameter is SettingsViewModel svm)
                 {
-                    if (svm.mvm.CurrentUser != null)
+                    if (MainViewModel.Instance.CurrentUser != null)
                     {
                         return true;
                     }
@@ -148,7 +131,7 @@ namespace Civica.ViewModels
             {
                 if (parameter is SettingsViewModel svm)
                 {
-                    if (svm.SelectedUser != null && svm.mvm.CurrentUser != null)
+                    if (svm.SelectedUser != null && MainViewModel.Instance.CurrentUser != null)
                     {
                         return true;
                     }
@@ -172,7 +155,7 @@ namespace Civica.ViewModels
                         if (svm.userRepo.GetAll().OfType<User>().FirstOrDefault(x => x.FullName.ToLower() == svm.SelectedUser.FullName.ToLower()) is null ||
                         svm.SelectedUser.FullName.ToLower() == svm.oldName.ToLower())
                         {
-                            svm.cuvm.UpdateUser(svm.SelectedUser);
+                            CRUDUserViewModel.Instance.UpdateUser(svm.SelectedUser);
 
                             svm.UpdateVisibility = WindowVisibility.Hidden;
                             svm.InformationVisibility = WindowVisibility.Visible;
@@ -219,7 +202,7 @@ namespace Civica.ViewModels
 
                     if (result == MessageBoxResult.OK)
                     {
-                        svm.cuvm.DeleteUser(svm.SelectedUser);
+                        CRUDUserViewModel.Instance.DeleteUser(svm.SelectedUser);
                         svm.InformationVisibility = WindowVisibility.Visible;
                     }
                 }
@@ -230,7 +213,7 @@ namespace Civica.ViewModels
 
                 if (parameter is SettingsViewModel svm)
                 {
-                    if (svm.SelectedUser != null && svm.mvm.CurrentUser != null)
+                    if (svm.SelectedUser != null && MainViewModel.Instance.CurrentUser != null)
                     {
                         succes = true;
                     }
@@ -241,5 +224,42 @@ namespace Civica.ViewModels
 
         #endregion
 
+        //Singleton
+        private SettingsViewModel()
+        {
+            userRepo = MainViewModel.Instance.GetUserRepo();
+
+            UpdateList();
+
+            CreateVisibility = WindowVisibility.Hidden;
+            UpdateVisibility = WindowVisibility.Hidden;
+            InformationVisibility = WindowVisibility.Visible;
+        }
+
+        private static readonly object _lock = new object();
+        private static SettingsViewModel _instance;
+
+        public static SettingsViewModel Instance
+        {
+            get
+            {
+                if (_instance is null)
+                {
+                    lock (_lock)
+                    {
+                        if (_instance is null)
+                        {
+                            _instance = new SettingsViewModel();
+                        }
+                    }
+                }
+                return _instance;
+            }
+        }
+
+        //Singleton - Lazy
+        //private static readonly Lazy<SettingsViewModel> lazy = new Lazy<SettingsViewModel>(() => new SettingsViewModel());
+
+        //public static SettingsViewModel Instance => lazy.Value;
     }
 }

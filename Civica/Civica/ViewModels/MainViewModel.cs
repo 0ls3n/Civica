@@ -141,14 +141,6 @@ namespace Civica.ViewModels
             }
         }
 
-        public InProgressViewModel ipvm { get; set; } = new InProgressViewModel();
-        public ExpandedProjectViewModel epvm { get; set; } = new ExpandedProjectViewModel();
-        public ExpandedResourceViewModel ervm { get; set; } = new ExpandedResourceViewModel();
-        public SettingsViewModel svm { get; set; } = new SettingsViewModel();
-        public LoginViewModel lvm { get; set; } = new LoginViewModel();
-        public ArchiveViewModel avm { get; set; } = new ArchiveViewModel();
-        public CRUDProjectViewModel cpvm { get; set; } = new CRUDProjectViewModel();
-
         public RelayCommand InProgressViewCmd { get; set; } = new RelayCommand
         (
             execute: (object? parameter) =>
@@ -162,10 +154,10 @@ namespace Civica.ViewModels
                     mvm.StatusDot = WindowVisibility.Hidden;
                     mvm.ArchiveView = WindowVisibility.Hidden;
                     mvm.LoginView = WindowVisibility.Hidden;
-                    mvm.ipvm.CreateVisibility = WindowVisibility.Hidden;
-                    mvm.ipvm.InformationVisibility = WindowVisibility.Visible;
-                    mvm.ViewTitle = mvm.ipvm.WindowTitle;
-                    mvm.ipvm.UpdateList();
+                    InProgressViewModel.Instance.CreateVisibility = WindowVisibility.Hidden;
+                    InProgressViewModel.Instance.InformationVisibility = WindowVisibility.Visible;
+                    mvm.ViewTitle = InProgressViewModel.Instance.WindowTitle;
+                    InProgressViewModel.Instance.UpdateList();
                 }
             },
             canExecute: (object? parameter) =>
@@ -186,12 +178,12 @@ namespace Civica.ViewModels
                     mvm.LoginView = WindowVisibility.Hidden;
                     mvm.ResourceView = WindowVisibility.Hidden;
                     mvm.ArchiveView = WindowVisibility.Hidden;
-                    mvm.ViewTitle = mvm.ipvm.SelectedProject.Name;
-                    mvm.epvm.SelectedProject = mvm.ipvm.SelectedProject;
-                    mvm.epvm.UpdateList();
-                    mvm.epvm.InformationPlaceholderVisibility = WindowVisibility.Visible;
-                    mvm.epvm.UpdateProjectVisibility = WindowVisibility.Hidden;
-                    mvm.epvm.InformationVisibility = WindowVisibility.Hidden;
+                    mvm.ViewTitle = InProgressViewModel.Instance.SelectedProject.Name;
+                    ExpandedProjectViewModel.Instance.SelectedProject = InProgressViewModel.Instance.SelectedProject;
+                    ExpandedProjectViewModel.Instance.UpdateList();
+                    ExpandedProjectViewModel.Instance.InformationPlaceholderVisibility = WindowVisibility.Visible;
+                    ExpandedProjectViewModel.Instance.UpdateProjectVisibility = WindowVisibility.Hidden;
+                    ExpandedProjectViewModel.Instance.InformationVisibility = WindowVisibility.Hidden;
                 }
             },
             parameter =>
@@ -199,7 +191,7 @@ namespace Civica.ViewModels
                 bool isEnabled = false;
                 if (parameter is MainViewModel mvm)
                 {
-                    if (mvm.ipvm.SelectedProject != null)
+                    if (InProgressViewModel.Instance.SelectedProject != null)
                     {
                         isEnabled = true;
                     }
@@ -223,36 +215,36 @@ namespace Civica.ViewModels
                    mvm.ArchiveView = WindowVisibility.Hidden;
                    #endregion
 
-                   mvm.ViewTitle = mvm.ipvm.SelectedProject.Name;
-                   mvm.ervm.Title = "Omkostninger";
+                   mvm.ViewTitle = InProgressViewModel.Instance.SelectedProject.Name;
+                   ExpandedResourceViewModel.Instance.Title = "Omkostninger";
 
-                   mvm.ervm.Audits.Clear();
-                   mvm.ervm.Worktimes.Clear();
+                   ExpandedResourceViewModel.Instance.Audits.Clear();
+                   ExpandedResourceViewModel.Instance.Worktimes.Clear();
 
-                   mvm.ervm.SelectedProject = mvm.ipvm.SelectedProject;
-                   mvm.ervm.SelectedResource = new ResourceViewModel(mvm.resourceRepo.GetById(x => x.RefId == mvm.ipvm.SelectedProject.GetId()));
+                   ExpandedResourceViewModel.Instance.SelectedProject = InProgressViewModel.Instance.SelectedProject;
+                   ExpandedResourceViewModel.Instance.SelectedResource = new ResourceViewModel(mvm.resourceRepo.GetById(x => x.RefId == InProgressViewModel.Instance.SelectedProject.GetId()));
 
-                   mvm.ervm.InformationPlaceholderVisibility = WindowVisibility.Visible;
+                   ExpandedResourceViewModel.Instance.InformationPlaceholderVisibility = WindowVisibility.Visible;
 
                    #region Resource Visibility
-                   mvm.ervm.AuditDetailsVisibility = WindowVisibility.Hidden;
+                   ExpandedResourceViewModel.Instance.AuditDetailsVisibility = WindowVisibility.Hidden;
                    #endregion
 
                    #region Audit Visibility
-                   mvm.ervm.UpdateAuditVisibility = WindowVisibility.Hidden;
-                   mvm.ervm.CreateAuditVisibility = WindowVisibility.Hidden;
-                   mvm.ervm.UpdateResourceVisibility = WindowVisibility.Hidden;
-                   mvm.ervm.ResourceVisiblity = WindowVisibility.Visible;
-                   mvm.ervm.AuditListVisibility = WindowVisibility.Visible;
+                   ExpandedResourceViewModel.Instance.UpdateAuditVisibility = WindowVisibility.Hidden;
+                   ExpandedResourceViewModel.Instance.CreateAuditVisibility = WindowVisibility.Hidden;
+                   ExpandedResourceViewModel.Instance.UpdateResourceVisibility = WindowVisibility.Hidden;
+                   ExpandedResourceViewModel.Instance.ResourceVisiblity = WindowVisibility.Visible;
+                   ExpandedResourceViewModel.Instance.AuditListVisibility = WindowVisibility.Visible;
                    #endregion
 
                    #region Worktime Visibility
-                   mvm.ervm.CreateWorktimeVisibility = WindowVisibility.Hidden;
-                   mvm.ervm.UpdateWorktimeVisibility = WindowVisibility.Hidden;
-                   mvm.ervm.WorktimeDetailsVisibility = WindowVisibility.Hidden;
+                   ExpandedResourceViewModel.Instance.CreateWorktimeVisibility = WindowVisibility.Hidden;
+                   ExpandedResourceViewModel.Instance.UpdateWorktimeVisibility = WindowVisibility.Hidden;
+                   ExpandedResourceViewModel.Instance.WorktimeDetailsVisibility = WindowVisibility.Hidden;
                    #endregion
 
-                   mvm.ervm.UpdateList();
+                   ExpandedResourceViewModel.Instance.UpdateList();
                }
            },
            parameter =>
@@ -260,7 +252,7 @@ namespace Civica.ViewModels
                bool isEnabled = false;
                if (parameter is MainViewModel mvm)
                {
-                   if (mvm.ipvm.SelectedProject != null)
+                   if (InProgressViewModel.Instance.SelectedProject != null)
                    {
                        isEnabled = true;
                    }
@@ -280,10 +272,10 @@ namespace Civica.ViewModels
                     mvm.InProgressView = WindowVisibility.Hidden;
                     mvm.LoginView = WindowVisibility.Hidden;
                     mvm.ResourceView = WindowVisibility.Hidden;
-                    mvm.ViewTitle = mvm.svm.WindowTitle;
+                    mvm.ViewTitle = SettingsViewModel.Instance.WindowTitle;
                     mvm.ArchiveView = WindowVisibility.Hidden;
-                    mvm.svm.UpdateList();
-                    mvm.svm.InformationVisibility = WindowVisibility.Visible;
+                    SettingsViewModel.Instance.UpdateList();
+                    SettingsViewModel.Instance.InformationVisibility = WindowVisibility.Visible;
                 }
             },
             parameter =>
@@ -298,16 +290,16 @@ namespace Civica.ViewModels
             {
                 if (parameter is MainViewModel mvm)
                 {
-                    mvm.ViewTitle = mvm.avm.WindowTitle;
+                    mvm.ViewTitle = ArchiveViewModel.Instance.WindowTitle;
                     mvm.SettingsView = WindowVisibility.Hidden;
                     mvm.StatusDot = WindowVisibility.Hidden;
                     mvm.ExpandedProjectView = WindowVisibility.Hidden;
                     mvm.InProgressView = WindowVisibility.Hidden;
                     mvm.LoginView = WindowVisibility.Hidden;
                     mvm.ResourceView = WindowVisibility.Hidden;
-                    mvm.svm.InformationVisibility = WindowVisibility.Hidden;
+                    SettingsViewModel.Instance.InformationVisibility = WindowVisibility.Hidden;
                     mvm.ArchiveView = WindowVisibility.Visible;
-                    mvm.avm.UpdateList();
+                    ArchiveViewModel.Instance.UpdateList();
                 }
             },
             parameter =>
@@ -330,13 +322,13 @@ namespace Civica.ViewModels
                         mvm.InProgressView = WindowVisibility.Hidden;
                         mvm.ResourceView = WindowVisibility.Hidden;
                         mvm.ArchiveView = WindowVisibility.Hidden;
-                        mvm.ViewTitle = mvm.lvm.WindowTitle;
+                        mvm.ViewTitle = LoginViewModel.Instance.WindowTitle;
                     }
                     else
                     {
                         mvm.CurrentUser = null;
                         mvm.UserIconPath = "/Resources/Images/login.png";
-                        mvm.ViewTitle = mvm.ipvm.WindowTitle;
+                        mvm.ViewTitle = InProgressViewModel.Instance.WindowTitle;
                     }
                 }
             },
@@ -352,34 +344,6 @@ namespace Civica.ViewModels
         private IRepository<User> userRepo;
         private IRepository<Worktime> worktimeRepo;
 
-        public MainViewModel()
-        {
-            projectRepo = new Repository<Project>();
-            progressRepo = new Repository<Progress>();
-            resourceRepo = new Repository<Resource>();
-            auditRepo = new Repository<Audit>();
-            userRepo = new Repository<User>();
-            worktimeRepo = new Repository<Worktime>();
-
-            ipvm.Init(this);
-            epvm.Init(this);
-            svm.Init(this);
-            lvm.Init(this);
-            ervm.Init(this);
-            avm.Init(this);
-            cpvm.Init(this);
-
-            InProgressView = WindowVisibility.Hidden;
-            StatusDot = WindowVisibility.Hidden;
-            ExpandedProjectView = WindowVisibility.Hidden;
-            SettingsView = WindowVisibility.Hidden;
-            ResourceView = WindowVisibility.Hidden;
-            LoginView = WindowVisibility.Visible;
-            ArchiveView = WindowVisibility.Hidden;
-
-            ViewTitle = lvm.WindowTitle;
-        }
-
         public IRepository<Project> GetProjectRepo() => projectRepo;
         public IRepository<Progress> GetProgressRepo() => progressRepo;
         public IRepository<Resource> GetResourceRepo() => resourceRepo;
@@ -394,5 +358,52 @@ namespace Civica.ViewModels
             else
                 StatusDot = WindowVisibility.Hidden;
         }
+
+        //Singleton
+        private MainViewModel()
+        {
+            projectRepo = new Repository<Project>();
+            progressRepo = new Repository<Progress>();
+            resourceRepo = new Repository<Resource>();
+            auditRepo = new Repository<Audit>();
+            userRepo = new Repository<User>();
+            worktimeRepo = new Repository<Worktime>();
+
+            InProgressView = WindowVisibility.Hidden;
+            StatusDot = WindowVisibility.Hidden;
+            ExpandedProjectView = WindowVisibility.Hidden;
+            SettingsView = WindowVisibility.Hidden;
+            ResourceView = WindowVisibility.Hidden;
+            LoginView = WindowVisibility.Visible;
+            ArchiveView = WindowVisibility.Hidden;
+
+            ViewTitle = "Login";
+        }
+
+        private static readonly object _lock = new object();
+        private static MainViewModel _instance;
+
+        public static MainViewModel Instance
+        {
+            get
+            {
+                if (_instance is null)
+                {
+                    lock (_lock)
+                    {
+                        if (_instance is null)
+                        {
+                            _instance = new MainViewModel();
+                        }
+                    }
+                }
+                return _instance;
+            }
+        }
+
+        //Singleton - Lazy
+        //private static readonly Lazy<MainViewModel> lazy = new Lazy<MainViewModel>(() => new MainViewModel());
+
+        //public static MainViewModel Instance => lazy.Value;
     }
 }

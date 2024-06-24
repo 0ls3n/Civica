@@ -5,12 +5,15 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:view="clr-namespace:Civica.Views"
              xmlns:viewModel="clr-namespace:Civica.ViewModels"
-             xmlns:local="clr-namespace:Civica.Views"
              mc:Ignorable="d" 
              d:DesignHeight="650" d:DesignWidth="1200">
 
+    
     <UserControl.Resources>
         <ResourceDictionary>
+
+
+
             <Style x:Key="ScrollThumbs" TargetType="{x:Type Thumb}">
                 <Setter Property="Template">
                     <Setter.Value>
@@ -106,8 +109,9 @@
          Cursor="Hand"
          Height="20"
              Margin="0, 0, 2, 4"
-         Command="{Binding mvm.cpvm.CreateProjectCmd}"
-         CommandParameter="{Binding mvm.cpvm}"
+                DataContext="{Binding Source={x:Static viewModel:CRUDProjectViewModel.Instance}}"
+         Command="{Binding CreateProjectCmd}"
+         CommandParameter="{Binding}"
          ToolTipService.InitialShowDelay="0">
             <Button.ToolTip>
                 <ToolTip Content="Opret nyt projekt" Style="{StaticResource ToolTipTheme}"/>
@@ -120,10 +124,10 @@
                         <Trigger Property="IsMouseOver" Value="True">
                             <Setter Property="Background" Value="Transparent"/>
                         </Trigger>
-                        <DataTrigger Binding="{Binding Path=CreateVisibility}" Value="Hidden">
+                        <DataTrigger Binding="{Binding Source={x:Static viewModel:InProgressViewModel.Instance},Path=CreateVisibility}" Value="Hidden">
                             <Setter Property="Visibility" Value="Hidden"/>
                         </DataTrigger>
-                        <DataTrigger Binding="{Binding Path=CreateVisibility}" Value="Visible">
+                        <DataTrigger Binding="{Binding Source={x:Static viewModel:InProgressViewModel.Instance}, Path=CreateVisibility}" Value="Visible">
                             <Setter Property="Visibility" Value="Visible"/>
                         </DataTrigger>
                     </Style.Triggers>
@@ -169,8 +173,112 @@ CornerRadius="25">
             </Border.Style>
         </Border>
 
+        <Border Grid.Column="2" BorderThickness="0"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Bottom"
+                Margin="0, 0, 5, 5">
+            <ComboBox Width="20"
+                      Height="20"
+                      SelectedItem="{Binding Path=ItemSearch}"
+                      Background="Transparent" BorderBrush="Transparent">
+                <ComboBox.Resources>
+                    <ControlTemplate x:Key="ComboBoxToggleButton" TargetType="ToggleButton">
+                        <Grid>
+                            <Image Source="/Resources/Images/more.png" VerticalAlignment="Center" HorizontalAlignment="Center" Height="16"/>
+                        </Grid>
+                    </ControlTemplate>
+                    <ControlTemplate x:Key="ComboBoxTextBox" TargetType="TextBox">
+                        <Border x:Name="PART_ContentHost" Focusable="False" Background="Transparent" BorderBrush="Transparent" BorderThickness="0"/>
+                    </ControlTemplate>
+                    <DataTemplate x:Key="ComboBoxSelectionBoxTemplate">
+                        <Image Source="/Resources/Images/more.png" VerticalAlignment="Center" HorizontalAlignment="Center" Height="16"/>
+                    </DataTemplate>
+                    <Style TargetType="ComboBox">
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="ComboBox">
+                                    <Grid>
+                                        <ToggleButton Name="ToggleButton" 
+                                                      Template="{StaticResource ComboBoxToggleButton}" 
+                                                      Grid.Column="2" 
+                                                      Focusable="false"
+                                                      IsChecked="{Binding Path=IsDropDownOpen, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}" 
+                                                      ClickMode="Press">
+                                            <ContentPresenter />
+                                        </ToggleButton>
+                                        <ContentPresenter
+                                            Name="ContentSite"
+                                            IsHitTestVisible="False"
+                                            Content="{TemplateBinding SelectionBoxItem}"
+                                            ContentTemplate="{StaticResource ComboBoxSelectionBoxTemplate}"
+                                            ContentTemplateSelector="{TemplateBinding ItemTemplateSelector}"
+                                            Margin="0"
+                                            VerticalAlignment="Center"
+                                            HorizontalAlignment="Center" />
+                                        <TextBox x:Name="PART_EditableTextBox"
+                                                 Style="{x:Null}"
+                                                 Template="{StaticResource ComboBoxTextBox}"
+                                                 HorizontalAlignment="Left"
+                                                 VerticalAlignment="Center"
+                                                 Margin="0"
+                                                 Focusable="True"
+                                                 Background="Transparent"
+                                                 Visibility="Hidden"
+                                                 IsReadOnly="{TemplateBinding IsReadOnly}" />
+                                        <Popup Name="Popup"
+                                               Placement="Bottom"
+                                               IsOpen="{TemplateBinding IsDropDownOpen}"
+                                               AllowsTransparency="True"
+                                               Focusable="False"
+                                               PopupAnimation="Slide">
+                                            <Grid Name="DropDown"
+                                                  SnapsToDevicePixels="True"
+                                                  MinWidth="{TemplateBinding ActualWidth}"
+                                                  MaxHeight="{TemplateBinding MaxDropDownHeight}">
+                                                <Border x:Name="DropDownBorder" 
+                                                        Background="White" 
+                                                        BorderBrush="Gray" 
+                                                        BorderThickness="1"/>
+                                                <ScrollViewer Margin="0" SnapsToDevicePixels="True">
+                                                    <StackPanel IsItemsHost="True" KeyboardNavigation.DirectionalNavigation="Contained">
+                                                        <StackPanel.Resources>
+                                                            <!--<Style TargetType="ComboBoxItem">
+                                                                <EventSetter Event="PreviewMouseLeftButtonUp" Handler="ComboBoxItem_PreviewMouseLeftButtonUp"/>
+                                                            </Style>-->
+                                                        </StackPanel.Resources>
+                                                    </StackPanel>
+                                                </ScrollViewer>
+                                            </Grid>
+                                        </Popup>
+                                    </Grid>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                    <Style x:Key="ComboBoxSeparatorStyle" TargetType="Separator">
+                        <Setter Property="Height" Value="1"/>
+                        <Setter Property="Margin" Value="0,5"/>
+                        <!-- Adjust the margin as needed for spacing -->
+                        <Setter Property="Background" Value="Gray"/>
+                        <!-- Adjust the background color if necessary -->
+                    </Style>
+                </ComboBox.Resources>
+                <ComboBoxItem>Alle</ComboBoxItem>
+                <Separator Style="{StaticResource ComboBoxSeparatorStyle}"/>
+                <ComboBoxItem>Ingen vurdering</ComboBoxItem>
+                <ComboBoxItem>Planmæssigt</ComboBoxItem>
+                <ComboBoxItem>Kritisk</ComboBoxItem>
+                <ComboBoxItem>Forsinket</ComboBoxItem>
+                <Separator Style="{StaticResource ComboBoxSeparatorStyle}"/>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Søg: " VerticalAlignment="Center"/>
+                    <TextBox x:Name="Text" MinWidth="20" Text="{Binding ItemSearch, UpdateSourceTrigger=PropertyChanged}"/>
+                </StackPanel>
+            </ComboBox>
+        </Border>
+
         <Border Grid.Row="1">
-            <view:CreateProjectView DataContext="{Binding Path=mvm.cpvm}"/>
+            <view:CreateProjectView DataContext="{x:Static viewModel:CRUDProjectViewModel.Instance}"/>
             <Border.Style>
                 <Style TargetType="Border">
                     <Setter Property="Visibility" Value="Collapsed"/>
@@ -186,7 +294,7 @@ CornerRadius="25">
  Grid.Column="1"
  HorizontalAlignment="Right"
  VerticalAlignment="Bottom"
- Margin="0 0 5 7"
+ Margin="0 0 30 7"
  Width="15"
  Grid.Row="0"
  Cursor="Hand"

@@ -23,6 +23,7 @@
     <None Remove="Resources\Images\edit_Logo2.png" />
     <None Remove="Resources\Images\login.png" />
     <None Remove="Resources\Images\logout.png" />
+    <None Remove="Resources\Images\more.png" />
     <None Remove="Resources\Images\progress_logo.png" />
     <None Remove="Resources\Images\read_placeholder.png" />
     <None Remove="Resources\Images\remove_logo.png" />
@@ -67,6 +68,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Resources\Images\logout.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Images\more.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Resources\Images\progress_logo.png">

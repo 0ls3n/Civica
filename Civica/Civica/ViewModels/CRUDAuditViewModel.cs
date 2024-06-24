@@ -13,9 +13,8 @@ using System.Windows;
 
 namespace Civica.ViewModels
 {
-    public class CRUDAuditViewModel : ObservableObject, IViewModelChild
+    public class CRUDAuditViewModel : ObservableObject
     {
-        private ExpandedResourceViewModel ervm;
         private IRepository<Audit> auditRepo;
 
         private int _year;
@@ -57,22 +56,15 @@ namespace Civica.ViewModels
             }
         }
 
-        public void Init(ObservableObject o)
-        {
-            ervm = (o as ExpandedResourceViewModel);
-
-            auditRepo = ervm.mvm.GetAuditRepo();
-        }
-
         public void CreateAudit(int userId, int resourceId, string amount, int year, string description)
         {
-            Audit a = new Audit(ervm.mvm.CurrentUser.GetId(), ervm.SelectedResource.GetId(), decimal.TryParse(amount, out decimal r) ? r : 0, year, description, DateTime.Now);
+            Audit a = new Audit(MainViewModel.Instance.CurrentUser.GetId(), ExpandedResourceViewModel.Instance.SelectedResource.GetId(), decimal.TryParse(amount, out decimal r) ? r : 0, year, description, DateTime.Now);
 
             auditRepo.Add(a);
 
-            ervm.Audits.Clear();
+            ExpandedResourceViewModel.Instance.Audits.Clear();
 
-            ervm.UpdateList();
+            ExpandedResourceViewModel.Instance.UpdateList();
             Amount = "";
             Year = int.MinValue;
             Description = "";
@@ -91,11 +83,11 @@ namespace Civica.ViewModels
 
             auditRepo.Update(a);
 
-            ervm.Audits.Clear();
+            ExpandedResourceViewModel.Instance.Audits.Clear();
 
-            ervm.UpdateList();
+            ExpandedResourceViewModel.Instance.UpdateList();
 
-            ervm.SelectedAudit = avm;
+            ExpandedResourceViewModel.Instance.SelectedAudit = avm;
         }
 
         public void DeleteAudit(AuditViewModel avm)
@@ -104,9 +96,40 @@ namespace Civica.ViewModels
 
             auditRepo.Delete(a);
 
-            ervm.Audits.Clear();
+            ExpandedResourceViewModel.Instance.Audits.Clear();
 
-            ervm.UpdateList();
+            ExpandedResourceViewModel.Instance.UpdateList();
         }
+
+        //Singleton
+        private CRUDAuditViewModel() {
+            auditRepo = MainViewModel.Instance.GetAuditRepo();
+        }
+
+        private static readonly object _lock = new object();
+        private static CRUDAuditViewModel _instance;
+
+        public static CRUDAuditViewModel Instance
+        {
+            get
+            {
+                if (_instance is null)
+                {
+                    lock (_lock)
+                    {
+                        if (_instance is null)
+                        {
+                            _instance = new CRUDAuditViewModel();
+                        }
+                    }
+                }
+                return _instance;
+            }
+        }
+
+        //Singleton - Lazy
+        //private static readonly Lazy<CRUDAuditViewModel> lazy = new Lazy<CRUDAuditViewModel>(() => new CRUDAuditViewModel());
+
+        //public static CRUDAuditViewModel Instance => lazy.Value;
     }
 }

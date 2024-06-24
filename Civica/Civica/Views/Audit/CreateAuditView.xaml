@@ -41,7 +41,7 @@
                                    BorderThickness="0"
                                 Background="Transparent"
                                    SelectedIndex='0'
-                                   SelectedValue="{Binding cavm.Year}"
+                                   SelectedValue="{Binding Year}"
                                    ItemsSource="{x:Static viewModel:Helper.Years}">
                             </ComboBox>
                         </Border>
@@ -67,7 +67,7 @@
                                    FontSize="20"
                                      BorderThickness="0"
                                      Background="Transparent"
-                                   Text="{Binding cavm.Amount, UpdateSourceTrigger=PropertyChanged}"/>
+                                   Text="{Binding Amount, UpdateSourceTrigger=PropertyChanged}"/>
                         </Border>
                     </Grid>
 
@@ -81,7 +81,7 @@
                                     CornerRadius="2"
                                     Grid.Column="1"
                                     Margin="5 0 5 0">
-                        <TextBox Text="{Binding cavm.Description}"
+                        <TextBox Text="{Binding Description}"
                                Height="100"
                              AcceptsReturn="True"
                              AcceptsTab="True"

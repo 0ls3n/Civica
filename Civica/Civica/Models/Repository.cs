@@ -10,8 +10,11 @@ namespace Civica.Models
 {
     public class Repository<T> : IRepository<T>
     {
-        private List<DomainModel> _list = DatabaseHelper<DomainModel>
-                                          .Initialize(typeof(T));
+        private List<DomainModel> _list = new List<DomainModel>();
+
+        public Repository() {
+            _list = DatabaseHelper<DomainModel>.Initialize(typeof(T));
+        }
 
         public void Add(T o)
         {

@@ -3,8 +3,8 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:viewModel="clr-namespace:Civica.ViewModels"
         xmlns:view="clr-namespace:Civica.Views"
+        xmlns:viewModel="clr-namespace:Civica.ViewModels"
         mc:Ignorable="d"
         MinHeight="800"
         MinWidth="1200"
@@ -12,9 +12,12 @@
         Title="Civica Projektstyring" Height="800" Width="1200"
         WindowStartupLocation="CenterScreen">
 
-    <Window.DataContext>
+    <!--<Window.DataContext>
         <viewModel:MainViewModel/>
-    </Window.DataContext>
+    </Window.DataContext>-->
+    <!--<Window.DataContext>
+        <Binding Source="{x:Static local:MainViewModel.Instance}" />
+    </Window.DataContext>-->
 
     <Grid>
         <Grid.ColumnDefinitions>
@@ -94,14 +97,15 @@
                     Width="8"
                     Height="8"
                     HorizontalAlignment="Left"
-                    Background="{Binding Path=epvm.SelectedProject.StatusColor, UpdateSourceTrigger=PropertyChanged}"
+                    DataContext="{Binding Source={x:Static viewModel:ExpandedProjectViewModel.Instance}}"
+                    Background="{Binding Path=SelectedProject.StatusColor, UpdateSourceTrigger=PropertyChanged}"
                     CornerRadius="7.5">
 
                 <Border.Style>
                     <Style TargetType="Border">
                         <Setter Property="Visibility" Value="Collapsed"/>
                         <Style.Triggers>
-                            <DataTrigger Binding="{Binding StatusDot}" Value="Visible">
+                            <DataTrigger Binding="{Binding Source={x:Static viewModel:MainViewModel.Instance},Path=StatusDot}" Value="Visible">
                                 <Setter Property="Visibility" Value="Visible"/>
                             </DataTrigger>
                         </Style.Triggers>
@@ -141,7 +145,7 @@
                         BorderThickness="0 1 0 0"
                         BorderBrush="#338A8A8A"
                         Cursor="Hand"/>
-                
+
                 <RadioButton Content="Arkiv"
                              FontSize="14"
                              Height="20"
@@ -216,7 +220,7 @@
 
         </Grid>
 
-        
+
 
         <Border Grid.Column="1"
                 Grid.Row="1"
@@ -226,7 +230,7 @@
                             Content="{Binding CurrentView, UpdateSourceTrigger=PropertyChanged}"/>-->
             <Grid>
                 <Border Margin="30 10 30 10">
-                    <view:InProgressView DataContext="{Binding Path=ipvm}"/>
+                    <view:InProgressView DataContext="{x:Static viewModel:InProgressViewModel.Instance}"/>
                     <Border.Style>
                         <Style TargetType="Border">
                             <Setter Property="Visibility" Value="Collapsed"/>
@@ -240,7 +244,7 @@
                 </Border>
 
                 <Border Margin="30 10 30 10">
-                    <view:ExpandedProjectView DataContext="{Binding Path=epvm}"/>
+                    <view:ExpandedProjectView DataContext="{x:Static viewModel:ExpandedProjectViewModel.Instance}"/>
                     <Border.Style>
                         <Style TargetType="Border">
                             <Setter Property="Visibility" Value="Collapsed"/>
@@ -252,9 +256,9 @@
                         </Style>
                     </Border.Style>
                 </Border>
-                
+
                 <Border Margin="30 10 30 10">
-                    <view:ExpandedResourceView DataContext="{Binding Path=ervm}"/>
+                    <view:ExpandedResourceView DataContext="{x:Static viewModel:ExpandedResourceViewModel.Instance}"/>
                     <Border.Style>
                         <Style TargetType="Border">
                             <Setter Property="Visibility" Value="Collapsed"/>
@@ -267,7 +271,7 @@
                     </Border.Style>
                 </Border>
                 <Border Margin="30 10 30 10">
-                    <view:SettingsView DataContext="{Binding Path=svm}"/>
+                    <view:SettingsView DataContext="{x:Static viewModel:SettingsViewModel.Instance}"/>
                     <Border.Style>
                         <Style TargetType="Border">
                             <Setter Property="Visibility" Value="Collapsed"/>
@@ -281,7 +285,7 @@
                 </Border>
 
                 <Border Margin="30 10 30 10">
-                    <view:ArchiveView DataContext="{Binding Path=avm}"/>
+                    <view:ArchiveView DataContext="{x:Static viewModel:ArchiveViewModel.Instance}"/>
                     <Border.Style>
                         <Style TargetType="Border">
                             <Setter Property="Visibility" Value="Collapsed"/>
@@ -295,7 +299,7 @@
                 </Border>
 
                 <Border Margin="30 10 30 10">
-                    <view:LoginView DataContext="{Binding Path=lvm}"/>
+                    <view:LoginView DataContext="{x:Static viewModel:LoginViewModel.Instance}"/>
                     <Border.Style>
                         <Style TargetType="Border">
                             <Setter Property="Visibility" Value="Collapsed"/>

@@ -12,14 +12,13 @@ using GVMR;
 
 namespace Civica.ViewModels
 {
-    public class LoginViewModel : ObservableObject, IViewModelChild
+    public class LoginViewModel : ObservableObject
     {
-        private MainViewModel mvm;
         private IRepository<User> userRepo;
         public string WindowTitle { get; } = "Login";
 
         private string password = string.Empty;
-        public string Password 
+        public string Password
         {
             get { return password; }
             set
@@ -37,13 +36,6 @@ namespace Civica.ViewModels
             }
         }
 
-
-        public void Init(ObservableObject o)
-        {
-            mvm = (o as MainViewModel);
-
-            userRepo = mvm.GetUserRepo();
-        }
         public RelayCommand LoginCmd { get; set; } = new RelayCommand
         (
             parameter =>
@@ -54,14 +46,14 @@ namespace Civica.ViewModels
                     if (u is not null)
                     {
                         UserViewModel uvm = new UserViewModel(u);
-                        lvm.mvm.CurrentUser = uvm;
-                        lvm.mvm.LoginView = WindowVisibility.Hidden;
-                        lvm.mvm.InProgressView = WindowVisibility.Visible;
-                        lvm.mvm.ipvm.InformationVisibility = WindowVisibility.Visible;
-                        lvm.mvm.ipvm.UpdateList();
+                        MainViewModel.Instance.CurrentUser = uvm;
+                        MainViewModel.Instance.LoginView = WindowVisibility.Hidden;
+                        MainViewModel.Instance.InProgressView = WindowVisibility.Visible;
+                        InProgressViewModel.Instance.InformationVisibility = WindowVisibility.Visible;
+                        InProgressViewModel.Instance.UpdateList();
                         lvm.Password = string.Empty;
-                        lvm.mvm.UserIconPath = "/Resources/Images/logout.png";
-                        lvm.mvm.ViewTitle = lvm.mvm.ipvm.WindowTitle;
+                        MainViewModel.Instance.UserIconPath = "/Resources/Images/logout.png";
+                        MainViewModel.Instance.ViewTitle = InProgressViewModel.Instance.WindowTitle;
                     }
                     else
                     {
@@ -89,10 +81,10 @@ namespace Civica.ViewModels
             {
                 if (parameter is LoginViewModel lvm)
                 {
-                    lvm.mvm.LoginView = WindowVisibility.Hidden;
-                    lvm.mvm.InProgressView = WindowVisibility.Visible;
-                    lvm.mvm.ipvm.InformationVisibility = WindowVisibility.Visible;
-                    lvm.mvm.ipvm.UpdateList();
+                    MainViewModel.Instance.LoginView = WindowVisibility.Hidden;
+                    MainViewModel.Instance.InProgressView = WindowVisibility.Visible;
+                    InProgressViewModel.Instance.InformationVisibility = WindowVisibility.Visible;
+                    InProgressViewModel.Instance.UpdateList();
                     lvm.Password = string.Empty;
                 }
             },
@@ -101,5 +93,37 @@ namespace Civica.ViewModels
                 return true;
             }
         );
+
+        //Singleton
+        private LoginViewModel()
+        {
+            userRepo = MainViewModel.Instance.GetUserRepo();
+        }
+
+        private static readonly object _lock = new object();
+        private static LoginViewModel _instance;
+
+        public static LoginViewModel Instance
+        {
+            get
+            {
+                if (_instance is null)
+                {
+                    lock (_lock)
+                    {
+                        if (_instance is null)
+                        {
+                            _instance = new LoginViewModel();
+                        }
+                    }
+                }
+                return _instance;
+            }
+        }
+
+        //Singleton - Lazy
+        //private static readonly Lazy<LoginViewModel> lazy = new Lazy<LoginViewModel>(() => new LoginViewModel());
+
+        //public static LoginViewModel Instance => lazy.Value;
     }
 }

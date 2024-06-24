@@ -12,9 +12,8 @@ using GVMR;
 
 namespace Civica.ViewModels
 {
-    public class CRUDUserViewModel : ObservableObject, IViewModelChild
+    public class CRUDUserViewModel : ObservableObject
     {
-        private SettingsViewModel svm;
         private IRepository<User> userRepo;
         private string firstName;
 
@@ -70,15 +69,14 @@ namespace Civica.ViewModels
                        if (cuvm.userRepo.GetAll().OfType<User>().FirstOrDefault(x => x.FullName.ToLower() == cuvm.FirstName.ToLower() + " " + cuvm.LastName.ToLower()) is null)
                        {
                            cuvm.CreateUser(cuvm.FirstName, cuvm.LastName, int.TryParse(cuvm.Password, out int r) ? r : 0000);
-                           cuvm.svm.CreateVisibility = WindowVisibility.Hidden;
-                           cuvm.svm.InformationVisibility = WindowVisibility.Visible;
-                           cuvm.svm.UpdateList();
+                           SettingsViewModel.Instance.CreateVisibility = WindowVisibility.Hidden;
+                           SettingsViewModel.Instance.InformationVisibility = WindowVisibility.Visible;
+                           SettingsViewModel.Instance.UpdateList();
                        }
                        else
                        {
                            MessageBox.Show("Navnet " + cuvm.FirstName + " " + cuvm.LastName + " findes allerede.");
                        }
-
                    }
                    else
                    {
@@ -101,20 +99,11 @@ namespace Civica.ViewModels
            }
         );
 
-        public void SetRepo(IRepository<User> userRepo)
-        {
-            this.userRepo = userRepo;
-        }
-
-        public void Init(ObservableObject o)
-        {
-            svm = (o as SettingsViewModel);
-        }
         public void CreateUser(string firstName, string lastName, int password)
         {
             User u = new User(firstName, lastName, password);
             userRepo.Add(u);
-            svm.UpdateList();
+            SettingsViewModel.Instance.UpdateList();
             FirstName = "";
             LastName = "";
             Password = "";
@@ -132,7 +121,38 @@ namespace Civica.ViewModels
         public void DeleteUser(UserViewModel user)
         {
             userRepo.Delete(userRepo.GetById(x => x.Id == user.GetId()));
-            svm.UpdateList();
+            SettingsViewModel.Instance.UpdateList();
         }
+
+        //Singleton
+        private CRUDUserViewModel() {
+            userRepo = MainViewModel.Instance.GetUserRepo();
+        }
+
+        private static readonly object _lock = new object();
+        private static CRUDUserViewModel _instance;
+
+        public static CRUDUserViewModel Instance
+        {
+            get
+            {
+                if (_instance is null)
+                {
+                    lock (_lock)
+                    {
+                        if (_instance is null)
+                        {
+                            _instance = new CRUDUserViewModel();
+                        }
+                    }
+                }
+                return _instance;
+            }
+        }
+
+        //Singleton - Lazy
+        //private static readonly Lazy<CRUDUserViewModel> lazy = new Lazy<CRUDUserViewModel>(() => new CRUDUserViewModel());
+
+        //public static CRUDUserViewModel Instance => lazy.Value;
     }
 }

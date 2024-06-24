@@ -4,14 +4,13 @@ using Civica.Models;
 using Civica.Models.Enums;
 using GVMR;
 using System.Collections.ObjectModel;
+using System.Globalization;
 using System.Windows;
 
 namespace Civica.ViewModels
 {
-    public class InProgressViewModel : ObservableObject, IViewModelChild
+    public class InProgressViewModel : ObservableObject
     {
-        public MainViewModel mvm { get; set; }
-
         public string WindowTitle { get; } = "Igangværende";
 
         #region VisibilityProperties
@@ -94,6 +93,32 @@ namespace Civica.ViewModels
             }
         }
 
+        private string _itemSearch = "Alle";
+        public string ItemSearch
+        {
+            get
+            {
+                return _itemSearch;
+            }
+            set
+            {
+                if (!value.Contains("System.Windows.Controls.StackPanel"))
+                {
+                    if (value.Contains(":"))
+                    {
+                        _itemSearch = value.Substring(value.IndexOf(':') + 1).TrimStart();
+                    }
+                    else
+                    {
+                        _itemSearch = value;
+                    }
+                    OnPropertyChanged(nameof(ItemSearch));
+
+                    Search();
+                }
+            }
+        }
+
         private IRepository<Project> projectRepo;
         private IRepository<Progress> progressRepo;
 
@@ -131,18 +156,42 @@ namespace Civica.ViewModels
             }
         }
 
-        public void Init(ObservableObject o)
+        public void Search()
         {
-            this.mvm = (o as MainViewModel);
-
-            CreateVisibility = WindowVisibility.Hidden;
-            UpdateVisibility = WindowVisibility.Hidden;
-            InformationVisibility = WindowVisibility.Visible;
-
-            projectRepo = this.mvm.GetProjectRepo();
-            progressRepo = this.mvm.GetProgressRepo();
-
             UpdateList();
+
+            ObservableCollection<ProjectViewModel> temp = new ObservableCollection<ProjectViewModel>();
+
+            if (!string.IsNullOrEmpty(ItemSearch))
+            {
+                foreach (ProjectViewModel p in Projects)
+                {
+                    Progress prog = progressRepo.GetListById(x => x.RefId == p.GetId()).OrderByDescending(x => x.CreatedDate).FirstOrDefault();
+
+                    string owner = p.Owner.ToLower();
+                    string manager = p.Manager.ToLower();
+                    string status = prog != null ? Helper.Statuses.GetValueOrDefault(prog.Status)?.ToLower() : null;
+                    string phase = prog != null ? Helper.Phases.GetValueOrDefault(prog.Phase)?.ToLower() : null;
+
+                    if (owner.ToLower().Contains(ItemSearch.ToLower()) ||
+                        manager.ToLower().Contains(ItemSearch.ToLower()) ||
+                        (status != null && status.Contains(ItemSearch.ToLower())) ||
+                        (phase != null && phase.Contains(ItemSearch.ToLower())) ||
+                        (prog == null && ItemSearch.ToLower() == "ingen vurdering"))
+                    {
+                        temp.Add(p);
+                    }
+                }
+
+                if (ItemSearch.ToLower() != "alle")
+                {
+                    Projects.Clear();
+                    foreach (ProjectViewModel pvm in temp)
+                    {
+                        Projects.Add(pvm);
+                    }
+                }
+            }
         }
         #region ViewCommands
 
@@ -161,7 +210,7 @@ namespace Civica.ViewModels
             {
                 if (parameter is InProgressViewModel ipvm)
                 {
-                    if (ipvm.mvm.CurrentUser != null)
+                    if (MainViewModel.Instance.CurrentUser != null)
                     {
                         return true;
                     }
@@ -171,5 +220,44 @@ namespace Civica.ViewModels
         );
 
         #endregion
+
+        //Singleton
+        private InProgressViewModel()
+        {
+            CreateVisibility = WindowVisibility.Hidden;
+            UpdateVisibility = WindowVisibility.Hidden;
+            InformationVisibility = WindowVisibility.Visible;
+
+            projectRepo = MainViewModel.Instance.GetProjectRepo();
+            progressRepo = MainViewModel.Instance.GetProgressRepo();
+
+            UpdateList();
+        }
+
+        private static readonly object _lock = new object();
+        private static InProgressViewModel _instance;
+
+        public static InProgressViewModel Instance
+        {
+            get
+            {
+                if (_instance is null)
+                {
+                    lock (_lock)
+                    {
+                        if (_instance is null)
+                        {
+                            _instance = new InProgressViewModel();
+                        }
+                    }
+                }
+                return _instance;
+            }
+        }
+
+        //Singleton - Lazy
+        //private static readonly Lazy<InProgressViewModel> lazy = new Lazy<InProgressViewModel>(() => new InProgressViewModel());
+
+        //public static InProgressViewModel Instance => lazy.Value;
     }
 }

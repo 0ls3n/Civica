@@ -12,7 +12,7 @@ using System.Windows;
 
 namespace Civica.ViewModels
 {
-    public class CRUDProjectViewModel : ObservableObject, IViewModelChild
+    public class CRUDProjectViewModel : ObservableObject
     {
         private string _name = "";
         public string Name
@@ -94,23 +94,11 @@ namespace Civica.ViewModels
             }
         }
 
-        private MainViewModel mvm;
         private IRepository<Project> projectRepo;
         private IRepository<Resource> resourceRepo;
         private IRepository<Worktime> worktimeRepo;
         private IRepository<Audit> auditRepo;
         private IRepository<Progress> progressRepo;
-
-        public void Init(ObservableObject o)
-        {
-            mvm = (o as MainViewModel);
-
-            projectRepo = mvm.GetProjectRepo();
-            resourceRepo = mvm.GetResourceRepo();
-            worktimeRepo = mvm.GetWorktimeRepo();
-            auditRepo = mvm.GetAuditRepo();
-            progressRepo = mvm.GetProgressRepo();
-        }
 
         public void CreateProject(int userId, string name, string owner, string manager, string description, int startAmount, decimal expectedYearlyCost)
         {
@@ -121,7 +109,7 @@ namespace Civica.ViewModels
             Resource r = new Resource(userId, p.Id, startAmount, expectedYearlyCost, DateTime.Now);
             resourceRepo.Add(r);
 
-            mvm.ipvm.UpdateList();
+            InProgressViewModel.Instance.UpdateList();
 
             Name = "";
             Manager = "";
@@ -140,8 +128,8 @@ namespace Civica.ViewModels
             progressRepo.DeleteByRefId(pID);
             resourceRepo.DeleteByRefId(pID);
             projectRepo.Delete(projectRepo.GetById(x => x.Id == pID));
-            mvm.epvm.UpdateList();
-            mvm.epvm.SelectedProject = null;
+            ExpandedProjectViewModel.Instance.UpdateList();
+            ExpandedProjectViewModel.Instance.SelectedProject = null;
         }
 
         public void UpdateProject(ProjectViewModel pvm)
@@ -154,7 +142,7 @@ namespace Civica.ViewModels
 
             projectRepo.Update(p);
 
-            mvm.epvm.SelectedProject = pvm;
+            ExpandedProjectViewModel.Instance.SelectedProject = pvm;
         }
 
         public RelayCommand CreateProjectCmd { get; set; } = new RelayCommand
@@ -163,9 +151,9 @@ namespace Civica.ViewModels
             {
                 if (parameter is CRUDProjectViewModel cpvm)
                 {
-                    cpvm.CreateProject(cpvm.mvm.CurrentUser.GetId(), cpvm.Name, cpvm.Owner, cpvm.Manager, cpvm.Description, int.TryParse(cpvm.StartAmount, out int r) ? r : 0, decimal.TryParse(cpvm.ExpectedYearlyCost, out decimal r2) ? r2 : 0);
-                    cpvm.mvm.ipvm.CreateVisibility = WindowVisibility.Hidden;
-                    cpvm.mvm.ipvm.InformationVisibility = WindowVisibility.Visible;
+                    cpvm.CreateProject(MainViewModel.Instance.CurrentUser.GetId(), cpvm.Name, cpvm.Owner, cpvm.Manager, cpvm.Description, int.TryParse(cpvm.StartAmount, out int r) ? r : 0, decimal.TryParse(cpvm.ExpectedYearlyCost, out decimal r2) ? r2 : 0);
+                    InProgressViewModel.Instance.CreateVisibility = WindowVisibility.Hidden;
+                    InProgressViewModel.Instance.InformationVisibility = WindowVisibility.Visible;
                 }
             },
             parameter =>
@@ -182,5 +170,41 @@ namespace Civica.ViewModels
                 return succes;
             }
         );
+
+        //Singleton
+        private CRUDProjectViewModel()
+        {
+            projectRepo = MainViewModel.Instance.GetProjectRepo();
+            resourceRepo = MainViewModel.Instance.GetResourceRepo();
+            worktimeRepo = MainViewModel.Instance.GetWorktimeRepo();
+            auditRepo = MainViewModel.Instance.GetAuditRepo();
+            progressRepo = MainViewModel.Instance.GetProgressRepo();
+        }
+
+        private static readonly object _lock = new object();
+        private static CRUDProjectViewModel _instance;
+
+        public static CRUDProjectViewModel Instance
+        {
+            get
+            {
+                if (_instance is null)
+                {
+                    lock (_lock)
+                    {
+                        if (_instance is null)
+                        {
+                            _instance = new CRUDProjectViewModel();
+                        }
+                    }
+                }
+                return _instance;
+            }
+        }
+
+        //Singleton - Lazy
+        //private static readonly Lazy<CRUDProjectViewModel> lazy = new Lazy<CRUDProjectViewModel>(() => new CRUDProjectViewModel());
+
+        //public static CRUDProjectViewModel Instance => lazy.Value;
     }
 }
