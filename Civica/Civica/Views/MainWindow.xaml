@@ -162,7 +162,7 @@
                 <Border Margin="30 50 30 50"
             BorderBrush="#E8E8E8"
             BorderThickness="0 1 0 0" Opacity="0.5"/>
-
+                
                 <RadioButton Content="Projektdetaljer"
                  FontSize="14"
                  Height="20"
@@ -175,6 +175,7 @@
             BorderThickness="0 1 0 0"
             BorderBrush="#338A8A8A"
             Cursor="Hand"/>
+                
                 <RadioButton Content="Ressourcedetaljer"
                  FontSize="14"
                  Height="20"
@@ -195,7 +196,7 @@
           Margin="0, 3, 0, 9"
           HorizontalAlignment="Left"
           VerticalAlignment="Bottom"
-          Width="60"
+          Width="50"
           Cursor="Hand"
           Height="60"
           Command="{Binding SettingsViewCmd}"
@@ -206,12 +207,12 @@
                     </RadioButton.ToolTip>
                     <RadioButton.Template>
                         <ControlTemplate TargetType="{x:Type RadioButton}">
-                            <Border Width="50" 
+                            <Border Width="40" 
                  Height="50"
                  Background="{TemplateBinding Background}"
                  CornerRadius="25">
                                 <Image Source="/Resources/Images/Cog.png" 
-                    Width="100"/>
+                    Width="25"/>
                             </Border>
                         </ControlTemplate>
                     </RadioButton.Template>
@@ -223,9 +224,10 @@
                              HorizontalAlignment="Center"
       Height="20"
       Cursor="Hand"
+                             Margin="-20,30,50,30"
       Command="{Binding SettingsViewCmd}"
       CommandParameter="{Binding}"
-      Style="{StaticResource MenuButtonTheme}"/>
+      Style="{StaticResource MenuButtonTheme}" Width="120"/>
             </Border>
 
         </Grid>
