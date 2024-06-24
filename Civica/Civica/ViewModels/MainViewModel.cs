@@ -359,9 +359,6 @@ namespace Civica.ViewModels
         public IRepository<User> GetUserRepo() => userRepo;
         public IRepository<Worktime> GetWorktimeRepo() => worktimeRepo;
 
-        private System.Timers.Timer timer;
-        private int duration = 60000;
-
         public void ShowStatusDot(bool show)
         {
             if (show)
