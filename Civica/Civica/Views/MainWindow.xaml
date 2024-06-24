@@ -193,7 +193,7 @@
         BorderBrush="#338A8A8A">
                 <RadioButton BorderThickness="0"
           Margin="0, 3, 0, 9"
-          HorizontalAlignment="Center"
+          HorizontalAlignment="Left"
           VerticalAlignment="Bottom"
           Width="60"
           Cursor="Hand"
@@ -216,6 +216,12 @@
                         </ControlTemplate>
                     </RadioButton.Template>
                 </RadioButton>
+            </Border>
+            <Border Grid.Row="1">
+                <Label Content="Hej"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center">
+                </Label>
             </Border>
 
         </Grid>
