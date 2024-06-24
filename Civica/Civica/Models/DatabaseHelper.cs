@@ -21,7 +21,10 @@ namespace Civica.Models
         #region DB Connection
         private static IConfigurationRoot config = new ConfigurationBuilder().AddJsonFile("appsettings.json").Build();
 
-        private static string? connectionString = config.GetConnectionString("MyDBConnection");
+        //Server=tcp:devforu.database.windows.net,1433;Initial Catalog=DB_devforu;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;Authentication="Active Directory Default";
+        //"ConnectionStrings": {
+
+    private static string? connectionString = config.GetConnectionString("MyDBConnection");
         #endregion
         #region Initialize
         public static List<DomainModel> Initialize(Type type)
