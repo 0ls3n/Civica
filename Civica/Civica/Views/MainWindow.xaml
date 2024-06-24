@@ -218,10 +218,14 @@
                 </RadioButton>
             </Border>
             <Border Grid.Row="1">
-                <Label Content="Hej"
-                       HorizontalAlignment="Center"
-                       VerticalAlignment="Center">
-                </Label>
+                <RadioButton Content="Indstillinger"
+      FontSize="14"
+                             HorizontalAlignment="Center"
+      Height="20"
+      Cursor="Hand"
+      Command="{Binding SettingsViewCmd}"
+      CommandParameter="{Binding}"
+      Style="{StaticResource MenuButtonTheme}"/>
             </Border>
 
         </Grid>
