@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
+using System.Timers;
 using Civica.Commands;
 using Civica.Interfaces;
 using Civica.Models;
@@ -143,10 +144,11 @@ namespace Civica.ViewModels
 
         public RelayCommand InProgressViewCmd { get; set; } = new RelayCommand
         (
-            execute: (object? parameter) =>
+            execute: async (object? parameter) =>
             {
                 if (parameter is MainViewModel mvm)
                 {
+                    await mvm.RefreshRepoAsync();
                     mvm.InProgressView = WindowVisibility.Visible;
                     mvm.ExpandedProjectView = WindowVisibility.Hidden;
                     mvm.SettingsView = WindowVisibility.Hidden;
@@ -167,10 +169,11 @@ namespace Civica.ViewModels
 
         public RelayCommand ExpandedProjectViewCmd { get; set; } = new RelayCommand
             (
-            parameter =>
+            async parameter =>
             {
                 if (parameter is MainViewModel mvm)
                 {
+                    await mvm.RefreshRepoAsync();
                     mvm.ExpandedProjectView = WindowVisibility.Visible;
                     mvm.StatusDot = WindowVisibility.Visible;
                     mvm.InProgressView = WindowVisibility.Hidden;
@@ -201,7 +204,7 @@ namespace Civica.ViewModels
 
         public RelayCommand ResourceViewCmd { get; set; } = new RelayCommand
            (
-           parameter =>
+           async parameter =>
            {
                if (parameter is MainViewModel mvm)
                {
@@ -214,6 +217,8 @@ namespace Civica.ViewModels
                    mvm.LoginView = WindowVisibility.Hidden;
                    mvm.ArchiveView = WindowVisibility.Hidden;
                    #endregion
+
+                   await mvm.RefreshRepoAsync();
 
                    mvm.ViewTitle = InProgressViewModel.Instance.SelectedProject.Name;
                    ExpandedResourceViewModel.Instance.Title = "Omkostninger";
@@ -262,10 +267,11 @@ namespace Civica.ViewModels
 
         public RelayCommand SettingsViewCmd { get; set; } = new RelayCommand
             (
-            parameter =>
+            async parameter =>
             {
                 if (parameter is MainViewModel mvm)
                 {
+                    await mvm.RefreshRepoAsync();
                     mvm.SettingsView = WindowVisibility.Visible;
                     mvm.StatusDot = WindowVisibility.Hidden;
                     mvm.ExpandedProjectView = WindowVisibility.Hidden;
@@ -286,10 +292,11 @@ namespace Civica.ViewModels
 
         public RelayCommand ArchiveViewCmd { get; set; } = new RelayCommand
             (
-            parameter =>
+            async parameter =>
             {
                 if (parameter is MainViewModel mvm)
                 {
+                    await mvm.RefreshRepoAsync();
                     mvm.ViewTitle = ArchiveViewModel.Instance.WindowTitle;
                     mvm.SettingsView = WindowVisibility.Hidden;
                     mvm.StatusDot = WindowVisibility.Hidden;
@@ -310,12 +317,13 @@ namespace Civica.ViewModels
 
         public RelayCommand LoginViewCmd { get; set; } = new RelayCommand
             (
-            parameter =>
+            async parameter =>
             {
                 if (parameter is MainViewModel mvm)
                 {
                     if (mvm.CurrentUser == null)
                     {
+                        await mvm.RefreshRepoAsync();
                         mvm.LoginView = WindowVisibility.Visible;
                         mvm.SettingsView = WindowVisibility.Hidden;
                         mvm.ExpandedProjectView = WindowVisibility.Hidden;
@@ -351,6 +359,9 @@ namespace Civica.ViewModels
         public IRepository<User> GetUserRepo() => userRepo;
         public IRepository<Worktime> GetWorktimeRepo() => worktimeRepo;
 
+        private System.Timers.Timer timer;
+        private int duration = 60000;
+
         public void ShowStatusDot(bool show)
         {
             if (show)
@@ -378,6 +389,16 @@ namespace Civica.ViewModels
             ArchiveView = WindowVisibility.Hidden;
 
             ViewTitle = "Login";
+        }
+
+        private async Task RefreshRepoAsync()
+        {
+            await progressRepo.Refresh();
+            await resourceRepo.Refresh();
+            await auditRepo.Refresh();
+            await worktimeRepo.Refresh();
+            await projectRepo.Refresh();
+            await userRepo.Refresh();
         }
 
         private static readonly object _lock = new object();
