@@ -173,7 +173,7 @@ namespace Civica.ViewModels
             {
                 if (parameter is MainViewModel mvm)
                 {
-                    await mvm.RefreshRepoAsync();
+                    //await mvm.RefreshRepoAsync();
                     mvm.ExpandedProjectView = WindowVisibility.Visible;
                     mvm.StatusDot = WindowVisibility.Visible;
                     mvm.InProgressView = WindowVisibility.Hidden;
@@ -218,7 +218,7 @@ namespace Civica.ViewModels
                    mvm.ArchiveView = WindowVisibility.Hidden;
                    #endregion
 
-                   await mvm.RefreshRepoAsync();
+                   //await mvm.RefreshRepoAsync();
 
                    mvm.ViewTitle = InProgressViewModel.Instance.SelectedProject.Name;
                    ExpandedResourceViewModel.Instance.Title = "Omkostninger";
@@ -271,7 +271,7 @@ namespace Civica.ViewModels
             {
                 if (parameter is MainViewModel mvm)
                 {
-                    await mvm.RefreshRepoAsync();
+                    //await mvm.RefreshRepoAsync();
                     mvm.SettingsView = WindowVisibility.Visible;
                     mvm.StatusDot = WindowVisibility.Hidden;
                     mvm.ExpandedProjectView = WindowVisibility.Hidden;
@@ -296,7 +296,7 @@ namespace Civica.ViewModels
             {
                 if (parameter is MainViewModel mvm)
                 {
-                    await mvm.RefreshRepoAsync();
+                    //await mvm.RefreshRepoAsync();
                     mvm.ViewTitle = ArchiveViewModel.Instance.WindowTitle;
                     mvm.SettingsView = WindowVisibility.Hidden;
                     mvm.StatusDot = WindowVisibility.Hidden;
