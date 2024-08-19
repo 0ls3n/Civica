@@ -7,7 +7,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Civica", "Civica\Civica.csp
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UnitTest", "UnitTest\UnitTest.csproj", "{298F1C3B-ABE1-4FB6-AC24-8AB78470B80B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GVMR", "GVMR\GVMR.csproj", "{6E332A90-35B4-4B1A-8DA8-4F0542265011}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GVMR", "GVMR\GVMR.csproj", "{6E332A90-35B4-4B1A-8DA8-4F0542265011}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Civica Projektstying", "Civica Projektstying\Civica Projektstying.vdproj", "{D5E6310A-3002-4D9E-9D32-63ECD91B637C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,8 @@ Global
 		{6E332A90-35B4-4B1A-8DA8-4F0542265011}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6E332A90-35B4-4B1A-8DA8-4F0542265011}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6E332A90-35B4-4B1A-8DA8-4F0542265011}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D5E6310A-3002-4D9E-9D32-63ECD91B637C}.Debug|Any CPU.ActiveCfg = Debug
+		{D5E6310A-3002-4D9E-9D32-63ECD91B637C}.Release|Any CPU.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
